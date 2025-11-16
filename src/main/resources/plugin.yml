@@ -1,0 +1,14 @@
+name: TerrariaItems
+version: '1.0-SNAPSHOT'
+main: me.carson.terrariaItems.TerrariaItems
+api-version: '1.21'
+commands:
+  tt:
+    description: Terraria Tools main command
+    usage: /tt <subcommand>
+    permission: terrariaitems.tt
+    permission-message: You don't have permission to use this.
+permissions:
+  terrariatools.tt:
+    description: Terraria Tools Commands
+    default: op
