@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.ListenersHandler;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,7 +10,7 @@ import org.bukkit.event.player.PlayerResourcePackStatusEvent;
 public class ResourcePackHandler implements Listener {
 
     // Your direct HTTPS link to the pack
-    private static final String PACK_URL = "https://github.com/CarsonWebb/Terraria-Plugin/releases/download/V1/Terraria.Textures.zip";
+    private static final String PACK_URL = "https://github.com/CarsonWebb/TerrariaItems/releases/download/Textures/Terraria.Textures.zip";
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
@@ -28,11 +29,11 @@ public class ResourcePackHandler implements Listener {
 
         switch (status) {
             case DECLINED:
-                //player.kickPlayer(ChatColor.RED + "You must accept the resource pack to play on this server!");
+                player.kickPlayer(ChatColor.RED + "You must accept the resource pack to play on this server!");
                 break;
 
             case FAILED_DOWNLOAD:
-                //player.kickPlayer(ChatColor.RED + "Resource pack failed to download. Please check your connection and try again.");
+                player.kickPlayer(ChatColor.RED + "Resource pack failed to download. Please check your connection and try again.");
                 break;
 
             case SUCCESSFULLY_LOADED:
