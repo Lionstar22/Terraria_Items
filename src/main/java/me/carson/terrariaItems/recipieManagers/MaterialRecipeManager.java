@@ -9,11 +9,11 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.Plugin;
 
-public class MaterialRecipieManager {
+public class MaterialRecipeManager {
 
     private final Plugin plugin;
 
-    public MaterialRecipieManager(Plugin plugin) {
+    public MaterialRecipeManager(Plugin plugin) {
         this.plugin = plugin;
     }
 

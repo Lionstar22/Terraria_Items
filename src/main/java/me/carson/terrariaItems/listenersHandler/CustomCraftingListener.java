@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.ListenersHandler;
+package me.carson.terrariaItems.listenersHandler;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.EventHandler;
@@ -25,9 +25,11 @@ public class CustomCraftingListener implements Listener {
         ItemStack[] matrix = inv.getMatrix();
         ItemStack result=inv.getResult();
         if(result!=null){
-            if (!hasCustom(matrix) && result.getItemMeta().getPersistentDataContainer().has(customCraftableKey)) {
+            if(isAllVanilla(matrix)&&result.getItemMeta().getPersistentDataContainer().has(customCraftableKey)){
+                inv.setResult(result);
+            }else if (!hasCustom(matrix) && result.getItemMeta().getPersistentDataContainer().has(customCraftableKey)) {
                 inv.setResult(null);
-            } else if (hasCustom(matrix) && !result.getItemMeta().getPersistentDataContainer().has(customCraftableKey)) {
+            }else if (hasCustom(matrix) && !result.getItemMeta().getPersistentDataContainer().has(customCraftableKey)) {
                 inv.setResult(null);
             }
         }
@@ -43,6 +45,17 @@ public class CustomCraftingListener implements Listener {
             }
         }
         return false;
+    }
+
+    public Boolean isAllVanilla(ItemStack[] matrix){
+        for (ItemStack item : matrix) {
+            if(item!=null){
+                if(item.getItemMeta().getPersistentDataContainer().has(customMaterialKey)){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }

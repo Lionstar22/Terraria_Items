@@ -8,11 +8,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.Plugin;
 
-public class WeaponRecipieManager {
+public class WeaponRecipeManager {
 
     private final Plugin plugin;
 
-    public WeaponRecipieManager(Plugin plugin) {
+    public WeaponRecipeManager(Plugin plugin) {
         this.plugin = plugin;
     }
 

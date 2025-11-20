@@ -1,9 +1,10 @@
 package me.carson.terrariaItems;
 
-import me.carson.terrariaItems.ListenersHandler.CraftBlockerListener;
-import me.carson.terrariaItems.ListenersHandler.CustomCraftingListener;
-import me.carson.terrariaItems.ListenersHandler.ItemPlaceListener;
-import me.carson.terrariaItems.ListenersHandler.ResourcePackHandler;
+import me.carson.terrariaItems.blocksFolder.CustomBlockManager;
+import me.carson.terrariaItems.listenersHandler.CraftBlockerListener;
+import me.carson.terrariaItems.listenersHandler.CustomCraftingListener;
+import me.carson.terrariaItems.listenersHandler.ItemPlaceListener;
+import me.carson.terrariaItems.listenersHandler.ResourcePackHandler;
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.armourFolder.ArmorManager;
 import me.carson.terrariaItems.recipieManagers.*;
@@ -32,21 +33,26 @@ public final class TerrariaItems extends JavaPlugin {
 
         WeaponManager weaponManager=new WeaponManager(this);
 
+        CustomBlockManager customBlockManager=new CustomBlockManager(this);
+
         AccessoryRecipeManager accessoryRecipeManager = new AccessoryRecipeManager(this);
         accessoryRecipeManager.registerRecipes();
         ToolRecipeManager toolRecipeManager = new ToolRecipeManager(this);
         toolRecipeManager.registerRecipes();
-        MaterialRecipieManager materialRecipieManager = new MaterialRecipieManager(this);
+        MaterialRecipeManager materialRecipieManager = new MaterialRecipeManager(this);
         materialRecipieManager.registerRecipes();
-        WeaponRecipieManager weaponRecipieManager = new WeaponRecipieManager(this);
+        WeaponRecipeManager weaponRecipieManager = new WeaponRecipeManager(this);
         weaponRecipieManager.registerRecipes();
-        ArmorRecipieManager armorRecipieManager=new ArmorRecipieManager(this);
+        ArmorRecipeManager armorRecipieManager=new ArmorRecipeManager(this);
         armorRecipieManager.registerRecipes();
+        BlocksRecipeManager blocksRecipeManager=new BlocksRecipeManager(this);
+        blocksRecipeManager.registerRecipes();
 
         getServer().getPluginManager().registerEvents(aManager, this);
         getServer().getPluginManager().registerEvents(tManager, this);
         getServer().getPluginManager().registerEvents(armorManager, this);
         getServer().getPluginManager().registerEvents(weaponManager, this);
+        getServer().getPluginManager().registerEvents(customBlockManager, this);
         getServer().getPluginManager().registerEvents(new ResourcePackHandler(), this);
 
         TTCommand ttCommand = new TTCommand(this);

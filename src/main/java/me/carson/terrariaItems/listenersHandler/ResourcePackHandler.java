@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.ListenersHandler;
+package me.carson.terrariaItems.listenersHandler;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

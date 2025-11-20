@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.ListenersHandler;
+package me.carson.terrariaItems.listenersHandler;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
