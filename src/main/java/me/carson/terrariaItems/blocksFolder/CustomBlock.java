@@ -23,7 +23,6 @@ public abstract class CustomBlock {
     protected final Material baseMaterial;
     protected final String id;
     protected final ArrayList<String> lore;
-    private final NamespacedKey uncraftableKey;
     private final NamespacedKey customCraftableKey;
 
     protected CustomBlock(Plugin plugin, String name, String rarity, Material baseMaterial, String id, ArrayList<String> lore) {
@@ -33,7 +32,6 @@ public abstract class CustomBlock {
         this.baseMaterial = baseMaterial;
         this.id = id;
         this.lore = lore;
-        uncraftableKey=new NamespacedKey(plugin, "uncraftable");
         customCraftableKey=new NamespacedKey(plugin, "customCraftable");
     }
 
@@ -45,7 +43,6 @@ public abstract class CustomBlock {
         meta.setLore(lore);
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, id);
-        meta.getPersistentDataContainer().set(uncraftableKey, PersistentDataType.BYTE, (byte) 1);
         meta.getPersistentDataContainer().set(customCraftableKey, PersistentDataType.BYTE, (byte) 1);
         block.setItemMeta(meta);
         return block;

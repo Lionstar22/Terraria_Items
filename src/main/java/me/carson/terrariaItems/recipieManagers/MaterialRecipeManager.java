@@ -1,9 +1,11 @@
 package me.carson.terrariaItems.recipieManagers;
 
+import io.papermc.paper.registry.RegistryAccess;
 import me.carson.terrariaItems.materialsFolder.materials.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;

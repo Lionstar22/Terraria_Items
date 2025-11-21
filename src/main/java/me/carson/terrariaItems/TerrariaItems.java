@@ -1,10 +1,7 @@
 package me.carson.terrariaItems;
 
 import me.carson.terrariaItems.blocksFolder.CustomBlockManager;
-import me.carson.terrariaItems.listenersHandler.CraftBlockerListener;
-import me.carson.terrariaItems.listenersHandler.CustomCraftingListener;
-import me.carson.terrariaItems.listenersHandler.ItemPlaceListener;
-import me.carson.terrariaItems.listenersHandler.ResourcePackHandler;
+import me.carson.terrariaItems.listenersHandler.*;
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.armourFolder.ArmorManager;
 import me.carson.terrariaItems.recipieManagers.*;
@@ -62,6 +59,9 @@ public final class TerrariaItems extends JavaPlugin {
 
         Objects.requireNonNull(getCommand("tt")).setExecutor(ttCommand);
         Objects.requireNonNull(getCommand("tt")).setTabCompleter(ttCommand);
+
+        DatapackDownloader datapackDownloader=new DatapackDownloader(this);
+        datapackDownloader.downloadDatapack("https://github.com/CarsonWebb/Terraria_Items/releases/download/Textures/TerrariaDataPack.zip","TerrariaDataPack");
     }
 
     @Override
