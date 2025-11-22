@@ -3,9 +3,11 @@ package me.carson.terrariaItems.armourFolder.armors.moltenArmor;
 import me.carson.terrariaItems.armourFolder.Armor;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
@@ -18,7 +20,12 @@ public class MoltenLeggings extends Armor {
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        return new MoltenLeggings(plugin).createItem();
+        ItemStack item=new MoltenLeggings(plugin).createItem();
+        ItemMeta meta=item.getItemMeta();
+        meta.addEnchant(Enchantment.PROTECTION,1,false);
+        meta.setEnchantmentGlintOverride(false);
+        item.setItemMeta(meta);
+        return item;
     }
 
     @Override

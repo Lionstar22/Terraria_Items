@@ -75,46 +75,25 @@ public class Hellforge extends CustomBlock implements Listener {
     }
 
     @EventHandler
-    public void onBurn(FurnaceBurnEvent event) {
-        if (!isHellforge(event.getBlock())) return;
-        
+    public void onSmeltStart(FurnaceStartSmeltEvent event) {
         Block block = event.getBlock();
         if (block.getState() instanceof Furnace furnace) {
-            FurnaceInventory inv = furnace.getInventory();
-            if ((inv.getFuel().getType() == Material.OBSIDIAN)&&(inv.getSmelting()==new Hellstone(plugin).createItem())) {
-                event.setBurning(true);
-                event.setBurnTime(50);
+            FurnaceInventory inv=furnace.getInventory();
+            ItemStack smelt=inv.getSmelting();
+            if(smelt==null){return;}
+            if(isHellforge(block)){
+                if((smelt.getType()==Material.MAGMA_BLOCK)&&(!smelt.hasItemMeta())){
+                    event.setTotalCookTime(2147483647);
+                }else {
+                    event.setTotalCookTime(50);
+                }
+            }else {
+                if((smelt.getType()==Material.MAGMA_BLOCK)){
+                    event.setTotalCookTime(2147483647);
+                }
             }
         }
     }
-
-    @EventHandler
-    public void onSmeltStart(FurnaceStartSmeltEvent event) {
-        Block block = event.getBlock();
-        if (!isHellforge(block)) return;
-
-        // Default furnace time = 200 ticks
-        event.setTotalCookTime(50);
-    }
-
-    @EventHandler
-    public void onSmelt(FurnaceSmeltEvent event) {
-        // Only your custom furnaces react
-        if (!isHellforge(event.getBlock())) return;
-
-        Furnace furnace = (Furnace) event.getBlock().getState();
-        FurnaceInventory inv = furnace.getInventory();
-
-        ItemStack input = inv.getSmelting();
-        ItemStack fuel = inv.getFuel();
-        if (input == null || fuel == null) return;
-
-        // Your custom recipe:
-        if ((fuel.getType() == Material.OBSIDIAN)&&(input==new Hellstone(plugin).createItem())) {
-            event.setResult(new HellstoneBar(plugin).createItem());
-        }
-    }
-
 
     @EventHandler
     public void onBreak(BlockBreakEvent event) {
@@ -151,93 +130,5 @@ public class Hellforge extends CustomBlock implements Listener {
         if (!(state instanceof TileState tile)) return false;
         return(tile.getPersistentDataContainer().has(new NamespacedKey(plugin, id), PersistentDataType.INTEGER));
     }
-    /*
-    @EventHandler
-    public void onFuelInsert(InventoryClickEvent event) {
-        Block block= Objects.requireNonNull(Objects.requireNonNull(event.getClickedInventory()).getLocation()).getBlock();
-        if(!isHellforge(block))return;
-        // Only handle clicks where the top inventory is a furnace
-        InventoryView view = event.getView();
-        if (!(view.getTopInventory() instanceof FurnaceInventory)) return;
 
-        FurnaceInventory top = (FurnaceInventory) view.getTopInventory();
-
-        int rawSlot = event.getRawSlot();
-        // In furnace top inventory the fuel slot is index 1 (0 = input, 1 = fuel, 2 = result)
-        if (rawSlot != 1) return;
-
-        // Ensure it's a player
-        if (!(event.getWhoClicked() instanceof Player)) return;
-        Player player = (Player) event.getWhoClicked();
-
-        InventoryAction action = event.getAction();
-        ItemStack cursor = event.getCursor();        // item on cursor (when placing)
-        ItemStack currentFuel = top.getFuel();       // item currently in fuel slot
-        ItemStack clickedItem = event.getCurrentItem(); // item in the clicked slot (same as currentFuel)
-
-        // ----- Handle placing from cursor (normal click / place one/all) -----
-        if (action == InventoryAction.PLACE_ALL
-                || action == InventoryAction.PLACE_ONE
-                || action == InventoryAction.PLACE_SOME
-                || action == InventoryAction.SWAP_WITH_CURSOR) {
-
-            if (cursor == null) return; // nothing to place
-
-            // If placing obsidian, allow it
-            if (cursor.getType() == Material.OBSIDIAN) {
-                // Let the default action occur for most PLACE_* actions by doing nothing
-                // but some servers/versions block it, so force it:
-                event.setCancelled(true);
-
-                // Compute how many to place depending on action
-                if (action == InventoryAction.PLACE_ONE) {
-                    ItemStack toPlace = cursor.clone();
-                    toPlace.setAmount(1);
-
-                    // Put into fuel slot (if empty -> set, else increase amount)
-                    if (currentFuel == null || currentFuel.getType() == Material.AIR) {
-                        top.setFuel(toPlace);
-                    } else if (currentFuel.isSimilar(toPlace)) {
-                        currentFuel.setAmount(Math.min(currentFuel.getMaxStackSize(), currentFuel.getAmount() + 1));
-                        top.setFuel(currentFuel);
-                    } else {
-                        // should not normally reach: fuel slot contains other item; cancel
-                        player.getInventory().addItem(toPlace); // fallback
-                    }
-
-                    // Remove 1 from cursor
-                    ItemStack newCursor = cursor.clone();
-                    newCursor.setAmount(cursor.getAmount() - 1);
-                    player.setItemOnCursor(newCursor.getAmount() <= 0 ? null : newCursor);
-
-                } else {
-                    // PLACE_ALL / PLACE_SOME / SWAP_WITH_CURSOR: place as many as will fit
-                    // Simple approach: move entire cursor into fuel slot if empty, else merge.
-                    if (currentFuel == null || currentFuel.getType() == Material.AIR) {
-                        top.setFuel(cursor.clone());
-                        player.setItemOnCursor(null);
-                    } else if (currentFuel.isSimilar(cursor)) {
-                        int canAdd = currentFuel.getMaxStackSize() - currentFuel.getAmount();
-                        int toAdd = Math.min(canAdd, cursor.getAmount());
-                        currentFuel.setAmount(currentFuel.getAmount() + toAdd);
-                        top.setFuel(currentFuel);
-
-                        ItemStack newCursor = cursor.clone();
-                        newCursor.setAmount(cursor.getAmount() - toAdd);
-                        player.setItemOnCursor(newCursor.getAmount() <= 0 ? null : newCursor);
-                    } else {
-                        // different item in fuel slot — do nothing (or swap if SWAP_WITH_CURSOR)
-                        if (action == InventoryAction.SWAP_WITH_CURSOR) {
-                            top.setFuel(cursor.clone());
-                            player.setItemOnCursor(clickedItem); // swap
-                        }
-                    }
-                }
-            } else {
-                // Not obsidian — keep vanilla behavior (do nothing)
-            }
-
-            return;
-        }
-    }*/
 }

@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
@@ -73,6 +74,57 @@ public abstract class Armor {
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
         String storedId = meta.getPersistentDataContainer().get(key, PersistentDataType.STRING);
         return id.equals(storedId);
+    }
+
+    public Boolean hasSetBonus(Player player) {
+        PlayerInventory inv = player.getInventory();
+
+        ItemStack helmet = inv.getHelmet();
+        ItemStack chest = inv.getChestplate();
+        ItemStack legs = inv.getLeggings();
+        ItemStack boots = inv.getBoots();
+
+        if (!helmet.hasData(DataComponentTypes.EQUIPPABLE)) {
+            return false;
+        }
+        if (!chest.hasData(DataComponentTypes.EQUIPPABLE)) {
+            return false;
+        }
+        if (!legs.hasData(DataComponentTypes.EQUIPPABLE)) {
+            return false;
+        }
+        if (!boots.hasData(DataComponentTypes.EQUIPPABLE)) {
+            return false;
+        }
+
+        Equippable eqHelmet = helmet.getData(DataComponentTypes.EQUIPPABLE);
+        if (eqHelmet.assetId() == null) {
+            return false;
+        }
+        var helmetAssetId = eqHelmet.assetId();
+        String helmetKey = helmetAssetId.namespace();
+
+        Equippable eqChest = chest.getData(DataComponentTypes.EQUIPPABLE);
+        if (eqChest.assetId() == null) {
+            return false;
+        }
+        var chestAssetId = eqChest.assetId();
+        String chestKey = chestAssetId.namespace();
+
+        Equippable eqLegs = legs.getData(DataComponentTypes.EQUIPPABLE);
+        if (eqLegs.assetId() == null) {
+            return false;
+        }
+        var legsAssetId = eqLegs.assetId();
+        String legsKey = legsAssetId.namespace();
+
+        Equippable eqBoots = boots.getData(DataComponentTypes.EQUIPPABLE);
+        if (eqBoots.assetId() == null) {
+            return false;
+        }
+        var bootsAssetId = eqBoots.assetId();
+        String bootsKey = bootsAssetId.namespace();
+        return helmetKey.equals(chestKey) && helmetKey.equals(legsKey) && helmetKey.equals(bootsKey);
     }
 
     public abstract void activateArmorEffect(Player player);

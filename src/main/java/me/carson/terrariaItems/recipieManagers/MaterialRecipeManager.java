@@ -23,6 +23,7 @@ public class MaterialRecipeManager {
         registerDemoniteBarRecipe();
         registerHellstoneRecipe();
         registerRubyRecipe();
+        registerHellstoneBarRecipe();
     }
 
     private void registerDemoniteBarRecipe(){
@@ -41,6 +42,7 @@ public class MaterialRecipeManager {
         ShapelessRecipe recipe = new ShapelessRecipe(key, hellstone);
         recipe.addIngredient(Material.NETHERITE_SCRAP);
         recipe.addIngredient(Material.LAVA_BUCKET);
+        recipe.addIngredient(Material.OBSIDIAN);
         Bukkit.addRecipe(recipe);
     }
 
@@ -51,6 +53,19 @@ public class MaterialRecipeManager {
         recipe.shape("RRR","RDR","RRR");
         recipe.setIngredient('R', Material.REDSTONE);
         recipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerHellstoneBarRecipe(){
+        ItemStack bar=new HellstoneBar(plugin).createItem();
+        NamespacedKey key = new NamespacedKey(plugin, "HellstoneBar");
+        FurnaceRecipe recipe = new FurnaceRecipe(
+                key,
+                bar, // Result
+                Material.MAGMA_BLOCK,                   // Ingredient (simple)
+                0.35f,                               // XP
+                50                                  // Cook time (10s)
+        );
         Bukkit.addRecipe(recipe);
     }
 

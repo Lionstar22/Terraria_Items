@@ -2,7 +2,12 @@ package me.carson.terrariaItems.armourFolder;
 
 import io.papermc.paper.datacomponent.DataComponentTypes;
 import io.papermc.paper.datacomponent.item.Equippable;
+import me.carson.terrariaItems.accesoryFolder.accessories.LuckyHorseshoe;
 import me.carson.terrariaItems.armourFolder.armors.GoldenCrown;
+import me.carson.terrariaItems.armourFolder.armors.moltenArmor.MoltenBoots;
+import me.carson.terrariaItems.armourFolder.armors.moltenArmor.MoltenChestplate;
+import me.carson.terrariaItems.armourFolder.armors.moltenArmor.MoltenHelmet;
+import me.carson.terrariaItems.armourFolder.armors.moltenArmor.MoltenLeggings;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.ShadowGreaves;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.ShadowHelmet;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.ShadowLeggings;
@@ -27,8 +32,13 @@ public class ArmorManager implements Listener {
         armorItems.add(new ShadowScalemail(plugin));
         armorItems.add(new ShadowLeggings(plugin));
         armorItems.add(new ShadowGreaves(plugin));
+        armorItems.add(new MoltenHelmet(plugin));
+        armorItems.add(new MoltenChestplate(plugin));
+        armorItems.add(new MoltenLeggings(plugin));
+        armorItems.add(new MoltenBoots(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
+        Bukkit.getPluginManager().registerEvents(new MoltenHelmet(plugin), plugin);
     }
     /*
     @EventHandler
