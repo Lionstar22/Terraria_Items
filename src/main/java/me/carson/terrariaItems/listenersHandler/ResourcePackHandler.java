@@ -29,11 +29,11 @@ public class ResourcePackHandler implements Listener {
 
         switch (status) {
             case DECLINED:
-                player.kickPlayer(ChatColor.RED + "You must accept the resource pack to play on this server!");
+                //player.kickPlayer(ChatColor.RED + "You must accept the resource pack to play on this server!");
                 break;
 
             case FAILED_DOWNLOAD:
-                player.kickPlayer(ChatColor.RED + "Resource pack failed to download. Please check your connection and try again.");
+                //player.kickPlayer(ChatColor.RED + "Resource pack failed to download. Please check your connection and try again.");
                 break;
 
             case SUCCESSFULLY_LOADED:

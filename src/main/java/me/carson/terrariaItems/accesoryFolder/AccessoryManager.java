@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
@@ -94,7 +95,7 @@ public class AccessoryManager implements Listener {
             }
         }
         // Shift-click movement
-        if (event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY && clickedInv != null && !clickedInv.equals(playerInv)) {
+        if (event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY && clickedInv != null && (topInv.getType() != InventoryType.CRAFTING)) {
             ItemStack item = event.getCurrentItem();
             if (item != null && !item.getType().isAir()) {
                 deactivateItem(item,player);
