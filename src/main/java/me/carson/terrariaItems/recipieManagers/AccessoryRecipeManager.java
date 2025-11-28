@@ -29,7 +29,7 @@ public class AccessoryRecipeManager {
     }
 
     private void registerAgletRecipe(){
-        ItemStack aglet=new Aglet(plugin).createItem();
+        ItemStack aglet=Aglet.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "aglet");
         ShapedRecipe recipe = new ShapedRecipe(key, aglet);
         recipe.shape("CCC","C C","CCC");
@@ -38,7 +38,7 @@ public class AccessoryRecipeManager {
     }
 
     private void registerObsidianSkullRecipe(){
-        ItemStack skull=new ObsidianSkull(plugin).createItem();
+        ItemStack skull=ObsidianSkull.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "skull");
         ShapedRecipe recipe = new ShapedRecipe(key, skull);
         recipe.shape("OOO","OOO"," O ");
@@ -47,7 +47,7 @@ public class AccessoryRecipeManager {
     }
 
     private void registerRedBalloonRecipe(){
-        ItemStack balloon=new RedBalloon(plugin).createItem();
+        ItemStack balloon=RedBalloon.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "balloon");
         ShapedRecipe recipe = new ShapedRecipe(key, balloon);
         recipe.shape(" W "," S "," S ");
@@ -57,7 +57,7 @@ public class AccessoryRecipeManager {
     }
 
     private void registerBandOfRegenerationRecipe(){
-        ItemStack band=new BandOfRegeneration(plugin).createItem();
+        ItemStack band=BandOfRegeneration.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "band");
         ShapedRecipe recipe = new ShapedRecipe(key, band);
         recipe.shape("RRR","R R","RRR");
@@ -66,7 +66,7 @@ public class AccessoryRecipeManager {
     }
 
     private void registerHorseshoeRecipe(){
-        ItemStack horseshoe=new LuckyHorseshoe(plugin).createItem();
+        ItemStack horseshoe=LuckyHorseshoe.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "LuckyHorseshoe");
         ShapedRecipe recipe = new ShapedRecipe(key, horseshoe);
         recipe.shape("G G","G G","GGG");
@@ -74,7 +74,7 @@ public class AccessoryRecipeManager {
         Bukkit.addRecipe(recipe);
     }
     private void registerCobaltShieldRecipe(){
-        ItemStack cobaltShield=new CobaltShield(plugin).createItem();
+        ItemStack cobaltShield=CobaltShield.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "CobaltShield");
         ShapedRecipe recipe = new ShapedRecipe(key, cobaltShield);
         recipe.shape("LSL","LNL"," L ");
@@ -84,7 +84,7 @@ public class AccessoryRecipeManager {
         Bukkit.addRecipe(recipe);
     }
     private void registerCounterScarfRecipe(){
-        ItemStack counterScarf=new CounterScarf(plugin).createItem();
+        ItemStack counterScarf=CounterScarf.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "CounterScarf");
         ShapedRecipe recipe = new ShapedRecipe(key, counterScarf);
         recipe.shape("ERE","RBR","ERE");
@@ -94,7 +94,7 @@ public class AccessoryRecipeManager {
         Bukkit.addRecipe(recipe);
     }
     private void registerNeptuneShellRecipie(){
-        ItemStack neptunesShell=new NeptunesShell(plugin).createItem();
+        ItemStack neptunesShell=NeptunesShell.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "NeptunesShell");
         ShapelessRecipe recipe = new ShapelessRecipe(key, neptunesShell);
         recipe.addIngredient(Material.BUBBLE_CORAL_BLOCK);

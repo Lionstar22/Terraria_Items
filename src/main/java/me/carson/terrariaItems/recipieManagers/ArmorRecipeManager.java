@@ -35,74 +35,74 @@ public class ArmorRecipeManager {
     }
 
     private void registerShadowHelmetRecipe(){
-        ItemStack helmet=new ShadowHelmet(plugin).createItem();
+        ItemStack helmet=ShadowHelmet.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "ShadowHelmet");
         ShapedRecipe recipe = new ShapedRecipe(key, helmet);
         recipe.shape("DDD","D D","   ");
-        recipe.setIngredient('D', new DemoniteBar(plugin).createItem());
+        recipe.setIngredient('D', DemoniteBar.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 
     private void registerShadowScalemailRecipe(){
-        ItemStack scalemail=new ShadowScalemail(plugin).createItem();
+        ItemStack scalemail=ShadowScalemail.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "ShadowScalemail");
         ShapedRecipe recipe = new ShapedRecipe(key, scalemail);
         recipe.shape("D D","DDD","DDD");
-        recipe.setIngredient('D', new DemoniteBar(plugin).createItem());
+        recipe.setIngredient('D', DemoniteBar.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 
     private void registerShadowLeggingsRecipe(){
-        ItemStack leggings=new ShadowLeggings(plugin).createItem();
+        ItemStack leggings=ShadowLeggings.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "ShadowLeggings");
         ShapedRecipe recipe = new ShapedRecipe(key, leggings);
         recipe.shape("DDD","D D","D D");
-        recipe.setIngredient('D', new DemoniteBar(plugin).createItem());
+        recipe.setIngredient('D', DemoniteBar.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 
     private void registerShadowGreavesRecipe(){
-        ItemStack greaves=new ShadowGreaves(plugin).createItem();
+        ItemStack greaves=ShadowGreaves.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "ShadowGreaves");
         ShapedRecipe recipe = new ShapedRecipe(key, greaves);
         recipe.shape("   ","D D","D D");
-        recipe.setIngredient('D', new DemoniteBar(plugin).createItem());
+        recipe.setIngredient('D', DemoniteBar.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 
     private void registerMoltenHelmRecipe(){
-        ItemStack helm= new MoltenHelmet(plugin).createItem();
+        ItemStack helm= MoltenHelmet.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "MoltenHelmet");
         ShapelessRecipe recipe = new ShapelessRecipe(key,helm);
         recipe.addIngredient(Material.DIAMOND_HELMET);
-        recipe.addIngredient(new HellstoneBar(plugin).createItem());
+        recipe.addIngredient(HellstoneBar.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 
     private void registerMoltenChestplateRecipe(){
-        ItemStack chestplate= new MoltenChestplate(plugin).createItem();
+        ItemStack chestplate= MoltenChestplate.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "MoltenChestplate");
         ShapelessRecipe recipe = new ShapelessRecipe(key,chestplate);
         recipe.addIngredient(Material.DIAMOND_CHESTPLATE);
-        recipe.addIngredient(new HellstoneBar(plugin).createItem());
+        recipe.addIngredient(HellstoneBar.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 
     private void registerMoltenLeggingsRecipe(){
-        ItemStack leggings= new MoltenLeggings(plugin).createItem();
+        ItemStack leggings= MoltenLeggings.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "MoltenLeggings");
         ShapelessRecipe recipe = new ShapelessRecipe(key,leggings);
         recipe.addIngredient(Material.DIAMOND_LEGGINGS);
-        recipe.addIngredient(new HellstoneBar(plugin).createItem());
+        recipe.addIngredient(HellstoneBar.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 
     private void registerMoltenBootsRecipe(){
-        ItemStack boots= new MoltenBoots(plugin).createItem();
+        ItemStack boots= MoltenBoots.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "MoltenBoots");
         ShapelessRecipe recipe = new ShapelessRecipe(key,boots);
         recipe.addIngredient(Material.DIAMOND_BOOTS);
-        recipe.addIngredient(new HellstoneBar(plugin).createItem());
+        recipe.addIngredient(HellstoneBar.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 }

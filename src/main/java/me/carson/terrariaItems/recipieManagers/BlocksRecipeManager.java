@@ -23,7 +23,7 @@ public class BlocksRecipeManager {
     }
 
     private void registerHellforgeRecipe(){
-        ItemStack forge=new Hellforge(plugin).createItem();
+        ItemStack forge=Hellforge.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Hellforge");
         ShapedRecipe recipe = new ShapedRecipe(key, forge);
         recipe.shape(" M ","MFM"," M ");

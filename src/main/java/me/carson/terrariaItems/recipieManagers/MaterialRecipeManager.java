@@ -33,7 +33,7 @@ public class MaterialRecipeManager implements Listener {
     }
 
     private void registerDemoniteBarRecipe(){
-        ItemStack demoniteBar=new DemoniteBar(plugin).createItem();
+        ItemStack demoniteBar=DemoniteBar.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "DemoniteBar");
         ShapedRecipe recipe = new ShapedRecipe(key, demoniteBar);
         recipe.shape(" S ","SIS"," S ");
@@ -43,7 +43,7 @@ public class MaterialRecipeManager implements Listener {
     }
 
     private void registerHellstoneRecipe(){
-        ItemStack hellstone=new Hellstone(plugin).createItem();
+        ItemStack hellstone=Hellstone.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Hellstone");
         ShapelessRecipe recipe = new ShapelessRecipe(key, hellstone);
         recipe.addIngredient(Material.NETHERITE_SCRAP);
@@ -53,7 +53,7 @@ public class MaterialRecipeManager implements Listener {
     }
 
     private void registerRubyRecipe(){
-        ItemStack ruby=new Ruby(plugin).createItem();
+        ItemStack ruby=Ruby.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Ruby");
         ShapedRecipe recipe = new ShapedRecipe(key,ruby);
         recipe.shape("RRR","RDR","RRR");
@@ -63,7 +63,7 @@ public class MaterialRecipeManager implements Listener {
     }
 
     private void registerHellstoneBarRecipe(){
-        ItemStack bar=new HellstoneBar(plugin).createItem();
+        ItemStack bar=HellstoneBar.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "HellstoneBar");
         FurnaceRecipe recipe = new FurnaceRecipe(
                 key,

@@ -16,7 +16,7 @@ import java.util.List;
 public class MoltenBoots extends Armor {
 
     public MoltenBoots(Plugin plugin){
-        super(plugin,"Molten Boots","#FFC896", Material.NETHERITE_BOOTS,"molten_boots","molten_armor", EquipmentSlot.FEET,"MoltenBoots",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus: Fire Resistance, 25% Increased Melee Damage, Fire Ascpect")));
+        super(plugin,"Molten Boots","#FFC896", Material.NETHERITE_BOOTS,"molten_boots","molten_armor", EquipmentSlot.FEET,"MoltenBoots",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus: Fire Resistance, 25% Increased Damage, Sets Enemies on Fire")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -26,7 +26,7 @@ public class ToolRecipeManager {
     }
 
     private void registerMirrorRecipe(){
-        ItemStack mirror=new MagicMirror(plugin).createItem();
+        ItemStack mirror=MagicMirror.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "MagicMirror");
         ShapedRecipe recipe = new ShapedRecipe(key, mirror);
         recipe.shape("IDI","IGI","IDI");
@@ -36,7 +36,7 @@ public class ToolRecipeManager {
         Bukkit.addRecipe(recipe);
     }
     private void registerCosmolightRecipe(){
-        ItemStack cosmolight=new Cosmolight(plugin).createItem();
+        ItemStack cosmolight=Cosmolight.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Cosmolight");
         ShapedRecipe recipe = new ShapedRecipe(key, cosmolight);
         recipe.shape("EGN","GCG","PGS");
@@ -49,7 +49,7 @@ public class ToolRecipeManager {
         Bukkit.addRecipe(recipe);
     }
     private void registerCapacitorRecipe(){
-        ItemStack capacitor=new MomentumCapacitor(plugin).createItem();
+        ItemStack capacitor=MomentumCapacitor.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "MomentumCapacitor");
         ShapedRecipe recipe = new ShapedRecipe(key, capacitor);
         recipe.shape("WWW","WNW","WWW");
@@ -58,7 +58,7 @@ public class ToolRecipeManager {
         Bukkit.addRecipe(recipe);
     }
     private void registerRodRecipe(){
-        ItemStack rod=new RodOfDiscord(plugin).createItem();
+        ItemStack rod=RodOfDiscord.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "RodOfDiscord");
         ShapedRecipe recipe = new ShapedRecipe(key, rod);
         recipe.shape("ECE","ENE","ENE");
@@ -69,11 +69,11 @@ public class ToolRecipeManager {
     }
 
     private void registerLifeCrystalRecipe(){
-        ItemStack lifeCrystal=new LifeCrystal(plugin).createItem();
+        ItemStack lifeCrystal=LifeCrystal.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "LifeCrystal");
         ShapedRecipe recipe = new ShapedRecipe(key, lifeCrystal);
         recipe.shape("DCD","DDD"," D ");
-        recipe.setIngredient('D', new Ruby(plugin).createItem());
+        recipe.setIngredient('D', Ruby.getItem(plugin));
         recipe.setIngredient('C', Material.COBBLESTONE);
         Bukkit.addRecipe(recipe);
     }
