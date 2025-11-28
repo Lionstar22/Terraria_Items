@@ -27,7 +27,8 @@ public class Volcano extends Weapon implements Listener {
     public static ItemStack getItem(Plugin plugin) {
         ItemStack item=new Volcano(plugin).createItem();
         ItemMeta meta= item.getItemMeta();
-
+        meta.addEnchant(Enchantment.FIRE_ASPECT,2,true);
+        meta.setEnchantmentGlintOverride(false);
         meta.addAttributeModifier(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(plugin,"speed"),-3.0, AttributeModifier.Operation.ADD_NUMBER));
         meta.addAttributeModifier(Attribute.ENTITY_INTERACTION_RANGE, new AttributeModifier(new NamespacedKey(plugin,"range"),1.0, AttributeModifier.Operation.ADD_NUMBER));
         meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),14.0, AttributeModifier.Operation.ADD_NUMBER));
