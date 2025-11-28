@@ -22,10 +22,12 @@ public class MagicMirror extends Tool {
     @Override
     public void rightActivate(Player player) {
         Location loc=player.getRespawnLocation();
-        assert loc != null;
-        player.setFallDistance(0);
-        player.teleport(loc, PlayerTeleportEvent.TeleportCause.PLUGIN);
-        player.playSound(player.getLocation(), "terraria:magic_mirror_use", 1.0F, 1.0F);
+        if(loc!=null){
+            player.setFallDistance(0);
+            player.teleport(loc, PlayerTeleportEvent.TeleportCause.PLUGIN);
+            player.playSound(player.getLocation(), "terraria:magic_mirror_use", 1.0F, 1.0F);
+        }
+
     }
 
     @Override

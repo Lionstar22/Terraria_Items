@@ -11,7 +11,7 @@ import java.util.List;
 public class HellstoneBar extends Material {
 
     public HellstoneBar(Plugin plugin) {
-        super(plugin,"HellstoneBar","#96FF96", org.bukkit.Material.NETHERITE_INGOT,"hellstone_bar","HellstoneBar", new ArrayList<>(List.of((ChatColor.GRAY+"Hot to the touch"))));
+        super(plugin,"HellstoneBar","#96FF96", org.bukkit.Material.NETHER_BRICK,"hellstone_bar","HellstoneBar", new ArrayList<>(List.of((ChatColor.GRAY+"Hot to the touch"))));
     }
 
     public static ItemStack getItem(Plugin plugin) {

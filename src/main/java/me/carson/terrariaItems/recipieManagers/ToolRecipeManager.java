@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.recipieManagers;
 
+import me.carson.terrariaItems.materialsFolder.materials.Ruby;
 import me.carson.terrariaItems.toolFolder.tools.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -72,7 +73,7 @@ public class ToolRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "LifeCrystal");
         ShapedRecipe recipe = new ShapedRecipe(key, lifeCrystal);
         recipe.shape("DCD","DDD"," D ");
-        recipe.setIngredient('D', Material.DIAMOND);
+        recipe.setIngredient('D', new Ruby(plugin).createItem());
         recipe.setIngredient('C', Material.COBBLESTONE);
         Bukkit.addRecipe(recipe);
     }

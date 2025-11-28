@@ -4,9 +4,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.block.Block;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -23,7 +20,7 @@ public abstract class CustomBlock {
     protected final Material baseMaterial;
     protected final String id;
     protected final ArrayList<String> lore;
-    private final NamespacedKey customCraftableKey;
+    private final NamespacedKey customItemKey;
 
     protected CustomBlock(Plugin plugin, String name, String rarity, Material baseMaterial, String id, ArrayList<String> lore) {
         this.plugin = plugin;
@@ -32,7 +29,7 @@ public abstract class CustomBlock {
         this.baseMaterial = baseMaterial;
         this.id = id;
         this.lore = lore;
-        customCraftableKey=new NamespacedKey(plugin, "customCraftable");
+        customItemKey=new NamespacedKey(plugin, "customItem");
     }
 
     public ItemStack createItem(){
@@ -43,7 +40,7 @@ public abstract class CustomBlock {
         meta.setLore(lore);
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, id);
-        meta.getPersistentDataContainer().set(customCraftableKey, PersistentDataType.BYTE, (byte) 1);
+        meta.getPersistentDataContainer().set(customItemKey, PersistentDataType.BYTE, (byte) 1);
         block.setItemMeta(meta);
         return block;
     }

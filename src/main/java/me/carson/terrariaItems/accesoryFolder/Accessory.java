@@ -25,7 +25,7 @@ public abstract class Accessory {
     protected final String id;
     protected final ArrayList<String> lore;
     private final NamespacedKey activeKey;
-    private final NamespacedKey uncraftableKey;
+    private final NamespacedKey customItemKey;
     private final NamespacedKey unplaceableKey;
 
 
@@ -36,7 +36,7 @@ public abstract class Accessory {
         this.baseMaterial = baseMaterial;
         this.texture = texture;
         this.id = id;
-        uncraftableKey=new NamespacedKey(plugin, "uncraftable");
+        customItemKey=new NamespacedKey(plugin, "customItem");
         unplaceableKey=new NamespacedKey(plugin, "unplaceable");
         activeKey = new NamespacedKey(plugin,"activekey");
         this.lore = lore;
@@ -51,7 +51,7 @@ public abstract class Accessory {
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, id);
         meta.setItemModel(new NamespacedKey("terraria",texture));
-        meta.getPersistentDataContainer().set(uncraftableKey, PersistentDataType.BYTE, (byte) 1);
+        meta.getPersistentDataContainer().set(customItemKey, PersistentDataType.BYTE, (byte) 1);
         meta.getPersistentDataContainer().set(unplaceableKey, PersistentDataType.BYTE, (byte) 1);
         meta.getPersistentDataContainer().set(activeKey, PersistentDataType.INTEGER, 0);
         meta.setMaxStackSize(Integer.valueOf(1));

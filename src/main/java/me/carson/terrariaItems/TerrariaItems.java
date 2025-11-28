@@ -53,7 +53,6 @@ public final class TerrariaItems extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ResourcePackHandler(), this);
 
         TTCommand ttCommand = new TTCommand(this);
-        new CraftBlockerListener(this);
         new CustomCraftingListener(this);
         getServer().getPluginManager().registerEvents(new ItemPlaceListener(this), this);
 

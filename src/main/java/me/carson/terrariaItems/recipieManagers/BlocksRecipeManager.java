@@ -2,6 +2,7 @@ package me.carson.terrariaItems.recipieManagers;
 
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.ShadowHelmet;
 import me.carson.terrariaItems.blocksFolder.blocks.Hellforge;
+import me.carson.terrariaItems.materialsFolder.materials.Hellstone;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -18,7 +19,7 @@ public class BlocksRecipeManager {
     }
 
     public void registerRecipes() {
-
+        registerHellforgeRecipe();
     }
 
     private void registerHellforgeRecipe(){
@@ -26,7 +27,7 @@ public class BlocksRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "Hellforge");
         ShapedRecipe recipe = new ShapedRecipe(key, forge);
         recipe.shape(" M ","MFM"," M ");
-        recipe.setIngredient('M', Material.MAGMA_BLOCK);
+        recipe.setIngredient('M', new Hellstone(plugin).createItem());
         recipe.setIngredient('F', Material.FURNACE);
         Bukkit.addRecipe(recipe);
     }

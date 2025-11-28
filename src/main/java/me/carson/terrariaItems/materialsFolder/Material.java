@@ -20,7 +20,7 @@ public class Material {
     protected final String texture;
     protected final String id;
     protected final ArrayList<String> lore;
-    private final NamespacedKey customMaterialKey;
+    private final NamespacedKey customItemKey;
     private final NamespacedKey unplaceableKey;
 
 
@@ -31,7 +31,7 @@ public class Material {
         this.baseMaterial = baseMaterial;
         this.texture = texture;
         this.id = id;
-        customMaterialKey=new NamespacedKey(plugin, "customMaterial");
+        customItemKey=new NamespacedKey(plugin, "customItem");
         unplaceableKey=new NamespacedKey(plugin, "unplaceable");
         this.lore = lore;
     }
@@ -45,7 +45,7 @@ public class Material {
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, id);
         meta.setItemModel(new NamespacedKey("terraria",texture));
-        meta.getPersistentDataContainer().set(customMaterialKey, PersistentDataType.BYTE, (byte) 1);
+        meta.getPersistentDataContainer().set(customItemKey, PersistentDataType.BYTE, (byte) 1);
         meta.getPersistentDataContainer().set(unplaceableKey, PersistentDataType.BYTE, (byte) 1);
         meta.setMaxStackSize(Integer.valueOf(64));
         material.setItemMeta(meta);

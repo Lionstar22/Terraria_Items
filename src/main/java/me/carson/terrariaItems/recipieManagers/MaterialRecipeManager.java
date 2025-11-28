@@ -2,16 +2,22 @@ package me.carson.terrariaItems.recipieManagers;
 
 import io.papermc.paper.registry.RegistryAccess;
 import me.carson.terrariaItems.materialsFolder.materials.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.Volcano;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.inventory.PrepareSmithingEvent;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.Plugin;
 
-public class MaterialRecipeManager {
+public class MaterialRecipeManager implements Listener {
 
     private final Plugin plugin;
 
