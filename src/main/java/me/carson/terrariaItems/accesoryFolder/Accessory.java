@@ -93,6 +93,10 @@ public abstract class Accessory {
         return data.getOrDefault(activeKey, PersistentDataType.INTEGER, 0) == 1;
     }
 
+    public boolean hasItem(Player player,ItemStack item){
+        return player.getInventory().contains(item);
+    }
+
     // Toggle the flag
     public void toggleActivated(ItemStack item) {
         setActivated(item, !isActivated(item));

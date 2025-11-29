@@ -39,9 +39,9 @@ public class WeaponManager implements Listener {
         for (Weapon item : weaponItems) {
             if (item.isThisItem(heldItem)) {
                 event.setCancelled(true);
-                if(!player.hasCooldown(heldItem.getType())){
+                if(!player.hasCooldown(heldItem)){
                     item.leftActivate(player);
-                    player.setCooldown(heldItem.getType(), item.cooldown);
+                    player.setCooldown(heldItem, item.cooldown);
                 }
             }
         }
@@ -58,9 +58,9 @@ public class WeaponManager implements Listener {
         for (Weapon item : weaponItems) {
             if (item.isThisItem(heldItem)) {
                 event.setCancelled(true);
-                if(!player.hasCooldown(heldItem.getType())){
+                if(!player.hasCooldown(heldItem)){
                     item.rightActivate(player);
-                    player.setCooldown(heldItem.getType(), item.cooldown);
+                    player.setCooldown(heldItem, item.cooldown);
                 }
             }
         }

@@ -132,6 +132,15 @@ public class TTCommand implements CommandExecutor, TabCompleter {
                     case "bezoar"-> {
                         player.getInventory().addItem(Bezoar.getItem(plugin));
                     }
+                    case "blindfold"-> {
+                        player.getInventory().addItem(Blindfold.getItem(plugin));
+                    }
+                    case "fast_clock"-> {
+                        player.getInventory().addItem(FastClock.getItem(plugin));
+                    }
+                    case "vitamins"-> {
+                        player.getInventory().addItem(Vitamins.getItem(plugin));
+                    }
 
                     default -> player.sendMessage("§cUnknown item: " + itemName);
                 }
@@ -151,7 +160,7 @@ public class TTCommand implements CommandExecutor, TabCompleter {
             StringUtil.copyPartialMatches(args[0], subCommands, completions);
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
             // Second argument: item names
-            List<String> items = Arrays.asList("Cosmolight","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield","golden_crown");
+            List<String> items = Arrays.asList("Cosmolight","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield","golden_crown");
             StringUtil.copyPartialMatches(args[1], items, completions);
         }
 

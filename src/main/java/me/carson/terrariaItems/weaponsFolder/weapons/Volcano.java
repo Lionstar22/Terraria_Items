@@ -50,7 +50,6 @@ public class Volcano extends Weapon implements Listener {
         if (!(event.getDamager() instanceof Player player)) return;
         ItemStack item=player.getInventory().getItemInMainHand();
         if(Volcano.this.isThisItem(item)){
-            player.sendMessage(""+event.getDamage());
             player.playSound(event.getEntity(), "terraria:volcano", 2.0F, 1.0F);
         }
 

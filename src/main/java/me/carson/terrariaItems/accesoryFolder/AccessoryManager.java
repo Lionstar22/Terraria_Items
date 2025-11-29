@@ -38,6 +38,9 @@ public class AccessoryManager implements Listener {
         accessoryItems.add(new AncientFossil(plugin));
         accessoryItems.add(new NeptunesShell(plugin));
         accessoryItems.add(new Bezoar(plugin));
+        accessoryItems.add(new Blindfold(plugin));
+        accessoryItems.add(new FastClock(plugin));
+        accessoryItems.add(new Vitamins(plugin));
 
         //Adds listeners for special cases
         Bukkit.getPluginManager().registerEvents(this, plugin);
@@ -46,6 +49,9 @@ public class AccessoryManager implements Listener {
         Bukkit.getPluginManager().registerEvents(new CobaltShield(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new CounterScarf(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new Bezoar(plugin),plugin);
+        Bukkit.getPluginManager().registerEvents(new Blindfold(plugin),plugin);
+        Bukkit.getPluginManager().registerEvents(new FastClock(plugin),plugin);
+        Bukkit.getPluginManager().registerEvents(new Vitamins(plugin),plugin);
     }
 
     public void startAccessoryTask(Plugin plugin) {

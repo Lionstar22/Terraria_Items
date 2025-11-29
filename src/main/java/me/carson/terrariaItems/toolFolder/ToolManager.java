@@ -34,9 +34,9 @@ public class ToolManager implements Listener {
         for (Tool item : toolItems) {
             if (item.isThisItem(heldItem)) {
                 event.setCancelled(true);
-                if(!player.hasCooldown(heldItem.getType())){
+                if(!player.hasCooldown(heldItem)){
                     item.rightActivate(player);
-                    player.setCooldown(heldItem.getType(), item.cooldown);
+                    player.setCooldown(heldItem, item.cooldown);
                 }else{
                     item.cooldownEffect(player);
                 }

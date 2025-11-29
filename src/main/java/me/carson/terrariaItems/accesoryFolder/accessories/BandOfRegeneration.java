@@ -21,7 +21,7 @@ public class BandOfRegeneration extends Accessory implements Listener {
 
     @Override
     public void activateEffect(Player player){
-        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 120, 0, true, false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 120, 0, false, false,false));
     }
 
     @Override

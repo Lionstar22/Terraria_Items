@@ -28,7 +28,7 @@ public class RodOfDiscord extends Tool implements Listener {
 
     @Override
     public void rightActivate(Player player) {
-        // Ray trace up to 50 blocks
+
         RayTraceResult result = player.getWorld().rayTraceBlocks(
                 player.getEyeLocation(),
                 player.getEyeLocation().getDirection(),
@@ -38,6 +38,7 @@ public class RodOfDiscord extends Tool implements Listener {
         );
 
         if (result == null || result.getHitPosition() == null) {
+            player.sendMessage("NULL");
             return;
         }
 
@@ -63,7 +64,6 @@ public class RodOfDiscord extends Tool implements Listener {
     @Override
     public void cooldownEffect(Player player){
         rightActivate(player);
-        player.addPotionEffect(new PotionEffect(PotionEffectType.INSTANT_DAMAGE,1,0,false,false,false));
     }
 
     public static ItemStack getItem(Plugin plugin) {

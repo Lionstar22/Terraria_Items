@@ -27,6 +27,9 @@ public class AccessoryRecipeManager {
         registerCounterScarfRecipe();
         registerNeptuneShellRecipie();
         registerBezoarRecipe();
+        registerBlindfoldRecipe();
+        registerFastClockRecipe();
+        registerVitaminsRecipie();
     }
 
     private void registerAgletRecipe(){
@@ -116,6 +119,42 @@ public class AccessoryRecipeManager {
         recipe.shape(" M ","MSM"," M ");
         recipe.setIngredient('M', Material.MOSS_BLOCK);
         recipe.setIngredient('S', Material.SPIDER_EYE);
+        Bukkit.addRecipe(recipe);
+    }
+    private void registerBlindfoldRecipe(){
+        ItemStack blind=Blindfold.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "Blindfold");
+        ShapedRecipe recipe = new ShapedRecipe(key, blind);
+        recipe.shape("SSS","WEW","SSS");
+        recipe.setIngredient('S', Material.STRING);
+        recipe.setIngredient('W', Material.WHITE_WOOL);
+        recipe.setIngredient('E', Material.ECHO_SHARD);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerFastClockRecipe(){
+        ItemStack clock=FastClock.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "FastClock");
+        ShapedRecipe recipe = new ShapedRecipe(key, clock);
+        recipe.shape("SSS","SCS","SSS");
+        recipe.setIngredient('S', Material.SUGAR);
+        recipe.setIngredient('C', Material.CLOCK);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerVitaminsRecipie(){
+        ItemStack vitamin=Vitamins.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "Vitamins");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, vitamin);
+        recipe.addIngredient(Material.POTION);
+        recipe.addIngredient(Material.SHORT_GRASS);
+        recipe.addIngredient(Material.DRIED_KELP);
+        recipe.addIngredient(Material.SWEET_BERRIES);
+        recipe.addIngredient(Material.POTATO);
+        recipe.addIngredient(Material.CARROT);
+        recipe.addIngredient(Material.BEETROOT);
+        recipe.addIngredient(Material.MILK_BUCKET);
+        recipe.addIngredient(Material.HONEY_BOTTLE);
         Bukkit.addRecipe(recipe);
     }
 }
