@@ -37,7 +37,7 @@ public class MoltenFury extends Weapon {
             Vector dir = loc.getDirection().normalize();
             loc.add(dir.multiply(1));
             World world= player.getWorld();
-            Arrow arrow=world.spawnArrow(loc,dir, 5, 0.5F);
+            Arrow arrow=world.spawnArrow(loc,dir, 4, 0.5F);
             arrow.setDamage(5);
             arrow.setFireTicks(100);
             arrow.setShooter(player);

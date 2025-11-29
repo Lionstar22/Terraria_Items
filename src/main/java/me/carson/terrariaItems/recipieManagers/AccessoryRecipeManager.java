@@ -26,6 +26,7 @@ public class AccessoryRecipeManager {
         registerCobaltShieldRecipe();
         registerCounterScarfRecipe();
         registerNeptuneShellRecipie();
+        registerBezoarRecipe();
     }
 
     private void registerAgletRecipe(){
@@ -108,5 +109,13 @@ public class AccessoryRecipeManager {
         recipe.addIngredient(Material.WET_SPONGE);
         Bukkit.addRecipe(recipe);
     }
-
+    private void registerBezoarRecipe(){
+        ItemStack bezoar=Bezoar.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "Bezoar");
+        ShapedRecipe recipe = new ShapedRecipe(key, bezoar);
+        recipe.shape(" M ","MSM"," M ");
+        recipe.setIngredient('M', Material.MOSS_BLOCK);
+        recipe.setIngredient('S', Material.SPIDER_EYE);
+        Bukkit.addRecipe(recipe);
+    }
 }
