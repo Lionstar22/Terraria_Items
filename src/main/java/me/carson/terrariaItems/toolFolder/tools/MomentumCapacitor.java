@@ -28,7 +28,7 @@ public class MomentumCapacitor extends Tool implements Listener {
         player.setVelocity(player.getVelocity().add(dir));
 
         // Optional: Add sound or particles
-        player.getWorld().playSound(player.getLocation(), "minecraft:entity.breeze.wind_burst", 1f, 1f);
+        player.getWorld().playSound(player.getLocation(), "minecraft:entity.breeze.wind_burst", 0.75f, 1f);
         player.getWorld().spawnParticle(org.bukkit.Particle.CLOUD, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
     }
 

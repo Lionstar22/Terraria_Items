@@ -29,7 +29,6 @@ public abstract class Armor {
     protected final EquipmentSlot slot;
     protected final String id;
     protected final ArrayList<String> lore;
-    private final NamespacedKey uncraftableKey;
     private final NamespacedKey customItemKey;
 
 
@@ -42,7 +41,6 @@ public abstract class Armor {
         this.model = model;
         this.slot = slot;
         this.id = id;
-        uncraftableKey = new NamespacedKey(plugin, "uncraftable");
         customItemKey=new NamespacedKey(plugin, "customItem");
         this.lore = lore;
     }
@@ -57,7 +55,6 @@ public abstract class Armor {
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, id);
         meta.setItemModel(new NamespacedKey("terraria", texture));
-        meta.getPersistentDataContainer().set(uncraftableKey, PersistentDataType.BYTE, (byte) 1);
         meta.getPersistentDataContainer().set(customItemKey, PersistentDataType.BYTE, (byte) 1);
         meta.setMaxStackSize(Integer.valueOf(1));
         armor.setItemMeta(meta);

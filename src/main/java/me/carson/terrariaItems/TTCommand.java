@@ -2,14 +2,8 @@ package me.carson.terrariaItems;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import me.carson.terrariaItems.armourFolder.armors.GoldenCrown;
-import me.carson.terrariaItems.armourFolder.armors.moltenArmor.MoltenBoots;
-import me.carson.terrariaItems.armourFolder.armors.moltenArmor.MoltenChestplate;
-import me.carson.terrariaItems.armourFolder.armors.moltenArmor.MoltenHelmet;
-import me.carson.terrariaItems.armourFolder.armors.moltenArmor.MoltenLeggings;
-import me.carson.terrariaItems.armourFolder.armors.shadowArmor.ShadowGreaves;
-import me.carson.terrariaItems.armourFolder.armors.shadowArmor.ShadowHelmet;
-import me.carson.terrariaItems.armourFolder.armors.shadowArmor.ShadowLeggings;
-import me.carson.terrariaItems.armourFolder.armors.shadowArmor.ShadowScalemail;
+import me.carson.terrariaItems.armourFolder.armors.moltenArmor.*;
+import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
 import me.carson.terrariaItems.blocksFolder.blocks.Hellforge;
 import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
 import me.carson.terrariaItems.toolFolder.tools.Cosmolight;
@@ -141,6 +135,12 @@ public class TTCommand implements CommandExecutor, TabCompleter {
                     case "vitamins"-> {
                         player.getInventory().addItem(Vitamins.getItem(plugin));
                     }
+                    case "molten_elytra"-> {
+                        player.getInventory().addItem(MoltenElytra.getItem(plugin));
+                    }
+                    case "shadow_elytra"-> {
+                        player.getInventory().addItem(ShadowElytra.getItem(plugin));
+                    }
 
                     default -> player.sendMessage("§cUnknown item: " + itemName);
                 }
@@ -160,7 +160,7 @@ public class TTCommand implements CommandExecutor, TabCompleter {
             StringUtil.copyPartialMatches(args[0], subCommands, completions);
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
             // Second argument: item names
-            List<String> items = Arrays.asList("Cosmolight","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield","golden_crown");
+            List<String> items = Arrays.asList("Cosmolight","molten_elytra","shadow_elytra","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield","golden_crown");
             StringUtil.copyPartialMatches(args[1], items, completions);
         }
 

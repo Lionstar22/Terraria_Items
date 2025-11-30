@@ -1,9 +1,6 @@
 package me.carson.terrariaItems.recipieManagers;
 
-import me.carson.terrariaItems.armourFolder.armors.moltenArmor.MoltenBoots;
-import me.carson.terrariaItems.armourFolder.armors.moltenArmor.MoltenChestplate;
-import me.carson.terrariaItems.armourFolder.armors.moltenArmor.MoltenHelmet;
-import me.carson.terrariaItems.armourFolder.armors.moltenArmor.MoltenLeggings;
+import me.carson.terrariaItems.armourFolder.armors.moltenArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
 import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
 import me.carson.terrariaItems.materialsFolder.materials.HellstoneBar;
@@ -28,10 +25,12 @@ public class ArmorRecipeManager {
         registerShadowScalemailRecipe();
         registerShadowLeggingsRecipe();
         registerShadowGreavesRecipe();
+        registerShadowElytraRecipe();
         registerMoltenHelmRecipe();
         registerMoltenChestplateRecipe();
         registerMoltenLeggingsRecipe();
         registerMoltenBootsRecipe();
+        registerMoltenElytraRecipe();
     }
 
     private void registerShadowHelmetRecipe(){
@@ -70,6 +69,16 @@ public class ArmorRecipeManager {
         Bukkit.addRecipe(recipe);
     }
 
+    private void registerShadowElytraRecipe(){
+        ItemStack elytra=ShadowElytra.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ShadowElytra");
+        ShapedRecipe recipe = new ShapedRecipe(key, elytra);
+        recipe.shape(" D ","DED"," D ");
+        recipe.setIngredient('D', DemoniteBar.getItem(plugin));
+        recipe.setIngredient('E',Material.ELYTRA);
+        Bukkit.addRecipe(recipe);
+    }
+
     private void registerMoltenHelmRecipe(){
         ItemStack helm= MoltenHelmet.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "MoltenHelmet");
@@ -102,6 +111,15 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "MoltenBoots");
         ShapelessRecipe recipe = new ShapelessRecipe(key,boots);
         recipe.addIngredient(Material.DIAMOND_BOOTS);
+        recipe.addIngredient(HellstoneBar.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerMoltenElytraRecipe(){
+        ItemStack elytra= MoltenElytra.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "MoltenElytra");
+        ShapelessRecipe recipe = new ShapelessRecipe(key,elytra);
+        recipe.addIngredient(Material.ELYTRA);
         recipe.addIngredient(HellstoneBar.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }

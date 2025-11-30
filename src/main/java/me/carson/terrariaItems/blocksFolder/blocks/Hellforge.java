@@ -34,7 +34,7 @@ import java.util.Objects;
 public class Hellforge extends CustomBlock implements Listener {
 
     public Hellforge(Plugin plugin){
-        super(plugin,"Hellforge","#FFFFFF",Material.FURNACE,"hellforge",new ArrayList<>(List.of(ChatColor.GRAY+"The Hellforge is a crafting station that functions as a regular Furnace, with the additional ability of smelting Hellstone into Hellstone Bars.")));
+        super(plugin,"Hellforge","#FFFFFF",Material.FURNACE,"hellforge",new ArrayList<>(List.of(ChatColor.GRAY+"The Hellforge is a crafting station that functions as a faster Furnace",ChatColor.GRAY+"with the additional ability of smelting Hellstone into Hellstone Bars.")));
     }
 
     @EventHandler
