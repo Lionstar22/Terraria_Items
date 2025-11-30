@@ -38,7 +38,6 @@ public class RodOfDiscord extends Tool implements Listener {
         );
 
         if (result == null || result.getHitPosition() == null) {
-            player.sendMessage("NULL");
             return;
         }
 
@@ -48,15 +47,13 @@ public class RodOfDiscord extends Tool implements Listener {
         target.setYaw(player.getLocation().getYaw());
         target.setPitch(player.getLocation().getPitch());
 
-        // Safety: don’t teleport into solid block
-        if (target.getBlock().getType().isSolid()) {
-            target.add(0, 1, 0);
-            if (player.hasCooldown(Material.BLAZE_ROD)) {
-                player.addPotionEffect(new PotionEffect(PotionEffectType.INSTANT_DAMAGE,1,0,false,false,false));
-            }
-            player.teleport(target, PlayerTeleportEvent.TeleportCause.PLUGIN);
-            player.playSound(target,"terraria:rod_of_discord_use", 1f, 1f);
+        target.add(0, 0.1, 0);
+        if (player.hasCooldown(Material.BLAZE_ROD)) {
+            player.addPotionEffect(new PotionEffect(PotionEffectType.INSTANT_DAMAGE,1,0,false,false,false));
         }
+        player.teleport(target, PlayerTeleportEvent.TeleportCause.PLUGIN);
+        player.playSound(target,"terraria:rod_of_discord_use", 1f, 1f);
+
 
 
     }
