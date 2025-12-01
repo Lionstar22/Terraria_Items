@@ -24,6 +24,7 @@ public class WeaponRecipeManager {
         registerMoltenFury();
         registerExcaliburRecipe();
         registerHallowedRepeaterRecipe();
+        registerSnowballCannonRecipe();
     }
 
     private void registerLightsBaneRecipe(){
@@ -74,6 +75,18 @@ public class WeaponRecipeManager {
         recipe.setIngredient('H', HallowedBar.getItem(plugin));
         recipe.setIngredient('T', Material.STRING);
         recipe.setIngredient('K', Material.TRIPWIRE_HOOK);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerSnowballCannonRecipe(){
+        ItemStack snowball=SnowballCannon.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "SnowballCannon");
+        ShapedRecipe recipe =new ShapedRecipe(key,snowball);
+        recipe.shape(" IB","SCI","SS ");
+        recipe.setIngredient('S',Material.SNOW_BLOCK);
+        recipe.setIngredient('C', Material.CROSSBOW);
+        recipe.setIngredient('B', Material.BLUE_ICE);
+        recipe.setIngredient('I', Material.ICE);
         Bukkit.addRecipe(recipe);
     }
 

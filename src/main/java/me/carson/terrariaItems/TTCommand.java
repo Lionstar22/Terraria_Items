@@ -7,6 +7,7 @@ import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
 import me.carson.terrariaItems.blocksFolder.blocks.Hellforge;
 import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
 import me.carson.terrariaItems.materialsFolder.materials.SoulOfMight;
+import me.carson.terrariaItems.miscFolder.BasicItems.PickaxeAxe;
 import me.carson.terrariaItems.toolFolder.tools.Cosmolight;
 import me.carson.terrariaItems.toolFolder.tools.MagicMirror;
 import me.carson.terrariaItems.toolFolder.tools.MomentumCapacitor;
@@ -161,6 +162,9 @@ public class TTCommand implements CommandExecutor, TabCompleter {
                     case "hallowed_repeater"-> {
                         player.getInventory().addItem(HallowedRepeater.getItem(plugin));
                     }
+                    case "pickaxe_axe"-> {
+                        player.getInventory().addItem(PickaxeAxe.getItem(plugin));
+                    }
 
                     default -> player.sendMessage("§cUnknown item: " + itemName);
                 }
@@ -180,7 +184,7 @@ public class TTCommand implements CommandExecutor, TabCompleter {
             StringUtil.copyPartialMatches(args[0], subCommands, completions);
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
             // Second argument: item names
-            List<String> items = Arrays.asList("Cosmolight","warrior_emblem","hallowed_repeater","excalibur","snowball_cannon","might","shackle","molten_elytra","ranger_emblem","shadow_elytra","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield","golden_crown");
+            List<String> items = Arrays.asList("Cosmolight","warrior_emblem","pickaxe_axe","hallowed_repeater","excalibur","snowball_cannon","might","shackle","molten_elytra","ranger_emblem","shadow_elytra","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield","golden_crown");
             StringUtil.copyPartialMatches(args[1], items, completions);
         }
 
