@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.recipieManagers;
 
 import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
+import me.carson.terrariaItems.materialsFolder.materials.HallowedBar;
 import me.carson.terrariaItems.materialsFolder.materials.HellstoneBar;
 import me.carson.terrariaItems.weaponsFolder.weapons.*;
 import org.bukkit.Bukkit;
@@ -21,6 +22,8 @@ public class WeaponRecipeManager {
         registerLightsBaneRecipe();
         registerVolcanoRecipe();
         registerMoltenFury();
+        registerExcaliburRecipe();
+        registerHallowedRepeaterRecipe();
     }
 
     private void registerLightsBaneRecipe(){
@@ -50,6 +53,27 @@ public class WeaponRecipeManager {
         recipe.setIngredient('W',Material.STICK);
         recipe.setIngredient('N',HellstoneBar.getItem(plugin));
         recipe.setIngredient('S',Material.STRING);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerExcaliburRecipe(){
+        ItemStack sword=Excalibur.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "Excalibur");
+        ShapedRecipe recipe =new ShapedRecipe(key,sword);
+        recipe.shape(" H "," H "," S ");
+        recipe.setIngredient('S',Material.STICK);
+        recipe.setIngredient('H', HallowedBar.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+    private void registerHallowedRepeaterRecipe(){
+        ItemStack repeater=HallowedRepeater.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "HallowedRepeater");
+        ShapedRecipe recipe =new ShapedRecipe(key,repeater);
+        recipe.shape("SHS","TKT"," S ");
+        recipe.setIngredient('S',Material.STICK);
+        recipe.setIngredient('H', HallowedBar.getItem(plugin));
+        recipe.setIngredient('T', Material.STRING);
+        recipe.setIngredient('K', Material.TRIPWIRE_HOOK);
         Bukkit.addRecipe(recipe);
     }
 

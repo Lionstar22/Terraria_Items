@@ -6,13 +6,12 @@ import me.carson.terrariaItems.armourFolder.armors.moltenArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
 import me.carson.terrariaItems.blocksFolder.blocks.Hellforge;
 import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
+import me.carson.terrariaItems.materialsFolder.materials.SoulOfMight;
 import me.carson.terrariaItems.toolFolder.tools.Cosmolight;
 import me.carson.terrariaItems.toolFolder.tools.MagicMirror;
 import me.carson.terrariaItems.toolFolder.tools.MomentumCapacitor;
 import me.carson.terrariaItems.toolFolder.tools.RodOfDiscord;
-import me.carson.terrariaItems.weaponsFolder.weapons.LightsBane;
-import me.carson.terrariaItems.weaponsFolder.weapons.MoltenFury;
-import me.carson.terrariaItems.weaponsFolder.weapons.Volcano;
+import me.carson.terrariaItems.weaponsFolder.weapons.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -141,6 +140,27 @@ public class TTCommand implements CommandExecutor, TabCompleter {
                     case "shadow_elytra"-> {
                         player.getInventory().addItem(ShadowElytra.getItem(plugin));
                     }
+                    case "ranger_emblem"-> {
+                        player.getInventory().addItem(RangerEmblem.getItem(plugin));
+                    }
+                    case "warrior_emblem"-> {
+                        player.getInventory().addItem(WarriorEmblem.getItem(plugin));
+                    }
+                    case "shackle"-> {
+                        player.getInventory().addItem(Shackle.getItem(plugin));
+                    }
+                    case "might"-> {
+                        player.getInventory().addItem(SoulOfMight.getItem(plugin));
+                    }
+                    case "excalibur"-> {
+                        player.getInventory().addItem(Excalibur.getItem(plugin));
+                    }
+                    case "snowball_cannon"-> {
+                        player.getInventory().addItem(SnowballCannon.getItem(plugin));
+                    }
+                    case "hallowed_repeater"-> {
+                        player.getInventory().addItem(HallowedRepeater.getItem(plugin));
+                    }
 
                     default -> player.sendMessage("§cUnknown item: " + itemName);
                 }
@@ -160,7 +180,7 @@ public class TTCommand implements CommandExecutor, TabCompleter {
             StringUtil.copyPartialMatches(args[0], subCommands, completions);
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
             // Second argument: item names
-            List<String> items = Arrays.asList("Cosmolight","molten_elytra","shadow_elytra","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield","golden_crown");
+            List<String> items = Arrays.asList("Cosmolight","warrior_emblem","hallowed_repeater","excalibur","snowball_cannon","might","shackle","molten_elytra","ranger_emblem","shadow_elytra","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield","golden_crown");
             StringUtil.copyPartialMatches(args[1], items, completions);
         }
 

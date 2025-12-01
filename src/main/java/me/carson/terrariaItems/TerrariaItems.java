@@ -4,6 +4,7 @@ import me.carson.terrariaItems.blocksFolder.CustomBlockManager;
 import me.carson.terrariaItems.listenersHandler.*;
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.armourFolder.ArmorManager;
+import me.carson.terrariaItems.materialsFolder.MaterialManager;
 import me.carson.terrariaItems.recipieManagers.*;
 import me.carson.terrariaItems.toolFolder.ToolManager;
 import me.carson.terrariaItems.weaponsFolder.WeaponManager;
@@ -24,6 +25,7 @@ public final class TerrariaItems extends JavaPlugin {
         aManager.startAccessoryTask(this);
 
         ToolManager tManager=new ToolManager(this);
+        MaterialManager materialManager=new MaterialManager(this);
 
         ArmorManager armorManager = new ArmorManager(this);
         armorManager.startArmorTask(this);
@@ -47,6 +49,7 @@ public final class TerrariaItems extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(aManager, this);
         getServer().getPluginManager().registerEvents(tManager, this);
+        getServer().getPluginManager().registerEvents(materialManager, this);
         getServer().getPluginManager().registerEvents(armorManager, this);
         getServer().getPluginManager().registerEvents(weaponManager, this);
         getServer().getPluginManager().registerEvents(customBlockManager, this);
@@ -59,8 +62,8 @@ public final class TerrariaItems extends JavaPlugin {
         Objects.requireNonNull(getCommand("tt")).setExecutor(ttCommand);
         Objects.requireNonNull(getCommand("tt")).setTabCompleter(ttCommand);
 
-        DatapackDownloader datapackDownloader=new DatapackDownloader(this);
-        datapackDownloader.downloadDatapack("https://github.com/CarsonWebb/Terraria_Items/releases/download/Textures/TerrariaDataPack.zip","TerrariaDataPack");
+        //DatapackDownloader datapackDownloader=new DatapackDownloader(this);
+        //datapackDownloader.downloadDatapack("https://github.com/CarsonWebb/Terraria_Items/releases/download/Textures/TerrariaDataPack.zip","TerrariaDataPack");
     }
 
     @Override

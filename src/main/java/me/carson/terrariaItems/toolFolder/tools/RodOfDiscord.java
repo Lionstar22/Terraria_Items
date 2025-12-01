@@ -49,13 +49,10 @@ public class RodOfDiscord extends Tool implements Listener {
 
         target.add(0, 0.1, 0);
         if (player.hasCooldown(Material.BLAZE_ROD)) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.INSTANT_DAMAGE,1,0,false,false,false));
+            player.damage(5);
         }
         player.teleport(target, PlayerTeleportEvent.TeleportCause.PLUGIN);
         player.playSound(target,"terraria:rod_of_discord_use", 1f, 1f);
-
-
-
     }
 
     @Override

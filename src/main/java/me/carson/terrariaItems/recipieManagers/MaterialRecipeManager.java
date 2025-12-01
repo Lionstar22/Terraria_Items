@@ -1,16 +1,10 @@
 package me.carson.terrariaItems.recipieManagers;
 
-import io.papermc.paper.registry.RegistryAccess;
 import me.carson.terrariaItems.materialsFolder.materials.*;
-import me.carson.terrariaItems.weaponsFolder.weapons.Volcano;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.event.inventory.PrepareSmithingEvent;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -30,6 +24,7 @@ public class MaterialRecipeManager implements Listener {
         registerHellstoneRecipe();
         registerRubyRecipe();
         registerHellstoneBarRecipe();
+        registerHallowedBarRecipe();
     }
 
     private void registerDemoniteBarRecipe(){
@@ -72,6 +67,16 @@ public class MaterialRecipeManager implements Listener {
                 0.35f,                               // XP
                 50                                  // Cook time (10s)
         );
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerHallowedBarRecipe(){
+        ItemStack hallow=HallowedBar.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "HallowedBar");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, hallow);
+        recipe.addIngredient(SoulOfFright.getItem(plugin));
+        recipe.addIngredient(SoulOfSight.getItem(plugin));
+        recipe.addIngredient(SoulOfMight.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 

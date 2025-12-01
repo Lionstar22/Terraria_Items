@@ -1,8 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder;
 
-import me.carson.terrariaItems.weaponsFolder.weapons.LightsBane;
-import me.carson.terrariaItems.weaponsFolder.weapons.MoltenFury;
-import me.carson.terrariaItems.weaponsFolder.weapons.Volcano;
+import me.carson.terrariaItems.weaponsFolder.weapons.*;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,9 +21,13 @@ public class WeaponManager implements Listener {
         weaponItems.add(new MoltenFury(plugin));
         weaponItems.add(new LightsBane(plugin));
         weaponItems.add(new Volcano(plugin));
+        weaponItems.add(new SnowballCannon(plugin));
+        weaponItems.add(new Excalibur(plugin));
+        weaponItems.add(new HallowedRepeater(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new Volcano(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new SnowballCannon(plugin), plugin);
     }
 
     @EventHandler

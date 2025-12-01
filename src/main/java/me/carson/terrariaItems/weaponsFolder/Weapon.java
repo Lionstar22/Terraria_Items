@@ -69,6 +69,10 @@ public abstract class Weapon {
         return id.equals(storedId);
     }
 
+    public void setModel(){
+
+    }
+
     public abstract void leftActivate(Player player);
 
     public abstract void rightActivate(Player player);

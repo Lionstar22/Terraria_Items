@@ -41,6 +41,9 @@ public class AccessoryManager implements Listener {
         accessoryItems.add(new Blindfold(plugin));
         accessoryItems.add(new FastClock(plugin));
         accessoryItems.add(new Vitamins(plugin));
+        accessoryItems.add(new WarriorEmblem(plugin));
+        accessoryItems.add(new RangerEmblem(plugin));
+        accessoryItems.add(new Shackle(plugin));
 
         //Adds listeners for special cases
         Bukkit.getPluginManager().registerEvents(this, plugin);
@@ -52,6 +55,9 @@ public class AccessoryManager implements Listener {
         Bukkit.getPluginManager().registerEvents(new Blindfold(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new FastClock(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new Vitamins(plugin),plugin);
+        Bukkit.getPluginManager().registerEvents(new WarriorEmblem(plugin),plugin);
+        Bukkit.getPluginManager().registerEvents(new RangerEmblem(plugin),plugin);
+        Bukkit.getPluginManager().registerEvents(new Shackle(plugin),plugin);
     }
 
     public void startAccessoryTask(Plugin plugin) {
