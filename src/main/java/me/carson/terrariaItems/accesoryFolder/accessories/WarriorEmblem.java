@@ -57,7 +57,6 @@ public class WarriorEmblem extends Accessory implements Listener {
             if (WarriorEmblem.this.isThisItem(itemInv)) {
                 if (WarriorEmblem.this.isActivated(itemInv)){
                     double boostedDamage = event.getDamage() * 1.2;
-                    player.sendMessage(""+boostedDamage);
                     event.setDamage(boostedDamage);
                     break;
                 }

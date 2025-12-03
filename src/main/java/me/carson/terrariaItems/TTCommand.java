@@ -2,6 +2,7 @@ package me.carson.terrariaItems;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import me.carson.terrariaItems.armourFolder.armors.GoldenCrown;
+import me.carson.terrariaItems.armourFolder.armors.hallowedArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.moltenArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
 import me.carson.terrariaItems.blocksFolder.blocks.Hellforge;
@@ -165,6 +166,15 @@ public class TTCommand implements CommandExecutor, TabCompleter {
                     case "pickaxe_axe"-> {
                         player.getInventory().addItem(PickaxeAxe.getItem(plugin));
                     }
+                    case "hallowed_armour"-> {
+                        player.getInventory().addItem(HallowedHelmet.getItem(plugin));
+                        player.getInventory().addItem(HallowedChestplate.getItem(plugin));
+                        player.getInventory().addItem(HallowedLeggings.getItem(plugin));
+                        player.getInventory().addItem(HallowedBoots.getItem(plugin));
+                    }
+                    case "hallowed_elytra"-> {
+                        player.getInventory().addItem(HallowedElytra.getItem(plugin));
+                    }
 
                     default -> player.sendMessage("§cUnknown item: " + itemName);
                 }
@@ -184,7 +194,7 @@ public class TTCommand implements CommandExecutor, TabCompleter {
             StringUtil.copyPartialMatches(args[0], subCommands, completions);
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
             // Second argument: item names
-            List<String> items = Arrays.asList("Cosmolight","warrior_emblem","pickaxe_axe","hallowed_repeater","excalibur","snowball_cannon","might","shackle","molten_elytra","ranger_emblem","shadow_elytra","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield","golden_crown");
+            List<String> items = Arrays.asList("Cosmolight","warrior_emblem","hallowed_elytra","pickaxe_axe","hallowed_armour","hallowed_repeater","excalibur","snowball_cannon","might","shackle","molten_elytra","ranger_emblem","shadow_elytra","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield","golden_crown");
             StringUtil.copyPartialMatches(args[1], items, completions);
         }
 

@@ -3,11 +3,9 @@ package me.carson.terrariaItems.armourFolder;
 import io.papermc.paper.datacomponent.DataComponentTypes;
 import io.papermc.paper.datacomponent.item.Equippable;
 import me.carson.terrariaItems.armourFolder.armors.GoldenCrown;
+import me.carson.terrariaItems.armourFolder.armors.hallowedArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.moltenArmor.*;
-import me.carson.terrariaItems.armourFolder.armors.shadowArmor.ShadowGreaves;
-import me.carson.terrariaItems.armourFolder.armors.shadowArmor.ShadowHelmet;
-import me.carson.terrariaItems.armourFolder.armors.shadowArmor.ShadowLeggings;
-import me.carson.terrariaItems.armourFolder.armors.shadowArmor.ShadowScalemail;
+import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -33,9 +31,15 @@ public class ArmorManager implements Listener {
         armorItems.add(new MoltenLeggings(plugin));
         armorItems.add(new MoltenBoots(plugin));
         armorItems.add(new MoltenElytra(plugin));
+        armorItems.add(new HallowedBoots(plugin));
+        armorItems.add(new HallowedLeggings(plugin));
+        armorItems.add(new HallowedChestplate(plugin));
+        armorItems.add(new HallowedHelmet(plugin));
+        armorItems.add(new HallowedElytra(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new MoltenHelmet(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new HallowedHelmet(plugin), plugin);
     }
     /*
     @EventHandler

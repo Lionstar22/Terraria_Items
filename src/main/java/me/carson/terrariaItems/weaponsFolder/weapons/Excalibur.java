@@ -18,7 +18,7 @@ import java.util.List;
 public class Excalibur extends Weapon {
 
     public Excalibur(Plugin plugin) {
-        super(plugin,"Excalibur","#FF96FF", Material.NETHERITE_SWORD,"excalibur","Excalibur",0, new ArrayList<>(List.of(ChatColor.GRAY+"The holy sword of legend")));
+        super(plugin,"Excalibur","#FF96FF", Material.NETHERITE_SWORD,"excalibur","Excalibur",0, new ArrayList<>(List.of(ChatColor.GRAY+"The holy sword of legend",ChatColor.GRAY+"20 Damage, +1 Range")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -35,7 +35,7 @@ public class Excalibur extends Weapon {
 
     @Override
     public void leftActivate(Player player) {
-
+        player.playSound(player.getLocation(), "terraria:lights_bane_use", 1.0F, 1.0F);
     }
 
     @Override

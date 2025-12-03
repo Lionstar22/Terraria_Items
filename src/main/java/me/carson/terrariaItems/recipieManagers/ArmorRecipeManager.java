@@ -1,8 +1,10 @@
 package me.carson.terrariaItems.recipieManagers;
 
+import me.carson.terrariaItems.armourFolder.armors.hallowedArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.moltenArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
 import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
+import me.carson.terrariaItems.materialsFolder.materials.HallowedBar;
 import me.carson.terrariaItems.materialsFolder.materials.HellstoneBar;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -31,6 +33,11 @@ public class ArmorRecipeManager {
         registerMoltenLeggingsRecipe();
         registerMoltenBootsRecipe();
         registerMoltenElytraRecipe();
+        registerHallowedHelmetRecipe();
+        registerHallowedChestplateRecipe();
+        registerHallowedLeggingsRecipe();
+        registerHallowedBootsRecipe();
+        registerHallowedElytraRecipe();
     }
 
     private void registerShadowHelmetRecipe(){
@@ -121,6 +128,52 @@ public class ArmorRecipeManager {
         ShapelessRecipe recipe = new ShapelessRecipe(key,elytra);
         recipe.addIngredient(Material.ELYTRA);
         recipe.addIngredient(HellstoneBar.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerHallowedHelmetRecipe(){
+        ItemStack item= HallowedHelmet.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "HallowedHelmet");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("HHH","H H","   ");
+        recipe.setIngredient('H', HallowedBar.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerHallowedChestplateRecipe(){
+        ItemStack item= HallowedChestplate.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "HallowedChestplate");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("H H","HHH","HHH");
+        recipe.setIngredient('H', HallowedBar.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerHallowedLeggingsRecipe(){
+        ItemStack item= HallowedLeggings.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "HallowedLeggings");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("HHH","H H","H H");
+        recipe.setIngredient('H', HallowedBar.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerHallowedBootsRecipe(){
+        ItemStack item= HallowedBoots.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "HallowedBoots");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("   ","H H","H H");
+        recipe.setIngredient('H', HallowedBar.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerHallowedElytraRecipe(){
+        ItemStack item= HallowedElytra.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "HallowedElytra");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" H ","HEH"," H ");
+        recipe.setIngredient('H', HallowedBar.getItem(plugin));
+        recipe.setIngredient('E', Material.ELYTRA);
         Bukkit.addRecipe(recipe);
     }
 }
