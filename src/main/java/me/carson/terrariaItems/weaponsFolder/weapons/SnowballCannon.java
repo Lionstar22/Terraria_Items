@@ -59,6 +59,6 @@ public class SnowballCannon extends Weapon implements Listener {
 
         World world= event.getEntity().getWorld();
         world.playSound(event.getHitEntity().getLocation(), "terraria:snowball_impact", 1.0F, 1.0F);
-        target.damage(6);
+        target.damage(8);
     }
 }

@@ -31,7 +31,7 @@ public class LightsBane extends Weapon {
         loc.add(dir.multiply(3));
         player.getWorld().spawnParticle(Particle.WITCH, loc, 3, 0, -1, 0);
         player.getWorld().spawnParticle(Particle.WITCH, loc, 3, 0, -1, 0);
-        player.playSound(player.getLocation(), "terraria:lights_bane_use", 1.0F, 1.0F);
+        player.getWorld().playSound(player.getLocation(), "terraria:lights_bane_use", 1.0F, 1.0F);
 
         RayTraceResult result = player.getWorld().rayTraceEntities(
                 loc,

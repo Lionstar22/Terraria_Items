@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.recipieManagers;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
+import me.carson.terrariaItems.materialsFolder.materials.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -30,6 +31,7 @@ public class AccessoryRecipeManager {
         registerBlindfoldRecipe();
         registerFastClockRecipe();
         registerVitaminsRecipie();
+        registerAvengerEmblemRecipie();
     }
 
     private void registerAgletRecipe(){
@@ -156,5 +158,25 @@ public class AccessoryRecipeManager {
         recipe.addIngredient(Material.MILK_BUCKET);
         recipe.addIngredient(Material.HONEY_BOTTLE);
         Bukkit.addRecipe(recipe);
+    }
+
+    private void registerAvengerEmblemRecipie(){
+        ItemStack item=AvengerEmblem.getItem(plugin);
+
+        NamespacedKey key1 = new NamespacedKey(plugin, "AvengerEmblem1");
+        ShapelessRecipe recipe1 = new ShapelessRecipe(key1, item);
+        recipe1.addIngredient(SoulOfMight.getItem(plugin));
+        recipe1.addIngredient(SoulOfSight.getItem(plugin));
+        recipe1.addIngredient(SoulOfFright.getItem(plugin));
+        recipe1.addIngredient(WarriorEmblem.getItem(plugin));
+        Bukkit.addRecipe(recipe1);
+
+        NamespacedKey key2 = new NamespacedKey(plugin, "AvengerEmblem2");
+        ShapelessRecipe recipe2 = new ShapelessRecipe(key2, item);
+        recipe2.addIngredient(SoulOfMight.getItem(plugin));
+        recipe2.addIngredient(SoulOfSight.getItem(plugin));
+        recipe2.addIngredient(SoulOfFright.getItem(plugin));
+        recipe2.addIngredient(RangerEmblem.getItem(plugin));
+        Bukkit.addRecipe(recipe2);
     }
 }

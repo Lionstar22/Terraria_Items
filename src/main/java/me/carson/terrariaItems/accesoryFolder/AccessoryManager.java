@@ -23,6 +23,7 @@ import java.util.UUID;
 
 public class AccessoryManager implements Listener {
     private final List<Accessory> accessoryItems = new ArrayList<>();
+    private final List<Accessory> effectAccessories = new ArrayList<>();
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public AccessoryManager(Plugin plugin) {
@@ -44,6 +45,14 @@ public class AccessoryManager implements Listener {
         accessoryItems.add(new WarriorEmblem(plugin));
         accessoryItems.add(new RangerEmblem(plugin));
         accessoryItems.add(new Shackle(plugin));
+        accessoryItems.add(new AvengerEmblem(plugin));
+
+        effectAccessories.add(new Aglet(plugin));
+        effectAccessories.add(new ObsidianSkull(plugin));
+        effectAccessories.add(new RedBalloon(plugin));
+        effectAccessories.add(new BandOfRegeneration(plugin));
+        effectAccessories.add(new NeptunesShell(plugin));
+        effectAccessories.add(new AncientFossil(plugin));
 
         //Adds listeners for special cases
         Bukkit.getPluginManager().registerEvents(this, plugin);
@@ -58,6 +67,7 @@ public class AccessoryManager implements Listener {
         Bukkit.getPluginManager().registerEvents(new WarriorEmblem(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new RangerEmblem(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new Shackle(plugin),plugin);
+        Bukkit.getPluginManager().registerEvents(new AvengerEmblem(plugin),plugin);
     }
 
     public void startAccessoryTask(Plugin plugin) {
@@ -65,7 +75,7 @@ public class AccessoryManager implements Listener {
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     for (ItemStack itemInv : player.getInventory().getContents()) {
                         if (itemInv != null) {
-                            for (Accessory itemTool : accessoryItems) {
+                            for (Accessory itemTool : effectAccessories) {
                                 if (itemTool.isThisItem(itemInv)&& itemTool.isActivated(itemInv)) {
                                     itemTool.activateEffect(player);
                                 }
@@ -140,8 +150,10 @@ public class AccessoryManager implements Listener {
             if (item.isThisItem(heldItem)) {
                 if(item.isActivated(heldItem)){
                     item.setActivated(heldItem,false);
+                    break;
                 }else if(checkAmountActivated(player)){
                     item.setActivated(heldItem,true);
+                    break;
                 }
             }
         }

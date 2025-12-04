@@ -11,11 +11,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class WeaponManager implements Listener {
 
     private final List<Weapon> weaponItems = new ArrayList<>();
+    private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public WeaponManager(Plugin plugin) {
         weaponItems.add(new MoltenFury(plugin));
@@ -24,10 +27,12 @@ public class WeaponManager implements Listener {
         weaponItems.add(new SnowballCannon(plugin));
         weaponItems.add(new Excalibur(plugin));
         weaponItems.add(new HallowedRepeater(plugin));
+        weaponItems.add(new BladeOfGrass(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new Volcano(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new SnowballCannon(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new BladeOfGrass(plugin), plugin);
     }
 
     @EventHandler
@@ -38,12 +43,21 @@ public class WeaponManager implements Listener {
         if (!heldItem.hasItemMeta()) return;
         Player player = event.getPlayer();
 
+        long currentTime = System.currentTimeMillis();
+        long lastTime = lastClickTime.getOrDefault(player.getUniqueId(), 0L);
+
+        if (currentTime - lastTime < 10) {
+            return;
+        }
+        lastClickTime.put(player.getUniqueId(), currentTime);
+
         for (Weapon item : weaponItems) {
             if (item.isThisItem(heldItem)) {
                 event.setCancelled(true);
                 if(!player.hasCooldown(heldItem)){
                     item.leftActivate(player);
                     player.setCooldown(heldItem, item.cooldown);
+                    break;
                 }
             }
         }
@@ -57,12 +71,21 @@ public class WeaponManager implements Listener {
         if (!heldItem.hasItemMeta()) return;
         Player player = event.getPlayer();
 
+        long currentTime = System.currentTimeMillis();
+        long lastTime = lastClickTime.getOrDefault(player.getUniqueId(), 0L);
+
+        if (currentTime - lastTime < 10) {
+            return;
+        }
+        lastClickTime.put(player.getUniqueId(), currentTime);
+
         for (Weapon item : weaponItems) {
             if (item.isThisItem(heldItem)) {
                 event.setCancelled(true);
                 if(!player.hasCooldown(heldItem)){
                     item.rightActivate(player);
                     player.setCooldown(heldItem, item.cooldown);
+                    break;
                 }
             }
         }

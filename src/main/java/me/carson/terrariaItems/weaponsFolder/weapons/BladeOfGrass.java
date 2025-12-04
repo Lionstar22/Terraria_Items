@@ -1,11 +1,14 @@
 package me.carson.terrariaItems.weaponsFolder.weapons;
 
+import me.carson.terrariaItems.accesoryFolder.accessories.WarriorEmblem;
+import me.carson.terrariaItems.projectilesFolder.projectiles.Leaf;
 import me.carson.terrariaItems.weaponsFolder.Weapon;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,25 +16,22 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.attribute.Attribute;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Volcano extends Weapon implements Listener {
+public class BladeOfGrass extends Weapon implements Listener {
 
-    public Volcano(Plugin plugin) {
-        super(plugin,"Volcano","#FFC896", Material.NETHERITE_SWORD,"volcano","Volcano",0, new ArrayList<>(List.of(ChatColor.GRAY+"It's made out of fire!")));
+    public BladeOfGrass(Plugin plugin) {
+        super(plugin,"Blade of Grass","#FFC896", Material.IRON_SWORD,"blade_of_grass","BladeOfGrass",0, new ArrayList<>(List.of(ChatColor.GRAY+"Has a chance to poison enemies")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item=new Volcano(plugin).createItem();
+        ItemStack item=new BladeOfGrass(plugin).createItem();
         ItemMeta meta= item.getItemMeta();
-        meta.addEnchant(Enchantment.FIRE_ASPECT,2,true);
-        meta.setEnchantmentGlintOverride(false);
-        meta.addAttributeModifier(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(plugin,"speed"),-3.0, AttributeModifier.Operation.ADD_NUMBER));
-        meta.addAttributeModifier(Attribute.ENTITY_INTERACTION_RANGE, new AttributeModifier(new NamespacedKey(plugin,"range"),1.0, AttributeModifier.Operation.ADD_NUMBER));
-        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),14.0, AttributeModifier.Operation.ADD_NUMBER));
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),5.0, AttributeModifier.Operation.ADD_NUMBER));
         item.setItemMeta(meta);
         return item;
     }
@@ -39,20 +39,25 @@ public class Volcano extends Weapon implements Listener {
     @Override
     public void leftActivate(Player player) {
         player.getWorld().playSound(player.getLocation(), "terraria:lights_bane_use", 1.0F, 1.0F);
+        //new Leaf(plugin).createProjectile(player);
     }
 
     @Override
     public void rightActivate(Player player) {
 
     }
+
     @EventHandler
     public void onHit(EntityDamageByEntityEvent event) {
         if (!(event.getDamager() instanceof Player player)) return;
         ItemStack item=player.getInventory().getItemInMainHand();
-        if(Volcano.this.isThisItem(item)){
-            player.getWorld().playSound(event.getEntity(), "terraria:volcano", 2.0F, 1.0F);
+        if(BladeOfGrass.this.isThisItem(item)){
+            if(event.getEntity() instanceof LivingEntity livingEntity){
+                if(Math.random()<0.25){
+                    livingEntity.addPotionEffect(new PotionEffect(PotionEffectType.POISON,140,2,false,true,true));
+                }
+            }
         }
 
     }
-
 }
