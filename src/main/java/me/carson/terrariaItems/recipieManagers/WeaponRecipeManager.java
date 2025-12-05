@@ -27,6 +27,7 @@ public class WeaponRecipeManager {
         registerSnowballCannonRecipe();
         registerBladeOfGrassRecipe();
         registerIceBladeRecipe();
+        registerBlowpipeRecipe();
     }
 
     private void registerLightsBaneRecipe(){
@@ -105,11 +106,20 @@ public class WeaponRecipeManager {
 
     private void registerIceBladeRecipe(){
         ItemStack item=IceBlade.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "BladeOfGrass");
+        NamespacedKey key = new NamespacedKey(plugin, "IceBlade");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("CCC","CIC","CCC");
         recipe.setIngredient('C',Material.ICE);
         recipe.setIngredient('I',Material.IRON_SWORD);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerBlowpipeRecipe(){
+        ItemStack item=Blowpipe.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "Blowpipe");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("S S","S S","S S");
+        recipe.setIngredient('S',Material.STICK);
         Bukkit.addRecipe(recipe);
     }
 

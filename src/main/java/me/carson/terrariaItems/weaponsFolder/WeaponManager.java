@@ -29,6 +29,7 @@ public class WeaponManager implements Listener {
         weaponItems.add(new HallowedRepeater(plugin));
         weaponItems.add(new BladeOfGrass(plugin));
         weaponItems.add(new IceBlade(plugin));
+        weaponItems.add(new Blowpipe(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new Volcano(plugin), plugin);
