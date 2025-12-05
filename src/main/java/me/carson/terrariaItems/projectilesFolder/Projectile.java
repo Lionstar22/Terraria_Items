@@ -3,6 +3,8 @@ package me.carson.terrariaItems.projectilesFolder;
 import me.carson.terrariaItems.projectilesFolder.projectiles.Leaf;
 import me.carson.terrariaItems.weaponsFolder.weapons.HallowedRepeater;
 import org.bukkit.*;
+import org.bukkit.damage.DamageSource;
+import org.bukkit.damage.DamageType;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,8 +25,9 @@ public abstract class Projectile implements Listener {
     protected final int duration;
     protected final String texture;
     protected final String id;
+    protected final DamageType damageType;
 
-    public Projectile(Plugin plugin, int damage, float speed, float spread, int duration, String texture, String id) {
+    public Projectile(Plugin plugin, int damage, float speed, float spread, int duration, String texture, String id, DamageType damageType) {
         this.plugin = plugin;
         this.speed = speed;
         this.spread = spread;
@@ -32,6 +35,7 @@ public abstract class Projectile implements Listener {
         this.texture = texture;
         this.id = id;
         this.damage=damage;
+        this.damageType = damageType;
     }
 
     public ItemStack createItem() {
@@ -87,7 +91,8 @@ public abstract class Projectile implements Listener {
             if (hit != null) {
                 // handle entity hit
                 if(hit instanceof LivingEntity target){
-                    target.damage(damage, player);
+                    DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(target).build();
+                    target.damage(damage, source);
                     hitEffect(target);
                 }
                 proj.remove();

@@ -161,9 +161,9 @@ public class AccessoryRecipeManager {
     }
 
     private void registerAvengerEmblemRecipe(){
-        ItemStack item=AvengerEmblem.getItem(plugin);
+        ItemStack avenger=AvengerEmblem.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "AvengerEmblem");
-        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        ShapelessRecipe recipe = new ShapelessRecipe(key, avenger);
         recipe.addIngredient(SoulOfMight.getItem(plugin));
         recipe.addIngredient(SoulOfSight.getItem(plugin));
         recipe.addIngredient(SoulOfFright.getItem(plugin));

@@ -109,7 +109,7 @@ public class WeaponRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "IceBlade");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("CCC","CIC","CCC");
-        recipe.setIngredient('C',Material.ICE);
+        recipe.setIngredient('C',Material.SNOW_BLOCK);
         recipe.setIngredient('I',Material.IRON_SWORD);
         Bukkit.addRecipe(recipe);
     }
