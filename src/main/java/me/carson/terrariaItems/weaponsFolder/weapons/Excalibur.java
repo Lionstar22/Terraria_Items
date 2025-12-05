@@ -35,7 +35,7 @@ public class Excalibur extends Weapon {
 
     @Override
     public void leftActivate(Player player) {
-        player.getWorld().playSound(player.getLocation(), "terraria:lights_bane_use", 1.0F, 1.0F);
+        player.getWorld().playSound(player.getLocation(), "terraria:sword_use", 1.0F, 1.0F);
     }
 
     @Override

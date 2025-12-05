@@ -5,6 +5,7 @@ import me.carson.terrariaItems.listenersHandler.*;
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.armourFolder.ArmorManager;
 import me.carson.terrariaItems.materialsFolder.MaterialManager;
+import me.carson.terrariaItems.projectilesFolder.ProjectileManager;
 import me.carson.terrariaItems.recipieManagers.*;
 import me.carson.terrariaItems.toolFolder.ToolManager;
 import me.carson.terrariaItems.weaponsFolder.WeaponManager;
@@ -26,6 +27,7 @@ public final class TerrariaItems extends JavaPlugin {
 
         ToolManager tManager=new ToolManager(this);
         MaterialManager materialManager=new MaterialManager(this);
+        ProjectileManager projectileManager=new ProjectileManager(this);
 
         ArmorManager armorManager = new ArmorManager(this);
         armorManager.startArmorTask(this);
@@ -53,6 +55,7 @@ public final class TerrariaItems extends JavaPlugin {
         getServer().getPluginManager().registerEvents(armorManager, this);
         getServer().getPluginManager().registerEvents(weaponManager, this);
         getServer().getPluginManager().registerEvents(customBlockManager, this);
+        getServer().getPluginManager().registerEvents(projectileManager, this);
         getServer().getPluginManager().registerEvents(new ResourcePackHandler(), this);
 
         TTCommand ttCommand = new TTCommand(this);

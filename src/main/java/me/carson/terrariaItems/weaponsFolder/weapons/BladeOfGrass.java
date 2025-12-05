@@ -20,9 +20,13 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class BladeOfGrass extends Weapon implements Listener {
+
+    private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public BladeOfGrass(Plugin plugin) {
         super(plugin,"Blade of Grass","#FFC896", Material.IRON_SWORD,"blade_of_grass","BladeOfGrass",0, new ArrayList<>(List.of(ChatColor.GRAY+"Has a chance to poison enemies")));
@@ -31,15 +35,24 @@ public class BladeOfGrass extends Weapon implements Listener {
     public static ItemStack getItem(Plugin plugin) {
         ItemStack item=new BladeOfGrass(plugin).createItem();
         ItemMeta meta= item.getItemMeta();
-        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),5.0, AttributeModifier.Operation.ADD_NUMBER));
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),6.0, AttributeModifier.Operation.ADD_NUMBER));
         item.setItemMeta(meta);
         return item;
     }
 
     @Override
     public void leftActivate(Player player) {
-        player.getWorld().playSound(player.getLocation(), "terraria:lights_bane_use", 1.0F, 1.0F);
-        //new Leaf(plugin).createProjectile(player);
+        player.getWorld().playSound(player.getLocation(), "terraria:sword_use", 1.0F, 1.0F);
+
+        long currentTime = System.currentTimeMillis();
+        long lastTime = lastClickTime.getOrDefault(player.getUniqueId(), 0L);
+
+        if (currentTime - lastTime < 750) {
+            return;
+        }
+        lastClickTime.put(player.getUniqueId(), currentTime);
+
+        new Leaf(plugin).createProjectile(player,new Leaf(plugin).createItem());
     }
 
     @Override

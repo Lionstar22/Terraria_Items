@@ -25,6 +25,8 @@ public class WeaponRecipeManager {
         registerExcaliburRecipe();
         registerHallowedRepeaterRecipe();
         registerSnowballCannonRecipe();
+        registerBladeOfGrassRecipe();
+        registerIceBladeRecipe();
     }
 
     private void registerLightsBaneRecipe(){
@@ -87,6 +89,27 @@ public class WeaponRecipeManager {
         recipe.setIngredient('C', Material.CROSSBOW);
         recipe.setIngredient('B', Material.BLUE_ICE);
         recipe.setIngredient('I', Material.ICE);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerBladeOfGrassRecipe(){
+        ItemStack item=BladeOfGrass.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "BladeOfGrass");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("BSB","BIB","BSB");
+        recipe.setIngredient('B',Material.BAMBOO);
+        recipe.setIngredient('S',Material.SPIDER_EYE);
+        recipe.setIngredient('I',Material.IRON_SWORD);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerIceBladeRecipe(){
+        ItemStack item=IceBlade.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "BladeOfGrass");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("CCC","CIC","CCC");
+        recipe.setIngredient('C',Material.ICE);
+        recipe.setIngredient('I',Material.IRON_SWORD);
         Bukkit.addRecipe(recipe);
     }
 

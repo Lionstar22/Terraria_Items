@@ -26,12 +26,12 @@ public class AccessoryRecipeManager {
         registerHorseshoeRecipe();
         registerCobaltShieldRecipe();
         registerCounterScarfRecipe();
-        registerNeptuneShellRecipie();
+        registerNeptuneShellRecipe();
         registerBezoarRecipe();
         registerBlindfoldRecipe();
         registerFastClockRecipe();
-        registerVitaminsRecipie();
-        registerAvengerEmblemRecipie();
+        registerVitaminsRecipe();
+        registerAvengerEmblemRecipe();
     }
 
     private void registerAgletRecipe(){
@@ -99,7 +99,7 @@ public class AccessoryRecipeManager {
         recipe.setIngredient('B', Material.ENDER_EYE);
         Bukkit.addRecipe(recipe);
     }
-    private void registerNeptuneShellRecipie(){
+    private void registerNeptuneShellRecipe(){
         ItemStack neptunesShell=NeptunesShell.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "NeptunesShell");
         ShapelessRecipe recipe = new ShapelessRecipe(key, neptunesShell);
@@ -144,7 +144,7 @@ public class AccessoryRecipeManager {
         Bukkit.addRecipe(recipe);
     }
 
-    private void registerVitaminsRecipie(){
+    private void registerVitaminsRecipe(){
         ItemStack vitamin=Vitamins.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Vitamins");
         ShapelessRecipe recipe = new ShapelessRecipe(key, vitamin);
@@ -160,23 +160,15 @@ public class AccessoryRecipeManager {
         Bukkit.addRecipe(recipe);
     }
 
-    private void registerAvengerEmblemRecipie(){
+    private void registerAvengerEmblemRecipe(){
         ItemStack item=AvengerEmblem.getItem(plugin);
-
-        NamespacedKey key1 = new NamespacedKey(plugin, "AvengerEmblem1");
-        ShapelessRecipe recipe1 = new ShapelessRecipe(key1, item);
-        recipe1.addIngredient(SoulOfMight.getItem(plugin));
-        recipe1.addIngredient(SoulOfSight.getItem(plugin));
-        recipe1.addIngredient(SoulOfFright.getItem(plugin));
-        recipe1.addIngredient(WarriorEmblem.getItem(plugin));
-        Bukkit.addRecipe(recipe1);
-
-        NamespacedKey key2 = new NamespacedKey(plugin, "AvengerEmblem2");
-        ShapelessRecipe recipe2 = new ShapelessRecipe(key2, item);
-        recipe2.addIngredient(SoulOfMight.getItem(plugin));
-        recipe2.addIngredient(SoulOfSight.getItem(plugin));
-        recipe2.addIngredient(SoulOfFright.getItem(plugin));
-        recipe2.addIngredient(RangerEmblem.getItem(plugin));
-        Bukkit.addRecipe(recipe2);
+        NamespacedKey key = new NamespacedKey(plugin, "AvengerEmblem");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(SoulOfMight.getItem(plugin));
+        recipe.addIngredient(SoulOfSight.getItem(plugin));
+        recipe.addIngredient(SoulOfFright.getItem(plugin));
+        recipe.addIngredient(WarriorEmblem.getItem(plugin));
+        recipe.addIngredient(RangerEmblem.getItem(plugin));
+        Bukkit.addRecipe(recipe);
     }
 }
