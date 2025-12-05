@@ -1,6 +1,5 @@
 package me.carson.terrariaItems.weaponsFolder.weapons;
 
-import me.carson.terrariaItems.projectilesFolder.projectiles.Leaf;
 import me.carson.terrariaItems.projectilesFolder.projectiles.Seed;
 import me.carson.terrariaItems.weaponsFolder.Weapon;
 import org.bukkit.ChatColor;
