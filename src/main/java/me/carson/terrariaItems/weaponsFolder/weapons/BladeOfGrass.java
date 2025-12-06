@@ -52,7 +52,7 @@ public class BladeOfGrass extends Weapon implements Listener {
         }
         lastClickTime.put(player.getUniqueId(), currentTime);
 
-        new Leaf(plugin).createProjectile(player,new Leaf(plugin).createItem());
+        new Leaf(plugin).createProjectile(player);
     }
 
     @Override

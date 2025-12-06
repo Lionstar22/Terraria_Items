@@ -25,6 +25,7 @@ public class MaterialRecipeManager implements Listener {
         registerRubyRecipe();
         registerHellstoneBarRecipe();
         registerHallowedBarRecipe();
+        registerMusketBallRecipe();
     }
 
     private void registerDemoniteBarRecipe(){
@@ -77,6 +78,15 @@ public class MaterialRecipeManager implements Listener {
         recipe.addIngredient(SoulOfFright.getItem(plugin));
         recipe.addIngredient(SoulOfSight.getItem(plugin));
         recipe.addIngredient(SoulOfMight.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerMusketBallRecipe(){
+        ItemStack bullet=MusketBall.getItem(plugin);
+        bullet.setAmount(9);
+        NamespacedKey key = new NamespacedKey(plugin, "MusketBall");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, bullet);
+        recipe.addIngredient(Material.IRON_NUGGET);
         Bukkit.addRecipe(recipe);
     }
 

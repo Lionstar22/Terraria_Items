@@ -38,20 +38,27 @@ public abstract class Projectile implements Listener {
         this.damageType = damageType;
     }
 
+    /*
     public ItemStack createItem() {
         ItemStack item = new ItemStack(Material.IRON_NUGGET);
         ItemMeta meta=item.getItemMeta();
         meta.setItemModel(new NamespacedKey("terraria", texture));
         item.setItemMeta(meta);
         return item;
-    }
+    }*/
 
-    public void createProjectile(Player player, ItemStack item){
+    public void createProjectile(Player player){
         Location loc = player.getEyeLocation();
         loc.add( loc.getDirection().normalize());
         Vector dir = loc.getDirection().normalize().multiply(speed);
 
         ItemDisplay proj = (ItemDisplay) player.getWorld().spawnEntity(loc,EntityType.ITEM_DISPLAY);
+
+        ItemStack item = new ItemStack(Material.IRON_NUGGET);
+        ItemMeta meta=item.getItemMeta();
+        meta.setItemModel(new NamespacedKey("terraria", texture));
+        item.setItemMeta(meta);
+
         proj.setItemStack(item);
         NamespacedKey key = new NamespacedKey(plugin, id);
         proj.getPersistentDataContainer().set(key, PersistentDataType.INTEGER,1);

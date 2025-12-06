@@ -47,7 +47,7 @@ public class IceBlade extends Weapon {
         lastClickTime.put(player.getUniqueId(), currentTime);
 
         player.getWorld().playSound(player.getLocation(), "terraria:frost_bolt", 1.0F, 1.0F);
-        new IceBolt(plugin).createProjectile(player,new IceBolt(plugin).createItem());
+        new IceBolt(plugin).createProjectile(player);
     }
 
     @Override
