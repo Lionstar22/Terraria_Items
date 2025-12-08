@@ -52,4 +52,14 @@ public class Material {
         return material;
     }
 
+    public boolean isThisItem(ItemStack item) {
+        if (item == null || !item.hasItemMeta()) return false;
+        ItemMeta meta = item.getItemMeta();
+        if (meta == null) return false;
+        NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
+        String storedId = meta.getPersistentDataContainer().get(key, PersistentDataType.STRING);
+        return id.equals(storedId);
+    }
+
+
 }

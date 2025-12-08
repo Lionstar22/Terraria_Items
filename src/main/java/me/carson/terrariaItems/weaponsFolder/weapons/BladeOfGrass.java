@@ -29,13 +29,13 @@ public class BladeOfGrass extends Weapon implements Listener {
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public BladeOfGrass(Plugin plugin) {
-        super(plugin,"Blade of Grass","#FFC896", Material.IRON_SWORD,"blade_of_grass","BladeOfGrass",0, new ArrayList<>(List.of(ChatColor.GRAY+"Has a chance to poison enemies")));
+        super(plugin,"Blade of Grass","#FFC896",6, 0,Material.IRON_SWORD,"blade_of_grass","BladeOfGrass",0, new ArrayList<>(List.of(ChatColor.GRAY+"Has a chance to poison enemies")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
         ItemStack item=new BladeOfGrass(plugin).createItem();
         ItemMeta meta= item.getItemMeta();
-        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),6.0, AttributeModifier.Operation.ADD_NUMBER));
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),5, AttributeModifier.Operation.ADD_NUMBER));
         item.setItemMeta(meta);
         return item;
     }
@@ -52,7 +52,7 @@ public class BladeOfGrass extends Weapon implements Listener {
         }
         lastClickTime.put(player.getUniqueId(), currentTime);
 
-        new Leaf(plugin).createProjectile(player);
+        new Leaf(plugin).createProjectile(player,super.damage,super.spread);
     }
 
     @Override

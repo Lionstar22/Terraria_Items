@@ -1,14 +1,14 @@
-package me.carson.terrariaItems.projectilesFolder.projectiles;
+package me.carson.terrariaItems.projectilesFolder.projectiles.ornaments;
 
 import me.carson.terrariaItems.projectilesFolder.Projectile;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.Plugin;
 
-public class IceBolt extends Projectile {
+public class StarOrnament extends Projectile {
 
-    public IceBolt(Plugin plugin) {
-        super(plugin, 0, 1f, 20, "ice_bolt", "IceBolt", DamageType.PLAYER_ATTACK);
+    public StarOrnament(Plugin plugin) {
+        super(plugin, 0, 1.5f, 75, "star_ornament", "StarOrnament", DamageType.PLAYER_ATTACK);
     }
 
     @Override

@@ -17,7 +17,7 @@ import java.util.List;
 public class MoltenFury extends Weapon {
 
     public MoltenFury(Plugin plugin) {
-        super(plugin,"Molten Fury","#FFC896", Material.BOW,"molten_fury","MoltenFury",10, new ArrayList<>(List.of(ChatColor.GRAY+"Lights wooden arrows ablaze")));
+        super(plugin,"Molten Fury","#FFC896",5, 0.5f,Material.BOW,"molten_fury","MoltenFury",10, new ArrayList<>(List.of(ChatColor.GRAY+"Lights wooden arrows ablaze")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -37,8 +37,8 @@ public class MoltenFury extends Weapon {
             Vector dir = loc.getDirection().normalize();
             loc.add(dir.multiply(1));
             World world= player.getWorld();
-            Arrow arrow=world.spawnArrow(loc,dir, 4, 0.5F);
-            arrow.setDamage(5);
+            Arrow arrow=world.spawnArrow(loc,dir, 4, super.spread);
+            arrow.setDamage(super.damage);
             arrow.setFireTicks(100);
             arrow.setShooter(player);
         }

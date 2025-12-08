@@ -14,23 +14,25 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.util.RayTraceResult;
+import org.bukkit.util.Transformation;
 import org.bukkit.util.Vector;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public abstract class Projectile implements Listener {
 
     protected final Plugin plugin;
     protected final int damage;
     protected final float speed;
-    protected final float spread;
     protected final int duration;
     protected final String texture;
     protected final String id;
     protected final DamageType damageType;
 
-    public Projectile(Plugin plugin, int damage, float speed, float spread, int duration, String texture, String id, DamageType damageType) {
+    public Projectile(Plugin plugin, int damage, float speed, int duration, String texture, String id, DamageType damageType) {
         this.plugin = plugin;
         this.speed = speed;
-        this.spread = spread;
         this.duration= duration;
         this.texture = texture;
         this.id = id;
@@ -38,19 +40,19 @@ public abstract class Projectile implements Listener {
         this.damageType = damageType;
     }
 
-    /*
-    public ItemStack createItem() {
-        ItemStack item = new ItemStack(Material.IRON_NUGGET);
-        ItemMeta meta=item.getItemMeta();
-        meta.setItemModel(new NamespacedKey("terraria", texture));
-        item.setItemMeta(meta);
-        return item;
-    }*/
-
-    public void createProjectile(Player player){
+    public void createProjectile(Player player,int weaponDamage, float spread){
         Location loc = player.getEyeLocation();
-        loc.add( loc.getDirection().normalize());
-        Vector dir = loc.getDirection().normalize().multiply(speed);
+        loc.add(loc.getDirection().normalize().multiply(0.1));
+
+        Vector dir = player.getEyeLocation().getDirection();
+        dir.add(new Vector(
+                (Math.random() - 0.5) * spread,
+                (Math.random() - 0.5) * spread,
+                (Math.random() - 0.5) * spread
+        ));
+        dir.normalize().multiply(speed);
+
+        loc.setDirection(dir);
 
         ItemDisplay proj = (ItemDisplay) player.getWorld().spawnEntity(loc,EntityType.ITEM_DISPLAY);
 
@@ -83,31 +85,32 @@ public abstract class Projectile implements Listener {
             //block handling
             Location now = proj.getLocation();
             Location next = now.clone().add(dir);
-            if (!next.getBlock().isPassable()) {
-                proj.remove();
-                task.cancel();
-                return;
-            }
+            float dist= (float) now.distance(next);
 
-            // Entity hit
-            Entity hit = proj.getNearbyEntities(0.4, 0.4, 0.4).stream()
-                    .filter(e -> e != player)
-                    .findFirst()
-                    .orElse(null);
-
-            if (hit != null) {
-                // handle entity hit
-                if(hit instanceof LivingEntity target){
-                    DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(target).build();
-                    target.damage(damage, source);
-                    hitEffect(target);
+            RayTraceResult result= player.getWorld().rayTrace(now,now.getDirection(),dist,FluidCollisionMode.NEVER,true,0.1,e -> (e.getType() != proj.getType())&&(e!=player));
+            if(result!=null){
+                if(result.getHitBlock()!=null){
+                    if(!result.getHitBlock().isPassable()){
+                        proj.remove();
+                        task.cancel();
+                        return;
+                    }
                 }
-                proj.remove();
-                task.cancel();
-                return;
+                if(result.getHitEntity()!=null){
+                    if(result.getHitEntity() instanceof LivingEntity target){;
+                        target.setNoDamageTicks(0);
+                        target.setMaximumNoDamageTicks(0);
+                        //DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(target).build();
+                        target.damage((damage+weaponDamage),player);
+                        hitEffect(target);
+                    }
+                    proj.remove();
+                    task.cancel();
+                    return;
+                }
             }
 
-            proj.teleport(proj.getLocation().add(dir));
+            proj.teleport(next);
         }, 1L, 1L);
 
     }

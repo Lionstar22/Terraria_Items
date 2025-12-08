@@ -18,7 +18,7 @@ import java.util.List;
 public class Excalibur extends Weapon {
 
     public Excalibur(Plugin plugin) {
-        super(plugin,"Excalibur","#FF96FF", Material.NETHERITE_SWORD,"excalibur","Excalibur",0, new ArrayList<>(List.of(ChatColor.GRAY+"The holy sword of legend",ChatColor.GRAY+"20 Damage, +1 Range")));
+        super(plugin,"Excalibur","#FF96FF",20,0, Material.NETHERITE_SWORD,"excalibur","Excalibur",0, new ArrayList<>(List.of(ChatColor.GRAY+"The holy sword of legend",ChatColor.GRAY+"20 Damage, +1 Range")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -28,7 +28,7 @@ public class Excalibur extends Weapon {
         meta.setEnchantmentGlintOverride(false);
         meta.addAttributeModifier(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(plugin,"speed"),-1.5, AttributeModifier.Operation.ADD_NUMBER));
         meta.addAttributeModifier(Attribute.ENTITY_INTERACTION_RANGE, new AttributeModifier(new NamespacedKey(plugin,"range"),1.0, AttributeModifier.Operation.ADD_NUMBER));
-        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),19.0, AttributeModifier.Operation.ADD_NUMBER));
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),19, AttributeModifier.Operation.ADD_NUMBER));
         item.setItemMeta(meta);
         return item;
     }

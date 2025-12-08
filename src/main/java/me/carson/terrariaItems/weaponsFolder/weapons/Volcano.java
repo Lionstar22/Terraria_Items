@@ -21,7 +21,7 @@ import java.util.List;
 public class Volcano extends Weapon implements Listener {
 
     public Volcano(Plugin plugin) {
-        super(plugin,"Volcano","#FFC896", Material.NETHERITE_SWORD,"volcano","Volcano",0, new ArrayList<>(List.of(ChatColor.GRAY+"It's made out of fire!")));
+        super(plugin,"Volcano","#FFC896",15,0, Material.NETHERITE_SWORD,"volcano","Volcano",0, new ArrayList<>(List.of(ChatColor.GRAY+"It's made out of fire!")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -31,7 +31,7 @@ public class Volcano extends Weapon implements Listener {
         meta.setEnchantmentGlintOverride(false);
         meta.addAttributeModifier(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(plugin,"speed"),-3.0, AttributeModifier.Operation.ADD_NUMBER));
         meta.addAttributeModifier(Attribute.ENTITY_INTERACTION_RANGE, new AttributeModifier(new NamespacedKey(plugin,"range"),1.0, AttributeModifier.Operation.ADD_NUMBER));
-        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),14.0, AttributeModifier.Operation.ADD_NUMBER));
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),14, AttributeModifier.Operation.ADD_NUMBER));
         item.setItemMeta(meta);
         return item;
     }

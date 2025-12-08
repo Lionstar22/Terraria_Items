@@ -21,7 +21,7 @@ import java.util.List;
 public class SnowballCannon extends Weapon implements Listener {
 
     public SnowballCannon(Plugin plugin) {
-        super(plugin,"Snowball Cannon","#9696FF", Material.BOW,"snowball_cannon","SnowballCannon",10, new ArrayList<>(List.of(ChatColor.GRAY+"Launches Snowballs")));
+        super(plugin,"Snowball Cannon","#9696FF", 8,0,Material.BOW,"snowball_cannon","SnowballCannon",10, new ArrayList<>(List.of(ChatColor.GRAY+"Launches Snowballs")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -59,6 +59,6 @@ public class SnowballCannon extends Weapon implements Listener {
 
         World world= event.getEntity().getWorld();
         world.playSound(event.getHitEntity().getLocation(), "terraria:snowball_impact", 1.0F, 1.0F);
-        target.damage(8);
+        target.damage(super.damage);
     }
 }

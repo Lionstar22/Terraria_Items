@@ -28,6 +28,7 @@ public class WeaponRecipeManager {
         registerBladeOfGrassRecipe();
         registerIceBladeRecipe();
         registerBlowpipeRecipe();
+        registerMinisharkRecipe();
     }
 
     private void registerLightsBaneRecipe(){
@@ -120,6 +121,17 @@ public class WeaponRecipeManager {
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("S S","S S","S S");
         recipe.setIngredient('S',Material.STICK);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerMinisharkRecipe(){
+        ItemStack item=Minishark.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "Minishark");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("   ","FBI","   ");
+        recipe.setIngredient('F',Material.COD);
+        recipe.setIngredient('B',Material.IRON_BLOCK);
+        recipe.setIngredient('I',Material.IRON_INGOT);
         Bukkit.addRecipe(recipe);
     }
 

@@ -31,6 +31,10 @@ public class WeaponManager implements Listener {
         weaponItems.add(new IceBlade(plugin));
         weaponItems.add(new Blowpipe(plugin));
         weaponItems.add(new Minishark(plugin));
+        weaponItems.add(new Handgun(plugin));
+        weaponItems.add(new Shotgun(plugin));
+        weaponItems.add(new Needler(plugin));
+        weaponItems.add(new ChristmasTreeSword(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new Volcano(plugin), plugin);
