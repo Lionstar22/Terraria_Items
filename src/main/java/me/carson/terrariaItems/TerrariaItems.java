@@ -9,7 +9,7 @@ import me.carson.terrariaItems.projectilesFolder.ProjectileManager;
 import me.carson.terrariaItems.recipieManagers.*;
 import me.carson.terrariaItems.toolFolder.ToolManager;
 import me.carson.terrariaItems.weaponsFolder.WeaponManager;
-import me.carson.terrariaItems.weaponsFolder.weapons.Stormbow;
+import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.Stormbow;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;

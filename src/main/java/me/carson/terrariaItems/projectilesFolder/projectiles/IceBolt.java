@@ -8,7 +8,7 @@ import org.bukkit.plugin.Plugin;
 public class IceBolt extends Projectile {
 
     public IceBolt(Plugin plugin) {
-        super(plugin, 0, 1f, 20, "ice_bolt", "IceBolt", DamageType.PLAYER_ATTACK);
+        super(plugin, 0,  "ice_bolt", "IceBolt", DamageType.PLAYER_ATTACK);
     }
 
     @Override

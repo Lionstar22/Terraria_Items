@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.weaponsFolder.weapons;
+package me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;

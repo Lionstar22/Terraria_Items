@@ -11,7 +11,7 @@ import org.bukkit.potion.PotionEffectType;
 public class Leaf extends Projectile {
 
     public Leaf(Plugin plugin) {
-        super(plugin, 0, 1f, 15, "leaf_blade_projectile", "Leaf", DamageType.PLAYER_ATTACK);
+        super(plugin, 0,  "leaf_blade_projectile", "Leaf", DamageType.PLAYER_ATTACK);
     }
 
     @Override

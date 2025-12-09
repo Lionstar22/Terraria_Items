@@ -1,6 +1,7 @@
-package me.carson.terrariaItems.weaponsFolder.weapons;
+package me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords;
 
 import me.carson.terrariaItems.weaponsFolder.Weapon;
+import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.Sword;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -15,9 +16,9 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LightsBane extends Weapon {
+public class LightsBane extends Sword {
     public LightsBane(Plugin plugin) {
-        super(plugin,"Lights Bane","#9696FF",7,0,Material.IRON_SWORD,"lights_bane","LightsBane",10, new ArrayList<>(List.of(ChatColor.GRAY+"Creates a dark slash near the tip of the sword")));
+        super(plugin,"Lights Bane","#9696FF",Material.IRON_SWORD,"lights_bane","LightsBane",10,0,0,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Creates a dark slash near the tip of the sword")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

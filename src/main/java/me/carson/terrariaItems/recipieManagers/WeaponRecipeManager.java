@@ -3,7 +3,12 @@ package me.carson.terrariaItems.recipieManagers;
 import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
 import me.carson.terrariaItems.materialsFolder.materials.HallowedBar;
 import me.carson.terrariaItems.materialsFolder.materials.HellstoneBar;
-import me.carson.terrariaItems.weaponsFolder.weapons.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.HallowedRepeater;
+import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.MoltenFury;
+import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Blowpipe;
+import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Minishark;
+import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.SnowballCannon;
+import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -32,7 +37,7 @@ public class WeaponRecipeManager {
     }
 
     private void registerLightsBaneRecipe(){
-        ItemStack bane=LightsBane.getItem(plugin);
+        ItemStack bane= LightsBane.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "LightsBane");
         ShapedRecipe recipe = new ShapedRecipe(key, bane);
         recipe.shape(" D "," D "," S ");
@@ -42,7 +47,7 @@ public class WeaponRecipeManager {
     }
 
     private void registerVolcanoRecipe(){
-        ItemStack volcano =Volcano.getItem(plugin);
+        ItemStack volcano = Volcano.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Volcano");
         ShapelessRecipe recipe = new ShapelessRecipe(key, volcano);
         recipe.addIngredient(Material.DIAMOND_SWORD);
@@ -51,7 +56,7 @@ public class WeaponRecipeManager {
     }
 
     private void registerMoltenFury(){
-        ItemStack fury=MoltenFury.getItem(plugin);
+        ItemStack fury= MoltenFury.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "MoltenFury");
         ShapedRecipe recipe =new ShapedRecipe(key,fury);
         recipe.shape(" WS","WNS"," WS");
@@ -62,7 +67,7 @@ public class WeaponRecipeManager {
     }
 
     private void registerExcaliburRecipe(){
-        ItemStack sword=Excalibur.getItem(plugin);
+        ItemStack sword= Excalibur.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Excalibur");
         ShapedRecipe recipe =new ShapedRecipe(key,sword);
         recipe.shape(" H "," H "," S ");
@@ -71,7 +76,7 @@ public class WeaponRecipeManager {
         Bukkit.addRecipe(recipe);
     }
     private void registerHallowedRepeaterRecipe(){
-        ItemStack repeater=HallowedRepeater.getItem(plugin);
+        ItemStack repeater= HallowedRepeater.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "HallowedRepeater");
         ShapedRecipe recipe =new ShapedRecipe(key,repeater);
         recipe.shape("SHS","TKT"," S ");
@@ -83,7 +88,7 @@ public class WeaponRecipeManager {
     }
 
     private void registerSnowballCannonRecipe(){
-        ItemStack snowball=SnowballCannon.getItem(plugin);
+        ItemStack snowball= SnowballCannon.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "SnowballCannon");
         ShapedRecipe recipe =new ShapedRecipe(key,snowball);
         recipe.shape(" IB","SCI","SS ");
@@ -95,7 +100,7 @@ public class WeaponRecipeManager {
     }
 
     private void registerBladeOfGrassRecipe(){
-        ItemStack item=BladeOfGrass.getItem(plugin);
+        ItemStack item= BladeOfGrass.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "BladeOfGrass");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("BSB","BIB","BSB");
@@ -106,7 +111,7 @@ public class WeaponRecipeManager {
     }
 
     private void registerIceBladeRecipe(){
-        ItemStack item=IceBlade.getItem(plugin);
+        ItemStack item= IceBlade.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "IceBlade");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("CCC","CIC","CCC");
@@ -116,7 +121,7 @@ public class WeaponRecipeManager {
     }
 
     private void registerBlowpipeRecipe(){
-        ItemStack item=Blowpipe.getItem(plugin);
+        ItemStack item= Blowpipe.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Blowpipe");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("S S","S S","S S");
@@ -125,7 +130,7 @@ public class WeaponRecipeManager {
     }
 
     private void registerMinisharkRecipe(){
-        ItemStack item=Minishark.getItem(plugin);
+        ItemStack item= Minishark.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Minishark");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("   ","FBI","   ");

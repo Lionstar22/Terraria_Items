@@ -21,6 +21,7 @@ public class ToolManager implements Listener {
         toolItems.add(new RodOfDiscord(plugin));
         toolItems.add((new MagicMirror(plugin)));
         toolItems.add((new LifeCrystal(plugin)));
+        toolItems.add((new TorrentialTear(plugin)));
     }
 
     @EventHandler

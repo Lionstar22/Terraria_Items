@@ -1,8 +1,8 @@
-package me.carson.terrariaItems.weaponsFolder.weapons;
+package me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords;
 
-import me.carson.terrariaItems.accesoryFolder.accessories.WarriorEmblem;
 import me.carson.terrariaItems.projectilesFolder.projectiles.Leaf;
 import me.carson.terrariaItems.weaponsFolder.Weapon;
+import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.Sword;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -24,12 +24,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-public class BladeOfGrass extends Weapon implements Listener {
+public class BladeOfGrass extends Sword implements Listener {
 
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public BladeOfGrass(Plugin plugin) {
-        super(plugin,"Blade of Grass","#FFC896",6, 0,Material.IRON_SWORD,"blade_of_grass","BladeOfGrass",0, new ArrayList<>(List.of(ChatColor.GRAY+"Has a chance to poison enemies")));
+        super(plugin,"Blade of Grass","#FFC896",Material.IRON_SWORD,"blade_of_grass","BladeOfGrass",0,1,6,0,15, new ArrayList<>(List.of(ChatColor.GRAY+"Has a chance to poison enemies")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -52,7 +52,7 @@ public class BladeOfGrass extends Weapon implements Listener {
         }
         lastClickTime.put(player.getUniqueId(), currentTime);
 
-        new Leaf(plugin).createProjectile(player,super.damage,super.spread);
+        new Leaf(plugin).createProjectile(player,speed,damage,spread,duration);
     }
 
     @Override

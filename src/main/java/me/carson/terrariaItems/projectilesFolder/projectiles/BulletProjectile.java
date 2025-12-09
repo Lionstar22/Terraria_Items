@@ -8,7 +8,7 @@ import org.bukkit.plugin.Plugin;
 public class BulletProjectile extends Projectile {
 
     public BulletProjectile(Plugin plugin) {
-        super(plugin, 2, 3f, 100, "bullet_projectile", "BulletProjectile", DamageType.ARROW);
+        super(plugin, 2, "bullet_projectile", "BulletProjectile", DamageType.ARROW);
     }
 
     @Override

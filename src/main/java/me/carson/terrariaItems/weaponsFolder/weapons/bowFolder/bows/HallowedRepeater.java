@@ -1,7 +1,8 @@
-package me.carson.terrariaItems.weaponsFolder.weapons;
+package me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows;
 
 
 import me.carson.terrariaItems.weaponsFolder.Weapon;
+import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.Bow;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -15,10 +16,10 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HallowedRepeater extends Weapon {
+public class HallowedRepeater extends Bow {
 
     public HallowedRepeater(Plugin plugin) {
-        super(plugin,"Hallowed Repeater","#FF9696",8, 0.2f,Material.CROSSBOW,"hallowed_repeater","HallowedRepeater",7, new ArrayList<>(List.of(ChatColor.GRAY+"Holy crossbow whose arrows illuminate thine target",ChatColor.GRAY+"Converts normal arrows to Spectral Arrows")));
+        super(plugin,"Hallowed Repeater","#FF9696",Material.CROSSBOW,"hallowed_repeater","HallowedRepeater",7,5,15,0, new ArrayList<>(List.of(ChatColor.GRAY+"Holy crossbow whose arrows illuminate thine target",ChatColor.GRAY+"Converts normal arrows to Spectral Arrows")));
     }
 
     @Override
@@ -43,8 +44,8 @@ public class HallowedRepeater extends Weapon {
         loc.add(dir.multiply(1));
         World world= player.getWorld();
         world.playSound(loc, "terraria:repeater_use", 1.0F, 1.0F);
-        SpectralArrow spectralArrow= world.spawnArrow(loc,dir, 5, super.spread, SpectralArrow.class);
-        spectralArrow.setDamage(super.damage);
+        SpectralArrow spectralArrow= world.spawnArrow(loc,dir, speed, spread, SpectralArrow.class);
+        spectralArrow.setDamage(damage);
         spectralArrow.setShooter(player);
     }
 

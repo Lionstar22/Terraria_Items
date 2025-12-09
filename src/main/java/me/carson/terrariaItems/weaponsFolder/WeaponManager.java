@@ -1,6 +1,9 @@
 package me.carson.terrariaItems.weaponsFolder;
 
-import me.carson.terrariaItems.weaponsFolder.weapons.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.HallowedRepeater;
+import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.MoltenFury;
+import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords.*;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -35,11 +38,15 @@ public class WeaponManager implements Listener {
         weaponItems.add(new Shotgun(plugin));
         weaponItems.add(new Needler(plugin));
         weaponItems.add(new ChristmasTreeSword(plugin));
+        weaponItems.add(new Megashark(plugin));
+        weaponItems.add(new PhoenixBlaster(plugin));
+        weaponItems.add(new SniperRifle(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new Volcano(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new SnowballCannon(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new BladeOfGrass(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new SniperRifle(plugin), plugin);
     }
 
     @EventHandler

@@ -1,8 +1,8 @@
-package me.carson.terrariaItems.weaponsFolder.weapons;
+package me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords;
 
-import me.carson.terrariaItems.projectilesFolder.projectiles.IceBolt;
-import me.carson.terrariaItems.projectilesFolder.projectiles.Leaf;
+import me.carson.terrariaItems.projectilesFolder.projectiles.ornaments.*;
 import me.carson.terrariaItems.weaponsFolder.Weapon;
+import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.Sword;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -18,18 +18,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-public class IceBlade extends Weapon {
+public class ChristmasTreeSword extends Sword {
 
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
-    public IceBlade(Plugin plugin) {
-        super(plugin,"Ice Blade","#9696FF",7,0, Material.IRON_SWORD,"ice_blade","IceBlade",0, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots an icy bolt")));
+    public ChristmasTreeSword(Plugin plugin) {
+        super(plugin,"Christmas Tree Sword","#FFFF0A", Material.DIAMOND_SWORD,"christmas_tree_sword","ChristnasTreeSword",0,1.5f,10,0,75, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots Christmas ornaments")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item=new IceBlade(plugin).createItem();
+        ItemStack item=new ChristmasTreeSword(plugin).createItem();
         ItemMeta meta= item.getItemMeta();
-        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),6, AttributeModifier.Operation.ADD_NUMBER));
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),9, AttributeModifier.Operation.ADD_NUMBER));
         item.setItemMeta(meta);
         return item;
     }
@@ -46,8 +46,11 @@ public class IceBlade extends Weapon {
         }
         lastClickTime.put(player.getUniqueId(), currentTime);
 
-        player.getWorld().playSound(player.getLocation(), "terraria:frost_bolt", 1.0F, 1.0F);
-        new IceBolt(plugin).createProjectile(player,super.damage,super.spread);
+        new StarOrnament(plugin).createProjectile(player,speed,damage,spread,duration);
+        new RedOrnament(plugin).createProjectile(player,0.75f,damage,0.1f,duration);
+        new BlueOrnament(plugin).createProjectile(player,0.75f,damage,0.1f,duration);
+        new GreenOrnament(plugin).createProjectile(player,0.75f,damage,0.1f,duration);
+        new YellowOrnament(plugin).createProjectile(player,0.75f,damage,0.1f,duration);
     }
 
     @Override

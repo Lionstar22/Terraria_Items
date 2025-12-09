@@ -1,46 +1,33 @@
 package me.carson.terrariaItems.projectilesFolder;
 
-import me.carson.terrariaItems.projectilesFolder.projectiles.Leaf;
-import me.carson.terrariaItems.weaponsFolder.weapons.HallowedRepeater;
 import org.bukkit.*;
-import org.bukkit.damage.DamageSource;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.*;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.util.RayTraceResult;
-import org.bukkit.util.Transformation;
 import org.bukkit.util.Vector;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
 public abstract class Projectile implements Listener {
 
     protected final Plugin plugin;
     protected final int damage;
-    protected final float speed;
-    protected final int duration;
     protected final String texture;
     protected final String id;
     protected final DamageType damageType;
 
-    public Projectile(Plugin plugin, int damage, float speed, int duration, String texture, String id, DamageType damageType) {
+    public Projectile(Plugin plugin, int damage, String texture, String id, DamageType damageType) {
         this.plugin = plugin;
-        this.speed = speed;
-        this.duration= duration;
         this.texture = texture;
         this.id = id;
         this.damage=damage;
         this.damageType = damageType;
     }
 
-    public void createProjectile(Player player,int weaponDamage, float spread){
+    public void createProjectile(Player player,float speed,float weaponDamage, float spread,float duration){
         Location loc = player.getEyeLocation();
         loc.add(loc.getDirection().normalize().multiply(0.1));
 

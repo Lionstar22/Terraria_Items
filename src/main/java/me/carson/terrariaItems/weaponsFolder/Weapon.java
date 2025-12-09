@@ -19,8 +19,6 @@ public abstract class Weapon {
     protected final Plugin plugin;
     protected final String name;
     protected final String rarity;
-    protected final int damage;
-    protected final float spread;
     protected final Material baseMaterial;
     protected final String texture;
     protected final String id;
@@ -30,12 +28,10 @@ public abstract class Weapon {
     private final NamespacedKey customItemKey;
 
 
-    public Weapon(Plugin plugin, String name, String rarity, int damage, float spread, Material baseMaterial, String texture, String id, int cooldown, ArrayList<String> lore) {
+    public Weapon(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, int cooldown, ArrayList<String> lore) {
         this.plugin = plugin;
         this.name = name;
         this.rarity = rarity;
-        this.damage = damage;
-        this.spread = spread;
         this.baseMaterial = baseMaterial;
         this.texture = texture;
         this.id = id;

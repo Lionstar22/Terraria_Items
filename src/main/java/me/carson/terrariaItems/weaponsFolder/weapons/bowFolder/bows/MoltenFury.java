@@ -1,6 +1,7 @@
-package me.carson.terrariaItems.weaponsFolder.weapons;
+package me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows;
 
 import me.carson.terrariaItems.weaponsFolder.Weapon;
+import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.Bow;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -14,10 +15,10 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoltenFury extends Weapon {
+public class MoltenFury extends Bow {
 
     public MoltenFury(Plugin plugin) {
-        super(plugin,"Molten Fury","#FFC896",5, 0.5f,Material.BOW,"molten_fury","MoltenFury",10, new ArrayList<>(List.of(ChatColor.GRAY+"Lights wooden arrows ablaze")));
+        super(plugin,"Molten Fury","#FFC896",Material.BOW,"molten_fury","MoltenFury",10,4,8,0.5f, new ArrayList<>(List.of(ChatColor.GRAY+"Lights wooden arrows ablaze")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -37,8 +38,8 @@ public class MoltenFury extends Weapon {
             Vector dir = loc.getDirection().normalize();
             loc.add(dir.multiply(1));
             World world= player.getWorld();
-            Arrow arrow=world.spawnArrow(loc,dir, 4, super.spread);
-            arrow.setDamage(super.damage);
+            Arrow arrow=world.spawnArrow(loc,dir, speed, spread);
+            arrow.setDamage(damage);
             arrow.setFireTicks(100);
             arrow.setShooter(player);
         }

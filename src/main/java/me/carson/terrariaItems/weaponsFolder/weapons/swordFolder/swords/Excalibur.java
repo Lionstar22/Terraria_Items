@@ -1,6 +1,7 @@
-package me.carson.terrariaItems.weaponsFolder.weapons;
+package me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords;
 
 import me.carson.terrariaItems.weaponsFolder.Weapon;
+import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.Sword;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -15,10 +16,10 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Excalibur extends Weapon {
+public class Excalibur extends Sword {
 
     public Excalibur(Plugin plugin) {
-        super(plugin,"Excalibur","#FF96FF",20,0, Material.NETHERITE_SWORD,"excalibur","Excalibur",0, new ArrayList<>(List.of(ChatColor.GRAY+"The holy sword of legend",ChatColor.GRAY+"20 Damage, +1 Range")));
+        super(plugin,"Excalibur","#FF96FF", Material.NETHERITE_SWORD,"excalibur","Excalibur",0,0,0,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"The holy sword of legend",ChatColor.GRAY+"20 Damage, +1 Range")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -42,4 +43,5 @@ public class Excalibur extends Weapon {
     public void rightActivate(Player player) {
 
     }
+
 }
