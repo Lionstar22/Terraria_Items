@@ -8,7 +8,7 @@ import org.bukkit.plugin.Plugin;
 public class YellowOrnament extends Projectile {
 
     public YellowOrnament(Plugin plugin) {
-        super(plugin, 0,  "yellow_ornament", "YellowOrnament", DamageType.PLAYER_ATTACK);
+        super(plugin, 0,  "yellow_ornament", "YellowOrnament",0, DamageType.PLAYER_ATTACK);
     }
 
     @Override

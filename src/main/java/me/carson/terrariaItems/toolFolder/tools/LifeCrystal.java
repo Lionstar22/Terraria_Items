@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
@@ -33,6 +34,10 @@ public class LifeCrystal extends Tool {
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        return new LifeCrystal(plugin).createItem();
+        ItemStack item =new LifeCrystal(plugin).createItem();
+        ItemMeta meta= item.getItemMeta();
+        meta.setMaxStackSize(64);
+        item.setItemMeta(meta);
+        return item;
     }
 }

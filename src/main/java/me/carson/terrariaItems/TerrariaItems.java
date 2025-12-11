@@ -10,6 +10,9 @@ import me.carson.terrariaItems.recipieManagers.*;
 import me.carson.terrariaItems.toolFolder.ToolManager;
 import me.carson.terrariaItems.weaponsFolder.WeaponManager;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.Stormbow;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
@@ -17,6 +20,8 @@ import java.util.Objects;
 public final class TerrariaItems extends JavaPlugin {
 
     Stormbow stormbow;
+    private ManaManager manaManager;
+
 
     @Override
     public void onEnable() {
@@ -67,12 +72,28 @@ public final class TerrariaItems extends JavaPlugin {
         Objects.requireNonNull(getCommand("tt")).setExecutor(ttCommand);
         Objects.requireNonNull(getCommand("tt")).setTabCompleter(ttCommand);
 
-        //DatapackDownloader datapackDownloader=new DatapackDownloader(this);
-        //datapackDownloader.downloadDatapack("https://github.com/CarsonWebb/Terraria_Items/releases/download/Textures/TerrariaDataPack.zip","TerrariaDataPack");
+        //Mana stuff
+        manaManager = new ManaManager(this);
+
+        // Save mana on shutdown
+        getServer().getPluginManager().registerEvents(new Listener() {
+            @EventHandler
+            public void onQuit(PlayerQuitEvent event) {
+                manaManager.save();
+            }
+        }, this);
+
+        ManaManager.initialize(this);
+
+        manaManager.startManaRegen(this);
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        manaManager.getInstance().save();
+    }
+
+    public ManaManager getManaManager() {
+        return manaManager;
     }
 }

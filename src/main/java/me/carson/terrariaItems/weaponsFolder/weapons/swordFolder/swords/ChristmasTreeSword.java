@@ -47,10 +47,10 @@ public class ChristmasTreeSword extends Sword {
         lastClickTime.put(player.getUniqueId(), currentTime);
 
         new StarOrnament(plugin).createProjectile(player,speed,damage,spread,duration);
-        new RedOrnament(plugin).createProjectile(player,0.75f,damage,0.1f,duration);
-        new BlueOrnament(plugin).createProjectile(player,0.75f,damage,0.1f,duration);
-        new GreenOrnament(plugin).createProjectile(player,0.75f,damage,0.1f,duration);
-        new YellowOrnament(plugin).createProjectile(player,0.75f,damage,0.1f,duration);
+        new RedOrnament(plugin).createProjectile(player,0.75f,damage,0.2f,duration);
+        new BlueOrnament(plugin).createProjectile(player,0.75f,damage,0.2f,duration);
+        new GreenOrnament(plugin).createProjectile(player,0.75f,damage,0.2f,duration);
+        new YellowOrnament(plugin).createProjectile(player,0.75f,damage,0.2f,duration);
     }
 
     @Override

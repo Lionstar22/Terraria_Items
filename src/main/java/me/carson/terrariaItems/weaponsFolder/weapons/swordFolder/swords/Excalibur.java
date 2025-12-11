@@ -26,6 +26,7 @@ public class Excalibur extends Sword {
         ItemStack item=new Excalibur(plugin).createItem();
         ItemMeta meta= item.getItemMeta();
         meta.addEnchant(Enchantment.KNOCKBACK,1,true);
+        meta.addEnchant(Enchantment.SWEEPING_EDGE,2,true);
         meta.setEnchantmentGlintOverride(false);
         meta.addAttributeModifier(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(plugin,"speed"),-1.5, AttributeModifier.Operation.ADD_NUMBER));
         meta.addAttributeModifier(Attribute.ENTITY_INTERACTION_RANGE, new AttributeModifier(new NamespacedKey(plugin,"range"),1.0, AttributeModifier.Operation.ADD_NUMBER));

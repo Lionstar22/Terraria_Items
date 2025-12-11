@@ -5,14 +5,15 @@ import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.Plugin;
 
-public class BulletProjectile extends Projectile {
+public class Meteor extends Projectile {
 
-    public BulletProjectile(Plugin plugin) {
-        super(plugin, 2, "bullet_projectile", "BulletProjectile",0, DamageType.ARROW);
+    public Meteor(Plugin plugin) {
+        super(plugin, 0,  "meteor", "Meteor",0, DamageType.PLAYER_ATTACK);
     }
 
     @Override
     public void hitEffect(LivingEntity entity) {
 
     }
+
 }
