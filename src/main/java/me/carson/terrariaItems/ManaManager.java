@@ -1,8 +1,11 @@
 package me.carson.terrariaItems;
 
+import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
+import me.carson.terrariaItems.projectilesFolder.projectiles.FallingStar;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -94,14 +97,31 @@ public class ManaManager {
         Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 UUID id = player.getUniqueId();
-                if(instance.getManaDelay(id)<0){
+                if(instance.getManaDelay(id)<=0&&(instance.getMaxMana(id)>instance.getMana(id))){
                     instance.addMana(id,instance.getManaRegenRate(player,instance));
                     instance.updateManaBar(player);
                 }else{
                     instance.reduceManaDelay(player,1.0);
                 }
             }
-        }, 0L, 5L); // Runs every quarter second
+        }, 0L, 1L); // Runs every tick second
+    }
+
+    public boolean isNight(World world) {
+        long t = world.getTime();
+        return t >= 12000 && t < 24000;
+    }
+
+    public void startFallingStartTask(Plugin plugin){
+        Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+            if(isNight(plugin.getServer().getRespawnWorld())) {
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    if (Math.random() < 0.5) {
+                        new FallingStar(plugin).starFall(player);
+                    }
+                }
+            }
+        }, 0L, 1200);
     }
 
     public static void initialize(JavaPlugin plugin) {
@@ -127,13 +147,13 @@ public class ManaManager {
 
     public double getManaRegenRate(Player player,ManaManager instance){
         UUID id = player.getUniqueId();
-        return (((instance.getMaxMana(id) /3)+1)*1.15*instance.getRegenFactor(player,instance))/4;
+        return (((instance.getMaxMana(id) /3)+1)*1.15*instance.getRegenFactor(player,instance))/20;
     }
 
     public void startManaRegenDelay(Player player, ManaManager instance){
         UUID id = player.getUniqueId();
         double x =1-( instance.getMana(id) / instance.getMaxMana(id));
-        double delay= (0.7*(x*240+45))/10;
+        double delay= (0.7*(x*240+45))/2;
         manaDelay.put(id,delay);
     }
 

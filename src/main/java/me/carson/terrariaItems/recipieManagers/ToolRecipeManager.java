@@ -1,5 +1,7 @@
 package me.carson.terrariaItems.recipieManagers;
 
+import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
+import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.Ruby;
 import me.carson.terrariaItems.toolFolder.tools.*;
 import org.bukkit.Bukkit;
@@ -23,6 +25,7 @@ public class ToolRecipeManager {
         registerCapacitorRecipe();
         registerRodRecipe();
         registerLifeCrystalRecipe();
+        registerManaCrystalRecipe();
     }
 
     private void registerMirrorRecipe(){
@@ -75,6 +78,15 @@ public class ToolRecipeManager {
         recipe.shape("DCD","DDD"," D ");
         recipe.setIngredient('D', Ruby.getItem(plugin));
         recipe.setIngredient('C', Material.COBBLESTONE);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerManaCrystalRecipe(){
+        ItemStack crystal= ManaCrystal.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ManaCrystal");
+        ShapedRecipe recipe = new ShapedRecipe(key, crystal);
+        recipe.shape(" S ","SSS"," S ");
+        recipe.setIngredient('S', FallenStar.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 }

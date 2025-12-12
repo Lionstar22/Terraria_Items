@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.projectilesFolder;
 
 import org.bukkit.*;
+import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.*;
 import org.bukkit.event.Listener;
@@ -84,6 +85,7 @@ public abstract class Projectile implements Listener {
             if(result!=null){
                 if(result.getHitBlock()!=null){
                     if(!result.getHitBlock().isPassable()){
+                        hitBlockEffect(result.getHitBlock());
                         proj.remove();
                         task.cancel();
                         return;
@@ -95,7 +97,7 @@ public abstract class Projectile implements Listener {
                         target.setMaximumNoDamageTicks(0);
                         //DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(target).build();
                         target.damage((damage+weaponDamage),player);
-                        hitEffect(target);
+                        hitEntityEffect(target);
                     }
                     if(enemiesHit[0] >=peirce) {
                         proj.remove();
@@ -112,12 +114,14 @@ public abstract class Projectile implements Listener {
 
     }
 
-    public void createFallingProjectile(Player player,float speed,float weaponDamage, float spread,float duration,Location location){
-        double valueX = ThreadLocalRandom.current().nextDouble(-spread, spread);
-        double valueZ = ThreadLocalRandom.current().nextDouble(-spread, spread);
-        Location loc = location.add(valueX,20,valueZ);
+    public void createFallingProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float height,Location location){
+        if(spread==0){return;}
+        float valueX = ThreadLocalRandom.current().nextFloat(-spread, spread);
+        float valueZ = ThreadLocalRandom.current().nextFloat(-spread, spread);
 
-        Vector dir = loc.toVector().subtract(location.toVector());
+        Location loc = location.clone().add(valueX,height,valueZ);
+
+        Vector dir = location.toVector().subtract(loc.toVector());
 
         dir.normalize().multiply(speed);
 
@@ -162,6 +166,7 @@ public abstract class Projectile implements Listener {
             if(result!=null){
                 if(result.getHitBlock()!=null){
                     if(!result.getHitBlock().isPassable()){
+                        hitBlockEffect(result.getHitBlock());
                         proj.remove();
                         task.cancel();
                         return;
@@ -173,7 +178,7 @@ public abstract class Projectile implements Listener {
                         target.setMaximumNoDamageTicks(0);
                         //DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(target).build();
                         target.damage((damage+weaponDamage),player);
-                        hitEffect(target);
+                        hitEntityEffect(target);
                     }
                     if(enemiesHit[0] >=peirce) {
                         proj.remove();
@@ -190,6 +195,8 @@ public abstract class Projectile implements Listener {
 
     }
 
-    public abstract void hitEffect(LivingEntity entity);
+    public abstract void hitEntityEffect(LivingEntity entity);
+
+    public abstract void hitBlockEffect(Block block);
 
 }

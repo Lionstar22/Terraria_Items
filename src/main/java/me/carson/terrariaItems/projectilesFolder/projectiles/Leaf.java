@@ -2,6 +2,7 @@ package me.carson.terrariaItems.projectilesFolder.projectiles;
 
 import me.carson.terrariaItems.projectilesFolder.Projectile;
 import org.bukkit.Bukkit;
+import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.Plugin;
@@ -15,9 +16,14 @@ public class Leaf extends Projectile {
     }
 
     @Override
-    public void hitEffect(LivingEntity entity) {
+    public void hitEntityEffect(LivingEntity entity) {
         if(Math.random()<0.25){
             entity.addPotionEffect(new PotionEffect(PotionEffectType.POISON,140,2,false,true,true));
         }
+    }
+
+    @Override
+    public void hitBlockEffect(Block block) {
+
     }
 }

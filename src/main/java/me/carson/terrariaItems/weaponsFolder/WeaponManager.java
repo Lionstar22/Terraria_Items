@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder;
 
+import me.carson.terrariaItems.projectilesFolder.projectiles.Meteor;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.HallowedRepeater;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.MoltenFury;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
@@ -53,6 +54,7 @@ public class WeaponManager implements Listener {
         Bukkit.getPluginManager().registerEvents(new SnowballCannon(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new BladeOfGrass(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new SniperRifle(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new Meteor(plugin), plugin);
     }
 
     @EventHandler
