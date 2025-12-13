@@ -15,7 +15,7 @@ import java.util.List;
 public class Megashark extends Gun {
 
     public Megashark(Plugin plugin) {
-        super(plugin,"Megashark","#FF96FF", Material.PRISMARINE_CRYSTALS,"megashark","Megashark",0,3,6,0.05f,100, new ArrayList<>(List.of(ChatColor.GRAY+"50% chance to save ammo",ChatColor.GRAY+"Minishark's older brother")));
+        super(plugin,"Megashark","#FF96FF", Material.PRISMARINE_CRYSTALS,"megashark","Megashark",0,3,6,0.05f,100, new ArrayList<>(List.of(ChatColor.GRAY+"50% chance to save ammo",ChatColor.GRAY+"Minishark's older brother",ChatColor.GRAY+"6 damage")));
     }
 
     @Override

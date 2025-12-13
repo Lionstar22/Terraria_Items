@@ -15,7 +15,7 @@ import java.util.List;
 public class Shotgun extends Gun {
 
     public Shotgun(Plugin plugin) {
-        super(plugin,"Shotgun","#FF9696", Material.GOLD_NUGGET,"shotgun","Shotgun",30,3,4,0.1f,100, new ArrayList<>(List.of(ChatColor.GRAY+"Fires a spread of bullets")));
+        super(plugin,"Shotgun","#FF9696", Material.GOLD_NUGGET,"shotgun","Shotgun",30,3,4,0.1f,100, new ArrayList<>(List.of(ChatColor.GRAY+"Fires a spread of bullets",ChatColor.GRAY+"4 damage")));
     }
 
     @Override
