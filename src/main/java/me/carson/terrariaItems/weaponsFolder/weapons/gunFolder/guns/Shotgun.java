@@ -25,7 +25,7 @@ public class Shotgun extends Gun {
 
     @Override
     public void rightActivate(Player player) {
-        for (ItemStack itemInv : player.getInventory().getContents()) {
+        for (ItemStack itemInv : player.getInventory().getStorageContents()) {
             if (new MusketBall(plugin).isThisItem(itemInv)) {
                 for(int i =0;i<5;i++){
                     new BulletProjectile(plugin).createProjectile(player,speed,damage,spread,duration);

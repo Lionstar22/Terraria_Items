@@ -20,7 +20,7 @@ import java.util.List;
 public class SniperRifle extends Gun implements Listener {
 
     public SniperRifle(Plugin plugin) {
-        super(plugin,"Sniper Rifle","#FFFF0A", Material.EMERALD,"sniper_rifle","SniperRifle",30,6,25,0,100, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots a powerful, high velocity bullet",ChatColor.GRAY+"Crouch to zoom",ChatColor.GRAY+"25 Damage")));
+        super(plugin,"Sniper Rifle","#FFFF0A", Material.EMERALD,"sniper_rifle","SniperRifle",40,6,30,0,250, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots a powerful, high velocity bullet",ChatColor.GRAY+"Crouch to zoom",ChatColor.GRAY+"25 Damage")));
     }
 
     @Override
@@ -30,7 +30,7 @@ public class SniperRifle extends Gun implements Listener {
 
     @Override
     public void rightActivate(Player player) {
-        for (ItemStack itemInv : player.getInventory().getContents()) {
+        for (ItemStack itemInv : player.getInventory().getStorageContents()) {
             if (new MusketBall(plugin).isThisItem(itemInv)) {
                 player.getInventory().removeItem(MusketBall.getItem(plugin));
                 player.getWorld().playSound(player.getLocation(),"terraria:gun_shoot_3", 1.0F, 1.0F);

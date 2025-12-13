@@ -25,7 +25,7 @@ public class Needler extends Gun {
 
     @Override
     public void rightActivate(Player player) {
-        for (ItemStack itemInv : player.getInventory().getContents()) {
+        for (ItemStack itemInv : player.getInventory().getStorageContents()) {
             if (new MusketBall(plugin).isThisItem(itemInv)) {
                 player.getInventory().removeItem(MusketBall.getItem(plugin));
                 player.getWorld().playSound(player.getLocation(),"terraria:needler_use", 1.0F, 1.0F);

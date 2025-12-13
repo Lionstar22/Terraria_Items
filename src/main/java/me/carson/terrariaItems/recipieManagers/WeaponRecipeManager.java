@@ -178,8 +178,8 @@ public class WeaponRecipeManager {
         ItemStack item= Needler.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Needler");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
-        recipe.shape("L  ","BBE","N  ");
-        recipe.setIngredient('N',Material.NETHERITE_SCRAP);
+        recipe.shape("L  ","BBE","T  ");
+        recipe.setIngredient('T',Material.TWISTING_VINES);
         recipe.setIngredient('B',Material.BAMBOO_PLANKS);
         recipe.setIngredient('E',Material.SPIDER_EYE);
         recipe.setIngredient('L',Material.JUNGLE_LEAVES);

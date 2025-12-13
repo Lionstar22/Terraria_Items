@@ -32,7 +32,7 @@ public class FallingStar extends Projectile {
         float valueX = ThreadLocalRandom.current().nextFloat(-10, 10);
         float valueZ = ThreadLocalRandom.current().nextFloat(-10, 10);
         Location loc =player.getLocation().add(valueX,0,valueZ);
-        new FallingStar(plugin).createFallingProjectile(player,1,0,5,50,30,loc);
+        new FallingStar(plugin).createFallingProjectile(player,1,0,5,500,30,loc);
         player.getWorld().playSound(loc.clone().add(0,5,0), "terraria:falling_star", 5.0F, 1.0F);
     }
 

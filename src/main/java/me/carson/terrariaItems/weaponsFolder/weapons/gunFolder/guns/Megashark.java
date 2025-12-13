@@ -25,7 +25,7 @@ public class Megashark extends Gun {
 
     @Override
     public void rightActivate(Player player) {
-        for (ItemStack itemInv : player.getInventory().getContents()) {
+        for (ItemStack itemInv : player.getInventory().getStorageContents()) {
             if (new MusketBall(plugin).isThisItem(itemInv)) {
                 if(Math.random()<0.5){
                     player.getInventory().removeItem(MusketBall.getItem(plugin));

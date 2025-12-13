@@ -26,6 +26,7 @@ public class ToolRecipeManager {
         registerRodRecipe();
         registerLifeCrystalRecipe();
         registerManaCrystalRecipe();
+        registerTorrentialTearRecipe();
     }
 
     private void registerMirrorRecipe(){
@@ -87,6 +88,17 @@ public class ToolRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, crystal);
         recipe.shape(" S ","SSS"," S ");
         recipe.setIngredient('S', FallenStar.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerTorrentialTearRecipe(){
+        ItemStack item= TorrentialTear.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "TorrentialTear");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" D ","WCW"," D ");
+        recipe.setIngredient('C', Material.CLOCK);
+        recipe.setIngredient('D', Material.SPONGE);
+        recipe.setIngredient('W', Material.WET_SPONGE);
         Bukkit.addRecipe(recipe);
     }
 }

@@ -23,13 +23,13 @@ public class ChristmasTreeSword extends Sword {
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public ChristmasTreeSword(Plugin plugin) {
-        super(plugin,"Christmas Tree Sword","#FFFF0A", Material.DIAMOND_SWORD,"christmas_tree_sword","ChristnasTreeSword",0,1.5f,8,0,75, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots Christmas ornaments",ChatColor.GRAY+"8 Damage")));
+        super(plugin,"Christmas Tree Sword","#FFFF0A", Material.DIAMOND_SWORD,"christmas_tree_sword","ChristnasTreeSword",0,1.5f,6,0,75, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots Christmas ornaments",ChatColor.GRAY+"6 Damage")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
         ItemStack item=new ChristmasTreeSword(plugin).createItem();
         ItemMeta meta= item.getItemMeta();
-        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),9, AttributeModifier.Operation.ADD_NUMBER));
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),5, AttributeModifier.Operation.ADD_NUMBER));
         item.setItemMeta(meta);
         return item;
     }
