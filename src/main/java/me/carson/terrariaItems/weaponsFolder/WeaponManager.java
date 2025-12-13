@@ -4,10 +4,7 @@ import me.carson.terrariaItems.projectilesFolder.projectiles.Meteor;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.HallowedRepeater;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.MoltenFury;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
-import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.AmethystStaff;
-import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.BubbleGun;
-import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.MeteorStaff;
-import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.RubyStaff;
+import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords.*;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -50,6 +47,8 @@ public class WeaponManager implements Listener {
         weaponItems.add(new RubyStaff(plugin));
         weaponItems.add(new MeteorStaff(plugin));
         weaponItems.add(new BubbleGun(plugin));
+        weaponItems.add(new WaterBolt(plugin));
+        weaponItems.add(new IcicleStaff(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new Volcano(plugin), plugin);

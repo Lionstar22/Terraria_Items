@@ -13,20 +13,20 @@ import org.bukkit.plugin.Plugin;
 public class Meteor extends Projectile implements Listener {
 
     public Meteor(Plugin plugin) {
-        super(plugin, 0,  "meteor", "Meteor",0, DamageType.PLAYER_ATTACK);
+        super(plugin, 0,  "meteor", "Meteor",0,0, DamageType.PLAYER_ATTACK);
     }
 
 
     @Override
     public void hitEntityEffect(LivingEntity entity) {
         entity.getWorld().playSound(entity.getLocation(), "terraria:meteor_impact", 1.5F, 1.0F);
-        entity.getWorld().createExplosion(entity.getLocation(), 3.0F, false, false);
+        entity.getWorld().createExplosion(entity.getLocation(), 2.0F, false, false);
     }
 
     @Override
     public void hitBlockEffect(Block block) {
         block.getWorld().playSound(block.getLocation(), "terraria:meteor_impact", 1.5F, 1.0F);
-        block.getWorld().createExplosion(block.getLocation().add(0,1,0), 3.0F, false, false);
+        block.getWorld().createExplosion(block.getLocation().add(0,1,0), 2.0F, false, false);
     }
 
     @EventHandler

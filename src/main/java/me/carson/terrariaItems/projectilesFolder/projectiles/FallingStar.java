@@ -17,7 +17,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class FallingStar extends Projectile {
 
     public FallingStar(Plugin plugin) {
-        super(plugin, 50,  "fallen_star", "FallingStar",5, DamageType.PLAYER_ATTACK);
+        super(plugin, 50,  "fallen_star", "FallingStar",5,0, DamageType.PLAYER_ATTACK);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class FallingStar extends Projectile {
 
     @Override
     public void hitBlockEffect(Block block) {
-        block.getWorld().playSound(block.getLocation(), "terraria:falling_star_impact", 2.0F, 1.0F);
+        block.getWorld().playSound(block.getLocation(), "terraria:impact_1", 2.0F, 1.0F);
         block.getWorld().dropItemNaturally(block.getLocation().add(0,1,0), FallenStar.getItem(plugin));
     }
 

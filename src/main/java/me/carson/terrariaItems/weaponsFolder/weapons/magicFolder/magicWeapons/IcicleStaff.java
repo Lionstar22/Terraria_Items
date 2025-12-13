@@ -1,9 +1,13 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons;
 
 import me.carson.terrariaItems.ManaManager;
+import me.carson.terrariaItems.projectilesFolder.projectiles.Icicle;
 import me.carson.terrariaItems.projectilesFolder.projectiles.Meteor;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.Magic;
-import org.bukkit.*;
+import org.bukkit.ChatColor;
+import org.bukkit.FluidCollisionMode;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -13,10 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class MeteorStaff extends Magic {
+public class IcicleStaff extends Magic {
 
-    public MeteorStaff(Plugin plugin) {
-        super(plugin,"Meteor Staff","#FF96FF", Material.NETHER_BRICK,"meteor_staff","MeteorStaff",0,1.5f,10,3,50,9, new ArrayList<>(List.of(ChatColor.GRAY+"Showers meteors",ChatColor.GRAY+"Costs 9 Mana")));
+    public IcicleStaff(Plugin plugin) {
+        super(plugin,"Icicle Staff","#9696FF", Material.LIGHT_BLUE_DYE,"icicle_staff","IcicleStaff",0,1.25f,8,4,50,6, new ArrayList<>(List.of(ChatColor.GRAY+"Casts icicles from the sky",ChatColor.GRAY+"Costs 6 Mana")));
     }
 
     @Override
@@ -34,18 +38,18 @@ public class MeteorStaff extends Magic {
         instance.updateManaBar(player);
         instance.startManaRegenDelay(player,instance);
 
-        RayTraceResult result= player.getWorld().rayTrace(player.getEyeLocation(),player.getEyeLocation().getDirection(),150,FluidCollisionMode.NEVER,true,0.1,e -> (e!=player));
+        RayTraceResult result= player.getWorld().rayTrace(player.getEyeLocation(),player.getEyeLocation().getDirection(),150, FluidCollisionMode.NEVER,true,0.1, e -> (e!=player));
 
         if (result == null) {return;}
 
         Location hit=result.getHitPosition().toLocation(player.getWorld());
 
-        new Meteor(plugin).createFallingProjectile(player,speed,damage,spread,duration,25,hit);
-        player.getWorld().playSound(player.getLocation(), "terraria:meteor_staff_use", 0.75F, 1.0F);
+        new Icicle(plugin).createFallingProjectile(player,speed,damage,spread,duration,25,hit);
+        player.getWorld().playSound(player.getLocation(), "terraria:rod_of_discord_use", 1.0F, 1.0F);
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        return new MeteorStaff(plugin).createItem();
+        return new IcicleStaff(plugin).createItem();
     }
 
 }

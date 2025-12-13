@@ -2,6 +2,7 @@ package me.carson.terrariaItems.projectilesFolder;
 
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.*;
 import org.bukkit.event.Listener;
@@ -12,6 +13,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Projectile implements Listener {
@@ -21,14 +23,16 @@ public abstract class Projectile implements Listener {
     protected final String texture;
     protected final String id;
     protected final int peirce;
+    protected final int bounces;
     protected final DamageType damageType;
 
-    public Projectile(Plugin plugin, int damage, String texture, String id, int peirce, DamageType damageType) {
+    public Projectile(Plugin plugin, int damage, String texture, String id, int peirce, int bounces, DamageType damageType) {
         this.plugin = plugin;
         this.texture = texture;
         this.id = id;
         this.damage=damage;
         this.peirce = peirce;
+        this.bounces = bounces;
         this.damageType = damageType;
     }
 
@@ -59,58 +63,7 @@ public abstract class Projectile implements Listener {
         proj.setInterpolationDuration(3);
         proj.setTeleportDuration(1);
 
-        final int[] tick = {0};
-
-        final int[] enemiesHit = {0};
-
-        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
-            if (proj.isDead()) {
-                task.cancel();
-                return;
-            }
-
-            tick[0]++;
-            if (tick[0] >= duration) {
-                proj.remove();
-                task.cancel();
-                return;
-            }
-
-            //block handling
-            Location now = proj.getLocation();
-            Location next = now.clone().add(dir);
-            float dist= (float) now.distance(next);
-
-            RayTraceResult result= player.getWorld().rayTrace(now,now.getDirection(),dist,FluidCollisionMode.NEVER,true,0.1,e -> (e.getType() != proj.getType())&&(e!=player));
-            if(result!=null){
-                if(result.getHitBlock()!=null){
-                    if(!result.getHitBlock().isPassable()){
-                        hitBlockEffect(result.getHitBlock());
-                        proj.remove();
-                        task.cancel();
-                        return;
-                    }
-                }
-                if(result.getHitEntity()!=null){
-                    if(result.getHitEntity() instanceof LivingEntity target){
-                        target.setNoDamageTicks(0);
-                        target.setMaximumNoDamageTicks(0);
-                        //DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(target).build();
-                        target.damage((damage+weaponDamage),player);
-                        hitEntityEffect(target);
-                    }
-                    if(enemiesHit[0] >=peirce) {
-                        proj.remove();
-                        task.cancel();
-                        return;
-                    }else {
-                        enemiesHit[0]++;
-                    }
-                }
-            }
-
-            proj.teleport(next);
-        }, 1L, 1L);
+        moveProj(player,speed,weaponDamage,duration,proj,dir);
 
     }
 
@@ -140,9 +93,15 @@ public abstract class Projectile implements Listener {
         proj.setInterpolationDuration(3);
         proj.setTeleportDuration(1);
 
-        final int[] tick = {0};
+        moveProj(player,speed,weaponDamage,duration,proj,dir);
 
+    }
+
+    private void moveProj(Player player,float speed,float weaponDamage,float duration,ItemDisplay proj, Vector dir){
+        final int[] tick = {0};
         final int[] enemiesHit = {0};
+        final int[] blocksBounced = {0};
+        final Vector[] direction = {dir};
 
         Bukkit.getScheduler().runTaskTimer(plugin, task -> {
             if (proj.isDead()) {
@@ -159,17 +118,23 @@ public abstract class Projectile implements Listener {
 
             //block handling
             Location now = proj.getLocation();
-            Location next = now.clone().add(dir);
+            Location next = now.clone().add(direction[0]);
             float dist= (float) now.distance(next);
 
             RayTraceResult result= player.getWorld().rayTrace(now,now.getDirection(),dist,FluidCollisionMode.NEVER,true,0.1,e -> (e.getType() != proj.getType())&&(e!=player));
             if(result!=null){
                 if(result.getHitBlock()!=null){
-                    if(!result.getHitBlock().isPassable()){
+                    if(!result.getHitBlock().isPassable() && result.getHitBlockFace()!=null){
                         hitBlockEffect(result.getHitBlock());
-                        proj.remove();
-                        task.cancel();
-                        return;
+                        if(blocksBounced[0]>=bounces){
+                            proj.remove();
+                            task.cancel();
+                            return;
+                        }else{
+                            blocksBounced[0]++;
+                            direction[0] =bounce(proj,result.getHitBlockFace(),speed,dir);
+                            next = now.clone().add(direction[0]);
+                        }
                     }
                 }
                 if(result.getHitEntity()!=null){
@@ -192,7 +157,27 @@ public abstract class Projectile implements Listener {
 
             proj.teleport(next);
         }, 1L, 1L);
+    }
 
+    private Vector bounce(ItemDisplay proj, BlockFace face,float speed,Vector dir) {
+
+        Vector normal = switch (face) {
+            case EAST  -> new Vector(-1, 0, 0);
+            case WEST  -> new Vector(1, 0, 0);
+            case UP    -> new Vector(0, -1, 0);
+            case DOWN  -> new Vector(0, 1, 0);
+            case NORTH -> new Vector(0, 0, 1);
+            case SOUTH -> new Vector(0, 0, -1);
+            default    -> null;
+        };
+
+        if (normal == null) return null;
+
+        Vector reflected = dir.subtract(
+                normal.multiply(2 * dir.dot(normal))
+        );
+        proj.teleport(proj.getLocation().add(reflected.clone().multiply(0.5)));
+        return reflected;
     }
 
     public abstract void hitEntityEffect(LivingEntity entity);

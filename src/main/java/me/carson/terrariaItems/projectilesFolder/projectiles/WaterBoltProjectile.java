@@ -1,29 +1,26 @@
 package me.carson.terrariaItems.projectilesFolder.projectiles;
 
 import me.carson.terrariaItems.projectilesFolder.Projectile;
-import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
-public class Leaf extends Projectile {
+public class WaterBoltProjectile extends Projectile {
 
-    public Leaf(Plugin plugin) {
-        super(plugin, 0,  "leaf_blade_projectile", "Leaf",0,0, DamageType.PLAYER_ATTACK);
+    public WaterBoltProjectile(Plugin plugin) {
+        super(plugin, 0, "water_bolt_projectile", "WaterBoltProjectile",9,5, DamageType.ARROW);
     }
+
 
     @Override
     public void hitEntityEffect(LivingEntity entity) {
-        if(Math.random()<0.25){
-            entity.addPotionEffect(new PotionEffect(PotionEffectType.POISON,140,2,false,true,true));
-        }
+
     }
 
     @Override
     public void hitBlockEffect(Block block) {
-
+        block.getWorld().playSound(block.getLocation(), "terraria:impact_1", 2.0F, 1.0F);
     }
+
 }

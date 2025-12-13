@@ -15,7 +15,7 @@ import java.util.List;
 public class PhoenixBlaster extends Gun {
 
     public PhoenixBlaster(Plugin plugin) {
-        super(plugin,"Phoenix Blaster","#FFC896", Material.NETHERITE_SCRAP,"phoenix_blaster","PhoenixBlaster",10,3.5f,10,0,100, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots Bullets")));
+        super(plugin,"Phoenix Blaster","#FFC896", Material.NETHERITE_SCRAP,"phoenix_blaster","PhoenixBlaster",10,3.5f,8,0,100, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots Bullets")));
     }
 
     @Override

@@ -15,7 +15,7 @@ import java.util.List;
 public class Handgun extends Gun {
 
     public Handgun(Plugin plugin) {
-        super(plugin,"Handgun","#96FF96",Material.RAW_IRON,"handgun","Handgun",10,3,6,0,100, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots Bullets")));
+        super(plugin,"Handgun","#96FF96",Material.RAW_IRON,"handgun","Handgun",10,3,4,0,100, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots Bullets")));
     }
 
     @Override
