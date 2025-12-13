@@ -170,7 +170,7 @@ public class WeaponRecipeManager {
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape(" H ","HMH"," H ");
         recipe.setIngredient('H',HallowedBar.getItem(plugin));
-        recipe.setIngredient('B',Minishark.getItem(plugin));
+        recipe.setIngredient('M',Minishark.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 
