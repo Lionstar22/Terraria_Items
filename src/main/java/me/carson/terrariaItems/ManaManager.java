@@ -100,13 +100,13 @@ public class ManaManager {
                 if(instance.getManaDelay(id)<=0&&(instance.getMaxMana(id)>instance.getMana(id))){
                     instance.addMana(id,instance.getManaRegenRate(player,instance));
                     instance.updateManaBar(player);
-                }else{
+                }else if(instance.getManaDelay(id)>-1){
                     instance.reduceManaDelay(player,1.0);
                 }
             }
         }, 0L, 1L); // Runs every tick second
     }
-
+    //if(instance.getManaDelay(id)>-1)
     public boolean isNight(World world) {
         long t = world.getTime();
         return t >= 12000 && t < 24000;
@@ -121,7 +121,7 @@ public class ManaManager {
                     }
                 }
             }
-        }, 0L, 1200);
+        }, 0L, 300);
     }
 
     public static void initialize(JavaPlugin plugin) {

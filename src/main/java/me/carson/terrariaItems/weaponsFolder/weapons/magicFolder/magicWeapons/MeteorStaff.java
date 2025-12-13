@@ -16,7 +16,7 @@ import java.util.UUID;
 public class MeteorStaff extends Magic {
 
     public MeteorStaff(Plugin plugin) {
-        super(plugin,"Meteor Staff","#FF96FF", Material.NETHER_BRICK,"meteor_staff","MeteorStaff",0,1.5f,10,3,50,9, new ArrayList<>(List.of(ChatColor.GRAY+"Showers meteors",ChatColor.GRAY+"Costs 9 Mana")));
+        super(plugin,"Meteor Staff","#FF96FF", Material.NETHER_BRICK,"meteor_staff","MeteorStaff",0,1.5f,10,3,50,9, new ArrayList<>(List.of(ChatColor.GRAY+"Showers meteors",ChatColor.GRAY+"Costs 9 Mana",ChatColor.GRAY+"10 Damage")));
     }
 
     @Override

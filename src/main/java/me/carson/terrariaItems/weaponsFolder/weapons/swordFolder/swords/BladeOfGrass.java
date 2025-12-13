@@ -29,7 +29,7 @@ public class BladeOfGrass extends Sword implements Listener {
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public BladeOfGrass(Plugin plugin) {
-        super(plugin,"Blade of Grass","#FFC896",Material.IRON_SWORD,"blade_of_grass","BladeOfGrass",0,1,6,0,15, new ArrayList<>(List.of(ChatColor.GRAY+"Has a chance to poison enemies")));
+        super(plugin,"Blade of Grass","#FFC896",Material.IRON_SWORD,"blade_of_grass","BladeOfGrass",0,1,6,0,15, new ArrayList<>(List.of(ChatColor.GRAY+"Has a chance to poison enemies",ChatColor.GRAY+"6 Damage")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

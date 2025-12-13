@@ -21,7 +21,7 @@ import java.util.List;
 public class SnowballCannon extends Gun implements Listener {
 
     public SnowballCannon(Plugin plugin) {
-        super(plugin,"Snowball Cannon","#9696FF", Material.BOW,"snowball_cannon","SnowballCannon",10,0,8,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Launches Snowballs",ChatColor.GRAY+"8 damage")));
+        super(plugin,"Snowball Cannon","#9696FF", Material.BOW,"snowball_cannon","SnowballCannon",10,0,8,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Launches Snowballs",ChatColor.GRAY+"8 Damage")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

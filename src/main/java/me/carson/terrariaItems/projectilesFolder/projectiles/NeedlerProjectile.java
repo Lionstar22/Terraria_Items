@@ -16,7 +16,7 @@ public class NeedlerProjectile extends Projectile {
 
     @Override
     public void hitEntityEffect(LivingEntity entity) {
-        entity.addPotionEffect(new PotionEffect(PotionEffectType.POISON,30,3,false,true,true));
+        entity.addPotionEffect(new PotionEffect(PotionEffectType.POISON,30,2,false,true,true));
     }
 
     @Override

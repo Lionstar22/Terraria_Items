@@ -20,7 +20,7 @@ import java.util.UUID;
 public class IcicleStaff extends Magic {
 
     public IcicleStaff(Plugin plugin) {
-        super(plugin,"Icicle Staff","#9696FF", Material.LIGHT_BLUE_DYE,"icicle_staff","IcicleStaff",0,1.25f,8,4,50,6, new ArrayList<>(List.of(ChatColor.GRAY+"Casts icicles from the sky",ChatColor.GRAY+"Costs 6 Mana")));
+        super(plugin,"Icicle Staff","#9696FF", Material.LIGHT_BLUE_DYE,"icicle_staff","IcicleStaff",0,1.25f,8,4,50,6, new ArrayList<>(List.of(ChatColor.GRAY+"Casts icicles from the sky",ChatColor.GRAY+"Costs 6 Mana",ChatColor.GRAY+"8 Damage")));
     }
 
     @Override

@@ -15,7 +15,7 @@ import java.util.List;
 public class Needler extends Gun {
 
     public Needler(Plugin plugin) {
-        super(plugin,"Needler","#FF9696", Material.STICK,"needler","Needler",10,2.5f,6,0,75, new ArrayList<>(List.of(ChatColor.GRAY+"Converts musket balls into poison needles",ChatColor.GRAY+"6 damage")));
+        super(plugin,"Needler","#FF9696", Material.STICK,"needler","Needler",10,2.5f,6,0,75, new ArrayList<>(List.of(ChatColor.GRAY+"Converts musket balls into poison needles",ChatColor.GRAY+"6 Damage")));
     }
 
     @Override

@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class FallingStar extends Projectile {
 
     public FallingStar(Plugin plugin) {
-        super(plugin, 50,  "fallen_star", "FallingStar",5,0, DamageType.PLAYER_ATTACK);
+        super(plugin, 50,  "fallen_star", "FallingStar",10,0, DamageType.PLAYER_ATTACK);
     }
 
     @Override

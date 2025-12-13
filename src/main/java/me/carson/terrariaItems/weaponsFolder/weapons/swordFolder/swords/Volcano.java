@@ -22,7 +22,7 @@ import java.util.List;
 public class Volcano extends Sword implements Listener {
 
     public Volcano(Plugin plugin) {
-        super(plugin,"Volcano","#FFC896", Material.NETHERITE_SWORD,"volcano","Volcano",0,0,0,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"It's made out of fire!")));
+        super(plugin,"Volcano","#FFC896", Material.NETHERITE_SWORD,"volcano","Volcano",0,0,0,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"It's made out of fire!",ChatColor.GRAY+"15 Damage")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -22,7 +22,7 @@ public class IceBlade extends Sword {
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public IceBlade(Plugin plugin) {
-        super(plugin,"Ice Blade","#9696FF", Material.IRON_SWORD,"ice_blade","IceBlade",0,0,0,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots an icy bolt")));
+        super(plugin,"Ice Blade","#9696FF", Material.IRON_SWORD,"ice_blade","IceBlade",0,0,0,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots an icy bolt",ChatColor.GRAY+"7 Damage")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

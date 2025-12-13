@@ -17,7 +17,7 @@ import java.util.UUID;
 public class BubbleGun extends Magic {
 
     public BubbleGun(Plugin plugin) {
-        super(plugin,"Bubble Gun","#FFFF0A", Material.PRISMARINE_CRYSTALS,"bubble_gun","BubbleGun",0,0.75f,10,0.25f,20,5, new ArrayList<>(List.of(ChatColor.GRAY+"Rapidly shoots forceful bubbles",ChatColor.GRAY+"Costs 5 Mana")));
+        super(plugin,"Bubble Gun","#FFFF0A", Material.PRISMARINE_CRYSTALS,"bubble_gun","BubbleGun",0,0.75f,10,0.25f,20,5, new ArrayList<>(List.of(ChatColor.GRAY+"Rapidly shoots forceful bubbles",ChatColor.GRAY+"Costs 5 Mana",ChatColor.GRAY+"10 Damage")));
     }
 
     @Override

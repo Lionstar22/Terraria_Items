@@ -16,7 +16,7 @@ import java.util.List;
 public class Minishark extends Gun {
 
     public Minishark(Plugin plugin) {
-        super(plugin,"Minishark","#96FF96",Material.PRISMARINE_SHARD,"minishark","Minishark",0,3,2,0.05f,100, new ArrayList<>(List.of(ChatColor.GRAY+"33% chance to save ammo",ChatColor.GRAY+"Half shark, half gun, completely awesome",ChatColor.GRAY+"2 damage")));
+        super(plugin,"Minishark","#96FF96",Material.PRISMARINE_SHARD,"minishark","Minishark",0,3,2,0.05f,100, new ArrayList<>(List.of(ChatColor.GRAY+"33% chance to save ammo",ChatColor.GRAY+"Half shark, half gun, completely awesome",ChatColor.GRAY+"2 Damage")));
     }
 
     @Override

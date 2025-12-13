@@ -17,7 +17,7 @@ import java.util.UUID;
 public class WaterBolt extends Magic {
 
     public WaterBolt(Plugin plugin) {
-        super(plugin,"Water Bolt","#96FF96", Material.BOOK,"water_bolt","WaterBolt",10,0.5f,4,0,50,10, new ArrayList<>(List.of(ChatColor.GRAY+"Casts a slow moving bolt of water",ChatColor.GRAY+"Costs 10 Mana")));
+        super(plugin,"Water Bolt","#96FF96", Material.BOOK,"water_bolt","WaterBolt",10,0.5f,5,0,50,10, new ArrayList<>(List.of(ChatColor.GRAY+"Casts a slow moving bolt of water",ChatColor.GRAY+"Costs 10 Mana",ChatColor.GRAY+"5 Damage")));
     }
 
     @Override
