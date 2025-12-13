@@ -2,7 +2,6 @@ package me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns;
 
 import me.carson.terrariaItems.materialsFolder.materials.MusketBall;
 import me.carson.terrariaItems.projectilesFolder.projectiles.NeedlerProjectile;
-import me.carson.terrariaItems.weaponsFolder.Weapon;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.Gun;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

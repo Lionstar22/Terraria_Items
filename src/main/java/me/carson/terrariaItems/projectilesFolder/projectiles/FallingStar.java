@@ -2,16 +2,13 @@ package me.carson.terrariaItems.projectilesFolder.projectiles;
 
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.projectilesFolder.Projectile;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class FallingStar extends Projectile {

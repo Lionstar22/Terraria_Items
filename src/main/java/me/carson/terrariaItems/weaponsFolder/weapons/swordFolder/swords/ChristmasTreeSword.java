@@ -23,7 +23,7 @@ public class ChristmasTreeSword extends Sword {
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public ChristmasTreeSword(Plugin plugin) {
-        super(plugin,"Christmas Tree Sword","#FFFF0A", Material.DIAMOND_SWORD,"christmas_tree_sword","ChristnasTreeSword",0,1.5f,10,0,75, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots Christmas ornaments")));
+        super(plugin,"Christmas Tree Sword","#FFFF0A", Material.DIAMOND_SWORD,"christmas_tree_sword","ChristnasTreeSword",0,1.5f,8,0,75, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots Christmas ornaments")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

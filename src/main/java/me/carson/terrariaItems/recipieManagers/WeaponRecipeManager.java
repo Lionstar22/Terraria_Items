@@ -3,11 +3,10 @@ package me.carson.terrariaItems.recipieManagers;
 import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
 import me.carson.terrariaItems.materialsFolder.materials.HallowedBar;
 import me.carson.terrariaItems.materialsFolder.materials.HellstoneBar;
-import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.HallowedRepeater;
-import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.MoltenFury;
-import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Blowpipe;
-import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Minishark;
-import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.SnowballCannon;
+import me.carson.terrariaItems.materialsFolder.materials.Ruby;
+import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -34,6 +33,19 @@ public class WeaponRecipeManager {
         registerIceBladeRecipe();
         registerBlowpipeRecipe();
         registerMinisharkRecipe();
+        registerSniperRifleRecipe();
+        registerHandgunRecipe();
+        registerMegasharkRecipe();
+        registerNeedlerRecipe();
+        registerPhoenixBlasterRecipe();
+        registerShotgunRecipe();
+        registerChristmasTreeSwordRecipe();
+        registerWaterBoltRecipe();
+        registerBubbleGunRecipe();
+        registerMeteorStaffRecipe();
+        registerAmethystStaffRecipe();
+        registerRubyStaffRecipe();
+        registerIcicleStaffRecipe();
     }
 
     private void registerLightsBaneRecipe(){
@@ -137,6 +149,148 @@ public class WeaponRecipeManager {
         recipe.setIngredient('F',Material.COD);
         recipe.setIngredient('B',Material.IRON_BLOCK);
         recipe.setIngredient('I',Material.IRON_INGOT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerHandgunRecipe(){
+        ItemStack item= Handgun.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "Handgun");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("A A","BII","L  ");
+        recipe.setIngredient('L',Material.LEATHER);
+        recipe.setIngredient('B',Material.IRON_BLOCK);
+        recipe.setIngredient('I',Material.IRON_INGOT);
+        recipe.setIngredient('A',Material.IRON_BARS);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerMegasharkRecipe(){
+        ItemStack item= Megashark.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "Megashark");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape(" H ","HMH"," H ");
+        recipe.setIngredient('H',HallowedBar.getItem(plugin));
+        recipe.setIngredient('B',Minishark.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerNeedlerRecipe(){
+        ItemStack item= Needler.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "Needler");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("L  ","BBE","N  ");
+        recipe.setIngredient('N',Material.NETHERITE_SCRAP);
+        recipe.setIngredient('B',Material.BAMBOO_PLANKS);
+        recipe.setIngredient('E',Material.SPIDER_EYE);
+        recipe.setIngredient('L',Material.JUNGLE_LEAVES);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerPhoenixBlasterRecipe(){
+        ItemStack item= PhoenixBlaster.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "PhoenixBlaster");
+        ShapelessRecipe recipe =new ShapelessRecipe(key,item);
+        recipe.addIngredient(HellstoneBar.getItem(plugin));
+        recipe.addIngredient(Handgun.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerShotgunRecipe(){
+        ItemStack item= Shotgun.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "Shotgun");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("IIN","I W","   ");
+        recipe.setIngredient('I',Material.IRON_INGOT);
+        recipe.setIngredient('N',Material.NETHERITE_INGOT);
+        recipe.setIngredient('W',Material.OAK_LOG);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerSniperRifleRecipe(){
+        ItemStack item= SniperRifle.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "SniperRifle");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape(" S ","HHH","G  ");
+        recipe.setIngredient('S',Material.SPYGLASS);
+        recipe.setIngredient('H',HallowedBar.getItem(plugin));
+        recipe.setIngredient('G',Material.GREEN_DYE);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerChristmasTreeSwordRecipe(){
+        ItemStack item= ChristmasTreeSword.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ChristmasTreeSword");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape(" H ","RLG","BSY");
+        recipe.setIngredient('S',Material.SPRUCE_LOG);
+        recipe.setIngredient('H',HallowedBar.getItem(plugin));
+        recipe.setIngredient('G',Material.GREEN_STAINED_GLASS);
+        recipe.setIngredient('Y',Material.BLUE_STAINED_GLASS);
+        recipe.setIngredient('B',Material.YELLOW_STAINED_GLASS);
+        recipe.setIngredient('R',Material.RED_STAINED_GLASS);
+        recipe.setIngredient('L',Material.SPRUCE_LEAVES);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerAmethystStaffRecipe(){
+        ItemStack item= AmethystStaff.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "AmethystStaff");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("  A"," C ","C  ");
+        recipe.setIngredient('A',Material.AMETHYST_SHARD);
+        recipe.setIngredient('C',Material.COPPER_INGOT);
+        Bukkit.addRecipe(recipe);
+    }
+    private void registerRubyStaffRecipe(){
+        ItemStack item= RubyStaff.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "RubyStaff");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("  R"," G ","G  ");
+        recipe.setIngredient('R', Ruby.getItem(plugin));
+        recipe.setIngredient('G',Material.GOLD_INGOT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerIcicleStaffRecipe(){
+        ItemStack item= IcicleStaff.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "IcicleStaff");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("  I"," S ","S  ");
+        recipe.setIngredient('I', Material.ICE);
+        recipe.setIngredient('S',Material.SNOW_BLOCK);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerMeteorStaffRecipe(){
+        ItemStack item= MeteorStaff.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "MeteorStaff");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("  M"," N ","N  ");
+        recipe.setIngredient('M', Material.MAGMA_BLOCK);
+        recipe.setIngredient('N',Material.NETHERITE_SCRAP);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerBubbleGunRecipe(){
+        ItemStack item= BubbleGun.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "BubbleGun");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("WWS","HHH","WWM");
+        recipe.setIngredient('M', Material.MAGMA_BLOCK);
+        recipe.setIngredient('W',Material.WATER_BUCKET);
+        recipe.setIngredient('S',Material.SOUL_SAND);
+        recipe.setIngredient('H',HallowedBar.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerWaterBoltRecipe(){
+        ItemStack item= WaterBolt.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "WaterBolt");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("WDW","WBW","WWW");
+        recipe.setIngredient('W',Material.WATER_BUCKET);
+        recipe.setIngredient('D',Material.DIAMOND);
+        recipe.setIngredient('B',Material.BOOK);
         Bukkit.addRecipe(recipe);
     }
 

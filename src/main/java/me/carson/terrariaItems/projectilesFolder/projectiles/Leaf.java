@@ -1,7 +1,6 @@
 package me.carson.terrariaItems.projectilesFolder.projectiles;
 
 import me.carson.terrariaItems.projectilesFolder.Projectile;
-import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;

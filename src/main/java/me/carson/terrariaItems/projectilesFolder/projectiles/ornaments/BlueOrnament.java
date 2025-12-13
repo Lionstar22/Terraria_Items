@@ -19,7 +19,7 @@ public class BlueOrnament extends Projectile {
 
     @Override
     public void hitBlockEffect(Block block) {
-
+        block.getWorld().playSound(block.getLocation(), "terraria:frost_bolt_impact", 1.0F, 1.0F);
     }
 
 
