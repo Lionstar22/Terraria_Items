@@ -116,9 +116,10 @@ public class WeaponManager implements Listener {
             }
         }
     }
-
+    /*
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event){
         Bukkit.getLogger().info("Damage: "+event.getDamage());
     }
+    */
 }

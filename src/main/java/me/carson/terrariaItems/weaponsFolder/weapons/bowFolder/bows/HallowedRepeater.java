@@ -19,7 +19,7 @@ import java.util.List;
 public class HallowedRepeater extends Bow {
 
     public HallowedRepeater(Plugin plugin) {
-        super(plugin,"Hallowed Repeater","#FF9696",Material.CROSSBOW,"hallowed_repeater","HallowedRepeater",7,4f,10,0.2f, new ArrayList<>(List.of(ChatColor.GRAY+"Holy crossbow whose arrows illuminate thine target",ChatColor.GRAY+"Converts normal arrows to Spectral Arrows")));
+        super(plugin,"Hallowed Repeater","#FF9696",Material.CROSSBOW,"hallowed_repeater","HallowedRepeater",7,4f,10,0.5f, new ArrayList<>(List.of(ChatColor.GRAY+"Holy crossbow whose arrows illuminate thine target",ChatColor.GRAY+"Converts normal arrows to Spectral Arrows")));
     }
 
     @Override

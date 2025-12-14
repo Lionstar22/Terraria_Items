@@ -115,7 +115,7 @@ public class ManaManager {
     public void startFallingStartTask(Plugin plugin){
         Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                if (Math.random() < 0.5&& (player.getWorld().getEnvironment() == World.Environment.NORMAL) && isNight(player.getWorld())) {
+                if (Math.random() < 0.25&& (player.getWorld().getEnvironment() == World.Environment.NORMAL) && isNight(player.getWorld())) {
                     new FallingStar(plugin).starFall(player);
                 }
             }
