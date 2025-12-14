@@ -16,12 +16,12 @@ import java.util.List;
 public class RedBalloon extends Accessory implements Listener {
 
     public RedBalloon(Plugin plugin){
-        super(plugin,"Shiny Red Balloon","#9696FF", Material.RED_WOOL,"shiny_red_balloon","Balloon",new ArrayList<>(List.of(ChatColor.GRAY+"Increases jump height",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Shiny Red Balloon","#9696FF", Material.RED_WOOL,"shiny_red_balloon","RedBalloon",new ArrayList<>(List.of(ChatColor.GRAY+"Increases jump height",ChatColor.GRAY+"Shift Right Click to Activate")));
     }
 
     @Override
     public void activateEffect(Player player){
-        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP_BOOST, 120, 0, true, false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP_BOOST, -1, 0, true, false));
     }
 
     @Override

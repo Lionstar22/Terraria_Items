@@ -30,7 +30,7 @@ public final class TerrariaItems extends JavaPlugin {
         stormbow=new Stormbow(this);
 
         AccessoryManager aManager = new AccessoryManager(this);
-        aManager.startAccessoryTask(this);
+        //aManager.startAccessoryTask(this);
 
         ToolManager tManager=new ToolManager(this);
         MaterialManager materialManager=new MaterialManager(this);

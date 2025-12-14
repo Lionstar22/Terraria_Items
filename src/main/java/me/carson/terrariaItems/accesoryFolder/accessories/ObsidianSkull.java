@@ -16,12 +16,12 @@ import java.util.List;
 public class ObsidianSkull extends Accessory implements Listener {
 
     public ObsidianSkull(Plugin plugin){
-        super(plugin,"Obsidian Skull","#96FF96", Material.OBSIDIAN,"obsidian_skull","Skull",new ArrayList<>(List.of(ChatColor.GRAY+"Grants immunity to fire damage", ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Obsidian Skull","#96FF96", Material.OBSIDIAN,"obsidian_skull","ObsidianSkull",new ArrayList<>(List.of(ChatColor.GRAY+"Grants immunity to fire damage", ChatColor.GRAY+"Shift Right Click to Activate")));
     }
 
     @Override
     public void activateEffect(Player player){
-        player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 120, 0, true, false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, -1, 0, true, false));
     }
 
     @Override

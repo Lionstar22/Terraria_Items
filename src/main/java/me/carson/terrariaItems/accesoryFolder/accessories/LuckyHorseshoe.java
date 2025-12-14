@@ -35,10 +35,11 @@ public class LuckyHorseshoe extends Accessory implements Listener  {
 
     @EventHandler
     public void onFallDamage(EntityDamageEvent event) {
+        if(((event.getCause() != EntityDamageEvent.DamageCause.FALL)||(event.getCause() != EntityDamageEvent.DamageCause.FLY_INTO_WALL))){return;}
         if (!(event.getEntity() instanceof Player player)) return;
         for (ItemStack itemInv : player.getInventory().getContents()) {
             if (LuckyHorseshoe.this.isThisItem(itemInv)) {
-                if (((event.getCause() == EntityDamageEvent.DamageCause.FALL)||(event.getCause() == EntityDamageEvent.DamageCause.FLY_INTO_WALL))&&LuckyHorseshoe.this.isActivated(itemInv)) {
+                if (LuckyHorseshoe.this.isActivated(itemInv)) {
                     event.setCancelled(true);
                     break;
                 }

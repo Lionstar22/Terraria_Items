@@ -1,28 +1,34 @@
 package me.carson.terrariaItems.toolFolder;
 
 import me.carson.terrariaItems.toolFolder.tools.*;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ToolManager implements Listener {
-    private final List<Tool> toolItems = new ArrayList<>();
+    private final HashMap<String,Tool> toolList = new HashMap<>();
+    private final NamespacedKey toolKey;
 
     public ToolManager(Plugin plugin) {
-        toolItems.add(new Cosmolight(plugin));
-        toolItems.add(new MomentumCapacitor(plugin));
-        toolItems.add(new RodOfDiscord(plugin));
-        toolItems.add((new MagicMirror(plugin)));
-        toolItems.add((new LifeCrystal(plugin)));
-        toolItems.add((new TorrentialTear(plugin)));
-        toolItems.add((new ManaCrystal(plugin)));
+        toolKey = new NamespacedKey(plugin, "custom_item_id");
+
+        toolList.put("Cosmolight",new Cosmolight(plugin));
+        toolList.put("MomentumCapacitor",new MomentumCapacitor(plugin));
+        toolList.put("RodOfDiscord",new RodOfDiscord(plugin));
+        toolList.put("MagicMirror",new MagicMirror(plugin));
+        toolList.put("LifeCrystal",new LifeCrystal(plugin));
+        toolList.put("TorrentialTear",new TorrentialTear(plugin));
+        toolList.put("ManaCrystal",new ManaCrystal(plugin));
     }
 
     @EventHandler
@@ -33,16 +39,15 @@ public class ToolManager implements Listener {
         if (!heldItem.hasItemMeta()) return;
         Player player = event.getPlayer();
 
-        for (Tool item : toolItems) {
-            if (item.isThisItem(heldItem)) {
-                event.setCancelled(true);
-                if(!player.hasCooldown(heldItem)){
-                    item.rightActivate(player);
-                    player.setCooldown(heldItem, item.cooldown);
-                }else{
-                    item.cooldownEffect(player);
-                }
-            }
+        String toolId=heldItem.getItemMeta().getPersistentDataContainer().get(toolKey, PersistentDataType.STRING);
+        Tool tool = toolList.get(toolId);
+        if(tool==null){return;}
+
+        if(!player.hasCooldown(heldItem)){
+            tool.rightActivate(player);
+            player.setCooldown(heldItem, tool.cooldown);
+        }else{
+            tool.cooldownEffect(player);
         }
     }
 }

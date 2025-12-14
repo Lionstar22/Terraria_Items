@@ -20,7 +20,7 @@ public class AncientFossil extends Accessory {
 
     @Override
     public void activateEffect(Player player){
-        player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 120, 1, false, false,false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, -1, 1, false, false,false));
     }
 
     @Override

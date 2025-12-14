@@ -19,8 +19,8 @@ public class NeptunesShell extends Accessory {
 
     @Override
     public void activateEffect(Player player){
-        player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, 120, 0, false, false,false));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 120, 0, false, false,false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, -1, 0, false, false,false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, -1, 0, false, false,false));
     }
 
     @Override

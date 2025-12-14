@@ -3,10 +3,12 @@ package me.carson.terrariaItems.accesoryFolder;
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
@@ -14,6 +16,7 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
@@ -22,37 +25,31 @@ import java.util.List;
 import java.util.UUID;
 
 public class AccessoryManager implements Listener {
-    private final List<Accessory> accessoryItems = new ArrayList<>();
-    private final List<Accessory> effectAccessories = new ArrayList<>();
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
+    private final HashMap<String, Accessory> accessoryList = new HashMap<>();
+    private final NamespacedKey accessoryKey;
 
     public AccessoryManager(Plugin plugin) {
-        //Adds items to manager
-        accessoryItems.add(new Aglet(plugin));
-        accessoryItems.add(new ObsidianSkull(plugin));
-        accessoryItems.add(new RedBalloon(plugin));
-        accessoryItems.add(new BandOfRegeneration(plugin));
-        accessoryItems.add(new CloudInBottle(plugin));
-        accessoryItems.add(new LuckyHorseshoe(plugin));
-        accessoryItems.add(new CobaltShield(plugin));
-        accessoryItems.add(new CounterScarf(plugin));
-        accessoryItems.add(new AncientFossil(plugin));
-        accessoryItems.add(new NeptunesShell(plugin));
-        accessoryItems.add(new Bezoar(plugin));
-        accessoryItems.add(new Blindfold(plugin));
-        accessoryItems.add(new FastClock(plugin));
-        accessoryItems.add(new Vitamins(plugin));
-        accessoryItems.add(new WarriorEmblem(plugin));
-        accessoryItems.add(new RangerEmblem(plugin));
-        accessoryItems.add(new Shackle(plugin));
-        accessoryItems.add(new AvengerEmblem(plugin));
+        accessoryKey = new NamespacedKey(plugin, "custom_item_id");
 
-        effectAccessories.add(new Aglet(plugin));
-        effectAccessories.add(new ObsidianSkull(plugin));
-        effectAccessories.add(new RedBalloon(plugin));
-        effectAccessories.add(new BandOfRegeneration(plugin));
-        effectAccessories.add(new NeptunesShell(plugin));
-        effectAccessories.add(new AncientFossil(plugin));
+        accessoryList.put("Aglet",new Aglet(plugin));
+        accessoryList.put("ObsidianSkull",new ObsidianSkull(plugin));
+        accessoryList.put("RedBalloon",new RedBalloon(plugin));
+        accessoryList.put("BandOfRegeneration",new BandOfRegeneration(plugin));
+        accessoryList.put("CloudInBottle",new CloudInBottle(plugin));
+        accessoryList.put("LuckyHorseshoe",new LuckyHorseshoe(plugin));
+        accessoryList.put("CobaltShield",new CobaltShield(plugin));
+        accessoryList.put("CounterScarf",new CounterScarf(plugin));
+        accessoryList.put("AncientFossil",new AncientFossil(plugin));
+        accessoryList.put("NeptunesShell",new NeptunesShell(plugin));
+        accessoryList.put("Bezoar",new Bezoar(plugin));
+        accessoryList.put("Blindfold",new Blindfold(plugin));
+        accessoryList.put("FastClock",new FastClock(plugin));
+        accessoryList.put("Vitamins",new Vitamins(plugin));
+        accessoryList.put("WarriorEmblem",new WarriorEmblem(plugin));
+        accessoryList.put("RangerEmblem",new RangerEmblem(plugin));
+        accessoryList.put("Shackle",new Shackle(plugin));
+        accessoryList.put("AvengerEmblem",new AvengerEmblem(plugin));
 
         //Adds listeners for special cases
         Bukkit.getPluginManager().registerEvents(this, plugin);
@@ -70,29 +67,33 @@ public class AccessoryManager implements Listener {
         Bukkit.getPluginManager().registerEvents(new AvengerEmblem(plugin),plugin);
     }
 
-    public void startAccessoryTask(Plugin plugin) {
-        Bukkit.getScheduler().runTaskTimer(plugin, () -> {
-                for (Player player : Bukkit.getOnlinePlayers()) {
-                    for (ItemStack itemInv : player.getInventory().getContents()) {
-                        if (itemInv != null) {
-                            for (Accessory itemTool : effectAccessories) {
-                                if (itemTool.isThisItem(itemInv)&& itemTool.isActivated(itemInv)) {
-                                    itemTool.activateEffect(player);
-                                }
-                            }
-                        }
-                    }
-                }
-                }, 0L, 100L); // Runs every five seconds
+    public void deactivateItem(ItemStack itemChecked,Player player){
+        Accessory accessory=getAccessory(itemChecked);
+        if(accessory!=null){
+            accessory.deactivateEffect(player);
+            accessory.setActivated(itemChecked,false);
+        }
     }
 
-    public void deactivateItem(ItemStack itemChecked,Player player){
-        if (!itemChecked.hasItemMeta()) return;
-        for (Accessory item : accessoryItems) {
-            if (item.isThisItem(itemChecked)) {
-                item.deactivateEffect(player);
-                item.setActivated(itemChecked,false);
-            }
+    public void activateItem(ItemStack item,Player player){
+        Accessory accessory=getAccessory(item);
+        if(accessory!=null){
+            accessory.activateEffect(player);
+            accessory.setActivated(item,true);
+        }
+    }
+
+    public Accessory getAccessory(ItemStack item){
+        if(item==null|| !item.hasItemMeta()){return null;}
+        String accessoryId= item.getItemMeta().getPersistentDataContainer().get(accessoryKey, PersistentDataType.STRING);
+        return accessoryList.get(accessoryId);
+    }
+
+    @EventHandler
+    public void onDeath(PlayerDeathEvent event){
+        Inventory inv = event.getPlayer().getInventory();
+        for(ItemStack item:inv){
+            deactivateItem(item, event.getPlayer());
         }
     }
 
@@ -131,6 +132,7 @@ public class AccessoryManager implements Listener {
     public void onRightClick(PlayerInteractEvent event) {
         if (!(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
         Player player = event.getPlayer();
+        if(!player.isSneaking())return;
 
         //handles rapid clicks
         long currentTime = System.currentTimeMillis();
@@ -141,20 +143,16 @@ public class AccessoryManager implements Listener {
         }
         lastClickTime.put(player.getUniqueId(), currentTime);
 
-
-        if(!player.isSneaking())return;
         ItemStack heldItem= event.getItem();
         if (heldItem == null) return;
         if (!heldItem.hasItemMeta()) return;
-        for (Accessory item : accessoryItems) {
-            if (item.isThisItem(heldItem)) {
-                if(item.isActivated(heldItem)){
-                    item.setActivated(heldItem,false);
-                    break;
-                }else if(checkAmountActivated(player)){
-                    item.setActivated(heldItem,true);
-                    break;
-                }
+
+        Accessory accessory=getAccessory(heldItem);
+        if(accessory!=null) {
+            if(accessory.isActivated(heldItem)){
+                deactivateItem(heldItem,player);
+            }else if(checkAmountActivated(player)){
+                activateItem(heldItem,player);
             }
         }
     }
@@ -162,12 +160,9 @@ public class AccessoryManager implements Listener {
     public boolean checkAmountActivated(Player player){
         int counter=0;
         for (ItemStack itemInv : player.getInventory().getContents()) {
-            if (itemInv != null) {
-                for (Accessory itemTool : accessoryItems) {
-                    if (itemTool.isThisItem(itemInv)&& itemTool.isActivated(itemInv)) {
-                        counter++;
-                    }
-                }
+            Accessory accessory=getAccessory(itemInv);
+            if(accessory!=null&& accessory.isActivated(itemInv)){
+                counter++;
             }
         }
         if (counter >= 5){

@@ -16,12 +16,12 @@ import java.util.List;
 public class BandOfRegeneration extends Accessory implements Listener {
 
     public BandOfRegeneration(Plugin plugin){
-        super(plugin,"Band of Regeneration","#9696FF", Material.REDSTONE_BLOCK,"band_of_regeneration","Band",new ArrayList<>(List.of(ChatColor.GRAY+"Slowly regenerates life",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Band of Regeneration","#9696FF", Material.REDSTONE_BLOCK,"band_of_regeneration","BandOfRegeneration",new ArrayList<>(List.of(ChatColor.GRAY+"Slowly regenerates life",ChatColor.GRAY+"Shift Right Click to Activate")));
     }
 
     @Override
     public void activateEffect(Player player){
-        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 120, 0, false, false,false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, -1, 0, false, false,false));
     }
 
     @Override
