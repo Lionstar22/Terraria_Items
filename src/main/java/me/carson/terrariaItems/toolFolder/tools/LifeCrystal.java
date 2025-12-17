@@ -24,7 +24,7 @@ public class LifeCrystal extends Tool {
             player.setMaxHealth(newHealth);
             player.heal(2);
             player.playSound(player.getLocation(), "terraria:life_crystal_use", 0.5F, 1.0F);
-            player.getInventory().removeItem(player.getItemInHand());
+            player.getInventory().removeItem(LifeCrystal.getItem(plugin));
         }
     }
 
