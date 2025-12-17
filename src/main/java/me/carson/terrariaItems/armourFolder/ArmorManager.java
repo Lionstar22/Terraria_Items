@@ -3,6 +3,10 @@ package me.carson.terrariaItems.armourFolder;
 import io.papermc.paper.datacomponent.DataComponentTypes;
 import io.papermc.paper.datacomponent.item.Equippable;
 import me.carson.terrariaItems.armourFolder.armors.GoldenCrown;
+import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
+import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
+import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusHelmet;
+import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusLeggings;
 import me.carson.terrariaItems.armourFolder.armors.hallowedArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.moltenArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
@@ -36,10 +40,15 @@ public class ArmorManager implements Listener {
         armorItems.add(new HallowedChestplate(plugin));
         armorItems.add(new HallowedHelmet(plugin));
         armorItems.add(new HallowedElytra(plugin));
+        armorItems.add(new CactusHelmet(plugin));
+        armorItems.add(new CactusChestplate(plugin));
+        armorItems.add(new CactusLeggings(plugin));
+        armorItems.add(new CactusBoots(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new MoltenHelmet(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new HallowedHelmet(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new CactusHelmet(plugin), plugin);
     }
     /*
     @EventHandler

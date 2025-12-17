@@ -74,6 +74,9 @@ public class WeaponManager implements Listener {
 
         Player player = event.getPlayer();
 
+        ItemStack heldItem= event.getItem();
+        if(heldItem==null){return;}
+
         long currentTime = System.currentTimeMillis();
         long lastTime = lastClickTime.getOrDefault(player.getUniqueId(), 0L);
         if (currentTime - lastTime < 10) {
@@ -81,19 +84,21 @@ public class WeaponManager implements Listener {
         }
         lastClickTime.put(player.getUniqueId(), currentTime);
 
-        ItemStack heldItem= event.getItem();
-
         Weapon weapon= getWeapon(heldItem);
-        if(weapon!=null&&heldItem!=null){
+        if(weapon==null){return;}
+
+        if(!player.hasCooldown(heldItem)){
             weapon.leftActivate(player);
             player.setCooldown(heldItem, weapon.cooldown);
         }
+        event.setCancelled(true);
     }
 
     @EventHandler
     public void onRightClick(PlayerInteractEvent event) {
         if (!(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
         ItemStack heldItem= event.getItem();
+        if(heldItem==null){return;}
 
         Player player = event.getPlayer();
 
@@ -106,10 +111,13 @@ public class WeaponManager implements Listener {
         lastClickTime.put(player.getUniqueId(), currentTime);
 
         Weapon weapon= getWeapon(heldItem);
-        if(weapon!=null&&heldItem!=null){
+        if(weapon==null){return;}
+
+        if(!player.hasCooldown(heldItem)){
             weapon.rightActivate(player);
             player.setCooldown(heldItem, weapon.cooldown);
         }
+        event.setCancelled(true);
     }
 
     public Weapon getWeapon(ItemStack item){

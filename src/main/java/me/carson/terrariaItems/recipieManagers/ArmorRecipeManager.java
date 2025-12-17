@@ -1,5 +1,9 @@
 package me.carson.terrariaItems.recipieManagers;
 
+import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
+import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
+import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusHelmet;
+import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusLeggings;
 import me.carson.terrariaItems.armourFolder.armors.hallowedArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.moltenArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
@@ -38,6 +42,10 @@ public class ArmorRecipeManager {
         registerHallowedLeggingsRecipe();
         registerHallowedBootsRecipe();
         registerHallowedElytraRecipe();
+        registerCactusHelmetRecipe();
+        registerCactusChestplateRecipe();
+        registerCactusLeggingsRecipe();
+        registerCactusBootsRecipe();
     }
 
     private void registerShadowHelmetRecipe(){
@@ -174,6 +182,42 @@ public class ArmorRecipeManager {
         recipe.shape(" H ","HEH"," H ");
         recipe.setIngredient('H', HallowedBar.getItem(plugin));
         recipe.setIngredient('E', Material.ELYTRA);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerCactusHelmetRecipe(){
+        ItemStack item= CactusHelmet.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "CactusHelmet");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("CCC","C C","   ");
+        recipe.setIngredient('C', Material.CACTUS);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerCactusChestplateRecipe(){
+        ItemStack item= CactusChestplate.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "CactusChestplate");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("C C","CCC","CCC");
+        recipe.setIngredient('C', Material.CACTUS);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerCactusLeggingsRecipe(){
+        ItemStack item= CactusLeggings.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "CactusLeggings");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("CCC","C C","C C");
+        recipe.setIngredient('C', Material.CACTUS);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerCactusBootsRecipe(){
+        ItemStack item= CactusBoots.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "CactusBoots");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("   ","C C","C C");
+        recipe.setIngredient('C', Material.CACTUS);
         Bukkit.addRecipe(recipe);
     }
 }

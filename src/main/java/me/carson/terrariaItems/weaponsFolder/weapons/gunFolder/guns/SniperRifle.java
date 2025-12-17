@@ -20,7 +20,7 @@ import java.util.List;
 public class SniperRifle extends Gun implements Listener {
 
     public SniperRifle(Plugin plugin) {
-        super(plugin,"Sniper Rifle","#FFFF0A", Material.EMERALD,"sniper_rifle","SniperRifle",40,6,30,0,250, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots a powerful, high velocity bullet",ChatColor.GRAY+"Crouch to zoom",ChatColor.GRAY+"25 Damage")));
+        super(plugin,"Sniper Rifle","#FFFF0A", Material.EMERALD,"sniper_rifle","SniperRifle",40,6,30,0,250, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots a powerful, high velocity bullet",ChatColor.GRAY+"Crouch to zoom",ChatColor.GRAY+"30                                    Damage")));
     }
 
     @Override

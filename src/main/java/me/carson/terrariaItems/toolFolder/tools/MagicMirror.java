@@ -24,8 +24,9 @@ public class MagicMirror extends Tool {
         Location loc=player.getRespawnLocation();
         if(loc!=null){
             player.setFallDistance(0);
+            player.getWorld().playSound(player.getLocation(), "terraria:magic_mirror_use", 1.0F, 1.0F);
             player.teleport(loc, PlayerTeleportEvent.TeleportCause.PLUGIN);
-            player.playSound(player.getLocation(), "terraria:magic_mirror_use", 1.0F, 1.0F);
+            player.getWorld().playSound(player.getLocation(), "terraria:magic_mirror_use", 1.0F, 1.0F);
         }
 
     }

@@ -9,11 +9,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
@@ -112,6 +114,14 @@ public class AccessoryManager implements Listener {
         Inventory clickedInv = event.getClickedInventory();
         Inventory playerInv= player.getInventory();
 
+        if(event.getClick()==ClickType.SWAP_OFFHAND){
+            deactivateItem(event.getCurrentItem(),player);
+        }
+
+        if(event.getSlot()== 40){
+            deactivateItem(event.getCurrentItem(),player);
+        }
+
         // Manual placement
         if (clickedInv != null && clickedInv.equals(topInv)) {
             ItemStack cursor = event.getCursor();
@@ -155,6 +165,13 @@ public class AccessoryManager implements Listener {
                 activateItem(heldItem,player);
             }
         }
+    }
+
+    @EventHandler
+    public void onSwap(PlayerSwapHandItemsEvent event){
+        Player player = event.getPlayer();
+        deactivateItem(event.getOffHandItem(),player);
+        deactivateItem(event.getMainHandItem(),player);
     }
 
     public boolean checkAmountActivated(Player player){

@@ -138,11 +138,11 @@ public abstract class Projectile implements Listener {
                 }
                 if(result.getHitEntity()!=null){
                     if(result.getHitEntity() instanceof LivingEntity target){
-                        target.setNoDamageTicks(0);
                         target.setMaximumNoDamageTicks(0);
                         //DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(target).build();
                         target.damage((damage+weaponDamage),player);
                         hitEntityEffect(target);
+                        target.setMaximumNoDamageTicks(20);
                     }
                     if(enemiesHit[0] >=peirce) {
                         proj.remove();
