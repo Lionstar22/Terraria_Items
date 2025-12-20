@@ -74,6 +74,9 @@ public final class TerrariaItems extends JavaPlugin {
         Objects.requireNonNull(getCommand("tt")).setExecutor(ttCommand);
         Objects.requireNonNull(getCommand("tt")).setTabCompleter(ttCommand);
 
+        DatapackDownloader datapackDownloader=new DatapackDownloader(this);
+        datapackDownloader.downloadDatapack("https://github.com/CarsonWebb/Terraria_Items/releases/download/Textures/TerrariaDataPack.zip","TerrariaDataPack");
+
         //Mana stuff
         manaManager = new ManaManager(this);
 
