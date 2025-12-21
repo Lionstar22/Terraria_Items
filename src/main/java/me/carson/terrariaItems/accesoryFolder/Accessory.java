@@ -94,7 +94,19 @@ public abstract class Accessory {
     }
 
     public boolean hasItem(Player player,ItemStack item){
-        return player.getInventory().contains(item);
+        if(!player.getInventory().contains(item)){return false;}
+        for(ItemStack itemStack:player.getInventory().getStorageContents()){
+            return isThisItem(itemStack);
+        }
+        return false;
+    }
+
+    public ItemStack getItem(Player player){
+        if(!player.getInventory().contains(baseMaterial)){return null;}
+        for(ItemStack itemInv : player.getInventory().getContents()){
+            if(isThisItem(itemInv)){return itemInv;}
+        }
+        return null;
     }
 
     // Toggle the flag

@@ -21,9 +21,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 public class AccessoryManager implements Listener {
@@ -38,7 +36,7 @@ public class AccessoryManager implements Listener {
         accessoryList.put("ObsidianSkull",new ObsidianSkull(plugin));
         accessoryList.put("RedBalloon",new RedBalloon(plugin));
         accessoryList.put("BandOfRegeneration",new BandOfRegeneration(plugin));
-        accessoryList.put("CloudInBottle",new CloudInBottle(plugin));
+        accessoryList.put("CloudInABottle",new CloudInABottle(plugin));
         accessoryList.put("LuckyHorseshoe",new LuckyHorseshoe(plugin));
         accessoryList.put("CobaltShield",new CobaltShield(plugin));
         accessoryList.put("CounterScarf",new CounterScarf(plugin));
@@ -56,7 +54,7 @@ public class AccessoryManager implements Listener {
         //Adds listeners for special cases
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new LuckyHorseshoe(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new CloudInBottle(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new CloudInABottle(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new CobaltShield(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new CounterScarf(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new Bezoar(plugin),plugin);
@@ -67,6 +65,7 @@ public class AccessoryManager implements Listener {
         Bukkit.getPluginManager().registerEvents(new RangerEmblem(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new Shackle(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new AvengerEmblem(plugin),plugin);
+        Bukkit.getPluginManager().registerEvents(new AncientFossil(plugin),plugin);
     }
 
     public void deactivateItem(ItemStack itemChecked,Player player){

@@ -25,7 +25,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Silverfish;
 import org.bukkit.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 
@@ -75,7 +74,7 @@ public class TTCommand implements CommandExecutor, TabCompleter {
                         player.getInventory().addItem(plugin.stormbow.createItem());
                     }
                     case "cloud_bottle"-> {
-                        player.getInventory().addItem(CloudInBottle.getItem(plugin));
+                        player.getInventory().addItem(CloudInABottle.getItem(plugin));
                     }
                     case "aglet"-> {
                         player.getInventory().addItem(Aglet.getItem(plugin));

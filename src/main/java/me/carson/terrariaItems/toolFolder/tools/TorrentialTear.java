@@ -22,6 +22,7 @@ public class TorrentialTear extends Tool {
         World world =player.getWorld();
         boolean raining = world.hasStorm();
         world.setStorm(!raining);
+        player.getWorld().playSound(player.getLocation(), "terraria:wet_sound", 0.75f, 1f);
     }
 
     @Override
