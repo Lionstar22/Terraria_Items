@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.recipieManagers;
 
 import me.carson.terrariaItems.materialsFolder.materials.*;
+import me.carson.terrariaItems.materialsFolder.materials.bullets.BubonicRound;
 import me.carson.terrariaItems.materialsFolder.materials.bullets.EmptyBullet;
 import me.carson.terrariaItems.materialsFolder.materials.bullets.ExplodingBullet;
 import me.carson.terrariaItems.materialsFolder.materials.bullets.MusketBall;
@@ -31,6 +32,7 @@ public class MaterialRecipeManager implements Listener {
         registerMusketBallRecipe();
         registerEmptyBulletRecipe();
         registerExplodingBulletRecipe();
+        registerBubonicRoundRecipe();
     }
 
     private void registerDemoniteBarRecipe(){
@@ -117,6 +119,17 @@ public class MaterialRecipeManager implements Listener {
         Bukkit.addRecipe(recipe);
     }
 
+    private void registerBubonicRoundRecipe(){
+        ItemStack item= BubonicRound.getItem(plugin);
+        item.setAmount(50);
+        ItemStack emptyBullet=EmptyBullet.getItem(plugin);
+        emptyBullet.setAmount(8);
+        NamespacedKey key = new NamespacedKey(plugin, "BubonicRound");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(emptyBullet);
+        recipe.addIngredient(Material.WITHER_ROSE);
+        Bukkit.addRecipe(recipe);
+    }
 
 
 }

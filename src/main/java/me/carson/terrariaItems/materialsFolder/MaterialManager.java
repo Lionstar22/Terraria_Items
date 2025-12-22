@@ -2,6 +2,7 @@ package me.carson.terrariaItems.materialsFolder;
 
 
 import me.carson.terrariaItems.materialsFolder.materials.*;
+import me.carson.terrariaItems.materialsFolder.materials.bullets.BubonicRound;
 import me.carson.terrariaItems.materialsFolder.materials.bullets.ExplodingBullet;
 import me.carson.terrariaItems.materialsFolder.materials.bullets.MusketBall;
 import org.bukkit.Bukkit;
@@ -26,6 +27,7 @@ public class MaterialManager implements Listener {
 
         bulletItemList.put("MusketBall", MusketBall.getItem(plugin));
         bulletItemList.put("ExplodingBullet", ExplodingBullet.getItem(plugin));
+        bulletItemList.put("BubonicRound", BubonicRound.getItem(plugin));
 
         Bukkit.getPluginManager().registerEvents(new SoulOfMight(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new SoulOfSight(plugin), plugin);
