@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.materialsFolder.materials;
+package me.carson.terrariaItems.materialsFolder.materials.bullets;
 
 import me.carson.terrariaItems.materialsFolder.Material;
 import org.bukkit.ChatColor;
@@ -9,17 +9,18 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MusketBall extends Material {
+public class EmptyBullet extends Material {
 
-    public MusketBall(Plugin plugin) {
-        super(plugin,"Musket Ball","#FFFFFF", org.bukkit.Material.COPPER_NUGGET,"musket_ball","MusketBall", new ArrayList<>(List.of(ChatColor.GRAY+"Ammo for guns",ChatColor.GRAY+"2 Damage")));
+    public EmptyBullet(Plugin plugin) {
+        super(plugin,"Empty Bullet","#FFFFFF", org.bukkit.Material.GOLD_NUGGET,"empty_bullet","EmptyBullet", new ArrayList<>(List.of(ChatColor.GRAY+"Used to craft various types of ammo")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item =new MusketBall(plugin).createItem();
+        ItemStack item =new EmptyBullet(plugin).createItem();
         ItemMeta meta= item.getItemMeta();
         meta.setMaxStackSize(99);
         item.setItemMeta(meta);
         return item;
     }
+
 }

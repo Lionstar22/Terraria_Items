@@ -1,0 +1,27 @@
+package me.carson.terrariaItems.materialsFolder.materials.bullets;
+
+
+import me.carson.terrariaItems.materialsFolder.Material;
+import org.bukkit.ChatColor;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ExplodingBullet extends Material {
+
+    public ExplodingBullet(Plugin plugin) {
+        super(plugin,"Exploding Bullet","#FFC896", org.bukkit.Material.WHITE_DYE,"exploding_bullet","ExplodingBullet", new ArrayList<>(List.of(ChatColor.GRAY+"Explodes on impact",ChatColor.GRAY+"3 Damage")));
+    }
+
+    public static ItemStack getItem(Plugin plugin) {
+        ItemStack item =new ExplodingBullet(plugin).createItem();
+        ItemMeta meta= item.getItemMeta();
+        meta.setMaxStackSize(99);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+}

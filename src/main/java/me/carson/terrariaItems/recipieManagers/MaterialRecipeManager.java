@@ -1,6 +1,9 @@
 package me.carson.terrariaItems.recipieManagers;
 
 import me.carson.terrariaItems.materialsFolder.materials.*;
+import me.carson.terrariaItems.materialsFolder.materials.bullets.EmptyBullet;
+import me.carson.terrariaItems.materialsFolder.materials.bullets.ExplodingBullet;
+import me.carson.terrariaItems.materialsFolder.materials.bullets.MusketBall;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -26,6 +29,8 @@ public class MaterialRecipeManager implements Listener {
         registerHellstoneBarRecipe();
         registerHallowedBarRecipe();
         registerMusketBallRecipe();
+        registerEmptyBulletRecipe();
+        registerExplodingBulletRecipe();
     }
 
     private void registerDemoniteBarRecipe(){
@@ -82,13 +87,36 @@ public class MaterialRecipeManager implements Listener {
     }
 
     private void registerMusketBallRecipe(){
-        ItemStack bullet=MusketBall.getItem(plugin);
+        ItemStack bullet= MusketBall.getItem(plugin);
         bullet.setAmount(9);
         NamespacedKey key = new NamespacedKey(plugin, "MusketBall");
         ShapelessRecipe recipe = new ShapelessRecipe(key, bullet);
         recipe.addIngredient(Material.IRON_NUGGET);
         Bukkit.addRecipe(recipe);
     }
+
+    private void registerEmptyBulletRecipe(){
+        ItemStack item= EmptyBullet.getItem(plugin);
+        item.setAmount(8);
+        NamespacedKey key = new NamespacedKey(plugin, "EmptyBullet");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("   ","I I"," I ");
+        recipe.setIngredient('I', Material.IRON_NUGGET);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerExplodingBulletRecipe(){
+        ItemStack item= ExplodingBullet.getItem(plugin);
+        item.setAmount(50);
+        ItemStack emptyBullet=EmptyBullet.getItem(plugin);
+        emptyBullet.setAmount(8);
+        NamespacedKey key = new NamespacedKey(plugin, "ExplodingBullet");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(emptyBullet);
+        recipe.addIngredient(Material.GUNPOWDER);
+        Bukkit.addRecipe(recipe);
+    }
+
 
 
 }

@@ -1,18 +1,25 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns;
 
-import me.carson.terrariaItems.materialsFolder.materials.MusketBall;
-import me.carson.terrariaItems.projectilesFolder.projectiles.BulletProjectile;
+import me.carson.terrariaItems.materialsFolder.MaterialManager;
+import me.carson.terrariaItems.projectilesFolder.Projectile;
+import me.carson.terrariaItems.projectilesFolder.ProjectileManager;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.Gun;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Megashark extends Gun {
+
+    ProjectileManager projectileManagerInstance= ProjectileManager.getInstance();
+    MaterialManager materialManagerInstance = MaterialManager.getInstance();
+    NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
 
     public Megashark(Plugin plugin) {
         super(plugin,"Megashark","#FF96FF", Material.PRISMARINE_CRYSTALS,"megashark","Megashark",0,3,6,0.05f,100, new ArrayList<>(List.of(ChatColor.GRAY+"50% chance to save ammo",ChatColor.GRAY+"Minishark's older brother",ChatColor.GRAY+"6 Damage")));
@@ -25,13 +32,16 @@ public class Megashark extends Gun {
 
     @Override
     public void rightActivate(Player player) {
-        for (ItemStack itemInv : player.getInventory().getStorageContents()) {
-            if (new MusketBall(plugin).isThisItem(itemInv)) {
-                if(Math.random()<0.5){
-                    player.getInventory().removeItem(MusketBall.getItem(plugin));
+        ItemStack bullet;
+        for(ItemStack itemInv : player.getInventory().getStorageContents()){
+            if(materialManagerInstance.getBulletItem(itemInv)!=null){
+                bullet=materialManagerInstance.getBulletItem(itemInv);
+                Projectile projectile = projectileManagerInstance.getBullet(bullet.getItemMeta().getPersistentDataContainer().get(key, PersistentDataType.STRING));
+                projectile.createProjectile(player,speed,damage,spread,duration);
+                if(Math.random()>0.5){
+                    player.getInventory().removeItem(bullet);
                 }
                 player.getWorld().playSound(player.getLocation(),"terraria:gun_shoot", 1.0F, 1.0F);
-                new BulletProjectile(plugin).createProjectile(player,speed,damage,spread,duration);
                 break;
             }
         }

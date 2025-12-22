@@ -1,10 +1,13 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns;
 
-import me.carson.terrariaItems.materialsFolder.materials.MusketBall;
+import me.carson.terrariaItems.materialsFolder.MaterialManager;
+import me.carson.terrariaItems.materialsFolder.materials.bullets.MusketBall;
+import me.carson.terrariaItems.projectilesFolder.ProjectileManager;
 import me.carson.terrariaItems.projectilesFolder.projectiles.NeedlerProjectile;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.Gun;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -13,6 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Needler extends Gun {
+
+    ProjectileManager projectileManagerInstance= ProjectileManager.getInstance();
+    MaterialManager materialManagerInstance = MaterialManager.getInstance();
+    NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
 
     public Needler(Plugin plugin) {
         super(plugin,"Needler","#FF9696", Material.STICK,"needler","Needler",10,2.5f,6,0,75, new ArrayList<>(List.of(ChatColor.GRAY+"Converts musket balls into poison needles",ChatColor.GRAY+"6 Damage")));

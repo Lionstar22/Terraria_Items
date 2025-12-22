@@ -24,7 +24,6 @@ public final class TerrariaItems extends JavaPlugin {
     Stormbow stormbow;
     private ManaManager manaManager;
 
-
     @Override
     public void onEnable() {
         stormbow=new Stormbow(this);
@@ -33,8 +32,12 @@ public final class TerrariaItems extends JavaPlugin {
         //aManager.startAccessoryTask(this);
 
         ToolManager tManager=new ToolManager(this);
-        MaterialManager materialManager=new MaterialManager(this);
+
+        MaterialManager materialManager = new MaterialManager(this);
+        MaterialManager.initialize(this);
+
         ProjectileManager projectileManager=new ProjectileManager(this);
+        ProjectileManager.initialize(this);
 
         ArmorManager armorManager = new ArmorManager(this);
         armorManager.startArmorTask(this);

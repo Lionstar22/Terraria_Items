@@ -18,7 +18,7 @@ public class Material {
     protected final String rarity;
     protected final org.bukkit.Material baseMaterial;
     protected final String texture;
-    protected final String id;
+    public final String id;
     protected final ArrayList<String> lore;
     private final NamespacedKey customItemKey;
     private final NamespacedKey unplaceableKey;
