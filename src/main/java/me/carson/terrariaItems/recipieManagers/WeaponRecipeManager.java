@@ -1,9 +1,6 @@
 package me.carson.terrariaItems.recipieManagers;
 
-import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
-import me.carson.terrariaItems.materialsFolder.materials.HallowedBar;
-import me.carson.terrariaItems.materialsFolder.materials.HellstoneBar;
-import me.carson.terrariaItems.materialsFolder.materials.Ruby;
+import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
@@ -46,6 +43,8 @@ public class WeaponRecipeManager {
         registerAmethystStaffRecipe();
         registerRubyStaffRecipe();
         registerIcicleStaffRecipe();
+        registerStarCannonRecipe();
+        registerSuperStarShooterRecipe();
     }
 
     private void registerLightsBaneRecipe(){
@@ -291,6 +290,27 @@ public class WeaponRecipeManager {
         recipe.setIngredient('W',Material.WATER_BUCKET);
         recipe.setIngredient('D',Material.DIAMOND);
         recipe.setIngredient('B',Material.BOOK);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerStarCannonRecipe(){
+        ItemStack item= StarCannon.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "StarCannon");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("SSS","CMC","SSS");
+        recipe.setIngredient('S', FallenStar.getItem(plugin));
+        recipe.setIngredient('C',Material.MAGMA_CREAM);
+        recipe.setIngredient('M',Minishark.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerSuperStarShooterRecipe(){
+        ItemStack item= SuperStarShooter.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "SuperStarShooter");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape(" H ","HSH"," H ");
+        recipe.setIngredient('H', HallowedBar.getItem(plugin));
+        recipe.setIngredient('S',StarCannon.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 

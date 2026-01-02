@@ -32,7 +32,7 @@ public class RodOfDiscord extends Tool implements Listener {
         RayTraceResult result = player.getWorld().rayTraceBlocks(
                 player.getEyeLocation(),
                 player.getEyeLocation().getDirection(),
-                150,
+                250,
                 FluidCollisionMode.NEVER,
                 true
         );
