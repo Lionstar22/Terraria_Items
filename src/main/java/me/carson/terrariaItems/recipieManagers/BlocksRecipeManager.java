@@ -1,6 +1,5 @@
 package me.carson.terrariaItems.recipieManagers;
 
-import me.carson.terrariaItems.armourFolder.armors.shadowArmor.ShadowHelmet;
 import me.carson.terrariaItems.blocksFolder.blocks.Hellforge;
 import me.carson.terrariaItems.materialsFolder.materials.Hellstone;
 import org.bukkit.Bukkit;

@@ -9,25 +9,19 @@ import me.carson.terrariaItems.projectilesFolder.ProjectileManager;
 import me.carson.terrariaItems.recipieManagers.*;
 import me.carson.terrariaItems.toolFolder.ToolManager;
 import me.carson.terrariaItems.weaponsFolder.WeaponManager;
-import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.Stormbow;
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitTask;
 
 import java.util.Objects;
 
 public final class TerrariaItems extends JavaPlugin {
 
-    Stormbow stormbow;
     private ManaManager manaManager;
 
     @Override
     public void onEnable() {
-        stormbow=new Stormbow(this);
-
         AccessoryManager aManager = new AccessoryManager(this);
         //aManager.startAccessoryTask(this);
 

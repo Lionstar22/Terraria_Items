@@ -12,7 +12,7 @@ import java.util.List;
 public class BubonicRound extends Material {
 
     public BubonicRound(Plugin plugin) {
-        super(plugin,"Bubonic Round","#FFFF0A", org.bukkit.Material.WHITE_DYE,"bubonic_round","BubonicRound", new ArrayList<>(List.of(ChatColor.GRAY+"Spreads the plague on hit",ChatColor.GRAY+"5 Damage")));
+        super(plugin,"Bubonic Round","#FFFF0A", org.bukkit.Material.GRAY_DYE,"bubonic_round","BubonicRound", new ArrayList<>(List.of(ChatColor.GRAY+"Spreads the plague on hit",ChatColor.GRAY+"5 Damage")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

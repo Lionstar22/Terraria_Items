@@ -16,7 +16,7 @@ import java.util.UUID;
 public class AmethystStaff extends Magic {
 
     public AmethystStaff(Plugin plugin) {
-        super(plugin,"Amethyst Staff","#FFFFFF", Material.RAW_COPPER,"amethyst_staff","AmethystStaff",15,1,4,0,50,5, new ArrayList<>(List.of(ChatColor.GRAY+"Fires a amethyst bolt",ChatColor.GRAY+"Costs 5 Mana",ChatColor.GRAY+"4 Damage")));
+        super(plugin,"Amethyst Staff","#FFFFFF", Material.AMETHYST_SHARD,"amethyst_staff","AmethystStaff",15,1,4,0,50,5, new ArrayList<>(List.of(ChatColor.GRAY+"Fires a amethyst bolt",ChatColor.GRAY+"Costs 5 Mana",ChatColor.GRAY+"4 Damage")));
     }
 
     @Override

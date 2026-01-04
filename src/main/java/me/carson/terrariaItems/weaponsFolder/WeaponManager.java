@@ -3,6 +3,7 @@ package me.carson.terrariaItems.weaponsFolder;
 import me.carson.terrariaItems.accesoryFolder.Accessory;
 import me.carson.terrariaItems.projectilesFolder.projectiles.Meteor;
 import me.carson.terrariaItems.toolFolder.Tool;
+import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.DaedalusStormbow;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.HallowedRepeater;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.MoltenFury;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
@@ -60,6 +61,7 @@ public class WeaponManager implements Listener {
         weaponList.put("IcicleStaff",new IcicleStaff(plugin));
         weaponList.put("StarCannon",new StarCannon(plugin));
         weaponList.put("SuperStarShooter",new SuperStarShooter(plugin));
+        weaponList.put("DaedalusStormbow",new DaedalusStormbow(plugin));
 
 
         Bukkit.getPluginManager().registerEvents(this, plugin);

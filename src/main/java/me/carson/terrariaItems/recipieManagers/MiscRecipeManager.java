@@ -1,6 +1,5 @@
 package me.carson.terrariaItems.recipieManagers;
 
-import me.carson.terrariaItems.accesoryFolder.accessories.Blindfold;
 import me.carson.terrariaItems.materialsFolder.materials.HallowedBar;
 import me.carson.terrariaItems.miscFolder.BasicItems.*;
 import org.bukkit.Bukkit;

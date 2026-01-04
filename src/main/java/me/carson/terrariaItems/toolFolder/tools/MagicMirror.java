@@ -15,7 +15,7 @@ import java.util.List;
 public class MagicMirror extends Tool {
 
     public MagicMirror(Plugin plugin){
-        super(plugin,"Magic Mirror","#9696FF", Material.GLASS,"magic_mirror","MagicMirror",20,new ArrayList<>(List.of(
+        super(plugin,"Magic Mirror","#9696FF", Material.LIGHT_GRAY_DYE,"magic_mirror","MagicMirror",20,new ArrayList<>(List.of(
                 ChatColor.GRAY+"Gaze in the mirror to return home")));
     }
 

@@ -19,6 +19,6 @@ public class MusketBallProjectile extends Projectile {
 
     @Override
     public void hitBlockEffect(Block block) {
-
+        block.getWorld().playSound(block.getLocation(), "terraria:impact_1", 0.5F, 1.0F);
     }
 }

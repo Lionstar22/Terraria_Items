@@ -1,6 +1,5 @@
 package me.carson.terrariaItems.recipieManagers;
 
-import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.Ruby;
 import me.carson.terrariaItems.toolFolder.tools.*;

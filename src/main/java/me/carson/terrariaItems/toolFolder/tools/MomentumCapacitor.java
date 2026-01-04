@@ -15,7 +15,7 @@ import java.util.List;
 public class MomentumCapacitor extends Tool implements Listener {
 
     public MomentumCapacitor(Plugin plugin){
-        super(plugin,"Momentum Capacitor","#FF96FF",Material.HEAVY_CORE,"momentum_capacitor","MomentumCapacitor",0,new ArrayList<>(List.of(
+        super(plugin,"Momentum Capacitor","#FF96FF",Material.BLUE_DYE,"momentum_capacitor","MomentumCapacitor",0,new ArrayList<>(List.of(
                 ChatColor.GRAY+"Accelerates your horizontal speed")));
     }
 

@@ -16,6 +16,7 @@ import me.carson.terrariaItems.materialsFolder.materials.SoulOfMight;
 import me.carson.terrariaItems.miscFolder.BasicItems.PickaxeAxe;
 import me.carson.terrariaItems.musicFolder.musicDiscs.CatastrophesBeforeTheCalamity;
 import me.carson.terrariaItems.toolFolder.tools.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.DaedalusStormbow;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.HallowedRepeater;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.MoltenFury;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
@@ -73,7 +74,7 @@ public class TTCommand implements CommandExecutor, TabCompleter {
                         player.getInventory().addItem(MomentumCapacitor.getItem(plugin));
                     }
                     case "stormbow"-> {
-                        player.getInventory().addItem(plugin.stormbow.createItem());
+                        player.getInventory().addItem(DaedalusStormbow.getItem(plugin));
                     }
                     case "cloud_bottle"-> {
                         player.getInventory().addItem(CloudInABottle.getItem(plugin));

@@ -14,7 +14,7 @@ import java.util.List;
 public class TorrentialTear extends Tool {
 
     public TorrentialTear(Plugin plugin){
-        super(plugin,"Torrential Tear","#FF96FF", Material.GHAST_TEAR,"torrential_tear","TorrentialTear",100,new ArrayList<>(List.of(ChatColor.GRAY+"Toggles Rain")));
+        super(plugin,"Torrential Tear","#FF96FF", Material.NAUTILUS_SHELL,"torrential_tear","TorrentialTear",100,new ArrayList<>(List.of(ChatColor.GRAY+"Toggles Rain")));
     }
 
     @Override
