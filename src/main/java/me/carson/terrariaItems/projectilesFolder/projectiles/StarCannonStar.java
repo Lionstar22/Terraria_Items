@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 public class StarCannonStar extends Projectile {
 
     public StarCannonStar(Plugin plugin) {
-        super(plugin, 0,  "fallen_star", "StarCannonStar",99,0, DamageType.PLAYER_ATTACK);
+        super(plugin, 0,  "fallen_star", "StarCannonStar",99,0, DamageType.ARROW);
     }
 
     @Override

@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -18,10 +17,10 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WarriorEmblem extends Accessory implements Listener {
+public class SorcererEmblem extends Accessory implements Listener {
 
-    public WarriorEmblem(Plugin plugin){
-        super(plugin,"Warrior Emblem","#FF9696", Material.GOLD_INGOT,"warrior_emblem","WarriorEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased melee damage",ChatColor.GRAY+"Shift Right Click to Activate")));
+    public SorcererEmblem(Plugin plugin){
+        super(plugin,"Sorcerer Emblem","#FF9696", Material.GOLD_INGOT,"sorcerer_emblem","SorcererEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased magic damage",ChatColor.GRAY+"Shift Right Click to Activate")));
     }
 
     @Override
@@ -35,29 +34,29 @@ public class WarriorEmblem extends Accessory implements Listener {
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        return new WarriorEmblem(plugin).createItem();
+        return new SorcererEmblem(plugin).createItem();
     }
 
     @EventHandler
     public void onMobDeath(EntityDeathEvent e) {
         LivingEntity entity = e.getEntity();
-        if (entity.getType() != EntityType.WITHER_SKELETON){return;}
+        if (entity.getType() != EntityType.EVOKER){return;}
 
-        if(Math.random()<0.05){
-            ItemStack custom = WarriorEmblem.getItem(plugin);
+        if(Math.random()<0.1){
+            ItemStack custom = SorcererEmblem.getItem(plugin);
             e.getDrops().add(custom);
         }
     }
 
     @EventHandler
-    public void onMeleeDamage(EntityDamageByEntityEvent event) {
+    public void onMagicDamage(EntityDamageByEntityEvent event) {
         if (!(event.getDamager() instanceof Player player)) return;
         DamageType type = event.getDamageSource().getDamageType();
-        if (type != DamageType.PLAYER_ATTACK) return;
+        if (type != DamageType.MAGIC) return;
 
         for (ItemStack itemInv : player.getInventory().getContents()) {
-            if (WarriorEmblem.this.isThisItem(itemInv)) {
-                if (WarriorEmblem.this.isActivated(itemInv)){
+            if (SorcererEmblem.this.isThisItem(itemInv)) {
+                if (SorcererEmblem.this.isActivated(itemInv)){
                     double boostedDamage = event.getDamage() * 1.2;
                     event.setDamage(boostedDamage);
                     break;
@@ -65,4 +64,5 @@ public class WarriorEmblem extends Accessory implements Listener {
             }
         }
     }
+
 }

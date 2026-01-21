@@ -48,8 +48,10 @@ public class AccessoryManager implements Listener {
         accessoryList.put("Vitamins",new Vitamins(plugin));
         accessoryList.put("WarriorEmblem",new WarriorEmblem(plugin));
         accessoryList.put("RangerEmblem",new RangerEmblem(plugin));
+        accessoryList.put("SorcererEmblem",new SorcererEmblem(plugin));
         accessoryList.put("Shackle",new Shackle(plugin));
         accessoryList.put("AvengerEmblem",new AvengerEmblem(plugin));
+        accessoryList.put("NightVisionHelmet",new NightVisionHelmet(plugin));
 
         //Adds listeners for special cases
         Bukkit.getPluginManager().registerEvents(this, plugin);
@@ -63,6 +65,7 @@ public class AccessoryManager implements Listener {
         Bukkit.getPluginManager().registerEvents(new Vitamins(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new WarriorEmblem(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new RangerEmblem(plugin),plugin);
+        Bukkit.getPluginManager().registerEvents(new SorcererEmblem(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new Shackle(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new AvengerEmblem(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new AncientFossil(plugin),plugin);

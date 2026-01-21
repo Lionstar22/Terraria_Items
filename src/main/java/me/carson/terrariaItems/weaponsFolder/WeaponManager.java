@@ -11,17 +11,21 @@ import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords.*;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.damage.DamageType;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.entity.SpectralArrow;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.projectiles.ProjectileSource;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -129,10 +133,23 @@ public class WeaponManager implements Listener {
         String weaponId= item.getItemMeta().getPersistentDataContainer().get(weaponKey, PersistentDataType.STRING);
         return weaponList.get(weaponId);
     }
-    /*
+
+
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event){
-        Bukkit.getLogger().info("Damage: "+event.getDamage());
+        if(!(event.getDamager() instanceof Player player)){return;}
+        player.sendMessage(""+event.getDamage());
     }
-    */
+
+
+    @EventHandler
+    public void onRangedDamage(EntityDamageByEntityEvent event){
+        if(!(event.getDamager() instanceof Projectile projectile)){return;}
+        ProjectileSource source = projectile.getShooter();
+        if(source instanceof Player player){
+            player.sendMessage(""+event.getDamage());
+        }
+    }
+
+
 }

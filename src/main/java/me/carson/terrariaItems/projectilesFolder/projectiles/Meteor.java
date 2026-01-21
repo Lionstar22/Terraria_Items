@@ -13,7 +13,7 @@ import org.bukkit.plugin.Plugin;
 public class Meteor extends Projectile implements Listener {
 
     public Meteor(Plugin plugin) {
-        super(plugin, 0,  "meteor", "Meteor",0,0, DamageType.PLAYER_ATTACK);
+        super(plugin, 0,  "meteor", "Meteor",0,0, DamageType.MAGIC);
     }
 
 

@@ -3,6 +3,7 @@ package me.carson.terrariaItems.projectilesFolder;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.damage.DamageSource;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.*;
 import org.bukkit.event.Listener;
@@ -139,8 +140,8 @@ public abstract class Projectile implements Listener {
                 if(result.getHitEntity()!=null){
                     if(result.getHitEntity() instanceof LivingEntity target){
                         target.setMaximumNoDamageTicks(0);
-                        //DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(target).build();
-                        target.damage((damage+weaponDamage),player);
+                        DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
+                        target.damage((damage+weaponDamage),source);
                         hitEntityEffect(target);
                         target.setMaximumNoDamageTicks(20);
                     }

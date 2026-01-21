@@ -3,9 +3,11 @@ package me.carson.terrariaItems.accesoryFolder.accessories;
 import me.carson.terrariaItems.accesoryFolder.Accessory;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.damage.DamageType;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -13,6 +15,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.projectiles.ProjectileSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,15 +53,30 @@ public class RangerEmblem extends Accessory implements Listener {
 
     @EventHandler
     public void onMeleeDamage(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player player)) return;
-        if (event.getCause() != EntityDamageEvent.DamageCause.PROJECTILE) return;
-
-        for (ItemStack itemInv : player.getInventory().getContents()) {
-            if (RangerEmblem.this.isThisItem(itemInv)) {
-                if (RangerEmblem.this.isActivated(itemInv)){
-                    double boostedDamage = event.getDamage() * 1.2;
-                    event.setDamage(boostedDamage);
-                    break;
+        if(event.getDamager() instanceof Projectile projectile) {
+            ProjectileSource source = projectile.getShooter();
+            if (!(source instanceof Player player)) {return;}
+            for (ItemStack itemInv : player.getInventory().getContents()) {
+                if (RangerEmblem.this.isThisItem(itemInv)) {
+                    if (RangerEmblem.this.isActivated(itemInv)) {
+                        double boostedDamage = event.getDamage() * 1.2;
+                        event.setDamage(boostedDamage);
+                        break;
+                    }
+                }
+            }
+        }
+        else if(event.getDamager() instanceof Player player){
+            DamageType type = event.getDamageSource().getDamageType();
+            if(type==DamageType.ARROW){
+                for (ItemStack itemInv : player.getInventory().getContents()) {
+                    if (RangerEmblem.this.isThisItem(itemInv)) {
+                        if (RangerEmblem.this.isActivated(itemInv)){
+                            double boostedDamage = event.getDamage() * 1.2;
+                            event.setDamage(boostedDamage);
+                            break;
+                        }
+                    }
                 }
             }
         }

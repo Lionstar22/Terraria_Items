@@ -21,6 +21,7 @@ public class WeaponRecipeManager {
 
     public void registerRecipes() {
         registerLightsBaneRecipe();
+        registerDaedalusStormbowRecipe();
         registerVolcanoRecipe();
         registerMoltenFury();
         registerExcaliburRecipe();
@@ -56,6 +57,18 @@ public class WeaponRecipeManager {
         recipe.setIngredient('S',Material.STICK);
         Bukkit.addRecipe(recipe);
     }
+
+    private void registerDaedalusStormbowRecipe(){
+        ItemStack item= DaedalusStormbow.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "DaedalusStormbow");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("FFF","SBS","FFF");
+        recipe.setIngredient('B',Material.BOW);
+        recipe.setIngredient('F',Material.FEATHER);
+        recipe.setIngredient('S',SoulOfMight.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
 
     private void registerVolcanoRecipe(){
         ItemStack volcano = Volcano.getItem(plugin);

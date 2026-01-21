@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 public class RubyBolt extends Projectile {
 
     public RubyBolt(Plugin plugin) {
-        super(plugin, 0,  "ruby_bolt", "RubyBolt",1,0, DamageType.PLAYER_ATTACK);
+        super(plugin, 0,  "ruby_bolt", "RubyBolt",1,0, DamageType.MAGIC);
     }
 
 

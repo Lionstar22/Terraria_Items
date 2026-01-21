@@ -32,6 +32,7 @@ public class AccessoryRecipeManager {
         registerFastClockRecipe();
         registerVitaminsRecipe();
         registerAvengerEmblemRecipe();
+        registerNightVisionHelmetRecipe();
     }
 
     private void registerAgletRecipe(){
@@ -161,14 +162,24 @@ public class AccessoryRecipeManager {
     }
 
     private void registerAvengerEmblemRecipe(){
-        ItemStack avenger=AvengerEmblem.getItem(plugin);
+        ItemStack item=AvengerEmblem.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "AvengerEmblem");
-        ShapelessRecipe recipe = new ShapelessRecipe(key, avenger);
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
         recipe.addIngredient(SoulOfMight.getItem(plugin));
         recipe.addIngredient(SoulOfSight.getItem(plugin));
         recipe.addIngredient(SoulOfFright.getItem(plugin));
         recipe.addIngredient(WarriorEmblem.getItem(plugin));
         recipe.addIngredient(RangerEmblem.getItem(plugin));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerNightVisionHelmetRecipe(){
+        ItemStack item=NightVisionHelmet.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "NightVisionHelmet");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("DDD","DCD","   ");
+        recipe.setIngredient('D', Material.DIAMOND);
+        recipe.setIngredient('C', Material.GOLDEN_CARROT);
         Bukkit.addRecipe(recipe);
     }
 }
