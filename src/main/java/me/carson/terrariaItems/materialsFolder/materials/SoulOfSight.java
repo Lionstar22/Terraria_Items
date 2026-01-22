@@ -26,7 +26,6 @@ public class SoulOfSight extends Material implements Listener {
 
     @EventHandler
     public void onMobDeath(EntityDeathEvent event) {
-        Bukkit.getLogger().info("DEATH EVENT");
         LivingEntity entity = event.getEntity();
         if (entity.getType() != EntityType.WARDEN){return;}
         int drops=20 + (int)(Math.random() * 11);

@@ -31,7 +31,7 @@ public class CloudInABottle extends Accessory implements Listener {
     @EventHandler
     public void onRightClick(PlayerInteractEvent event) {
         if (event.getItem() == null) return;
-        if (!(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
+        if (!(event.getAction() == Action.RIGHT_CLICK_AIR)) return;
         Player player = event.getPlayer();
         ItemStack glass = player.getInventory().getItemInMainHand();
         double height=player.getLocation().getY();

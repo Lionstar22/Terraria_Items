@@ -23,7 +23,7 @@ import java.util.List;
 public class RangerEmblem extends Accessory implements Listener {
 
     public RangerEmblem(Plugin plugin){
-        super(plugin,"Ranger Emblem","#FF9696", Material.GOLD_INGOT,"ranger_emblem","RangerEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased ranged damage",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Ranger Emblem","#FF9696", Material.GOLD_NUGGET,"ranger_emblem","RangerEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased ranged damage",ChatColor.GRAY+"Shift Right Click to Activate")));
     }
 
     @Override

@@ -21,7 +21,7 @@ import java.util.List;
 public class WarriorEmblem extends Accessory implements Listener {
 
     public WarriorEmblem(Plugin plugin){
-        super(plugin,"Warrior Emblem","#FF9696", Material.GOLD_INGOT,"warrior_emblem","WarriorEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased melee damage",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Warrior Emblem","#FF9696", Material.GOLD_NUGGET,"warrior_emblem","WarriorEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased melee damage",ChatColor.GRAY+"Shift Right Click to Activate")));
     }
 
     @Override

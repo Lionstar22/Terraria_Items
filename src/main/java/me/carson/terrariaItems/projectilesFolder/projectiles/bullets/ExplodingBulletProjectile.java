@@ -19,7 +19,7 @@ public class ExplodingBulletProjectile extends Projectile {
 
     @Override
     public void hitBlockEffect(Block block) {
-        block.getWorld().createExplosion(block.getLocation().add(0,1,0), 0.5F, false, false);
+        block.getWorld().createExplosion(block.getLocation().add(0.5,1.1f,0.5), 0.5F, false, false);
     }
 
 }

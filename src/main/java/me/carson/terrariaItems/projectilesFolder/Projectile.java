@@ -62,7 +62,6 @@ public abstract class Projectile implements Listener {
         proj.getPersistentDataContainer().set(key, PersistentDataType.INTEGER,1);
         proj.setInterpolationDuration(3);
         proj.setTeleportDuration(1);
-
         moveProj(player,speed,weaponDamage,duration,proj,dir);
 
     }

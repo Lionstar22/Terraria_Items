@@ -20,7 +20,7 @@ import java.util.List;
 public class SorcererEmblem extends Accessory implements Listener {
 
     public SorcererEmblem(Plugin plugin){
-        super(plugin,"Sorcerer Emblem","#FF9696", Material.GOLD_INGOT,"sorcerer_emblem","SorcererEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased magic damage",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Sorcerer Emblem","#FF9696", Material.GOLD_NUGGET,"sorcerer_emblem","SorcererEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased magic damage",ChatColor.GRAY+"Shift Right Click to Activate")));
     }
 
     @Override

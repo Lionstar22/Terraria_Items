@@ -16,7 +16,7 @@ import java.util.List;
 public class CobaltShield extends Accessory implements Listener {
 
     public CobaltShield(Plugin plugin){
-        super(plugin,"Cobalt Shield","#96FF96", Material.LAPIS_BLOCK,"cobalt_shield","CobaltShield",
+        super(plugin,"Cobalt Shield","#96FF96", Material.LAPIS_LAZULI,"cobalt_shield","CobaltShield",
                 new ArrayList<>(List.of(
                         ChatColor.GRAY+"Grants immunity to knockback",
                         ChatColor.GRAY+"Shift Right Click to Activate")));
