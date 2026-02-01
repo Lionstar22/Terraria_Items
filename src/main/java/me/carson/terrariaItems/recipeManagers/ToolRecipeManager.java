@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.recipieManagers;
+package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.Ruby;

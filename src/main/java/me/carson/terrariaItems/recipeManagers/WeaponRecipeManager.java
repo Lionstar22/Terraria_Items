@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.recipieManagers;
+package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;

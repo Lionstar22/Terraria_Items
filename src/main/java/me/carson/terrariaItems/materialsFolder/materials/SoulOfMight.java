@@ -24,7 +24,7 @@ public class SoulOfMight extends Material implements Listener {
     }
 
     @EventHandler
-    public void onMobDeath(EntityDeathEvent event) {
+    public void onDragonDeath(EntityDeathEvent event) {
         LivingEntity entity = event.getEntity();
         if (entity.getType() != EntityType.ENDER_DRAGON){return;}
         int drops=20 + (int)(Math.random() * 11);

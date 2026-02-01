@@ -24,7 +24,7 @@ public class SoulOfFright extends Material implements Listener {
     }
 
     @EventHandler
-    public void onMobDeath(EntityDeathEvent event) {
+    public void onWitherDeath(EntityDeathEvent event) {
         LivingEntity entity = event.getEntity();
         if (entity.getType() != EntityType.WITHER){return;}
         int drops=20 + (int)(Math.random() * 11);

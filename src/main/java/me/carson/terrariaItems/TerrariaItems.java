@@ -6,14 +6,18 @@ import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.armourFolder.ArmorManager;
 import me.carson.terrariaItems.materialsFolder.MaterialManager;
 import me.carson.terrariaItems.projectilesFolder.ProjectileManager;
-import me.carson.terrariaItems.recipieManagers.*;
+import me.carson.terrariaItems.recipeManagers.*;
 import me.carson.terrariaItems.toolFolder.ToolManager;
 import me.carson.terrariaItems.weaponsFolder.WeaponManager;
+import org.bukkit.Bukkit;
+import org.bukkit.World;
+import org.bukkit.entity.ItemDisplay;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.List;
 import java.util.Objects;
 
 public final class TerrariaItems extends JavaPlugin {
@@ -27,10 +31,8 @@ public final class TerrariaItems extends JavaPlugin {
 
         ToolManager tManager=new ToolManager(this);
 
-        MaterialManager materialManager = new MaterialManager(this);
         MaterialManager.initialize(this);
 
-        ProjectileManager projectileManager=new ProjectileManager(this);
         ProjectileManager.initialize(this);
 
         ArmorManager armorManager = new ArmorManager(this);
@@ -44,12 +46,12 @@ public final class TerrariaItems extends JavaPlugin {
         accessoryRecipeManager.registerRecipes();
         ToolRecipeManager toolRecipeManager = new ToolRecipeManager(this);
         toolRecipeManager.registerRecipes();
-        MaterialRecipeManager materialRecipieManager = new MaterialRecipeManager(this);
-        materialRecipieManager.registerRecipes();
-        WeaponRecipeManager weaponRecipieManager = new WeaponRecipeManager(this);
-        weaponRecipieManager.registerRecipes();
-        ArmorRecipeManager armorRecipieManager=new ArmorRecipeManager(this);
-        armorRecipieManager.registerRecipes();
+        MaterialRecipeManager materialRecipeManager = new MaterialRecipeManager(this);
+        materialRecipeManager.registerRecipes();
+        WeaponRecipeManager weaponRecipeManager = new WeaponRecipeManager(this);
+        weaponRecipeManager.registerRecipes();
+        ArmorRecipeManager armorRecipeManager=new ArmorRecipeManager(this);
+        armorRecipeManager.registerRecipes();
         BlocksRecipeManager blocksRecipeManager=new BlocksRecipeManager(this);
         blocksRecipeManager.registerRecipes();
         MiscRecipeManager miscRecipeManager=new MiscRecipeManager(this);
@@ -57,11 +59,9 @@ public final class TerrariaItems extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(aManager, this);
         getServer().getPluginManager().registerEvents(tManager, this);
-        getServer().getPluginManager().registerEvents(materialManager, this);
         getServer().getPluginManager().registerEvents(armorManager, this);
         getServer().getPluginManager().registerEvents(weaponManager, this);
         getServer().getPluginManager().registerEvents(customBlockManager, this);
-        getServer().getPluginManager().registerEvents(projectileManager, this);
         getServer().getPluginManager().registerEvents(new ResourcePackHandler(), this);
 
         TTCommand ttCommand = new TTCommand(this);
@@ -87,11 +87,24 @@ public final class TerrariaItems extends JavaPlugin {
 
         manaManager.startManaRegen(this);
         manaManager.startFallingStartTask(this);
+
     }
 
     @Override
     public void onDisable() {
+        cleanUpProjectiles();
         manaManager.getInstance().save();
+    }
+
+    public void cleanUpProjectiles(){
+        for (World world : Bukkit.getWorlds()) {
+            if (world.getEnvironment() == World.Environment.NORMAL) {
+                List<ItemDisplay> itemDisplays = (List<ItemDisplay>) world.getEntitiesByClass(ItemDisplay.class);
+                for (ItemDisplay display : itemDisplays) {
+                    display.remove();
+                }
+            }
+        }
     }
 
     public ManaManager getManaManager() {

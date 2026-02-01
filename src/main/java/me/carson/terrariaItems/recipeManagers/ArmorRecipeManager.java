@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.recipieManagers;
+package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;

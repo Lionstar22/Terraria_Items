@@ -40,6 +40,7 @@ public class MaterialManager implements Listener {
         return bulletItemList.get(accessoryId);
     }
 
+
     public static void initialize(JavaPlugin plugin) {
         instance = new MaterialManager(plugin);
     }

@@ -1,6 +1,5 @@
 package me.carson.terrariaItems;
 
-import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.projectilesFolder.projectiles.FallingStar;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
@@ -29,7 +28,7 @@ public class ManaManager {
     private final Map<UUID, Double> manaDelay = new HashMap<>();
 
     public ManaManager(Plugin plugin) {
-        file = new File(plugin.getDataFolder(), "mana.yml");
+        file = new File(plugin.getDataFolder(), "playerData.yml");
         if (!file.exists()) {
             try { file.createNewFile(); } catch (IOException e) { e.printStackTrace(); }
         }
@@ -40,8 +39,8 @@ public class ManaManager {
         for (String key : config.getKeys(false)) {
             UUID uuid = UUID.fromString(key);
 
-            double current = config.getDouble(key + ".current", getMana(uuid));
-            double max = config.getDouble(key + ".max", getMaxMana(uuid));
+            double current = config.getDouble(key + ".current_mana", getMana(uuid));
+            double max = config.getDouble(key + ".max_mana", getMaxMana(uuid));
 
             currentMana.put(uuid, current);
             maxMana.put(uuid, max);
@@ -115,9 +114,12 @@ public class ManaManager {
     public void startFallingStartTask(Plugin plugin){
         Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                if (Math.random() < 0.25&& (player.getWorld().getEnvironment() == World.Environment.NORMAL) && isNight(player.getWorld())) {
-                    new FallingStar(plugin).starFall(player);
+                if(player.getLocation().getY()>45){
+                    if (Math.random() < 0.25&& (player.getWorld().getEnvironment() == World.Environment.NORMAL) && isNight(player.getWorld())) {
+                        new FallingStar(plugin).starFall(player);
+                    }
                 }
+
             }
         }, 0L, 300);
     }
