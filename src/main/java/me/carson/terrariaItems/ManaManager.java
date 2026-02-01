@@ -80,8 +80,8 @@ public class ManaManager {
 
     public void save() {
         for (UUID uuid : currentMana.keySet()) {
-            config.set(uuid.toString() + ".current", currentMana.get(uuid));
-            config.set(uuid.toString() + ".max", maxMana.get(uuid));
+            config.set(uuid.toString() + ".current_mana", currentMana.get(uuid));
+            config.set(uuid.toString() + ".max_mana", maxMana.get(uuid));
         }
 
         try {
