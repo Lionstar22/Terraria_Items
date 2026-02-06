@@ -1,8 +1,7 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons;
 
-import me.carson.terrariaItems.ManaManager;
+import me.carson.terrariaItems.listenersHandler.ManaManager;
 import me.carson.terrariaItems.projectilesFolder.projectiles.Icicle;
-import me.carson.terrariaItems.projectilesFolder.projectiles.Meteor;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.Magic;
 import org.bukkit.ChatColor;
 import org.bukkit.FluidCollisionMode;

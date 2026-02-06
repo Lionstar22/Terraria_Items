@@ -1,4 +1,4 @@
-package me.carson.terrariaItems;
+package me.carson.terrariaItems.listenersHandler;
 
 import me.carson.terrariaItems.projectilesFolder.projectiles.FallingStar;
 import net.kyori.adventure.text.Component;
@@ -7,6 +7,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,10 +26,10 @@ public class ManaManager {
 
     // In-memory player data
     private final Map<UUID, Double> currentMana = new HashMap<>();
-    private final Map<UUID, Double> maxMana = new HashMap<>();
     private final Map<UUID, Double> manaDelay = new HashMap<>();
 
     public ManaManager(Plugin plugin) {
+
         file = new File(plugin.getDataFolder(), "playerData.yml");
         if (!file.exists()) {
             try { file.createNewFile(); } catch (IOException e) { e.printStackTrace(); }
@@ -35,16 +37,14 @@ public class ManaManager {
 
         config = YamlConfiguration.loadConfiguration(file);
 
-        // Load existing player mana
         for (String key : config.getKeys(false)) {
             UUID uuid = UUID.fromString(key);
 
             double current = config.getDouble(key + ".current_mana", getMana(uuid));
-            double max = config.getDouble(key + ".max_mana", getMaxMana(uuid));
 
             currentMana.put(uuid, current);
-            maxMana.put(uuid, max);
         }
+
     }
 
     public Double getMana(UUID uuid) {
@@ -57,17 +57,8 @@ public class ManaManager {
     }
 
     public Double getMaxMana(UUID uuid) {
-        return maxMana.getOrDefault(uuid, 20.0);
-    }
-
-    public void setMaxMana(UUID uuid, double amount) {
-        maxMana.put(uuid, amount);
-
-        // Ensure current mana is not above new max
-        double current = getMana(uuid);
-        if (current > amount) {
-            currentMana.put(uuid, amount);
-        }
+        PlayerDataHandler instance= PlayerDataHandler.getInstance();
+        return instance.getMaxMana(uuid);
     }
 
     public void addMana(UUID uuid, double amount) {
@@ -76,19 +67,6 @@ public class ManaManager {
 
     public void removeMana(UUID uuid, double amount) {
         setMana(uuid, getMana(uuid) - amount);
-    }
-
-    public void save() {
-        for (UUID uuid : currentMana.keySet()) {
-            config.set(uuid.toString() + ".current_mana", currentMana.get(uuid));
-            config.set(uuid.toString() + ".max_mana", maxMana.get(uuid));
-        }
-
-        try {
-            config.save(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void startManaRegen(Plugin plugin){

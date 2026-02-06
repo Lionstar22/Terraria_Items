@@ -10,6 +10,8 @@ import me.carson.terrariaItems.armourFolder.armors.hallowedArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.moltenArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
 import me.carson.terrariaItems.blocksFolder.blocks.Hellforge;
+import me.carson.terrariaItems.listenersHandler.MessageHandler;
+import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.SoulOfMight;
@@ -34,11 +36,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class TTCommand implements CommandExecutor, TabCompleter {
+public class TICommand implements CommandExecutor, TabCompleter {
 
     private final TerrariaItems plugin;
 
-    public TTCommand(TerrariaItems plugin) {
+    public TICommand(TerrariaItems plugin) {
         this.plugin = plugin;
     }
 
@@ -50,14 +52,14 @@ public class TTCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length == 0) {
-            player.sendMessage("§eUsage: /tt <subcommand>");
+            player.sendMessage("§eUsage: /ti <subcommand>");
             return true;
         }
 
         switch (args[0].toLowerCase()) {
             case "give" -> {
                 if (args.length < 2) {
-                    player.sendMessage("§cUsage: /tt give <item>");
+                    player.sendMessage("§cUsage: /ti give <item>");
                     return true;
                 }
 
@@ -276,6 +278,11 @@ public class TTCommand implements CommandExecutor, TabCompleter {
                     default -> player.sendMessage("§cUnknown item: " + itemName);
                 }
             }
+            case "toggle_message"->{
+                PlayerDataHandler playerData= PlayerDataHandler.getInstance();
+                playerData.toggleMsg(player.getUniqueId());
+                playerData.save();
+            }
         }
 
         return true;
@@ -287,7 +294,7 @@ public class TTCommand implements CommandExecutor, TabCompleter {
 
         if (args.length == 1) {
             // First argument: subcommands
-            List<String> subCommands = Arrays.asList("give");
+            List<String> subCommands = Arrays.asList("give","toggle_message");
             StringUtil.copyPartialMatches(args[0], subCommands, completions);
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
             // Second argument: item names

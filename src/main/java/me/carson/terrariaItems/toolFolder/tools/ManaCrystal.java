@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.toolFolder.tools;
 
-import me.carson.terrariaItems.ManaManager;
+import me.carson.terrariaItems.listenersHandler.ManaManager;
+import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
 import me.carson.terrariaItems.toolFolder.Tool;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -21,12 +22,14 @@ public class ManaCrystal extends Tool {
 
     @Override
     public void rightActivate(Player player) {
-        ManaManager instance = ManaManager.getInstance();
+        PlayerDataHandler playerDataInstance = PlayerDataHandler.getInstance();
+        ManaManager manaInstance = ManaManager.getInstance();
         UUID id =player.getUniqueId();
-        if(instance.getMaxMana(id)<200.00){
-            instance.setMaxMana(id,instance.getMaxMana(id)+20);
+        if(playerDataInstance.getMaxMana(id)<200.00){
+            playerDataInstance.setMaxMana(id,playerDataInstance.getMaxMana(id)+20);
             player.getInventory().removeItem(ManaCrystal.getItem(plugin));
-            instance.updateManaBar(player);
+            manaInstance.updateManaBar(player);
+            playerDataInstance.save();
         }
         player.getWorld().playSound(player.getLocation(), "terraria:mana_crystal_use", 1.0F, 1.0F);
     }

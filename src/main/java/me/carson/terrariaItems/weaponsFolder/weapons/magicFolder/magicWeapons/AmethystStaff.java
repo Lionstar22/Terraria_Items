@@ -1,6 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons;
 
-import me.carson.terrariaItems.ManaManager;
+import me.carson.terrariaItems.listenersHandler.ManaManager;
 import me.carson.terrariaItems.projectilesFolder.projectiles.AmethystBolt;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.Magic;
 import org.bukkit.ChatColor;

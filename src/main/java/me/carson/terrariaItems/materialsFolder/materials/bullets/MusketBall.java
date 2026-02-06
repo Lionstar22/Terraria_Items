@@ -12,7 +12,7 @@ import java.util.List;
 public class MusketBall extends Material {
 
     public MusketBall(Plugin plugin) {
-        super(plugin,"Musket Ball","#FFFFFF", org.bukkit.Material.COPPER_NUGGET,"musket_ball","MusketBall", new ArrayList<>(List.of(ChatColor.GRAY+"Ammo for guns",ChatColor.GRAY+"2 Damage")));
+        super(plugin,"Musket Ball","#FFFFFF", org.bukkit.Material.GRAY_DYE,"musket_ball","MusketBall", new ArrayList<>(List.of(ChatColor.GRAY+"Ammo for guns",ChatColor.GRAY+"2 Damage")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

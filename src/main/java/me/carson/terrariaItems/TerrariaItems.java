@@ -12,9 +12,6 @@ import me.carson.terrariaItems.weaponsFolder.WeaponManager;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.ItemDisplay;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
@@ -22,10 +19,13 @@ import java.util.Objects;
 
 public final class TerrariaItems extends JavaPlugin {
 
-    private ManaManager manaManager;
+    //private ManaManager manaManagerInstance;
 
     @Override
     public void onEnable() {
+        PlayerDataHandler.initialize(this);
+        PlayerDataHandler playerDataHandler=PlayerDataHandler.getInstance();
+
         AccessoryManager aManager = new AccessoryManager(this);
         //aManager.startAccessoryTask(this);
 
@@ -63,37 +63,30 @@ public final class TerrariaItems extends JavaPlugin {
         getServer().getPluginManager().registerEvents(weaponManager, this);
         getServer().getPluginManager().registerEvents(customBlockManager, this);
         getServer().getPluginManager().registerEvents(new ResourcePackHandler(), this);
+        getServer().getPluginManager().registerEvents(new MessageHandler(this), this);
 
-        TTCommand ttCommand = new TTCommand(this);
+        TICommand tiCommand = new TICommand(this);
         new CustomCraftingListener(this);
         getServer().getPluginManager().registerEvents(new ItemPlaceListener(this), this);
 
-        Objects.requireNonNull(getCommand("tt")).setExecutor(ttCommand);
-        Objects.requireNonNull(getCommand("tt")).setTabCompleter(ttCommand);
+        Objects.requireNonNull(getCommand("ti")).setExecutor(tiCommand);
+        Objects.requireNonNull(getCommand("ti")).setTabCompleter(tiCommand);
 
-
-        //Mana stuff
-        manaManager = new ManaManager(this);
-
-        // Save mana on shutdown
-        getServer().getPluginManager().registerEvents(new Listener() {
-            @EventHandler
-            public void onQuit(PlayerQuitEvent event) {
-                manaManager.save();
-            }
-        }, this);
-
+        //MessageHandler.initialize(this);
         ManaManager.initialize(this);
 
-        manaManager.startManaRegen(this);
-        manaManager.startFallingStartTask(this);
+        ManaManager manaManagerInstance=ManaManager.getInstance();
+
+        manaManagerInstance.startManaRegen(this);
+        manaManagerInstance.startFallingStartTask(this);
+
 
     }
 
     @Override
     public void onDisable() {
         cleanUpProjectiles();
-        manaManager.getInstance().save();
+        PlayerDataHandler.getInstance().save();
     }
 
     public void cleanUpProjectiles(){
@@ -107,7 +100,4 @@ public final class TerrariaItems extends JavaPlugin {
         }
     }
 
-    public ManaManager getManaManager() {
-        return manaManager;
-    }
 }
