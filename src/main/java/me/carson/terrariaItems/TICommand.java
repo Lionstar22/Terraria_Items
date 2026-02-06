@@ -23,6 +23,7 @@ import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.MoltenFury;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords.*;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -60,6 +61,10 @@ public class TICommand implements CommandExecutor, TabCompleter {
             case "give" -> {
                 if (args.length < 2) {
                     player.sendMessage("§cUsage: /ti give <item>");
+                    return true;
+                }
+                if (!player.hasPermission("terrariaitems.sub.give")) {
+                    player.sendMessage(ChatColor.RED+"You do not have permission to use /ti give.");
                     return true;
                 }
 

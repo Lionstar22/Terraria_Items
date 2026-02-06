@@ -11,10 +11,10 @@ commands:
 permissions:
   terrariaitems.ti:
     description: Allows access to /ti command
-    default: not op
+    default: true
   terrariaitems.sub.give:
     description: Terraria Items Commands
     default: op
   terrariaitems.sub.toggle_message:
     description: Terraria Items Commands
-    default: not op
+    default: true
