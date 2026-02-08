@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.toolFolder;
 
 import me.carson.terrariaItems.toolFolder.tools.*;
+import me.carson.terrariaItems.toolFolder.tools.crates.*;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -29,6 +30,14 @@ public class ToolManager implements Listener {
         toolList.put("LifeCrystal",new LifeCrystal(plugin));
         toolList.put("TorrentialTear",new TorrentialTear(plugin));
         toolList.put("ManaCrystal",new ManaCrystal(plugin));
+        toolList.put("WoodenCrate",new WoodenCrate(plugin));
+        toolList.put("IronCrate",new IronCrate(plugin));
+        toolList.put("GoldenCrate",new GoldenCrate(plugin));
+        toolList.put("FrozenCrate",new FrozenCrate(plugin));
+        toolList.put("JungleCrate",new JungleCrate(plugin));
+        toolList.put("OasisCrate",new OasisCrate(plugin));
+        toolList.put("OceanCrate",new OceanCrate(plugin));
+        toolList.put("SkyCrate",new SkyCrate(plugin));
     }
 
     @EventHandler

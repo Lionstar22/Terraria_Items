@@ -42,6 +42,8 @@ public final class TerrariaItems extends JavaPlugin {
 
         CustomBlockManager customBlockManager=new CustomBlockManager(this);
 
+        FishingManager fishingManager=new FishingManager(this);
+
         AccessoryRecipeManager accessoryRecipeManager = new AccessoryRecipeManager(this);
         accessoryRecipeManager.registerRecipes();
         ToolRecipeManager toolRecipeManager = new ToolRecipeManager(this);
@@ -64,6 +66,7 @@ public final class TerrariaItems extends JavaPlugin {
         getServer().getPluginManager().registerEvents(customBlockManager, this);
         getServer().getPluginManager().registerEvents(new ResourcePackHandler(), this);
         getServer().getPluginManager().registerEvents(new MessageHandler(this), this);
+        getServer().getPluginManager().registerEvents(fishingManager, this);
 
         TICommand tiCommand = new TICommand(this);
         new CustomCraftingListener(this);
