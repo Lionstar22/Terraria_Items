@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.accesoryFolder;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
+import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -28,6 +29,7 @@ public class AccessoryManager implements Listener {
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
     private final HashMap<String, Accessory> accessoryList = new HashMap<>();
     private final NamespacedKey accessoryKey;
+    private final PlayerDataHandler instance = PlayerDataHandler.getInstance();
 
     public AccessoryManager(Plugin plugin) {
         accessoryKey = new NamespacedKey(plugin, "custom_item_id");
@@ -52,6 +54,13 @@ public class AccessoryManager implements Listener {
         accessoryList.put("Shackle",new Shackle(plugin));
         accessoryList.put("AvengerEmblem",new AvengerEmblem(plugin));
         accessoryList.put("NightVisionHelmet",new NightVisionHelmet(plugin));
+        accessoryList.put("TsunamiInABottle",new TsunamiInABottle(plugin));
+        accessoryList.put("AnkletOfTheWind",new AnkletOfTheWind(plugin));
+        accessoryList.put("BlizzardInABottle",new BlizzardInABottle(plugin));
+        accessoryList.put("SandstormInABottle",new SandstormInABottle(plugin));
+        accessoryList.put("AncientChisel",new AncientChisel(plugin));
+        accessoryList.put("Flipper",new Flipper(plugin));
+
 
         //Adds listeners for special cases
         Bukkit.getPluginManager().registerEvents(this, plugin);
@@ -69,21 +78,31 @@ public class AccessoryManager implements Listener {
         Bukkit.getPluginManager().registerEvents(new Shackle(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new AvengerEmblem(plugin),plugin);
         Bukkit.getPluginManager().registerEvents(new AncientFossil(plugin),plugin);
+        Bukkit.getPluginManager().registerEvents(new TsunamiInABottle(plugin),plugin);
+        Bukkit.getPluginManager().registerEvents(new BlizzardInABottle(plugin),plugin);
+        Bukkit.getPluginManager().registerEvents(new SandstormInABottle(plugin),plugin);
     }
 
     public void deactivateItem(ItemStack itemChecked,Player player){
         Accessory accessory=getAccessory(itemChecked);
         if(accessory!=null){
-            accessory.deactivateEffect(player);
-            accessory.setActivated(itemChecked,false);
+            if(accessory.isActivated(itemChecked)){
+                accessory.deactivateEffect(player);
+                accessory.setActivated(itemChecked,false);
+                instance.removeAccessory(player);
+            }
+
         }
     }
 
     public void activateItem(ItemStack item,Player player){
         Accessory accessory=getAccessory(item);
         if(accessory!=null){
-            accessory.activateEffect(player);
-            accessory.setActivated(item,true);
+            if(!accessory.isActivated(item)){
+                accessory.activateEffect(player);
+                accessory.setActivated(item,true);
+                instance.addAccessory(player);
+            }
         }
     }
 
@@ -177,13 +196,7 @@ public class AccessoryManager implements Listener {
     }
 
     public boolean checkAmountActivated(Player player){
-        int counter=0;
-        for (ItemStack itemInv : player.getInventory().getContents()) {
-            Accessory accessory=getAccessory(itemInv);
-            if(accessory!=null&& accessory.isActivated(itemInv)){
-                counter++;
-            }
-        }
+        int counter=instance.getAccessoryCount(player.getUniqueId());
         if (counter >= 5){
             player.sendMessage(ChatColor.RED+"Can not have more than 5 active Accessories");
         }

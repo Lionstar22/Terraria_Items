@@ -59,7 +59,7 @@ public final class TerrariaItems extends JavaPlugin {
         MiscRecipeManager miscRecipeManager=new MiscRecipeManager(this);
         miscRecipeManager.registerRecipes();
 
-        getServer().getPluginManager().registerEvents(aManager, this);
+        //getServer().getPluginManager().registerEvents(aManager, this);
         getServer().getPluginManager().registerEvents(tManager, this);
         getServer().getPluginManager().registerEvents(armorManager, this);
         getServer().getPluginManager().registerEvents(weaponManager, this);

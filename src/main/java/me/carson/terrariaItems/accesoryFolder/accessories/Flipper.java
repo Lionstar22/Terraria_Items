@@ -12,24 +12,24 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NeptunesShell extends Accessory {
-    public NeptunesShell(Plugin plugin){
-        super(plugin,"Neptune's Shell","#FF96FF", Material.DEAD_FIRE_CORAL,"neptunes_shell","NeptunesShell",new ArrayList<>(List.of(ChatColor.GRAY+"Can breathe and move easily underwater",ChatColor.GRAY+"Shift Right Click to Activate")));
+public class Flipper extends Accessory {
+
+    public Flipper(Plugin plugin){
+        super(plugin,"Flipper","#9696FF", Material.NAUTILUS_SHELL,"flipper","Flipper",new ArrayList<>(List.of(ChatColor.GRAY+"Grants the ability to swim faster",ChatColor.GRAY+"Shift Right Click to Activate")));
     }
 
     @Override
     public void activateEffect(Player player){
-        player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, -1, 0, false, false,false));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, -1, 1, false, false,false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, -1, 0, false, false,false));
     }
 
     @Override
     public void deactivateEffect(Player player) {
         player.removePotionEffect(PotionEffectType.DOLPHINS_GRACE);
-        player.removePotionEffect(PotionEffectType.WATER_BREATHING);
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        return new NeptunesShell(plugin).createItem();
+        return new Flipper(plugin).createItem();
     }
+
 }

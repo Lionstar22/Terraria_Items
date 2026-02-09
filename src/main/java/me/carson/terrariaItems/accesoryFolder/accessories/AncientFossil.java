@@ -26,7 +26,7 @@ public class AncientFossil extends Accessory implements Listener {
 
     @Override
     public void activateEffect(Player player){
-        player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, -1, 1, false, false,false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, -1, 0, false, false,false));
     }
 
     @Override

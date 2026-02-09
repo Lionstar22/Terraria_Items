@@ -1,44 +1,28 @@
 package me.carson.terrariaItems.accesoryFolder.accessories;
 
-import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import me.carson.terrariaItems.accesoryFolder.Accessory;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInputEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CloudInABottle extends Accessory implements Listener {
+public class TsunamiInABottle extends Accessory implements Listener {
 
     private boolean jumped=false;
 
-    public CloudInABottle(Plugin plugin){
-        super(plugin,"Cloud in a Bottle","#9696FF",Material.FIREWORK_STAR,"cloud_in_a_bottle","CloudInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to double jump", ChatColor.GRAY+"Shift Right Click to Activate")));
-    }
-
-    @EventHandler
-    public void onRightClick(PlayerInteractEvent event) {
-        if (event.getItem() == null) return;
-        if (!(event.getAction() == Action.RIGHT_CLICK_AIR)) return;
-        Player player = event.getPlayer();
-        ItemStack glass = player.getInventory().getItemInMainHand();
-        double height=player.getLocation().getY();
-        if(glass.getType() == Material.GLASS_BOTTLE&&((height>=180)&&(height<=200))){
-            glass.setAmount(glass.getAmount() - 1);
-            player.getInventory().addItem(createItem());
-        }
+    public TsunamiInABottle(Plugin plugin){
+        super(plugin,"Tsunami In A Bottle","#9696FF", Material.FIREWORK_STAR,"tsunami_in_a_bottle","TsunamiInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to double jump", ChatColor.GRAY+"Shift Right Click to Activate")));
     }
 
     @Override
@@ -61,9 +45,9 @@ public class CloudInABottle extends Accessory implements Listener {
         ItemStack item=getItem(player);
         if(item==null){ return;}
         if(!isActivated(item)){return;}
-        player.setVelocity(player.getVelocity().setY(0.5));
+        player.setVelocity(player.getVelocity().setY(0.6));
         player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
-        player.getWorld().spawnParticle(org.bukkit.Particle.CLOUD, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
+        player.getWorld().spawnParticle(Particle.BUBBLE, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
         jumped=true;
     }
 
@@ -76,6 +60,7 @@ public class CloudInABottle extends Accessory implements Listener {
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        return new CloudInABottle(plugin).createItem();
+        return new TsunamiInABottle(plugin).createItem();
     }
+
 }

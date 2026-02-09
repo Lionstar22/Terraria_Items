@@ -3,6 +3,7 @@ package me.carson.terrariaItems.toolFolder.tools.crates;
 import me.carson.terrariaItems.accesoryFolder.accessories.Aglet;
 import me.carson.terrariaItems.toolFolder.Tool;
 import me.carson.terrariaItems.toolFolder.tools.LifeCrystal;
+import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords.EnchantedSword;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -30,19 +31,19 @@ public class GoldenCrate extends Tool {
         double chance=Math.random();
 
         if(chance<0.13){//treasure loot table
-            player.getInventory().addItem(LifeCrystal.getItem(plugin));
+            player.getWorld().dropItemNaturally(player.getLocation(),LifeCrystal.getItem(plugin));
         }
         if(chance<0.2){//ore loot table
             int gold = ThreadLocalRandom.current().nextInt(25, 35);
-            player.getInventory().addItem(new ItemStack(Material.RAW_GOLD,gold));
+            player.getWorld().dropItemNaturally(player.getLocation(),new ItemStack(Material.RAW_GOLD,gold));
             int lapis = ThreadLocalRandom.current().nextInt(25, 35);
-            player.getInventory().addItem(new ItemStack(Material.LAPIS_LAZULI,lapis));
+            player.getWorld().dropItemNaturally(player.getLocation(),new ItemStack(Material.LAPIS_LAZULI,lapis));
         }
         if(chance<0.27){//Ingot Loot table
             int iron = ThreadLocalRandom.current().nextInt(8, 12);
-            player.getInventory().addItem(new ItemStack(Material.IRON_INGOT,iron));
+            player.getWorld().dropItemNaturally(player.getLocation(),new ItemStack(Material.IRON_INGOT,iron));
             int diamond = ThreadLocalRandom.current().nextInt(8, 12);
-            player.getInventory().addItem(new ItemStack(Material.DIAMOND,diamond));
+            player.getWorld().dropItemNaturally(player.getLocation(),new ItemStack(Material.DIAMOND,diamond));
         }
         if(chance<0.33){//Potion loot table
             int x =ThreadLocalRandom.current().nextInt(1, 5);
@@ -58,14 +59,17 @@ public class GoldenCrate extends Tool {
                 }
             }
             potion.setItemMeta(meta);
-            player.getInventory().addItem(potion);
+            player.getWorld().dropItemNaturally(player.getLocation(),potion);
         }
         if(chance<0.5){//Health Potion loot table
             ItemStack potion = new ItemStack(Material.POTION);
             PotionMeta meta = (PotionMeta) potion.getItemMeta();
             meta.setBasePotionType(PotionType.STRONG_HEALING);
             potion.setItemMeta(meta);
-            player.getInventory().addItem(potion);
+            player.getWorld().dropItemNaturally(player.getLocation(),potion);
+        }
+        if(chance<0.1){//Misc Loot table
+            player.getWorld().dropItemNaturally(player.getLocation(),EnchantedSword.getItem(plugin));
         }
 
     }

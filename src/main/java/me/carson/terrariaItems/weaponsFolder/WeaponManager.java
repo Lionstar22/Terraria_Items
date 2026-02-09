@@ -58,6 +58,11 @@ public class WeaponManager implements Listener {
         weaponList.put("StarCannon",new StarCannon(plugin));
         weaponList.put("SuperStarShooter",new SuperStarShooter(plugin));
         weaponList.put("DaedalusStormbow",new DaedalusStormbow(plugin));
+        weaponList.put("EnchantedSword",new EnchantedSword(plugin));
+        weaponList.put("FalconBlade",new FalconBlade(plugin));
+        weaponList.put("Boomstick",new Boomstick(plugin));
+        weaponList.put("Starfury",new Starfury(plugin));
+        weaponList.put("ThunderZapper",new ThunderZapper(plugin));
 
 
         Bukkit.getPluginManager().registerEvents(this, plugin);

@@ -292,6 +292,9 @@ public class TICommand implements CommandExecutor, TabCompleter {
                     case "frozen_crate"-> {
                         player.getInventory().addItem(FrozenCrate.getItem(plugin));
                     }
+                    case "sky_crate"-> {
+                        player.getInventory().addItem(SkyCrate.getItem(plugin));
+                    }
                     case "jungle_crate"-> {
                         player.getInventory().addItem(JungleCrate.getItem(plugin));
                     }
@@ -301,11 +304,27 @@ public class TICommand implements CommandExecutor, TabCompleter {
                     case "ocean_crate"-> {
                         player.getInventory().addItem(OceanCrate.getItem(plugin));
                     }
-                    case "sky_crate"-> {
-                        player.getInventory().addItem(SkyCrate.getItem(plugin));
+                    case "falcon_blade"-> {
+                        player.getInventory().addItem(FalconBlade.getItem(plugin));
                     }
-
-
+                    case "enchanted_sword"-> {
+                        player.getInventory().addItem(EnchantedSword.getItem(plugin));
+                    }
+                    case "tsunami_in_a_bottle"-> {
+                        player.getInventory().addItem(TsunamiInABottle.getItem(plugin));
+                    }
+                    case "anklet_of_the_wind"-> {
+                        player.getInventory().addItem(AnkletOfTheWind.getItem(plugin));
+                    }
+                    case "blizzard_in_a_bottle"-> {
+                        player.getInventory().addItem(BlizzardInABottle.getItem(plugin));
+                    }
+                    case "sandstorm_in_a_bottle"-> {
+                        player.getInventory().addItem(SandstormInABottle.getItem(plugin));
+                    }
+                    case "thunder_zapper"-> {
+                        player.getInventory().addItem(ThunderZapper.getItem(plugin));
+                    }
 
                     default -> player.sendMessage("§cUnknown item: " + itemName);
                 }
@@ -330,7 +349,7 @@ public class TICommand implements CommandExecutor, TabCompleter {
             StringUtil.copyPartialMatches(args[0], subCommands, completions);
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
             // Second argument: item names
-            List<String> items = Arrays.asList("Cosmolight","warrior_emblem","wooden_crate","iron_crate","golden_crate","oasis_crate","sky_crate","ocean_crate","jungle_crate","frozen_crate","sorcerer_emblem","super_star_shooter","star_cannon","fallen_star","cactus_armor","terra_blade","icicle_staff","bubble_gun","ancient_fossil","neptunes_shell","water_bolt","mana_crystal","meteor_staff","christmastreesword","ruby_staff","amethyst_staff","torrential_tear","phoenix_blaster","sniper_rifle","mega_shark","needler","minishark","shotgun","handgun","ice_blade","blowpipe","blade_of_grass","avenger_emblem","hallowed_elytra","pickaxe_axe","hallowed_armour","hallowed_repeater","excalibur","snowball_cannon","might","shackle","molten_elytra","ranger_emblem","shadow_elytra","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield","golden_crown");
+            List<String> items = Arrays.asList("Cosmolight","warrior_emblem","enchanted_sword","sandstorm_in_a_bottle","thunder_zapper","blizzard_in_a_bottle","anklet_of_the_wind","tsunami_in_a_bottle","wooden_crate","falcon_blade","iron_crate","golden_crate","oasis_crate","sky_crate","ocean_crate","jungle_crate","frozen_crate","sorcerer_emblem","super_star_shooter","star_cannon","fallen_star","cactus_armor","terra_blade","icicle_staff","bubble_gun","ancient_fossil","neptunes_shell","water_bolt","mana_crystal","meteor_staff","christmastreesword","ruby_staff","amethyst_staff","torrential_tear","phoenix_blaster","sniper_rifle","mega_shark","needler","minishark","shotgun","handgun","ice_blade","blowpipe","blade_of_grass","avenger_emblem","hallowed_elytra","pickaxe_axe","hallowed_armour","hallowed_repeater","excalibur","snowball_cannon","might","shackle","molten_elytra","ranger_emblem","shadow_elytra","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield","golden_crown");
             StringUtil.copyPartialMatches(args[1], items, completions);
         }
 

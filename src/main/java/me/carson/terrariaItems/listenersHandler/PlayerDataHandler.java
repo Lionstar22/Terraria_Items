@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.listenersHandler;
 
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -45,6 +46,27 @@ public class PlayerDataHandler {
     }
     public void setMana(UUID id,double x){
         config.set(id +".current_mana",x);
+    }
+
+    public int getAccessoryCount(UUID id){
+        return config.getInt(id+".accessory_count",0);
+    }
+    public void setAccessoryCount(UUID id, int x){
+        config.set(id+".accessory_count",x);
+    }
+    public void addAccessory(Player player){
+        UUID id =player.getUniqueId();
+        setAccessoryCount(id,getAccessoryCount(id)+1);
+        save();
+    }
+    public void removeAccessory(Player player){
+        UUID id =player.getUniqueId();
+        if(getAccessoryCount(id)>0){
+            setAccessoryCount(id,getAccessoryCount(id)-1);
+        }else{
+            setAccessoryCount(id,0);
+        }
+        save();
     }
 
     public void save() {

@@ -32,7 +32,7 @@ public class FishingManager implements Listener {
         if (event.getState() != PlayerFishEvent.State.CAUGHT_FISH) return;
         Player player = event.getPlayer();
         Item caughtItem = (Item) event.getCaught();
-        if(Math.random()<0.90){
+        if(Math.random()<0.05){
             caughtItem.setItemStack(selectCrate(player));
         }
     }

@@ -22,8 +22,8 @@ public class AccessoryRecipeManager {
         registerAgletRecipe();
         registerObsidianSkullRecipe();
         registerBandOfRegenerationRecipe();
-        registerRedBalloonRecipe();
-        registerHorseshoeRecipe();
+        //registerRedBalloonRecipe();
+        //registerHorseshoeRecipe();
         registerCobaltShieldRecipe();
         registerCounterScarfRecipe();
         registerNeptuneShellRecipe();
@@ -80,6 +80,7 @@ public class AccessoryRecipeManager {
         recipe.setIngredient('G', Material.GOLD_BLOCK);
         Bukkit.addRecipe(recipe);
     }
+
     private void registerCobaltShieldRecipe(){
         ItemStack cobaltShield=CobaltShield.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "CobaltShield");
