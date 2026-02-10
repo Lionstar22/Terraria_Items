@@ -19,7 +19,7 @@ public class SandstormInABottle extends Accessory implements Listener {
     private boolean jumped=false;
 
     public SandstormInABottle(Plugin plugin){
-        super(plugin,"Sandstorm in a Bottle","#96FF96", Material.FIREWORK_STAR,"sandstorm_in_a_bottle","SandstormInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to do an improved double jump", ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Sandstorm in a Bottle","#96FF96", Material.FIREWORK_STAR,"sandstorm_in_a_bottle","SandstormInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to do an improved double jump", ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -39,11 +39,9 @@ public class SandstormInABottle extends Accessory implements Listener {
         }
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
         if(jumped){return;}
-        ItemStack item=getItem(player);
-        if(item==null){ return;}
-        if(!isActivated(item)){return;}
+        if(!hasItem(player)){return;}
 
-        player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
+        player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 0.5F, 1.0F);
         final int[] timeLeft = {15};
         Bukkit.getScheduler().runTaskTimer(plugin, task -> {
 

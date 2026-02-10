@@ -16,7 +16,7 @@ import java.util.List;
 public class AvengerEmblem extends Accessory implements Listener {
 
     public AvengerEmblem(Plugin plugin){
-        super(plugin,"Avenger Emblem","#FF96FF", Material.GOLD_INGOT,"avenger_emblem","AvengerEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"15% increased damage",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Avenger Emblem","#FF96FF", Material.GOLD_INGOT,"avenger_emblem","AvengerEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"15% increased damage",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -37,14 +37,9 @@ public class AvengerEmblem extends Accessory implements Listener {
     public void onMeleeDamage(EntityDamageByEntityEvent event) {
         if (!(event.getDamager() instanceof Player player)) return;
 
-        for (ItemStack itemInv : player.getInventory().getContents()) {
-            if (AvengerEmblem.this.isThisItem(itemInv)) {
-                if (AvengerEmblem.this.isActivated(itemInv)){
-                    double boostedDamage = event.getDamage() * 1.15;
-                    event.setDamage(boostedDamage);
-                    break;
-                }
-            }
+        if(hasItem(player)){
+            double boostedDamage = event.getDamage() * 1.15;
+            event.setDamage(boostedDamage);
         }
     }
 

@@ -25,7 +25,7 @@ public class CloudInABottle extends Accessory implements Listener {
     private boolean jumped=false;
 
     public CloudInABottle(Plugin plugin){
-        super(plugin,"Cloud in a Bottle","#9696FF",Material.FIREWORK_STAR,"cloud_in_a_bottle","CloudInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to double jump", ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Cloud in a Bottle","#9696FF",Material.FIREWORK_STAR,"cloud_in_a_bottle","CloudInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to double jump", ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @EventHandler
@@ -58,9 +58,7 @@ public class CloudInABottle extends Accessory implements Listener {
         }
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
         if(jumped){return;}
-        ItemStack item=getItem(player);
-        if(item==null){ return;}
-        if(!isActivated(item)){return;}
+        if(!hasItem(player)){return;}
         player.setVelocity(player.getVelocity().setY(0.5));
         player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
         player.getWorld().spawnParticle(org.bukkit.Particle.CLOUD, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);

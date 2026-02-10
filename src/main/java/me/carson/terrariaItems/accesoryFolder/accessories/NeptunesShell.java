@@ -14,7 +14,7 @@ import java.util.List;
 
 public class NeptunesShell extends Accessory {
     public NeptunesShell(Plugin plugin){
-        super(plugin,"Neptune's Shell","#FF96FF", Material.DEAD_FIRE_CORAL,"neptunes_shell","NeptunesShell",new ArrayList<>(List.of(ChatColor.GRAY+"Can breathe and move easily underwater",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Neptune's Shell","#FF96FF", Material.DEAD_FIRE_CORAL,"neptunes_shell","NeptunesShell",new ArrayList<>(List.of(ChatColor.GRAY+"Can breathe and move easily underwater",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override

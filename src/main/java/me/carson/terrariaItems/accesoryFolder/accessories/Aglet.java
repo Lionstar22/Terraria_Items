@@ -17,7 +17,7 @@ import java.util.List;
 public class Aglet extends Accessory implements Listener  {
 
     public Aglet(Plugin plugin){
-        super(plugin,"Aglet","#9696FF",Material.COPPER_INGOT,"aglet","Aglet",new ArrayList<>(List.of(ChatColor.GRAY+"Increased movement speed",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Aglet","#9696FF",Material.COPPER_INGOT,"aglet","Aglet",new ArrayList<>(List.of(ChatColor.GRAY+"Increased movement speed",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override

@@ -15,7 +15,7 @@ import java.util.List;
 public class NightVisionHelmet extends Accessory {
 
     public NightVisionHelmet(Plugin plugin){
-        super(plugin,"Night Vision Helmet","#96FF96", Material.GHAST_TEAR,"night_vision_helmet","NightVisionHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"Improves vision",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Night Vision Helmet","#96FF96", Material.GHAST_TEAR,"night_vision_helmet","NightVisionHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"Improves vision",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override

@@ -29,7 +29,7 @@ public class CounterScarf extends Accessory implements Listener {
     );
 
     public CounterScarf(Plugin plugin){
-        super(plugin,"Counter Scarf","#FFC896", Material.RED_WOOL,"counter_scarf","CounterScarf",new ArrayList<>(List.of(ChatColor.GRAY+"10% Increased Damage",ChatColor.GRAY+"Grants a Dodge every 30 Seconds",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Counter Scarf","#FFC896", Material.RED_WOOL,"counter_scarf","CounterScarf",new ArrayList<>(List.of(ChatColor.GRAY+"10% Increased Damage",ChatColor.GRAY+"Grants a Dodge every 30 Seconds",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -48,16 +48,12 @@ public class CounterScarf extends Accessory implements Listener {
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
-        for (ItemStack itemInv : player.getInventory().getContents()) {
-            if (CounterScarf.this.isThisItem(itemInv)) {
-                if(!player.hasCooldown(Material.RED_WOOL)){
-                    if (((COUNTERABLE_CAUSES.contains(event.getCause())&&CounterScarf.this.isActivated(itemInv)))){
-                        player.setCooldown(Material.RED_WOOL,600);
-                        event.setCancelled(true);
-                        break;
-                    }
+        if (hasItem(player)) {
+            if(!player.hasCooldown(Material.RED_WOOL)){
+                if (COUNTERABLE_CAUSES.contains(event.getCause())){
+                    player.setCooldown(Material.RED_WOOL,600);
+                    event.setCancelled(true);
                 }
-
             }
         }
     }

@@ -22,7 +22,7 @@ public class BlizzardInABottle extends Accessory implements Listener {
     private boolean jumped=false;
 
     public BlizzardInABottle(Plugin plugin){
-        super(plugin,"Blizzard in a Bottle","#9696FF", Material.FIREWORK_STAR,"blizzard_in_a_bottle","BlizzardInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to double jump", ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Blizzard in a Bottle","#9696FF", Material.FIREWORK_STAR,"blizzard_in_a_bottle","BlizzardInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to double jump", ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -42,9 +42,7 @@ public class BlizzardInABottle extends Accessory implements Listener {
         }
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
         if(jumped){return;}
-        ItemStack item=getItem(player);
-        if(item==null){ return;}
-        if(!isActivated(item)){return;}
+        if(!hasItem(player)){return;}
 
         player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
         final int[] timeLeft = {10};

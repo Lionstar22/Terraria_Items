@@ -18,7 +18,7 @@ import java.util.List;
 public class Bezoar extends Accessory implements Listener {
 
     public Bezoar(Plugin plugin){
-        super(plugin,"Bezoar","#FF9696", Material.MOSS_BLOCK,"bezoar","Bezoar",new ArrayList<>(List.of(ChatColor.GRAY+"Immunity to Poison",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Bezoar","#FF9696", Material.MOSS_BLOCK,"bezoar","Bezoar",new ArrayList<>(List.of(ChatColor.GRAY+"Immunity to Poison",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -43,13 +43,8 @@ public class Bezoar extends Accessory implements Listener {
         if (newEffect == null) return;
 
         if (newEffect.getType() == PotionEffectType.POISON) {
-            for (ItemStack itemInv : player.getInventory().getContents()) {
-                if (Bezoar.this.isThisItem(itemInv)) {
-                    if (Bezoar.this.isActivated(itemInv)){
-                        event.setCancelled(true);
-                        break;
-                    }
-                }
+            if(hasItem(player)){
+                event.setCancelled(true);
             }
         }
     }

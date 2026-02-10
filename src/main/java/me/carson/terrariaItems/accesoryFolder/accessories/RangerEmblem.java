@@ -23,7 +23,7 @@ import java.util.List;
 public class RangerEmblem extends Accessory implements Listener {
 
     public RangerEmblem(Plugin plugin){
-        super(plugin,"Ranger Emblem","#FF9696", Material.GOLD_NUGGET,"ranger_emblem","RangerEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased ranged damage",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Ranger Emblem","#FF9696", Material.GOLD_NUGGET,"ranger_emblem","RangerEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased ranged damage",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -56,27 +56,17 @@ public class RangerEmblem extends Accessory implements Listener {
         if(event.getDamager() instanceof Projectile projectile) {
             ProjectileSource source = projectile.getShooter();
             if (!(source instanceof Player player)) {return;}
-            for (ItemStack itemInv : player.getInventory().getContents()) {
-                if (RangerEmblem.this.isThisItem(itemInv)) {
-                    if (RangerEmblem.this.isActivated(itemInv)) {
-                        double boostedDamage = event.getDamage() * 1.2;
-                        event.setDamage(boostedDamage);
-                        break;
-                    }
-                }
+            if (hasItem(player)) {
+                double boostedDamage = event.getDamage() * 1.2;
+                event.setDamage(boostedDamage);
             }
         }
         else if(event.getDamager() instanceof Player player){
             DamageType type = event.getDamageSource().getDamageType();
             if(type==DamageType.ARROW){
-                for (ItemStack itemInv : player.getInventory().getContents()) {
-                    if (RangerEmblem.this.isThisItem(itemInv)) {
-                        if (RangerEmblem.this.isActivated(itemInv)){
-                            double boostedDamage = event.getDamage() * 1.2;
-                            event.setDamage(boostedDamage);
-                            break;
-                        }
-                    }
+                if (hasItem(player)){
+                    double boostedDamage = event.getDamage() * 1.2;
+                    event.setDamage(boostedDamage);
                 }
             }
         }

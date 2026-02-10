@@ -1,11 +1,14 @@
 package me.carson.terrariaItems.accesoryFolder;
 
+import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -14,6 +17,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class Accessory {
 
@@ -27,6 +31,7 @@ public abstract class Accessory {
     private final NamespacedKey activeKey;
     private final NamespacedKey customItemKey;
     private final NamespacedKey unplaceableKey;
+    private final PlayerDataHandler playerDataInstance=PlayerDataHandler.getInstance();
 
 
     public Accessory(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, ArrayList<String> lore){
@@ -68,24 +73,6 @@ public abstract class Accessory {
         return id.equals(storedId);
     }
 
-    public void setActivated(ItemStack item, boolean value) {
-        if (item == null || !item.hasItemMeta()) return;
-        ItemMeta meta = item.getItemMeta();
-        PersistentDataContainer data = meta.getPersistentDataContainer();
-        ArrayList<String> list= (ArrayList<String>) meta.getLore();
-        if(value){
-            data.set(activeKey, PersistentDataType.INTEGER, 1);
-            list.set(list.size()-1,ChatColor.GRAY+"Shift Right Click to Deactivate");
-        }else{
-            data.set(activeKey, PersistentDataType.INTEGER, 0);
-            list.set(list.size()-1,ChatColor.GRAY+"Shift Right Click to Activate");
-        }
-        meta.setLore(list);
-        meta.setEnchantmentGlintOverride(value);
-        item.setItemMeta(meta);
-    }
-
-    // Read the boolean value
     public boolean isActivated(ItemStack item) {
         if (item == null || !item.hasItemMeta()) return false;
         ItemMeta meta = item.getItemMeta();
@@ -93,10 +80,14 @@ public abstract class Accessory {
         return data.getOrDefault(activeKey, PersistentDataType.INTEGER, 0) == 1;
     }
 
-    public boolean hasItem(Player player,ItemStack item){
-        if(!player.getInventory().contains(item)){return false;}
-        for(ItemStack itemStack:player.getInventory().getStorageContents()){
-            return isThisItem(itemStack);
+    public boolean hasItem(Player player){
+        NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
+        for(ItemStack item:playerDataInstance.getInventory(player.getUniqueId())){
+            if(item!=null) {
+                if (Objects.equals(item.getItemMeta().getPersistentDataContainer().get(key, PersistentDataType.STRING), id)) {
+                    return true;
+                }
+            }
         }
         return false;
     }
@@ -107,11 +98,6 @@ public abstract class Accessory {
             if(isThisItem(itemInv)){return itemInv;}
         }
         return null;
-    }
-
-    // Toggle the flag
-    public void toggleActivated(ItemStack item) {
-        setActivated(item, !isActivated(item));
     }
 
     public abstract void activateEffect(Player player);

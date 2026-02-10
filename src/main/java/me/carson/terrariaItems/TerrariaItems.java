@@ -27,7 +27,6 @@ public final class TerrariaItems extends JavaPlugin {
         PlayerDataHandler playerDataHandler=PlayerDataHandler.getInstance();
 
         AccessoryManager aManager = new AccessoryManager(this);
-        //aManager.startAccessoryTask(this);
 
         ToolManager tManager=new ToolManager(this);
 

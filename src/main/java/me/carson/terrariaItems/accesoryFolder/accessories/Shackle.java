@@ -19,7 +19,7 @@ import java.util.List;
 public class Shackle extends Accessory implements Listener {
 
     public Shackle(Plugin plugin){
-        super(plugin,"Shackle","#9696FF", Material.IRON_INGOT,"shackle","Shackle",new ArrayList<>(List.of(ChatColor.GRAY+"10% decrease in damage taken",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Shackle","#9696FF", Material.IRON_INGOT,"shackle","Shackle",new ArrayList<>(List.of(ChatColor.GRAY+"10% decrease in damage taken",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -50,15 +50,9 @@ public class Shackle extends Accessory implements Listener {
     @EventHandler
     public void onShackleDamage(EntityDamageEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
-
-        for (ItemStack itemInv : player.getInventory().getContents()) {
-            if (Shackle.this.isThisItem(itemInv)) {
-                if (Shackle.this.isActivated(itemInv)){
-                    double newDamage = event.getDamage() * 0.9 ;
-                    event.setDamage(newDamage);
-                    break;
-                }
-            }
+        if (hasItem(player)){
+            double newDamage = event.getDamage() * 0.9 ;
+            event.setDamage(newDamage);
         }
     }
 }

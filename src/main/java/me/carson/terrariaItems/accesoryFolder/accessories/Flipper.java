@@ -15,7 +15,7 @@ import java.util.List;
 public class Flipper extends Accessory {
 
     public Flipper(Plugin plugin){
-        super(plugin,"Flipper","#9696FF", Material.NAUTILUS_SHELL,"flipper","Flipper",new ArrayList<>(List.of(ChatColor.GRAY+"Grants the ability to swim faster",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Flipper","#9696FF", Material.NAUTILUS_SHELL,"flipper","Flipper",new ArrayList<>(List.of(ChatColor.GRAY+"Grants the ability to swim faster",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override

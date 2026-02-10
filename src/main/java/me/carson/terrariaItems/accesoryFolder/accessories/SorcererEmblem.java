@@ -20,7 +20,7 @@ import java.util.List;
 public class SorcererEmblem extends Accessory implements Listener {
 
     public SorcererEmblem(Plugin plugin){
-        super(plugin,"Sorcerer Emblem","#FF9696", Material.GOLD_NUGGET,"sorcerer_emblem","SorcererEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased magic damage",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Sorcerer Emblem","#FF9696", Material.GOLD_NUGGET,"sorcerer_emblem","SorcererEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased magic damage",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -53,15 +53,9 @@ public class SorcererEmblem extends Accessory implements Listener {
         if (!(event.getDamager() instanceof Player player)) return;
         DamageType type = event.getDamageSource().getDamageType();
         if (type != DamageType.MAGIC) return;
-
-        for (ItemStack itemInv : player.getInventory().getContents()) {
-            if (SorcererEmblem.this.isThisItem(itemInv)) {
-                if (SorcererEmblem.this.isActivated(itemInv)){
-                    double boostedDamage = event.getDamage() * 1.2;
-                    event.setDamage(boostedDamage);
-                    break;
-                }
-            }
+        if (hasItem(player)){
+            double boostedDamage = event.getDamage() * 1.2;
+            event.setDamage(boostedDamage);
         }
     }
 

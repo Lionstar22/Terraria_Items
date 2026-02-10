@@ -20,7 +20,7 @@ public class LuckyHorseshoe extends Accessory implements Listener  {
                 new ArrayList<>(List.of(
                         ChatColor.GRAY+"Negates fall damage",
                         ChatColor.GRAY+"'Said to bring good fortune and keep evil spirits at bay'",
-                        ChatColor.GRAY+"Shift Right Click to Activate")));
+                        ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -37,13 +37,8 @@ public class LuckyHorseshoe extends Accessory implements Listener  {
     public void onFallDamage(EntityDamageEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
         if(((event.getCause() == EntityDamageEvent.DamageCause.FALL)||(event.getCause() == EntityDamageEvent.DamageCause.FLY_INTO_WALL))){
-            for (ItemStack itemInv : player.getInventory().getContents()) {
-                if (LuckyHorseshoe.this.isThisItem(itemInv)) {
-                    if (LuckyHorseshoe.this.isActivated(itemInv)) {
-                        event.setCancelled(true);
-                        break;
-                    }
-                }
+            if(hasItem(player)){
+                event.setCancelled(true);
             }
         }
     }

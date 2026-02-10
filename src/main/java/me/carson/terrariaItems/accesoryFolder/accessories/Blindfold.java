@@ -18,7 +18,7 @@ import java.util.List;
 public class Blindfold extends Accessory implements Listener {
 
     public Blindfold(Plugin plugin){
-        super(plugin,"Blindfold","#FF9696", Material.ECHO_SHARD,"blindfold","Blindfold",new ArrayList<>(List.of(ChatColor.GRAY+"Immunity to Darkness/Blindness",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Blindfold","#FF9696", Material.ECHO_SHARD,"blindfold","Blindfold",new ArrayList<>(List.of(ChatColor.GRAY+"Immunity to Darkness/Blindness",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -39,13 +39,8 @@ public class Blindfold extends Accessory implements Listener {
         if (newEffect == null) return;
 
         if (newEffect.getType() == PotionEffectType.DARKNESS || newEffect.getType() == PotionEffectType.BLINDNESS) {
-            for (ItemStack itemInv : player.getInventory().getContents()) {
-                if (Blindfold.this.isThisItem(itemInv)) {
-                    if (Blindfold.this.isActivated(itemInv)){
-                        event.setCancelled(true);
-                        break;
-                    }
-                }
+            if(hasItem(player)){
+                event.setCancelled(true);
             }
         }
     }

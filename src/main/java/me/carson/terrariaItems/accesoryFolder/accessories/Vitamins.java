@@ -18,7 +18,7 @@ import java.util.List;
 public class Vitamins extends Accessory implements Listener {
 
     public Vitamins(Plugin plugin) {
-        super(plugin, "Vitamins", "#FF9696", Material.SHORT_GRASS, "vitamins", "Vitamins", new ArrayList<>(List.of(ChatColor.GRAY + "Immunity to Weakness", ChatColor.GRAY + "Shift Right Click to Activate")));
+        super(plugin, "Vitamins", "#FF9696", Material.SHORT_GRASS, "vitamins", "Vitamins", new ArrayList<>(List.of(ChatColor.GRAY + "Immunity to Weakness", ChatColor.GRAY + "Must be in accessory inventory")));
     }
 
     @Override
@@ -39,13 +39,8 @@ public class Vitamins extends Accessory implements Listener {
         if (newEffect == null) return;
 
         if (newEffect.getType() == PotionEffectType.WEAKNESS) {
-            for (ItemStack itemInv : player.getInventory().getContents()) {
-                if (Vitamins.this.isThisItem(itemInv)) {
-                    if (Vitamins.this.isActivated(itemInv)) {
-                        event.setCancelled(true);
-                        break;
-                    }
-                }
+            if (hasItem(player)) {
+                event.setCancelled(true);
             }
         }
     }

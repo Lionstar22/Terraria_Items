@@ -18,7 +18,7 @@ import java.util.List;
 public class FastClock extends Accessory implements Listener {
 
     public FastClock(Plugin plugin){
-        super(plugin,"Fast Clock","#FF9696", Material.SUGAR,"fast_clock","FastClock",new ArrayList<>(List.of(ChatColor.GRAY+"Immunity to Slowness",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Fast Clock","#FF9696", Material.SUGAR,"fast_clock","FastClock",new ArrayList<>(List.of(ChatColor.GRAY+"Immunity to Slowness",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -39,13 +39,8 @@ public class FastClock extends Accessory implements Listener {
         if (newEffect == null) return;
 
         if (newEffect.getType() == PotionEffectType.SLOWNESS) {
-            for (ItemStack itemInv : player.getInventory().getContents()) {
-                if (FastClock.this.isThisItem(itemInv)) {
-                    if (FastClock.this.isActivated(itemInv)){
-                        event.setCancelled(true);
-                        break;
-                    }
-                }
+            if (hasItem(player)){
+                event.setCancelled(true);
             }
         }
     }

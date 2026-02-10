@@ -21,7 +21,7 @@ import java.util.List;
 public class WarriorEmblem extends Accessory implements Listener {
 
     public WarriorEmblem(Plugin plugin){
-        super(plugin,"Warrior Emblem","#FF9696", Material.GOLD_NUGGET,"warrior_emblem","WarriorEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased melee damage",ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Warrior Emblem","#FF9696", Material.GOLD_NUGGET,"warrior_emblem","WarriorEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased melee damage",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -54,15 +54,9 @@ public class WarriorEmblem extends Accessory implements Listener {
         if (!(event.getDamager() instanceof Player player)) return;
         DamageType type = event.getDamageSource().getDamageType();
         if (type != DamageType.PLAYER_ATTACK) return;
-
-        for (ItemStack itemInv : player.getInventory().getContents()) {
-            if (WarriorEmblem.this.isThisItem(itemInv)) {
-                if (WarriorEmblem.this.isActivated(itemInv)){
-                    double boostedDamage = event.getDamage() * 1.2;
-                    event.setDamage(boostedDamage);
-                    break;
-                }
-            }
+        if (hasItem(player)){
+            double boostedDamage = event.getDamage() * 1.2;
+            event.setDamage(boostedDamage);
         }
     }
 }

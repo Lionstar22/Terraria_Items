@@ -19,7 +19,7 @@ public class CobaltShield extends Accessory implements Listener {
         super(plugin,"Cobalt Shield","#96FF96", Material.LAPIS_LAZULI,"cobalt_shield","CobaltShield",
                 new ArrayList<>(List.of(
                         ChatColor.GRAY+"Grants immunity to knockback",
-                        ChatColor.GRAY+"Shift Right Click to Activate")));
+                        ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -35,13 +35,8 @@ public class CobaltShield extends Accessory implements Listener {
     @EventHandler
     public void onKnockback(EntityKnockbackByEntityEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
-        for (ItemStack itemInv : player.getInventory().getContents()) {
-            if (CobaltShield.this.isThisItem(itemInv)) {
-                if (CobaltShield.this.isActivated(itemInv)) {
-                    event.setCancelled(true);
-                    break;
-                }
-            }
+        if(hasItem(player)){
+            event.setCancelled(true);
         }
     }
 

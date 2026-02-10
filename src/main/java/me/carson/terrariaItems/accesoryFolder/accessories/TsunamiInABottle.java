@@ -22,7 +22,7 @@ public class TsunamiInABottle extends Accessory implements Listener {
     private boolean jumped=false;
 
     public TsunamiInABottle(Plugin plugin){
-        super(plugin,"Tsunami In A Bottle","#9696FF", Material.FIREWORK_STAR,"tsunami_in_a_bottle","TsunamiInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to double jump", ChatColor.GRAY+"Shift Right Click to Activate")));
+        super(plugin,"Tsunami In A Bottle","#9696FF", Material.FIREWORK_STAR,"tsunami_in_a_bottle","TsunamiInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to double jump", ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
@@ -42,9 +42,7 @@ public class TsunamiInABottle extends Accessory implements Listener {
         }
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
         if(jumped){return;}
-        ItemStack item=getItem(player);
-        if(item==null){ return;}
-        if(!isActivated(item)){return;}
+        if(!hasItem(player)){return;}
         player.setVelocity(player.getVelocity().setY(0.6));
         player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
         player.getWorld().spawnParticle(Particle.BUBBLE, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
