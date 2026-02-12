@@ -1,7 +1,6 @@
-package me.carson.terrariaItems.materialsFolder.materials;
+package me.carson.terrariaItems.materialsFolder.materials.souls;
 
 import me.carson.terrariaItems.materialsFolder.Material;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -14,22 +13,22 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoulOfSight extends Material implements Listener {
+public class SoulOfMight extends Material implements Listener {
 
-    public SoulOfSight(Plugin plugin) {
-        super(plugin,"Soul of Sight","#FF96FF", org.bukkit.Material.IRON_INGOT,"soul_of_sight","SoulOfSight", new ArrayList<>(List.of(ChatColor.GRAY+"The essence of the Warden")));
+    public SoulOfMight(Plugin plugin) {
+        super(plugin,"Soul of Might","#FF96FF", org.bukkit.Material.IRON_INGOT,"soul_of_might","SoulOfMight", new ArrayList<>(List.of(ChatColor.GRAY+"The essence of the Dragon")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        return new SoulOfSight(plugin).createItem();
+        return new SoulOfMight(plugin).createItem();
     }
 
     @EventHandler
-    public void onWardenDeath(EntityDeathEvent event) {
+    public void onDragonDeath(EntityDeathEvent event) {
         LivingEntity entity = event.getEntity();
-        if (entity.getType() != EntityType.WARDEN){return;}
+        if (entity.getType() != EntityType.ENDER_DRAGON){return;}
         int drops=20 + (int)(Math.random() * 11);
-        ItemStack custom = SoulOfSight.getItem(plugin);
+        ItemStack custom = SoulOfMight.getItem(plugin);
         custom.setAmount(drops);
         event.getDrops().add(custom);
     }

@@ -14,7 +14,7 @@ import me.carson.terrariaItems.blocksFolder.blocks.Hellforge;
 import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
-import me.carson.terrariaItems.materialsFolder.materials.SoulOfMight;
+import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfMight;
 import me.carson.terrariaItems.miscFolder.BasicItems.PickaxeAxe;
 import me.carson.terrariaItems.toolFolder.tools.*;
 import me.carson.terrariaItems.toolFolder.tools.crates.*;

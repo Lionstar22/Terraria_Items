@@ -3,12 +3,9 @@ package me.carson.terrariaItems.toolFolder.tools.crates;
 import me.carson.terrariaItems.accesoryFolder.accessories.Aglet;
 import me.carson.terrariaItems.accesoryFolder.accessories.TsunamiInABottle;
 import me.carson.terrariaItems.toolFolder.Tool;
-import me.carson.terrariaItems.toolFolder.tools.MagicMirror;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
@@ -30,8 +27,7 @@ public class WoodenCrate extends Tool {
     public void rightActivate(Player player) {
         ItemStack crate = player.getInventory().getItemInMainHand();
         crate.setAmount(crate.getAmount()-1);
-        double chance=Math.random();
-        if(chance<0.05){//treasure loot table
+        if(Math.random()<0.05){//treasure loot table
             int x =ThreadLocalRandom.current().nextInt(1, 3);
             switch (x){
                 case 1 -> player.getWorld().dropItemNaturally(player.getLocation(),Aglet.getItem(plugin));
@@ -41,18 +37,18 @@ public class WoodenCrate extends Tool {
                 }
             }
         }
-        if(chance<0.14){//ore loot table
+        if(Math.random()<0.14){//ore loot table
             int copper = ThreadLocalRandom.current().nextInt(4, 16);
             player.getWorld().dropItemNaturally(player.getLocation(),new ItemStack(Material.RAW_COPPER,copper));
             int iron = ThreadLocalRandom.current().nextInt(4, 16);
             player.getWorld().dropItemNaturally(player.getLocation(),new ItemStack(Material.RAW_IRON,iron));
-        }if(chance<0.11){//Ingot Loot table
+        }if(Math.random()<0.11){//Ingot Loot table
             int copper = ThreadLocalRandom.current().nextInt(2, 6);
             player.getWorld().dropItemNaturally(player.getLocation(),new ItemStack(Material.COPPER_INGOT,copper));
             int iron = ThreadLocalRandom.current().nextInt(2, 6);
             player.getWorld().dropItemNaturally(player.getLocation(),new ItemStack(Material.IRON_INGOT,iron));
         }
-        if(chance<0.14){//Potion loot table
+        if(Math.random()<0.14){//Potion loot table
             int x =ThreadLocalRandom.current().nextInt(1, 5);
             ItemStack potion = new ItemStack(Material.POTION);
             PotionMeta meta = (PotionMeta) potion.getItemMeta();
@@ -68,7 +64,7 @@ public class WoodenCrate extends Tool {
             potion.setItemMeta(meta);
             player.getWorld().dropItemNaturally(player.getLocation(),potion);
         }
-        if(chance<0.2){//Health Potion loot table
+        if(Math.random()<0.2){//Health Potion loot table
             ItemStack potion = new ItemStack(Material.POTION);
             PotionMeta meta = (PotionMeta) potion.getItemMeta();
             meta.setBasePotionType(PotionType.HEALING);

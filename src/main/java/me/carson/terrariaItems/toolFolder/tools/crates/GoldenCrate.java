@@ -28,24 +28,23 @@ public class GoldenCrate extends Tool {
     public void rightActivate(Player player) {
         ItemStack crate = player.getInventory().getItemInMainHand();
         crate.setAmount(crate.getAmount()-1);
-        double chance=Math.random();
 
-        if(chance<0.13){//treasure loot table
+        if(Math.random()<0.13){//treasure loot table
             player.getWorld().dropItemNaturally(player.getLocation(),LifeCrystal.getItem(plugin));
         }
-        if(chance<0.2){//ore loot table
+        if(Math.random()<0.2){//ore loot table
             int gold = ThreadLocalRandom.current().nextInt(25, 35);
             player.getWorld().dropItemNaturally(player.getLocation(),new ItemStack(Material.RAW_GOLD,gold));
             int lapis = ThreadLocalRandom.current().nextInt(25, 35);
             player.getWorld().dropItemNaturally(player.getLocation(),new ItemStack(Material.LAPIS_LAZULI,lapis));
         }
-        if(chance<0.27){//Ingot Loot table
+        if(Math.random()<0.27){//Ingot Loot table
             int iron = ThreadLocalRandom.current().nextInt(8, 12);
             player.getWorld().dropItemNaturally(player.getLocation(),new ItemStack(Material.IRON_INGOT,iron));
             int diamond = ThreadLocalRandom.current().nextInt(8, 12);
             player.getWorld().dropItemNaturally(player.getLocation(),new ItemStack(Material.DIAMOND,diamond));
         }
-        if(chance<0.33){//Potion loot table
+        if(Math.random()<0.33){//Potion loot table
             int x =ThreadLocalRandom.current().nextInt(1, 5);
             ItemStack potion = new ItemStack(Material.POTION);
             PotionMeta meta = (PotionMeta) potion.getItemMeta();
@@ -61,14 +60,14 @@ public class GoldenCrate extends Tool {
             potion.setItemMeta(meta);
             player.getWorld().dropItemNaturally(player.getLocation(),potion);
         }
-        if(chance<0.5){//Health Potion loot table
+        if(Math.random()<0.5){//Health Potion loot table
             ItemStack potion = new ItemStack(Material.POTION);
             PotionMeta meta = (PotionMeta) potion.getItemMeta();
             meta.setBasePotionType(PotionType.STRONG_HEALING);
             potion.setItemMeta(meta);
             player.getWorld().dropItemNaturally(player.getLocation(),potion);
         }
-        if(chance<0.1){//Misc Loot table
+        if(Math.random()<0.1){//Misc Loot table
             player.getWorld().dropItemNaturally(player.getLocation(),EnchantedSword.getItem(plugin));
         }
 

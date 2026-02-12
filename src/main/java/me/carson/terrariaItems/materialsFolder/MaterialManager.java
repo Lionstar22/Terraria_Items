@@ -1,10 +1,10 @@
 package me.carson.terrariaItems.materialsFolder;
 
 
-import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.materialsFolder.materials.bullets.BubonicRound;
 import me.carson.terrariaItems.materialsFolder.materials.bullets.ExplodingBullet;
 import me.carson.terrariaItems.materialsFolder.materials.bullets.MusketBall;
+import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.Listener;
@@ -32,6 +32,8 @@ public class MaterialManager implements Listener {
         Bukkit.getPluginManager().registerEvents(new SoulOfMight(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new SoulOfSight(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new SoulOfFright(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new SoulOfLight(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new SoulOfNight(plugin), plugin);
     }
 
     public ItemStack getBulletItem(ItemStack item){

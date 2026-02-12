@@ -1,6 +1,8 @@
 package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.materialsFolder.materials.*;
+import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfLight;
+import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfMight;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
@@ -65,7 +67,7 @@ public class WeaponRecipeManager {
         recipe.shape("FFF","SBS","FFF");
         recipe.setIngredient('B',Material.BOW);
         recipe.setIngredient('F',Material.FEATHER);
-        recipe.setIngredient('S',SoulOfMight.getItem(plugin));
+        recipe.setIngredient('S', SoulOfMight.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 
@@ -277,9 +279,10 @@ public class WeaponRecipeManager {
         ItemStack item= MeteorStaff.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "MeteorStaff");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
-        recipe.shape("  M"," N ","N  ");
+        recipe.shape("SSM","SNS","NSS");
         recipe.setIngredient('M', Material.MAGMA_BLOCK);
         recipe.setIngredient('N',Material.NETHERITE_SCRAP);
+        recipe.setIngredient('S', SoulOfLight.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 

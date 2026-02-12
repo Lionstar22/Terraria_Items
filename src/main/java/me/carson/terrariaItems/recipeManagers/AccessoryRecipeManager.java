@@ -1,7 +1,9 @@
 package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
-import me.carson.terrariaItems.materialsFolder.materials.*;
+import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfFright;
+import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfMight;
+import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfSight;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;

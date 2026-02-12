@@ -28,7 +28,6 @@ public class SkyCrate extends Tool {
     public void rightActivate(Player player) {
         ItemStack crate = player.getInventory().getItemInMainHand();
         crate.setAmount(crate.getAmount()-1);
-        double chance=Math.random();
 
         //treasure loot table
         int treasure = ThreadLocalRandom.current().nextInt(1, 4);
@@ -40,18 +39,18 @@ public class SkyCrate extends Tool {
                 return;
             }
         }
-        if(chance<0.16){//ore loot table
+        if(Math.random()<0.16){//ore loot table
             int gold = ThreadLocalRandom.current().nextInt(12, 22);
             player.getWorld().dropItemNaturally(player.getLocation(), new ItemStack(Material.RAW_GOLD,gold));
             int iron = ThreadLocalRandom.current().nextInt(12, 22);
             player.getWorld().dropItemNaturally(player.getLocation(), new ItemStack(Material.RAW_IRON,iron));
-        }if(chance<0.20){//Ingot Loot table
+        }if(Math.random()<0.20){//Ingot Loot table
             int gold = ThreadLocalRandom.current().nextInt(4, 8);
             player.getWorld().dropItemNaturally(player.getLocation(), new ItemStack(Material.GOLD_INGOT,gold));
             int iron = ThreadLocalRandom.current().nextInt(4, 8);
             player.getWorld().dropItemNaturally(player.getLocation(), new ItemStack(Material.IRON_INGOT,iron));
         }
-        if(chance<0.25){//Potion loot table
+        if(Math.random()<0.25){//Potion loot table
             int x =ThreadLocalRandom.current().nextInt(1, 5);
             ItemStack potion = new ItemStack(Material.POTION);
             PotionMeta meta = (PotionMeta) potion.getItemMeta();
@@ -67,7 +66,7 @@ public class SkyCrate extends Tool {
             potion.setItemMeta(meta);
             player.getWorld().dropItemNaturally(player.getLocation(), potion);
         }
-        if(chance<0.50){//Health Potion loot table
+        if(Math.random()<0.50){//Health Potion loot table
             ItemStack potion = new ItemStack(Material.POTION);
             PotionMeta meta = (PotionMeta) potion.getItemMeta();
             meta.setBasePotionType(PotionType.HEALING);
