@@ -2,6 +2,7 @@ package me.carson.terrariaItems.toolFolder;
 
 import me.carson.terrariaItems.toolFolder.tools.*;
 import me.carson.terrariaItems.toolFolder.tools.crates.*;
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,6 +23,7 @@ public class ToolManager implements Listener {
 
     public ToolManager(Plugin plugin) {
         toolKey = new NamespacedKey(plugin, "custom_item_id");
+        Bukkit.getPluginManager().registerEvents(this, plugin);
 
         toolList.put("Cosmolight",new Cosmolight(plugin));
         toolList.put("MomentumCapacitor",new MomentumCapacitor(plugin));

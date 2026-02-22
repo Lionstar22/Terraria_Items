@@ -48,7 +48,7 @@ public class RodOfDiscord extends Tool implements Listener {
         target.setPitch(player.getLocation().getPitch());
 
         target.add(0, 0.1, 0);
-        if (player.hasCooldown(Material.BLAZE_ROD)) {
+        if (player.hasCooldown(Material.BREEZE_ROD)) {
             player.damage(5);
         }
         player.teleport(target, PlayerTeleportEvent.TeleportCause.PLUGIN);

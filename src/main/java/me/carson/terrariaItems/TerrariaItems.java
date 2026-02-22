@@ -24,24 +24,12 @@ public final class TerrariaItems extends JavaPlugin {
     @Override
     public void onEnable() {
         PlayerDataHandler.initialize(this);
-        PlayerDataHandler playerDataHandler=PlayerDataHandler.getInstance();
-
-        AccessoryManager aManager = new AccessoryManager(this);
-
-        ToolManager tManager=new ToolManager(this);
-
         MaterialManager.initialize(this);
-
         ProjectileManager.initialize(this);
+        ManaManager.initialize(this);
 
         ArmorManager armorManager = new ArmorManager(this);
         armorManager.startArmorTask(this);
-
-        WeaponManager weaponManager=new WeaponManager(this);
-
-        CustomBlockManager customBlockManager=new CustomBlockManager(this);
-
-        FishingManager fishingManager=new FishingManager(this);
 
         AccessoryRecipeManager accessoryRecipeManager = new AccessoryRecipeManager(this);
         accessoryRecipeManager.registerRecipes();
@@ -58,31 +46,25 @@ public final class TerrariaItems extends JavaPlugin {
         MiscRecipeManager miscRecipeManager=new MiscRecipeManager(this);
         miscRecipeManager.registerRecipes();
 
-        //getServer().getPluginManager().registerEvents(aManager, this);
-        getServer().getPluginManager().registerEvents(tManager, this);
-        getServer().getPluginManager().registerEvents(armorManager, this);
-        getServer().getPluginManager().registerEvents(weaponManager, this);
-        getServer().getPluginManager().registerEvents(customBlockManager, this);
-        getServer().getPluginManager().registerEvents(new ResourcePackHandler(), this);
-        getServer().getPluginManager().registerEvents(new MessageHandler(this), this);
-        getServer().getPluginManager().registerEvents(fishingManager, this);
+        new WeaponManager(this);
+        new ResourcePackHandler(this);
+        new CustomCraftingListener(this);
+        new AccessoryManager(this);
+        new CustomBlockManager(this);
+        new CustomCraftingListener(this);
+        new FishingManager(this);
+        new ItemPlaceListener(this);
+        new MessageHandler(this);
+        new VanityManager(this);
+        new ToolManager(this);
 
         TICommand tiCommand = new TICommand(this);
-        new CustomCraftingListener(this);
-        getServer().getPluginManager().registerEvents(new ItemPlaceListener(this), this);
-
         Objects.requireNonNull(getCommand("ti")).setExecutor(tiCommand);
         Objects.requireNonNull(getCommand("ti")).setTabCompleter(tiCommand);
 
-        //MessageHandler.initialize(this);
-        ManaManager.initialize(this);
-
         ManaManager manaManagerInstance=ManaManager.getInstance();
-
         manaManagerInstance.startManaRegen(this);
         manaManagerInstance.startFallingStartTask(this);
-
-
     }
 
     @Override

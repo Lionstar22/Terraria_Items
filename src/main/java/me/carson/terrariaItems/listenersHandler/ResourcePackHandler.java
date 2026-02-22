@@ -1,16 +1,22 @@
 package me.carson.terrariaItems.listenersHandler;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerResourcePackStatusEvent;
+import org.bukkit.plugin.Plugin;
 
 public class ResourcePackHandler implements Listener {
 
     // Your direct HTTPS link to the pack
     private static final String PACK_URL = "https://github.com/CarsonWebb/Terraria_Items/releases/download/Textures/TerrariaTextures.zip";
+
+    public ResourcePackHandler(Plugin plugin){
+        Bukkit.getPluginManager().registerEvents(this, plugin);
+    }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {

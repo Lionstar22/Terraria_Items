@@ -3,6 +3,7 @@ package me.carson.terrariaItems.recipeManagers;
 import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfLight;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfMight;
+import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfNight;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
@@ -48,6 +49,7 @@ public class WeaponRecipeManager {
         registerIcicleStaffRecipe();
         registerStarCannonRecipe();
         registerSuperStarShooterRecipe();
+        registerMagicalHarpRecipe();
     }
 
     private void registerLightsBaneRecipe(){
@@ -330,4 +332,14 @@ public class WeaponRecipeManager {
         Bukkit.addRecipe(recipe);
     }
 
+    private void registerMagicalHarpRecipe(){
+        ItemStack item= MagicalHarp.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "MagicalHarp");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("GGG","GNG","SGG");
+        recipe.setIngredient('S', SoulOfNight.getItem(plugin));
+        recipe.setIngredient('G',Material.GOLD_INGOT);
+        recipe.setIngredient('N',Material.NOTE_BLOCK);
+        Bukkit.addRecipe(recipe);
+    }
 }

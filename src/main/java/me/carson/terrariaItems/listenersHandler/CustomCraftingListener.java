@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.listenersHandler;
 
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,7 +19,7 @@ public class CustomCraftingListener implements Listener {
 
     public CustomCraftingListener(JavaPlugin plugin) {
         this.customItemKey = new NamespacedKey(plugin, "customItem");
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler

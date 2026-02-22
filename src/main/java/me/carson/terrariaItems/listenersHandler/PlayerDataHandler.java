@@ -2,15 +2,12 @@ package me.carson.terrariaItems.listenersHandler;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,33 +43,6 @@ public class PlayerDataHandler {
         config.set(id +".max_mana",x);
     }
 
-    public double getMana(UUID id){
-        return config.getDouble(id +".current_mana",20);
-    }
-    public void setMana(UUID id,double x){
-        config.set(id +".current_mana",x);
-    }
-
-    public int getAccessoryCount(UUID id){
-        return config.getInt(id+".accessory_count",0);
-    }
-    public void setAccessoryCount(UUID id, int x){
-        config.set(id+".accessory_count",x);
-    }
-    public void addAccessory(Player player){
-        UUID id =player.getUniqueId();
-        setAccessoryCount(id,getAccessoryCount(id)+1);
-        save();
-    }
-    public void removeAccessory(Player player){
-        UUID id =player.getUniqueId();
-        if(getAccessoryCount(id)>0){
-            setAccessoryCount(id,getAccessoryCount(id)-1);
-        }else{
-            setAccessoryCount(id,0);
-        }
-        save();
-    }
     
     public List<ItemStack> getInventory(UUID id){
         return (List<ItemStack>) config.getList(id+".accessory_inv");
@@ -80,6 +50,14 @@ public class PlayerDataHandler {
     public void setInventory(UUID id,List<ItemStack> list){
         config.set(id+".accessory_inv",list);
     }
+
+    public List<ItemStack> getVanity(UUID id){
+        return (List<ItemStack>) config.getList(id+".vanity_inv");
+    }
+    public void setVanity(UUID id,List<ItemStack> list){
+        config.set(id+".vanity_inv",list);
+    }
+
 
     public void save() {
         try {

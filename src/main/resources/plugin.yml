@@ -21,3 +21,9 @@ permissions:
   terrariaitems.sub.open_inv:
     description: Terraria Items Commands
     default: true
+  terrariaitems.sub.vanity:
+    description: Terraria Items Commands
+    default: true
+
+softdepend:
+  - ProtocolLib

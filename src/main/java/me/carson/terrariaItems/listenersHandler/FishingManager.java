@@ -2,6 +2,7 @@ package me.carson.terrariaItems.listenersHandler;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.NeptunesShell;
 import me.carson.terrariaItems.toolFolder.tools.crates.*;
+import org.bukkit.Bukkit;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -25,6 +26,7 @@ public class FishingManager implements Listener {
 
     public FishingManager(Plugin plugin) {
         this.plugin = plugin;
+        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler

@@ -63,7 +63,7 @@ public class WeaponManager implements Listener {
         weaponList.put("Boomstick",new Boomstick(plugin));
         weaponList.put("Starfury",new Starfury(plugin));
         weaponList.put("ThunderZapper",new ThunderZapper(plugin));
-
+        weaponList.put("MagicalHarp",new MagicalHarp(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new Volcano(plugin), plugin);

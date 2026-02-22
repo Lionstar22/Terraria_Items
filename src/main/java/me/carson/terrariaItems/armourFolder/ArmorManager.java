@@ -2,6 +2,7 @@ package me.carson.terrariaItems.armourFolder;
 
 import io.papermc.paper.datacomponent.DataComponentTypes;
 import io.papermc.paper.datacomponent.item.Equippable;
+
 import me.carson.terrariaItems.armourFolder.armors.GoldenCrown;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
@@ -25,6 +26,7 @@ public class ArmorManager implements Listener {
     private final List<Armor> armorItems = new ArrayList<>();
 
     public ArmorManager(Plugin plugin) {
+
         armorItems.add(new GoldenCrown(plugin));
         armorItems.add(new ShadowHelmet(plugin));
         armorItems.add(new ShadowScalemail(plugin));
@@ -50,27 +52,6 @@ public class ArmorManager implements Listener {
         Bukkit.getPluginManager().registerEvents(new HallowedHelmet(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new CactusHelmet(plugin), plugin);
     }
-    /*
-    @EventHandler
-    public void onArmorEquip(InventoryClickEvent event) {
-        if (!(event.getWhoClicked() instanceof Player player)) return;
-
-        // Only handle clicks in armor slots
-        if (event.getSlotType() != InventoryType.SlotType.ARMOR) return;
-        ItemStack item = player.getInventory().getHelmet();
-        armorEffect(player, item);
-    }
-
-    // Detect right-click armor equip (like shift-clicking armor)
-    @EventHandler
-    public void onRightClick(PlayerInteractEvent event) {
-        if (event.getItem() == null) return;
-        if (event.getHand() != EquipmentSlot.HAND) return;
-
-        ItemStack item = event.getItem();
-        armorEffect(event.getPlayer(), item);
-    }*/
-
 
     public void startArmorTask(Plugin plugin) {
         Bukkit.getScheduler().runTaskTimer(plugin, () -> {
@@ -141,4 +122,5 @@ public class ArmorManager implements Listener {
         }
 
     }
+
 }

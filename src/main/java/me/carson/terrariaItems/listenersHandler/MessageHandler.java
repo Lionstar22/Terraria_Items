@@ -3,6 +3,7 @@ package me.carson.terrariaItems.listenersHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,7 +13,7 @@ import org.bukkit.plugin.Plugin;
 public class MessageHandler implements Listener {
 
     public MessageHandler(Plugin plugin){
-
+        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler

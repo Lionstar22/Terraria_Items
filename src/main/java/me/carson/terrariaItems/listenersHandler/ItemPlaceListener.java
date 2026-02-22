@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.listenersHandler;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,6 +17,7 @@ public class ItemPlaceListener implements Listener {
 
     public ItemPlaceListener(Plugin plugin) {
         this.plugin = plugin;
+        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler
