@@ -64,12 +64,15 @@ public class WeaponManager implements Listener {
         weaponList.put("Starfury",new Starfury(plugin));
         weaponList.put("ThunderZapper",new ThunderZapper(plugin));
         weaponList.put("MagicalHarp",new MagicalHarp(plugin));
+        weaponList.put("CrystalStorm",new CrystalStorm(plugin));
+        weaponList.put("OnyxBlaster",new OnyxBlaster(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new Volcano(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new SnowballCannon(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new BladeOfGrass(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new SniperRifle(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new Shotgun(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new Meteor(plugin), plugin);
     }
 

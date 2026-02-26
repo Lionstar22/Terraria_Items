@@ -26,7 +26,7 @@ public class BlocksRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "Hellforge");
         ShapedRecipe recipe = new ShapedRecipe(key, forge);
         recipe.shape(" M ","MFM"," M ");
-        recipe.setIngredient('M', new Hellstone(plugin).createItem());
+        recipe.setIngredient('M', Hellstone.getItem(plugin));
         recipe.setIngredient('F', Material.FURNACE);
         Bukkit.addRecipe(recipe);
     }

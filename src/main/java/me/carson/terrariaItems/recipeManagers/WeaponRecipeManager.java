@@ -50,6 +50,8 @@ public class WeaponRecipeManager {
         registerStarCannonRecipe();
         registerSuperStarShooterRecipe();
         registerMagicalHarpRecipe();
+        registerCrystalStormRecipe();
+        registerOnyxBlasterRecipe();
     }
 
     private void registerLightsBaneRecipe(){
@@ -217,7 +219,7 @@ public class WeaponRecipeManager {
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("IIN","I W","   ");
         recipe.setIngredient('I',Material.IRON_INGOT);
-        recipe.setIngredient('N',Material.NETHERITE_INGOT);
+        recipe.setIngredient('N',Material.NETHER_BRICK);
         recipe.setIngredient('W',Material.OAK_LOG);
         Bukkit.addRecipe(recipe);
     }
@@ -340,6 +342,27 @@ public class WeaponRecipeManager {
         recipe.setIngredient('S', SoulOfNight.getItem(plugin));
         recipe.setIngredient('G',Material.GOLD_INGOT);
         recipe.setIngredient('N',Material.NOTE_BLOCK);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerCrystalStormRecipe(){
+        ItemStack item= CrystalStorm.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "CrystalStorm");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("SAS","ABA","SAS");
+        recipe.setIngredient('S', SoulOfLight.getItem(plugin));
+        recipe.setIngredient('A',Material.AMETHYST_SHARD);
+        recipe.setIngredient('B',Material.BOOK);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerOnyxBlasterRecipe(){
+        ItemStack item= OnyxBlaster.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "OnyxBlaster");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape(" N ","NSN"," N ");
+        recipe.setIngredient('N', SoulOfNight.getItem(plugin));
+        recipe.setIngredient('S', Shotgun.getItem(plugin));
         Bukkit.addRecipe(recipe);
     }
 }

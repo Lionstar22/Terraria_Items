@@ -18,7 +18,7 @@ permissions:
   terrariaitems.sub.toggle_message:
     description: Terraria Items Commands
     default: true
-  terrariaitems.sub.open_inv:
+  terrariaitems.sub.accessory:
     description: Terraria Items Commands
     default: true
   terrariaitems.sub.vanity:
