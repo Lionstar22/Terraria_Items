@@ -2,7 +2,6 @@ package me.carson.terrariaItems;
 
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
-import me.carson.terrariaItems.armourFolder.ArmorManager;
 import me.carson.terrariaItems.armourFolder.armors.GoldenCrown;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
@@ -33,15 +32,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.bukkit.Bukkit.getServer;
 
 public class TICommand implements CommandExecutor, TabCompleter {
 

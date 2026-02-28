@@ -39,7 +39,7 @@ public class Material {
     public ItemStack createItem() {
         ItemStack material = new ItemStack(baseMaterial);
         ItemMeta meta = material.getItemMeta();
-        meta.displayName(Component.text(name, TextColor.fromHexString(rarity)));
+        meta.setDisplayName(net.md_5.bungee.api.ChatColor.of(rarity)+name);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setLore(lore);
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");

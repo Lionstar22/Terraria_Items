@@ -1,6 +1,5 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords;
 
-import me.carson.terrariaItems.weaponsFolder.Weapon;
 import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.Sword;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -9,6 +8,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
@@ -28,9 +28,9 @@ public class Excalibur extends Sword {
         meta.addEnchant(Enchantment.KNOCKBACK,1,true);
         meta.addEnchant(Enchantment.SWEEPING_EDGE,2,true);
         meta.setEnchantmentGlintOverride(false);
-        meta.addAttributeModifier(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(plugin,"speed"),-1.5, AttributeModifier.Operation.ADD_NUMBER));
-        meta.addAttributeModifier(Attribute.ENTITY_INTERACTION_RANGE, new AttributeModifier(new NamespacedKey(plugin,"range"),1.0, AttributeModifier.Operation.ADD_NUMBER));
-        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),19, AttributeModifier.Operation.ADD_NUMBER));
+        meta.addAttributeModifier(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(plugin,"speed"),-1.5, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.MAINHAND));
+        meta.addAttributeModifier(Attribute.ENTITY_INTERACTION_RANGE, new AttributeModifier(new NamespacedKey(plugin,"range"),1.0, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.MAINHAND));
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),19, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND));
         item.setItemMeta(meta);
         return item;
     }

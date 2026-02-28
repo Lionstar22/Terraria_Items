@@ -2,7 +2,6 @@ package me.carson.terrariaItems.accesoryFolder;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
-import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -10,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.*;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -86,7 +86,7 @@ public class AccessoryManager implements Listener {
 
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event) {
-        if (!event.getView().title().equals(Component.text("Accessories Inventory"))) {return;}
+        if (!event.getView().getTitle().equals("Accessories Inventory")) {return;}
         Player player = (Player) event.getPlayer();
         Inventory inv= event.getInventory();
         List<ItemStack> invList = new ArrayList<>();
@@ -104,11 +104,11 @@ public class AccessoryManager implements Listener {
     }
 
     public void openMenu(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 9, Component.text("Accessories Inventory"));
+        Inventory gui = Bukkit.createInventory(null, 9, "Accessories Inventory");
 
         ItemStack item = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemMeta meta = item.getItemMeta();
-        meta.displayName(Component.text(""));
+        meta.setDisplayName("§r");
         meta.getPersistentDataContainer().set(unmovableKey, PersistentDataType.BYTE, (byte) 1);
         item.setItemMeta(meta);
 
@@ -138,7 +138,7 @@ public class AccessoryManager implements Listener {
     //Prevents players from removing the gray stained-glass
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (!event.getView().title().equals(Component.text("Accessories Inventory"))) return;
+        if (!event.getView().getTitle().equals("Accessories Inventory")) return;
 
         ItemStack clicked = event.getCurrentItem();
         if (clicked == null) return;
@@ -147,6 +147,21 @@ public class AccessoryManager implements Listener {
         if (clickedMeta.getPersistentDataContainer().has(unmovableKey)) {
             event.setCancelled(true);
         }
+    }
+
+    @EventHandler
+    public void onRespawn(PlayerRespawnEvent event){
+        Player player= event.getPlayer();
+        List<ItemStack> invList= playerDataInstance.getInventory(player.getUniqueId());
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            for(ItemStack item:invList){
+                Accessory accessory=getAccessory(item);
+                if(accessory!=null){
+                    accessory.activateEffect(player);
+                }
+            }
+        }, 10L);
+
     }
 
 }

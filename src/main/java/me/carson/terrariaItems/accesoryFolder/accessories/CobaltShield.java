@@ -1,12 +1,14 @@
 package me.carson.terrariaItems.accesoryFolder.accessories;
 
-import com.destroystokyo.paper.event.entity.EntityKnockbackByEntityEvent;
+
 import me.carson.terrariaItems.accesoryFolder.Accessory;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityKnockbackByEntityEvent;
+import org.bukkit.event.entity.EntityKnockbackEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
@@ -33,7 +35,7 @@ public class CobaltShield extends Accessory implements Listener {
     }
 
     @EventHandler
-    public void onKnockback(EntityKnockbackByEntityEvent event) {
+    public void onKnockback(EntityKnockbackEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
         if(hasItem(player)){
             event.setCancelled(true);

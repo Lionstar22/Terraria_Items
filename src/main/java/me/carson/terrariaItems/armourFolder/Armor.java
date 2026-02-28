@@ -1,7 +1,5 @@
 package me.carson.terrariaItems.armourFolder;
 
-import io.papermc.paper.datacomponent.DataComponentTypes;
-import io.papermc.paper.datacomponent.item.Equippable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
@@ -12,6 +10,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.components.EquippableComponent;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
@@ -48,7 +47,7 @@ public abstract class Armor {
     public ItemStack createItem() {
         ItemStack armor = new ItemStack(baseMaterial);
         ItemMeta meta = armor.getItemMeta();
-        meta.displayName(Component.text(name, TextColor.fromHexString(rarity)));
+        meta.setDisplayName(net.md_5.bungee.api.ChatColor.of(rarity)+name);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setLore(lore);
         meta.setUnbreakable(true);
@@ -57,10 +56,11 @@ public abstract class Armor {
         meta.setItemModel(new NamespacedKey("terraria", texture));
         meta.getPersistentDataContainer().set(customItemKey, PersistentDataType.BYTE, (byte) 1);
         meta.setMaxStackSize(Integer.valueOf(1));
+        EquippableComponent equip= meta.getEquippable();
+        equip.setSlot(slot);
+        equip.setModel(new NamespacedKey("terraria", model));
+        meta.setEquippable(equip);
         armor.setItemMeta(meta);
-        Equippable equippable = Equippable.equippable(slot).assetId(new NamespacedKey("terraria", model)).build();
-        armor.setData(DataComponentTypes.EQUIPPABLE,equippable);
-        armor.unsetData(DataComponentTypes.ENCHANTABLE);
         return armor;
     }
 
@@ -80,48 +80,18 @@ public abstract class Armor {
         ItemStack chest = inv.getChestplate();
         ItemStack legs = inv.getLeggings();
         ItemStack boots = inv.getBoots();
+        if(helmet==null||chest==null||legs==null||boots==null){return false;}
+        ItemMeta hMeta = helmet.getItemMeta();
+        ItemMeta cMeta = chest.getItemMeta();
+        ItemMeta lMeta = legs.getItemMeta();
+        ItemMeta bMeta = boots.getItemMeta();
+        if(hMeta==null||cMeta==null||lMeta==null||bMeta==null){return false;}
+        String hKey=hMeta.getEquippable().getModel().getKey();
+        String cKey=cMeta.getEquippable().getModel().getKey();
+        String lKey=lMeta.getEquippable().getModel().getKey();
+        String bKey=bMeta.getEquippable().getModel().getKey();
 
-        if (!helmet.hasData(DataComponentTypes.EQUIPPABLE)) {
-            return false;
-        }
-        if (!chest.hasData(DataComponentTypes.EQUIPPABLE)) {
-            return false;
-        }
-        if (!legs.hasData(DataComponentTypes.EQUIPPABLE)) {
-            return false;
-        }
-        if (!boots.hasData(DataComponentTypes.EQUIPPABLE)) {
-            return false;
-        }
-
-        Equippable eqHelmet = helmet.getData(DataComponentTypes.EQUIPPABLE);
-        if (eqHelmet.assetId() == null) {
-            return false;
-        }
-        var helmetAssetId = eqHelmet.assetId();
-        String helmetKey = helmetAssetId.namespace();
-
-        Equippable eqChest = chest.getData(DataComponentTypes.EQUIPPABLE);
-        if (eqChest.assetId() == null) {
-            return false;
-        }
-        var chestAssetId = eqChest.assetId();
-        String chestKey = chestAssetId.namespace();
-
-        Equippable eqLegs = legs.getData(DataComponentTypes.EQUIPPABLE);
-        if (eqLegs.assetId() == null) {
-            return false;
-        }
-        var legsAssetId = eqLegs.assetId();
-        String legsKey = legsAssetId.namespace();
-
-        Equippable eqBoots = boots.getData(DataComponentTypes.EQUIPPABLE);
-        if (eqBoots.assetId() == null) {
-            return false;
-        }
-        var bootsAssetId = eqBoots.assetId();
-        String bootsKey = bootsAssetId.namespace();
-        return helmetKey.equals(chestKey) && helmetKey.equals(legsKey) && helmetKey.equals(bootsKey);
+        return hKey.equals(cKey)&&hKey.equals(lKey)&&hKey.equals(bKey);
     }
 
     public abstract void activateArmorEffect(Player player);

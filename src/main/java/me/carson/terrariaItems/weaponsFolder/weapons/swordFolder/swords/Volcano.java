@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
@@ -30,9 +31,9 @@ public class Volcano extends Sword implements Listener {
         ItemMeta meta= item.getItemMeta();
         meta.addEnchant(Enchantment.FIRE_ASPECT,2,true);
         meta.setEnchantmentGlintOverride(false);
-        meta.addAttributeModifier(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(plugin,"speed"),-3.0, AttributeModifier.Operation.ADD_NUMBER));
-        meta.addAttributeModifier(Attribute.ENTITY_INTERACTION_RANGE, new AttributeModifier(new NamespacedKey(plugin,"range"),1.0, AttributeModifier.Operation.ADD_NUMBER));
-        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),14, AttributeModifier.Operation.ADD_NUMBER));
+        meta.addAttributeModifier(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(plugin,"speed"),-3.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND));
+        meta.addAttributeModifier(Attribute.ENTITY_INTERACTION_RANGE, new AttributeModifier(new NamespacedKey(plugin,"range"),1.0, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.MAINHAND));
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),14, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.MAINHAND));
         item.setItemMeta(meta);
         return item;
     }

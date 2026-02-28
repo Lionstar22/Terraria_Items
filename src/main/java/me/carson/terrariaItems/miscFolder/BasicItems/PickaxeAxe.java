@@ -6,6 +6,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.components.ToolComponent;
@@ -31,7 +32,7 @@ public class PickaxeAxe extends Basic implements Listener {
         meta.setTool(tool);
         meta.addEnchant(Enchantment.FORTUNE,2,true);
         meta.setEnchantmentGlintOverride(false);
-        meta.addAttributeModifier(Attribute.BLOCK_INTERACTION_RANGE, new AttributeModifier(new NamespacedKey(plugin,"pickaxe_axe_range"),2.0, AttributeModifier.Operation.ADD_NUMBER));
+        meta.addAttributeModifier(Attribute.BLOCK_INTERACTION_RANGE, new AttributeModifier(new NamespacedKey(plugin,"pickaxe_axe_range"),2.0, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.MAINHAND));
         item.setItemMeta(meta);
         return item;
     }

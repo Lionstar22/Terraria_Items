@@ -12,10 +12,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.Listener;
-import org.bukkit.inventory.FurnaceRecipe;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.inventory.*;
 import org.bukkit.plugin.Plugin;
 
 public class MaterialRecipeManager implements Listener {
@@ -85,9 +82,9 @@ public class MaterialRecipeManager implements Listener {
         ItemStack hallow=HallowedBar.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "HallowedBar");
         ShapelessRecipe recipe = new ShapelessRecipe(key, hallow);
-        recipe.addIngredient(SoulOfFright.getItem(plugin));
-        recipe.addIngredient(SoulOfSight.getItem(plugin));
-        recipe.addIngredient(SoulOfMight.getItem(plugin));
+        recipe.addIngredient(new RecipeChoice.ExactChoice( SoulOfFright.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice( SoulOfSight.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice( SoulOfMight.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -117,7 +114,7 @@ public class MaterialRecipeManager implements Listener {
         emptyBullet.setAmount(8);
         NamespacedKey key = new NamespacedKey(plugin, "ExplodingBullet");
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
-        recipe.addIngredient(emptyBullet);
+        recipe.addIngredient(new RecipeChoice.ExactChoice( emptyBullet));
         recipe.addIngredient(Material.GUNPOWDER);
         Bukkit.addRecipe(recipe);
     }
@@ -129,7 +126,7 @@ public class MaterialRecipeManager implements Listener {
         emptyBullet.setAmount(8);
         NamespacedKey key = new NamespacedKey(plugin, "BubonicRound");
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
-        recipe.addIngredient(emptyBullet);
+        recipe.addIngredient(new RecipeChoice.ExactChoice( emptyBullet));
         recipe.addIngredient(Material.WITHER_ROSE);
         Bukkit.addRecipe(recipe);
     }

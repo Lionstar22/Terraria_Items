@@ -40,7 +40,7 @@ public class Basic {
         ItemStack basic = new ItemStack(baseMaterial);
         ItemMeta meta = basic.getItemMeta();
         meta.setUnbreakable(true);
-        meta.displayName(Component.text(name, TextColor.fromHexString(rarity)));
+        meta.setDisplayName(net.md_5.bungee.api.ChatColor.of(rarity)+name);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setLore(lore);
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");

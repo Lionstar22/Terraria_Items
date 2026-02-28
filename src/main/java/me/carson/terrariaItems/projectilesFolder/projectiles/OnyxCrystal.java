@@ -19,6 +19,6 @@ public class OnyxCrystal extends Projectile {
 
     @Override
     public void hitBlockEffect(Block block) {
-        block.getWorld().createExplosion(block.getLocation().add(0,1,0), 1.0F, false, false);
+        block.getWorld().createExplosion(block.getLocation().add(0.5,1.1f,0.5), 1.0F, false, false);
     }
 }

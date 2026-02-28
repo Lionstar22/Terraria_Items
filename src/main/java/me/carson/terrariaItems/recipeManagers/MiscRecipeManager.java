@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.Plugin;
 
@@ -27,7 +28,7 @@ public class MiscRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, axe);
         recipe.shape("HHH","HS "," S ");
         recipe.setIngredient('S', Material.STICK);
-        recipe.setIngredient('H',HallowedBar.getItem(plugin));
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 }

@@ -1,8 +1,5 @@
 package me.carson.terrariaItems.armourFolder;
 
-import io.papermc.paper.datacomponent.DataComponentTypes;
-import io.papermc.paper.datacomponent.item.Equippable;
-
 import me.carson.terrariaItems.armourFolder.armors.GoldenCrown;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
@@ -16,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
@@ -32,6 +30,7 @@ public class ArmorManager implements Listener {
         armorItems.add(new ShadowScalemail(plugin));
         armorItems.add(new ShadowLeggings(plugin));
         armorItems.add(new ShadowGreaves(plugin));
+        armorItems.add(new ShadowElytra(plugin));
         armorItems.add(new MoltenHelmet(plugin));
         armorItems.add(new MoltenChestplate(plugin));
         armorItems.add(new MoltenLeggings(plugin));
@@ -68,48 +67,18 @@ public class ArmorManager implements Listener {
         ItemStack chest = inv.getChestplate();
         ItemStack legs = inv.getLeggings();
         ItemStack boots = inv.getBoots();
+        if(helmet==null||chest==null||legs==null||boots==null){return false;}
+        ItemMeta hMeta = helmet.getItemMeta();
+        ItemMeta cMeta = chest.getItemMeta();
+        ItemMeta lMeta = legs.getItemMeta();
+        ItemMeta bMeta = boots.getItemMeta();
+        if(hMeta==null||cMeta==null||lMeta==null||bMeta==null){return false;}
+        String hKey=hMeta.getEquippable().getModel().getKey();
+        String cKey=cMeta.getEquippable().getModel().getKey();
+        String lKey=lMeta.getEquippable().getModel().getKey();
+        String bKey=bMeta.getEquippable().getModel().getKey();
 
-        if (!helmet.hasData(DataComponentTypes.EQUIPPABLE)) {
-            return false;
-        }
-        if (!chest.hasData(DataComponentTypes.EQUIPPABLE)) {
-            return false;
-        }
-        if (!legs.hasData(DataComponentTypes.EQUIPPABLE)) {
-            return false;
-        }
-        if (!boots.hasData(DataComponentTypes.EQUIPPABLE)) {
-            return false;
-        }
-
-        Equippable eqHelmet = helmet.getData(DataComponentTypes.EQUIPPABLE);
-        if (eqHelmet.assetId() == null) {
-            return false;
-        }
-        var helmetAssetId = eqHelmet.assetId();
-        String helmetKey = helmetAssetId.namespace();
-
-        Equippable eqChest = chest.getData(DataComponentTypes.EQUIPPABLE);
-        if (eqChest.assetId() == null) {
-            return false;
-        }
-        var chestAssetId = eqChest.assetId();
-        String chestKey = chestAssetId.namespace();
-
-        Equippable eqLegs = legs.getData(DataComponentTypes.EQUIPPABLE);
-        if (eqLegs.assetId() == null) {
-            return false;
-        }
-        var legsAssetId = eqLegs.assetId();
-        String legsKey = legsAssetId.namespace();
-
-        Equippable eqBoots = boots.getData(DataComponentTypes.EQUIPPABLE);
-        if (eqBoots.assetId() == null) {
-            return false;
-        }
-        var bootsAssetId = eqBoots.assetId();
-        String bootsKey = bootsAssetId.namespace();
-        return helmetKey.equals(chestKey) && helmetKey.equals(legsKey) && helmetKey.equals(bootsKey);
+        return hKey.equals(cKey)&&hKey.equals(lKey)&&hKey.equals(bKey);
     }
 
     public void armorEffect(Player player, ItemStack item) {

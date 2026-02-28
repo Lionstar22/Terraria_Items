@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.Plugin;
@@ -179,12 +180,12 @@ public class AccessoryRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "AvengerEmblem");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" W ","RNE","MSF");
-        recipe.setIngredient('W', WarriorEmblem.getItem(plugin));
-        recipe.setIngredient('R', RangerEmblem.getItem(plugin));
-        recipe.setIngredient('E', SorcererEmblem.getItem(plugin));
-        recipe.setIngredient('M', SoulOfMight.getItem(plugin));
-        recipe.setIngredient('S', SoulOfSight.getItem(plugin));
-        recipe.setIngredient('F', SoulOfFright.getItem(plugin));
+        recipe.setIngredient('W', new RecipeChoice.ExactChoice( WarriorEmblem.getItem(plugin)));
+        recipe.setIngredient('R', new RecipeChoice.ExactChoice( RangerEmblem.getItem(plugin)));
+        recipe.setIngredient('E', new RecipeChoice.ExactChoice( SorcererEmblem.getItem(plugin)));
+        recipe.setIngredient('M', new RecipeChoice.ExactChoice( SoulOfMight.getItem(plugin)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice( SoulOfSight.getItem(plugin)));
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice( SoulOfFright.getItem(plugin)));
         recipe.setIngredient('N', Material.RESIN_BRICK);
         Bukkit.addRecipe(recipe);
     }

@@ -13,9 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class ToolManager implements Listener {
     private final HashMap<String,Tool> toolList = new HashMap<>();

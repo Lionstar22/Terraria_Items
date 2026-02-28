@@ -4,6 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.enchantment.EnchantItemEvent;
+import org.bukkit.event.enchantment.PrepareItemEnchantEvent;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.event.inventory.PrepareSmithingEvent;
@@ -28,7 +30,7 @@ public class CustomCraftingListener implements Listener {
         ItemStack[] matrix = inv.getMatrix();
         ItemStack result=inv.getResult();
         if(result!=null){
-            if(hasCustom(matrix)&&!result.getItemMeta().getPersistentDataContainer().has(customItemKey)){
+            if(hasCustom(matrix)&&!hasCustomKey(result)){
                 inv.setResult(null);
             }
         }
@@ -37,7 +39,7 @@ public class CustomCraftingListener implements Listener {
     public Boolean hasCustom(ItemStack[] matrix){
         for (ItemStack item : matrix) {
             if(item!=null){
-                if(item.getItemMeta().getPersistentDataContainer().has(customItemKey)){
+                if(hasCustomKey(item)){
                     return true;
                 }
             }
@@ -45,41 +47,35 @@ public class CustomCraftingListener implements Listener {
         return false;
     }
 
-    public Boolean isAllVanilla(ItemStack[] matrix){
-        for (ItemStack item : matrix) {
-            if(item!=null){
-                if(item.getItemMeta().getPersistentDataContainer().has(customItemKey)){
-                    return false;
-                }
-            }
-        }
-        return true;
+    public Boolean hasCustomKey(ItemStack item){
+        if (item==null){return false;}
+        if(item.getItemMeta()==null){return false;}
+        return item.getItemMeta().getPersistentDataContainer().has(customItemKey);
     }
 
     @EventHandler
     public void onAnvil(PrepareAnvilEvent event) {
         ItemStack item = event.getResult();
-        if (item != null) {
-            if(item.getItemMeta()!=null){
-                PersistentDataContainer data=item.getItemMeta().getPersistentDataContainer();
-                if (data.has(customItemKey, PersistentDataType.BYTE)) {
-                    event.setResult(null);
-                }
-            }
+        if (hasCustomKey(item)){
+            event.setResult(null);
         }
     }
 
     @EventHandler
     public void onSmithing(PrepareSmithingEvent event) {
-        ItemStack item = event.getInventory().getInputEquipment(); // or getInputTemplate(), getInputMineral() depending on layout
-
-        if (item != null) {
-            if(item.getItemMeta()!=null){
-                PersistentDataContainer data=item.getItemMeta().getPersistentDataContainer();
-                if (data.has(customItemKey, PersistentDataType.BYTE)) {
-                    event.setResult(null);
-                }
-            }
+        ItemStack item = event.getInventory().getItem(1);
+        if(hasCustomKey(item)){
+            event.setResult(null);
         }
     }
+
+    @EventHandler
+    public void onEnchant(PrepareItemEnchantEvent event){
+        ItemStack itemStack = event.getItem();
+        if(hasCustomKey(itemStack)){
+            event.setCancelled(true);
+        }
+    }
+
+
 }

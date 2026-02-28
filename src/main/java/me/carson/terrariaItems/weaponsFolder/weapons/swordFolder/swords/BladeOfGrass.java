@@ -1,7 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords;
 
 import me.carson.terrariaItems.projectilesFolder.projectiles.Leaf;
-import me.carson.terrariaItems.weaponsFolder.Weapon;
 import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.Sword;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -13,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
@@ -35,7 +35,7 @@ public class BladeOfGrass extends Sword implements Listener {
     public static ItemStack getItem(Plugin plugin) {
         ItemStack item=new BladeOfGrass(plugin).createItem();
         ItemMeta meta= item.getItemMeta();
-        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),5, AttributeModifier.Operation.ADD_NUMBER));
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),5, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND));
         item.setItemMeta(meta);
         return item;
     }

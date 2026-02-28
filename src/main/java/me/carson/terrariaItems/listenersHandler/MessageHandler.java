@@ -3,6 +3,10 @@ package me.carson.terrariaItems.listenersHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,13 +24,14 @@ public class MessageHandler implements Listener {
     public void playerJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
         if(PlayerDataHandler.getInstance().getShowMsg(player.getUniqueId())){
-            player.sendMessage(Component.text("Thank you for using Terraria Items! Information about the plugin and items can be found ")
-                    .append(
-                            Component.text("here")
-                                    .color(NamedTextColor.AQUA)
-                                    .clickEvent(ClickEvent.openUrl("https://github.com/CarsonWebb/Terraria_Items/wiki"))
-                    )
-                    .append(Component.text(". This message can be toggled using /ti toggle_message.")));
+            TextComponent start=new TextComponent("Thank you for using Terraria Items! Information about the plugin and items can be found ");
+            TextComponent link=new TextComponent("here");
+            link.setColor(ChatColor.AQUA);
+            link.setClickEvent(new net.md_5.bungee.api.chat.ClickEvent(net.md_5.bungee.api.chat.ClickEvent.Action.OPEN_URL,"https://github.com/CarsonWebb/Terraria_Items/wiki"));
+            TextComponent end=new TextComponent(". This message can be toggled using /ti toggle_message.");
+            start.addExtra(link);
+            start.addExtra(end);
+            player.spigot().sendMessage(ChatMessageType.CHAT,start);
         }
     }
 

@@ -1,6 +1,5 @@
 package me.carson.terrariaItems.accesoryFolder.accessories;
 
-import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import me.carson.terrariaItems.accesoryFolder.Accessory;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -13,7 +12,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInputEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 

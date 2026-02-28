@@ -14,6 +14,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.Plugin;
@@ -53,7 +54,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "ShadowHelmet");
         ShapedRecipe recipe = new ShapedRecipe(key, helmet);
         recipe.shape("DDD","D D","   ");
-        recipe.setIngredient('D', DemoniteBar.getItem(plugin));
+        recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -62,7 +63,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "ShadowScalemail");
         ShapedRecipe recipe = new ShapedRecipe(key, scalemail);
         recipe.shape("D D","DDD","DDD");
-        recipe.setIngredient('D', DemoniteBar.getItem(plugin));
+        recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -71,7 +72,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "ShadowLeggings");
         ShapedRecipe recipe = new ShapedRecipe(key, leggings);
         recipe.shape("DDD","D D","D D");
-        recipe.setIngredient('D', DemoniteBar.getItem(plugin));
+        recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -80,7 +81,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "ShadowGreaves");
         ShapedRecipe recipe = new ShapedRecipe(key, greaves);
         recipe.shape("   ","D D","D D");
-        recipe.setIngredient('D', DemoniteBar.getItem(plugin));
+        recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -89,7 +90,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "ShadowElytra");
         ShapedRecipe recipe = new ShapedRecipe(key, elytra);
         recipe.shape(" D ","DED"," D ");
-        recipe.setIngredient('D', DemoniteBar.getItem(plugin));
+        recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
         recipe.setIngredient('E',Material.ELYTRA);
         Bukkit.addRecipe(recipe);
     }
@@ -99,7 +100,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "MoltenHelmet");
         ShapelessRecipe recipe = new ShapelessRecipe(key,helm);
         recipe.addIngredient(Material.DIAMOND_HELMET);
-        recipe.addIngredient(HellstoneBar.getItem(plugin));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(HellstoneBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -108,7 +109,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "MoltenChestplate");
         ShapelessRecipe recipe = new ShapelessRecipe(key,chestplate);
         recipe.addIngredient(Material.DIAMOND_CHESTPLATE);
-        recipe.addIngredient(HellstoneBar.getItem(plugin));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(HellstoneBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -117,7 +118,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "MoltenLeggings");
         ShapelessRecipe recipe = new ShapelessRecipe(key,leggings);
         recipe.addIngredient(Material.DIAMOND_LEGGINGS);
-        recipe.addIngredient(HellstoneBar.getItem(plugin));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(HellstoneBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -126,7 +127,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "MoltenBoots");
         ShapelessRecipe recipe = new ShapelessRecipe(key,boots);
         recipe.addIngredient(Material.DIAMOND_BOOTS);
-        recipe.addIngredient(HellstoneBar.getItem(plugin));
+        recipe.addIngredient(new RecipeChoice.ExactChoice( HellstoneBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -135,7 +136,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "MoltenElytra");
         ShapelessRecipe recipe = new ShapelessRecipe(key,elytra);
         recipe.addIngredient(Material.ELYTRA);
-        recipe.addIngredient(HellstoneBar.getItem(plugin));
+        recipe.addIngredient(new RecipeChoice.ExactChoice( HellstoneBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -144,7 +145,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "HallowedHelmet");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("HHH","H H","   ");
-        recipe.setIngredient('H', HallowedBar.getItem(plugin));
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -153,7 +154,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "HallowedChestplate");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("H H","HHH","HHH");
-        recipe.setIngredient('H', HallowedBar.getItem(plugin));
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -162,7 +163,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "HallowedLeggings");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("HHH","H H","H H");
-        recipe.setIngredient('H', HallowedBar.getItem(plugin));
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -171,7 +172,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "HallowedBoots");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","H H","H H");
-        recipe.setIngredient('H', HallowedBar.getItem(plugin));
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -180,7 +181,7 @@ public class ArmorRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "HallowedElytra");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" H ","HEH"," H ");
-        recipe.setIngredient('H', HallowedBar.getItem(plugin));
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         recipe.setIngredient('E', Material.ELYTRA);
         Bukkit.addRecipe(recipe);
     }

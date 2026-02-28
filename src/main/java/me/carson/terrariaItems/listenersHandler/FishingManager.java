@@ -1,6 +1,5 @@
 package me.carson.terrariaItems.listenersHandler;
 
-import me.carson.terrariaItems.accesoryFolder.accessories.NeptunesShell;
 import me.carson.terrariaItems.toolFolder.tools.crates.*;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Biome;
@@ -8,7 +7,6 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;

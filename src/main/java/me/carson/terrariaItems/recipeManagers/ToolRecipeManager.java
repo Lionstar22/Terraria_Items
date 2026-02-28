@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.Plugin;
 
@@ -76,7 +77,7 @@ public class ToolRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "LifeCrystal");
         ShapedRecipe recipe = new ShapedRecipe(key, lifeCrystal);
         recipe.shape("DCD","DDD"," D ");
-        recipe.setIngredient('D', Ruby.getItem(plugin));
+        recipe.setIngredient('D', new RecipeChoice.ExactChoice( Ruby.getItem(plugin)));
         recipe.setIngredient('C', Material.COBBLESTONE);
         Bukkit.addRecipe(recipe);
     }
@@ -86,7 +87,7 @@ public class ToolRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "ManaCrystal");
         ShapedRecipe recipe = new ShapedRecipe(key, crystal);
         recipe.shape(" S ","SSS"," S ");
-        recipe.setIngredient('S', FallenStar.getItem(plugin));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice( FallenStar.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 

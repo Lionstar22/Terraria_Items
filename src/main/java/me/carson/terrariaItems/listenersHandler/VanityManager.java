@@ -5,7 +5,6 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.wrappers.EnumWrappers;
 import com.comphenix.protocol.wrappers.Pair;
-import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -47,7 +46,7 @@ public class VanityManager implements Listener {
 
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event) {
-        if (!event.getView().title().equals(Component.text("Vanity Inventory"))) {return;}
+        if (!event.getView().getTitle().equals("Vanity Inventory")) {return;}
         Player player = (Player) event.getPlayer();
         Inventory inv= event.getInventory();
         List<ItemStack> invList = new ArrayList<>();
@@ -91,11 +90,11 @@ public class VanityManager implements Listener {
     }
 
     public void openVanity(Player player){
-        Inventory gui = Bukkit.createInventory(null, 9, Component.text("Vanity Inventory"));
+        Inventory gui = Bukkit.createInventory(null, 9, "Vanity Inventory");
 
         ItemStack item = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemMeta meta = item.getItemMeta();
-        meta.displayName(Component.text(""));
+        meta.setDisplayName("§r");
         meta.getPersistentDataContainer().set(unmovableKey, PersistentDataType.BYTE, (byte) 1);
         item.setItemMeta(meta);
 
@@ -117,8 +116,7 @@ public class VanityManager implements Listener {
     //Prevents players from removing the gray stained-glass
     @EventHandler
     public void onVanityClick(InventoryClickEvent event) {
-        if (!event.getView().title().equals(Component.text("Vanity Inventory"))) return;
-
+        if (!event.getView().getTitle().equals("Vanity Inventory")) return;
         ItemStack clicked = event.getCurrentItem();
         if (clicked == null) return;
         ItemMeta clickedMeta=clicked.getItemMeta();
@@ -128,10 +126,12 @@ public class VanityManager implements Listener {
         }
     }
 
+    /*
     @EventHandler
     public void onArmorEquip(PlayerArmorChangeEvent event){
         Player player = event.getPlayer();
         List<ItemStack> invList= playerDataInstance.getVanity(player.getUniqueId());
         applyVanity(invList,player);
     }
+     */
 }

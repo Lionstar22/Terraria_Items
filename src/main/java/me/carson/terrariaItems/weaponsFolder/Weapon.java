@@ -1,6 +1,5 @@
 package me.carson.terrariaItems.weaponsFolder;
 
-import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
@@ -35,7 +34,6 @@ public abstract class Weapon {
         this.baseMaterial = baseMaterial;
         this.texture = texture;
         this.id = id;
-
         unplaceableKey=new NamespacedKey(plugin, "unplaceable");
         customItemKey=new NamespacedKey(plugin, "customItem");
         this.cooldown = cooldown;
@@ -46,7 +44,7 @@ public abstract class Weapon {
         ItemStack weapon = new ItemStack(baseMaterial);
         ItemMeta meta = weapon.getItemMeta();
         meta.setUnbreakable(true);
-        meta.displayName(Component.text(name, TextColor.fromHexString(rarity)));
+        meta.setDisplayName(net.md_5.bungee.api.ChatColor.of(rarity)+name);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setLore(lore);
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
@@ -56,7 +54,6 @@ public abstract class Weapon {
         meta.getPersistentDataContainer().set(customItemKey, PersistentDataType.BYTE, (byte) 1);
         meta.setMaxStackSize(Integer.valueOf(1));
         weapon.setItemMeta(meta);
-        weapon.unsetData(DataComponentTypes.ENCHANTABLE);
         return weapon;
     }
 

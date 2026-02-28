@@ -3,6 +3,7 @@ package me.carson.terrariaItems.accesoryFolder;
 import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -47,7 +48,7 @@ public abstract class Accessory {
     public ItemStack createItem() {
         ItemStack item = new ItemStack(baseMaterial);
         ItemMeta meta = item.getItemMeta();
-        meta.displayName(Component.text(name, TextColor.fromHexString(rarity)));
+        meta.setDisplayName(net.md_5.bungee.api.ChatColor.of(rarity)+name);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setLore(lore);
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");

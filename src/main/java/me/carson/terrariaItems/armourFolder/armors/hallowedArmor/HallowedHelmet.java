@@ -44,7 +44,7 @@ public class HallowedHelmet extends Armor implements Listener {
 
     @Override
     public void activateArmorEffect(Player player) {
-        player.setWalkSpeed(0.24f); // default is 0.2f
+        player.setWalkSpeed(0.25f); // default is 0.2f
     }
 
     @Override

@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.Plugin;
 
@@ -26,7 +27,7 @@ public class BlocksRecipeManager {
         NamespacedKey key = new NamespacedKey(plugin, "Hellforge");
         ShapedRecipe recipe = new ShapedRecipe(key, forge);
         recipe.shape(" M ","MFM"," M ");
-        recipe.setIngredient('M', Hellstone.getItem(plugin));
+        recipe.setIngredient('M', new RecipeChoice.ExactChoice( Hellstone.getItem(plugin)));
         recipe.setIngredient('F', Material.FURNACE);
         Bukkit.addRecipe(recipe);
     }
