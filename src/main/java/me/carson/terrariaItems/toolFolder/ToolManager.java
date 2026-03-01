@@ -38,6 +38,7 @@ public class ToolManager implements Listener {
         toolList.put("OasisCrate",new OasisCrate(plugin));
         toolList.put("OceanCrate",new OceanCrate(plugin));
         toolList.put("SkyCrate",new SkyCrate(plugin));
+        toolList.put("TestSummon",new TestSummon(plugin));
     }
 
     @EventHandler

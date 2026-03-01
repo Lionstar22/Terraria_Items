@@ -3,6 +3,7 @@ package me.carson.terrariaItems.weaponsFolder;
 import me.carson.terrariaItems.projectilesFolder.projectiles.Meteor;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.DaedalusStormbow;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.HallowedRepeater;
+import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.HoarfrostBow;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.MoltenFury;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
@@ -66,6 +67,7 @@ public class WeaponManager implements Listener {
         weaponList.put("MagicalHarp",new MagicalHarp(plugin));
         weaponList.put("CrystalStorm",new CrystalStorm(plugin));
         weaponList.put("OnyxBlaster",new OnyxBlaster(plugin));
+        weaponList.put("HoarfrostBow",new HoarfrostBow(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new Volcano(plugin), plugin);

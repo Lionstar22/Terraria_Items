@@ -52,6 +52,7 @@ public class WeaponRecipeManager {
         registerMagicalHarpRecipe();
         registerCrystalStormRecipe();
         registerOnyxBlasterRecipe();
+        registerHoarfrostBowRecipe();
     }
 
     private void registerLightsBaneRecipe(){
@@ -363,6 +364,17 @@ public class WeaponRecipeManager {
         recipe.shape(" N ","NSN"," N ");
         recipe.setIngredient('N', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice( Shotgun.getItem(plugin)));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerHoarfrostBowRecipe(){
+        ItemStack item= HoarfrostBow.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "HoarfrostBow");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape(" IS","ILS"," IS");
+        recipe.setIngredient('S',Material.STRING);
+        recipe.setIngredient('I',Material.ICE);
+        recipe.setIngredient('L',Material.SOUL_LANTERN);
         Bukkit.addRecipe(recipe);
     }
 }
