@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 public class WardenLaser extends BossProjectile {
 
     public WardenLaser(Plugin plugin) {
-        super(plugin, 0,  "warden_laser", "WardenLaser",2,0, DamageType.GENERIC);
+        super(plugin, 0,  "warden_laser", "WardenLaser",0,0, DamageType.GENERIC);
     }
 
     @Override

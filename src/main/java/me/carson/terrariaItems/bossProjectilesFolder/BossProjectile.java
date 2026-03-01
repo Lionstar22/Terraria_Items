@@ -67,36 +67,6 @@ public abstract class BossProjectile implements Listener {
 
     }
 
-    public void createFallingProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float height,Location location){
-        if(spread==0){return;}
-        float valueX = ThreadLocalRandom.current().nextFloat(-spread, spread);
-        float valueZ = ThreadLocalRandom.current().nextFloat(-spread, spread);
-
-        Location loc = location.clone().add(valueX,height,valueZ);
-
-        Vector dir = location.toVector().subtract(loc.toVector());
-
-        dir.normalize().multiply(speed);
-
-        loc.setDirection(dir);
-
-        ItemDisplay proj = (ItemDisplay) player.getWorld().spawnEntity(loc,EntityType.ITEM_DISPLAY);
-
-        ItemStack item = new ItemStack(Material.IRON_NUGGET);
-        ItemMeta meta=item.getItemMeta();
-        meta.setItemModel(new NamespacedKey("terraria", texture));
-        item.setItemMeta(meta);
-
-        proj.setItemStack(item);
-        NamespacedKey key = new NamespacedKey(plugin, id);
-        proj.getPersistentDataContainer().set(key, PersistentDataType.INTEGER,1);
-        proj.setInterpolationDuration(3);
-        proj.setTeleportDuration(1);
-
-        moveProj(player,speed,weaponDamage,duration,proj,dir);
-
-    }
-
     private void moveProj(LivingEntity shooter,float speed,float weaponDamage,float duration,ItemDisplay proj, Vector dir){
         final int[] tick = {0};
         final int[] enemiesHit = {0};

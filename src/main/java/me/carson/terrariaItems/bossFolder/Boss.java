@@ -42,7 +42,7 @@ public abstract class Boss {
 
     public abstract void summonBoss(Player player);
 
-    public abstract void startAttacks(LivingEntity shooter);
+    //public abstract void startAttacks(LivingEntity shooter);
 
     public void attachBossBar(LivingEntity entity, BossBar bar) {
         new BukkitRunnable() {
@@ -79,6 +79,5 @@ public abstract class Boss {
             }
         }.runTaskTimer(plugin, 1, 5); // update every 5 ticks
     }
-
 
 }

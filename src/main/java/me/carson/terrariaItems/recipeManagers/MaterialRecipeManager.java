@@ -110,11 +110,12 @@ public class MaterialRecipeManager implements Listener {
     private void registerExplodingBulletRecipe(){
         ItemStack item= ExplodingBullet.getItem(plugin);
         item.setAmount(50);
-        ItemStack emptyBullet=EmptyBullet.getItem(plugin);
-        emptyBullet.setAmount(8);
+        RecipeChoice choice = new RecipeChoice.ExactChoice(EmptyBullet.getItem(plugin));
         NamespacedKey key = new NamespacedKey(plugin, "ExplodingBullet");
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
-        recipe.addIngredient(new RecipeChoice.ExactChoice( emptyBullet));
+        for(int i=0;i<8;i++){
+            recipe.addIngredient(choice);
+        }
         recipe.addIngredient(Material.GUNPOWDER);
         Bukkit.addRecipe(recipe);
     }
@@ -122,11 +123,12 @@ public class MaterialRecipeManager implements Listener {
     private void registerBubonicRoundRecipe(){
         ItemStack item= BubonicRound.getItem(plugin);
         item.setAmount(50);
-        ItemStack emptyBullet=EmptyBullet.getItem(plugin);
-        emptyBullet.setAmount(8);
+        RecipeChoice choice = new RecipeChoice.ExactChoice(EmptyBullet.getItem(plugin));
         NamespacedKey key = new NamespacedKey(plugin, "BubonicRound");
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
-        recipe.addIngredient(new RecipeChoice.ExactChoice( emptyBullet));
+        for(int i=0;i<8;i++){
+            recipe.addIngredient(choice);
+        }
         recipe.addIngredient(Material.WITHER_ROSE);
         Bukkit.addRecipe(recipe);
     }

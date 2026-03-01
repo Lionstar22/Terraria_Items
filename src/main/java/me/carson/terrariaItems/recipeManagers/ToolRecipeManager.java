@@ -2,7 +2,10 @@ package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.Ruby;
+import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfLight;
+import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfNight;
 import me.carson.terrariaItems.toolFolder.tools.*;
+import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalShrieker;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -27,6 +30,7 @@ public class ToolRecipeManager {
         registerLifeCrystalRecipe();
         registerManaCrystalRecipe();
         registerTorrentialTearRecipe();
+        registerMechanicalShriekerRecipe();
     }
 
     private void registerMirrorRecipe(){
@@ -99,6 +103,16 @@ public class ToolRecipeManager {
         recipe.setIngredient('C', Material.CLOCK);
         recipe.setIngredient('D', Material.SPONGE);
         recipe.setIngredient('W', Material.WET_SPONGE);
+        Bukkit.addRecipe(recipe);
+    }
+    private void registerMechanicalShriekerRecipe(){
+        ItemStack item= MechanicalShrieker.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "MechanicalShrieker");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" L ","NSN"," L ");
+        recipe.setIngredient('L', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
+        recipe.setIngredient('N', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
+        recipe.setIngredient('S', Material.SCULK_SHRIEKER);
         Bukkit.addRecipe(recipe);
     }
 }
