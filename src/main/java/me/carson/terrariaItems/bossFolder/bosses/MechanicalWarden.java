@@ -43,7 +43,7 @@ public class MechanicalWarden extends Boss {
         boss.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, -1, 0, false, false,false));
         NamespacedKey key = new NamespacedKey(plugin, "BossWarden");
         boss.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) 1);
-        BossBar bar = Bukkit.createBossBar(name, BarColor.RED, BarStyle.SOLID);
+        BossBar bar = Bukkit.createBossBar(name, BarColor.BLUE, BarStyle.SOLID);
         attachBossBar(boss,bar);
         startAttacks(boss);
     }

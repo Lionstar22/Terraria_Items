@@ -14,7 +14,7 @@ public class WardenLaser extends BossProjectile {
 
     @Override
     public void hitEntityEffect(LivingEntity entity) {
-
+        entity.setFreezeTicks(entity.getFreezeTicks()+100);
     }
 
     @Override

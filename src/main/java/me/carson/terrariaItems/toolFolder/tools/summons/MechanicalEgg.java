@@ -1,11 +1,13 @@
 package me.carson.terrariaItems.toolFolder.tools.summons;
 
+import me.carson.terrariaItems.bossFolder.bosses.MechanicalDragon;
 import me.carson.terrariaItems.bossFolder.bosses.MechanicalWarden;
 import me.carson.terrariaItems.toolFolder.Tool;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
+import org.bukkit.block.Biome;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -14,20 +16,20 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MechanicalShrieker extends Tool {
+public class MechanicalEgg extends Tool {
 
-    private NamespacedKey key = new NamespacedKey(plugin, "BossWarden");
+    private final NamespacedKey key = new NamespacedKey(plugin, "BossDragon");
 
-    public MechanicalShrieker(Plugin plugin){
-        super(plugin,"Mechanical Shrieker","#FFC896", Material.LIGHT_GRAY_DYE,"mechanical_shrieker","MechanicalShrieker",10,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Summons the Mechanical Warden")));
+    public MechanicalEgg(Plugin plugin){
+        super(plugin,"Mechanical Egg","#FFC896", Material.LIGHT_GRAY_DYE,"mechanical_egg","MechanicalEgg",10,new ArrayList<>(List.of(
+                ChatColor.GRAY+"Summons the Mechanical Dragon")));
     }
 
     @Override
     public void rightActivate(Player player) {
         World world= player.getWorld();
-        if(world.getEnvironment() != World.Environment.NORMAL){
-            player.sendMessage(ChatColor.RED + "This Boss must be summoned in the Overworld");
+        if(player.getLocation().getBlock().getBiome()!= Biome.THE_END){
+            player.sendMessage(ChatColor.RED + "This Boss must be summoned in the Cental End Island");
             return;
         }
         for (Entity entity : world.getEntities()) {
@@ -36,7 +38,7 @@ public class MechanicalShrieker extends Tool {
                 return;
             }
         }
-        new MechanicalWarden(plugin).summonBoss(player);
+        new MechanicalDragon(plugin).summonBoss(player);
         player.getWorld().playSound(player.getLocation(), "terraria:boss_spawn", 1.0F, 1.0F);
     }
 
@@ -46,7 +48,7 @@ public class MechanicalShrieker extends Tool {
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        return new MechanicalShrieker(plugin).createItem();
+        return new MechanicalEgg(plugin).createItem();
     }
 
 }
