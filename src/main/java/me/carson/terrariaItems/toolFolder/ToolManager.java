@@ -4,6 +4,7 @@ import me.carson.terrariaItems.toolFolder.tools.*;
 import me.carson.terrariaItems.toolFolder.tools.crates.*;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalEgg;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalShrieker;
+import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalSkull;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -42,6 +43,7 @@ public class ToolManager implements Listener {
         toolList.put("SkyCrate",new SkyCrate(plugin));
         toolList.put("MechanicalShrieker",new MechanicalShrieker(plugin));
         toolList.put("MechanicalEgg",new MechanicalEgg(plugin));
+        toolList.put("MechanicalSkull",new MechanicalSkull(plugin));
         toolList.put("TestingStick",new TestingStick(plugin));
     }
 

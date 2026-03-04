@@ -26,7 +26,7 @@ public class Meteor extends Projectile implements Listener {
     @Override
     public void hitBlockEffect(Block block) {
         block.getWorld().playSound(block.getLocation(), "terraria:meteor_impact", 1.5F, 1.0F);
-        block.getWorld().createExplosion(block.getLocation().add(0,1,0), 2.0F, false, false);
+        block.getWorld().createExplosion(block.getLocation().add(0.5,1,0.5), 2.0F, false, false);
     }
 
     @EventHandler

@@ -35,7 +35,6 @@ public class MechanicalDragon extends Boss {
         boss.setHealth(health);
         boss.setCustomName(name);
         boss.setCustomNameVisible(true);
-        boss.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, -1, 0, false, false,false));
         NamespacedKey key = new NamespacedKey(plugin, "BossDragon");
         boss.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) 1);
         BossBar bar = Bukkit.createBossBar(name, BarColor.PURPLE, BarStyle.SOLID);

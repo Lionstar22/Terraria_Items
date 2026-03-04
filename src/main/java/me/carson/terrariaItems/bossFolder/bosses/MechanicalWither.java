@@ -1,0 +1,106 @@
+package me.carson.terrariaItems.bossFolder.bosses;
+
+import me.carson.terrariaItems.bossFolder.Boss;
+import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.DragonLaser;
+import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.WitherBomb;
+import org.bukkit.*;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.block.Block;
+import org.bukkit.entity.*;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
+import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.util.Vector;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MechanicalWither extends Boss implements Listener {
+
+    private NamespacedKey key = new NamespacedKey(plugin, "BossWither");
+
+    public MechanicalWither(Plugin plugin){
+        super(plugin,450, EntityType.WITHER,"Mechanical Wither",150);
+        Bukkit.getPluginManager().registerEvents(this, plugin);
+    }
+
+    @Override
+    public void summonBoss(Player player) {
+        World world=player.getWorld();
+        Location spawnPoint=getSpawnPoint(player);
+        Wither boss= (Wither) world.spawnEntity(spawnPoint, type);
+        boss.getAttribute(Attribute.MAX_HEALTH).setBaseValue(health);
+        boss.setHealth(health);
+        boss.setCustomName(name);
+        boss.setCustomNameVisible(true);
+        boss.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) 1);
+        startAttacks(boss);
+    }
+
+    private void startAttacks(Wither shooter) {
+        Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+            if (shooter.isDead()){return;}
+            List<Player> playerList = new ArrayList<>();
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                if (p.getWorld() != shooter.getWorld()) continue;
+                if (p.getLocation().distanceSquared(shooter.getLocation()) <= range * range) {
+                    playerList.add(p);
+                }
+            }
+            if (!playerList.isEmpty()){
+                Player target=getRandomPlayer(playerList);
+                shooter.setTarget(target);
+                fireAttack(shooter,target);
+            }else {
+                shooter.remove();
+            }
+        }, 40L, 40L);
+    }
+
+    private void fireAttack(Wither shooter, Player target){
+        new WitherBomb(plugin).createBossProjectile(shooter,target,0.2f,0,0,200);
+        shooter.getWorld().playSound(shooter.getLocation(), "terraria:impact_1", 4.0F, 1.0F);
+    }
+
+    private Location getSpawnPoint(Player player){
+        Location center =player.getLocation();
+        Vector dir = player.getEyeLocation().getDirection().normalize();
+        dir.setY(0);
+        Location result=center.add(dir.multiply(20));
+        result.add(0,5,0);
+        if(isValidSpawn(result)){
+            return result;
+        }
+        return null;
+    }
+
+    private Boolean isValidSpawn(Location loc) {
+        Block block = loc.getBlock();
+        if (block.getType() != Material.AIR) {
+            return false;
+        }
+        for (int x = -1; x <= 1; x++) {
+            for (int y = 0; y <= 2; y++) {
+                for (int z = -1; z <= 1; z++) {
+                    if (x == 0 && y == 0 && z == 0) continue;
+                    if (block.getRelative(x, y, z).getType() != Material.AIR) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    @EventHandler
+    public void onWitherShoot(ProjectileLaunchEvent e) {
+        if (e.getEntity() instanceof WitherSkull skull) {
+            LivingEntity shooter= (LivingEntity) skull.getShooter();
+            if(shooter.getPersistentDataContainer().has(key)){
+                e.setCancelled(true);
+            }
+        }
+    }
+}

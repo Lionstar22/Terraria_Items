@@ -38,11 +38,10 @@ public class DragonLaser extends BossProjectile {
             cloud.setDuration(100);
             cloud.setWaitTime(0);
             cloud.setRadiusPerTick(0.01f);
-
             cloud.setParticle(Particle.WITCH);
             cloud.setReapplicationDelay(5);
 
-            cloud.addCustomEffect(new PotionEffect(PotionEffectType.INSTANT_DAMAGE, 1, 2), true);
+            cloud.addCustomEffect(new PotionEffect(PotionEffectType.INSTANT_DAMAGE, 1, 11), true);
             cloud.addCustomEffect(new PotionEffect(PotionEffectType.SLOWNESS, 40, 2), true);
             cloud.addCustomEffect(new PotionEffect(PotionEffectType.BLINDNESS, 40, 1), true);
         });

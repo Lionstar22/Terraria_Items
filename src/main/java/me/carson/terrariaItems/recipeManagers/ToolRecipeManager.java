@@ -7,6 +7,7 @@ import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfNight;
 import me.carson.terrariaItems.toolFolder.tools.*;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalEgg;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalShrieker;
+import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalSkull;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -126,6 +127,17 @@ public class ToolRecipeManager {
         recipe.setIngredient('L', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
         recipe.setIngredient('C', Material.CHORUS_FRUIT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerMechanicalSkullRecipe(){
+        ItemStack item= MechanicalSkull.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "MechanicalSkull");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" L ","NSN"," L ");
+        recipe.setIngredient('L', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
+        recipe.setIngredient('N', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
+        recipe.setIngredient('S', Material.WITHER_SKELETON_SKULL);
         Bukkit.addRecipe(recipe);
     }
 }
