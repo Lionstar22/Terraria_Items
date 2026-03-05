@@ -34,6 +34,7 @@ public class ToolRecipeManager {
         registerTorrentialTearRecipe();
         registerMechanicalShriekerRecipe();
         registerMechanicalEggRecipe();
+        registerMechanicalSkullRecipe();
     }
 
     private void registerMirrorRecipe(){

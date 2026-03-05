@@ -29,7 +29,7 @@ public class MechanicalEgg extends Tool {
     public void rightActivate(Player player) {
         World world= player.getWorld();
         if(player.getLocation().getBlock().getBiome()!= Biome.THE_END){
-            player.sendMessage(ChatColor.RED + "This Boss must be summoned in the Cental End Island");
+            player.sendMessage(ChatColor.RED + "This Boss must be summoned in the Central End Island");
             return;
         }
         for (Entity entity : world.getEntities()) {

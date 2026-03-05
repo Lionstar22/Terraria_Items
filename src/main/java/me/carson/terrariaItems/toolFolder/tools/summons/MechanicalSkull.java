@@ -27,8 +27,8 @@ public class MechanicalSkull extends Tool {
     @Override
     public void rightActivate(Player player) {
         World world= player.getWorld();
-        if(world.getEnvironment() != World.Environment.NORMAL){
-            player.sendMessage(ChatColor.RED + "This Boss must be summoned in the Overworld");
+        if(world.getEnvironment() != World.Environment.NETHER){
+            player.sendMessage(ChatColor.RED + "This Boss must be summoned in the Nether");
             return;
         }
         for (Entity entity : world.getEntities()) {

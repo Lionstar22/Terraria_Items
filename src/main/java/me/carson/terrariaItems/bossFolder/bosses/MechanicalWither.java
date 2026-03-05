@@ -2,7 +2,9 @@ package me.carson.terrariaItems.bossFolder.bosses;
 
 import me.carson.terrariaItems.bossFolder.Boss;
 import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.DragonLaser;
+import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.WardenLaser;
 import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.WitherBomb;
+import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.WitherLaser;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
@@ -12,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
@@ -22,7 +25,7 @@ public class MechanicalWither extends Boss implements Listener {
     private NamespacedKey key = new NamespacedKey(plugin, "BossWither");
 
     public MechanicalWither(Plugin plugin){
-        super(plugin,450, EntityType.WITHER,"Mechanical Wither",150);
+        super(plugin,700, EntityType.WITHER,"Mechanical Wither",150);
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
@@ -60,8 +63,30 @@ public class MechanicalWither extends Boss implements Listener {
     }
 
     private void fireAttack(Wither shooter, Player target){
-        new WitherBomb(plugin).createBossProjectile(shooter,target,0.2f,0,0,200);
-        shooter.getWorld().playSound(shooter.getLocation(), "terraria:impact_1", 4.0F, 1.0F);
+        double distance = shooter.getLocation().distance(target.getLocation());
+        if(shooter.getHealth()<(shooter.getAttribute(Attribute.MAX_HEALTH).getValue()/3)) {
+            new BukkitRunnable() {
+                int count = 0;
+                @Override
+                public void run() {
+                    new WitherLaser(plugin).createBossProjectile(shooter,target,1.5f,10,0.02f,100);
+                    shooter.getWorld().playSound(shooter.getLocation(), "terraria:laser", 3.0F, 1.0F);
+
+                    count++;
+                    if (count >= 2) {
+                        new WitherBomb(plugin).createBossProjectile(shooter,target,0.2f,0,0,200);
+                        shooter.getWorld().playSound(shooter.getLocation(), "terraria:impact_1", 4.0F, 1.0F);
+                        cancel();
+                    }
+                }
+            }.runTaskTimer(plugin, 0L, 10L);
+        }else if(distance>10){
+            new WitherLaser(plugin).createBossProjectile(shooter,target,1.5f,10,0.02f,100);
+            shooter.getWorld().playSound(shooter.getLocation(), "terraria:laser", 3.0F, 1.0F);
+        }else {
+            new WitherBomb(plugin).createBossProjectile(shooter,target,0.2f,0,0,200);
+            shooter.getWorld().playSound(shooter.getLocation(), "terraria:impact_1", 4.0F, 1.0F);
+        }
     }
 
     private Location getSpawnPoint(Player player){

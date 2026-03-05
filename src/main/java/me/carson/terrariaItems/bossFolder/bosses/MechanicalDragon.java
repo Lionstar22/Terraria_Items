@@ -23,7 +23,7 @@ import java.util.List;
 public class MechanicalDragon extends Boss {
 
     public MechanicalDragon(Plugin plugin){
-        super(plugin,400, EntityType.ENDER_DRAGON,"Mechanical Dragon",500);
+        super(plugin,500, EntityType.ENDER_DRAGON,"Mechanical Dragon",500);
     }
 
     @Override

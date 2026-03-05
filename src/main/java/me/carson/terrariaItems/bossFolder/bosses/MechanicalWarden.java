@@ -23,7 +23,7 @@ import java.util.List;
 public class MechanicalWarden extends Boss {
 
     public MechanicalWarden(Plugin plugin){
-        super(plugin,750, EntityType.WARDEN,"Mechanical Warden",150);
+        super(plugin,1000, EntityType.WARDEN,"Mechanical Warden",150);
     }
 
     @Override
