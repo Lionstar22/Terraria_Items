@@ -175,6 +175,7 @@ public abstract class Projectile implements Listener {
         Vector reflected = dir.subtract(
                 normal.multiply(2 * dir.dot(normal))
         );
+
         proj.teleport(proj.getLocation().add(reflected.clone().multiply(0.5)));
         return reflected;
     }

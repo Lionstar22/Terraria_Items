@@ -39,7 +39,7 @@ public class WeaponRecipeManager {
         registerMegasharkRecipe();
         registerNeedlerRecipe();
         registerPhoenixBlasterRecipe();
-        registerShotgunRecipe();
+        //registerShotgunRecipe();
         registerChristmasTreeSwordRecipe();
         registerWaterBoltRecipe();
         registerBubbleGunRecipe();

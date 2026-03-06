@@ -1,10 +1,7 @@
 package me.carson.terrariaItems.weaponsFolder;
 
 import me.carson.terrariaItems.projectilesFolder.projectiles.Meteor;
-import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.DaedalusStormbow;
-import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.HallowedRepeater;
-import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.HoarfrostBow;
-import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.MoltenFury;
+import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords.*;
@@ -68,6 +65,7 @@ public class WeaponManager implements Listener {
         weaponList.put("CrystalStorm",new CrystalStorm(plugin));
         weaponList.put("OnyxBlaster",new OnyxBlaster(plugin));
         weaponList.put("HoarfrostBow",new HoarfrostBow(plugin));
+        weaponList.put("PulseBow",new PulseBow(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new Volcano(plugin), plugin);
@@ -76,6 +74,7 @@ public class WeaponManager implements Listener {
         Bukkit.getPluginManager().registerEvents(new SniperRifle(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new Shotgun(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new Meteor(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new PulseBow(plugin), plugin);
     }
 
     @EventHandler
