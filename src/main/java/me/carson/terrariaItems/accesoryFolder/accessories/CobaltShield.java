@@ -34,14 +34,6 @@ public class CobaltShield extends Accessory implements Listener {
 
     }
 
-    @EventHandler
-    public void onKnockback(EntityKnockbackEvent event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-        if(hasItem(player)){
-            event.setCancelled(true);
-        }
-    }
-
     public static ItemStack getItem(Plugin plugin) {
         return new CobaltShield(plugin).createItem();
     }

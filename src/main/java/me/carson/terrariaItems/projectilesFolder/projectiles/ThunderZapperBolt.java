@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 public class ThunderZapperBolt extends Projectile {
 
     public ThunderZapperBolt(Plugin plugin) {
-        super(plugin, 0,  "thunder_zapper_bolt", "ThunderZapperBolt",0,0, DamageType.MAGIC);
+        super(plugin, 0,  "thunder_zapper_bolt", "ThunderZapperBolt",0,0, DamageType.LIGHTNING_BOLT);
     }
 
 

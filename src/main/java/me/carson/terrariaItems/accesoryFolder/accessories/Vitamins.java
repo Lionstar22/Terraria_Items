@@ -15,7 +15,7 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vitamins extends Accessory implements Listener {
+public class Vitamins extends Accessory{
 
     public Vitamins(Plugin plugin) {
         super(plugin, "Vitamins", "#FF9696", Material.SHORT_GRASS, "vitamins", "Vitamins", new ArrayList<>(List.of(ChatColor.GRAY + "Immunity to Weakness", ChatColor.GRAY + "Must be in accessory inventory")));
@@ -31,19 +31,6 @@ public class Vitamins extends Accessory implements Listener {
 
     }
 
-    @EventHandler
-    private void onSlow(EntityPotionEffectEvent event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-
-        PotionEffect newEffect = event.getNewEffect();
-        if (newEffect == null) return;
-
-        if (newEffect.getType() == PotionEffectType.WEAKNESS) {
-            if (hasItem(player)) {
-                event.setCancelled(true);
-            }
-        }
-    }
 
     public static ItemStack getItem(Plugin plugin) {
         return new Vitamins(plugin).createItem();

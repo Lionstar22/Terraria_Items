@@ -13,7 +13,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AvengerEmblem extends Accessory implements Listener {
+public class AvengerEmblem extends Accessory{
 
     public AvengerEmblem(Plugin plugin){
         super(plugin,"Avenger Emblem","#FF96FF", Material.GOLD_INGOT,"avenger_emblem","AvengerEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"15% increased damage",ChatColor.GRAY+"Must be in accessory inventory")));
@@ -31,16 +31,6 @@ public class AvengerEmblem extends Accessory implements Listener {
 
     public static ItemStack getItem(Plugin plugin) {
         return new AvengerEmblem(plugin).createItem();
-    }
-
-    @EventHandler
-    public void onMeleeDamage(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player player)) return;
-
-        if(hasItem(player)){
-            double boostedDamage = event.getDamage() * 1.15;
-            event.setDamage(boostedDamage);
-        }
     }
 
 }

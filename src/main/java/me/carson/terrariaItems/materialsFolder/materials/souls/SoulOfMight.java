@@ -15,7 +15,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoulOfMight extends Material implements Listener {
+public class SoulOfMight extends Material{
 
     public SoulOfMight(Plugin plugin) {
         super(plugin,"Soul of Might","#FF96FF", org.bukkit.Material.IRON_INGOT,"soul_of_might","SoulOfMight", new ArrayList<>(List.of(ChatColor.GRAY+"The essence of the Dragon")));
@@ -23,16 +23,5 @@ public class SoulOfMight extends Material implements Listener {
 
     public static ItemStack getItem(Plugin plugin) {
         return new SoulOfMight(plugin).createItem();
-    }
-
-    @EventHandler
-    public void onDragonDeath(EntityDeathEvent event) {
-        LivingEntity entity = event.getEntity();
-        NamespacedKey key = new NamespacedKey(plugin, "BossDragon");
-        if(!entity.getPersistentDataContainer().has(key, PersistentDataType.BYTE)){return;}
-        int drops=20 + (int)(Math.random() * 11);
-        ItemStack custom = SoulOfMight.getItem(plugin);
-        custom.setAmount(drops);
-        event.getDrops().add(custom);
     }
 }

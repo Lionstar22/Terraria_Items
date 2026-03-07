@@ -34,16 +34,6 @@ public class AncientFossil extends Accessory implements Listener {
         player.removePotionEffect(PotionEffectType.HASTE);
     }
 
-    @EventHandler
-    public void onBrush(BlockDropItemEvent event){
-        Block block = event.getBlock();
-        if(!(block.getType()==Material.SUSPICIOUS_SAND||block.getType()==Material.SUSPICIOUS_GRAVEL)){return;}
-        if(Math.random()<0.25){
-            ItemStack item = AncientFossil.getItem(plugin);
-            block.getWorld().dropItem(block.getLocation().add(0,1,0), item);
-        }
-    }
-
     public static ItemStack getItem(Plugin plugin) {
         return new AncientFossil(plugin).createItem();
     }

@@ -24,11 +24,10 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.*;
 
-public class Shotgun extends Gun implements Listener {
+public class Shotgun extends Gun{
     ProjectileManager projectileManagerInstance= ProjectileManager.getInstance();
     MaterialManager materialManagerInstance = MaterialManager.getInstance();
     NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
-    private final Map<UUID, List<MerchantRecipe>> originalRecipes = new HashMap<>();
 
     public Shotgun(Plugin plugin) {
         super(plugin,"Shotgun","#FF9696", Material.ARMADILLO_SCUTE,"shotgun","Shotgun",30,3,3.5f,0.1f,100, new ArrayList<>(List.of(ChatColor.GRAY+"Fires a spread of bullets",ChatColor.GRAY+"3.5 Damage")));
@@ -58,44 +57,5 @@ public class Shotgun extends Gun implements Listener {
 
     public static ItemStack getItem(Plugin plugin) {return new Shotgun(plugin).createItem();}
 
-    private boolean hasAdvancement(Player player, String advancementKey) {
-        Advancement advancement = Bukkit.getAdvancement(
-                NamespacedKey.minecraft(advancementKey)
-        );
-        if (advancement == null) return false;
-        AdvancementProgress progress = player.getAdvancementProgress(advancement);
-        return progress.isDone();
-    }
 
-    @EventHandler
-    public void onInventoryOpen(InventoryOpenEvent event) {
-        if (!(event.getInventory().getHolder() instanceof Villager villager)) return;
-        if (!(event.getPlayer() instanceof Player player)) return;
-        if (villager.getProfession() != Villager.Profession.WEAPONSMITH) return;
-        if (!hasAdvancement(player, "nether/root")) return;
-
-        List<MerchantRecipe> recipes = new ArrayList<>(villager.getRecipes());
-        originalRecipes.put(villager.getUniqueId(), new ArrayList<>(villager.getRecipes()));
-
-        MerchantRecipe recipe = new MerchantRecipe(
-                getItem(plugin),
-                0, 999, true, 1, 0.05f
-        );
-        recipe.addIngredient(new ItemStack(Material.EMERALD, 32));
-        recipe.addIngredient(new ItemStack(Material.IRON_INGOT, 16));
-        recipes.add(recipe);
-
-        villager.setRecipes(recipes);
-    }
-
-    @EventHandler
-    public void onInventoryClose(InventoryCloseEvent event) {
-        if (!(event.getInventory().getHolder() instanceof Villager villager)) return;
-
-        List<MerchantRecipe> original = originalRecipes.get(villager.getUniqueId());
-        if (original != null) {
-            villager.setRecipes(original);
-            originalRecipes.remove(villager.getUniqueId());
-        }
-    }
 }

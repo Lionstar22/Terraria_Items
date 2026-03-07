@@ -70,6 +70,9 @@ public class MechanicalWarden extends Boss {
 
     private void fireAttack(LivingEntity shooter, Player target){
         double distance = shooter.getLocation().distance(target.getLocation());
+        if(shooter.getHealth()<(shooter.getAttribute(Attribute.MAX_HEALTH).getValue()/3)) {
+            shooter.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,100,3,true));
+        }
         if(distance>10){
             new BukkitRunnable() {
                 int count = 0;

@@ -15,7 +15,7 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FastClock extends Accessory implements Listener {
+public class FastClock extends Accessory{
 
     public FastClock(Plugin plugin){
         super(plugin,"Fast Clock","#FF9696", Material.SUGAR,"fast_clock","FastClock",new ArrayList<>(List.of(ChatColor.GRAY+"Immunity to Slowness",ChatColor.GRAY+"Must be in accessory inventory")));
@@ -29,20 +29,6 @@ public class FastClock extends Accessory implements Listener {
     @Override
     public void deactivateEffect(Player player) {
 
-    }
-
-    @EventHandler
-    private void onSlow(EntityPotionEffectEvent event){
-        if (!(event.getEntity() instanceof Player player)) return;
-
-        PotionEffect newEffect = event.getNewEffect();
-        if (newEffect == null) return;
-
-        if (newEffect.getType() == PotionEffectType.SLOWNESS) {
-            if (hasItem(player)){
-                event.setCancelled(true);
-            }
-        }
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -13,7 +13,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LuckyHorseshoe extends Accessory implements Listener  {
+public class LuckyHorseshoe extends Accessory{
 
     public LuckyHorseshoe(Plugin plugin){
         super(plugin,"Lucky Horseshoe","#9696FF",Material.GOLD_BLOCK,"lucky_horseshoe","LuckyHorseshoe",
@@ -31,16 +31,6 @@ public class LuckyHorseshoe extends Accessory implements Listener  {
     @Override
     public void deactivateEffect(Player player) {
 
-    }
-
-    @EventHandler
-    public void onFallDamage(EntityDamageEvent event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-        if(((event.getCause() == EntityDamageEvent.DamageCause.FALL)||(event.getCause() == EntityDamageEvent.DamageCause.FLY_INTO_WALL))){
-            if(hasItem(player)){
-                event.setCancelled(true);
-            }
-        }
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -68,13 +68,6 @@ public class WeaponManager implements Listener {
         weaponList.put("PulseBow",new PulseBow(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
-        Bukkit.getPluginManager().registerEvents(new Volcano(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new SnowballCannon(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new BladeOfGrass(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new SniperRifle(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new Shotgun(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new Meteor(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new PulseBow(plugin), plugin);
     }
 
     @EventHandler
@@ -135,6 +128,8 @@ public class WeaponManager implements Listener {
         return weaponList.get(weaponId);
     }
 
+
+
     /*
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event){
@@ -143,6 +138,7 @@ public class WeaponManager implements Listener {
     }
 
 
+    /*
     @EventHandler
     public void onRangedDamage(EntityDamageByEntityEvent event){
         if(!(event.getDamager() instanceof Projectile projectile)){return;}

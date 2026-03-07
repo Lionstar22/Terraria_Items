@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 public class WaterBoltProjectile extends Projectile {
 
     public WaterBoltProjectile(Plugin plugin) {
-        super(plugin, 0, "water_bolt_projectile", "WaterBoltProjectile",9,5, DamageType.MAGIC);
+        super(plugin, 0, "water_bolt_projectile", "WaterBoltProjectile",9,5, DamageType.LIGHTNING_BOLT);
     }
 
 

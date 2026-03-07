@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 public class Note2 extends Projectile {
 
     public Note2(Plugin plugin) {
-        super(plugin, 0,  "note_2", "Note2",0,99, DamageType.MAGIC);
+        super(plugin, 0,  "note_2", "Note2",0,99, DamageType.LIGHTNING_BOLT);
     }
 
     @Override

@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 public class Icicle extends Projectile {
 
     public Icicle(Plugin plugin) {
-        super(plugin, 0,  "icicle", "Icicle",0,0, DamageType.MAGIC);
+        super(plugin, 0,  "icicle", "Icicle",0,0, DamageType.LIGHTNING_BOLT);
     }
 
 

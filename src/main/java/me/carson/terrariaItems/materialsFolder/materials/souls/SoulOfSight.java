@@ -15,7 +15,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoulOfSight extends Material implements Listener {
+public class SoulOfSight extends Material{
 
     public SoulOfSight(Plugin plugin) {
         super(plugin,"Soul of Sight","#FF96FF", org.bukkit.Material.IRON_INGOT,"soul_of_sight","SoulOfSight", new ArrayList<>(List.of(ChatColor.GRAY+"The essence of the Warden")));
@@ -25,16 +25,4 @@ public class SoulOfSight extends Material implements Listener {
         return new SoulOfSight(plugin).createItem();
     }
 
-    @EventHandler
-    public void onWardenDeath(EntityDeathEvent event) {
-        LivingEntity entity = event.getEntity();
-        if (entity.getType() != EntityType.WARDEN){return;}
-        NamespacedKey key = new NamespacedKey(plugin, "BossWarden");
-        if(entity.getPersistentDataContainer().has(key, PersistentDataType.BYTE)) {
-            int drops = 20 + (int) (Math.random() * 11);
-            ItemStack custom = SoulOfSight.getItem(plugin);
-            custom.setAmount(drops);
-            event.getDrops().add(custom);
-        }
-    }
 }

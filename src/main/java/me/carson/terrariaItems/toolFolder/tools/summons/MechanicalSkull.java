@@ -1,6 +1,5 @@
 package me.carson.terrariaItems.toolFolder.tools.summons;
 
-import me.carson.terrariaItems.bossFolder.bosses.MechanicalWarden;
 import me.carson.terrariaItems.bossFolder.bosses.MechanicalWither;
 import me.carson.terrariaItems.toolFolder.Tool;
 import org.bukkit.ChatColor;

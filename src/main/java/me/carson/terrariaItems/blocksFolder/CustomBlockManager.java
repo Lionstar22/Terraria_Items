@@ -16,6 +16,5 @@ public class CustomBlockManager implements Listener {
         blockItems.add(new Hellforge(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
-        Bukkit.getPluginManager().registerEvents(new Hellforge(plugin), plugin);
     }
 }

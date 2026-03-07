@@ -57,25 +57,7 @@ public class AccessoryManager implements Listener {
         accessoryList.put("AncientChisel",new AncientChisel(plugin));
         accessoryList.put("Flipper",new Flipper(plugin));
 
-        //Adds listeners for special cases
         Bukkit.getPluginManager().registerEvents(this, plugin);
-        Bukkit.getPluginManager().registerEvents(new LuckyHorseshoe(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new CloudInABottle(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new CobaltShield(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new CounterScarf(plugin),plugin);
-        Bukkit.getPluginManager().registerEvents(new Bezoar(plugin),plugin);
-        Bukkit.getPluginManager().registerEvents(new Blindfold(plugin),plugin);
-        Bukkit.getPluginManager().registerEvents(new FastClock(plugin),plugin);
-        Bukkit.getPluginManager().registerEvents(new Vitamins(plugin),plugin);
-        Bukkit.getPluginManager().registerEvents(new WarriorEmblem(plugin),plugin);
-        Bukkit.getPluginManager().registerEvents(new RangerEmblem(plugin),plugin);
-        Bukkit.getPluginManager().registerEvents(new SorcererEmblem(plugin),plugin);
-        Bukkit.getPluginManager().registerEvents(new Shackle(plugin),plugin);
-        Bukkit.getPluginManager().registerEvents(new AvengerEmblem(plugin),plugin);
-        Bukkit.getPluginManager().registerEvents(new AncientFossil(plugin),plugin);
-        Bukkit.getPluginManager().registerEvents(new TsunamiInABottle(plugin),plugin);
-        Bukkit.getPluginManager().registerEvents(new BlizzardInABottle(plugin),plugin);
-        Bukkit.getPluginManager().registerEvents(new SandstormInABottle(plugin),plugin);
     }
 
     public Accessory getAccessory(ItemStack item){

@@ -1,21 +1,16 @@
 package me.carson.terrariaItems.bossFolder.bosses;
 
 import me.carson.terrariaItems.bossFolder.Boss;
-import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.DragonLaser;
-import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.WardenFlame;
-import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.WardenLaser;
+import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.*;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.block.Biome;
-import org.bukkit.block.Block;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.*;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,8 +61,25 @@ public class MechanicalDragon extends Boss {
     }
 
     private void fireAttack(LivingEntity shooter, Player target){
-        new DragonLaser(plugin).createBossProjectile(shooter,target,3,5,0.01f,100);
-        shooter.getWorld().playSound(shooter.getLocation(), "terraria:laser", 4.0F, 1.0F);
+        if(shooter.getHealth()<(shooter.getAttribute(Attribute.MAX_HEALTH).getValue()/3)) {
+            new BukkitRunnable() {
+                int count = 0;
+                @Override
+                public void run() {
+                    new DragonLaser(plugin).createBossProjectile(shooter,target,2.5f,5,0.1f,100);
+                    shooter.getWorld().playSound(shooter.getLocation(), "terraria:laser", 4.0F, 1.0F);
+
+                    count++;
+                    if (count >= 4) {
+                        cancel();
+                    }
+                }
+            }.runTaskTimer(plugin, 0L, 5L);
+        }
+        else {
+            new DragonLaser(plugin).createBossProjectile(shooter,target,3,5,0.01f,100);
+            shooter.getWorld().playSound(shooter.getLocation(), "terraria:laser", 4.0F, 1.0F);
+        }
     }
 
     private Location getSpawnPoint(Player player){

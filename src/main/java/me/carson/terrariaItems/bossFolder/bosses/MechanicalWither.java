@@ -1,8 +1,6 @@
 package me.carson.terrariaItems.bossFolder.bosses;
 
 import me.carson.terrariaItems.bossFolder.Boss;
-import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.DragonLaser;
-import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.WardenLaser;
 import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.WitherBomb;
 import me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles.WitherLaser;
 import org.bukkit.*;

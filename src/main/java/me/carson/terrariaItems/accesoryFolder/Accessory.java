@@ -26,11 +26,8 @@ public abstract class Accessory {
     protected final String texture;
     protected final String id;
     protected final ArrayList<String> lore;
-    private final NamespacedKey activeKey;
     private final NamespacedKey customItemKey;
     private final NamespacedKey unplaceableKey;
-    private final PlayerDataHandler playerDataInstance=PlayerDataHandler.getInstance();
-
 
     public Accessory(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, ArrayList<String> lore){
         this.plugin = plugin;
@@ -41,7 +38,6 @@ public abstract class Accessory {
         this.id = id;
         customItemKey=new NamespacedKey(plugin, "customItem");
         unplaceableKey=new NamespacedKey(plugin, "unplaceable");
-        activeKey = new NamespacedKey(plugin,"activekey");
         this.lore = lore;
     }
 
@@ -56,46 +52,9 @@ public abstract class Accessory {
         meta.setItemModel(new NamespacedKey("terraria",texture));
         meta.getPersistentDataContainer().set(customItemKey, PersistentDataType.BYTE, (byte) 1);
         meta.getPersistentDataContainer().set(unplaceableKey, PersistentDataType.BYTE, (byte) 1);
-        meta.getPersistentDataContainer().set(activeKey, PersistentDataType.INTEGER, 0);
         meta.setMaxStackSize(Integer.valueOf(1));
         item.setItemMeta(meta);
         return item;
-    }
-
-    public boolean isThisItem(ItemStack item) {
-        if (item == null || !item.hasItemMeta()) return false;
-        ItemMeta meta = item.getItemMeta();
-        if (meta == null) return false;
-        NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
-        String storedId = meta.getPersistentDataContainer().get(key, PersistentDataType.STRING);
-        return id.equals(storedId);
-    }
-
-    public boolean isActivated(ItemStack item) {
-        if (item == null || !item.hasItemMeta()) return false;
-        ItemMeta meta = item.getItemMeta();
-        PersistentDataContainer data = meta.getPersistentDataContainer();
-        return data.getOrDefault(activeKey, PersistentDataType.INTEGER, 0) == 1;
-    }
-
-    public boolean hasItem(Player player){
-        NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
-        for(ItemStack item:playerDataInstance.getInventory(player.getUniqueId())){
-            if(item!=null) {
-                if (Objects.equals(item.getItemMeta().getPersistentDataContainer().get(key, PersistentDataType.STRING), id)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public ItemStack getItem(Player player){
-        if(!player.getInventory().contains(baseMaterial)){return null;}
-        for(ItemStack itemInv : player.getInventory().getContents()){
-            if(isThisItem(itemInv)){return itemInv;}
-        }
-        return null;
     }
 
     public abstract void activateEffect(Player player);

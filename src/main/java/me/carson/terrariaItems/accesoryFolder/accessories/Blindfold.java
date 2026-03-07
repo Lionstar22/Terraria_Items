@@ -15,7 +15,7 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Blindfold extends Accessory implements Listener {
+public class Blindfold extends Accessory{
 
     public Blindfold(Plugin plugin){
         super(plugin,"Blindfold","#FF9696", Material.ECHO_SHARD,"blindfold","Blindfold",new ArrayList<>(List.of(ChatColor.GRAY+"Immunity to Darkness/Blindness",ChatColor.GRAY+"Must be in accessory inventory")));
@@ -29,20 +29,6 @@ public class Blindfold extends Accessory implements Listener {
     @Override
     public void deactivateEffect(Player player) {
 
-    }
-
-    @EventHandler
-    private void onBlind(EntityPotionEffectEvent event){
-        if (!(event.getEntity() instanceof Player player)) return;
-
-        PotionEffect newEffect = event.getNewEffect();
-        if (newEffect == null) return;
-
-        if (newEffect.getType() == PotionEffectType.DARKNESS || newEffect.getType() == PotionEffectType.BLINDNESS) {
-            if(hasItem(player)){
-                event.setCancelled(true);
-            }
-        }
     }
 
     public static ItemStack getItem(Plugin plugin) {

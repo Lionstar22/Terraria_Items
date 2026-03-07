@@ -18,7 +18,7 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RodOfDiscord extends Tool implements Listener {
+public class RodOfDiscord extends Tool{
 
     public RodOfDiscord(Plugin plugin){
         super(plugin,"Rod Of Discord","#96FF0A",Material.BREEZE_ROD,"rod_of_discord","RodOfDiscord",120,new ArrayList<>(List.of(

@@ -15,7 +15,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PickaxeAxe extends Basic implements Listener {
+public class PickaxeAxe extends Basic{
 
     public PickaxeAxe(Plugin plugin) {
         super(plugin,"Pickaxe Axe","#FF9696", Material.NETHERITE_PICKAXE,"pickaxe_axe","PickaxeAxe", new ArrayList<>(List.of(ChatColor.GRAY+"Not to be confused with a hamdrill",ChatColor.GRAY+"+2 Range")));

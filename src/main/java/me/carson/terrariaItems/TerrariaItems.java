@@ -1,13 +1,18 @@
 package me.carson.terrariaItems;
 
+import me.carson.terrariaItems.accesoryFolder.AccessoryListeners;
+import me.carson.terrariaItems.blocksFolder.CustomBlockListeners;
 import me.carson.terrariaItems.blocksFolder.CustomBlockManager;
+import me.carson.terrariaItems.enemiesFolder.EnemyManager;
 import me.carson.terrariaItems.listenersHandler.*;
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.armourFolder.ArmorManager;
 import me.carson.terrariaItems.materialsFolder.MaterialManager;
+import me.carson.terrariaItems.materialsFolder.MaterialsListeners;
 import me.carson.terrariaItems.projectilesFolder.ProjectileManager;
 import me.carson.terrariaItems.recipeManagers.*;
 import me.carson.terrariaItems.toolFolder.ToolManager;
+import me.carson.terrariaItems.weaponsFolder.WeaponListeners;
 import me.carson.terrariaItems.weaponsFolder.WeaponManager;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -24,6 +29,7 @@ public final class TerrariaItems extends JavaPlugin {
     @Override
     public void onEnable() {
         PlayerDataHandler.initialize(this);
+        WorldDataHandler.initialize(this);
         MaterialManager.initialize(this);
         ProjectileManager.initialize(this);
         ManaManager.initialize(this);
@@ -57,6 +63,11 @@ public final class TerrariaItems extends JavaPlugin {
         new MessageHandler(this);
         new VanityManager(this);
         new ToolManager(this);
+        new EnemyManager(this);
+        new AccessoryListeners(this);
+        new CustomBlockListeners(this);
+        new MaterialsListeners(this);
+        new WeaponListeners(this);
 
         TICommand tiCommand = new TICommand(this);
         Objects.requireNonNull(getCommand("ti")).setExecutor(tiCommand);

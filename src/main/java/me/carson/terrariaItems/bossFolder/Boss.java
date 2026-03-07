@@ -1,13 +1,8 @@
 package me.carson.terrariaItems.bossFolder;
 
-import me.carson.terrariaItems.accesoryFolder.accessories.BlizzardInABottle;
-import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.SnowballCannon;
-import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords.IceBlade;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.boss.BossBar;
-import org.bukkit.damage.DamageType;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -16,7 +11,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Boss {
 

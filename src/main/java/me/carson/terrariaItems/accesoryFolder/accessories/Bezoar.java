@@ -15,7 +15,7 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bezoar extends Accessory implements Listener {
+public class Bezoar extends Accessory{
 
     public Bezoar(Plugin plugin){
         super(plugin,"Bezoar","#FF9696", Material.MOSS_BLOCK,"bezoar","Bezoar",new ArrayList<>(List.of(ChatColor.GRAY+"Immunity to Poison",ChatColor.GRAY+"Must be in accessory inventory")));
@@ -35,17 +35,5 @@ public class Bezoar extends Accessory implements Listener {
         return new Bezoar(plugin).createItem();
     }
 
-    @EventHandler
-    private void onPoison(EntityPotionEffectEvent event){
-        if (!(event.getEntity() instanceof Player player)) return;
 
-        PotionEffect newEffect = event.getNewEffect();
-        if (newEffect == null) return;
-
-        if (newEffect.getType() == PotionEffectType.POISON) {
-            if(hasItem(player)){
-                event.setCancelled(true);
-            }
-        }
-    }
 }

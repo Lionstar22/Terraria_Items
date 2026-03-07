@@ -12,7 +12,7 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MomentumCapacitor extends Tool implements Listener {
+public class MomentumCapacitor extends Tool{
 
     public MomentumCapacitor(Plugin plugin){
         super(plugin,"Momentum Capacitor","#FF96FF",Material.BLUE_DYE,"momentum_capacitor","MomentumCapacitor",0,new ArrayList<>(List.of(

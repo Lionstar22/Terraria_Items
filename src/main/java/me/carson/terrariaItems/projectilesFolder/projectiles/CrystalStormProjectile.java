@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 public class CrystalStormProjectile extends Projectile {
 
     public CrystalStormProjectile(Plugin plugin) {
-        super(plugin, 0,  "crystal_storm_projectile", "CrystalStormProjectile",0,99, DamageType.MAGIC);
+        super(plugin, 0,  "crystal_storm_projectile", "CrystalStormProjectile",0,99, DamageType.LIGHTNING_BOLT);
     }
 
     @Override

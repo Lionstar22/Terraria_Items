@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-public class BladeOfGrass extends Sword implements Listener {
+public class BladeOfGrass extends Sword {
 
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
@@ -57,20 +57,6 @@ public class BladeOfGrass extends Sword implements Listener {
 
     @Override
     public void rightActivate(Player player) {
-
-    }
-
-    @EventHandler
-    public void onHit(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player player)) return;
-        ItemStack item=player.getInventory().getItemInMainHand();
-        if(BladeOfGrass.this.isThisItem(item)){
-            if(event.getEntity() instanceof LivingEntity livingEntity){
-                if(Math.random()<0.25){
-                    livingEntity.addPotionEffect(new PotionEffect(PotionEffectType.POISON,140,2,false,true,true));
-                }
-            }
-        }
 
     }
 }

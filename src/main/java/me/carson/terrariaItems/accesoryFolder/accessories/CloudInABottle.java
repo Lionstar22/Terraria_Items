@@ -18,7 +18,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CloudInABottle extends Accessory implements Listener {
+public class CloudInABottle extends Accessory{
 
     private boolean jumped=false;
 
@@ -45,30 +45,6 @@ public class CloudInABottle extends Accessory implements Listener {
 
     @Override
     public void deactivateEffect(Player player) {
-    }
-
-    @EventHandler
-    public void onDoubleJump(PlayerInputEvent event){
-        if(!event.getInput().isJump()){return;}
-        Player player = event.getPlayer();
-        if(((Entity)player).isOnGround()){
-            return;
-        }
-        if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
-        if(jumped){return;}
-        if(!hasItem(player)){return;}
-        player.setVelocity(player.getVelocity().setY(0.5));
-        player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
-        player.getWorld().spawnParticle(org.bukkit.Particle.CLOUD, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
-        jumped=true;
-    }
-
-    @EventHandler
-    public void onMove(PlayerMoveEvent event){
-        Player player = event.getPlayer();
-        if(((Entity)player).isOnGround()){
-            jumped=false;
-        }
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -18,7 +18,7 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SnowballCannon extends Gun implements Listener {
+public class SnowballCannon extends Gun{
 
     public SnowballCannon(Plugin plugin) {
         super(plugin,"Snowball Cannon","#9696FF", Material.BOW,"snowball_cannon","SnowballCannon",10,0,8,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Launches Snowballs",ChatColor.GRAY+"8 Damage")));
@@ -47,18 +47,5 @@ public class SnowballCannon extends Gun implements Listener {
             snowball.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, 1);
             snowball.setVelocity(dir);
         }
-    }
-
-    @EventHandler
-    public void onSnowballHit(ProjectileHitEvent event) {
-        if (!(event.getEntity() instanceof Snowball snowball)) return;
-        NamespacedKey key = new NamespacedKey(plugin, "custom_snowball");
-        PersistentDataContainer pdc = snowball.getPersistentDataContainer();
-        if (!pdc.has(key, PersistentDataType.INTEGER)) return;
-        if (!(event.getHitEntity() instanceof LivingEntity target)) return;
-
-        World world= event.getEntity().getWorld();
-        world.playSound(event.getHitEntity().getLocation(), "terraria:snowball_impact", 1.0F, 1.0F);
-        target.damage(damage);
     }
 }

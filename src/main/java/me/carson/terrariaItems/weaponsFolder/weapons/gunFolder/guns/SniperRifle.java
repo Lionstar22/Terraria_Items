@@ -20,7 +20,7 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SniperRifle extends Gun implements Listener {
+public class SniperRifle extends Gun{
 
     ProjectileManager projectileManagerInstance= ProjectileManager.getInstance();
     MaterialManager materialManagerInstance = MaterialManager.getInstance();
@@ -48,24 +48,6 @@ public class SniperRifle extends Gun implements Listener {
                 break;
             }
         }
-    }
-
-    @EventHandler
-    public void onSneak(PlayerToggleSneakEvent event) {
-        Player player = event.getPlayer();
-
-        if (!event.isSneaking()) {
-            player.removePotionEffect(PotionEffectType.SLOWNESS);
-        }
-        if(isThisItem(player.getInventory().getItemInMainHand())){
-            if (event.isSneaking()) {
-                player.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 999999, 20, false, false, false));
-            }
-            else {
-                player.removePotionEffect(PotionEffectType.SLOWNESS);
-            }
-        }
-
     }
 
     public static ItemStack getItem(Plugin plugin) {

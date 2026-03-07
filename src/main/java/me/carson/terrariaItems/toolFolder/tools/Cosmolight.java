@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Cosmolight extends Tool implements Listener{
+public class Cosmolight extends Tool{
 
     public Cosmolight(Plugin plugin){
         super(plugin,"Cosmolight","#FF9696",Material.CLOCK,"cosmolight","Cosmolight",20,new ArrayList<>(List.of(

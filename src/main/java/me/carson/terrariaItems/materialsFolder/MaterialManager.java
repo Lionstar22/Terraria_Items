@@ -29,11 +29,6 @@ public class MaterialManager implements Listener {
         bulletItemList.put("ExplodingBullet", ExplodingBullet.getItem(plugin));
         bulletItemList.put("BubonicRound", BubonicRound.getItem(plugin));
 
-        Bukkit.getPluginManager().registerEvents(new SoulOfMight(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new SoulOfSight(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new SoulOfFright(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new SoulOfLight(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new SoulOfNight(plugin), plugin);
     }
 
     public ItemStack getBulletItem(ItemStack item){

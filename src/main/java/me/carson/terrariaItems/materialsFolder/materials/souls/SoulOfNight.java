@@ -15,9 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class SoulOfNight extends Material implements Listener {
-
-    private static final Set<Biome> darkBiomes = Set.of(Biome.NETHER_WASTES,Biome.BASALT_DELTAS);
+public class SoulOfNight extends Material{
 
     public SoulOfNight(Plugin plugin) {
         super(plugin,"Soul of Night","#FFC896", org.bukkit.Material.PURPLE_DYE,"soul_of_night","SoulOfNight", new ArrayList<>(List.of(ChatColor.GRAY+"The essence of dark creatures")));
@@ -25,17 +23,5 @@ public class SoulOfNight extends Material implements Listener {
 
     public static ItemStack getItem(Plugin plugin) {
         return new SoulOfNight(plugin).createItem();
-    }
-
-    @EventHandler
-    public void onDarkDeath(EntityDeathEvent event){
-        LivingEntity entity = event.getEntity();
-        Biome deathBiome=entity.getLocation().getBlock().getBiome();
-        if(darkBiomes.contains(deathBiome)){
-            if(Math.random()<0.2){
-                ItemStack soul = SoulOfNight.getItem(plugin);
-                event.getDrops().add(soul);
-            }
-        }
     }
 }

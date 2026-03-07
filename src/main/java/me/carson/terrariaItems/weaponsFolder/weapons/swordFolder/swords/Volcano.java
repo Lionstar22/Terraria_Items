@@ -20,7 +20,7 @@ import org.bukkit.attribute.Attribute;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Volcano extends Sword implements Listener {
+public class Volcano extends Sword {
 
     public Volcano(Plugin plugin) {
         super(plugin,"Volcano","#FFC896", Material.NETHERITE_SWORD,"volcano","Volcano",0,0,0,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"It's made out of fire!",ChatColor.GRAY+"15 Damage")));
@@ -47,15 +47,4 @@ public class Volcano extends Sword implements Listener {
     public void rightActivate(Player player) {
 
     }
-
-    @EventHandler
-    public void onHit(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player player)) return;
-        ItemStack item=player.getInventory().getItemInMainHand();
-        if(Volcano.this.isThisItem(item)){
-            player.getWorld().playSound(event.getEntity(), "terraria:volcano", 2.0F, 1.0F);
-        }
-
-    }
-
 }

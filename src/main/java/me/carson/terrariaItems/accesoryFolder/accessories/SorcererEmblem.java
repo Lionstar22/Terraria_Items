@@ -17,7 +17,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SorcererEmblem extends Accessory implements Listener {
+public class SorcererEmblem extends Accessory{
 
     public SorcererEmblem(Plugin plugin){
         super(plugin,"Sorcerer Emblem","#FF9696", Material.GOLD_NUGGET,"sorcerer_emblem","SorcererEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased magic damage",ChatColor.GRAY+"Must be in accessory inventory")));
@@ -37,26 +37,5 @@ public class SorcererEmblem extends Accessory implements Listener {
         return new SorcererEmblem(plugin).createItem();
     }
 
-    @EventHandler
-    public void onMobDeath(EntityDeathEvent e) {
-        LivingEntity entity = e.getEntity();
-        if (entity.getType() != EntityType.EVOKER){return;}
-
-        if(Math.random()<0.1){
-            ItemStack custom = SorcererEmblem.getItem(plugin);
-            e.getDrops().add(custom);
-        }
-    }
-
-    @EventHandler
-    public void onMagicDamage(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player player)) return;
-        DamageType type = event.getDamageSource().getDamageType();
-        if (type != DamageType.MAGIC) return;
-        if (hasItem(player)){
-            double boostedDamage = event.getDamage() * 1.2;
-            event.setDamage(boostedDamage);
-        }
-    }
 
 }
