@@ -14,7 +14,7 @@ import java.util.List;
 public class PossessedLeggings extends Armor {
 
     public PossessedLeggings(Plugin plugin){
-        super(plugin,"Possessed Leggings","#FFFFFF", Material.DIAMOND_LEGGINGS,"shadow_leggings","possessed_armor", EquipmentSlot.LEGS,"PossessedLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"How did you even get this?")));
+        super(plugin,"Possessed Leggings","#FFFFFF", Material.IRON_LEGGINGS,"shadow_leggings","possessed_armor", EquipmentSlot.LEGS,"PossessedLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"How did you even get this?")));
     }
 
     @Override

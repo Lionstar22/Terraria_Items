@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.materialsFolder;
 
+import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -18,6 +19,7 @@ import java.util.Set;
 public class MaterialsListeners implements Listener {
 
     private final Plugin plugin;
+    private final WorldDataHandler worldInstance=WorldDataHandler.getInstance();
     private static final Set<Biome> lightBiomes = Set.of(Biome.CRIMSON_FOREST,Biome.SOUL_SAND_VALLEY,Biome.WARPED_FOREST);
     private static final Set<Biome> darkBiomes = Set.of(Biome.NETHER_WASTES,Biome.BASALT_DELTAS);
 
@@ -66,6 +68,7 @@ public class MaterialsListeners implements Listener {
     public void onLightDeath(EntityDeathEvent event){
         LivingEntity entity = event.getEntity();
         Biome deathBiome=entity.getLocation().getBlock().getBiome();
+        if(!worldInstance.getHardmode()){return;}
         if(lightBiomes.contains(deathBiome)){
             if(Math.random()<0.2){
                 ItemStack soul = SoulOfLight.getItem(plugin);
@@ -78,6 +81,7 @@ public class MaterialsListeners implements Listener {
     public void onDarkDeath(EntityDeathEvent event){
         LivingEntity entity = event.getEntity();
         Biome deathBiome=entity.getLocation().getBlock().getBiome();
+        if(!worldInstance.getHardmode()){return;}
         if(darkBiomes.contains(deathBiome)){
             if(Math.random()<0.2){
                 ItemStack soul = SoulOfNight.getItem(plugin);

@@ -1,0 +1,60 @@
+package me.carson.terrariaItems.enemiesFolder.enemies;
+
+import me.carson.terrariaItems.armourFolder.armors.possessedArmor.PossessedBoots;
+import me.carson.terrariaItems.armourFolder.armors.possessedArmor.PossessedChestplate;
+import me.carson.terrariaItems.armourFolder.armors.possessedArmor.PossessedLeggings;
+import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
+import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
+import me.carson.terrariaItems.miscFolder.BasicItems.SkeletonArcherHat;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Skeleton;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.inventory.EntityEquipment;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.plugin.Plugin;
+
+public class SkeletonArcher extends CustomEnemy implements Listener {
+
+    private final WorldDataHandler instance=WorldDataHandler.getInstance();
+
+    public SkeletonArcher(Plugin plugin){
+        super(plugin,"Skeleton Archer","SkeletonArcher");
+    }
+
+    @EventHandler
+    public void onSkeletonSpawn(CreatureSpawnEvent event){
+        if (event.getEntityType() != EntityType.SKELETON) return;
+        Skeleton skeleton = (Skeleton) event.getEntity();
+        if(!instance.getHardmode()){return;}
+        if(Math.random()>.75){return;}
+        skeleton.setCustomName(name);
+        skeleton.setCustomNameVisible(false);
+        skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(50);
+        skeleton.setHealth(40);
+        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+        skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,id);
+        skeleton.setCanPickupItems(false);
+        EntityEquipment equipment=skeleton.getEquipment();
+        equipment.setHelmet(SkeletonArcherHat.getItem(plugin));
+        equipment.setChestplate(null);
+        equipment.setLeggings(null);
+        equipment.setBoots(null);
+        ItemStack bow =new ItemStack(Material.BOW);
+        ItemMeta meta=bow.getItemMeta();
+        meta.addEnchant(Enchantment.POWER,2,true);
+        meta.addEnchant(Enchantment.FLAME,1,true);
+        bow.setItemMeta(meta);
+        equipment.setItemInMainHand(bow);
+        equipment.setHelmetDropChance(0f);
+        equipment.setItemInMainHandDropChance(0f);
+    }
+
+}

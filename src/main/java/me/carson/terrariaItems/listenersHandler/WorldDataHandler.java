@@ -53,7 +53,6 @@ public class WorldDataHandler implements Listener {
         return instance;
     }
 
-    /*
     @EventHandler
     public void onDragonKill(EntityDeathEvent event){
         if(!(event.getEntity() instanceof EnderDragon)){return;}
@@ -67,5 +66,4 @@ public class WorldDataHandler implements Listener {
             player.spigot().sendMessage(TextComponent.fromLegacy(bar));
         }
     }
-    */
 }

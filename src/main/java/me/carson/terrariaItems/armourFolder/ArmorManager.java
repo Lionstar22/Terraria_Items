@@ -1,6 +1,6 @@
 package me.carson.terrariaItems.armourFolder;
 
-import me.carson.terrariaItems.armourFolder.armors.GoldenCrown;
+import me.carson.terrariaItems.miscFolder.BasicItems.GoldenCrown;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusHelmet;
@@ -25,7 +25,6 @@ public class ArmorManager implements Listener {
 
     public ArmorManager(Plugin plugin) {
 
-        armorItems.add(new GoldenCrown(plugin));
         armorItems.add(new ShadowHelmet(plugin));
         armorItems.add(new ShadowScalemail(plugin));
         armorItems.add(new ShadowLeggings(plugin));

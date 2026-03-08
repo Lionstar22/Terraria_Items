@@ -1,0 +1,30 @@
+package me.carson.terrariaItems.miscFolder.BasicItems;
+
+import me.carson.terrariaItems.miscFolder.Basic;
+import org.bukkit.Material;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.components.EquippableComponent;
+import org.bukkit.plugin.Plugin;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class IcyMermanHat extends Basic {
+
+    public IcyMermanHat(Plugin plugin){
+        super(plugin,"IcyMermanHat","#FFFFFF", Material.IRON_HELMET,"icy_merman_hat","IcyMermanHat",new ArrayList<>(List.of("How did you get this?")));
+    }
+
+    public static ItemStack getItem(Plugin plugin) {
+        ItemStack item=new IcyMermanHat(plugin).createItem();
+        ItemMeta meta=item.getItemMeta();
+        EquippableComponent equip= meta.getEquippable();
+        equip.setSlot(EquipmentSlot.HEAD);
+        meta.setEquippable(equip);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+}

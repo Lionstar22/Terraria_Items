@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.recipeManagers;
 
+import me.carson.terrariaItems.miscFolder.BasicItems.GoldenCrown;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusHelmet;
@@ -10,6 +11,7 @@ import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
 import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
 import me.carson.terrariaItems.materialsFolder.materials.HallowedBar;
 import me.carson.terrariaItems.materialsFolder.materials.HellstoneBar;
+import me.carson.terrariaItems.materialsFolder.materials.Ruby;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -47,6 +49,7 @@ public class ArmorRecipeManager {
         registerCactusChestplateRecipe();
         registerCactusLeggingsRecipe();
         registerCactusBootsRecipe();
+        registerGoldenCrownRecipe();
     }
 
     private void registerShadowHelmetRecipe(){
@@ -219,6 +222,16 @@ public class ArmorRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","C C","C C");
         recipe.setIngredient('C', Material.CACTUS);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerGoldenCrownRecipe(){
+        ItemStack item= GoldenCrown.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "GoldenCrown");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("GGG","GRG","   ");
+        recipe.setIngredient('G', Material.GOLD_INGOT);
+        recipe.setIngredient('R', new RecipeChoice.ExactChoice(Ruby.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 }

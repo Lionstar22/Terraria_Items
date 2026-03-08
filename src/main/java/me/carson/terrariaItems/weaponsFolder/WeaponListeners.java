@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder;
 
+import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.PulseBow;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Shotgun;
 import org.bukkit.Bukkit;
@@ -31,6 +32,7 @@ public class WeaponListeners implements Listener {
 
     private final Plugin plugin;
     private final NamespacedKey customItemKey;
+    private final WorldDataHandler worldInstance=WorldDataHandler.getInstance();
     private final Map<UUID, List<MerchantRecipe>> originalRecipes = new HashMap<>();
 
     public WeaponListeners(Plugin plugin){
@@ -44,15 +46,6 @@ public class WeaponListeners implements Listener {
             return Objects.equals(Objects.requireNonNull(item.getItemMeta()).getPersistentDataContainer().get(customItemKey, PersistentDataType.STRING), id);
         }
         return false;
-    }
-
-    private boolean hasAdvancement(Player player, String advancementKey) {
-        Advancement advancement = Bukkit.getAdvancement(
-                NamespacedKey.minecraft(advancementKey)
-        );
-        if (advancement == null) return false;
-        AdvancementProgress progress = player.getAdvancementProgress(advancement);
-        return progress.isDone();
     }
 
     @EventHandler
@@ -109,9 +102,9 @@ public class WeaponListeners implements Listener {
     @EventHandler
     public void onVillagerInventoryOpen(InventoryOpenEvent event) {
         if (!(event.getInventory().getHolder() instanceof Villager villager)) return;
-        if (!(event.getPlayer() instanceof Player player)) return;
+        if (!(event.getPlayer() instanceof Player)) return;
         if (villager.getProfession() != Villager.Profession.WEAPONSMITH) return;
-        if (!hasAdvancement(player, "nether/root")) return;
+        if(!worldInstance.getHardmode()){return;}
 
         List<MerchantRecipe> recipes = new ArrayList<>(villager.getRecipes());
         originalRecipes.put(villager.getUniqueId(), new ArrayList<>(villager.getRecipes()));
@@ -141,8 +134,8 @@ public class WeaponListeners implements Listener {
     @EventHandler
     public void onMerchantInventoryOpen(InventoryOpenEvent event) {
         if (!(event.getInventory().getHolder() instanceof WanderingTrader villager)) return;
-        if (!(event.getPlayer() instanceof Player player)) return;
-        if (!hasAdvancement(player, "end/root")) return;
+        if (!(event.getPlayer() instanceof Player)) return;
+        if(!worldInstance.getHardmode()){return;}
 
         List<MerchantRecipe> recipes = new ArrayList<>(villager.getRecipes());
         originalRecipes.put(villager.getUniqueId(), new ArrayList<>(villager.getRecipes()));
