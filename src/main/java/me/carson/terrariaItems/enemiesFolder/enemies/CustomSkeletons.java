@@ -1,11 +1,8 @@
 package me.carson.terrariaItems.enemiesFolder.enemies;
 
-import me.carson.terrariaItems.armourFolder.armors.possessedArmor.PossessedBoots;
-import me.carson.terrariaItems.armourFolder.armors.possessedArmor.PossessedChestplate;
-import me.carson.terrariaItems.armourFolder.armors.possessedArmor.PossessedLeggings;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
-import me.carson.terrariaItems.miscFolder.BasicItems.SkeletonArcherHat;
+import me.carson.terrariaItems.miscFolder.hats.SkeletonArcherHat;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -21,12 +18,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
-public class SkeletonArcher extends CustomEnemy implements Listener {
+public class CustomSkeletons extends CustomEnemy implements Listener {
 
     private final WorldDataHandler instance=WorldDataHandler.getInstance();
 
-    public SkeletonArcher(Plugin plugin){
-        super(plugin,"Skeleton Archer","SkeletonArcher");
+    public CustomSkeletons(Plugin plugin){
+        super(plugin);
     }
 
     @EventHandler
@@ -35,12 +32,12 @@ public class SkeletonArcher extends CustomEnemy implements Listener {
         Skeleton skeleton = (Skeleton) event.getEntity();
         if(!instance.getHardmode()){return;}
         if(Math.random()>.75){return;}
-        skeleton.setCustomName(name);
+        skeleton.setCustomName("Skeleton Archer");
         skeleton.setCustomNameVisible(false);
-        skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(50);
+        skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(40);
         skeleton.setHealth(40);
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
-        skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,id);
+        skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,"SkeletonArcher");
         skeleton.setCanPickupItems(false);
         EntityEquipment equipment=skeleton.getEquipment();
         equipment.setHelmet(SkeletonArcherHat.getItem(plugin));

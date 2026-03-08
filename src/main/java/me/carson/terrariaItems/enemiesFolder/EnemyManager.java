@@ -18,9 +18,9 @@ public class EnemyManager implements Listener {
     public EnemyManager(Plugin plugin){
         key = new NamespacedKey(plugin, "custom_enemy");
         Bukkit.getPluginManager().registerEvents(this, plugin);
-        Bukkit.getPluginManager().registerEvents(new PossessedArmorEnemy(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new SkeletonArcher(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new IcyMerman(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new CustomZombies(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new CustomSkeletons(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new CustomDrowned(plugin), plugin);
     }
 
     @EventHandler

@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.miscFolder.BasicItems;
+package me.carson.terrariaItems.miscFolder.hats;
 
 import me.carson.terrariaItems.miscFolder.Basic;
 import org.bukkit.Material;
@@ -11,15 +11,15 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SkeletonArcherHat extends Basic {
+public class GoldenCrown extends Basic {
 
-    public SkeletonArcherHat(Plugin plugin){
-        super(plugin,"SkeletonArcherHat","#FFFFFF", Material.IRON_HELMET,"skeleton_archer_hat","SkeletonArcherHat",new ArrayList<>(List.of("How did you get this?")));
+    public GoldenCrown(Plugin plugin){
+        super(plugin,"Golden Crown","#FFFFFF", Material.GOLDEN_HELMET,"golden_crown","GoldenCrown",new ArrayList<>(List.of("")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item=new SkeletonArcherHat(plugin).createItem();
-        ItemMeta meta=item.getItemMeta();
+        ItemStack item=new GoldenCrown(plugin).createItem();
+        ItemMeta  meta=item.getItemMeta();
         EquippableComponent equip= meta.getEquippable();
         equip.setSlot(EquipmentSlot.HEAD);
         meta.setEquippable(equip);

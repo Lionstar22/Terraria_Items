@@ -2,7 +2,7 @@ package me.carson.terrariaItems.enemiesFolder.enemies;
 
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
-import me.carson.terrariaItems.miscFolder.BasicItems.IcyMermanHat;
+import me.carson.terrariaItems.miscFolder.hats.IcyMermanHat;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -18,14 +18,14 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.Set;
 
-public class IcyMerman extends CustomEnemy implements Listener {
+public class CustomDrowned extends CustomEnemy implements Listener {
 
     private final WorldDataHandler instance=WorldDataHandler.getInstance();
     private static final Set<Biome> icyBiomes = Set.of(Biome.COLD_OCEAN,Biome.DEEP_COLD_OCEAN,Biome.FROZEN_OCEAN,Biome.DEEP_FROZEN_OCEAN);
 
 
-    public IcyMerman(Plugin plugin){
-        super(plugin,"Icy Merman","IcyMerman");
+    public CustomDrowned(Plugin plugin){
+        super(plugin);
     }
 
     @EventHandler
@@ -35,13 +35,13 @@ public class IcyMerman extends CustomEnemy implements Listener {
         Location loc=drowned.getLocation();
         if(!icyBiomes.contains(loc.getBlock().getBiome())){return;}
         if(!instance.getHardmode()){return;}
-        drowned.setCustomName(name);
+        drowned.setCustomName("Icy Merman");
         drowned.setCustomNameVisible(false);
         drowned.getAttribute(Attribute.MAX_HEALTH).setBaseValue(50);
         drowned.setHealth(50);
         drowned.setInvisible(true);
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
-        drowned.getPersistentDataContainer().set(key, PersistentDataType.STRING,id);
+        drowned.getPersistentDataContainer().set(key, PersistentDataType.STRING,"IcyMerman");
         drowned.setCanPickupItems(false);
         EntityEquipment equipment=drowned.getEquipment();
         equipment.setHelmet(IcyMermanHat.getItem(plugin));

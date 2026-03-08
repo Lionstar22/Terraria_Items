@@ -2,6 +2,7 @@ package me.carson.terrariaItems.accesoryFolder;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
+import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
@@ -26,6 +27,7 @@ public class AccessoryListeners implements Listener {
     private final Plugin plugin;
     private NamespacedKey customItemKey;
     private final PlayerDataHandler playerDataInstance=PlayerDataHandler.getInstance();
+    private final WorldDataHandler worldDataInstance=WorldDataHandler.getInstance();
     private final Set<UUID> usedDoubleJump = new HashSet<>();
     private static final Set<EntityDamageEvent.DamageCause> COUNTERSCARF_CAUSES = Set.of(
             EntityDamageEvent.DamageCause.ENTITY_ATTACK,
@@ -59,8 +61,8 @@ public class AccessoryListeners implements Listener {
     public void onEvokerDeath(EntityDeathEvent e) {
         LivingEntity entity = e.getEntity();
         if (entity.getType() != EntityType.EVOKER){return;}
-
-        if(Math.random()<0.1){
+        if(!worldDataInstance.getHardmode()){return;}
+        if(Math.random()<0.15){
             ItemStack custom = SorcererEmblem.getItem(plugin);
             e.getDrops().add(custom);
         }
@@ -81,7 +83,7 @@ public class AccessoryListeners implements Listener {
     public void onBlazeDeath(EntityDeathEvent e) {
         LivingEntity entity = e.getEntity();
         if (entity.getType() != EntityType.BLAZE){return;}
-
+        if(!worldDataInstance.getHardmode()){return;}
         if(Math.random()<0.05){
             ItemStack custom = RangerEmblem.getItem(plugin);
             e.getDrops().add(custom);
@@ -113,7 +115,7 @@ public class AccessoryListeners implements Listener {
     public void onWitherSkeletonDeath(EntityDeathEvent e) {
         LivingEntity entity = e.getEntity();
         if (entity.getType() != EntityType.WITHER_SKELETON){return;}
-
+        if(!worldDataInstance.getHardmode()){return;}
         if(Math.random()<0.05){
             ItemStack custom = WarriorEmblem.getItem(plugin);
             e.getDrops().add(custom);

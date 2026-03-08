@@ -105,18 +105,16 @@ public class AccessoryRecipeManager {
         Bukkit.addRecipe(recipe);
     }
     private void registerNeptuneShellRecipe(){
-        ItemStack neptunesShell=NeptunesShell.getItem(plugin);
+        ItemStack item=NeptunesShell.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "NeptunesShell");
-        ShapelessRecipe recipe = new ShapelessRecipe(key, neptunesShell);
-        recipe.addIngredient(Material.BUBBLE_CORAL_BLOCK);
-        recipe.addIngredient(Material.FIRE_CORAL_BLOCK);
-        recipe.addIngredient(Material.BRAIN_CORAL_BLOCK);
-        recipe.addIngredient(Material.HORN_CORAL_BLOCK);
-        recipe.addIngredient(Material.TUBE_CORAL_BLOCK);
-        recipe.addIngredient(Material.SEA_PICKLE);
-        recipe.addIngredient(Material.PRISMARINE_CRYSTALS);
-        recipe.addIngredient(Material.PRISMARINE_SHARD);
-        recipe.addIngredient(Material.WET_SPONGE);
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("STS","BHF","SUS");
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice( SoulOfFright.getItem(plugin)));
+        recipe.setIngredient('T', Material.TUBE_CORAL_BLOCK);
+        recipe.setIngredient('B', Material.BRAIN_CORAL_BLOCK);
+        recipe.setIngredient('H', Material.HORN_CORAL_BLOCK);
+        recipe.setIngredient('F', Material.FIRE_CORAL_BLOCK);
+        recipe.setIngredient('U', Material.BUBBLE_CORAL_BLOCK);
         Bukkit.addRecipe(recipe);
     }
     private void registerBezoarRecipe(){

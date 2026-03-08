@@ -187,8 +187,8 @@ public class WeaponRecipeManager {
         ItemStack item= Megashark.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Megashark");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
-        recipe.shape(" H ","HMH"," H ");
-        recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
+        recipe.shape(" S ","SMS"," S ");
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice( SoulOfMight.getItem(plugin)));
         recipe.setIngredient('M', new RecipeChoice.ExactChoice( Minishark.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }

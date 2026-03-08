@@ -2,7 +2,7 @@ package me.carson.terrariaItems;
 
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
-import me.carson.terrariaItems.miscFolder.BasicItems.GoldenCrown;
+import me.carson.terrariaItems.miscFolder.hats.GoldenCrown;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusHelmet;
