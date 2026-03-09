@@ -1,8 +1,12 @@
 package me.carson.terrariaItems.enemiesFolder.enemies;
 
+import me.carson.terrariaItems.armourFolder.armors.undeadMinerArmor.UndeadMinerChestplate;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
+import me.carson.terrariaItems.miscFolder.BasicItems.BonePickaxe;
 import me.carson.terrariaItems.miscFolder.hats.SkeletonArcherHat;
+import me.carson.terrariaItems.miscFolder.hats.UndeadMinerHat;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -30,8 +34,23 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
     public void onSkeletonSpawn(CreatureSpawnEvent event){
         if (event.getEntityType() != EntityType.SKELETON) return;
         Skeleton skeleton = (Skeleton) event.getEntity();
-        if(!instance.getHardmode()){return;}
-        if(Math.random()>.75){return;}
+        Location location =skeleton.getLocation();
+        if(location.getY()>60){return;}
+        if(!instance.getHardmode()){
+            if(Math.random()<0.2){
+                spawnUndeadMiner(skeleton);
+            }
+        }else {
+            double rand=Math.random();
+            if(rand<0.1){
+                spawnUndeadMiner(skeleton);
+            } else if (rand<0.6) {
+                spawnSkeletonArcher(skeleton);
+            }
+        }
+    }
+
+    public void spawnSkeletonArcher(Skeleton skeleton){
         skeleton.setCustomName("Skeleton Archer");
         skeleton.setCustomNameVisible(false);
         skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(40);
@@ -54,4 +73,20 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         equipment.setItemInMainHandDropChance(0f);
     }
 
+    public void spawnUndeadMiner(Skeleton skeleton){
+        skeleton.setCustomName("Undead Miner");
+        skeleton.setCustomNameVisible(false);
+        skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(25);
+        skeleton.setHealth(25);
+        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+        skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,"UndeadMiner");
+        skeleton.setCanPickupItems(false);
+        EntityEquipment equipment=skeleton.getEquipment();
+        equipment.setHelmet(UndeadMinerHat.getItem(plugin));
+        equipment.setChestplate(UndeadMinerChestplate.getItem(plugin));
+        equipment.setItemInMainHand(BonePickaxe.getItem(plugin));
+        equipment.setHelmetDropChance(0.5f);
+        equipment.setChestplateDropChance(0f);
+        equipment.setItemInMainHandDropChance(0.5f);
+    }
 }

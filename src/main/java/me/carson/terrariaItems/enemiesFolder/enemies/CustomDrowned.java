@@ -23,7 +23,6 @@ public class CustomDrowned extends CustomEnemy implements Listener {
     private final WorldDataHandler instance=WorldDataHandler.getInstance();
     private static final Set<Biome> icyBiomes = Set.of(Biome.COLD_OCEAN,Biome.DEEP_COLD_OCEAN,Biome.FROZEN_OCEAN,Biome.DEEP_FROZEN_OCEAN);
 
-
     public CustomDrowned(Plugin plugin){
         super(plugin);
     }
@@ -35,6 +34,10 @@ public class CustomDrowned extends CustomEnemy implements Listener {
         Location loc=drowned.getLocation();
         if(!icyBiomes.contains(loc.getBlock().getBiome())){return;}
         if(!instance.getHardmode()){return;}
+        spawnIcyMerman(drowned);
+    }
+
+    public void spawnIcyMerman(Drowned drowned){
         drowned.setCustomName("Icy Merman");
         drowned.setCustomNameVisible(false);
         drowned.getAttribute(Attribute.MAX_HEALTH).setBaseValue(50);
@@ -51,5 +54,4 @@ public class CustomDrowned extends CustomEnemy implements Listener {
         equipment.setItemInMainHand(null);
         equipment.setHelmetDropChance(0f);
     }
-
 }

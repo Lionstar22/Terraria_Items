@@ -2,9 +2,11 @@ package me.carson.terrariaItems.enemiesFolder.enemies;
 
 import me.carson.terrariaItems.armourFolder.armors.frozenZombieArmor.FrozenZombieChestplate;
 import me.carson.terrariaItems.armourFolder.armors.possessedArmor.*;
+import me.carson.terrariaItems.armourFolder.armors.raincoatZombieArmor.RaincoatZombieChestplate;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.miscFolder.hats.FrozenZombieHat;
+import me.carson.terrariaItems.miscFolder.hats.RaincoatZombieHat;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -35,19 +37,24 @@ public class CustomZombies extends CustomEnemy implements Listener {
         if (event.getEntityType() != EntityType.ZOMBIE) return;
         Zombie zombie = (Zombie) event.getEntity();
         Location location = zombie.getLocation();
+        Boolean isRaining= zombie.getWorld().hasStorm();
         if(location.getY()<60){return;}
         if(instance.getHardmode()){
             if(Math.random()<0.5){
-                makePossessedArmor(zombie);
+                spawnPossessedArmor(zombie);
             }else if(snowyBiomes.contains(location.getBlock().getBiome())){
-                makeFrozenZombie(zombie);
+                spawnFrozenZombie(zombie);
+            }else if(isRaining){
+                spawnRaincoatZombie(zombie);
             }
         }else if(snowyBiomes.contains(location.getBlock().getBiome())){
-            makeFrozenZombie(zombie);
+            spawnFrozenZombie(zombie);
+        }else if(isRaining){
+            spawnRaincoatZombie(zombie);
         }
     }
 
-    public void makePossessedArmor(Zombie zombie){
+    public void spawnPossessedArmor(Zombie zombie){
         zombie.setCustomName("Possessed Armor");
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"PossessedArmor");
@@ -66,7 +73,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
         zombie.setInvisible(true);
     }
 
-    public void makeFrozenZombie(Zombie zombie){
+    public void spawnFrozenZombie(Zombie zombie){
         zombie.setCustomName("Frozen Zombie");
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"FrozenZombie");
@@ -74,6 +81,18 @@ public class CustomZombies extends CustomEnemy implements Listener {
         EntityEquipment equipment=zombie.getEquipment();
         equipment.setHelmet(FrozenZombieHat.getItem(plugin));
         equipment.setChestplate(FrozenZombieChestplate.getItem(plugin));
+        equipment.setHelmetDropChance(0f);
+        equipment.setChestplateDropChance(0f);
+    }
+
+    public void spawnRaincoatZombie(Zombie zombie){
+        zombie.setCustomName("Raincoat Zombie");
+        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+        zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"RaincoatZombie");
+        zombie.setCanPickupItems(false);
+        EntityEquipment equipment=zombie.getEquipment();
+        equipment.setHelmet(RaincoatZombieHat.getItem(plugin));
+        equipment.setChestplate(RaincoatZombieChestplate.getItem(plugin));
         equipment.setHelmetDropChance(0f);
         equipment.setChestplateDropChance(0f);
     }
