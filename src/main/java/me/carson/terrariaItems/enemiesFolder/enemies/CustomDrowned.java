@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.enemiesFolder.enemies;
 
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
+import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.MermanBolt;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.miscFolder.hats.IcyMermanHat;
 import org.bukkit.Location;
@@ -53,5 +54,6 @@ public class CustomDrowned extends CustomEnemy implements Listener {
         equipment.setBoots(null);
         equipment.setItemInMainHand(null);
         equipment.setHelmetDropChance(0f);
+        startAttacks(drowned,new MermanBolt(plugin),"terraria:frost_bolt");
     }
 }

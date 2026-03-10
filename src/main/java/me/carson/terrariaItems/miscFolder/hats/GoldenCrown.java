@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.miscFolder.hats;
 
 import me.carson.terrariaItems.miscFolder.Basic;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -14,7 +15,7 @@ import java.util.List;
 public class GoldenCrown extends Basic {
 
     public GoldenCrown(Plugin plugin){
-        super(plugin,"Golden Crown","#FFFFFF", Material.GOLDEN_HELMET,"golden_crown","GoldenCrown",new ArrayList<>(List.of("")));
+        super(plugin,"Golden Crown","#FFFFFF", Material.GOLDEN_HELMET,"golden_crown","GoldenCrown",new ArrayList<>(List.of(ChatColor.GRAY+"")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

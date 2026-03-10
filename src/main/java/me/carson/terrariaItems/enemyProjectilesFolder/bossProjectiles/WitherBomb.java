@@ -1,15 +1,15 @@
-package me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles;
+package me.carson.terrariaItems.enemyProjectilesFolder.bossProjectiles;
 
-import me.carson.terrariaItems.bossProjectilesFolder.BossProjectile;
+import me.carson.terrariaItems.enemyProjectilesFolder.EnemyProjectile;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.Plugin;
 
-public class WitherBomb extends BossProjectile {
+public class WitherBomb extends EnemyProjectile {
 
     public WitherBomb(Plugin plugin) {
-        super(plugin, 0,  "wither_bomb", "WitherBomb",0,0, DamageType.GENERIC);
+        super(plugin, 0,0,  "wither_bomb", "WitherBomb",0,0, DamageType.GENERIC);
     }
 
     @Override

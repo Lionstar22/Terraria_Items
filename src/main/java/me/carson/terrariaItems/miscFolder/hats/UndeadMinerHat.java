@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.miscFolder.hats;
 
 import me.carson.terrariaItems.miscFolder.Basic;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -14,7 +15,7 @@ import java.util.List;
 public class UndeadMinerHat extends Basic {
 
     public UndeadMinerHat(Plugin plugin){
-        super(plugin,"Mining Helmet","#9696FF", Material.GOLDEN_HELMET,"undead_miner_hat","UndeadMinerHat",new ArrayList<>(List.of("Worn by dead miners")));
+        super(plugin,"Mining Helmet","#9696FF", Material.GOLDEN_HELMET,"undead_miner_hat","UndeadMinerHat",new ArrayList<>(List.of(ChatColor.GRAY+"Worn by dead miners")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

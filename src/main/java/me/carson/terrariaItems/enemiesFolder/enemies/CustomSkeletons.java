@@ -1,11 +1,15 @@
 package me.carson.terrariaItems.enemiesFolder.enemies;
 
+import me.carson.terrariaItems.armourFolder.armors.timArmor.TimChestplate;
+import me.carson.terrariaItems.armourFolder.armors.timArmor.TimLeggings;
 import me.carson.terrariaItems.armourFolder.armors.undeadMinerArmor.UndeadMinerChestplate;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
+import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.TimBolt;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.miscFolder.BasicItems.BonePickaxe;
 import me.carson.terrariaItems.miscFolder.hats.SkeletonArcherHat;
 import me.carson.terrariaItems.miscFolder.hats.UndeadMinerHat;
+import me.carson.terrariaItems.miscFolder.hats.WizardHat;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -37,7 +41,13 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         Location location =skeleton.getLocation();
         if(location.getY()>60){return;}
         if(!instance.getHardmode()){
-            if(Math.random()<0.2){
+            if(location.getY()<0){
+                if(Math.random()<0.5){
+                    spawnTim(skeleton);
+                }else if(Math.random()<0.2){
+                    spawnUndeadMiner(skeleton);
+                }
+            } else if(Math.random()<0.2){
                 spawnUndeadMiner(skeleton);
             }
         }else {
@@ -85,8 +95,30 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         equipment.setHelmet(UndeadMinerHat.getItem(plugin));
         equipment.setChestplate(UndeadMinerChestplate.getItem(plugin));
         equipment.setItemInMainHand(BonePickaxe.getItem(plugin));
-        equipment.setHelmetDropChance(0.5f);
+        equipment.setHelmetDropChance(0.1f);
         equipment.setChestplateDropChance(0f);
-        equipment.setItemInMainHandDropChance(0.5f);
+        equipment.setItemInMainHandDropChance(0.1f);
     }
+
+    public void spawnTim(Skeleton skeleton){
+        skeleton.setCustomName("Tim");
+        skeleton.setCustomNameVisible(false);
+        skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(40);
+        skeleton.setHealth(40);
+        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+        skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,"Tim");
+        skeleton.setCanPickupItems(false);
+        skeleton.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0);
+        EntityEquipment equipment=skeleton.getEquipment();
+        equipment.setHelmet(WizardHat.getItem(plugin));
+        equipment.setChestplate(TimChestplate.getItem(plugin));
+        equipment.setLeggings(TimLeggings.getItem(plugin));
+        equipment.setBoots(null);
+        equipment.setItemInMainHand(null);
+        equipment.setHelmetDropChance(1f);
+        equipment.setChestplateDropChance(0f);
+        equipment.setLeggingsDropChance(0f);
+        startAttacks(skeleton,new TimBolt(plugin),"terraria:water_bolt_use");
+    }
+
 }

@@ -1,6 +1,6 @@
-package me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles;
+package me.carson.terrariaItems.enemyProjectilesFolder.bossProjectiles;
 
-import me.carson.terrariaItems.bossProjectilesFolder.BossProjectile;
+import me.carson.terrariaItems.enemyProjectilesFolder.EnemyProjectile;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -13,10 +13,10 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class DragonLaser extends BossProjectile {
+public class DragonLaser extends EnemyProjectile {
 
     public DragonLaser(Plugin plugin) {
-        super(plugin, 0,  "dragon_laser", "DragonLaser",99,0, DamageType.GENERIC);
+        super(plugin, 0, 0, "dragon_laser", "DragonLaser",99,0, DamageType.GENERIC);
     }
 
     @Override

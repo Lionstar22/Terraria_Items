@@ -1,15 +1,15 @@
-package me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles;
+package me.carson.terrariaItems.enemyProjectilesFolder.bossProjectiles;
 
-import me.carson.terrariaItems.bossProjectilesFolder.BossProjectile;
+import me.carson.terrariaItems.enemyProjectilesFolder.EnemyProjectile;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.Plugin;
 
-public class WardenLaser extends BossProjectile {
+public class WardenLaser extends EnemyProjectile {
 
     public WardenLaser(Plugin plugin) {
-        super(plugin, 0,  "warden_laser", "WardenLaser",0,0, DamageType.GENERIC);
+        super(plugin, 0,0,  "warden_laser", "WardenLaser",0,0, DamageType.GENERIC);
     }
 
     @Override

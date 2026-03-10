@@ -4,6 +4,7 @@ import me.carson.terrariaItems.armourFolder.armors.frozenZombieArmor.FrozenZombi
 import me.carson.terrariaItems.armourFolder.armors.possessedArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.raincoatZombieArmor.RaincoatZombieChestplate;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
+import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.MermanBolt;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.miscFolder.hats.FrozenZombieHat;
 import me.carson.terrariaItems.miscFolder.hats.RaincoatZombieHat;

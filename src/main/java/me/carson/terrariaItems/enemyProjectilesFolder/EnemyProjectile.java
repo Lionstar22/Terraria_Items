@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.bossProjectilesFolder;
+package me.carson.terrariaItems.enemyProjectilesFolder;
 
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -14,20 +14,20 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
-import java.util.concurrent.ThreadLocalRandom;
-
-public abstract class BossProjectile implements Listener {
+public abstract class EnemyProjectile implements Listener {
 
     protected final Plugin plugin;
     protected final int damage;
+    protected final float projSpeed;
     protected final String texture;
     protected final String id;
     protected final int peirce;
     protected final int bounces;
     protected final DamageType damageType;
 
-    public BossProjectile(Plugin plugin, int damage, String texture, String id, int peirce, int bounces, DamageType damageType) {
+    public EnemyProjectile(Plugin plugin, int damage, float projSpeed, String texture, String id, int peirce, int bounces, DamageType damageType) {
         this.plugin = plugin;
+        this.projSpeed = projSpeed;
         this.texture = texture;
         this.id = id;
         this.damage=damage;
@@ -47,7 +47,7 @@ public abstract class BossProjectile implements Listener {
                 (Math.random() - 0.5) * spread,
                 (Math.random() - 0.5) * spread
         ));
-        dir.normalize().multiply(speed);
+        dir.normalize().multiply(speed+projSpeed);
 
         loc.setDirection(dir);
 
@@ -63,11 +63,11 @@ public abstract class BossProjectile implements Listener {
         proj.getPersistentDataContainer().set(key, PersistentDataType.INTEGER,1);
         proj.setInterpolationDuration(3);
         proj.setTeleportDuration(1);
-        moveProj(shooter,speed,weaponDamage,duration,proj,dir);
+        moveProj(shooter,weaponDamage,duration,proj,dir);
 
     }
 
-    private void moveProj(LivingEntity shooter,float speed,float weaponDamage,float duration,ItemDisplay proj, Vector dir){
+    private void moveProj(LivingEntity shooter,float weaponDamage,float duration,ItemDisplay proj, Vector dir){
         final int[] tick = {0};
         final int[] enemiesHit = {0};
         final int[] blocksBounced = {0};

@@ -1,6 +1,6 @@
-package me.carson.terrariaItems.bossProjectilesFolder.bossProjectiles;
+package me.carson.terrariaItems.enemyProjectilesFolder.bossProjectiles;
 
-import me.carson.terrariaItems.bossProjectilesFolder.BossProjectile;
+import me.carson.terrariaItems.enemyProjectilesFolder.EnemyProjectile;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -10,10 +10,10 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class WitherLaser extends BossProjectile {
+public class WitherLaser extends EnemyProjectile {
 
     public WitherLaser(Plugin plugin) {
-        super(plugin, 0,  "wither_laser", "WitherLaser",0,0, DamageType.GENERIC);
+        super(plugin, 0,0,  "wither_laser", "WitherLaser",0,0, DamageType.GENERIC);
     }
 
     @Override
