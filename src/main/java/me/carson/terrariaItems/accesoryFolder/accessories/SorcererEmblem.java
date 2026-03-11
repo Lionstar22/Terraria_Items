@@ -3,14 +3,7 @@ package me.carson.terrariaItems.accesoryFolder.accessories;
 import me.carson.terrariaItems.accesoryFolder.Accessory;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.damage.DamageType;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
@@ -25,12 +18,12 @@ public class SorcererEmblem extends Accessory{
 
     @Override
     public void activateEffect(Player player) {
-
+        playerInstance.addBonusMagic(player.getUniqueId(),0.2);
     }
 
     @Override
     public void deactivateEffect(Player player) {
-
+        playerInstance.subtractBonusMagic(player.getUniqueId(),0.2);
     }
 
     public static ItemStack getItem(Plugin plugin) {

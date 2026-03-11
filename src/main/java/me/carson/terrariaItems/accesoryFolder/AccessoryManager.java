@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 
@@ -23,13 +24,14 @@ public class AccessoryManager implements Listener {
     private final NamespacedKey accessoryKey;
     private final NamespacedKey unmovableKey;
     private final PlayerDataHandler playerDataInstance = PlayerDataHandler.getInstance();
+    private static AccessoryManager instance;
     protected final Plugin plugin;
 
     public AccessoryManager(Plugin plugin) {
         accessoryKey = new NamespacedKey(plugin, "custom_item_id");
         unmovableKey=new NamespacedKey(plugin, "unmovable");
         this.plugin=plugin;
-
+        Bukkit.getLogger().info("Made Accessory Manager");
         accessoryList.put("Aglet",new Aglet(plugin));
         accessoryList.put("ObsidianSkull",new ObsidianSkull(plugin));
         accessoryList.put("RedBalloon",new RedBalloon(plugin));
@@ -139,11 +141,22 @@ public class AccessoryManager implements Listener {
             for(ItemStack item:invList){
                 Accessory accessory=getAccessory(item);
                 if(accessory!=null){
+                    Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                        accessory.deactivateEffect(player);
+                    }, 5L);
                     accessory.activateEffect(player);
                 }
             }
         }, 10L);
 
+    }
+
+    public static void initialize(JavaPlugin plugin) {
+        instance = new AccessoryManager(plugin);
+    }
+
+    public static AccessoryManager getInstance() {
+        return instance;
     }
 
 }

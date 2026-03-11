@@ -44,6 +44,8 @@ import java.util.List;
 public class TICommand implements CommandExecutor, TabCompleter {
 
     private final TerrariaItems plugin;
+    private final AccessoryManager accessoryManagerInstance=AccessoryManager.getInstance();
+    private final PlayerDataHandler playerInstance= PlayerDataHandler.getInstance();
 
     public TICommand(TerrariaItems plugin) {
         this.plugin = plugin;
@@ -380,13 +382,11 @@ public class TICommand implements CommandExecutor, TabCompleter {
                 }
             }
             case "toggle_message"->{
-                PlayerDataHandler playerData= PlayerDataHandler.getInstance();
-                playerData.toggleMsg(player.getUniqueId());
-                playerData.save();
+                playerInstance.toggleMsg(player.getUniqueId());
+                playerInstance.save();
             }
             case "accessory"->{
-                AccessoryManager accessoryManager=new AccessoryManager(plugin);
-                accessoryManager.openMenu(player);
+                accessoryManagerInstance.openMenu(player);
             }
             case "vanity"->{
                 VanityManager vanityManager=new VanityManager(plugin);

@@ -28,12 +28,12 @@ public class RangerEmblem extends Accessory{
 
     @Override
     public void activateEffect(Player player) {
-
+        playerInstance.addBonusRanged(player.getUniqueId(),0.2);
     }
 
     @Override
     public void deactivateEffect(Player player) {
-
+        playerInstance.subtractBonusRanged(player.getUniqueId(),0.2);
     }
 
     public static ItemStack getItem(Plugin plugin) {

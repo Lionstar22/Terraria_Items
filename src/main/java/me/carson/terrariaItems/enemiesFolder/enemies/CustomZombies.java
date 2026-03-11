@@ -7,6 +7,7 @@ import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.MermanBolt;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.miscFolder.hats.FrozenZombieHat;
+import me.carson.terrariaItems.miscFolder.hats.GnomeHat;
 import me.carson.terrariaItems.miscFolder.hats.RaincoatZombieHat;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
@@ -27,6 +28,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
 
     private final WorldDataHandler instance=WorldDataHandler.getInstance();
     private static final Set<Biome> snowyBiomes = Set.of(Biome.SNOWY_TAIGA,Biome.JAGGED_PEAKS,Biome.FROZEN_PEAKS,Biome.GROVE,Biome.SNOWY_SLOPES,Biome.FROZEN_RIVER,Biome.SNOWY_PLAINS,Biome.ICE_SPIKES,Biome.SNOWY_BEACH);
+    private static final Set<Biome> gnomeBiomes= Set.of(Biome.OLD_GROWTH_BIRCH_FOREST,Biome.OLD_GROWTH_PINE_TAIGA,Biome.OLD_GROWTH_SPRUCE_TAIGA,Biome.DARK_FOREST,Biome.PALE_GARDEN);
 
     public CustomZombies(Plugin plugin){
         super(plugin);
@@ -45,12 +47,16 @@ public class CustomZombies extends CustomEnemy implements Listener {
                 spawnPossessedArmor(zombie);
             }else if(snowyBiomes.contains(location.getBlock().getBiome())){
                 spawnFrozenZombie(zombie);
-            }else if(isRaining){
+            } else if ((Math.random()<0.05)&&gnomeBiomes.contains(location.getBlock().getBiome())){
+                spawnGnome(zombie);
+            } else if(isRaining){
                 spawnRaincoatZombie(zombie);
             }
         }else if(snowyBiomes.contains(location.getBlock().getBiome())){
             spawnFrozenZombie(zombie);
-        }else if(isRaining){
+        } else if ((Math.random()<0.05)&&gnomeBiomes.contains(location.getBlock().getBiome())){
+            spawnGnome(zombie);
+        } else if(isRaining){
             spawnRaincoatZombie(zombie);
         }
     }
@@ -96,5 +102,23 @@ public class CustomZombies extends CustomEnemy implements Listener {
         equipment.setChestplate(RaincoatZombieChestplate.getItem(plugin));
         equipment.setHelmetDropChance(0f);
         equipment.setChestplateDropChance(0f);
+    }
+
+    public void spawnGnome(Zombie zombie){
+        zombie.setCustomName("Gnome");
+        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+        zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"Gnome");
+        zombie.setCanPickupItems(false);
+        zombie.setInvisible(true);
+        zombie.getAttribute(Attribute.SCALE).setBaseValue(0.4);
+        zombie.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.3);
+        zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(15);
+        zombie.setHealth(15);
+        EntityEquipment equipment=zombie.getEquipment();
+        equipment.setHelmet(GnomeHat.getItem(plugin));
+        equipment.setChestplate(null);
+        equipment.setLeggings(null);
+        equipment.setBoots(null);
+        equipment.setHelmetDropChance(0f);
     }
 }

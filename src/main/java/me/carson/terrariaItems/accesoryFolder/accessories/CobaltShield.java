@@ -21,17 +21,18 @@ public class CobaltShield extends Accessory implements Listener {
         super(plugin,"Cobalt Shield","#96FF96", Material.LAPIS_LAZULI,"cobalt_shield","CobaltShield",
                 new ArrayList<>(List.of(
                         ChatColor.GRAY+"Grants immunity to knockback",
+                        ChatColor.GRAY+"Grants 4% Damage Reduction",
                         ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
     public void activateEffect(Player player){
-
+        playerInstance.addDamageReduction(player.getUniqueId(),0.04);
     }
 
     @Override
     public void deactivateEffect(Player player) {
-
+        playerInstance.subtractDamageReduction(player.getUniqueId(),0.04);
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -28,6 +28,7 @@ public abstract class Accessory {
     protected final ArrayList<String> lore;
     private final NamespacedKey customItemKey;
     private final NamespacedKey unplaceableKey;
+    public final PlayerDataHandler playerInstance=PlayerDataHandler.getInstance();
 
     public Accessory(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, ArrayList<String> lore){
         this.plugin = plugin;

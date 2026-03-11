@@ -58,6 +58,63 @@ public class PlayerDataHandler {
         config.set(id+".vanity_inv",list);
     }
 
+    public double getBonusDamage(UUID id){return config.getDouble(id +".bonus_damage",0);}
+    public void setBonusDamage(UUID id, double bonus){config.set(id +".bonus_damage",bonus);}
+    public void addBonusDamage(UUID id,double add){setBonusDamage(id,getBonusDamage(id)+add);}
+    public void subtractBonusDamage(UUID id,double minus){
+        if((getBonusDamage(id)-minus)<0){
+            setBonusDamage(id,0);
+        }else{
+            setBonusDamage(id,getBonusDamage(id)-minus);
+        }
+
+    }
+
+    public double getBonusMelee(UUID id){return config.getDouble(id +".bonus_melee",0);}
+    public void setBonusMelee(UUID id, double bonus){config.set(id +".bonus_melee",bonus);}
+    public void addBonusMelee(UUID id,double add){setBonusMelee(id,getBonusMelee(id)+add);}
+    public void subtractBonusMelee(UUID id,double minus){
+        if((getBonusMelee(id)-minus)<0){
+            setBonusMelee(id,0);
+        }else {
+            setBonusMelee(id,getBonusMelee(id)-minus);
+        }
+
+    }
+
+    public double getBonusRanged(UUID id){return config.getDouble(id +".bonus_ranged",0);}
+    public void setBonusRanged(UUID id, double bonus){config.set(id +".bonus_ranged",bonus);}
+    public void addBonusRanged(UUID id,double add){setBonusRanged(id,getBonusRanged(id)+add);}
+    public void subtractBonusRanged(UUID id,double minus){
+        if((getBonusRanged(id)-minus)<0){
+            setBonusRanged(id,0);
+        }else {
+            setBonusRanged(id,getBonusRanged(id)-minus);
+        }
+    }
+
+    public double getBonusMagic(UUID id){return config.getDouble(id +".bonus_magic",0);}
+    public void setBonusMagic(UUID id, double bonus){config.set(id +".bonus_magic",bonus);}
+    public void addBonusMagic(UUID id,double add){setBonusMagic(id,getBonusMagic(id)+add);}
+    public void subtractBonusMagic(UUID id,double minus){
+        if((getBonusMagic(id)-minus)<0){
+            setBonusMagic(id,0);
+        }else{
+            setBonusMagic(id,getBonusMagic(id)-minus);
+        }
+    }
+
+    public double getDamageReduction(UUID id){return config.getDouble(id +".damage_reduction",0);}
+    public void setDamageReduction(UUID id, double bonus){config.set(id +".damage_reduction",bonus);}
+    public void addDamageReduction(UUID id,double add){setDamageReduction(id,getDamageReduction(id)+add);}
+    public void subtractDamageReduction(UUID id,double minus){
+        if((getDamageReduction(id)-minus)<0){
+            setDamageReduction(id,0);
+        }else{
+            setDamageReduction(id,getDamageReduction(id)-minus);
+        }
+    }
+
 
     public void save() {
         try {

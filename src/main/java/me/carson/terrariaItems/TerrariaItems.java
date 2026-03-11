@@ -33,6 +33,7 @@ public final class TerrariaItems extends JavaPlugin {
         MaterialManager.initialize(this);
         ProjectileManager.initialize(this);
         ManaManager.initialize(this);
+        AccessoryManager.initialize(this);
 
         ArmorManager armorManager = new ArmorManager(this);
         armorManager.startArmorTask(this);
@@ -55,7 +56,6 @@ public final class TerrariaItems extends JavaPlugin {
         new WeaponManager(this);
         new ResourcePackHandler(this);
         new CustomCraftingListener(this);
-        new AccessoryManager(this);
         new CustomBlockManager(this);
         new CustomCraftingListener(this);
         new FishingManager(this);
@@ -68,6 +68,7 @@ public final class TerrariaItems extends JavaPlugin {
         new CustomBlockListeners(this);
         new MaterialsListeners(this);
         new WeaponListeners(this);
+        new PlayerDamageHandler(this);
 
         TICommand tiCommand = new TICommand(this);
         Objects.requireNonNull(getCommand("ti")).setExecutor(tiCommand);

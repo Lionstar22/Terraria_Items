@@ -5,7 +5,6 @@ import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import org.bukkit.*;
 import org.bukkit.block.Block;
-import org.bukkit.damage.DamageType;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,7 +17,6 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.projectiles.ProjectileSource;
 
 import java.util.*;
 
@@ -38,6 +36,12 @@ public class AccessoryListeners implements Listener {
             EntityDamageEvent.DamageCause.MAGIC,
             EntityDamageEvent.DamageCause.SONIC_BOOM,
             EntityDamageEvent.DamageCause.DRAGON_BREATH
+    );
+    private static final Set<EntityDamageEvent.DamageCause> OBSIDIAN_SKULL_DAMAGE = Set.of(
+            EntityDamageEvent.DamageCause.FIRE,
+            EntityDamageEvent.DamageCause.CAMPFIRE,
+            EntityDamageEvent.DamageCause.HOT_FLOOR,
+            EntityDamageEvent.DamageCause.FIRE_TICK
     );
 
     public AccessoryListeners(Plugin plugin){
@@ -69,17 +73,6 @@ public class AccessoryListeners implements Listener {
     }
 
     @EventHandler
-    public void onMagicDamage(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player player)) return;
-        DamageType type = event.getDamageSource().getDamageType();
-        if (type != DamageType.LIGHTNING_BOLT) return;
-        if (hasAccessory(player,"SorcererEmblem")){
-            double boostedDamage = event.getDamage() * 1.2;
-            event.setDamage(boostedDamage);
-        }
-    }
-
-    @EventHandler
     public void onBlazeDeath(EntityDeathEvent e) {
         LivingEntity entity = e.getEntity();
         if (entity.getType() != EntityType.BLAZE){return;}
@@ -91,27 +84,6 @@ public class AccessoryListeners implements Listener {
     }
 
     @EventHandler
-    public void onRangedDamage(EntityDamageByEntityEvent event) {
-        if(event.getDamager() instanceof Projectile projectile) {
-            ProjectileSource source = projectile.getShooter();
-            if (!(source instanceof Player player)) {return;}
-            if (hasAccessory(player,"RangerEmblem")) {
-                double boostedDamage = event.getDamage() * 1.2;
-                event.setDamage(boostedDamage);
-            }
-        }
-        else if(event.getDamager() instanceof Player player){
-            DamageType type = event.getDamageSource().getDamageType();
-            if(type==DamageType.ARROW){
-                if (hasAccessory(player,"RangerEmblem")){
-                    double boostedDamage = event.getDamage() * 1.2;
-                    event.setDamage(boostedDamage);
-                }
-            }
-        }
-    }
-
-    @EventHandler
     public void onWitherSkeletonDeath(EntityDeathEvent e) {
         LivingEntity entity = e.getEntity();
         if (entity.getType() != EntityType.WITHER_SKELETON){return;}
@@ -119,17 +91,6 @@ public class AccessoryListeners implements Listener {
         if(Math.random()<0.05){
             ItemStack custom = WarriorEmblem.getItem(plugin);
             e.getDrops().add(custom);
-        }
-    }
-
-    @EventHandler
-    public void onMeleeDamage(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player player)) return;
-        DamageType type = event.getDamageSource().getDamageType();
-        if (type != DamageType.PLAYER_ATTACK) return;
-        if (hasAccessory(player,"WarriorEmblem")){
-            double boostedDamage = event.getDamage() * 1.2;
-            event.setDamage(boostedDamage);
         }
     }
 
@@ -146,6 +107,16 @@ public class AccessoryListeners implements Listener {
         if (!(event.getEntity() instanceof Player player)) return;
         if(((event.getCause() == EntityDamageEvent.DamageCause.FALL)||(event.getCause() == EntityDamageEvent.DamageCause.FLY_INTO_WALL))){
             if(hasAccessory(player,"LuckyHorseshoe")){
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onFireDamage(EntityDamageEvent event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        if(hasAccessory(player,"ObsidianSkull")){
+            if (OBSIDIAN_SKULL_DAMAGE.contains(event.getCause())){
                 event.setCancelled(true);
             }
         }
@@ -252,16 +223,6 @@ public class AccessoryListeners implements Listener {
     }
 
     @EventHandler
-    public void onScarfPlayerDamage(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player player)) return;
-        if(hasAccessory(player,"CounterScarf")){
-            double baseDamage = event.getDamage();
-            double boostedDamage = baseDamage * 1.1;
-            event.setDamage(boostedDamage);
-        }
-    }
-
-    @EventHandler
     private void onPoison(EntityPotionEffectEvent event){
         if (!(event.getEntity() instanceof Player player)) return;
         PotionEffect newEffect = event.getNewEffect();
@@ -321,24 +282,6 @@ public class AccessoryListeners implements Listener {
         if (entity.getType() != EntityType.ZOMBIE){return;}
         if(Math.random()<0.02){
             e.getDrops().add(Shackle.getItem(plugin));
-        }
-    }
-
-    @EventHandler
-    public void onShackleDamage(EntityDamageEvent event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-        if (hasAccessory(player,"Shackle")){
-            double newDamage = event.getDamage() * 0.9 ;
-            event.setDamage(newDamage);
-        }
-    }
-
-    @EventHandler
-    public void onAnyDamage(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player player)) return;
-        if(hasAccessory(player,"AvengerEmblem")){
-            double boostedDamage = event.getDamage() * 1.15;
-            event.setDamage(boostedDamage);
         }
     }
 

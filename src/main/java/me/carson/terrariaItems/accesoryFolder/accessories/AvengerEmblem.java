@@ -21,12 +21,12 @@ public class AvengerEmblem extends Accessory{
 
     @Override
     public void activateEffect(Player player) {
-
+        playerInstance.addBonusDamage(player.getUniqueId(),0.15);
     }
 
     @Override
     public void deactivateEffect(Player player) {
-
+        playerInstance.subtractBonusDamage(player.getUniqueId(),0.15);
     }
 
     public static ItemStack getItem(Plugin plugin) {

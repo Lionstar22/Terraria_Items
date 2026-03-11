@@ -24,12 +24,12 @@ public class Shackle extends Accessory{
 
     @Override
     public void activateEffect(Player player) {
-
+        playerInstance.addDamageReduction(player.getUniqueId(),0.1);
     }
 
     @Override
     public void deactivateEffect(Player player) {
-
+        playerInstance.subtractDamageReduction(player.getUniqueId(),0.1);
     }
 
     public static ItemStack getItem(Plugin plugin) {
