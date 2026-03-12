@@ -1,5 +1,8 @@
 package me.carson.terrariaItems.listenersHandler;
 
+import me.carson.terrariaItems.accesoryFolder.Accessory;
+import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
+import me.carson.terrariaItems.armourFolder.ArmorManager;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -14,6 +17,8 @@ import java.util.UUID;
 public class PlayerDataHandler {
 
     private static PlayerDataHandler instance;
+    private final AccessoryManager accessoryInstance = AccessoryManager.getInstance();
+    private final ArmorManager armorInstance = ArmorManager.getInstance();
     private final File file;
     private final YamlConfiguration config;
 
@@ -121,6 +126,25 @@ public class PlayerDataHandler {
             config.save(file);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void resetBonuses(Player player){
+        setBonusMelee(player.getUniqueId(),0.0);
+        setBonusRanged(player.getUniqueId(),0.0);
+        setBonusMagic(player.getUniqueId(),0.0);
+        setBonusDamage(player.getUniqueId(),0.0);
+        setDamageReduction(player.getUniqueId(),0.0);
+        player.setWalkSpeed(0.2f);
+
+        for(ItemStack item:getInventory(player.getUniqueId())){
+            Accessory accessory=accessoryInstance.getAccessory(item);
+            if(accessory!=null){
+                accessory.activateEffect(player);
+            }
+        }
+        for (ItemStack armor : player.getInventory().getArmorContents()) {
+            if(armorInstance.getArmorPiece(armor)!=null){armorInstance.getArmorPiece(armor).activateArmorEffect(player);}
         }
     }
 

@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.armourFolder;
 
+import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
@@ -29,6 +30,7 @@ public abstract class Armor {
     protected final String id;
     protected final ArrayList<String> lore;
     private final NamespacedKey customItemKey;
+    public final PlayerDataHandler playerInstance=PlayerDataHandler.getInstance();
 
 
     public Armor(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String model, EquipmentSlot slot, String id, ArrayList<String> lore) {

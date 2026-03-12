@@ -17,17 +17,17 @@ import java.util.List;
 public class Aglet extends Accessory implements Listener  {
 
     public Aglet(Plugin plugin){
-        super(plugin,"Aglet","#9696FF",Material.COPPER_INGOT,"aglet","Aglet",new ArrayList<>(List.of(ChatColor.GRAY+"Increased movement speed",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"Aglet","#9696FF",Material.COPPER_INGOT,"aglet","Aglet",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased movement speed",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
     public void activateEffect(Player player){
-        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, -1, 0, false, false,false));
+        player.setWalkSpeed(player.getWalkSpeed()+0.01f);
     }
 
     @Override
     public void deactivateEffect(Player player) {
-        player.removePotionEffect(PotionEffectType.SPEED);
+        player.setWalkSpeed(Math.max(player.getWalkSpeed() - 0.01f, 0.2f));
     }
 
     public static ItemStack getItem(Plugin plugin) {

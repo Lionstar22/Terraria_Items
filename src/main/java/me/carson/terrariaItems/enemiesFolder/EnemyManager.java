@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.enemiesFolder;
 
+import me.carson.terrariaItems.accesoryFolder.accessories.MagicQuiver;
 import me.carson.terrariaItems.enemiesFolder.enemies.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -18,8 +19,10 @@ import java.util.concurrent.ThreadLocalRandom;
 public class EnemyManager implements Listener {
 
     private final NamespacedKey key;
+    private final Plugin plugin;
 
     public EnemyManager(Plugin plugin){
+        this.plugin=plugin;
         key = new NamespacedKey(plugin, "custom_enemy");
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new CustomZombies(plugin), plugin);
@@ -41,6 +44,14 @@ public class EnemyManager implements Listener {
             int tnt = ThreadLocalRandom.current().nextInt(1, 4);
             ItemStack item= new ItemStack(Material.TNT,tnt);
             event.getDrops().add(item);
+        }
+    }
+
+    @EventHandler
+    public void onSkeletonArcher(EntityDeathEvent event){
+        if(!Objects.equals(event.getEntity().getPersistentDataContainer().get(key, PersistentDataType.STRING), "SkeletonArcher")){return;}
+        if(Math.random()<0.025){
+            event.getDrops().add(MagicQuiver.getItem(plugin));
         }
     }
 

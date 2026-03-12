@@ -3,14 +3,19 @@ package me.carson.terrariaItems.enemiesFolder.enemies;
 import me.carson.terrariaItems.armourFolder.armors.frozenZombieArmor.FrozenZombieChestplate;
 import me.carson.terrariaItems.armourFolder.armors.possessedArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.raincoatZombieArmor.RaincoatZombieChestplate;
+import me.carson.terrariaItems.armourFolder.armors.werewolfArmor.WerewolfBoots;
+import me.carson.terrariaItems.armourFolder.armors.werewolfArmor.WerewolfChestplate;
+import me.carson.terrariaItems.armourFolder.armors.werewolfArmor.WerewolfLeggings;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.MermanBolt;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.miscFolder.hats.FrozenZombieHat;
 import me.carson.terrariaItems.miscFolder.hats.GnomeHat;
 import me.carson.terrariaItems.miscFolder.hats.RaincoatZombieHat;
+import me.carson.terrariaItems.miscFolder.hats.WerewolfHat;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
+import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.EntityType;
@@ -43,7 +48,9 @@ public class CustomZombies extends CustomEnemy implements Listener {
         Boolean isRaining= zombie.getWorld().hasStorm();
         if(location.getY()<60){return;}
         if(instance.getHardmode()){
-            if(Math.random()<0.5){
+            if((getMoonPhase(zombie.getWorld())==0)&&Math.random()<0.8){
+                spawnWerewolf(zombie);
+            }else if(Math.random()<0.5){
                 spawnPossessedArmor(zombie);
             }else if(snowyBiomes.contains(location.getBlock().getBiome())){
                 spawnFrozenZombie(zombie);
@@ -59,6 +66,11 @@ public class CustomZombies extends CustomEnemy implements Listener {
         } else if(isRaining){
             spawnRaincoatZombie(zombie);
         }
+    }
+
+    public int getMoonPhase(World world) {
+        long days = world.getFullTime() / 24000;
+        return (int) (days % 8);
     }
 
     public void spawnPossessedArmor(Zombie zombie){
@@ -120,5 +132,26 @@ public class CustomZombies extends CustomEnemy implements Listener {
         equipment.setLeggings(null);
         equipment.setBoots(null);
         equipment.setHelmetDropChance(0f);
+    }
+
+    public void spawnWerewolf(Zombie zombie){
+        zombie.setCustomName("Werewolf");
+        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+        zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"Werewolf");
+        zombie.setCanPickupItems(false);
+        zombie.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.3);
+        zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(60);
+        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(5);
+        zombie.setHealth(50);
+        EntityEquipment equipment=zombie.getEquipment();
+        equipment.setItemInMainHand(null);
+        equipment.setHelmet(WerewolfHat.getItem(plugin));
+        equipment.setChestplate(WerewolfChestplate.getItem(plugin));
+        equipment.setLeggings(WerewolfLeggings.getItem(plugin));
+        equipment.setBoots(WerewolfBoots.getItem(plugin));
+        equipment.setHelmetDropChance(0f);
+        equipment.setChestplateDropChance(0f);
+        equipment.setLeggingsDropChance(0f);
+        equipment.setBootsDropChance(0f);
     }
 }

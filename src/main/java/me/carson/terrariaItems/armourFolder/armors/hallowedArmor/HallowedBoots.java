@@ -25,16 +25,20 @@ public class HallowedBoots extends Armor {
 
     @Override
     public void activateArmorEffect(Player player) {
+        playerInstance.addBonusDamage(player.getUniqueId(),0.05);
+        player.setWalkSpeed(player.getWalkSpeed()+0.05f);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
+        playerInstance.subtractBonusDamage(player.getUniqueId(),0.05);
+        player.setWalkSpeed(Math.max(player.getWalkSpeed() - 0.05f, 0.2f));
     }
 
     public static ItemStack getItem(Plugin plugin) {
         ItemStack item=new HallowedBoots(plugin).createItem();
         ItemMeta meta=item.getItemMeta();
-        meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"hallowed_boots_armor"),20.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET));
+        meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"hallowed_boots_armor"),15.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET));
         meta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS,new AttributeModifier(new NamespacedKey(plugin,"hallowed_boots_armor_toughness"),5.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET));
         meta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(plugin,"hallowed_boots_k_resistance"),1.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET));
         meta.addEnchant(Enchantment.PROTECTION,4,true);

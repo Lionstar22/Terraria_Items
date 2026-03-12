@@ -44,6 +44,7 @@ public class PlayerDamageHandler implements Listener {
             extraDamage+=originalDamage *playerInstance.getBonusRanged(player.getUniqueId());
         }
         event.setDamage(originalDamage+extraDamage);
+        //player.sendMessage("Damage: "+(originalDamage+extraDamage));
     }
 
     @EventHandler

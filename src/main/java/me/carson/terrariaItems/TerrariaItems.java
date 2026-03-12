@@ -34,9 +34,7 @@ public final class TerrariaItems extends JavaPlugin {
         ProjectileManager.initialize(this);
         ManaManager.initialize(this);
         AccessoryManager.initialize(this);
-
-        ArmorManager armorManager = new ArmorManager(this);
-        armorManager.startArmorTask(this);
+        ArmorManager.initialize(this);
 
         AccessoryRecipeManager accessoryRecipeManager = new AccessoryRecipeManager(this);
         accessoryRecipeManager.registerRecipes();

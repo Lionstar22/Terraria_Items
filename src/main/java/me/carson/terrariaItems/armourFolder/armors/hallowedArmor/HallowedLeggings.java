@@ -25,11 +25,12 @@ public class HallowedLeggings extends Armor {
 
     @Override
     public void activateArmorEffect(Player player) {
-
+        playerInstance.addBonusDamage(player.getUniqueId(),0.05);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
+        playerInstance.subtractBonusDamage(player.getUniqueId(),0.05);
     }
 
     public static ItemStack getItem(Plugin plugin) {

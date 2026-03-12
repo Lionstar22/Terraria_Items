@@ -31,7 +31,7 @@ public class AccessoryManager implements Listener {
         accessoryKey = new NamespacedKey(plugin, "custom_item_id");
         unmovableKey=new NamespacedKey(plugin, "unmovable");
         this.plugin=plugin;
-        Bukkit.getLogger().info("Made Accessory Manager");
+
         accessoryList.put("Aglet",new Aglet(plugin));
         accessoryList.put("ObsidianSkull",new ObsidianSkull(plugin));
         accessoryList.put("RedBalloon",new RedBalloon(plugin));
@@ -58,6 +58,7 @@ public class AccessoryManager implements Listener {
         accessoryList.put("SandstormInABottle",new SandstormInABottle(plugin));
         accessoryList.put("AncientChisel",new AncientChisel(plugin));
         accessoryList.put("Flipper",new Flipper(plugin));
+        accessoryList.put("MagicQuiver",new MagicQuiver(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

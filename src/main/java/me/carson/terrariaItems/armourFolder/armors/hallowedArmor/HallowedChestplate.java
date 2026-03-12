@@ -25,16 +25,18 @@ public class HallowedChestplate extends Armor {
 
     @Override
     public void activateArmorEffect(Player player) {
+        playerInstance.addBonusDamage(player.getUniqueId(),0.07);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
+        playerInstance.subtractBonusDamage(player.getUniqueId(),0.07);
     }
 
     public static ItemStack getItem(Plugin plugin) {
         ItemStack item=new HallowedChestplate(plugin).createItem();
         ItemMeta meta=item.getItemMeta();
-        meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"hallowed_chestplate_armor"),20.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
+        meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"hallowed_chestplate_armor"),25.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
         meta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS,new AttributeModifier(new NamespacedKey(plugin,"hallowed_chestplate_armor_toughness"),5.0, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.CHEST));
         meta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(plugin,"hallowed_chestplate_k_resistance"),1.0, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.CHEST));
         meta.addEnchant(Enchantment.PROTECTION,4,true);

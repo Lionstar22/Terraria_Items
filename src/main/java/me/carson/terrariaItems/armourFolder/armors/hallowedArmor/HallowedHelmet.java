@@ -44,12 +44,12 @@ public class HallowedHelmet extends Armor implements Listener {
 
     @Override
     public void activateArmorEffect(Player player) {
-        player.setWalkSpeed(0.25f); // default is 0.2f
+        playerInstance.addBonusDamage(player.getUniqueId(),0.1);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
-        player.setWalkSpeed(0.2f); // default is 0.2f
+        playerInstance.subtractBonusDamage(player.getUniqueId(),0.1);
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -15,17 +15,17 @@ import java.util.List;
 public class AnkletOfTheWind extends Accessory {
 
     public AnkletOfTheWind(Plugin plugin){
-        super(plugin,"Anklet Of The Wind","#FFC896", Material.COPPER_INGOT,"anklet_of_the_wind","AnkletOfTheWind",new ArrayList<>(List.of(ChatColor.GRAY+"Increased movement speed",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"Anklet Of The Wind","#FFC896", Material.COPPER_INGOT,"anklet_of_the_wind","AnkletOfTheWind",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased movement speed",ChatColor.GRAY+"Must be in accessory inventory")));
     }
 
     @Override
     public void activateEffect(Player player){
-        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, -1, 1, false, false,false));
+        player.setWalkSpeed(player.getWalkSpeed()+0.02f);
     }
 
     @Override
     public void deactivateEffect(Player player) {
-        player.removePotionEffect(PotionEffectType.SPEED);
+        player.setWalkSpeed(Math.max(player.getWalkSpeed() - 0.02f, 0.2f));
     }
 
     public static ItemStack getItem(Plugin plugin) {

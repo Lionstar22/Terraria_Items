@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.armourFolder.armors.timArmor;
+package me.carson.terrariaItems.armourFolder.armors.iceGolemArmor;
 
 import me.carson.terrariaItems.armourFolder.Armor;
 import org.bukkit.ChatColor;
@@ -16,10 +16,10 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TimChestplate extends Armor {
+public class IceGolemLeggings extends Armor {
 
-    public TimChestplate(Plugin plugin){
-        super(plugin,"Tim Chestplate","#FFFFFF", Material.LEATHER_CHESTPLATE,"cactus_chestplate","tim_armor", EquipmentSlot.CHEST,"TimChestplate",new ArrayList<>(List.of(ChatColor.GRAY+"How did you get this?")));
+    public IceGolemLeggings(Plugin plugin){
+        super(plugin,"Ice Golem Leggings","#FFFFFF", Material.LEATHER_LEGGINGS,"cactus_chestplate","ice_golem_armor", EquipmentSlot.LEGS,"IceGolemLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"How did you get this?")));
     }
 
     @Override
@@ -31,9 +31,9 @@ public class TimChestplate extends Armor {
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item=new TimChestplate(plugin).createItem();
+        ItemStack item=new IceGolemLeggings(plugin).createItem();
         ItemMeta meta=item.getItemMeta();
-        meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"tim_chestplate_armor"),0.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
+        meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"ice_golem_leggins_armor"),0.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
         item.setItemMeta(meta);
         return item;
     }
