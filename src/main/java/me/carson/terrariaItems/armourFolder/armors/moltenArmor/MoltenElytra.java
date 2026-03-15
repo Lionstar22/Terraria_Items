@@ -16,7 +16,7 @@ import java.util.List;
 public class MoltenElytra extends Armor {
 
     public MoltenElytra(Plugin plugin){
-        super(plugin,"Molten Elytra","#FFC896", Material.ELYTRA,"molten_elytra","molten_armor", EquipmentSlot.CHEST,"MoltenElytra",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus: Fire Resistance, 25% Increased Damage, Sets Enemies on Fire")));
+        super(plugin,"Molten Elytra","#FFC896", Material.ELYTRA,"molten_elytra","molten_armor", EquipmentSlot.CHEST,"MoltenElytra",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus: Grants immunity to fire")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

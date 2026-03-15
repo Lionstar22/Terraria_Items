@@ -14,7 +14,7 @@ import java.util.List;
 public class ShadowHelmet extends Armor {
 
     public ShadowHelmet(Plugin plugin){
-        super(plugin,"Shadow Helmet","#9696FF", Material.DIAMOND_HELMET,"shadow_helmet","shadow_armor", EquipmentSlot.HEAD,"ShadowHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus: Increased movement speed and acceleration")));
+        super(plugin,"Shadow Helmet","#9696FF", Material.DIAMOND_HELMET,"shadow_helmet","shadow_armor", EquipmentSlot.HEAD,"ShadowHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Increased movement speed and acceleration")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -23,11 +23,11 @@ public class ShadowHelmet extends Armor {
 
     @Override
     public void activateArmorEffect(Player player) {
-        player.setWalkSpeed(0.3f); // default is 0.2f
+        playerInstance.addCritChance(player.getUniqueId(),0.05);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
-        player.setWalkSpeed(0.2f); // default is 0.2f
+        playerInstance.subtractCritChance(player.getUniqueId(),0.05);
     }
 }

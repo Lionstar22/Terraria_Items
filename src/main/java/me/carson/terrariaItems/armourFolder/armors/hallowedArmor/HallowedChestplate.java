@@ -20,17 +20,17 @@ import java.util.List;
 public class HallowedChestplate extends Armor {
 
     public HallowedChestplate(Plugin plugin){
-        super(plugin,"Hallowed Chestplate","#FF96FF", Material.NETHERITE_CHESTPLATE,"hallowed_chestplate","hallowed_armor", EquipmentSlot.CHEST,"HallowedChestplate",new ArrayList<>(List.of(ChatColor.GRAY+"Grants dodge every 10 seconds",ChatColor.GRAY+"50% Damage Increase",ChatColor.GRAY+"20% Movement Speed Increase")));
+        super(plugin,"Hallowed Chestplate","#FF96FF", Material.NETHERITE_CHESTPLATE,"hallowed_chestplate","hallowed_armor", EquipmentSlot.CHEST,"HallowedChestplate",new ArrayList<>(List.of(ChatColor.GRAY+"7% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds")));
     }
 
     @Override
     public void activateArmorEffect(Player player) {
-        playerInstance.addBonusDamage(player.getUniqueId(),0.07);
+        playerInstance.addCritChance(player.getUniqueId(),0.07);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
-        playerInstance.subtractBonusDamage(player.getUniqueId(),0.07);
+        playerInstance.subtractCritChance(player.getUniqueId(),0.07);
     }
 
     public static ItemStack getItem(Plugin plugin) {

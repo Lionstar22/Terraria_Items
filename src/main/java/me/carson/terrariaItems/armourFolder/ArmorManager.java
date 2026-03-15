@@ -1,7 +1,5 @@
 package me.carson.terrariaItems.armourFolder;
 
-import me.carson.terrariaItems.accesoryFolder.Accessory;
-import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusHelmet;
@@ -9,9 +7,12 @@ import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusLeggings;
 import me.carson.terrariaItems.armourFolder.armors.hallowedArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.moltenArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
+import me.carson.terrariaItems.listenersHandler.ArmorChangeEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
+import org.bukkit.GameRule;
 import org.bukkit.NamespacedKey;
-import org.bukkit.block.spawner.SpawnerEntry;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,6 +23,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -31,9 +34,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class ArmorManager implements Listener {
 
@@ -42,6 +43,7 @@ public class ArmorManager implements Listener {
     private final NamespacedKey armorKey;
     protected final Plugin plugin;
     private static ArmorManager instance;
+    private final Map<UUID, ItemStack[]> armorCache = new HashMap<>();
 
     public ArmorManager(Plugin plugin) {
         armorKey = new NamespacedKey(plugin, "custom_item_id");
@@ -58,6 +60,8 @@ public class ArmorManager implements Listener {
         armorList.put("MoltenBoots",new MoltenBoots(plugin));
         armorList.put("MoltenElytra",new MoltenElytra(plugin));
         armorList.put("HallowedHelmet",new HallowedHelmet(plugin));
+        armorList.put("HallowedMask",new HallowedMask(plugin));
+        armorList.put("HallowedHeadgear",new HallowedHeadgear(plugin));
         armorList.put("HallowedChestplate",new HallowedChestplate(plugin));
         armorList.put("HallowedLeggings",new HallowedLeggings(plugin));
         armorList.put("HallowedBoots",new HallowedBoots(plugin));
@@ -69,7 +73,7 @@ public class ArmorManager implements Listener {
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new MoltenHelmet(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new HallowedHelmet(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new HallowedMask(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new CactusHelmet(plugin), plugin);
     }
 
@@ -101,81 +105,22 @@ public class ArmorManager implements Listener {
     }
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getSlotType() == InventoryType.SlotType.ARMOR) {
-            if (!(event.getWhoClicked() instanceof Player player)) return;
-            if (event.isCancelled()) return;
-
-            ItemStack oldArmor = null;
-            ItemStack newArmor = null;
-
-            if (event.getSlotType() == InventoryType.SlotType.ARMOR) {
-                oldArmor = event.getCurrentItem();
-                newArmor = event.getCursor();
-            }
-            else if (event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY) {
-                ItemStack item = event.getCurrentItem();
-                if (getArmorPiece(item)!=null) {
-                    oldArmor = null; // nothing was there
-                    newArmor = item; // being equipped
-                }
-            }
-            if(getArmorPiece(oldArmor)!=null){getArmorPiece(oldArmor).deactivateArmorEffect(player);}
-            if(getArmorPiece(newArmor)!=null){getArmorPiece(newArmor).activateArmorEffect(player);}
-        }
-    }
-
-    @EventHandler
-    public void onInventoryDrag(InventoryDragEvent event) {
-        if (!(event.getWhoClicked() instanceof Player player)) return;
-        if (event.isCancelled()) return;
-
-        for (int slot : event.getRawSlots()) {
-            if (isArmorSlot(slot)) {
-                ItemStack oldArmor = event.getOldCursor();
-                ItemStack newArmor = event.getNewItems().get(slot);
-
-                if(getArmorPiece(oldArmor)!=null){getArmorPiece(oldArmor).deactivateArmorEffect(player);}
-                if(getArmorPiece(newArmor)!=null){getArmorPiece(newArmor).activateArmorEffect(player);}
-            }
-        }
-    }
-
-    private boolean isArmorSlot(int rawSlot) {
-        return rawSlot >= 36 && rawSlot <= 39;
+    public void onArmorChange(ArmorChangeEvent event){
+        Player player = event.getPlayer();
+        ItemStack old = event.getOldItem();
+        ItemStack current = event.getNewItem();
+        if(getArmorPiece(old)!=null){getArmorPiece(old).deactivateArmorEffect(player);}
+        if(getArmorPiece(current)!=null){getArmorPiece(current).activateArmorEffect(player);}
     }
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
+        if(player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY)){return;}
         for (ItemStack armor : player.getInventory().getArmorContents()) {
-            if(getArmorPiece(armor)!=null){getArmorPiece(armor).deactivateArmorEffect(player);}
+            if(getArmorPiece(armor)!=null){
+                getArmorPiece(armor).deactivateArmorEffect(player);}
         }
-    }
-
-    @EventHandler
-    public void onRespawn(PlayerRespawnEvent event) {
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            Player player = event.getPlayer();
-            for (ItemStack armor : player.getInventory().getArmorContents()) {
-                if(getArmorPiece(armor)!=null){getArmorPiece(armor).activateArmorEffect(player);}
-            }
-        }, 10L);
-    }
-
-    @EventHandler
-    public void onRightClick(PlayerInteractEvent event) {
-        if (!(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
-        if (event.getHand() != EquipmentSlot.HAND) return;
-        Player player = event.getPlayer();
-
-        ItemStack newArmor = event.getItem();
-        if(getArmorPiece(newArmor)!=null){getArmorPiece(newArmor).activateArmorEffect(player);}
-
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            ItemStack oldArmor=player.getInventory().getItemInMainHand();
-            if(getArmorPiece(oldArmor)!=null){getArmorPiece(oldArmor).deactivateArmorEffect(player);}
-        }, 1L);
     }
 
     public static void initialize(JavaPlugin plugin) {

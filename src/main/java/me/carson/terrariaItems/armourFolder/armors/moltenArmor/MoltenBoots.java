@@ -3,6 +3,7 @@ package me.carson.terrariaItems.armourFolder.armors.moltenArmor;
 import me.carson.terrariaItems.armourFolder.Armor;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
@@ -16,7 +17,7 @@ import java.util.List;
 public class MoltenBoots extends Armor {
 
     public MoltenBoots(Plugin plugin){
-        super(plugin,"Molten Boots","#FFC896", Material.NETHERITE_BOOTS,"molten_boots","molten_armor", EquipmentSlot.FEET,"MoltenBoots",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus: Fire Resistance, 25% Increased Damage, Sets Enemies on Fire")));
+        super(plugin,"Molten Boots","#FFC896", Material.NETHERITE_BOOTS,"molten_boots","molten_armor", EquipmentSlot.FEET,"MoltenBoots",new ArrayList<>(List.of(ChatColor.GRAY+"7% increased melee speed",ChatColor.GRAY+"Set Bonus: Grants immunity to fire")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -30,11 +31,11 @@ public class MoltenBoots extends Armor {
 
     @Override
     public void activateArmorEffect(Player player) {
-
+        player.getAttribute(Attribute.ATTACK_SPEED).setBaseValue(player.getAttribute(Attribute.ATTACK_SPEED).getValue()+0.28);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
-
+        player.getAttribute(Attribute.ATTACK_SPEED).setBaseValue(Math.max(player.getAttribute(Attribute.ATTACK_SPEED).getValue()-0.28,4));
     }
 }

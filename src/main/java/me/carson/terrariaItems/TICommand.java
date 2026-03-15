@@ -188,7 +188,9 @@ public class TICommand implements CommandExecutor, TabCompleter {
                         player.getInventory().addItem(PickaxeAxe.getItem(plugin));
                     }
                     case "hallowed_armour"-> {
+                        player.getInventory().addItem(HallowedMask.getItem(plugin));
                         player.getInventory().addItem(HallowedHelmet.getItem(plugin));
+                        player.getInventory().addItem(HallowedHeadgear.getItem(plugin));
                         player.getInventory().addItem(HallowedChestplate.getItem(plugin));
                         player.getInventory().addItem(HallowedLeggings.getItem(plugin));
                         player.getInventory().addItem(HallowedBoots.getItem(plugin));

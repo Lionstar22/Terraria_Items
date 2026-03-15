@@ -5,7 +5,6 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.wrappers.EnumWrappers;
 import com.comphenix.protocol.wrappers.Pair;
-import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -126,12 +125,11 @@ public class VanityManager implements Listener {
         }
     }
 
-    /*
     @EventHandler
-    public void onArmorEquip(PlayerArmorChangeEvent event){
+    public void onArmorEquip(ArmorChangeEvent event){
         Player player = event.getPlayer();
         List<ItemStack> invList= playerDataInstance.getVanity(player.getUniqueId());
         applyVanity(invList,player);
     }
-     */
+
 }

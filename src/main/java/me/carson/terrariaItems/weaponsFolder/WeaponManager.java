@@ -99,10 +99,11 @@ public class WeaponManager implements Listener {
     @EventHandler
     public void onRightClick(PlayerInteractEvent event) {
         if (!(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
+        Player player = event.getPlayer();
         ItemStack heldItem= event.getItem();
         if(heldItem==null){return;}
-
-        Player player = event.getPlayer();
+        Weapon weapon= getWeapon(heldItem);
+        if(weapon==null){return;}
 
         long currentTime = System.currentTimeMillis();
         long lastTime = lastClickTime.getOrDefault(player.getUniqueId(), 0L);
@@ -112,8 +113,6 @@ public class WeaponManager implements Listener {
         }
         lastClickTime.put(player.getUniqueId(), currentTime);
 
-        Weapon weapon= getWeapon(heldItem);
-        if(weapon==null){return;}
 
         if(!player.hasCooldown(heldItem)){
             weapon.rightActivate(player);

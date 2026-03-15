@@ -20,7 +20,7 @@ import java.util.List;
 public class HallowedElytra extends Armor {
 
     public HallowedElytra(Plugin plugin){
-        super(plugin,"Hallowed Elytra","#FF96FF", Material.ELYTRA,"hallowed_elytra","hallowed_armor", EquipmentSlot.CHEST,"HallowedElytra",new ArrayList<>(List.of(ChatColor.GRAY+"Grants dodge every 10 seconds",ChatColor.GRAY+"50% Damage Increase",ChatColor.GRAY+"20% Movement Speed Increase")));
+        super(plugin,"Hallowed Elytra","#FF96FF", Material.ELYTRA,"hallowed_elytra","hallowed_armor", EquipmentSlot.CHEST,"HallowedElytra",new ArrayList<>(List.of("Set Bonus: Dodge every 30 seconds")));
     }
 
     @Override

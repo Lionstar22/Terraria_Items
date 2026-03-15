@@ -67,6 +67,7 @@ public final class TerrariaItems extends JavaPlugin {
         new MaterialsListeners(this);
         new WeaponListeners(this);
         new PlayerDamageHandler(this);
+        new ArmorChangeDetector(this);
 
         TICommand tiCommand = new TICommand(this);
         Objects.requireNonNull(getCommand("ti")).setExecutor(tiCommand);

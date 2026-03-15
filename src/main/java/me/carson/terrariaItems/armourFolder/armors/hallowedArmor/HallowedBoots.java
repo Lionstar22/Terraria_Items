@@ -20,7 +20,7 @@ import java.util.List;
 public class HallowedBoots extends Armor {
 
     public HallowedBoots(Plugin plugin){
-        super(plugin,"Hallowed Boots","#FF96FF", Material.NETHERITE_BOOTS,"hallowed_boots","hallowed_armor", EquipmentSlot.FEET,"HallowedBoots",new ArrayList<>(List.of(ChatColor.GRAY+"Grants dodge every 10 seconds",ChatColor.GRAY+"50% Damage Increase",ChatColor.GRAY+"20% Movement Speed Increase")));
+        super(plugin,"Hallowed Boots","#FF96FF", Material.NETHERITE_BOOTS,"hallowed_boots","hallowed_armor", EquipmentSlot.FEET,"HallowedBoots",new ArrayList<>(List.of(ChatColor.GRAY+"5% Damage Increase",ChatColor.GRAY+"20% Movement Speed Increase",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds")));
     }
 
     @Override

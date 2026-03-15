@@ -30,29 +30,19 @@ public class MoltenHelmet extends Armor implements Listener {
     );
 
     public MoltenHelmet(Plugin plugin){
-        super(plugin,"Molten Helmet","#FFC896", Material.NETHERITE_HELMET,"molten_helmet","molten_armor", EquipmentSlot.HEAD,"MoltenHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus: Fire Resistance, 25% Increased Damage, Sets Enemies on Fire")));
+        super(plugin,"Molten Helmet","#FFC896", Material.NETHERITE_HELMET,"molten_helmet","molten_armor", EquipmentSlot.HEAD,"MoltenHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"7% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Grants immunity to fire")));
     }
 
     @Override
     public void activateArmorEffect(Player player) {
+        playerInstance.addCritChance(player.getUniqueId(),0.07);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
+        playerInstance.subtractCritChance(player.getUniqueId(),0.07);
     }
 
-    @EventHandler
-    public void onPlayerDamage(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player player)) return;
-        PlayerInventory inv = player.getInventory();
-        ItemStack helm =inv.getHelmet();
-        if(hasSetBonus(player)&&isThisItem(helm)){
-            double baseDamage = event.getDamage();
-            double boostedDamage = baseDamage * 1.25;
-            event.getEntity().setFireTicks(100);
-            event.setDamage(boostedDamage);
-        }
-    }
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;

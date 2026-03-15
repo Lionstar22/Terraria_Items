@@ -40,7 +40,9 @@ public class ArmorRecipeManager {
         registerMoltenLeggingsRecipe();
         registerMoltenBootsRecipe();
         registerMoltenElytraRecipe();
+        registerHallowedMaskRecipe();
         registerHallowedHelmetRecipe();
+        registerHallowedHeadgearRecipe();
         registerHallowedChestplateRecipe();
         registerHallowedLeggingsRecipe();
         registerHallowedBootsRecipe();
@@ -143,12 +145,33 @@ public class ArmorRecipeManager {
         Bukkit.addRecipe(recipe);
     }
 
+    private void registerHallowedMaskRecipe(){
+        ItemStack item= HallowedMask.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "HallowedMask");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("HHH","HBH","   ");
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
+        recipe.setIngredient('B', Material.BLAZE_POWDER);
+        Bukkit.addRecipe(recipe);
+    }
+
     private void registerHallowedHelmetRecipe(){
         ItemStack item= HallowedHelmet.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "HallowedHelmet");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
-        recipe.shape("HHH","H H","   ");
+        recipe.shape("HHH","HAH","   ");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
+        recipe.setIngredient('A', Material.ARROW);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerHallowedHeadgearRecipe(){
+        ItemStack item= HallowedHeadgear.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "HallowedHeadgear");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("HHH","HEH","   ");
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
+        recipe.setIngredient('E', Material.ENDER_PEARL);
         Bukkit.addRecipe(recipe);
     }
 
