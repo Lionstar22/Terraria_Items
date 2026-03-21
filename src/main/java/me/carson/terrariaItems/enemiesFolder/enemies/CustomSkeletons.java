@@ -3,18 +3,18 @@ package me.carson.terrariaItems.enemiesFolder.enemies;
 import me.carson.terrariaItems.armourFolder.armors.iceGolemArmor.IceGolemBoots;
 import me.carson.terrariaItems.armourFolder.armors.iceGolemArmor.IceGolemChestplate;
 import me.carson.terrariaItems.armourFolder.armors.iceGolemArmor.IceGolemLeggings;
+import me.carson.terrariaItems.armourFolder.armors.runeWizardArmor.RuneWizardChestplate;
+import me.carson.terrariaItems.armourFolder.armors.runeWizardArmor.RuneWizardLeggings;
 import me.carson.terrariaItems.armourFolder.armors.timArmor.TimChestplate;
 import me.carson.terrariaItems.armourFolder.armors.timArmor.TimLeggings;
 import me.carson.terrariaItems.armourFolder.armors.undeadMinerArmor.UndeadMinerChestplate;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.IceGolemLaser;
+import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.RuneWizardBolt;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.TimBolt;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.miscFolder.BasicItems.BonePickaxe;
-import me.carson.terrariaItems.miscFolder.hats.IceGolemHat;
-import me.carson.terrariaItems.miscFolder.hats.SkeletonArcherHat;
-import me.carson.terrariaItems.miscFolder.hats.UndeadMinerHat;
-import me.carson.terrariaItems.miscFolder.hats.WizardHat;
+import me.carson.terrariaItems.miscFolder.hats.*;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -59,7 +59,7 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         }else{
             if(!instance.getHardmode()){
                 if(location.getY()<0){
-                    if(Math.random()<0.5){
+                    if(Math.random()<0.05){
                         spawnTim(skeleton);
                     }else if(Math.random()<0.2){
                         spawnUndeadMiner(skeleton);
@@ -69,10 +69,22 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
                 }
             }else {
                 double rand=Math.random();
-                if(rand<0.1){
-                    spawnUndeadMiner(skeleton);
-                } else if (rand<0.6) {
-                    spawnSkeletonArcher(skeleton);
+                if(location.getY()<0){
+                    if(Math.random()<0.01){
+                        spawnTim(skeleton);
+                    }else if(rand<0.06){
+                        spawnRuneWizard(skeleton);
+                    }else if(rand<0.2){
+                        spawnUndeadMiner(skeleton);
+                    } else if (rand<0.7) {
+                        spawnSkeletonArcher(skeleton);
+                    }
+                }else {
+                    if(rand<0.1){
+                        spawnUndeadMiner(skeleton);
+                    } else if (rand<0.6) {
+                        spawnSkeletonArcher(skeleton);
+                    }
                 }
             }
         }
@@ -137,7 +149,7 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         equipment.setHelmetDropChance(1f);
         equipment.setChestplateDropChance(0f);
         equipment.setLeggingsDropChance(0f);
-        startAttacks(skeleton,new TimBolt(plugin),"terraria:water_bolt_use");
+        startAttacks(skeleton,new TimBolt(plugin),"terraria:magic_use");
     }
 
     public void spawnIceGolem(Skeleton skeleton){
@@ -163,5 +175,26 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         equipment.setLeggingsDropChance(0f);
         equipment.setBootsDropChance(0f);
         startAttacks(skeleton,new IceGolemLaser(plugin),"terraria:laser");
+    }
+
+    public void spawnRuneWizard(Skeleton skeleton){
+        skeleton.setCustomName("Rune Wizard");
+        skeleton.setCustomNameVisible(false);
+        skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(80);
+        skeleton.setHealth(80);
+        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+        skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,"RuneWizard");
+        skeleton.setCanPickupItems(false);
+        skeleton.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0);
+        EntityEquipment equipment=skeleton.getEquipment();
+        equipment.setHelmet(RuneWizardHat.getItem(plugin));
+        equipment.setChestplate(RuneWizardChestplate.getItem(plugin));
+        equipment.setLeggings(RuneWizardLeggings.getItem(plugin));
+        equipment.setBoots(null);
+        equipment.setItemInMainHand(null);
+        equipment.setHelmetDropChance(0f);
+        equipment.setChestplateDropChance(0f);
+        equipment.setLeggingsDropChance(0f);
+        startAttacks(skeleton,new RuneWizardBolt(plugin),"terraria:magic_use");
     }
 }

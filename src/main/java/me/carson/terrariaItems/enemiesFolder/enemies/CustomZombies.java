@@ -9,10 +9,7 @@ import me.carson.terrariaItems.armourFolder.armors.werewolfArmor.WerewolfLegging
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.MermanBolt;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
-import me.carson.terrariaItems.miscFolder.hats.FrozenZombieHat;
-import me.carson.terrariaItems.miscFolder.hats.GnomeHat;
-import me.carson.terrariaItems.miscFolder.hats.RaincoatZombieHat;
-import me.carson.terrariaItems.miscFolder.hats.WerewolfHat;
+import me.carson.terrariaItems.miscFolder.hats.*;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
@@ -34,6 +31,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
     private final WorldDataHandler instance=WorldDataHandler.getInstance();
     private static final Set<Biome> snowyBiomes = Set.of(Biome.SNOWY_TAIGA,Biome.JAGGED_PEAKS,Biome.FROZEN_PEAKS,Biome.GROVE,Biome.SNOWY_SLOPES,Biome.FROZEN_RIVER,Biome.SNOWY_PLAINS,Biome.ICE_SPIKES,Biome.SNOWY_BEACH);
     private static final Set<Biome> gnomeBiomes= Set.of(Biome.OLD_GROWTH_BIRCH_FOREST,Biome.OLD_GROWTH_PINE_TAIGA,Biome.OLD_GROWTH_SPRUCE_TAIGA,Biome.DARK_FOREST,Biome.PALE_GARDEN);
+    private static final Set<Biome> jungleBiomes= Set.of(Biome.JUNGLE,Biome.OLD_GROWTH_PINE_TAIGA,Biome.SPARSE_JUNGLE,Biome.BAMBOO_JUNGLE);
 
     public CustomZombies(Plugin plugin){
         super(plugin);
@@ -45,10 +43,10 @@ public class CustomZombies extends CustomEnemy implements Listener {
         if (event.getEntityType() != EntityType.ZOMBIE) return;
         Zombie zombie = (Zombie) event.getEntity();
         Location location = zombie.getLocation();
-        Boolean isRaining= zombie.getWorld().hasStorm();
+        boolean isRaining= zombie.getWorld().hasStorm();
         if(location.getY()<60){return;}
         if(instance.getHardmode()){
-            if((getMoonPhase(zombie.getWorld())==0)&&Math.random()<0.8){
+            if((getMoonPhase(zombie.getWorld())==0)&&Math.random()<0.7){
                 spawnWerewolf(zombie);
             }else if(Math.random()<0.5){
                 spawnPossessedArmor(zombie);
@@ -56,6 +54,8 @@ public class CustomZombies extends CustomEnemy implements Listener {
                 spawnFrozenZombie(zombie);
             } else if ((Math.random()<0.05)&&gnomeBiomes.contains(location.getBlock().getBiome())){
                 spawnGnome(zombie);
+            }else if ((Math.random()<10.01)&&jungleBiomes.contains(location.getBlock().getBiome())){
+                spawnDoctorBones(zombie);
             } else if(isRaining){
                 spawnRaincoatZombie(zombie);
             }
@@ -63,6 +63,8 @@ public class CustomZombies extends CustomEnemy implements Listener {
             spawnFrozenZombie(zombie);
         } else if ((Math.random()<0.05)&&gnomeBiomes.contains(location.getBlock().getBiome())){
             spawnGnome(zombie);
+        } else if ((Math.random()<10.01)&&jungleBiomes.contains(location.getBlock().getBiome())){
+            spawnDoctorBones(zombie);
         } else if(isRaining){
             spawnRaincoatZombie(zombie);
         }
@@ -142,7 +144,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
         zombie.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.3);
         zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(60);
         zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(5);
-        zombie.setHealth(50);
+        zombie.setHealth(60);
         EntityEquipment equipment=zombie.getEquipment();
         equipment.setItemInMainHand(null);
         equipment.setHelmet(WerewolfHat.getItem(plugin));
@@ -153,5 +155,22 @@ public class CustomZombies extends CustomEnemy implements Listener {
         equipment.setChestplateDropChance(0f);
         equipment.setLeggingsDropChance(0f);
         equipment.setBootsDropChance(0f);
+    }
+
+    public void spawnDoctorBones(Zombie zombie){
+        zombie.setCustomName("Doctor Bones");
+        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+        zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"DoctorBones");
+        zombie.setCanPickupItems(false);
+        zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(35);
+        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(4);
+        zombie.setHealth(35);
+        EntityEquipment equipment=zombie.getEquipment();
+        equipment.setItemInMainHand(null);
+        equipment.setHelmet(ArchaeologistsHat.getItem(plugin));
+        equipment.setChestplate(null);
+        equipment.setLeggings(null);
+        equipment.setBoots(null);
+        equipment.setHelmetDropChance(1f);
     }
 }

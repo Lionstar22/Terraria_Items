@@ -19,7 +19,7 @@ import java.util.List;
 public class CactusChestplate extends Armor {
 
     public CactusChestplate(Plugin plugin){
-        super(plugin,"Cactus Chestplate","#FFFFFF", Material.LEATHER_CHESTPLATE,"cactus_chestplate","cactus_armor", EquipmentSlot.CHEST,"CactusChestplate",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus",ChatColor.GRAY+"Attackers take damage from the cactus spines",ChatColor.GRAY+"+2 Armor")));
+        super(plugin,"Cactus Chestplate","#FFFFFF", Material.LEATHER_CHESTPLATE,"cactus_chestplate","cactus_armor", EquipmentSlot.CHEST,"CactusChestplate",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus: Attackers take damage from the cactus spines",ChatColor.GRAY+"+2 Armor")));
     }
 
     @Override

@@ -1,22 +1,15 @@
 package me.carson.terrariaItems.weaponsFolder;
 
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
-import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.PulseBow;
-import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Shotgun;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
-import org.bukkit.advancement.Advancement;
-import org.bukkit.advancement.AdvancementProgress;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
@@ -96,68 +89,6 @@ public class WeaponListeners implements Listener {
             else {
                 player.removePotionEffect(PotionEffectType.SLOWNESS);
             }
-        }
-    }
-
-    @EventHandler
-    public void onVillagerInventoryOpen(InventoryOpenEvent event) {
-        if (!(event.getInventory().getHolder() instanceof Villager villager)) return;
-        if (!(event.getPlayer() instanceof Player)) return;
-        if (villager.getProfession() != Villager.Profession.WEAPONSMITH) return;
-        if(!worldInstance.getHardmode()){return;}
-
-        List<MerchantRecipe> recipes = new ArrayList<>(villager.getRecipes());
-        originalRecipes.put(villager.getUniqueId(), new ArrayList<>(villager.getRecipes()));
-
-        MerchantRecipe recipe = new MerchantRecipe(
-                Shotgun.getItem(plugin),
-                0, 999, true, 1, 0.05f
-        );
-        recipe.addIngredient(new ItemStack(Material.EMERALD, 32));
-        recipe.addIngredient(new ItemStack(Material.IRON_INGOT, 16));
-        recipes.add(recipe);
-
-        villager.setRecipes(recipes);
-    }
-
-    @EventHandler
-    public void onVillagerInventoryClose(InventoryCloseEvent event) {
-        if (!(event.getInventory().getHolder() instanceof Villager villager)) return;
-
-        List<MerchantRecipe> original = originalRecipes.get(villager.getUniqueId());
-        if (original != null) {
-            villager.setRecipes(original);
-            originalRecipes.remove(villager.getUniqueId());
-        }
-    }
-
-    @EventHandler
-    public void onMerchantInventoryOpen(InventoryOpenEvent event) {
-        if (!(event.getInventory().getHolder() instanceof WanderingTrader villager)) return;
-        if (!(event.getPlayer() instanceof Player)) return;
-        if(!worldInstance.getHardmode()){return;}
-
-        List<MerchantRecipe> recipes = new ArrayList<>(villager.getRecipes());
-        originalRecipes.put(villager.getUniqueId(), new ArrayList<>(villager.getRecipes()));
-
-        MerchantRecipe recipe = new MerchantRecipe(
-                PulseBow.getItem(plugin),
-                0, 999, true, 1, 0.05f
-        );
-        recipe.addIngredient(new ItemStack(Material.EMERALD, 48));
-        recipes.add(recipe);
-
-        villager.setRecipes(recipes);
-    }
-
-    @EventHandler
-    public void onMerchantInventoryClose(InventoryCloseEvent event) {
-        if (!(event.getInventory().getHolder() instanceof WanderingTrader villager)) return;
-
-        List<MerchantRecipe> original = originalRecipes.get(villager.getUniqueId());
-        if (original != null) {
-            villager.setRecipes(original);
-            originalRecipes.remove(villager.getUniqueId());
         }
     }
 

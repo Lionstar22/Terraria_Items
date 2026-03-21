@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.armourFolder.armors.cactusArmor;
+package me.carson.terrariaItems.armourFolder.armors.runeWizardArmor;
 
 import me.carson.terrariaItems.armourFolder.Armor;
 import org.bukkit.ChatColor;
@@ -16,10 +16,10 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CactusLeggings extends Armor {
+public class RuneWizardLeggings extends Armor {
 
-    public CactusLeggings(Plugin plugin){
-        super(plugin,"Cactus Leggings","#FFFFFF", Material.LEATHER_LEGGINGS,"cactus_leggings","cactus_armor", EquipmentSlot.LEGS,"CactusLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus: Attackers take damage from the cactus spines",ChatColor.GRAY+"+2 Armor")));
+    public RuneWizardLeggings(Plugin plugin){
+        super(plugin,"Rune Wizard Leggings","#FFFFFF", Material.LEATHER_LEGGINGS,"cactus_leggings","rune_wizard_armor", EquipmentSlot.LEGS,"RuneWizardLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"How did you get this?")));
     }
 
     @Override
@@ -31,9 +31,9 @@ public class CactusLeggings extends Armor {
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item=new CactusLeggings(plugin).createItem();
+        ItemStack item=new RuneWizardLeggings(plugin).createItem();
         ItemMeta meta=item.getItemMeta();
-        meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"cactus_leggings_armor"),2.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS));
+        meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"rune_wizard_leggings_armor"),0.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS));
         item.setItemMeta(meta);
         return item;
     }

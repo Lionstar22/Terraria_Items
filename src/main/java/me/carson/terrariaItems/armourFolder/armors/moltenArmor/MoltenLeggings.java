@@ -16,7 +16,7 @@ import java.util.List;
 public class MoltenLeggings extends Armor {
 
     public MoltenLeggings(Plugin plugin){
-        super(plugin,"Molten Leggings","#FFC896", Material.NETHERITE_LEGGINGS,"molten_leggings","molten_armor", EquipmentSlot.LEGS,"MoltenLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased melee damage",ChatColor.GRAY+"Set Bonus: Grants immunity to fire")));
+        super(plugin,"Molten Leggings","#FFC896", Material.NETHERITE_LEGGINGS,"molten_leggings","molten_armor", EquipmentSlot.LEGS,"MoltenLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"7% increased melee damage",ChatColor.GRAY+"Set Bonus: Grants immunity to fire")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -30,11 +30,11 @@ public class MoltenLeggings extends Armor {
 
     @Override
     public void activateArmorEffect(Player player) {
-        playerInstance.addBonusMelee(player.getUniqueId(),0.05);
+        playerInstance.addBonusMelee(player.getUniqueId(),0.07);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
-        playerInstance.subtractBonusMelee(player.getUniqueId(),0.05);
+        playerInstance.subtractBonusMelee(player.getUniqueId(),0.07);
     }
 }

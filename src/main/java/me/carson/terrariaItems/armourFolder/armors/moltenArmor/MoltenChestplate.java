@@ -16,7 +16,7 @@ import java.util.List;
 public class MoltenChestplate extends Armor {
 
     public MoltenChestplate(Plugin plugin){
-        super(plugin,"Molten Chestplate","#FFC896", Material.NETHERITE_CHESTPLATE,"molten_chestplate","molten_armor", EquipmentSlot.CHEST,"MoltenChestplate",new ArrayList<>(List.of(ChatColor.GRAY+"7% increased melee damage",ChatColor.GRAY+"Set Bonus: Grants immunity to fire")));
+        super(plugin,"Molten Chestplate","#FFC896", Material.NETHERITE_CHESTPLATE,"molten_chestplate","molten_armor", EquipmentSlot.CHEST,"MoltenChestplate",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased melee damage",ChatColor.GRAY+"Set Bonus: Grants immunity to fire")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -30,11 +30,11 @@ public class MoltenChestplate extends Armor {
 
     @Override
     public void activateArmorEffect(Player player) {
-        playerInstance.addBonusMelee(player.getUniqueId(),0.07);
+        playerInstance.addBonusMelee(player.getUniqueId(),0.1);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
-        playerInstance.subtractBonusMelee(player.getUniqueId(),0.07);
+        playerInstance.subtractBonusMelee(player.getUniqueId(),0.1);
     }
 }

@@ -3,8 +3,13 @@ package me.carson.terrariaItems.listenersHandler;
 import me.carson.terrariaItems.accesoryFolder.Accessory;
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.armourFolder.ArmorManager;
+import org.bukkit.Bukkit;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -12,17 +17,21 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
-public class PlayerDataHandler {
+public class PlayerDataHandler implements Listener {
 
     private static PlayerDataHandler instance;
-    private final AccessoryManager accessoryInstance = AccessoryManager.getInstance();
-    private final ArmorManager armorInstance = ArmorManager.getInstance();
+    //private final AccessoryManager accessoryInstance = AccessoryManager.getInstance();
+    //private final ArmorManager armorInstance = ArmorManager.getInstance();
     private final File file;
     private final YamlConfiguration config;
+    private final Plugin plugin;
 
     public PlayerDataHandler(Plugin plugin){
+        this.plugin=plugin;
+        Bukkit.getPluginManager().registerEvents(this, plugin);
         file = new File(plugin.getDataFolder(), "playerData.yml");
         if (!file.exists()) {
             try { file.createNewFile(); } catch (IOException e) { e.printStackTrace(); }
@@ -107,24 +116,7 @@ public class PlayerDataHandler {
         }
     }
 
-    public void resetBonuses(Player player){
-        setBonusMelee(player.getUniqueId(),0.0);
-        setBonusRanged(player.getUniqueId(),0.0);
-        setBonusMagic(player.getUniqueId(),0.0);
-        setBonusDamage(player.getUniqueId(),0.0);
-        setDamageReduction(player.getUniqueId(),0.0);
-        player.setWalkSpeed(0.2f);
 
-        for(ItemStack item:getInventory(player.getUniqueId())){
-            Accessory accessory=accessoryInstance.getAccessory(item);
-            if(accessory!=null){
-                accessory.activateEffect(player);
-            }
-        }
-        for (ItemStack armor : player.getInventory().getArmorContents()) {
-            if(armorInstance.getArmorPiece(armor)!=null){armorInstance.getArmorPiece(armor).activateArmorEffect(player);}
-        }
-    }
 
     public static void initialize(JavaPlugin plugin) {
         instance = new PlayerDataHandler(plugin);

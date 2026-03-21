@@ -19,7 +19,7 @@ import java.util.List;
 public class CactusBoots extends Armor {
 
     public CactusBoots(Plugin plugin){
-        super(plugin,"Cactus Boots","#FFFFFF", Material.LEATHER_BOOTS,"cactus_boots","cactus_armor", EquipmentSlot.FEET,"CactusBoots",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus",ChatColor.GRAY+"Attackers take damage from the cactus spines",ChatColor.GRAY+"+1 Armor")));
+        super(plugin,"Cactus Boots","#FFFFFF", Material.LEATHER_BOOTS,"cactus_boots","cactus_armor", EquipmentSlot.FEET,"CactusBoots",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus: Attackers take damage from the cactus spines",ChatColor.GRAY+"+1 Armor")));
     }
 
     @Override

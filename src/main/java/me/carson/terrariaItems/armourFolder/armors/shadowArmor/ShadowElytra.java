@@ -14,7 +14,7 @@ import java.util.List;
 public class ShadowElytra extends Armor {
 
     public ShadowElytra(Plugin plugin){
-        super(plugin,"Shadow Elytra","#9696FF", Material.ELYTRA,"shadow_elytra","shadow_armor", EquipmentSlot.CHEST,"ShadowElytra",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus: Increased movement speed and acceleration")));
+        super(plugin,"Shadow Elytra","#9696FF", Material.ELYTRA,"shadow_elytra","shadow_armor", EquipmentSlot.CHEST,"ShadowElytra",new ArrayList<>(List.of(ChatColor.GRAY+"")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

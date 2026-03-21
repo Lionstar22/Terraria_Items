@@ -33,7 +33,7 @@ public class WeaponRecipeManager {
         registerBladeOfGrassRecipe();
         registerIceBladeRecipe();
         registerBlowpipeRecipe();
-        registerMinisharkRecipe();
+        //registerMinisharkRecipe();
         registerSniperRifleRecipe();
         registerHandgunRecipe();
         registerMegasharkRecipe();
@@ -53,6 +53,7 @@ public class WeaponRecipeManager {
         registerCrystalStormRecipe();
         registerOnyxBlasterRecipe();
         registerHoarfrostBowRecipe();
+        registerSandGunRecipe();
     }
 
     private void registerLightsBaneRecipe(){
@@ -187,9 +188,10 @@ public class WeaponRecipeManager {
         ItemStack item= Megashark.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Megashark");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
-        recipe.shape(" S ","SMS"," S ");
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice( SoulOfMight.getItem(plugin)));
-        recipe.setIngredient('M', new RecipeChoice.ExactChoice( Minishark.getItem(plugin)));
+        recipe.shape(" S ","SMS","GS ");
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(SoulOfMight.getItem(plugin)));
+        recipe.setIngredient('M', new RecipeChoice.ExactChoice(Minishark.getItem(plugin)));
+        recipe.setIngredient('G', new RecipeChoice.ExactChoice(IllegalGunParts.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
@@ -375,6 +377,17 @@ public class WeaponRecipeManager {
         recipe.setIngredient('S',Material.STRING);
         recipe.setIngredient('I',Material.ICE);
         recipe.setIngredient('L',Material.SOUL_LANTERN);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerSandGunRecipe(){
+        ItemStack item= SandGun.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "SandGun");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("  S","GGG","I S");
+        recipe.setIngredient('S',Material.SANDSTONE);
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(IllegalGunParts.getItem(plugin)));
+        recipe.setIngredient('G',Material.GOLD_INGOT);
         Bukkit.addRecipe(recipe);
     }
 }

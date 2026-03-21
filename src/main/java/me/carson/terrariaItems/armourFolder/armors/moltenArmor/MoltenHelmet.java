@@ -23,7 +23,6 @@ import java.util.Set;
 public class MoltenHelmet extends Armor implements Listener {
 
     private static final Set<EntityDamageEvent.DamageCause> COUNTERABLE_CAUSES = Set.of(
-            EntityDamageEvent.DamageCause.LAVA,
             EntityDamageEvent.DamageCause.FIRE_TICK,
             EntityDamageEvent.DamageCause.CAMPFIRE,
             EntityDamageEvent.DamageCause.FIRE

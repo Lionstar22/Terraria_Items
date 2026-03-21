@@ -25,7 +25,7 @@ import java.util.List;
 public class CactusHelmet extends Armor implements Listener {
 
     public CactusHelmet(Plugin plugin){
-        super(plugin,"Cactus Helmet","#FFFFFF", Material.LEATHER_HELMET,"cactus_helmet","cactus_armor", EquipmentSlot.HEAD,"CactusHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus",ChatColor.GRAY+"Attackers take damage from the cactus spines",ChatColor.GRAY+"+1 Armor")));
+        super(plugin,"Cactus Helmet","#FFFFFF", Material.LEATHER_HELMET,"cactus_helmet","cactus_armor", EquipmentSlot.HEAD,"CactusHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"Set Bonus: Attackers take damage from the cactus spines",ChatColor.GRAY+"+1 Armor")));
     }
 
     @Override

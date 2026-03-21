@@ -5,7 +5,15 @@ import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusHelmet;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusLeggings;
 import me.carson.terrariaItems.armourFolder.armors.hallowedArmor.*;
+import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleHat;
+import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleLeggings;
+import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JunglePants;
+import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleShirt;
 import me.carson.terrariaItems.armourFolder.armors.moltenArmor.*;
+import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroBreastplate;
+import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroGreaves;
+import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroHelmet;
+import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroLeggings;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
 import me.carson.terrariaItems.listenersHandler.ArmorChangeEvent;
 import org.bukkit.Bukkit;
@@ -39,11 +47,9 @@ import java.util.*;
 public class ArmorManager implements Listener {
 
     private final HashMap<String, Armor> armorList = new HashMap<>();
-    private final List<Armor> armorItems = new ArrayList<>();
     private final NamespacedKey armorKey;
     protected final Plugin plugin;
     private static ArmorManager instance;
-    private final Map<UUID, ItemStack[]> armorCache = new HashMap<>();
 
     public ArmorManager(Plugin plugin) {
         armorKey = new NamespacedKey(plugin, "custom_item_id");
@@ -70,6 +76,14 @@ public class ArmorManager implements Listener {
         armorList.put("CactusChestplate",new CactusChestplate(plugin));
         armorList.put("CactusLeggings",new CactusLeggings(plugin));
         armorList.put("CactusBoots",new CactusBoots(plugin));
+        armorList.put("JungleHat",new JungleHat(plugin));
+        armorList.put("JungleShirt",new JungleShirt(plugin));
+        armorList.put("JungleLeggings",new JungleLeggings(plugin));
+        armorList.put("JunglePants",new JunglePants(plugin));
+        armorList.put("NecroHelmet",new NecroHelmet(plugin));
+        armorList.put("NecroBreastplate",new NecroBreastplate(plugin));
+        armorList.put("NecroLeggings",new NecroLeggings(plugin));
+        armorList.put("NecroGreaves",new NecroGreaves(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new MoltenHelmet(plugin), plugin);
@@ -81,27 +95,6 @@ public class ArmorManager implements Listener {
         if(item==null|| !item.hasItemMeta()){return null;}
         String armorId= item.getItemMeta().getPersistentDataContainer().get(armorKey, PersistentDataType.STRING);
         return armorList.get(armorId);
-    }
-
-    public Boolean hasSetBonus(Player player) {
-        PlayerInventory inv = player.getInventory();
-
-        ItemStack helmet = inv.getHelmet();
-        ItemStack chest = inv.getChestplate();
-        ItemStack legs = inv.getLeggings();
-        ItemStack boots = inv.getBoots();
-        if(helmet==null||chest==null||legs==null||boots==null){return false;}
-        ItemMeta hMeta = helmet.getItemMeta();
-        ItemMeta cMeta = chest.getItemMeta();
-        ItemMeta lMeta = legs.getItemMeta();
-        ItemMeta bMeta = boots.getItemMeta();
-        if(hMeta==null||cMeta==null||lMeta==null||bMeta==null){return false;}
-        String hKey=hMeta.getEquippable().getModel().getKey();
-        String cKey=cMeta.getEquippable().getModel().getKey();
-        String lKey=lMeta.getEquippable().getModel().getKey();
-        String bKey=bMeta.getEquippable().getModel().getKey();
-
-        return hKey.equals(cKey)&&hKey.equals(lKey)&&hKey.equals(bKey);
     }
 
     @EventHandler

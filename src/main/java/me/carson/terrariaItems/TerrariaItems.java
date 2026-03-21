@@ -1,5 +1,6 @@
 package me.carson.terrariaItems;
 
+import me.carson.terrariaItems.accesoryFolder.Accessory;
 import me.carson.terrariaItems.accesoryFolder.AccessoryListeners;
 import me.carson.terrariaItems.blocksFolder.CustomBlockListeners;
 import me.carson.terrariaItems.blocksFolder.CustomBlockManager;
@@ -16,25 +17,31 @@ import me.carson.terrariaItems.weaponsFolder.WeaponListeners;
 import me.carson.terrariaItems.weaponsFolder.WeaponManager;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.ItemDisplay;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
-public final class TerrariaItems extends JavaPlugin {
-
-    //private ManaManager manaManagerInstance;
+public final class TerrariaItems extends JavaPlugin{
 
     @Override
     public void onEnable() {
-        PlayerDataHandler.initialize(this);
         WorldDataHandler.initialize(this);
+        PlayerDataHandler.initialize(this);
         MaterialManager.initialize(this);
         ProjectileManager.initialize(this);
         ManaManager.initialize(this);
         AccessoryManager.initialize(this);
         ArmorManager.initialize(this);
+        ResetHandler.initialize(this);
 
         AccessoryRecipeManager accessoryRecipeManager = new AccessoryRecipeManager(this);
         accessoryRecipeManager.registerRecipes();
@@ -68,6 +75,7 @@ public final class TerrariaItems extends JavaPlugin {
         new WeaponListeners(this);
         new PlayerDamageHandler(this);
         new ArmorChangeDetector(this);
+        new VillagerTradingListeners(this);
 
         TICommand tiCommand = new TICommand(this);
         Objects.requireNonNull(getCommand("ti")).setExecutor(tiCommand);

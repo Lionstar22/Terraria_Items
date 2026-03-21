@@ -2,6 +2,15 @@ package me.carson.terrariaItems;
 
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
+import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleHat;
+import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleLeggings;
+import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JunglePants;
+import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleShirt;
+import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroBreastplate;
+import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroGreaves;
+import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroHelmet;
+import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroLeggings;
+import me.carson.terrariaItems.listenersHandler.ResetHandler;
 import me.carson.terrariaItems.miscFolder.BasicItems.BonePickaxe;
 import me.carson.terrariaItems.miscFolder.hats.GoldenCrown;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
@@ -46,6 +55,7 @@ public class TICommand implements CommandExecutor, TabCompleter {
     private final TerrariaItems plugin;
     private final AccessoryManager accessoryManagerInstance=AccessoryManager.getInstance();
     private final PlayerDataHandler playerInstance= PlayerDataHandler.getInstance();
+    private final ResetHandler resetInstance=ResetHandler.getInstance();
 
     public TICommand(TerrariaItems plugin) {
         this.plugin = plugin;
@@ -362,6 +372,12 @@ public class TICommand implements CommandExecutor, TabCompleter {
                     case "bone_pickaxe"-> {
                         player.getInventory().addItem(BonePickaxe.getItem(plugin));
                     }
+                    case "night_vision_helmet"-> {
+                        player.getInventory().addItem(NightVisionHelmet.getItem(plugin));
+                    }
+                    case "sand_gun"-> {
+                        player.getInventory().addItem(SandGun.getItem(plugin));
+                    }
                     case "souls"-> {
                         ItemStack light= SoulOfLight.getItem(plugin);
                         light.setAmount(4);
@@ -378,6 +394,18 @@ public class TICommand implements CommandExecutor, TabCompleter {
                         ItemStack sight= SoulOfSight.getItem(plugin);
                         sight.setAmount(4);
                         player.getInventory().addItem(sight);
+                    }
+                    case "jungle_armor"-> {
+                        player.getInventory().addItem(JungleHat.getItem(plugin));
+                        player.getInventory().addItem(JungleShirt.getItem(plugin));
+                        player.getInventory().addItem(JungleLeggings.getItem(plugin));
+                        player.getInventory().addItem(JunglePants.getItem(plugin));
+                    }
+                    case "necro_armor"-> {
+                        player.getInventory().addItem(NecroHelmet.getItem(plugin));
+                        player.getInventory().addItem(NecroBreastplate.getItem(plugin));
+                        player.getInventory().addItem(NecroLeggings.getItem(plugin));
+                        player.getInventory().addItem(NecroGreaves.getItem(plugin));
                     }
 
                     default -> player.sendMessage("§cUnknown item: " + itemName);
@@ -398,6 +426,9 @@ public class TICommand implements CommandExecutor, TabCompleter {
                     vanityManager.openVanity(player);
                 }
             }
+            case "reset_bonuses"->{
+                resetInstance.resetBonuses(player);
+            }
 
         }
 
@@ -410,11 +441,11 @@ public class TICommand implements CommandExecutor, TabCompleter {
 
         if (args.length == 1) {
             // First argument: subcommands
-            List<String> subCommands = Arrays.asList("give","toggle_message","accessory","vanity");
+            List<String> subCommands = Arrays.asList("give","toggle_message","accessory","vanity","reset_bonuses");
             StringUtil.copyPartialMatches(args[0], subCommands, completions);
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
             // Second argument: item names
-            List<String> items = Arrays.asList("Cosmolight","warrior_emblem","mechanical_skull","mechanical_egg","bone_pickaxe","pulse_bow","testing_stick","golden_crown","mechanical_shrieker","souls","hoarfrost_bow","onyx_blaster","enchanted_sword","crystal_storm","magical_harp","sandstorm_in_a_bottle","thunder_zapper","blizzard_in_a_bottle","anklet_of_the_wind","tsunami_in_a_bottle","wooden_crate","falcon_blade","iron_crate","golden_crate","oasis_crate","sky_crate","ocean_crate","jungle_crate","frozen_crate","sorcerer_emblem","super_star_shooter","star_cannon","fallen_star","cactus_armor","terra_blade","icicle_staff","bubble_gun","ancient_fossil","neptunes_shell","water_bolt","mana_crystal","meteor_staff","christmastreesword","ruby_staff","amethyst_staff","torrential_tear","phoenix_blaster","sniper_rifle","mega_shark","needler","minishark","shotgun","handgun","ice_blade","blowpipe","blade_of_grass","avenger_emblem","hallowed_elytra","pickaxe_axe","hallowed_armour","hallowed_repeater","excalibur","snowball_cannon","might","shackle","molten_elytra","ranger_emblem","shadow_elytra","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield");
+            List<String> items = Arrays.asList("Cosmolight","warrior_emblem","mechanical_skull","jungle_armor","sand_gun","night_vision_helmet","mechanical_egg","bone_pickaxe","pulse_bow","testing_stick","golden_crown","mechanical_shrieker","souls","hoarfrost_bow","onyx_blaster","enchanted_sword","crystal_storm","magical_harp","sandstorm_in_a_bottle","thunder_zapper","blizzard_in_a_bottle","anklet_of_the_wind","tsunami_in_a_bottle","wooden_crate","falcon_blade","iron_crate","golden_crate","oasis_crate","sky_crate","ocean_crate","jungle_crate","frozen_crate","sorcerer_emblem","super_star_shooter","star_cannon","fallen_star","cactus_armor","terra_blade","icicle_staff","bubble_gun","ancient_fossil","neptunes_shell","water_bolt","mana_crystal","meteor_staff","christmastreesword","ruby_staff","amethyst_staff","torrential_tear","phoenix_blaster","sniper_rifle","mega_shark","needler","minishark","shotgun","handgun","ice_blade","blowpipe","blade_of_grass","avenger_emblem","hallowed_elytra","pickaxe_axe","hallowed_armour","hallowed_repeater","excalibur","snowball_cannon","might","shackle","molten_elytra","ranger_emblem","shadow_elytra","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","Momentum_Capacitor","Stormbow","demonite_bar","Cloud_bottle","Aglet","Obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield");
             StringUtil.copyPartialMatches(args[1], items, completions);
         }
 

@@ -1,5 +1,9 @@
 package me.carson.terrariaItems.recipeManagers;
 
+import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleHat;
+import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleLeggings;
+import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JunglePants;
+import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleShirt;
 import me.carson.terrariaItems.miscFolder.hats.GoldenCrown;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
@@ -52,6 +56,10 @@ public class ArmorRecipeManager {
         registerCactusLeggingsRecipe();
         registerCactusBootsRecipe();
         registerGoldenCrownRecipe();
+        registerJungleHatRecipe();
+        registerJungleShirtRecipe();
+        registerJungleLeggingsRecipe();
+        registerJunglePantsRecipe();
     }
 
     private void registerShadowHelmetRecipe(){
@@ -255,6 +263,50 @@ public class ArmorRecipeManager {
         recipe.shape("GGG","GRG","   ");
         recipe.setIngredient('G', Material.GOLD_INGOT);
         recipe.setIngredient('R', new RecipeChoice.ExactChoice(Ruby.getItem(plugin)));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerJungleHatRecipe(){
+        ItemStack item= JungleHat.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "JungleHat");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("BVB","I I","   ");
+        recipe.setIngredient('B', Material.BAMBOO);
+        recipe.setIngredient('I', Material.IRON_INGOT);
+        recipe.setIngredient('V', Material.TWISTING_VINES);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerJungleShirtRecipe(){
+        ItemStack item= JungleShirt.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "JungleShirt");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("V V","BIB","BCB");
+        recipe.setIngredient('B', Material.BAMBOO);
+        recipe.setIngredient('I', Material.IRON_INGOT);
+        recipe.setIngredient('V', Material.TWISTING_VINES);
+        recipe.setIngredient('C', Material.COCOA_BEANS);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerJungleLeggingsRecipe(){
+        ItemStack item= JungleLeggings.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "JungleLeggings");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("VIV","B B","B B");
+        recipe.setIngredient('B', Material.BAMBOO);
+        recipe.setIngredient('I', Material.IRON_INGOT);
+        recipe.setIngredient('V', Material.TWISTING_VINES);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerJunglePantsRecipe(){
+        ItemStack item= JunglePants.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "JunglePants");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("   ","V V","B B");
+        recipe.setIngredient('B', Material.BAMBOO);
+        recipe.setIngredient('V', Material.TWISTING_VINES);
         Bukkit.addRecipe(recipe);
     }
 }

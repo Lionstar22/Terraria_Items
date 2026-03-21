@@ -66,6 +66,7 @@ public class WeaponManager implements Listener {
         weaponList.put("OnyxBlaster",new OnyxBlaster(plugin));
         weaponList.put("HoarfrostBow",new HoarfrostBow(plugin));
         weaponList.put("PulseBow",new PulseBow(plugin));
+        weaponList.put("SandGun",new SandGun(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
