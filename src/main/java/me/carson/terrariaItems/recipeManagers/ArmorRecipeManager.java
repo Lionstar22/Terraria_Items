@@ -4,6 +4,10 @@ import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleHat;
 import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleLeggings;
 import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JunglePants;
 import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleShirt;
+import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroBreastplate;
+import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroGreaves;
+import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroHelmet;
+import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroLeggings;
 import me.carson.terrariaItems.miscFolder.hats.GoldenCrown;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
@@ -60,6 +64,10 @@ public class ArmorRecipeManager {
         registerJungleShirtRecipe();
         registerJungleLeggingsRecipe();
         registerJunglePantsRecipe();
+        registerNecroHelmetRecipe();
+        registerNecroBreastplateRecipe();
+        registerNecroLeggingsRecipe();
+        registerNecroGreavesRecipe();
     }
 
     private void registerShadowHelmetRecipe(){
@@ -307,6 +315,49 @@ public class ArmorRecipeManager {
         recipe.shape("   ","V V","B B");
         recipe.setIngredient('B', Material.BAMBOO);
         recipe.setIngredient('V', Material.TWISTING_VINES);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerNecroHelmetRecipe(){
+        ItemStack item= NecroHelmet.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "NecroHelmet");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("CSC","B B","   ");
+        recipe.setIngredient('B', Material.BONE);
+        recipe.setIngredient('C', Material.COBWEB);
+        recipe.setIngredient('S', Material.SOUL_SAND);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerNecroBreastplateRecipe(){
+        ItemStack item= NecroBreastplate.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "NecroBreastplate");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("B B","CSC","CSC");
+        recipe.setIngredient('B', Material.BONE);
+        recipe.setIngredient('C', Material.COBWEB);
+        recipe.setIngredient('S', Material.SOUL_SAND);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerNecroLeggingsRecipe(){
+        ItemStack item= NecroLeggings.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "NecroLeggings");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("SBS","C C","C C");
+        recipe.setIngredient('B', Material.BONE);
+        recipe.setIngredient('C', Material.COBWEB);
+        recipe.setIngredient('S', Material.SOUL_SAND);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerNecroGreavesRecipe(){
+        ItemStack item= NecroGreaves.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "NecroGreaves");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("   ","S S","B B");
+        recipe.setIngredient('B', Material.BONE);
+        recipe.setIngredient('S', Material.SOUL_SAND);
         Bukkit.addRecipe(recipe);
     }
 }

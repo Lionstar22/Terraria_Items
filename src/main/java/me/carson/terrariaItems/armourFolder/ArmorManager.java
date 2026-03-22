@@ -4,6 +4,10 @@ import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusHelmet;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusLeggings;
+import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenLeggings;
+import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenMask;
+import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenRobes;
+import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenTreads;
 import me.carson.terrariaItems.armourFolder.armors.hallowedArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleHat;
 import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleLeggings;
@@ -84,6 +88,10 @@ public class ArmorManager implements Listener {
         armorList.put("NecroBreastplate",new NecroBreastplate(plugin));
         armorList.put("NecroLeggings",new NecroLeggings(plugin));
         armorList.put("NecroGreaves",new NecroGreaves(plugin));
+        armorList.put("ForbiddenMask",new ForbiddenMask(plugin));
+        armorList.put("ForbiddenRobes",new ForbiddenRobes(plugin));
+        armorList.put("ForbiddenLeggings",new ForbiddenLeggings(plugin));
+        armorList.put("ForbiddenTreads",new ForbiddenTreads(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new MoltenHelmet(plugin), plugin);
