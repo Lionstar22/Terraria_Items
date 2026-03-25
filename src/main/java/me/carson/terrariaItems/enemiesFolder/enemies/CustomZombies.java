@@ -54,7 +54,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
                 spawnFrozenZombie(zombie);
             } else if ((Math.random()<0.05)&&gnomeBiomes.contains(location.getBlock().getBiome())){
                 spawnGnome(zombie);
-            }else if ((Math.random()<10.01)&&jungleBiomes.contains(location.getBlock().getBiome())){
+            }else if ((Math.random()<0.01)&&jungleBiomes.contains(location.getBlock().getBiome())){
                 spawnDoctorBones(zombie);
             } else if(isRaining){
                 spawnRaincoatZombie(zombie);
@@ -63,7 +63,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
             spawnFrozenZombie(zombie);
         } else if ((Math.random()<0.05)&&gnomeBiomes.contains(location.getBlock().getBiome())){
             spawnGnome(zombie);
-        } else if ((Math.random()<10.01)&&jungleBiomes.contains(location.getBlock().getBiome())){
+        } else if ((Math.random()<0.01)&&jungleBiomes.contains(location.getBlock().getBiome())){
             spawnDoctorBones(zombie);
         } else if(isRaining){
             spawnRaincoatZombie(zombie);
