@@ -8,6 +8,10 @@ import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenLeggi
 import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenMask;
 import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenRobes;
 import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenTreads;
+import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostBoots;
+import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostBreastplate;
+import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostHelmet;
+import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostLeggings;
 import me.carson.terrariaItems.armourFolder.armors.hallowedArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleHat;
 import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleLeggings;
@@ -92,6 +96,10 @@ public class ArmorManager implements Listener {
         armorList.put("ForbiddenRobes",new ForbiddenRobes(plugin));
         armorList.put("ForbiddenLeggings",new ForbiddenLeggings(plugin));
         armorList.put("ForbiddenTreads",new ForbiddenTreads(plugin));
+        armorList.put("FrostHelmet",new FrostHelmet(plugin));
+        armorList.put("FrostBreastplate",new FrostBreastplate(plugin));
+        armorList.put("FrostLeggings",new FrostLeggings(plugin));
+        armorList.put("FrostBoots",new FrostBoots(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new MoltenHelmet(plugin), plugin);

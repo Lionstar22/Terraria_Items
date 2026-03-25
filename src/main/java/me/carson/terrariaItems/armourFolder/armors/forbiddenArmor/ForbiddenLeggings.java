@@ -22,7 +22,7 @@ public class ForbiddenLeggings extends Armor {
     public static ItemStack getItem(Plugin plugin) {
         ItemStack item=new ForbiddenLeggings(plugin).createItem();
         ItemMeta meta=item.getItemMeta();
-        meta.addEnchant(Enchantment.PROTECTION,1,false);
+        meta.addEnchant(Enchantment.PROTECTION,2,false);
         meta.setEnchantmentGlintOverride(false);
         item.setItemMeta(meta);
         return item;

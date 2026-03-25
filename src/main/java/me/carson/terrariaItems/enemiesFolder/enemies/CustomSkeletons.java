@@ -7,8 +7,10 @@ import me.carson.terrariaItems.armourFolder.armors.runeWizardArmor.RuneWizardChe
 import me.carson.terrariaItems.armourFolder.armors.runeWizardArmor.RuneWizardLeggings;
 import me.carson.terrariaItems.armourFolder.armors.timArmor.TimChestplate;
 import me.carson.terrariaItems.armourFolder.armors.timArmor.TimLeggings;
+import me.carson.terrariaItems.armourFolder.armors.timArmor.WizardHat;
 import me.carson.terrariaItems.armourFolder.armors.undeadMinerArmor.UndeadMinerChestplate;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
+import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.DustDevil;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.IceGolemLaser;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.RuneWizardBolt;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.TimBolt;
@@ -38,6 +40,7 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
 
     private final WorldDataHandler instance=WorldDataHandler.getInstance();
     private static final Set<Biome> snowyBiomes = Set.of(Biome.SNOWY_TAIGA,Biome.JAGGED_PEAKS,Biome.FROZEN_PEAKS,Biome.GROVE,Biome.SNOWY_SLOPES,Biome.FROZEN_RIVER,Biome.SNOWY_PLAINS,Biome.ICE_SPIKES,Biome.SNOWY_BEACH);
+    private static final Set<Biome> desertBiomes = Set.of(Biome.DESERT,Biome.BADLANDS,Biome.ERODED_BADLANDS);
 
     public CustomSkeletons(Plugin plugin){
         super(plugin);
@@ -50,9 +53,15 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         Location location =skeleton.getLocation();
         if(location.getY()>60){
             if(instance.getHardmode()){
-                if(snowyBiomes.contains(location.getBlock().getBiome())&&skeleton.getWorld().hasStorm()){
-                    if(Math.random()<0.9){
-                        spawnIceGolem(skeleton);
+                if(skeleton.getWorld().hasStorm()){
+                    if(snowyBiomes.contains(location.getBlock().getBiome())){
+                        if(Math.random()<0.05){
+                            spawnIceGolem(skeleton);
+                        }
+                    } else if (desertBiomes.contains(location.getBlock().getBiome())) {
+                        if(Math.random()<0.05){
+                            spawnSandElemental(skeleton);
+                        }
                     }
                 }
             }
@@ -196,5 +205,28 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         equipment.setChestplateDropChance(0f);
         equipment.setLeggingsDropChance(0f);
         startAttacks(skeleton,new RuneWizardBolt(plugin),"terraria:magic_use");
+    }
+
+    public void spawnSandElemental(Skeleton skeleton){
+        skeleton.setCustomName("Sand Elemental");
+        skeleton.setCustomNameVisible(false);
+        skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(200);
+        skeleton.setHealth(200);
+        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+        skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,"SandElemental");
+        skeleton.setCanPickupItems(false);
+        skeleton.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.15);
+        skeleton.getAttribute(Attribute.KNOCKBACK_RESISTANCE).setBaseValue(5);
+        skeleton.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(20);
+        skeleton.getAttribute(Attribute.SCALE).setBaseValue(2);
+        skeleton.setInvisible(true);
+        EntityEquipment equipment=skeleton.getEquipment();
+        equipment.setHelmet(SandElementalHat.getItem(plugin));
+        equipment.setChestplate(null);
+        equipment.setLeggings(null);
+        equipment.setBoots(null);
+        equipment.setItemInMainHand(null);
+        equipment.setHelmetDropChance(0f);
+        startAttacks(skeleton,new DustDevil(plugin),"");
     }
 }

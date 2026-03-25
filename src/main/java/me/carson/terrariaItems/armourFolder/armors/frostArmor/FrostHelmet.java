@@ -1,7 +1,6 @@
-package me.carson.terrariaItems.armourFolder.armors.forbiddenArmor;
+package me.carson.terrariaItems.armourFolder.armors.frostArmor;
 
 import me.carson.terrariaItems.armourFolder.Armor;
-import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleHat;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -15,16 +14,16 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ForbiddenMask extends Armor {
+public class FrostHelmet extends Armor {
 
-    public ForbiddenMask(Plugin plugin){
-        super(plugin,"Forbidden Mask","#FF96FF", Material.NETHERITE_HELMET,"forbidden_mask","forbidden_armor", EquipmentSlot.HEAD,"ForbiddenMask",new ArrayList<>(List.of(ChatColor.GRAY+"15% increased magic damage")));
+    public FrostHelmet(Plugin plugin){
+        super(plugin,"Frost Helmet","#FF96FF", Material.NETHERITE_HELMET,"frost_helmet","frost_armor", EquipmentSlot.HEAD,"FrostHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"16% increased melee and ranged damage")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item= new ForbiddenMask(plugin).createItem();
+        ItemStack item= new FrostHelmet(plugin).createItem();
         ItemMeta meta=item.getItemMeta();
-        meta.addEnchant(Enchantment.PROTECTION,2,false);
+        meta.addEnchant(Enchantment.PROTECTION,5,false);
         meta.setEnchantmentGlintOverride(false);
         EquippableComponent equip= meta.getEquippable();
         equip.setModel(null);
@@ -35,12 +34,14 @@ public class ForbiddenMask extends Armor {
 
     @Override
     public void activateArmorEffect(Player player) {
-        playerInstance.addBonusMagic(player.getUniqueId(),0.15);
+        playerInstance.addBonusMelee(player.getUniqueId(),0.16);
+        playerInstance.addBonusRanged(player.getUniqueId(),0.16);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
-        playerInstance.subtractBonusMagic(player.getUniqueId(),0.15);
+        playerInstance.subtractBonusMelee(player.getUniqueId(),0.16);
+        playerInstance.subtractBonusRanged(player.getUniqueId(),0.16);
     }
 
 }

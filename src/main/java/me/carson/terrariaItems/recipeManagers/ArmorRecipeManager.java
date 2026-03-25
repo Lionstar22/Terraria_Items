@@ -1,5 +1,13 @@
 package me.carson.terrariaItems.recipeManagers;
 
+import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenLeggings;
+import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenMask;
+import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenRobes;
+import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenTreads;
+import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostBoots;
+import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostBreastplate;
+import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostHelmet;
+import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostLeggings;
 import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleHat;
 import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleLeggings;
 import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JunglePants;
@@ -8,6 +16,7 @@ import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroBreastplate;
 import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroGreaves;
 import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroHelmet;
 import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroLeggings;
+import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.miscFolder.hats.GoldenCrown;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusChestplate;
@@ -16,10 +25,6 @@ import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusLeggings;
 import me.carson.terrariaItems.armourFolder.armors.hallowedArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.moltenArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
-import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
-import me.carson.terrariaItems.materialsFolder.materials.HallowedBar;
-import me.carson.terrariaItems.materialsFolder.materials.HellstoneBar;
-import me.carson.terrariaItems.materialsFolder.materials.Ruby;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -68,6 +73,14 @@ public class ArmorRecipeManager {
         registerNecroBreastplateRecipe();
         registerNecroLeggingsRecipe();
         registerNecroGreavesRecipe();
+        registerForbiddenMaskRecipe();
+        registerForbiddenRobesRecipe();
+        registerForbiddenLeggingsRecipe();
+        registerForbiddenTreadsRecipe();
+        registerFrostHelmetRecipe();
+        registerFrostBreastplateRecipe();
+        registerFrostLeggingsRecipe();
+        registerFrostBootsRecipe();
     }
 
     private void registerShadowHelmetRecipe(){
@@ -360,4 +373,92 @@ public class ArmorRecipeManager {
         recipe.setIngredient('S', Material.SOUL_SAND);
         Bukkit.addRecipe(recipe);
     }
+
+    private void registerForbiddenMaskRecipe(){
+        ItemStack item= ForbiddenMask.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ForbiddenMask");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("GFG","B B","   ");
+        recipe.setIngredient('B', Material.BLACK_WOOL);
+        recipe.setIngredient('G', Material.GOLD_INGOT);
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerForbiddenRobesRecipe(){
+        ItemStack item= ForbiddenRobes.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ForbiddenRobes");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("G G","GFG","BBB");
+        recipe.setIngredient('B', Material.BLACK_WOOL);
+        recipe.setIngredient('G', Material.GOLD_INGOT);
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerForbiddenLeggingsRecipe(){
+        ItemStack item= ForbiddenLeggings.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ForbiddenLeggings");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("GFG","B B","B B");
+        recipe.setIngredient('B', Material.BLACK_WOOL);
+        recipe.setIngredient('G', Material.GOLD_INGOT);
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
+        Bukkit.addRecipe(recipe);
+    }
+    private void registerForbiddenTreadsRecipe(){
+        ItemStack item= ForbiddenTreads.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ForbiddenTreads");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" F ","G G","B B");
+        recipe.setIngredient('B', Material.BLACK_WOOL);
+        recipe.setIngredient('G', Material.GOLD_INGOT);
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerFrostHelmetRecipe(){
+        ItemStack item= FrostHelmet.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "FrostHelmet");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("DFD","I I","   ");
+        recipe.setIngredient('D', Material.DIAMOND);
+        recipe.setIngredient('I', Material.ICE);
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerFrostBreastplateRecipe(){
+        ItemStack item= FrostBreastplate.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "FrostBreastplate");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("D D","DFD","III");
+        recipe.setIngredient('D', Material.DIAMOND);
+        recipe.setIngredient('I', Material.ICE);
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerFrostLeggingsRecipe(){
+        ItemStack item= FrostLeggings.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "FrostLeggings");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("DFD","I I","I I");
+        recipe.setIngredient('D', Material.DIAMOND);
+        recipe.setIngredient('I', Material.ICE);
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerFrostBootsRecipe(){
+        ItemStack item= FrostBoots.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "FrostBoots");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" F ","D D","I I");
+        recipe.setIngredient('D', Material.DIAMOND);
+        recipe.setIngredient('I', Material.ICE);
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));
+        Bukkit.addRecipe(recipe);
+    }
+
 }

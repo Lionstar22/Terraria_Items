@@ -1,7 +1,6 @@
-package me.carson.terrariaItems.armourFolder.armors.forbiddenArmor;
+package me.carson.terrariaItems.armourFolder.armors.frostArmor;
 
 import me.carson.terrariaItems.armourFolder.Armor;
-import me.carson.terrariaItems.armourFolder.armors.moltenArmor.MoltenChestplate;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -14,16 +13,16 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ForbiddenRobes extends Armor {
+public class FrostBreastplate extends Armor {
 
-    public ForbiddenRobes(Plugin plugin){
-        super(plugin,"Forbidden Robes","#FF96FF", Material.NETHERITE_CHESTPLATE,"forbidden_robes","forbidden_armor",EquipmentSlot.CHEST,"ForbiddenRobes",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 40")));
+    public FrostBreastplate(Plugin plugin){
+        super(plugin,"Frost Breastplate","#FF96FF", Material.NETHERITE_CHESTPLATE,"frost_breastplate","frost_armor",EquipmentSlot.CHEST,"FrostBreastplate",new ArrayList<>(List.of(ChatColor.GRAY+"11% increased critical strike chance")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item=new ForbiddenRobes(plugin).createItem();
+        ItemStack item=new FrostBreastplate(plugin).createItem();
         ItemMeta meta=item.getItemMeta();
-        meta.addEnchant(Enchantment.PROTECTION,2,false);
+        meta.addEnchant(Enchantment.PROTECTION,5,false);
         meta.setEnchantmentGlintOverride(false);
         item.setItemMeta(meta);
         return item;
@@ -31,11 +30,11 @@ public class ForbiddenRobes extends Armor {
 
     @Override
     public void activateArmorEffect(Player player) {
-        playerInstance.addExtraMana(player.getUniqueId(),40);
+        playerInstance.addCritChance(player.getUniqueId(),0.11);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
-        playerInstance.subtractExtraMana(player.getUniqueId(),40);
+        playerInstance.subtractCritChance(player.getUniqueId(),0.11);
     }
 }

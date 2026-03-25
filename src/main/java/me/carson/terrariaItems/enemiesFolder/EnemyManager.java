@@ -1,7 +1,10 @@
 package me.carson.terrariaItems.enemiesFolder;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.MagicQuiver;
+import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostBoots;
 import me.carson.terrariaItems.enemiesFolder.enemies.*;
+import me.carson.terrariaItems.materialsFolder.materials.ForbiddenFragment;
+import me.carson.terrariaItems.materialsFolder.materials.FrostCore;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -31,7 +34,7 @@ public class EnemyManager implements Listener {
     }
 
     @EventHandler
-    public void onPossessedFire(EntityDamageEvent event){
+    public void onPossessedArmor(EntityDamageEvent event){
         if(event.getCause()!=EntityDamageEvent.DamageCause.FIRE_TICK){return;}
         if(!Objects.equals(event.getEntity().getPersistentDataContainer().get(key, PersistentDataType.STRING), "PossessedArmor")){return;}
         event.setCancelled(true);
@@ -55,4 +58,17 @@ public class EnemyManager implements Listener {
         }
     }
 
+    @EventHandler
+    public void onSandElementalDeath(EntityDeathEvent event){
+        if(!Objects.equals(event.getEntity().getPersistentDataContainer().get(key, PersistentDataType.STRING), "SandElemental")){return;}
+        event.getDrops().clear();
+        event.getDrops().add(ForbiddenFragment.getItem(plugin));
+    }
+
+    @EventHandler
+    public void onIceGolemDeath(EntityDeathEvent event){
+        if(!Objects.equals(event.getEntity().getPersistentDataContainer().get(key, PersistentDataType.STRING), "IceGolem")){return;}
+        event.getDrops().clear();
+        event.getDrops().add(FrostCore.getItem(plugin));
+    }
 }

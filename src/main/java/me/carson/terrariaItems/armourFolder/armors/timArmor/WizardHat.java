@@ -1,10 +1,10 @@
-package me.carson.terrariaItems.armourFolder.armors.forbiddenArmor;
+package me.carson.terrariaItems.armourFolder.armors.timArmor;
 
 import me.carson.terrariaItems.armourFolder.Armor;
-import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleHat;
+import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroHelmet;
+import me.carson.terrariaItems.miscFolder.Basic;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -15,17 +15,15 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ForbiddenMask extends Armor {
+public class WizardHat extends Armor {
 
-    public ForbiddenMask(Plugin plugin){
-        super(plugin,"Forbidden Mask","#FF96FF", Material.NETHERITE_HELMET,"forbidden_mask","forbidden_armor", EquipmentSlot.HEAD,"ForbiddenMask",new ArrayList<>(List.of(ChatColor.GRAY+"15% increased magic damage")));
+    public WizardHat(Plugin plugin){
+        super(plugin,"Wizard Hat","#96FF96", Material.LEATHER_HELMET,"wizard_hat","tim_armor",EquipmentSlot.HEAD,"WizardHat",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased magic damage")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item= new ForbiddenMask(plugin).createItem();
+        ItemStack item= new WizardHat(plugin).createItem();
         ItemMeta meta=item.getItemMeta();
-        meta.addEnchant(Enchantment.PROTECTION,2,false);
-        meta.setEnchantmentGlintOverride(false);
         EquippableComponent equip= meta.getEquippable();
         equip.setModel(null);
         meta.setEquippable(equip);
@@ -35,12 +33,11 @@ public class ForbiddenMask extends Armor {
 
     @Override
     public void activateArmorEffect(Player player) {
-        playerInstance.addBonusMagic(player.getUniqueId(),0.15);
+        playerInstance.addBonusMagic(player.getUniqueId(),0.05);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
-        playerInstance.subtractBonusMagic(player.getUniqueId(),0.15);
+        playerInstance.subtractBonusMagic(player.getUniqueId(),0.05);
     }
-
 }

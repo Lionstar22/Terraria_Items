@@ -12,14 +12,14 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WizardHat extends Basic {
+public class SandElementalHat extends Basic {
 
-    public WizardHat(Plugin plugin){
-        super(plugin,"Wizard Hat","#96FF96", Material.LEATHER_HELMET,"wizard_hat","WizardHat",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased magic damage")));
+    public SandElementalHat(Plugin plugin){
+        super(plugin,"Sand Elemental Hat","#96FF96", Material.LEATHER_HELMET,"sand_elemental_hat","SandElementalHat",new ArrayList<>(List.of(ChatColor.GRAY+"How did you get this?")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item=new WizardHat(plugin).createItem();
+        ItemStack item=new SandElementalHat(plugin).createItem();
         ItemMeta meta=item.getItemMeta();
         EquippableComponent equip= meta.getEquippable();
         equip.setSlot(EquipmentSlot.HEAD);
