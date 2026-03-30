@@ -43,10 +43,14 @@ public class EnemyManager implements Listener {
     @EventHandler
     public void onMinerDeath(EntityDeathEvent event){
         if(!Objects.equals(event.getEntity().getPersistentDataContainer().get(key, PersistentDataType.STRING), "UndeadMiner")){return;}
-        if(Math.random()<0.75){
+        if(Math.random()<0.72){
             int tnt = ThreadLocalRandom.current().nextInt(1, 4);
             ItemStack item= new ItemStack(Material.TNT,tnt);
             event.getDrops().add(item);
+        }
+        if(Math.random()<0.1){
+            ItemStack itemStack=new ItemStack(Material.COOKED_BEEF);
+            event.getDrops().add(itemStack);
         }
     }
 

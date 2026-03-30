@@ -14,7 +14,7 @@ import java.util.List;
 public class NecroBreastplate extends Armor {
 
     public NecroBreastplate(Plugin plugin){
-        super(plugin,"Necro Breastplate","#96FF96", Material.DIAMOND_CHESTPLATE,"necro_breastplate","necro_armor",EquipmentSlot.CHEST,"NecroBreastplate",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased ranged damage")));
+        super(plugin,"Necro Breastplate","#96FF96", Material.DIAMOND_CHESTPLATE,"necro_breastplate","necro_armor",EquipmentSlot.CHEST,"NecroBreastplate",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased ranged damage",ChatColor.GRAY+"5% increased critical strike chance")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -24,10 +24,12 @@ public class NecroBreastplate extends Armor {
     @Override
     public void activateArmorEffect(Player player) {
         playerInstance.addBonusRanged(player.getUniqueId(),0.05);
+        playerInstance.addCritChance(player.getUniqueId(),0.05);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
-        playerInstance.addBonusRanged(player.getUniqueId(),0.05);
+        playerInstance.subtractBonusRanged(player.getUniqueId(),0.05);
+        playerInstance.subtractCritChance(player.getUniqueId(),0.05);
     }
 }

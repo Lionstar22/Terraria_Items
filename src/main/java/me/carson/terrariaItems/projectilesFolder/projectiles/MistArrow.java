@@ -8,6 +8,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.type.Snow;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public class MistArrow extends Projectile {
@@ -17,7 +18,7 @@ public class MistArrow extends Projectile {
     }
 
     @Override
-    public void hitEntityEffect(LivingEntity entity) {
+    public void hitEntityEffect(LivingEntity entity, Player player) {
         entity.setFreezeTicks(400);
     }
 

@@ -23,6 +23,7 @@ import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroGreaves;
 import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroHelmet;
 import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroLeggings;
 import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
+import me.carson.terrariaItems.armourFolder.armors.timArmor.WizardHat;
 import me.carson.terrariaItems.listenersHandler.ArmorChangeEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -58,6 +59,7 @@ public class ArmorManager implements Listener {
     private final NamespacedKey armorKey;
     protected final Plugin plugin;
     private static ArmorManager instance;
+
 
     public ArmorManager(Plugin plugin) {
         armorKey = new NamespacedKey(plugin, "custom_item_id");
@@ -100,10 +102,11 @@ public class ArmorManager implements Listener {
         armorList.put("FrostBreastplate",new FrostBreastplate(plugin));
         armorList.put("FrostLeggings",new FrostLeggings(plugin));
         armorList.put("FrostBoots",new FrostBoots(plugin));
+        armorList.put("WizardHat",new WizardHat(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new MoltenHelmet(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new HallowedMask(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new HallowedChestplate(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new CactusHelmet(plugin), plugin);
     }
 

@@ -9,10 +9,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -57,6 +59,14 @@ public class ResetHandler implements Listener {
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
             resetBonuses(event.getPlayer());
         }, 5L);
+    }
+
+    @EventHandler
+    public void onRespawn(PlayerRespawnEvent event){
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            resetBonuses(event.getPlayer());
+        }, 5L);
+
     }
 
     public static void initialize(JavaPlugin plugin) {instance = new ResetHandler(plugin);}

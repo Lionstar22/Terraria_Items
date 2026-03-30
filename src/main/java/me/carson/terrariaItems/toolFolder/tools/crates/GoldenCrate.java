@@ -1,9 +1,8 @@
 package me.carson.terrariaItems.toolFolder.tools.crates;
 
-import me.carson.terrariaItems.accesoryFolder.accessories.Aglet;
 import me.carson.terrariaItems.toolFolder.Tool;
 import me.carson.terrariaItems.toolFolder.tools.LifeCrystal;
-import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords.EnchantedSword;
+import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.EnchantedSword;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

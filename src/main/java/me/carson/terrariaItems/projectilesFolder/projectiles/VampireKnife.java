@@ -7,20 +7,20 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class Bubble extends Projectile {
+public class VampireKnife extends Projectile {
 
-    public Bubble(Plugin plugin) {
-        super(plugin, 0,  "bubble", "Bubble",0,0, DamageType.LIGHTNING_BOLT);
+    public VampireKnife(Plugin plugin) {
+        super(plugin, 0,  "vampire_knife", "VampireKnife",0,0, DamageType.PLAYER_ATTACK);
     }
+
 
     @Override
     public void hitEntityEffect(LivingEntity entity, Player player) {
-        entity.getWorld().playSound(entity.getLocation(), "terraria:bubble_pop", 2.0F, 1.0F);
+        player.setHealth(Math.min(player.getHealth()+0.5,player.getMaxHealth()));
     }
 
     @Override
     public void hitBlockEffect(Block block) {
-        block.getWorld().playSound(block.getLocation(), "terraria:bubble_pop", 2.0F, 1.0F);
-    }
 
+    }
 }

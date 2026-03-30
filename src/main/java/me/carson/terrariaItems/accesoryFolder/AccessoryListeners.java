@@ -134,12 +134,12 @@ public class AccessoryListeners implements Listener {
     public void onCloudBottleDoubleJump(PlayerInputEvent event){
         if(!event.getInput().isJump()){return;}
         Player player = event.getPlayer();
+        if(!hasAccessory(player,"CloudInABottle")){return;}
         if(((Entity)player).isOnGround()){
             return;
         }
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
         if(usedDoubleJump.contains(player.getUniqueId())){return;}
-        if(!hasAccessory(player,"CloudInABottle")){return;}
         usedDoubleJump.add(player.getUniqueId());
         player.setVelocity(player.getVelocity().setY(0.5));
         player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
@@ -150,12 +150,12 @@ public class AccessoryListeners implements Listener {
     public void onTsunamiDoubleJump(PlayerInputEvent event){
         if(!event.getInput().isJump()){return;}
         Player player = event.getPlayer();
+        if(!hasAccessory(player,"TsunamiInABottle")){return;}
         if(((Entity)player).isOnGround()){
             return;
         }
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
         if(usedDoubleJump.contains(player.getUniqueId())){return;}
-        if(!hasAccessory(player,"TsunamiInABottle")){return;}
         usedDoubleJump.add(player.getUniqueId());
         player.setVelocity(player.getVelocity().setY(0.6));
         player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
@@ -166,12 +166,12 @@ public class AccessoryListeners implements Listener {
     public void onBlizzardDoubleJump(PlayerInputEvent event){
         if(!event.getInput().isJump()){return;}
         Player player = event.getPlayer();
+        if(!hasAccessory(player,"BlizzardInABottle")){return;}
         if(((Entity)player).isOnGround()){
             return;
         }
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
         if(usedDoubleJump.contains(player.getUniqueId())){return;}
-        if(!hasAccessory(player,"BlizzardInABottle")){return;}
         usedDoubleJump.add(player.getUniqueId());
         player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
         final int[] timeLeft = {10};
@@ -189,12 +189,12 @@ public class AccessoryListeners implements Listener {
     public void onSandstormDoubleJump(PlayerInputEvent event){
         if(!event.getInput().isJump()){return;}
         Player player = event.getPlayer();
+        if(!hasAccessory(player,"SandstormInABottle")){return;}
         if(((Entity)player).isOnGround()){
             return;
         }
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
         if(usedDoubleJump.contains(player.getUniqueId())){return;}
-        if(!hasAccessory(player,"SandstormInABottle")){return;}
 
         player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 0.5F, 1.0F);
         usedDoubleJump.add(player.getUniqueId());

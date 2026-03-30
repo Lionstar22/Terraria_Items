@@ -14,7 +14,7 @@ import java.util.List;
 public class ShadowScalemail extends Armor {
 
     public ShadowScalemail(Plugin plugin){
-        super(plugin,"Shadow Scalemail","#9696FF", Material.DIAMOND_CHESTPLATE,"shadow_scalemail","shadow_armor", EquipmentSlot.CHEST,"ShadowScalemail",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Increased movement speed and acceleration")));
+        super(plugin,"Shadow Scalemail","#9696FF", Material.DIAMOND_CHESTPLATE,"shadow_scalemail","shadow_armor", EquipmentSlot.CHEST,"ShadowScalemail",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"5% Increased movement speed")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -24,10 +24,12 @@ public class ShadowScalemail extends Armor {
     @Override
     public void activateArmorEffect(Player player) {
         playerInstance.addCritChance(player.getUniqueId(),0.05);
+        player.setWalkSpeed(player.getWalkSpeed()+0.01f);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
         playerInstance.subtractCritChance(player.getUniqueId(),0.05);
+        player.setWalkSpeed(Math.max(player.getWalkSpeed() - 0.01f, 0.2f));
     }
 }

@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.enchantment.EnchantItemEvent;
 import org.bukkit.event.enchantment.PrepareItemEnchantEvent;
+import org.bukkit.event.inventory.BrewEvent;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.event.inventory.PrepareSmithingEvent;
@@ -74,6 +75,16 @@ public class CustomCraftingListener implements Listener {
         ItemStack itemStack = event.getItem();
         if(hasCustomKey(itemStack)){
             event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onPotion(BrewEvent event)   {
+        ItemStack[] contents=event.getContents().getContents();
+        for(ItemStack item:contents){
+            if(hasCustomKey(item)){
+                event.setCancelled(true);
+            }
         }
     }
 

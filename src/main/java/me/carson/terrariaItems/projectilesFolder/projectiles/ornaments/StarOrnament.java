@@ -4,6 +4,7 @@ import me.carson.terrariaItems.projectilesFolder.Projectile;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public class StarOrnament extends Projectile {
@@ -13,7 +14,7 @@ public class StarOrnament extends Projectile {
     }
 
     @Override
-    public void hitEntityEffect(LivingEntity entity) {
+    public void hitEntityEffect(LivingEntity entity, Player player) {
         entity.getWorld().playSound(entity.getLocation(), "terraria:frost_bolt_impact", 1.0F, 1.0F);
     }
 

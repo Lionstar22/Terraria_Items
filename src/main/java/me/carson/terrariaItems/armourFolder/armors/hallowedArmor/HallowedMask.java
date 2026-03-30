@@ -24,18 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class HallowedMask extends Armor implements Listener {
-
-    private static final Set<EntityDamageEvent.DamageCause> COUNTERABLE_CAUSES = Set.of(
-            EntityDamageEvent.DamageCause.ENTITY_ATTACK,
-            EntityDamageEvent.DamageCause.PROJECTILE,
-            EntityDamageEvent.DamageCause.ENTITY_EXPLOSION,
-            EntityDamageEvent.DamageCause.ENTITY_SWEEP_ATTACK,
-            EntityDamageEvent.DamageCause.LIGHTNING,
-            EntityDamageEvent.DamageCause.MAGIC,
-            EntityDamageEvent.DamageCause.SONIC_BOOM,
-            EntityDamageEvent.DamageCause.DRAGON_BREATH
-    );
+public class HallowedMask extends Armor{
 
     public HallowedMask(Plugin plugin){
         super(plugin,"Hallowed Mask","#FF96FF", Material.NETHERITE_HELMET,"hallowed_mask","hallowed_armor", EquipmentSlot.HEAD,"HallowedMask",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased melee damage and attack speed",ChatColor.GRAY+"10% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds")));

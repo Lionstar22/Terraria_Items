@@ -1,7 +1,7 @@
-package me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords;
+package me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee;
 
 import me.carson.terrariaItems.projectilesFolder.projectiles.EnchantedSwordBeam;
-import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.Sword;
+import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.Sword;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;

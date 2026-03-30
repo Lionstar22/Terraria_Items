@@ -1,9 +1,7 @@
-package me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords;
+package me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee;
 
-import me.carson.terrariaItems.projectilesFolder.projectiles.IceBolt;
-import me.carson.terrariaItems.projectilesFolder.projectiles.Icicle;
 import me.carson.terrariaItems.projectilesFolder.projectiles.StarCannonStar;
-import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.Sword;
+import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.Sword;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;

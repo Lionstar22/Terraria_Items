@@ -175,17 +175,29 @@ public class AccessoryRecipeManager {
 
     private void registerAvengerEmblemRecipe(){
         ItemStack item=AvengerEmblem.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "AvengerEmblem");
-        ShapedRecipe recipe = new ShapedRecipe(key, item);
-        recipe.shape(" W ","RNE","MSF");
-        recipe.setIngredient('W', new RecipeChoice.ExactChoice( WarriorEmblem.getItem(plugin)));
-        recipe.setIngredient('R', new RecipeChoice.ExactChoice( RangerEmblem.getItem(plugin)));
-        recipe.setIngredient('E', new RecipeChoice.ExactChoice( SorcererEmblem.getItem(plugin)));
-        recipe.setIngredient('M', new RecipeChoice.ExactChoice( SoulOfMight.getItem(plugin)));
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice( SoulOfSight.getItem(plugin)));
-        recipe.setIngredient('F', new RecipeChoice.ExactChoice( SoulOfFright.getItem(plugin)));
-        recipe.setIngredient('N', Material.RESIN_BRICK);
-        Bukkit.addRecipe(recipe);
+        NamespacedKey key1 = new NamespacedKey(plugin, "AvengerEmblem1");
+        ShapelessRecipe recipe1 = new ShapelessRecipe(key1, item);
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(WarriorEmblem.getItem(plugin)));
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(SoulOfMight.getItem(plugin)));
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(SoulOfFright.getItem(plugin)));
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(SoulOfSight.getItem(plugin)));
+        Bukkit.addRecipe(recipe1);
+
+        NamespacedKey key2 = new NamespacedKey(plugin, "AvengerEmblem2");
+        ShapelessRecipe recipe2 = new ShapelessRecipe(key2, item);
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(RangerEmblem.getItem(plugin)));
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(SoulOfMight.getItem(plugin)));
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(SoulOfFright.getItem(plugin)));
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(SoulOfSight.getItem(plugin)));
+        Bukkit.addRecipe(recipe2);
+
+        NamespacedKey key3 = new NamespacedKey(plugin, "AvengerEmblem3");
+        ShapelessRecipe recipe3 = new ShapelessRecipe(key3, item);
+        recipe3.addIngredient(new RecipeChoice.ExactChoice(SorcererEmblem.getItem(plugin)));
+        recipe3.addIngredient(new RecipeChoice.ExactChoice(SoulOfMight.getItem(plugin)));
+        recipe3.addIngredient(new RecipeChoice.ExactChoice(SoulOfFright.getItem(plugin)));
+        recipe3.addIngredient(new RecipeChoice.ExactChoice(SoulOfSight.getItem(plugin)));
+        Bukkit.addRecipe(recipe3);
     }
 
 }

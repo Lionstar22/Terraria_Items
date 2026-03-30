@@ -45,4 +45,13 @@ public abstract class CustomEnemy {
         return players.get(random.nextInt(players.size()));
     }
 
+    public int getLevel(double level){
+        if(level>=60){
+            return 1;   //Surface
+        } else if (level>=0) {
+            return 2;   //Caves, stone layer
+        }
+        return 3;   //Caves, deepslate layer
+    }
+
 }

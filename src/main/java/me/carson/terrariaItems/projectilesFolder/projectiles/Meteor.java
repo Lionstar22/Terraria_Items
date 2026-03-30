@@ -5,6 +5,7 @@ import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -18,7 +19,7 @@ public class Meteor extends Projectile {
 
 
     @Override
-    public void hitEntityEffect(LivingEntity entity) {
+    public void hitEntityEffect(LivingEntity entity, Player player) {
         entity.getWorld().playSound(entity.getLocation(), "terraria:meteor_impact", 1.5F, 1.0F);
         entity.getWorld().createExplosion(entity.getLocation(), 2.0F, false, false);
     }

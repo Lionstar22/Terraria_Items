@@ -134,23 +134,6 @@ public class AccessoryManager implements Listener {
         }
     }
 
-    @EventHandler
-    public void onRespawn(PlayerRespawnEvent event){
-        Player player= event.getPlayer();
-        List<ItemStack> invList= playerDataInstance.getInventory(player.getUniqueId());
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            for(ItemStack item:invList){
-                Accessory accessory=getAccessory(item);
-                if(accessory!=null){
-                    Bukkit.getScheduler().runTaskLater(plugin, () -> {
-                        accessory.deactivateEffect(player);
-                    }, 5L);
-                    accessory.activateEffect(player);
-                }
-            }
-        }, 10L);
-
-    }
 
     public static void initialize(JavaPlugin plugin) {
         instance = new AccessoryManager(plugin);

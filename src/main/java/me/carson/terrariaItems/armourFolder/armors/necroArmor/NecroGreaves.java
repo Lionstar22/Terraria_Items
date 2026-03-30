@@ -28,6 +28,6 @@ public class NecroGreaves extends Armor {
 
     @Override
     public void deactivateArmorEffect(Player player) {
-        playerInstance.addBonusRanged(player.getUniqueId(),0.05);
+        playerInstance.subtractBonusRanged(player.getUniqueId(),0.05);
     }
 }

@@ -1,13 +1,14 @@
 package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.materialsFolder.materials.*;
+import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfFright;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfLight;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfMight;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfNight;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
-import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -54,6 +55,7 @@ public class WeaponRecipeManager {
         registerOnyxBlasterRecipe();
         registerHoarfrostBowRecipe();
         registerSandGunRecipe();
+        registerVampireKnivesRecipe();
     }
 
     private void registerLightsBaneRecipe(){
@@ -388,6 +390,19 @@ public class WeaponRecipeManager {
         recipe.setIngredient('S',Material.SANDSTONE);
         recipe.setIngredient('I',new RecipeChoice.ExactChoice(IllegalGunParts.getItem(plugin)));
         recipe.setIngredient('G',Material.GOLD_INGOT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerVampireKnivesRecipe(){
+        ItemStack item= VampireKnives.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "VampireKnives");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("ISM","RIS","NRI");
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(SoulOfFright.getItem(plugin)));
+        recipe.setIngredient('I',Material.IRON_SWORD);
+        recipe.setIngredient('M',Material.GLISTERING_MELON_SLICE);
+        recipe.setIngredient('R',Material.REDSTONE);
+        recipe.setIngredient('N',Material.NETHERITE_SCRAP);
         Bukkit.addRecipe(recipe);
     }
 }

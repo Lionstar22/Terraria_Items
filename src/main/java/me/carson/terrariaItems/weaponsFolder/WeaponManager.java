@@ -1,14 +1,12 @@
 package me.carson.terrariaItems.weaponsFolder;
 
-import me.carson.terrariaItems.projectilesFolder.projectiles.Meteor;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
-import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.*;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -17,7 +15,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.projectiles.ProjectileSource;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -67,6 +64,7 @@ public class WeaponManager implements Listener {
         weaponList.put("HoarfrostBow",new HoarfrostBow(plugin));
         weaponList.put("PulseBow",new PulseBow(plugin));
         weaponList.put("SandGun",new SandGun(plugin));
+        weaponList.put("VampireKnives",new VampireKnives(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

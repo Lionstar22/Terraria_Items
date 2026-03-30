@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.weaponsFolder.weapons.swordFolder;
+package me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder;
 
 import me.carson.terrariaItems.weaponsFolder.Weapon;
 import org.bukkit.Material;

@@ -6,6 +6,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public class RedSandBall extends Projectile {
@@ -16,7 +17,7 @@ public class RedSandBall extends Projectile {
 
 
     @Override
-    public void hitEntityEffect(LivingEntity entity) {
+    public void hitEntityEffect(LivingEntity entity, Player player) {
 
     }
 

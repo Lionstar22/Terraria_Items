@@ -141,7 +141,7 @@ public abstract class Projectile implements Listener {
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
                         target.damage((damage+weaponDamage),source);
-                        hitEntityEffect(target);
+                        hitEntityEffect(target,player);
                         target.setMaximumNoDamageTicks(20);
                     }
                     if(enemiesHit[0] >=peirce) {
@@ -180,7 +180,7 @@ public abstract class Projectile implements Listener {
         return reflected;
     }
 
-    public abstract void hitEntityEffect(LivingEntity entity);
+    public abstract void hitEntityEffect(LivingEntity entity,Player player);
 
     public abstract void hitBlockEffect(Block block);
 

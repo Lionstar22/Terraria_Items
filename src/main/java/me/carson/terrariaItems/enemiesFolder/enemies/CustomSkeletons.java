@@ -51,48 +51,58 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         if (event.getEntityType() != EntityType.SKELETON) return;
         Skeleton skeleton = (Skeleton) event.getEntity();
         Location location =skeleton.getLocation();
-        if(location.getY()>60){
-            if(instance.getHardmode()){
-                if(skeleton.getWorld().hasStorm()){
-                    if(snowyBiomes.contains(location.getBlock().getBiome())){
-                        if(Math.random()<0.05){
-                            spawnIceGolem(skeleton);
+
+        double rand=Math.random();
+        int yLevel=getLevel(location.getY());
+
+        if(instance.getHardmode()){//Hardmode
+            switch (yLevel){
+                case 1 ->{
+                    if(skeleton.getWorld().hasStorm()){
+                        if(snowyBiomes.contains(location.getBlock().getBiome())){
+                            if(Math.random()<0.05){
+                                spawnIceGolem(skeleton);
+                            }
+                        } else if (desertBiomes.contains(location.getBlock().getBiome())) {
+                            if(Math.random()<0.05){
+                                spawnSandElemental(skeleton);
+                            }
                         }
-                    } else if (desertBiomes.contains(location.getBlock().getBiome())) {
-                        if(Math.random()<0.05){
-                            spawnSandElemental(skeleton);
-                        }
+                    }
+                }
+                case 2->{
+                    if(rand<0.1){   //10%
+                        spawnUndeadMiner(skeleton);
+                    } else if (rand<0.6) {  //50%
+                        spawnSkeletonArcher(skeleton);
+                    }
+                }
+                case 3->{
+                    if(rand<0.03){  //3%
+                        spawnTim(skeleton);
+                    }else if(rand<0.06){    //3%
+                        spawnRuneWizard(skeleton);
+                    }else if(rand<0.16){    //10%
+                        spawnUndeadMiner(skeleton);
+                    } else if (rand<0.66) {    //50%
+                        spawnSkeletonArcher(skeleton);
                     }
                 }
             }
-        }else{
-            if(!instance.getHardmode()){
-                if(location.getY()<0){
-                    if(Math.random()<0.05){
-                        spawnTim(skeleton);
-                    }else if(Math.random()<0.2){
-                        spawnUndeadMiner(skeleton);
-                    }
-                } else if(Math.random()<0.2){
-                    spawnUndeadMiner(skeleton);
+        }else {//Pre-Hardmode
+            switch (yLevel){
+                case 1-> {
                 }
-            }else {
-                double rand=Math.random();
-                if(location.getY()<0){
-                    if(Math.random()<0.01){
-                        spawnTim(skeleton);
-                    }else if(rand<0.06){
-                        spawnRuneWizard(skeleton);
-                    }else if(rand<0.2){
+                case 2->{
+                    if(rand<0.1){//10%
                         spawnUndeadMiner(skeleton);
-                    } else if (rand<0.7) {
-                        spawnSkeletonArcher(skeleton);
                     }
-                }else {
-                    if(rand<0.1){
+                }
+                case 3->{
+                    if(rand<0.03){//3%
+                        spawnTim(skeleton);
+                    }else if(rand<0.13){//10%
                         spawnUndeadMiner(skeleton);
-                    } else if (rand<0.6) {
-                        spawnSkeletonArcher(skeleton);
                     }
                 }
             }
@@ -135,9 +145,9 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         equipment.setHelmet(UndeadMinerHat.getItem(plugin));
         equipment.setChestplate(UndeadMinerChestplate.getItem(plugin));
         equipment.setItemInMainHand(BonePickaxe.getItem(plugin));
-        equipment.setHelmetDropChance(0.1f);
+        equipment.setHelmetDropChance(0.05f);
         equipment.setChestplateDropChance(0f);
-        equipment.setItemInMainHandDropChance(0.1f);
+        equipment.setItemInMainHandDropChance(0.05f);
     }
 
     public void spawnTim(Skeleton skeleton){
@@ -227,6 +237,6 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         equipment.setBoots(null);
         equipment.setItemInMainHand(null);
         equipment.setHelmetDropChance(0f);
-        startAttacks(skeleton,new DustDevil(plugin),"");
+        startAttacks(skeleton,new DustDevil(plugin),"fwoosh");
     }
 }

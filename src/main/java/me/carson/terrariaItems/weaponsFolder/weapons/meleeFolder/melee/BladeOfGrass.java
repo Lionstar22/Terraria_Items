@@ -1,23 +1,17 @@
-package me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords;
+package me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee;
 
 import me.carson.terrariaItems.projectilesFolder.projectiles.Leaf;
-import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.Sword;
+import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.Sword;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.HashMap;

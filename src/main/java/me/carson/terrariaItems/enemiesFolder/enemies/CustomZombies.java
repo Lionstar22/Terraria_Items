@@ -7,7 +7,6 @@ import me.carson.terrariaItems.armourFolder.armors.werewolfArmor.WerewolfBoots;
 import me.carson.terrariaItems.armourFolder.armors.werewolfArmor.WerewolfChestplate;
 import me.carson.terrariaItems.armourFolder.armors.werewolfArmor.WerewolfLeggings;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
-import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.MermanBolt;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.miscFolder.hats.*;
 import org.bukkit.Location;
@@ -43,30 +42,54 @@ public class CustomZombies extends CustomEnemy implements Listener {
         if (event.getEntityType() != EntityType.ZOMBIE) return;
         Zombie zombie = (Zombie) event.getEntity();
         Location location = zombie.getLocation();
+
         boolean isRaining= zombie.getWorld().hasStorm();
+        double rand=Math.random();
+
         if(location.getY()<60){return;}
+
         if(instance.getHardmode()){
-            if((getMoonPhase(zombie.getWorld())==0)&&Math.random()<0.7){
-                spawnWerewolf(zombie);
-            }else if(Math.random()<0.5){
-                spawnPossessedArmor(zombie);
-            }else if(snowyBiomes.contains(location.getBlock().getBiome())){
-                spawnFrozenZombie(zombie);
-            } else if ((Math.random()<0.05)&&gnomeBiomes.contains(location.getBlock().getBiome())){
-                spawnGnome(zombie);
-            }else if ((Math.random()<0.01)&&jungleBiomes.contains(location.getBlock().getBiome())){
+            if ((rand<0.01)&&jungleBiomes.contains(location.getBlock().getBiome())){
                 spawnDoctorBones(zombie);
-            } else if(isRaining){
-                spawnRaincoatZombie(zombie);
+                return;
             }
-        }else if(snowyBiomes.contains(location.getBlock().getBiome())){
-            spawnFrozenZombie(zombie);
-        } else if ((Math.random()<0.05)&&gnomeBiomes.contains(location.getBlock().getBiome())){
-            spawnGnome(zombie);
-        } else if ((Math.random()<0.01)&&jungleBiomes.contains(location.getBlock().getBiome())){
-            spawnDoctorBones(zombie);
-        } else if(isRaining){
-            spawnRaincoatZombie(zombie);
+            if ((rand<0.05)&&gnomeBiomes.contains(location.getBlock().getBiome())){
+                spawnGnome(zombie);
+                return;
+            }
+            if((getMoonPhase(zombie.getWorld())==0)&&rand<0.7){
+                spawnWerewolf(zombie);
+                return;
+            }
+            if(rand<0.5){
+                spawnPossessedArmor(zombie);
+                return;
+            }
+            if(snowyBiomes.contains(location.getBlock().getBiome())){
+                spawnFrozenZombie(zombie);
+                return;
+            }
+            if(isRaining){
+                spawnRaincoatZombie(zombie);
+                return;
+            }
+        }else{
+            if ((rand<0.01)&&jungleBiomes.contains(location.getBlock().getBiome())){
+                spawnDoctorBones(zombie);
+                return;
+            }
+            if ((rand<0.05)&&gnomeBiomes.contains(location.getBlock().getBiome())){
+                spawnGnome(zombie);
+                return;
+            }
+            if(snowyBiomes.contains(location.getBlock().getBiome())){
+                spawnFrozenZombie(zombie);
+                return;
+            }
+            if(isRaining){
+                spawnRaincoatZombie(zombie);
+                return;
+            }
         }
     }
 

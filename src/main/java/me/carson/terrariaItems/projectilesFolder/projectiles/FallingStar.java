@@ -18,7 +18,7 @@ public class FallingStar extends Projectile {
     }
 
     @Override
-    public void hitEntityEffect(LivingEntity entity) {
+    public void hitEntityEffect(LivingEntity entity, Player player) {
 
     }
 

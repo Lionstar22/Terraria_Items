@@ -1,10 +1,9 @@
 package me.carson.terrariaItems.toolFolder.tools.crates;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.BlizzardInABottle;
-import me.carson.terrariaItems.accesoryFolder.accessories.LuckyHorseshoe;
 import me.carson.terrariaItems.toolFolder.Tool;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.SnowballCannon;
-import me.carson.terrariaItems.weaponsFolder.weapons.swordFolder.swords.IceBlade;
+import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.IceBlade;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

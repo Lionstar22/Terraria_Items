@@ -4,6 +4,7 @@ import me.carson.terrariaItems.projectilesFolder.Projectile;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public class ExplodingBulletProjectile extends Projectile {
@@ -13,7 +14,7 @@ public class ExplodingBulletProjectile extends Projectile {
     }
 
     @Override
-    public void hitEntityEffect(LivingEntity entity) {
+    public void hitEntityEffect(LivingEntity entity, Player player) {
         entity.getWorld().createExplosion(entity.getLocation().add(0,1,0), 0.5F, false, false);
     }
 

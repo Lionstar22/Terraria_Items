@@ -1,13 +1,7 @@
 package me.carson.terrariaItems.recipeManagers;
 
-import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenLeggings;
-import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenMask;
-import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenRobes;
-import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.ForbiddenTreads;
-import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostBoots;
-import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostBreastplate;
-import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostHelmet;
-import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostLeggings;
+import me.carson.terrariaItems.armourFolder.armors.forbiddenArmor.*;
+import me.carson.terrariaItems.armourFolder.armors.frostArmor.*;
 import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleHat;
 import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JungleLeggings;
 import me.carson.terrariaItems.armourFolder.armors.jungleArmor.JunglePants;
@@ -77,10 +71,12 @@ public class ArmorRecipeManager {
         registerForbiddenRobesRecipe();
         registerForbiddenLeggingsRecipe();
         registerForbiddenTreadsRecipe();
+        registerForbiddenElytraRecipe();
         registerFrostHelmetRecipe();
         registerFrostBreastplateRecipe();
         registerFrostLeggingsRecipe();
         registerFrostBootsRecipe();
+        registerFrostElytraRecipe();
     }
 
     private void registerShadowHelmetRecipe(){
@@ -417,6 +413,15 @@ public class ArmorRecipeManager {
         Bukkit.addRecipe(recipe);
     }
 
+    private void registerForbiddenElytraRecipe(){
+        ItemStack item= ForbiddenElytra.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ForbiddenElytra");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(Material.ELYTRA);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
+        Bukkit.addRecipe(recipe);
+    }
+
     private void registerFrostHelmetRecipe(){
         ItemStack item= FrostHelmet.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "FrostHelmet");
@@ -458,6 +463,15 @@ public class ArmorRecipeManager {
         recipe.setIngredient('D', Material.DIAMOND);
         recipe.setIngredient('I', Material.ICE);
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerFrostElytraRecipe(){
+        ItemStack item= FrostElytra.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "FrostElytra");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(Material.ELYTRA);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));
         Bukkit.addRecipe(recipe);
     }
 
