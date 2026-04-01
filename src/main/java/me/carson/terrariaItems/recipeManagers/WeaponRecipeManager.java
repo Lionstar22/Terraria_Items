@@ -56,6 +56,8 @@ public class WeaponRecipeManager {
         registerHoarfrostBowRecipe();
         registerSandGunRecipe();
         registerVampireKnivesRecipe();
+        registerTaintedBladeRecipe();
+        registerCausticEdgeRecipe();
     }
 
     private void registerLightsBaneRecipe(){
@@ -403,6 +405,31 @@ public class WeaponRecipeManager {
         recipe.setIngredient('M',Material.GLISTERING_MELON_SLICE);
         recipe.setIngredient('R',Material.REDSTONE);
         recipe.setIngredient('N',Material.NETHERITE_SCRAP);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerTaintedBladeRecipe(){
+        ItemStack item= TaintedBlade.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "TaintedBlade");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape(" FC","PWF","NP ");
+        recipe.setIngredient('F',Material.CRIMSON_FUNGUS);
+        recipe.setIngredient('P',Material.WARPED_FUNGUS);
+        recipe.setIngredient('W',Material.WARPED_PLANKS);
+        recipe.setIngredient('C',Material.CRIMSON_PLANKS);
+        recipe.setIngredient('N',Material.NETHERITE_SCRAP);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerCausticEdgeRecipe(){
+        ItemStack item= CausticEdge.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "CausticEdge");
+        ShapedRecipe recipe =new ShapedRecipe(key,item);
+        recipe.shape("ELE","NTN","ELE");
+        recipe.setIngredient('T',new RecipeChoice.ExactChoice(TaintedBlade.getItem(plugin)));
+        recipe.setIngredient('N',new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
+        recipe.setIngredient('L',new RecipeChoice.ExactChoice(SoulOfLight.getItem(plugin)));
+        recipe.setIngredient('E',Material.SPIDER_EYE);
         Bukkit.addRecipe(recipe);
     }
 }

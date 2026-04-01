@@ -20,15 +20,17 @@ import java.util.List;
 public class HallowedElytra extends Armor {
 
     public HallowedElytra(Plugin plugin){
-        super(plugin,"Hallowed Elytra","#FF96FF", Material.ELYTRA,"hallowed_elytra","hallowed_armor", EquipmentSlot.CHEST,"HallowedElytra",new ArrayList<>(List.of("Set Bonus: Dodge every 30 seconds")));
+        super(plugin,"Hallowed Elytra","#FF96FF", Material.ELYTRA,"hallowed_elytra","hallowed_armor", EquipmentSlot.CHEST,"HallowedElytra",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds")));
     }
 
     @Override
     public void activateArmorEffect(Player player) {
+        playerInstance.addCritChance(player.getUniqueId(),0.05);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
+        playerInstance.subtractCritChance(player.getUniqueId(),0.05);
     }
 
     public static ItemStack getItem(Plugin plugin) {

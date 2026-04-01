@@ -65,6 +65,10 @@ public class WeaponManager implements Listener {
         weaponList.put("PulseBow",new PulseBow(plugin));
         weaponList.put("SandGun",new SandGun(plugin));
         weaponList.put("VampireKnives",new VampireKnives(plugin));
+        weaponList.put("TaintedBlade",new TaintedBlade(plugin));
+        weaponList.put("CausticEdge",new CausticEdge(plugin));
+        weaponList.put("IceSickle",new IceSickle(plugin));
+        weaponList.put("BreakerBlade",new BreakerBlade(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -78,15 +82,15 @@ public class WeaponManager implements Listener {
         ItemStack heldItem= event.getItem();
         if(heldItem==null){return;}
 
+        Weapon weapon= getWeapon(heldItem);
+        if(weapon==null){return;}
+
         long currentTime = System.currentTimeMillis();
         long lastTime = lastClickTime.getOrDefault(player.getUniqueId(), 0L);
         if (currentTime - lastTime < 10) {
             return;
         }
         lastClickTime.put(player.getUniqueId(), currentTime);
-
-        Weapon weapon= getWeapon(heldItem);
-        if(weapon==null){return;}
 
         if(!player.hasCooldown(heldItem)){
             weapon.leftActivate(player);
@@ -101,6 +105,7 @@ public class WeaponManager implements Listener {
         Player player = event.getPlayer();
         ItemStack heldItem= event.getItem();
         if(heldItem==null){return;}
+
         Weapon weapon= getWeapon(heldItem);
         if(weapon==null){return;}
 

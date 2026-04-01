@@ -4,6 +4,7 @@ import me.carson.terrariaItems.materialsFolder.materials.IllegalGunParts;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.PulseBow;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Minishark;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Shotgun;
+import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.SlapHand;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -29,6 +30,11 @@ public class VillagerTradingListeners implements Listener {
     public VillagerTradingListeners(Plugin plugin){
         this.plugin=plugin;
         Bukkit.getPluginManager().registerEvents(this, plugin);
+    }
+
+    public int getMoonPhase(World world) {
+        long days = world.getFullTime() / 24000;
+        return (int) (days % 8);
     }
 
     @EventHandler
@@ -69,13 +75,11 @@ public class VillagerTradingListeners implements Listener {
 
         List<MerchantRecipe> recipes = new ArrayList<>(villager.getRecipes());
         originalRecipes.put(villager.getUniqueId(), new ArrayList<>(villager.getRecipes()));
+        recipes.add(addPulseBow());
 
-        MerchantRecipe recipe = new MerchantRecipe(
-                PulseBow.getItem(plugin),
-                0, 999, true, 1, 0.05f
-        );
-        recipe.addIngredient(new ItemStack(Material.EMERALD, 48));
-        recipes.add(recipe);
+        if(getMoonPhase(villager.getWorld())==4){
+            recipes.add(addSlapHand());
+        }
 
         villager.setRecipes(recipes);
     }
@@ -122,6 +126,24 @@ public class VillagerTradingListeners implements Listener {
                 0, 999, true, 1, 0.05f
         );
         recipe.addIngredient(new ItemStack(Material.EMERALD, 20));
+        return recipe;
+    }
+
+    public MerchantRecipe addPulseBow(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                PulseBow.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.EMERALD, 48));
+        return recipe;
+    }
+
+    public MerchantRecipe addSlapHand(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                SlapHand.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.EMERALD, 25));
         return recipe;
     }
 }

@@ -2,11 +2,11 @@ package me.carson.terrariaItems.materialsFolder;
 
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.BreakerBlade;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Biome;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -43,18 +43,23 @@ public class MaterialsListeners implements Listener {
     @EventHandler
     public void onDragonDeath(EntityDeathEvent event) {
         LivingEntity entity = event.getEntity();
+        if (entity.getType() != EntityType.ENDER_DRAGON) {return;}
         NamespacedKey key = new NamespacedKey(plugin, "BossDragon");
-        if(!entity.getPersistentDataContainer().has(key, PersistentDataType.BYTE)){return;}
-        int drops=20 + (int)(Math.random() * 11);
-        ItemStack custom = SoulOfMight.getItem(plugin);
-        custom.setAmount(drops);
-        event.getDrops().add(custom);
+        if (entity.getPersistentDataContainer().has(key, PersistentDataType.BYTE)) {
+            int drops = 20 + (int) (Math.random() * 11);
+            ItemStack custom = SoulOfMight.getItem(plugin);
+            custom.setAmount(drops);
+            event.getDrops().add(custom);
+        }else {
+            if(Math.random()<0.25){
+                event.getDrops().add(BreakerBlade.getItem(plugin));
+            }
+        }
     }
 
     @EventHandler
     public void onWardenDeath(EntityDeathEvent event) {
         LivingEntity entity = event.getEntity();
-        if (entity.getType() != EntityType.WARDEN){return;}
         NamespacedKey key = new NamespacedKey(plugin, "BossWarden");
         if(entity.getPersistentDataContainer().has(key, PersistentDataType.BYTE)) {
             int drops = 20 + (int) (Math.random() * 11);
@@ -65,27 +70,18 @@ public class MaterialsListeners implements Listener {
     }
 
     @EventHandler
-    public void onLightDeath(EntityDeathEvent event){
-        LivingEntity entity = event.getEntity();
-        Biome deathBiome=entity.getLocation().getBlock().getBiome();
+    public void onSoulDeath(EntityDeathEvent event){
         if(!worldInstance.getHardmode()){return;}
+        LivingEntity entity = event.getEntity();
+        if(!(entity instanceof Monster||entity instanceof Ghast||entity instanceof Slime)){return;}
+        Biome deathBiome=entity.getLocation().getBlock().getBiome();
         if(lightBiomes.contains(deathBiome)){
             if(Math.random()<0.2){
-                ItemStack soul = SoulOfLight.getItem(plugin);
-                event.getDrops().add(soul);
+                event.getDrops().add(SoulOfLight.getItem(plugin));
             }
-        }
-    }
-
-    @EventHandler
-    public void onDarkDeath(EntityDeathEvent event){
-        LivingEntity entity = event.getEntity();
-        Biome deathBiome=entity.getLocation().getBlock().getBiome();
-        if(!worldInstance.getHardmode()){return;}
-        if(darkBiomes.contains(deathBiome)){
+        }else if(darkBiomes.contains(deathBiome)){
             if(Math.random()<0.2){
-                ItemStack soul = SoulOfNight.getItem(plugin);
-                event.getDrops().add(soul);
+                event.getDrops().add(SoulOfNight.getItem(plugin));
             }
         }
     }

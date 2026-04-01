@@ -41,12 +41,12 @@ public class ArmorRecipeManager {
         registerShadowScalemailRecipe();
         registerShadowLeggingsRecipe();
         registerShadowGreavesRecipe();
-        registerShadowElytraRecipe();
+        //registerShadowElytraRecipe();
         registerMoltenHelmRecipe();
         registerMoltenChestplateRecipe();
         registerMoltenLeggingsRecipe();
         registerMoltenBootsRecipe();
-        registerMoltenElytraRecipe();
+        //registerMoltenElytraRecipe();
         registerHallowedMaskRecipe();
         registerHallowedHelmetRecipe();
         registerHallowedHeadgearRecipe();
