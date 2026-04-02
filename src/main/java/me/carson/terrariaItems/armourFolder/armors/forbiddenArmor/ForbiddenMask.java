@@ -18,7 +18,7 @@ import java.util.List;
 public class ForbiddenMask extends Armor {
 
     public ForbiddenMask(Plugin plugin){
-        super(plugin,"Forbidden Mask","#FF96FF", Material.NETHERITE_HELMET,"forbidden_mask","forbidden_armor", EquipmentSlot.HEAD,"ForbiddenMask",new ArrayList<>(List.of(ChatColor.GRAY+"15% increased magic damage")));
+        super(plugin,"Forbidden Mask","#FF96FF", Material.NETHERITE_HELMET,"forbidden_mask","forbidden_armor", EquipmentSlot.HEAD,"ForbiddenMask",new ArrayList<>(List.of(ChatColor.GRAY+"15% increased magic damage",ChatColor.GRAY+"+3 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

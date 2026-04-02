@@ -14,7 +14,7 @@ import java.util.List;
 public class NecroGreaves extends Armor {
 
     public NecroGreaves(Plugin plugin){
-        super(plugin,"Necro Greaves","#96FF96", Material.DIAMOND_BOOTS,"necro_greaves","necro_armor",EquipmentSlot.FEET,"NecroGreaves",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased ranged damage")));
+        super(plugin,"Necro Greaves","#96FF96", Material.DIAMOND_BOOTS,"necro_greaves","necro_armor",EquipmentSlot.FEET,"NecroGreaves",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased ranged damage",ChatColor.GRAY+"+3 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

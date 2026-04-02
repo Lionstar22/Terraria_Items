@@ -16,7 +16,7 @@ import java.util.List;
 public class JungleHat extends Armor {
 
     public JungleHat(Plugin plugin){
-        super(plugin,"Jungle Hat","#FFC896", Material.IRON_HELMET,"jungle_hat","jungle_armor",EquipmentSlot.HEAD,"JungleHat",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 40",ChatColor.GRAY+"6% increased critical strike chance")));
+        super(plugin,"Jungle Hat","#FFC896", Material.IRON_HELMET,"jungle_hat","jungle_armor",EquipmentSlot.HEAD,"JungleHat",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 40",ChatColor.GRAY+"6% increased critical strike chance",ChatColor.GRAY+"+2 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

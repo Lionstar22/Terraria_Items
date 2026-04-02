@@ -14,7 +14,7 @@ import java.util.List;
 public class ShadowScalemail extends Armor {
 
     public ShadowScalemail(Plugin plugin){
-        super(plugin,"Shadow Scalemail","#9696FF", Material.DIAMOND_CHESTPLATE,"shadow_scalemail","shadow_armor", EquipmentSlot.CHEST,"ShadowScalemail",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"5% Increased movement speed")));
+        super(plugin,"Shadow Scalemail","#9696FF", Material.DIAMOND_CHESTPLATE,"shadow_scalemail","shadow_armor", EquipmentSlot.CHEST,"ShadowScalemail",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"5% Increased movement speed",ChatColor.GRAY+"+8 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

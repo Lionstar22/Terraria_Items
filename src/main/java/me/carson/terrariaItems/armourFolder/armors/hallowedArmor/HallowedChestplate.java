@@ -38,7 +38,7 @@ public class HallowedChestplate extends Armor implements Listener {
     );
 
     public HallowedChestplate(Plugin plugin){
-        super(plugin,"Hallowed Chestplate","#FF96FF", Material.NETHERITE_CHESTPLATE,"hallowed_chestplate","hallowed_armor", EquipmentSlot.CHEST,"HallowedChestplate",new ArrayList<>(List.of(ChatColor.GRAY+"7% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds")));
+        super(plugin,"Hallowed Chestplate","#FF96FF", Material.NETHERITE_CHESTPLATE,"hallowed_chestplate","hallowed_armor", EquipmentSlot.CHEST,"HallowedChestplate",new ArrayList<>(List.of(ChatColor.GRAY+"7% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds",ChatColor.GRAY+"+25 Armor")));
     }
 
     @Override
@@ -57,7 +57,7 @@ public class HallowedChestplate extends Armor implements Listener {
         meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"hallowed_chestplate_armor"),25.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
         meta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS,new AttributeModifier(new NamespacedKey(plugin,"hallowed_chestplate_armor_toughness"),5.0, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.CHEST));
         meta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(plugin,"hallowed_chestplate_k_resistance"),1.0, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.CHEST));
-        meta.addEnchant(Enchantment.PROTECTION,4,true);
+        meta.addEnchant(Enchantment.PROTECTION,5,true);
         meta.setEnchantmentGlintOverride(false);
         item.setItemMeta(meta);
         return item;

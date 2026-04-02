@@ -34,7 +34,7 @@ public class HallowedHeadgear extends Armor implements Listener {
     );
 
     public HallowedHeadgear(Plugin plugin){
-        super(plugin,"Hallowed Headgear","#FF96FF", Material.NETHERITE_HELMET,"hallowed_headgear","hallowed_armor", EquipmentSlot.HEAD,"HallowedHeadgear",new ArrayList<>(List.of(ChatColor.GRAY+"12% increased magic damage",ChatColor.GRAY+"Increases maximum mana by 100 ",ChatColor.GRAY+"12% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds")));
+        super(plugin,"Hallowed Headgear","#FF96FF", Material.NETHERITE_HELMET,"hallowed_headgear","hallowed_armor", EquipmentSlot.HEAD,"HallowedHeadgear",new ArrayList<>(List.of(ChatColor.GRAY+"12% increased magic damage",ChatColor.GRAY+"Increases maximum mana by 100 ",ChatColor.GRAY+"12% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds",ChatColor.GRAY+"+20 Armor")));
     }
 
     @Override

@@ -18,7 +18,7 @@ import java.util.List;
 public class WizardHat extends Armor {
 
     public WizardHat(Plugin plugin){
-        super(plugin,"Wizard Hat","#96FF96", Material.LEATHER_HELMET,"wizard_hat","tim_armor",EquipmentSlot.HEAD,"WizardHat",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased magic damage")));
+        super(plugin,"Wizard Hat","#96FF96", Material.LEATHER_HELMET,"wizard_hat","tim_armor",EquipmentSlot.HEAD,"WizardHat",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased magic damage",ChatColor.GRAY+"+1 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

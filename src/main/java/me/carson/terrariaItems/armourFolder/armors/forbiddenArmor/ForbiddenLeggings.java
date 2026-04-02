@@ -16,7 +16,7 @@ import java.util.List;
 public class ForbiddenLeggings extends Armor {
 
     public ForbiddenLeggings(Plugin plugin){
-        super(plugin,"Forbidden Leggings","#FF96FF", Material.NETHERITE_LEGGINGS,"forbidden_leggings","forbidden_armor",EquipmentSlot.LEGS,"ForbiddenLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased magic damage")));
+        super(plugin,"Forbidden Leggings","#FF96FF", Material.NETHERITE_LEGGINGS,"forbidden_leggings","forbidden_armor",EquipmentSlot.LEGS,"ForbiddenLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased magic damage",ChatColor.GRAY+"+6 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -14,7 +14,7 @@ import java.util.List;
 public class JungleLeggings extends Armor {
 
     public JungleLeggings(Plugin plugin){
-        super(plugin,"Jungle Leggings","#FFC896", Material.IRON_LEGGINGS,"jungle_leggings","jungle_armor",EquipmentSlot.LEGS,"JungleLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 20",ChatColor.GRAY+"6% increased magic damage")));
+        super(plugin,"Jungle Leggings","#FFC896", Material.IRON_LEGGINGS,"jungle_leggings","jungle_armor",EquipmentSlot.LEGS,"JungleLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 20",ChatColor.GRAY+"6% increased magic damage",ChatColor.GRAY+"+5 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

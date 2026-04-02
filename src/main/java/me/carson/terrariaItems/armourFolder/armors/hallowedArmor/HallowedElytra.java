@@ -20,7 +20,7 @@ import java.util.List;
 public class HallowedElytra extends Armor {
 
     public HallowedElytra(Plugin plugin){
-        super(plugin,"Hallowed Elytra","#FF96FF", Material.ELYTRA,"hallowed_elytra","hallowed_armor", EquipmentSlot.CHEST,"HallowedElytra",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds")));
+        super(plugin,"Hallowed Elytra","#FF96FF", Material.ELYTRA,"hallowed_elytra","hallowed_armor", EquipmentSlot.CHEST,"HallowedElytra",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds",ChatColor.GRAY+"+10 Armor")));
     }
 
     @Override
@@ -36,7 +36,7 @@ public class HallowedElytra extends Armor {
     public static ItemStack getItem(Plugin plugin) {
         ItemStack item=new HallowedElytra(plugin).createItem();
         ItemMeta meta=item.getItemMeta();
-        meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"hallowed_leggings_armor"),5.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
+        meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"hallowed_leggings_armor"),10.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
         meta.addEnchant(Enchantment.PROTECTION,4,true);
         meta.setEnchantmentGlintOverride(false);
         item.setItemMeta(meta);

@@ -29,7 +29,7 @@ public class MoltenHelmet extends Armor implements Listener {
     );
 
     public MoltenHelmet(Plugin plugin){
-        super(plugin,"Molten Helmet","#FFC896", Material.NETHERITE_HELMET,"molten_helmet","molten_armor", EquipmentSlot.HEAD,"MoltenHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"7% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Grants immunity to fire")));
+        super(plugin,"Molten Helmet","#FFC896", Material.NETHERITE_HELMET,"molten_helmet","molten_armor", EquipmentSlot.HEAD,"MoltenHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"7% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Grants immunity to fire",ChatColor.GRAY+"+3 Armor")));
     }
 
     @Override

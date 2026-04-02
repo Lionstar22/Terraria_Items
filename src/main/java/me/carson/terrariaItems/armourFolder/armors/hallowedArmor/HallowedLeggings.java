@@ -20,7 +20,7 @@ import java.util.List;
 public class HallowedLeggings extends Armor {
 
     public HallowedLeggings(Plugin plugin){
-        super(plugin,"Hallowed Leggings","#FF96FF", Material.NETHERITE_LEGGINGS,"hallowed_leggings","hallowed_armor", EquipmentSlot.LEGS,"HallowedLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"5% Damage Increase",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds")));
+        super(plugin,"Hallowed Leggings","#FF96FF", Material.NETHERITE_LEGGINGS,"hallowed_leggings","hallowed_armor", EquipmentSlot.LEGS,"HallowedLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"5% Damage Increase",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds",ChatColor.GRAY+"+20 Armor")));
     }
 
     @Override
@@ -39,7 +39,7 @@ public class HallowedLeggings extends Armor {
         meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"hallowed_leggings_armor"),20.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS));
         meta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS,new AttributeModifier(new NamespacedKey(plugin,"hallowed_leggings_armor_toughness"),5.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS));
         meta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(plugin,"hallowed_leggings_k_resistance"),1.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.LEGS));
-        meta.addEnchant(Enchantment.PROTECTION,4,true);
+        meta.addEnchant(Enchantment.PROTECTION,5,true);
         meta.setEnchantmentGlintOverride(false);
         item.setItemMeta(meta);
         return item;

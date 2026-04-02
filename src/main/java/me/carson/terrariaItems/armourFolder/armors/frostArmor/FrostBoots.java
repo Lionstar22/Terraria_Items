@@ -20,7 +20,7 @@ import java.util.List;
 public class FrostBoots extends Armor {
 
     public FrostBoots(Plugin plugin){
-        super(plugin,"Frost Boots","#FF96FF", Material.NETHERITE_BOOTS,"frost_boots","frost_armor",EquipmentSlot.FEET,"FrostBoots",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased movement speed",ChatColor.GRAY+"10% increased melee speed")));
+        super(plugin,"Frost Boots","#FF96FF", Material.NETHERITE_BOOTS,"frost_boots","frost_armor",EquipmentSlot.FEET,"FrostBoots",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased movement speed",ChatColor.GRAY+"10% increased melee speed",ChatColor.GRAY+"+5 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

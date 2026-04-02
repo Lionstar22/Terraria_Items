@@ -16,7 +16,7 @@ import java.util.List;
 public class ForbiddenTreads extends Armor {
 
     public ForbiddenTreads(Plugin plugin){
-        super(plugin,"Forbidden Treads","#FF96FF", Material.NETHERITE_BOOTS,"forbidden_treads","forbidden_armor",EquipmentSlot.FEET,"ForbiddenTreads",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 40",ChatColor.GRAY+"10% increased magic damage")));
+        super(plugin,"Forbidden Treads","#FF96FF", Material.NETHERITE_BOOTS,"forbidden_treads","forbidden_armor",EquipmentSlot.FEET,"ForbiddenTreads",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 40",ChatColor.GRAY+"10% increased magic damage",ChatColor.GRAY+"+3 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -20,7 +20,7 @@ import java.util.List;
 public class HallowedBoots extends Armor {
 
     public HallowedBoots(Plugin plugin){
-        super(plugin,"Hallowed Boots","#FF96FF", Material.NETHERITE_BOOTS,"hallowed_boots","hallowed_armor", EquipmentSlot.FEET,"HallowedBoots",new ArrayList<>(List.of(ChatColor.GRAY+"5% Damage Increase",ChatColor.GRAY+"20% Movement Speed Increase",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds")));
+        super(plugin,"Hallowed Boots","#FF96FF", Material.NETHERITE_BOOTS,"hallowed_boots","hallowed_armor", EquipmentSlot.FEET,"HallowedBoots",new ArrayList<>(List.of(ChatColor.GRAY+"5% Damage Increase",ChatColor.GRAY+"20% Movement Speed Increase",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds",ChatColor.GRAY+"+15 Armor")));
     }
 
     @Override
@@ -41,7 +41,7 @@ public class HallowedBoots extends Armor {
         meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"hallowed_boots_armor"),15.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET));
         meta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS,new AttributeModifier(new NamespacedKey(plugin,"hallowed_boots_armor_toughness"),5.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET));
         meta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(plugin,"hallowed_boots_k_resistance"),1.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.FEET));
-        meta.addEnchant(Enchantment.PROTECTION,4,true);
+        meta.addEnchant(Enchantment.PROTECTION,5,true);
         meta.setEnchantmentGlintOverride(false);
         item.setItemMeta(meta);
         return item;

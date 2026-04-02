@@ -16,7 +16,7 @@ import java.util.List;
 public class NecroHelmet extends Armor {
 
     public NecroHelmet(Plugin plugin){
-        super(plugin,"Necro Helmet","#96FF96", Material.DIAMOND_HELMET,"necro_helmet","necro_armor",EquipmentSlot.HEAD,"NecroHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased ranged damage")));
+        super(plugin,"Necro Helmet","#96FF96", Material.DIAMOND_HELMET,"necro_helmet","necro_armor",EquipmentSlot.HEAD,"NecroHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased ranged damage",ChatColor.GRAY+"+3 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

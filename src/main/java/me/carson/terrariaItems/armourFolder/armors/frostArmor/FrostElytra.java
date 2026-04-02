@@ -20,7 +20,7 @@ import java.util.List;
 public class FrostElytra extends Armor {
 
     public FrostElytra(Plugin plugin){
-        super(plugin,"Frost Elytra","#FF96FF", Material.ELYTRA,"frost_elytra_sprite","frost_elytra_armor", EquipmentSlot.CHEST,"FrostElytra",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance")));
+        super(plugin,"Frost Elytra","#FF96FF", Material.ELYTRA,"frost_elytra_sprite","frost_elytra_armor", EquipmentSlot.CHEST,"FrostElytra",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"+5 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

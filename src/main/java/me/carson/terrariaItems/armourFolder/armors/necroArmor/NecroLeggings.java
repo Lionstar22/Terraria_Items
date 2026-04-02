@@ -14,7 +14,7 @@ import java.util.List;
 public class NecroLeggings extends Armor {
 
     public NecroLeggings(Plugin plugin){
-        super(plugin,"Necro Leggings","#96FF96", Material.DIAMOND_LEGGINGS,"necro_leggings","necro_armor",EquipmentSlot.LEGS,"NecroLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased ranged damage",ChatColor.GRAY+"5% increased critical strike chance")));
+        super(plugin,"Necro Leggings","#96FF96", Material.DIAMOND_LEGGINGS,"necro_leggings","necro_armor",EquipmentSlot.LEGS,"NecroLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased ranged damage",ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"+6 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -20,7 +20,7 @@ import java.util.List;
 public class FrostBreastplate extends Armor {
 
     public FrostBreastplate(Plugin plugin){
-        super(plugin,"Frost Breastplate","#FF96FF", Material.NETHERITE_CHESTPLATE,"frost_breastplate","frost_armor",EquipmentSlot.CHEST,"FrostBreastplate",new ArrayList<>(List.of(ChatColor.GRAY+"11% increased critical strike chance")));
+        super(plugin,"Frost Breastplate","#FF96FF", Material.NETHERITE_CHESTPLATE,"frost_breastplate","frost_armor",EquipmentSlot.CHEST,"FrostBreastplate",new ArrayList<>(List.of(ChatColor.GRAY+"11% increased critical strike chance",ChatColor.GRAY+"+10 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

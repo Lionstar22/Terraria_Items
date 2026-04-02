@@ -14,7 +14,7 @@ import java.util.List;
 public class ShadowGreaves extends Armor {
 
     public ShadowGreaves(Plugin plugin){
-        super(plugin,"Shadow Greaves","#9696FF", Material.DIAMOND_BOOTS,"shadow_greaves","shadow_armor", EquipmentSlot.FEET,"ShadowGreaves",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"5% Increased movement speed")));
+        super(plugin,"Shadow Greaves","#9696FF", Material.DIAMOND_BOOTS,"shadow_greaves","shadow_armor", EquipmentSlot.FEET,"ShadowGreaves",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"5% Increased movement speed",ChatColor.GRAY+"+3 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

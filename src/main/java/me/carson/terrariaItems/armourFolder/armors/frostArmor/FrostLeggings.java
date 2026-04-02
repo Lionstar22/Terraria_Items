@@ -20,7 +20,7 @@ import java.util.List;
 public class FrostLeggings extends Armor {
 
     public FrostLeggings(Plugin plugin){
-        super(plugin,"Frost Leggings","#FF96FF", Material.NETHERITE_LEGGINGS,"frost_leggings","frost_armor",EquipmentSlot.LEGS,"FrostLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"Increases melee and ranged damage by 10%")));
+        super(plugin,"Frost Leggings","#FF96FF", Material.NETHERITE_LEGGINGS,"frost_leggings","frost_armor",EquipmentSlot.LEGS,"FrostLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"Increases melee and ranged damage by 10%",ChatColor.GRAY+"+8 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

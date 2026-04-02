@@ -21,7 +21,7 @@ import java.util.List;
 public class FrostHelmet extends Armor {
 
     public FrostHelmet(Plugin plugin){
-        super(plugin,"Frost Helmet","#FF96FF", Material.NETHERITE_HELMET,"frost_helmet","frost_armor", EquipmentSlot.HEAD,"FrostHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"16% increased melee and ranged damage")));
+        super(plugin,"Frost Helmet","#FF96FF", Material.NETHERITE_HELMET,"frost_helmet","frost_armor", EquipmentSlot.HEAD,"FrostHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"16% increased melee and ranged damage",ChatColor.GRAY+"+5 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

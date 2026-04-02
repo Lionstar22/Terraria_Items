@@ -17,7 +17,7 @@ import java.util.List;
 public class ForbiddenRobes extends Armor {
 
     public ForbiddenRobes(Plugin plugin){
-        super(plugin,"Forbidden Robes","#FF96FF", Material.NETHERITE_CHESTPLATE,"forbidden_robes","forbidden_armor",EquipmentSlot.CHEST,"ForbiddenRobes",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 40")));
+        super(plugin,"Forbidden Robes","#FF96FF", Material.NETHERITE_CHESTPLATE,"forbidden_robes","forbidden_armor",EquipmentSlot.CHEST,"ForbiddenRobes",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 40",ChatColor.GRAY+"+8 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

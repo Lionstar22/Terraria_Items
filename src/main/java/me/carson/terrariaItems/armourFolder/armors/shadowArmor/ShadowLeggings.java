@@ -14,7 +14,7 @@ import java.util.List;
 public class ShadowLeggings extends Armor {
 
     public ShadowLeggings(Plugin plugin){
-        super(plugin,"Shadow Leggings","#9696FF", Material.DIAMOND_LEGGINGS,"shadow_leggings","shadow_armor", EquipmentSlot.LEGS,"ShadowLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"5% Increased movement speed")));
+        super(plugin,"Shadow Leggings","#9696FF", Material.DIAMOND_LEGGINGS,"shadow_leggings","shadow_armor", EquipmentSlot.LEGS,"ShadowLeggings",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased critical strike chance",ChatColor.GRAY+"5% Increased movement speed",ChatColor.GRAY+"+6 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

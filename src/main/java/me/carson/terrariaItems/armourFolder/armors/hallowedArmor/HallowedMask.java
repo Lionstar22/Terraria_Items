@@ -27,7 +27,7 @@ import java.util.Set;
 public class HallowedMask extends Armor{
 
     public HallowedMask(Plugin plugin){
-        super(plugin,"Hallowed Mask","#FF96FF", Material.NETHERITE_HELMET,"hallowed_mask","hallowed_armor", EquipmentSlot.HEAD,"HallowedMask",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased melee damage and attack speed",ChatColor.GRAY+"10% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds")));
+        super(plugin,"Hallowed Mask","#FF96FF", Material.NETHERITE_HELMET,"hallowed_mask","hallowed_armor", EquipmentSlot.HEAD,"HallowedMask",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased melee damage and attack speed",ChatColor.GRAY+"10% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds",ChatColor.GRAY+"+20 Armor")));
     }
 
     @Override
@@ -50,7 +50,7 @@ public class HallowedMask extends Armor{
         meta.addAttributeModifier(Attribute.ARMOR,new AttributeModifier(new NamespacedKey(plugin,"hallowed_mask_armor"),20.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
         meta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS,new AttributeModifier(new NamespacedKey(plugin,"hallowed_mask_armor_toughness"),5.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
         meta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE,new AttributeModifier(new NamespacedKey(plugin,"hallowed_mask_k_resistance"),1.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.HEAD));
-        meta.addEnchant(Enchantment.PROTECTION,4,true);
+        meta.addEnchant(Enchantment.PROTECTION,5,true);
         meta.setEnchantmentGlintOverride(false);
         helm.setItemMeta(meta);
         return helm;

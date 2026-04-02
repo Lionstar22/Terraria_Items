@@ -21,7 +21,7 @@ import java.util.List;
 public class ForbiddenElytra extends Armor {
 
     public ForbiddenElytra(Plugin plugin){
-        super(plugin,"Forbidden Elytra","#FF96FF", Material.ELYTRA,"forbidden_elytra_sprite","forbidden_elytra_armor", EquipmentSlot.CHEST,"ForbiddenElytra",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 20")));
+        super(plugin,"Forbidden Elytra","#FF96FF", Material.ELYTRA,"forbidden_elytra_sprite","forbidden_elytra_armor", EquipmentSlot.CHEST,"ForbiddenElytra",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 20",ChatColor.GRAY+"+4 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {

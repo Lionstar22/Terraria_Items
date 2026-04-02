@@ -34,7 +34,7 @@ public class HallowedHelmet extends Armor implements Listener {
     );
 
     public HallowedHelmet(Plugin plugin){
-        super(plugin,"Hallowed Helmet","#FF96FF", Material.NETHERITE_HELMET,"hallowed_helmet","hallowed_armor", EquipmentSlot.HEAD,"HallowedHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"15% increased ranged damage",ChatColor.GRAY+"8% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds")));
+        super(plugin,"Hallowed Helmet","#FF96FF", Material.NETHERITE_HELMET,"hallowed_helmet","hallowed_armor", EquipmentSlot.HEAD,"HallowedHelmet",new ArrayList<>(List.of(ChatColor.GRAY+"15% increased ranged damage",ChatColor.GRAY+"8% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds",ChatColor.GRAY+"+20 Armor")));
     }
 
     @Override
