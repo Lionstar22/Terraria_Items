@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.toolFolder;
 
+import me.carson.terrariaItems.listenersHandler.ManaManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
@@ -25,6 +26,7 @@ public abstract class Tool {
     protected final ArrayList<String> lore;
     private final NamespacedKey unplaceableKey;
     private final NamespacedKey customItemKey;
+    public ManaManager manaManagerInstance=ManaManager.getInstance();
 
 
     public Tool(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, int cooldown, ArrayList<String> lore) {

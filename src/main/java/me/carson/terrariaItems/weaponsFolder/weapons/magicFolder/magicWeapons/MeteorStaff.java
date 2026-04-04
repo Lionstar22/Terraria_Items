@@ -28,11 +28,10 @@ public class MeteorStaff extends Magic {
     public void rightActivate(Player player) {
         if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
         UUID id=player.getUniqueId();
-        ManaManager instance = ManaManager.getInstance();
-        if(instance.getMana(id)<cost){return;}
-        instance.removeMana(id, cost);
-        instance.updateManaBar(player);
-        instance.startManaRegenDelay(player,instance);
+        if(manaManagerInstance.getMana(id)<cost){return;}
+        manaManagerInstance.removeMana(id, cost);
+        manaManagerInstance.updateManaBar(player);
+        manaManagerInstance.startManaRegenDelay(player,manaManagerInstance);
 
         RayTraceResult result= player.getWorld().rayTrace(player.getEyeLocation(),player.getEyeLocation().getDirection(),150,FluidCollisionMode.NEVER,true,0.1,e -> (e!=player));
 

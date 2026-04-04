@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.magicFolder;
 
+import me.carson.terrariaItems.listenersHandler.ManaManager;
 import me.carson.terrariaItems.weaponsFolder.Weapon;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -14,6 +15,7 @@ public abstract class Magic extends Weapon {
     protected final float spread;
     protected final float duration;
     protected final float cost;
+    public ManaManager manaManagerInstance=ManaManager.getInstance();
 
     public Magic(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, int cooldown, float speed, float damage, float spread, float duration, float cost, ArrayList<String> lore) {
         super(plugin, name, rarity, baseMaterial, texture, id, cooldown, lore);

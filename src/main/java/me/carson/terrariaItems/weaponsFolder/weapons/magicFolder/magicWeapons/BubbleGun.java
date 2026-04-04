@@ -28,15 +28,14 @@ public class BubbleGun extends Magic {
     public void rightActivate(Player player) {
         if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
         UUID id=player.getUniqueId();
-        ManaManager instance = ManaManager.getInstance();
-        if(instance.getMana(id)<cost){return;}
+        if(manaManagerInstance.getMana(id)<cost){return;}
         new Bubble(plugin).createProjectile(player,speed,damage,spread,duration);
         new Bubble(plugin).createProjectile(player,speed,damage,spread,duration);
         new Bubble(plugin).createProjectile(player,speed,damage,spread,duration);
         player.getWorld().playSound(player.getLocation(), "terraria:bubble_gun_use", 1.0F, 1.0F);
-        instance.removeMana(id, cost);
-        instance.updateManaBar(player);
-        instance.startManaRegenDelay(player,instance);
+        manaManagerInstance.removeMana(id, cost);
+        manaManagerInstance.updateManaBar(player);
+        manaManagerInstance.startManaRegenDelay(player,manaManagerInstance);
     }
 
     public static ItemStack getItem(Plugin plugin) {

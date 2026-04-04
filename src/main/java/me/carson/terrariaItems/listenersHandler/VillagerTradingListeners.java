@@ -1,6 +1,8 @@
 package me.carson.terrariaItems.listenersHandler;
 
 import me.carson.terrariaItems.materialsFolder.materials.IllegalGunParts;
+import me.carson.terrariaItems.toolFolder.tools.potions.GreaterManaPotion;
+import me.carson.terrariaItems.toolFolder.tools.potions.LesserManaPotion;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.PulseBow;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Minishark;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Shotgun;
@@ -41,16 +43,24 @@ public class VillagerTradingListeners implements Listener {
     public void onVillagerInventoryOpen(InventoryOpenEvent event) {
         if (!(event.getInventory().getHolder() instanceof Villager villager)) return;
         if (!(event.getPlayer() instanceof Player)) return;
-        if (villager.getProfession() != Villager.Profession.WEAPONSMITH) return;
+
         List<MerchantRecipe> recipes = new ArrayList<>(villager.getRecipes());
         originalRecipes.put(villager.getUniqueId(), new ArrayList<>(villager.getRecipes()));
 
-        recipes.add(addMinishark());
-        if(isNight(villager.getWorld())){
-            recipes.add(addIllegalGunParts());
-        }
-        if(worldInstance.getHardmode()){
-            recipes.add(addShotgun());
+        if (villager.getProfession() == Villager.Profession.WEAPONSMITH) {
+            recipes.add(addMinishark());
+            if(isNight(villager.getWorld())){
+                recipes.add(addIllegalGunParts());
+            }
+            if(worldInstance.getHardmode()){
+                recipes.add(addShotgun());
+            }
+        } else if (villager.getProfession() == Villager.Profession.CLERIC) {
+            recipes.add(addLesserManaPotion());
+
+            if(worldInstance.getHardmode()){
+                recipes.add(addGreaterManaPotion());
+            }
         }
 
         villager.setRecipes(recipes);
@@ -68,7 +78,7 @@ public class VillagerTradingListeners implements Listener {
     }
 
     @EventHandler
-    public void onMerchantInventoryOpen(InventoryOpenEvent event) {
+    public void onWanderingTraderInventoryOpen(InventoryOpenEvent event) {
         if (!(event.getInventory().getHolder() instanceof WanderingTrader villager)) return;
         if (!(event.getPlayer() instanceof Player)) return;
         if(!worldInstance.getHardmode()){return;}
@@ -85,7 +95,7 @@ public class VillagerTradingListeners implements Listener {
     }
 
     @EventHandler
-    public void onMerchantInventoryClose(InventoryCloseEvent event) {
+    public void onWanderingTraderInventoryClose(InventoryCloseEvent event) {
         if (!(event.getInventory().getHolder() instanceof WanderingTrader villager)) return;
 
         List<MerchantRecipe> original = originalRecipes.get(villager.getUniqueId());
@@ -144,6 +154,24 @@ public class VillagerTradingListeners implements Listener {
                 0, 999, true, 1, 0.05f
         );
         recipe.addIngredient(new ItemStack(Material.EMERALD, 25));
+        return recipe;
+    }
+
+    public MerchantRecipe addLesserManaPotion(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                LesserManaPotion.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.IRON_NUGGET, 1));
+        return recipe;
+    }
+
+    public MerchantRecipe addGreaterManaPotion(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                GreaterManaPotion.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.GOLD_NUGGET, 5));
         return recipe;
     }
 }

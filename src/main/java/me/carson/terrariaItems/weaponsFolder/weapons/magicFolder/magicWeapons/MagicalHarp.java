@@ -24,8 +24,7 @@ public class MagicalHarp extends Magic {
     public void rightActivate(Player player) {
         if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
         UUID id=player.getUniqueId();
-        ManaManager instance = ManaManager.getInstance();
-        if(instance.getMana(id)<cost){return;}
+        if(manaManagerInstance.getMana(id)<cost){return;}
         int note = ThreadLocalRandom.current().nextInt(1, 4);
         switch (note){
             case 1 -> new Note1(plugin).createProjectile(player,speed,damage,spread,duration);
@@ -36,9 +35,9 @@ public class MagicalHarp extends Magic {
             }
         }
         player.getWorld().playSound(player.getLocation(), "terraria:harp", 0.75F, 1.0F);
-        instance.removeMana(id, cost);
-        instance.updateManaBar(player);
-        instance.startManaRegenDelay(player,instance);
+        manaManagerInstance.removeMana(id, cost);
+        manaManagerInstance.updateManaBar(player);
+        manaManagerInstance.startManaRegenDelay(player,manaManagerInstance);
     }
 
     public static ItemStack getItem(Plugin plugin) {

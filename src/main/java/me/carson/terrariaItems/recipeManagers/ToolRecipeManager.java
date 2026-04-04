@@ -1,11 +1,18 @@
 package me.carson.terrariaItems.recipeManagers;
 
+import me.carson.terrariaItems.accesoryFolder.accessories.AvengerEmblem;
+import me.carson.terrariaItems.accesoryFolder.accessories.RangerEmblem;
+import me.carson.terrariaItems.accesoryFolder.accessories.SorcererEmblem;
+import me.carson.terrariaItems.accesoryFolder.accessories.WarriorEmblem;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.Ruby;
-import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfLight;
-import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfNight;
+import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import me.carson.terrariaItems.toolFolder.tools.*;
+import me.carson.terrariaItems.toolFolder.tools.potions.GreaterManaPotion;
+import me.carson.terrariaItems.toolFolder.tools.potions.LesserManaPotion;
+import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
+import me.carson.terrariaItems.toolFolder.tools.potions.SuperManaPotion;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalEgg;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalShrieker;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalSkull;
@@ -18,6 +25,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.recipe.CraftingBookCategory;
 import org.bukkit.plugin.Plugin;
 
@@ -40,6 +48,9 @@ public class ToolRecipeManager implements Listener {
                 new NamespacedKey(plugin, "RodOfDiscord"),
                 new NamespacedKey(plugin, "LifeCrystal"),
                 new NamespacedKey(plugin, "ManaCrystal"),
+                new NamespacedKey(plugin, "ManaPotion1"),
+                new NamespacedKey(plugin, "ManaPotion2"),
+                new NamespacedKey(plugin, "SuperManaPotion"),
                 new NamespacedKey(plugin, "TorrentialTear")
         );
 
@@ -70,6 +81,8 @@ public class ToolRecipeManager implements Listener {
         registerMechanicalShriekerRecipe();
         registerMechanicalEggRecipe();
         registerMechanicalSkullRecipe();
+        registerManaPotionRecipe();
+        registerSuperManaPotionRecipe();
     }
 
     private void registerMirrorRecipe(){
@@ -180,6 +193,36 @@ public class ToolRecipeManager implements Listener {
         recipe.setIngredient('L', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
         recipe.setIngredient('S', Material.WITHER_SKELETON_SKULL);
+        recipe.setCategory(CraftingBookCategory.MISC);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerManaPotionRecipe(){
+        ItemStack item= ManaPotion.getItem(plugin);
+
+        NamespacedKey key1 = new NamespacedKey(plugin, "ManaPotion1");
+        ShapelessRecipe recipe1 = new ShapelessRecipe(key1, item);
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(LesserManaPotion.getItem(plugin)));
+        recipe1.addIngredient(Material.WARPED_FUNGUS);
+        recipe1.setCategory(CraftingBookCategory.MISC);
+        Bukkit.addRecipe(recipe1);
+
+        NamespacedKey key2 = new NamespacedKey(plugin, "ManaPotion2");
+        ShapelessRecipe recipe2 = new ShapelessRecipe(key2, item);
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(LesserManaPotion.getItem(plugin)));
+        recipe2.addIngredient(Material.CRIMSON_FUNGUS);
+        recipe2.setCategory(CraftingBookCategory.MISC);
+        Bukkit.addRecipe(recipe2);
+
+    }
+
+    private void registerSuperManaPotionRecipe(){
+        ItemStack item = SuperManaPotion.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "SuperManaPotion");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(GreaterManaPotion.getItem(plugin)));
+        recipe.addIngredient(Material.AMETHYST_SHARD);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(FallenStar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }

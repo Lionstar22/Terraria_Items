@@ -2,6 +2,10 @@ package me.carson.terrariaItems.toolFolder;
 
 import me.carson.terrariaItems.toolFolder.tools.*;
 import me.carson.terrariaItems.toolFolder.tools.crates.*;
+import me.carson.terrariaItems.toolFolder.tools.potions.GreaterManaPotion;
+import me.carson.terrariaItems.toolFolder.tools.potions.LesserManaPotion;
+import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
+import me.carson.terrariaItems.toolFolder.tools.potions.SuperManaPotion;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalEgg;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalShrieker;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalSkull;
@@ -44,7 +48,10 @@ public class ToolManager implements Listener {
         toolList.put("MechanicalShrieker",new MechanicalShrieker(plugin));
         toolList.put("MechanicalEgg",new MechanicalEgg(plugin));
         toolList.put("MechanicalSkull",new MechanicalSkull(plugin));
-        toolList.put("TestingStick",new TestingStick(plugin));
+        toolList.put("LesserManaPotion",new LesserManaPotion(plugin));
+        toolList.put("ManaPotion",new ManaPotion(plugin));
+        toolList.put("GreaterManaPotion",new GreaterManaPotion(plugin));
+        toolList.put("SuperManaPotion",new SuperManaPotion(plugin));
     }
 
     @EventHandler

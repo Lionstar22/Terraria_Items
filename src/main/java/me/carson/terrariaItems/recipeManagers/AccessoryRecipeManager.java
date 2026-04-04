@@ -47,7 +47,9 @@ public class AccessoryRecipeManager implements Listener {
 
         HardmodeRecipes = List.of(
                 new NamespacedKey(plugin, "NeptuneShell"),
-                new NamespacedKey(plugin, "AvengerEmblem")
+                new NamespacedKey(plugin, "AvengerEmblem1"),
+                new NamespacedKey(plugin, "AvengerEmblem2"),
+                new NamespacedKey(plugin, "AvengerEmblem3")
         );
     }
 
