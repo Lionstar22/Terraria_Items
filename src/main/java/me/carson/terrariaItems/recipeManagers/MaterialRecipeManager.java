@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.recipeManagers;
 
+import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.materialsFolder.materials.bullets.BubonicRound;
 import me.carson.terrariaItems.materialsFolder.materials.bullets.EmptyBullet;
@@ -11,16 +12,47 @@ import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfSight;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.*;
+import org.bukkit.inventory.recipe.CraftingBookCategory;
 import org.bukkit.plugin.Plugin;
+
+import java.util.List;
 
 public class MaterialRecipeManager implements Listener {
 
     private final Plugin plugin;
+    private final List<NamespacedKey> preHardmodeRecipes;
+    private final List<NamespacedKey> HardmodeRecipes;
+    private final WorldDataHandler worldInstance=WorldDataHandler.getInstance();
 
     public MaterialRecipeManager(Plugin plugin) {
         this.plugin = plugin;
+        Bukkit.getPluginManager().registerEvents(this, plugin);
+
+        preHardmodeRecipes = List.of(
+                new NamespacedKey(plugin, "DemoniteBar"),
+                new NamespacedKey(plugin, "Hellstone"),
+                new NamespacedKey(plugin, "Ruby"),
+                new NamespacedKey(plugin, "MusketBall"),
+                new NamespacedKey(plugin, "EmptyBullet"),
+                new NamespacedKey(plugin, "ExplodingBullet"),
+                new NamespacedKey(plugin, "BubonicRound")
+        );
+
+        HardmodeRecipes = List.of(
+                new NamespacedKey(plugin, "HallowedBar")
+        );
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event){
+        event.getPlayer().discoverRecipes(preHardmodeRecipes);
+        if(worldInstance.getHardmode()){
+            event.getPlayer().discoverRecipes(HardmodeRecipes);
+        }
     }
 
     public void registerRecipes() {
@@ -42,6 +74,7 @@ public class MaterialRecipeManager implements Listener {
         recipe.shape(" S ","SIS"," S ");
         recipe.setIngredient('I', Material.IRON_INGOT);
         recipe.setIngredient('S', Material.SOUL_SAND);
+        recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
 
@@ -52,6 +85,7 @@ public class MaterialRecipeManager implements Listener {
         recipe.addIngredient(Material.NETHERITE_SCRAP);
         recipe.addIngredient(Material.LAVA_BUCKET);
         recipe.addIngredient(Material.OBSIDIAN);
+        recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
 
@@ -62,6 +96,7 @@ public class MaterialRecipeManager implements Listener {
         recipe.shape("RRR","RDR","RRR");
         recipe.setIngredient('R', Material.REDSTONE);
         recipe.setIngredient('D', Material.DIAMOND);
+        recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
 
@@ -85,6 +120,7 @@ public class MaterialRecipeManager implements Listener {
         recipe.addIngredient(new RecipeChoice.ExactChoice( SoulOfFright.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice( SoulOfSight.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice( SoulOfMight.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
 
@@ -94,6 +130,7 @@ public class MaterialRecipeManager implements Listener {
         NamespacedKey key = new NamespacedKey(plugin, "MusketBall");
         ShapelessRecipe recipe = new ShapelessRecipe(key, bullet);
         recipe.addIngredient(Material.IRON_NUGGET);
+        recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
 
@@ -104,6 +141,7 @@ public class MaterialRecipeManager implements Listener {
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","I I"," I ");
         recipe.setIngredient('I', Material.IRON_NUGGET);
+        recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
 
@@ -117,6 +155,7 @@ public class MaterialRecipeManager implements Listener {
             recipe.addIngredient(choice);
         }
         recipe.addIngredient(Material.GUNPOWDER);
+        recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
 
@@ -130,6 +169,7 @@ public class MaterialRecipeManager implements Listener {
             recipe.addIngredient(choice);
         }
         recipe.addIngredient(Material.WITHER_ROSE);
+        recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
 

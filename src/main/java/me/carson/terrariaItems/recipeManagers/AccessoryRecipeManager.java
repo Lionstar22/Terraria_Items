@@ -1,24 +1,62 @@
 package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
+import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfFright;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfMight;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfSight;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.inventory.recipe.CraftingBookCategory;
 import org.bukkit.plugin.Plugin;
 
-public class AccessoryRecipeManager {
+import java.util.List;
+
+public class AccessoryRecipeManager implements Listener {
 
     private final Plugin plugin;
+    private final List<NamespacedKey> preHardmodeRecipes;
+    private final List<NamespacedKey> HardmodeRecipes;
+    private final WorldDataHandler worldInstance=WorldDataHandler.getInstance();
 
     public AccessoryRecipeManager(Plugin plugin) {
         this.plugin = plugin;
+        Bukkit.getPluginManager().registerEvents(this, plugin);
+
+        preHardmodeRecipes = List.of(
+                new NamespacedKey(plugin, "aglet"),
+                new NamespacedKey(plugin, "skull"),
+                new NamespacedKey(plugin, "band"),
+                new NamespacedKey(plugin, "CobaltShield"),
+                new NamespacedKey(plugin, "CounterScarf"),
+                new NamespacedKey(plugin, "Bezoar"),
+                new NamespacedKey(plugin, "Blindfold"),
+                new NamespacedKey(plugin, "FastClock"),
+                new NamespacedKey(plugin, "NightVisionHelmet"),
+                new NamespacedKey(plugin, "Vitamins")
+        );
+
+        HardmodeRecipes = List.of(
+                new NamespacedKey(plugin, "NeptuneShell"),
+                new NamespacedKey(plugin, "AvengerEmblem")
+        );
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event){
+        event.getPlayer().discoverRecipes(preHardmodeRecipes);
+        if(worldInstance.getHardmode()){
+            event.getPlayer().discoverRecipes(HardmodeRecipes);
+        }
     }
 
     public void registerRecipes() {
@@ -38,12 +76,14 @@ public class AccessoryRecipeManager {
         registerNightVisionHelmetRecipe();
     }
 
+
     private void registerAgletRecipe(){
         ItemStack aglet=Aglet.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "aglet");
         ShapedRecipe recipe = new ShapedRecipe(key, aglet);
         recipe.shape("CCC","C C","CCC");
         recipe.setIngredient('C', Material.COPPER_BLOCK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -53,6 +93,7 @@ public class AccessoryRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, skull);
         recipe.shape("OOO","OOO"," O ");
         recipe.setIngredient('O', Material.OBSIDIAN);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -63,6 +104,7 @@ public class AccessoryRecipeManager {
         recipe.shape(" W "," S "," S ");
         recipe.setIngredient('W', Material.RED_WOOL);
         recipe.setIngredient('S', Material.STRING);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -70,8 +112,10 @@ public class AccessoryRecipeManager {
         ItemStack band=BandOfRegeneration.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "band");
         ShapedRecipe recipe = new ShapedRecipe(key, band);
-        recipe.shape("RRR","R R","RRR");
+        recipe.shape("RGR","R R","RRR");
         recipe.setIngredient('R', Material.REDSTONE_BLOCK);
+        recipe.setIngredient('G', Material.GHAST_TEAR);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -81,6 +125,7 @@ public class AccessoryRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, horseshoe);
         recipe.shape("G G","G G","GGG");
         recipe.setIngredient('G', Material.GOLD_BLOCK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -92,6 +137,7 @@ public class AccessoryRecipeManager {
         recipe.setIngredient('L', Material.LAPIS_BLOCK);
         recipe.setIngredient('S', Material.SHIELD);
         recipe.setIngredient('N', Material.NETHERITE_INGOT);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
     private void registerCounterScarfRecipe(){
@@ -102,6 +148,7 @@ public class AccessoryRecipeManager {
         recipe.setIngredient('E', Material.ENDER_PEARL);
         recipe.setIngredient('R', Material.RED_WOOL);
         recipe.setIngredient('B', Material.ENDER_EYE);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
     private void registerNeptuneShellRecipe(){
@@ -115,6 +162,7 @@ public class AccessoryRecipeManager {
         recipe.setIngredient('H', Material.HORN_CORAL_BLOCK);
         recipe.setIngredient('F', Material.FIRE_CORAL_BLOCK);
         recipe.setIngredient('U', Material.BUBBLE_CORAL_BLOCK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
     private void registerBezoarRecipe(){
@@ -124,6 +172,7 @@ public class AccessoryRecipeManager {
         recipe.shape(" M ","MSM"," M ");
         recipe.setIngredient('M', Material.MOSS_BLOCK);
         recipe.setIngredient('S', Material.SPIDER_EYE);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
     private void registerBlindfoldRecipe(){
@@ -134,6 +183,7 @@ public class AccessoryRecipeManager {
         recipe.setIngredient('S', Material.STRING);
         recipe.setIngredient('W', Material.WHITE_WOOL);
         recipe.setIngredient('E', Material.ECHO_SHARD);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -144,6 +194,7 @@ public class AccessoryRecipeManager {
         recipe.shape("SSS","SCS","SSS");
         recipe.setIngredient('S', Material.SUGAR);
         recipe.setIngredient('C', Material.CLOCK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -160,6 +211,7 @@ public class AccessoryRecipeManager {
         recipe.addIngredient(Material.BEETROOT);
         recipe.addIngredient(Material.MILK_BUCKET);
         recipe.addIngredient(Material.HONEY_BOTTLE);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -170,6 +222,7 @@ public class AccessoryRecipeManager {
         recipe.shape("DDD","DCD","   ");
         recipe.setIngredient('D', Material.DIAMOND);
         recipe.setIngredient('C', Material.GOLDEN_CARROT);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -181,6 +234,7 @@ public class AccessoryRecipeManager {
         recipe1.addIngredient(new RecipeChoice.ExactChoice(SoulOfMight.getItem(plugin)));
         recipe1.addIngredient(new RecipeChoice.ExactChoice(SoulOfFright.getItem(plugin)));
         recipe1.addIngredient(new RecipeChoice.ExactChoice(SoulOfSight.getItem(plugin)));
+        recipe1.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe1);
 
         NamespacedKey key2 = new NamespacedKey(plugin, "AvengerEmblem2");
@@ -189,6 +243,7 @@ public class AccessoryRecipeManager {
         recipe2.addIngredient(new RecipeChoice.ExactChoice(SoulOfMight.getItem(plugin)));
         recipe2.addIngredient(new RecipeChoice.ExactChoice(SoulOfFright.getItem(plugin)));
         recipe2.addIngredient(new RecipeChoice.ExactChoice(SoulOfSight.getItem(plugin)));
+        recipe2.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe2);
 
         NamespacedKey key3 = new NamespacedKey(plugin, "AvengerEmblem3");
@@ -197,6 +252,7 @@ public class AccessoryRecipeManager {
         recipe3.addIngredient(new RecipeChoice.ExactChoice(SoulOfMight.getItem(plugin)));
         recipe3.addIngredient(new RecipeChoice.ExactChoice(SoulOfFright.getItem(plugin)));
         recipe3.addIngredient(new RecipeChoice.ExactChoice(SoulOfSight.getItem(plugin)));
+        recipe3.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe3);
     }
 

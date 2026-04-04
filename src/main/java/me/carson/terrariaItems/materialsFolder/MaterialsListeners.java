@@ -2,6 +2,8 @@ package me.carson.terrariaItems.materialsFolder;
 
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.ClockworkAssaultRifle;
+import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.LaserRifle;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.BreakerBlade;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -51,8 +53,13 @@ public class MaterialsListeners implements Listener {
             custom.setAmount(drops);
             event.getDrops().add(custom);
         }else {
-            if(Math.random()<0.25){
+            double rand= Math.random();
+            if(rand<0.33){
                 event.getDrops().add(BreakerBlade.getItem(plugin));
+            }else if (rand<0.66){
+                event.getDrops().add(LaserRifle.getItem(plugin));
+            }else{
+                event.getDrops().add(ClockworkAssaultRifle.getItem(plugin));
             }
         }
     }

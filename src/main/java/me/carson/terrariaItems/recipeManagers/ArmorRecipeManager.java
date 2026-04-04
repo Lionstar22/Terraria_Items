@@ -10,6 +10,7 @@ import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroBreastplate;
 import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroGreaves;
 import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroHelmet;
 import me.carson.terrariaItems.armourFolder.armors.necroArmor.NecroLeggings;
+import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.miscFolder.hats.GoldenCrown;
 import me.carson.terrariaItems.armourFolder.armors.cactusArmor.CactusBoots;
@@ -22,18 +23,81 @@ import me.carson.terrariaItems.armourFolder.armors.shadowArmor.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.inventory.recipe.CraftingBookCategory;
 import org.bukkit.plugin.Plugin;
 
-public class ArmorRecipeManager {
+import java.util.List;
+
+public class ArmorRecipeManager implements Listener {
 
     private final Plugin plugin;
+    private final List<NamespacedKey> preHardmodeRecipes;
+    private final List<NamespacedKey> HardmodeRecipes;
+    private final WorldDataHandler worldInstance=WorldDataHandler.getInstance();
 
     public ArmorRecipeManager(Plugin plugin) {
         this.plugin = plugin;
+        Bukkit.getPluginManager().registerEvents(this, plugin);
+
+        preHardmodeRecipes = List.of(
+                new NamespacedKey(plugin, "GoldenCrown"),
+                new NamespacedKey(plugin, "ShadowHelmet"),
+                new NamespacedKey(plugin, "ShadowScalemail"),
+                new NamespacedKey(plugin, "ShadowLeggings"),
+                new NamespacedKey(plugin, "ShadowGreaves"),
+                new NamespacedKey(plugin, "MoltenHelmet"),
+                new NamespacedKey(plugin, "MoltenChestplate"),
+                new NamespacedKey(plugin, "MoltenLeggings"),
+                new NamespacedKey(plugin, "MoltenBoots"),
+                new NamespacedKey(plugin, "CactusHelmet"),
+                new NamespacedKey(plugin, "CactusChestplate"),
+                new NamespacedKey(plugin, "CactusLeggings"),
+                new NamespacedKey(plugin, "CactusHelmet"),
+                new NamespacedKey(plugin, "JungleHat"),
+                new NamespacedKey(plugin, "JungleShirt"),
+                new NamespacedKey(plugin, "JungleLeggings"),
+                new NamespacedKey(plugin, "JunglePants"),
+                new NamespacedKey(plugin, "NecroHelmet"),
+                new NamespacedKey(plugin, "NecroBreastplate"),
+                new NamespacedKey(plugin, "NecroLeggings"),
+                new NamespacedKey(plugin, "NecroGreaves")
+        );
+
+        HardmodeRecipes = List.of(
+                new NamespacedKey(plugin, "HallowedMask"),
+                new NamespacedKey(plugin, "HallowedHelmet"),
+                new NamespacedKey(plugin, "HallowedHeadgear"),
+                new NamespacedKey(plugin, "HallowedChestplate"),
+                new NamespacedKey(plugin, "HallowedLeggings"),
+                new NamespacedKey(plugin, "HallowedBoots"),
+                new NamespacedKey(plugin, "HallowedElytra"),
+                new NamespacedKey(plugin, "FrostHelmet"),
+                new NamespacedKey(plugin, "FrostBreastplate"),
+                new NamespacedKey(plugin, "FrostLeggings"),
+                new NamespacedKey(plugin, "FrostBoots"),
+                new NamespacedKey(plugin, "FrostElytra"),
+                new NamespacedKey(plugin, "ForbiddenMask"),
+                new NamespacedKey(plugin, "ForbiddenRobes"),
+                new NamespacedKey(plugin, "ForbiddenLeggings"),
+                new NamespacedKey(plugin, "ForbiddenTreads"),
+                new NamespacedKey(plugin, "ForbiddenElytra"),
+                new NamespacedKey(plugin, "AvengerEmblem")
+        );
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event){
+        event.getPlayer().discoverRecipes(preHardmodeRecipes);
+        if(worldInstance.getHardmode()){
+            event.getPlayer().discoverRecipes(HardmodeRecipes);
+        }
     }
 
     public void registerRecipes() {
@@ -85,6 +149,7 @@ public class ArmorRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, helmet);
         recipe.shape("DDD","D D","   ");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -94,6 +159,7 @@ public class ArmorRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, scalemail);
         recipe.shape("D D","DDD","DDD");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -103,6 +169,7 @@ public class ArmorRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, leggings);
         recipe.shape("DDD","D D","D D");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -112,6 +179,7 @@ public class ArmorRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, greaves);
         recipe.shape("   ","D D","D D");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -122,6 +190,7 @@ public class ArmorRecipeManager {
         recipe.shape(" D ","DED"," D ");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
         recipe.setIngredient('E',Material.ELYTRA);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -131,6 +200,7 @@ public class ArmorRecipeManager {
         ShapelessRecipe recipe = new ShapelessRecipe(key,helm);
         recipe.addIngredient(Material.DIAMOND_HELMET);
         recipe.addIngredient(new RecipeChoice.ExactChoice(HellstoneBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -140,6 +210,7 @@ public class ArmorRecipeManager {
         ShapelessRecipe recipe = new ShapelessRecipe(key,chestplate);
         recipe.addIngredient(Material.DIAMOND_CHESTPLATE);
         recipe.addIngredient(new RecipeChoice.ExactChoice(HellstoneBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -149,6 +220,7 @@ public class ArmorRecipeManager {
         ShapelessRecipe recipe = new ShapelessRecipe(key,leggings);
         recipe.addIngredient(Material.DIAMOND_LEGGINGS);
         recipe.addIngredient(new RecipeChoice.ExactChoice(HellstoneBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -158,6 +230,7 @@ public class ArmorRecipeManager {
         ShapelessRecipe recipe = new ShapelessRecipe(key,boots);
         recipe.addIngredient(Material.DIAMOND_BOOTS);
         recipe.addIngredient(new RecipeChoice.ExactChoice( HellstoneBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -167,6 +240,7 @@ public class ArmorRecipeManager {
         ShapelessRecipe recipe = new ShapelessRecipe(key,elytra);
         recipe.addIngredient(Material.ELYTRA);
         recipe.addIngredient(new RecipeChoice.ExactChoice( HellstoneBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -177,6 +251,7 @@ public class ArmorRecipeManager {
         recipe.shape("HHH","HBH","   ");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         recipe.setIngredient('B', Material.BLAZE_POWDER);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -187,6 +262,7 @@ public class ArmorRecipeManager {
         recipe.shape("HHH","HAH","   ");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         recipe.setIngredient('A', Material.ARROW);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -197,7 +273,9 @@ public class ArmorRecipeManager {
         recipe.shape("HHH","HEH","   ");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         recipe.setIngredient('E', Material.ENDER_PEARL);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerHallowedChestplateRecipe(){
@@ -206,7 +284,9 @@ public class ArmorRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("H H","HHH","HHH");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerHallowedLeggingsRecipe(){
@@ -215,7 +295,9 @@ public class ArmorRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("HHH","H H","H H");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerHallowedBootsRecipe(){
@@ -224,7 +306,9 @@ public class ArmorRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","H H","H H");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerHallowedElytraRecipe(){
@@ -233,8 +317,10 @@ public class ArmorRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" H ","HEH"," H ");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         recipe.setIngredient('E', Material.ELYTRA);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerCactusHelmetRecipe(){
@@ -243,7 +329,9 @@ public class ArmorRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("CCC","C C","   ");
         recipe.setIngredient('C', Material.CACTUS);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerCactusChestplateRecipe(){
@@ -252,7 +340,9 @@ public class ArmorRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("C C","CCC","CCC");
         recipe.setIngredient('C', Material.CACTUS);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerCactusLeggingsRecipe(){
@@ -261,7 +351,9 @@ public class ArmorRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("CCC","C C","C C");
         recipe.setIngredient('C', Material.CACTUS);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerCactusBootsRecipe(){
@@ -270,7 +362,9 @@ public class ArmorRecipeManager {
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","C C","C C");
         recipe.setIngredient('C', Material.CACTUS);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerGoldenCrownRecipe(){
@@ -280,7 +374,9 @@ public class ArmorRecipeManager {
         recipe.shape("GGG","GRG","   ");
         recipe.setIngredient('G', Material.GOLD_INGOT);
         recipe.setIngredient('R', new RecipeChoice.ExactChoice(Ruby.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerJungleHatRecipe(){
@@ -291,7 +387,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('B', Material.BAMBOO);
         recipe.setIngredient('I', Material.IRON_INGOT);
         recipe.setIngredient('V', Material.TWISTING_VINES);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerJungleShirtRecipe(){
@@ -303,7 +401,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('I', Material.IRON_INGOT);
         recipe.setIngredient('V', Material.TWISTING_VINES);
         recipe.setIngredient('C', Material.COCOA_BEANS);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerJungleLeggingsRecipe(){
@@ -314,7 +414,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('B', Material.BAMBOO);
         recipe.setIngredient('I', Material.IRON_INGOT);
         recipe.setIngredient('V', Material.TWISTING_VINES);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerJunglePantsRecipe(){
@@ -324,7 +426,9 @@ public class ArmorRecipeManager {
         recipe.shape("   ","V V","B B");
         recipe.setIngredient('B', Material.BAMBOO);
         recipe.setIngredient('V', Material.TWISTING_VINES);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerNecroHelmetRecipe(){
@@ -335,7 +439,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('B', Material.BONE);
         recipe.setIngredient('C', Material.COBWEB);
         recipe.setIngredient('S', Material.SOUL_SAND);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerNecroBreastplateRecipe(){
@@ -346,7 +452,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('B', Material.BONE);
         recipe.setIngredient('C', Material.COBWEB);
         recipe.setIngredient('S', Material.SOUL_SAND);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerNecroLeggingsRecipe(){
@@ -357,7 +465,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('B', Material.BONE);
         recipe.setIngredient('C', Material.COBWEB);
         recipe.setIngredient('S', Material.SOUL_SAND);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerNecroGreavesRecipe(){
@@ -367,7 +477,9 @@ public class ArmorRecipeManager {
         recipe.shape("   ","S S","B B");
         recipe.setIngredient('B', Material.BONE);
         recipe.setIngredient('S', Material.SOUL_SAND);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerForbiddenMaskRecipe(){
@@ -378,7 +490,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('B', Material.BLACK_WOOL);
         recipe.setIngredient('G', Material.GOLD_INGOT);
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerForbiddenRobesRecipe(){
@@ -389,7 +503,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('B', Material.BLACK_WOOL);
         recipe.setIngredient('G', Material.GOLD_INGOT);
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerForbiddenLeggingsRecipe(){
@@ -400,7 +516,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('B', Material.BLACK_WOOL);
         recipe.setIngredient('G', Material.GOLD_INGOT);
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
     private void registerForbiddenTreadsRecipe(){
         ItemStack item= ForbiddenTreads.getItem(plugin);
@@ -410,7 +528,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('B', Material.BLACK_WOOL);
         recipe.setIngredient('G', Material.GOLD_INGOT);
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerForbiddenElytraRecipe(){
@@ -419,7 +539,9 @@ public class ArmorRecipeManager {
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
         recipe.addIngredient(Material.ELYTRA);
         recipe.addIngredient(new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerFrostHelmetRecipe(){
@@ -430,7 +552,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('D', Material.DIAMOND);
         recipe.setIngredient('I', Material.ICE);
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerFrostBreastplateRecipe(){
@@ -441,7 +565,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('D', Material.DIAMOND);
         recipe.setIngredient('I', Material.ICE);
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerFrostLeggingsRecipe(){
@@ -452,7 +578,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('D', Material.DIAMOND);
         recipe.setIngredient('I', Material.ICE);
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerFrostBootsRecipe(){
@@ -463,7 +591,9 @@ public class ArmorRecipeManager {
         recipe.setIngredient('D', Material.DIAMOND);
         recipe.setIngredient('I', Material.ICE);
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
     private void registerFrostElytraRecipe(){
@@ -472,7 +602,9 @@ public class ArmorRecipeManager {
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
         recipe.addIngredient(Material.ELYTRA);
         recipe.addIngredient(new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
+        
     }
 
 }

@@ -19,7 +19,7 @@ import java.util.List;
 public class BreakerBlade extends Sword {
 
     public BreakerBlade(Plugin plugin) {
-        super(plugin,"Breaker Blade","#FF9696", Material.NETHERITE_SWORD,"breaker_blade","BreakerBlade",0,0,16,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Deals more damage to unhurt enemies",ChatColor.GRAY+"16 Damage, +3 Range")));
+        super(plugin,"Breaker Blade","#FF9696", Material.NETHERITE_SWORD,"breaker_blade","BreakerBlade",0,0,14,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Deals more damage to unhurt enemies",ChatColor.GRAY+"14 Damage, +3 Range")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -27,7 +27,7 @@ public class BreakerBlade extends Sword {
         ItemMeta meta= item.getItemMeta();
         meta.addAttributeModifier(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(plugin,"speed"),-3.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND));
         meta.addAttributeModifier(Attribute.ENTITY_INTERACTION_RANGE, new AttributeModifier(new NamespacedKey(plugin,"range"),3.0, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.MAINHAND));
-        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),15, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.MAINHAND));
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),13, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.MAINHAND));
         item.setItemMeta(meta);
         return item;
     }

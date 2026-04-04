@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.recipeManagers;
 
+import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfFright;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfLight;
@@ -12,15 +13,70 @@ import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.*;
+import org.bukkit.inventory.recipe.CraftingBookCategory;
 import org.bukkit.plugin.Plugin;
 
-public class WeaponRecipeManager {
+import java.util.List;
+
+public class WeaponRecipeManager implements Listener {
 
     private final Plugin plugin;
+    private final List<NamespacedKey> preHardmodeRecipes;
+    private final List<NamespacedKey> HardmodeRecipes;
+    private final WorldDataHandler worldInstance=WorldDataHandler.getInstance();
 
     public WeaponRecipeManager(Plugin plugin) {
         this.plugin = plugin;
+        Bukkit.getPluginManager().registerEvents(this, plugin);
+
+        preHardmodeRecipes = List.of(
+                new NamespacedKey(plugin, "LightsBane"),
+                new NamespacedKey(plugin, "Volcano"),
+                new NamespacedKey(plugin, "MoltenFury"),
+                new NamespacedKey(plugin, "SnowballCannon"),
+                new NamespacedKey(plugin, "BladeOfGrass"),
+                new NamespacedKey(plugin, "Blowpipe"),
+                new NamespacedKey(plugin, "Handgun"),
+                new NamespacedKey(plugin, "Needler"),
+                new NamespacedKey(plugin, "PhoenixBlaster"),
+                new NamespacedKey(plugin, "WaterBolt"),
+                new NamespacedKey(plugin, "AmethystStaff"),
+                new NamespacedKey(plugin, "RubyStaff"),
+                new NamespacedKey(plugin, "IcicleStaff"),
+                new NamespacedKey(plugin, "StarCannon"),
+                new NamespacedKey(plugin, "HoarfrostBow"),
+                new NamespacedKey(plugin, "SandGun"),
+                new NamespacedKey(plugin, "TaintedBlade"),
+                new NamespacedKey(plugin, "IceBlade")
+        );
+
+        HardmodeRecipes = List.of(
+                new NamespacedKey(plugin, "Excalibur"),
+                new NamespacedKey(plugin, "HallowedRepeater"),
+                new NamespacedKey(plugin, "SniperRifle"),
+                new NamespacedKey(plugin, "Megashark"),
+                new NamespacedKey(plugin, "ChristmasTreeSword"),
+                new NamespacedKey(plugin, "BubbleGun"),
+                new NamespacedKey(plugin, "MeteorStaff"),
+                new NamespacedKey(plugin, "SuperStarShooter"),
+                new NamespacedKey(plugin, "MagicalHarp"),
+                new NamespacedKey(plugin, "CrystalStorm"),
+                new NamespacedKey(plugin, "VampireKnives"),
+                new NamespacedKey(plugin, "CausticEdge"),
+                new NamespacedKey(plugin, "OnyxBlaster")
+        );
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event){
+        event.getPlayer().discoverRecipes(preHardmodeRecipes);
+        if(worldInstance.getHardmode()){
+            event.getPlayer().discoverRecipes(HardmodeRecipes);
+        }
     }
 
     public void registerRecipes() {
@@ -67,6 +123,7 @@ public class WeaponRecipeManager {
         recipe.shape(" D "," D "," S ");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice( DemoniteBar.getItem(plugin)));
         recipe.setIngredient('S',Material.STICK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -74,10 +131,11 @@ public class WeaponRecipeManager {
         ItemStack item= DaedalusStormbow.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "DaedalusStormbow");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
-        recipe.shape("FFF","SBS","FFF");
+        recipe.shape("FFF","LBL","FFF");
         recipe.setIngredient('B',Material.BOW);
         recipe.setIngredient('F',Material.FEATHER);
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice( SoulOfMight.getItem(plugin)));
+        recipe.setIngredient('L', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -88,6 +146,7 @@ public class WeaponRecipeManager {
         ShapelessRecipe recipe = new ShapelessRecipe(key, volcano);
         recipe.addIngredient(Material.DIAMOND_SWORD);
         recipe.addIngredient(new RecipeChoice.ExactChoice( HellstoneBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -99,6 +158,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('W',Material.STICK);
         recipe.setIngredient('N', new RecipeChoice.ExactChoice( HellstoneBar.getItem(plugin)));
         recipe.setIngredient('S',Material.STRING);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -109,6 +169,7 @@ public class WeaponRecipeManager {
         recipe.shape(" H "," H "," S ");
         recipe.setIngredient('S',Material.STICK);
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
     private void registerHallowedRepeaterRecipe(){
@@ -120,6 +181,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         recipe.setIngredient('T', Material.STRING);
         recipe.setIngredient('K', Material.TRIPWIRE_HOOK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -132,6 +194,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('C', Material.CROSSBOW);
         recipe.setIngredient('B', Material.BLUE_ICE);
         recipe.setIngredient('I', Material.ICE);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -143,6 +206,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('B',Material.BAMBOO);
         recipe.setIngredient('S',Material.SPIDER_EYE);
         recipe.setIngredient('I',Material.IRON_SWORD);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -153,6 +217,7 @@ public class WeaponRecipeManager {
         recipe.shape("CCC","CIC","CCC");
         recipe.setIngredient('C',Material.SNOW_BLOCK);
         recipe.setIngredient('I',Material.IRON_SWORD);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -162,6 +227,7 @@ public class WeaponRecipeManager {
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("S S","S S","S S");
         recipe.setIngredient('S',Material.STICK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -173,6 +239,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('F',Material.COD);
         recipe.setIngredient('B',Material.IRON_BLOCK);
         recipe.setIngredient('I',Material.IRON_INGOT);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -185,6 +252,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('B',Material.IRON_BLOCK);
         recipe.setIngredient('I',Material.IRON_INGOT);
         recipe.setIngredient('A',Material.IRON_BARS);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -196,6 +264,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(SoulOfMight.getItem(plugin)));
         recipe.setIngredient('M', new RecipeChoice.ExactChoice(Minishark.getItem(plugin)));
         recipe.setIngredient('G', new RecipeChoice.ExactChoice(IllegalGunParts.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -208,6 +277,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('B',Material.BAMBOO_PLANKS);
         recipe.setIngredient('E',Material.SPIDER_EYE);
         recipe.setIngredient('L',Material.JUNGLE_LEAVES);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -217,6 +287,7 @@ public class WeaponRecipeManager {
         ShapelessRecipe recipe =new ShapelessRecipe(key,item);
         recipe.addIngredient(new RecipeChoice.ExactChoice( HellstoneBar.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice( Handgun.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -228,6 +299,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('I',Material.IRON_INGOT);
         recipe.setIngredient('N',Material.NETHER_BRICK);
         recipe.setIngredient('W',Material.OAK_LOG);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -239,6 +311,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('S',Material.SPYGLASS);
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         recipe.setIngredient('G',Material.GREEN_DYE);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -254,6 +327,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('B',Material.YELLOW_STAINED_GLASS);
         recipe.setIngredient('R',Material.RED_STAINED_GLASS);
         recipe.setIngredient('L',Material.SPRUCE_LEAVES);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -264,6 +338,7 @@ public class WeaponRecipeManager {
         recipe.shape("  A"," C ","C  ");
         recipe.setIngredient('A',Material.AMETHYST_SHARD);
         recipe.setIngredient('C',Material.COPPER_INGOT);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
     private void registerRubyStaffRecipe(){
@@ -273,6 +348,7 @@ public class WeaponRecipeManager {
         recipe.shape("  R"," G ","G  ");
         recipe.setIngredient('R', new RecipeChoice.ExactChoice( Ruby.getItem(plugin)));
         recipe.setIngredient('G',Material.GOLD_INGOT);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -283,6 +359,7 @@ public class WeaponRecipeManager {
         recipe.shape("  I"," S ","S  ");
         recipe.setIngredient('I', Material.ICE);
         recipe.setIngredient('S',Material.SNOW_BLOCK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -294,6 +371,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('M', Material.MAGMA_BLOCK);
         recipe.setIngredient('N',Material.NETHERITE_SCRAP);
         recipe.setIngredient('S', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -306,6 +384,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('W',Material.WATER_BUCKET);
         recipe.setIngredient('S',Material.SOUL_SAND);
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -317,6 +396,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('W',Material.WATER_BUCKET);
         recipe.setIngredient('D',Material.DIAMOND);
         recipe.setIngredient('B',Material.BOOK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -328,6 +408,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('S', new RecipeChoice.ExactChoice( FallenStar.getItem(plugin)));
         recipe.setIngredient('C',Material.MAGMA_CREAM);
         recipe.setIngredient('M', new RecipeChoice.ExactChoice( Minishark.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -338,6 +419,7 @@ public class WeaponRecipeManager {
         recipe.shape(" H ","HSH"," H ");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice( StarCannon.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -349,6 +431,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('S', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
         recipe.setIngredient('G',Material.GOLD_INGOT);
         recipe.setIngredient('N',Material.NOTE_BLOCK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -360,6 +443,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('S', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
         recipe.setIngredient('A',Material.AMETHYST_SHARD);
         recipe.setIngredient('B',Material.BOOK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -370,6 +454,7 @@ public class WeaponRecipeManager {
         recipe.shape(" N ","NSN"," N ");
         recipe.setIngredient('N', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice( Shotgun.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -381,6 +466,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('S',Material.STRING);
         recipe.setIngredient('I',Material.ICE);
         recipe.setIngredient('L',Material.SOUL_LANTERN);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -392,6 +478,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('S',Material.SANDSTONE);
         recipe.setIngredient('I',new RecipeChoice.ExactChoice(IllegalGunParts.getItem(plugin)));
         recipe.setIngredient('G',Material.GOLD_INGOT);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -405,6 +492,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('M',Material.GLISTERING_MELON_SLICE);
         recipe.setIngredient('R',Material.REDSTONE);
         recipe.setIngredient('N',Material.NETHERITE_SCRAP);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -418,6 +506,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('W',Material.WARPED_PLANKS);
         recipe.setIngredient('C',Material.CRIMSON_PLANKS);
         recipe.setIngredient('N',Material.NETHERITE_SCRAP);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 
@@ -430,6 +519,7 @@ public class WeaponRecipeManager {
         recipe.setIngredient('N',new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
         recipe.setIngredient('L',new RecipeChoice.ExactChoice(SoulOfLight.getItem(plugin)));
         recipe.setIngredient('E',Material.SPIDER_EYE);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
 }

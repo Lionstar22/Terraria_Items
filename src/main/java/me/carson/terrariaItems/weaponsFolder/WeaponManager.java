@@ -69,6 +69,8 @@ public class WeaponManager implements Listener {
         weaponList.put("CausticEdge",new CausticEdge(plugin));
         weaponList.put("IceSickle",new IceSickle(plugin));
         weaponList.put("BreakerBlade",new BreakerBlade(plugin));
+        weaponList.put("LaserRifle",new LaserRifle(plugin));
+        weaponList.put("ClockworkAssaultRifle",new ClockworkAssaultRifle(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
