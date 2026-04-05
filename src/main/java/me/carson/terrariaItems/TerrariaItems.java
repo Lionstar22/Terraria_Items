@@ -1,6 +1,7 @@
 package me.carson.terrariaItems;
 
-import me.carson.terrariaItems.accesoryFolder.Accessory;
+import com.github.retrooper.packetevents.PacketEvents;
+import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 import me.carson.terrariaItems.accesoryFolder.AccessoryListeners;
 import me.carson.terrariaItems.blocksFolder.CustomBlockListeners;
 import me.carson.terrariaItems.blocksFolder.CustomBlockManager;
@@ -17,23 +18,21 @@ import me.carson.terrariaItems.weaponsFolder.WeaponListeners;
 import me.carson.terrariaItems.weaponsFolder.WeaponManager;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.ItemDisplay;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 public final class TerrariaItems extends JavaPlugin{
 
     @Override
     public void onEnable() {
+
+        PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
+        PacketEvents.getAPI().load();
+        PacketEvents.getAPI().init();
+
         WorldDataHandler.initialize(this);
         PlayerDataHandler.initialize(this);
         MaterialManager.initialize(this);
@@ -90,6 +89,7 @@ public final class TerrariaItems extends JavaPlugin{
     public void onDisable() {
         cleanUpProjectiles();
         PlayerDataHandler.getInstance().save();
+        PacketEvents.getAPI().terminate();
     }
 
     public void cleanUpProjectiles(){

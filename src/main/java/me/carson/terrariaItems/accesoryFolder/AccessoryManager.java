@@ -59,6 +59,7 @@ public class AccessoryManager implements Listener {
         accessoryList.put("AncientChisel",new AncientChisel(plugin));
         accessoryList.put("Flipper",new Flipper(plugin));
         accessoryList.put("MagicQuiver",new MagicQuiver(plugin));
+        accessoryList.put("FeralClaws",new FeralClaws(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
