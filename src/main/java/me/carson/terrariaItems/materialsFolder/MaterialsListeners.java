@@ -40,6 +40,7 @@ public class MaterialsListeners implements Listener {
             custom.setAmount(drops);
             event.getDrops().add(custom);
             worldInstance.setMechWither(true);
+            worldInstance.save();
         }
     }
 
@@ -54,6 +55,7 @@ public class MaterialsListeners implements Listener {
             custom.setAmount(drops);
             event.getDrops().add(custom);
             worldInstance.setMechDragon(true);
+            worldInstance.save();
         }else {
             double rand= Math.random();
             if(rand<0.33){
@@ -76,6 +78,7 @@ public class MaterialsListeners implements Listener {
             custom.setAmount(drops);
             event.getDrops().add(custom);
             worldInstance.setMechWarden(true);
+            worldInstance.save();
         }
     }
 

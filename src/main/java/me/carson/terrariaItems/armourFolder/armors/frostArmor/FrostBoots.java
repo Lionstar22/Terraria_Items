@@ -20,7 +20,7 @@ import java.util.List;
 public class FrostBoots extends Armor {
 
     public FrostBoots(Plugin plugin){
-        super(plugin,"Frost Boots","#FF96FF", Material.NETHERITE_BOOTS,"frost_boots","frost_armor",EquipmentSlot.FEET,"FrostBoots",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased movement speed",ChatColor.GRAY+"10% increased melee speed",ChatColor.GRAY+"+5 Armor")));
+        super(plugin,"Frost Boots","#FF96FF", Material.NETHERITE_BOOTS,"frost_boots","frost_armor",EquipmentSlot.FEET,"FrostBoots",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased movement speed",ChatColor.GRAY+"+0.2 increased attack speed",ChatColor.GRAY+"+5 Armor")));
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -36,12 +36,13 @@ public class FrostBoots extends Armor {
     @Override
     public void activateArmorEffect(Player player) {
         player.setWalkSpeed(player.getWalkSpeed()+0.02f);
-        player.getAttribute(Attribute.ATTACK_SPEED).setBaseValue(player.getAttribute(Attribute.ATTACK_SPEED).getValue()+0.4);
+        player.getAttribute(Attribute.ATTACK_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"frost_boots_attack_speed"),0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+        player.getAttribute(Attribute.ATTACK_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"frost_boots_attack_speed"),0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
-        player.getAttribute(Attribute.ATTACK_SPEED).setBaseValue(Math.max(player.getAttribute(Attribute.ATTACK_SPEED).getValue()-0.4,4));
+        player.getAttribute(Attribute.ATTACK_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"frost_boots_attack_speed"),0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
         player.setWalkSpeed(Math.max(player.getWalkSpeed() - 0.02f, 0.2f));
     }
 }

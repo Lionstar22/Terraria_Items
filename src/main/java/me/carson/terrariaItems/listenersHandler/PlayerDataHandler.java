@@ -116,8 +116,6 @@ public class PlayerDataHandler implements Listener {
         }
     }
 
-
-
     public static void initialize(JavaPlugin plugin) {
         instance = new PlayerDataHandler(plugin);
     }

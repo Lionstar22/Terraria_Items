@@ -52,11 +52,13 @@ public class ResetHandler implements Listener {
         for (ItemStack armor : player.getInventory().getArmorContents()) {
             if(armorInstance.getArmorPiece(armor)!=null){armorInstance.getArmorPiece(armor).activateArmorEffect(player);}
         }
+        playerDataHandler.save();
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            playerDataHandler.save();
             resetBonuses(event.getPlayer());
         }, 5L);
     }

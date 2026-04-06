@@ -24,6 +24,7 @@ public class LesserManaPotion extends Tool {
         manaManagerInstance.addMana(id, 50);
         manaManagerInstance.updateManaBar(player);
         player.getInventory().removeItem(getItem(plugin));
+        player.getWorld().playSound(player.getLocation(), "terraria:potion_drink", 0.75f, 1f);
     }
 
     @Override
