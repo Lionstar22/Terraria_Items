@@ -39,6 +39,7 @@ public class MaterialsListeners implements Listener {
             ItemStack custom = SoulOfFright.getItem(plugin);
             custom.setAmount(drops);
             event.getDrops().add(custom);
+            worldInstance.setMechWither(true);
         }
     }
 
@@ -52,6 +53,7 @@ public class MaterialsListeners implements Listener {
             ItemStack custom = SoulOfMight.getItem(plugin);
             custom.setAmount(drops);
             event.getDrops().add(custom);
+            worldInstance.setMechDragon(true);
         }else {
             double rand= Math.random();
             if(rand<0.33){
@@ -73,6 +75,7 @@ public class MaterialsListeners implements Listener {
             ItemStack custom = SoulOfSight.getItem(plugin);
             custom.setAmount(drops);
             event.getDrops().add(custom);
+            worldInstance.setMechWarden(true);
         }
     }
 

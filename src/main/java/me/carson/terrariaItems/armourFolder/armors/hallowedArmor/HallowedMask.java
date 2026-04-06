@@ -27,21 +27,22 @@ import java.util.Set;
 public class HallowedMask extends Armor{
 
     public HallowedMask(Plugin plugin){
-        super(plugin,"Hallowed Mask","#FF96FF", Material.NETHERITE_HELMET,"hallowed_mask","hallowed_armor", EquipmentSlot.HEAD,"HallowedMask",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased melee damage and attack speed",ChatColor.GRAY+"10% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds",ChatColor.GRAY+"+20 Armor")));
+        super(plugin,"Hallowed Mask","#FF96FF", Material.NETHERITE_HELMET,"hallowed_mask","hallowed_armor", EquipmentSlot.HEAD,"HallowedMask",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased melee damage and +0.2 attack speed",ChatColor.GRAY+"10% increased critical strike chance",ChatColor.GRAY+"Set Bonus: Dodge every 30 seconds",ChatColor.GRAY+"+20 Armor")));
     }
 
     @Override
     public void activateArmorEffect(Player player) {
         playerInstance.addBonusMelee(player.getUniqueId(),0.1);
         playerInstance.addCritChance(player.getUniqueId(),0.1);
-        player.getAttribute(Attribute.ATTACK_SPEED).setBaseValue(player.getAttribute(Attribute.ATTACK_SPEED).getValue()+0.4);
+        player.getAttribute(Attribute.ATTACK_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"hallowed_mask_attack_speed"),0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+        player.getAttribute(Attribute.ATTACK_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"hallowed_mask_attack_speed"),0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
         playerInstance.subtractBonusMelee(player.getUniqueId(),0.1);
         playerInstance.subtractCritChance(player.getUniqueId(),0.1);
-        player.getAttribute(Attribute.ATTACK_SPEED).setBaseValue(Math.max(player.getAttribute(Attribute.ATTACK_SPEED).getValue()-0.4,4));
+        player.getAttribute(Attribute.ATTACK_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"feral_claws_attack_speed"),0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
     }
 
     public static ItemStack getItem(Plugin plugin) {

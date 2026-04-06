@@ -62,20 +62,6 @@ public abstract class Accessory {
         return item;
     }
 
-    public void fixItemGlitch(Player player) {
-        Location loc = player.getLocation();
-        GameMode gm = player.getGameMode();
-
-        // Spoof a respawn by toggling gamemode, which forces client to re-sync all attributes
-        GameMode temp = (gm == GameMode.SURVIVAL) ? GameMode.ADVENTURE : GameMode.SURVIVAL;
-        player.setGameMode(temp);
-
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            player.setGameMode(gm);
-            player.teleport(loc);
-        }, 1L);
-    }
-
     public abstract void activateEffect(Player player);
 
     public abstract void deactivateEffect(Player player);

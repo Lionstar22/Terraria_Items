@@ -2,6 +2,7 @@ package me.carson.terrariaItems.toolFolder.tools.crates;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.BlizzardInABottle;
 import me.carson.terrariaItems.toolFolder.Tool;
+import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.SnowballCannon;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.IceBlade;
 import org.bukkit.ChatColor;
@@ -68,11 +69,17 @@ public class FrozenCrate extends Tool {
             player.getWorld().dropItemNaturally(player.getLocation(), potion);
         }
         if(Math.random()<0.50){//Health Potion loot table
-            ItemStack potion = new ItemStack(Material.POTION);
-            PotionMeta meta = (PotionMeta) potion.getItemMeta();
-            meta.setBasePotionType(PotionType.HEALING);
-            potion.setItemMeta(meta);
-            player.getWorld().dropItemNaturally(player.getLocation(), potion);
+            if(Math.random()<0.5){
+                ItemStack potion = new ItemStack(Material.POTION);
+                PotionMeta meta = (PotionMeta) potion.getItemMeta();
+                meta.setBasePotionType(PotionType.HEALING);
+                potion.setItemMeta(meta);
+                player.getWorld().dropItemNaturally(player.getLocation(),potion);
+            }else{
+                ItemStack potion = ManaPotion.getItem(plugin);
+                potion.setAmount(ThreadLocalRandom.current().nextInt(5, 18));
+                player.getWorld().dropItemNaturally(player.getLocation(),potion);
+            }
         }
         if(Math.random()<0.05){//Misc Loot table
             player.getWorld().dropItemNaturally(player.getLocation(),new ItemStack(Material.COD));

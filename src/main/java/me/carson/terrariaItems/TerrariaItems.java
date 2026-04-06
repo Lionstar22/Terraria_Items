@@ -29,9 +29,15 @@ public final class TerrariaItems extends JavaPlugin{
     @Override
     public void onEnable() {
 
-        PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
-        PacketEvents.getAPI().load();
-        PacketEvents.getAPI().init();
+        if (Bukkit.getPluginManager().getPlugin("PacketEvents") != null) {
+            // Use the standalone PacketEvents plugin
+            PacketEvents.getAPI().init();
+        } else {
+            // Use our shaded version
+            PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
+            PacketEvents.getAPI().load();
+            PacketEvents.getAPI().init();
+        }
 
         WorldDataHandler.initialize(this);
         PlayerDataHandler.initialize(this);
@@ -89,7 +95,9 @@ public final class TerrariaItems extends JavaPlugin{
     public void onDisable() {
         cleanUpProjectiles();
         PlayerDataHandler.getInstance().save();
-        PacketEvents.getAPI().terminate();
+        if (Bukkit.getPluginManager().getPlugin("PacketEvents") == null) {
+            PacketEvents.getAPI().terminate();
+        }
     }
 
     public void cleanUpProjectiles(){

@@ -44,8 +44,8 @@ public class ToolRecipeManager implements Listener {
 
         preHardmodeRecipes = List.of(
                 new NamespacedKey(plugin, "MagicMirror"),
-                new NamespacedKey(plugin, "MomentumCapacitor"),
-                new NamespacedKey(plugin, "RodOfDiscord"),
+                //new NamespacedKey(plugin, "MomentumCapacitor"),
+                //new NamespacedKey(plugin, "RodOfDiscord"),
                 new NamespacedKey(plugin, "LifeCrystal"),
                 new NamespacedKey(plugin, "ManaCrystal"),
                 new NamespacedKey(plugin, "ManaPotion1"),
@@ -73,8 +73,8 @@ public class ToolRecipeManager implements Listener {
     public void registerRecipes() {
         registerMirrorRecipe();
         registerCosmolightRecipe();
-        registerCapacitorRecipe();
-        registerRodRecipe();
+        //registerCapacitorRecipe();
+        //registerRodRecipe();
         registerLifeCrystalRecipe();
         registerManaCrystalRecipe();
         registerTorrentialTearRecipe();

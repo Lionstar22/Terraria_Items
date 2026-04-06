@@ -37,6 +37,21 @@ public class WorldDataHandler implements Listener {
         config.set(".hardmode",set);
     }
 
+    public Boolean getMechDragon(){return config.getBoolean(".mechDragon",false);}
+    public void setMechDragon(Boolean set){
+        config.set(".mechDragon",set);
+    }
+
+    public Boolean getMechWither(){return config.getBoolean(".mechWither",false);}
+    public void setMechWither(Boolean set){
+        config.set(".mechWither",set);
+    }
+
+    public Boolean getMechWarden(){return config.getBoolean(".mechWarden",false);}
+    public void setMechWarden(Boolean set){
+        config.set(".mechWarden",set);
+    }
+
     public void save() {
         try {
             config.save(file);

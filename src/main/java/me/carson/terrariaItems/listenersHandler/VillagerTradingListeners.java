@@ -1,6 +1,9 @@
 package me.carson.terrariaItems.listenersHandler;
 
+import me.carson.terrariaItems.accesoryFolder.accessories.CounterScarf;
 import me.carson.terrariaItems.materialsFolder.materials.IllegalGunParts;
+import me.carson.terrariaItems.toolFolder.tools.MomentumCapacitor;
+import me.carson.terrariaItems.toolFolder.tools.RodOfDiscord;
 import me.carson.terrariaItems.toolFolder.tools.potions.GreaterManaPotion;
 import me.carson.terrariaItems.toolFolder.tools.potions.LesserManaPotion;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.PulseBow;
@@ -60,8 +63,16 @@ public class VillagerTradingListeners implements Listener {
 
             if(worldInstance.getHardmode()){
                 recipes.add(addGreaterManaPotion());
+                recipes.add(addRodOfDiscord());
             }
+        } else if (villager.getProfession() == Villager.Profession.TOOLSMITH) {
+            if(worldInstance.getHardmode()&& worldInstance.getMechDragon()&& worldInstance.getMechWither()&& worldInstance.getMechWarden()){
+                recipes.add(addMomentumCapacitor());
+            }
+        }else if (villager.getProfession() == Villager.Profession.LEATHERWORKER) {
+            recipes.add(addCounterScarf());
         }
+
 
         villager.setRecipes(recipes);
     }
@@ -172,6 +183,33 @@ public class VillagerTradingListeners implements Listener {
                 0, 999, true, 1, 0.05f
         );
         recipe.addIngredient(new ItemStack(Material.GOLD_NUGGET, 5));
+        return recipe;
+    }
+
+    public MerchantRecipe addMomentumCapacitor(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                MomentumCapacitor.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.EMERALD, 50));
+        return recipe;
+    }
+
+    public MerchantRecipe addRodOfDiscord(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                RodOfDiscord.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.EMERALD, 64));
+        return recipe;
+    }
+
+    public MerchantRecipe addCounterScarf(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                CounterScarf.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.EMERALD, 20));
         return recipe;
     }
 }

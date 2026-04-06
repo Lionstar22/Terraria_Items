@@ -4,6 +4,7 @@ import me.carson.terrariaItems.accesoryFolder.accessories.AncientChisel;
 import me.carson.terrariaItems.accesoryFolder.accessories.LuckyHorseshoe;
 import me.carson.terrariaItems.accesoryFolder.accessories.SandstormInABottle;
 import me.carson.terrariaItems.toolFolder.Tool;
+import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.ThunderZapper;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -68,11 +69,17 @@ public class OasisCrate extends Tool {
             player.getWorld().dropItemNaturally(player.getLocation(), potion);
         }
         if(Math.random()<0.50){//Health Potion loot table
-            ItemStack potion = new ItemStack(Material.POTION);
-            PotionMeta meta = (PotionMeta) potion.getItemMeta();
-            meta.setBasePotionType(PotionType.HEALING);
-            potion.setItemMeta(meta);
-            player.getWorld().dropItemNaturally(player.getLocation(), potion);
+            if(Math.random()<0.5){
+                ItemStack potion = new ItemStack(Material.POTION);
+                PotionMeta meta = (PotionMeta) potion.getItemMeta();
+                meta.setBasePotionType(PotionType.HEALING);
+                potion.setItemMeta(meta);
+                player.getWorld().dropItemNaturally(player.getLocation(),potion);
+            }else{
+                ItemStack potion = ManaPotion.getItem(plugin);
+                potion.setAmount(ThreadLocalRandom.current().nextInt(5, 18));
+                player.getWorld().dropItemNaturally(player.getLocation(),potion);
+            }
         }
 
     }

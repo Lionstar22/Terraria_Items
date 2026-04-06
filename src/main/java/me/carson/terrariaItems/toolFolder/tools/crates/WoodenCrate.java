@@ -3,6 +3,7 @@ package me.carson.terrariaItems.toolFolder.tools.crates;
 import me.carson.terrariaItems.accesoryFolder.accessories.Aglet;
 import me.carson.terrariaItems.accesoryFolder.accessories.TsunamiInABottle;
 import me.carson.terrariaItems.toolFolder.Tool;
+import me.carson.terrariaItems.toolFolder.tools.potions.LesserManaPotion;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -64,12 +65,18 @@ public class WoodenCrate extends Tool {
             potion.setItemMeta(meta);
             player.getWorld().dropItemNaturally(player.getLocation(),potion);
         }
-        if(Math.random()<0.2){//Health Potion loot table
-            ItemStack potion = new ItemStack(Material.POTION);
-            PotionMeta meta = (PotionMeta) potion.getItemMeta();
-            meta.setBasePotionType(PotionType.HEALING);
-            potion.setItemMeta(meta);
-            player.getWorld().dropItemNaturally(player.getLocation(),potion);
+        if(Math.random()<0.33){//Health Potion loot table
+            if(Math.random()<0.5){
+                ItemStack potion = new ItemStack(Material.POTION);
+                PotionMeta meta = (PotionMeta) potion.getItemMeta();
+                meta.setBasePotionType(PotionType.HEALING);
+                potion.setItemMeta(meta);
+                player.getWorld().dropItemNaturally(player.getLocation(),potion);
+            }else{
+                ItemStack potion = LesserManaPotion.getItem(plugin);
+                potion.setAmount(ThreadLocalRandom.current().nextInt(5, 16));
+                player.getWorld().dropItemNaturally(player.getLocation(),potion);
+            }
         }
 
     }

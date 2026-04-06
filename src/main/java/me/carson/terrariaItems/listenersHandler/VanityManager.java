@@ -26,8 +26,10 @@ public class VanityManager implements Listener {
 
     private final NamespacedKey unmovableKey;
     private final PlayerDataHandler playerDataInstance = PlayerDataHandler.getInstance();
+    private final Plugin plugin;
 
     public VanityManager(Plugin plugin) {
+        this.plugin=plugin;
         unmovableKey = new NamespacedKey(plugin, "unmovable");
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -119,6 +121,8 @@ public class VanityManager implements Listener {
     public void onArmorEquip(ArmorChangeEvent event) {
         Player player = event.getPlayer();
         List<ItemStack> invList = playerDataInstance.getVanity(player.getUniqueId());
-        applyVanity(invList, player);
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            applyVanity(invList, player);
+        }, 1);
     }
 }
