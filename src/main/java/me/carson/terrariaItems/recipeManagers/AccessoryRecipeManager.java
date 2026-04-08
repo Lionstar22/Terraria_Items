@@ -2,6 +2,7 @@ package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
+import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfFright;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfMight;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfSight;
@@ -42,6 +43,10 @@ public class AccessoryRecipeManager implements Listener {
                 new NamespacedKey(plugin, "Blindfold"),
                 new NamespacedKey(plugin, "FastClock"),
                 new NamespacedKey(plugin, "NightVisionHelmet"),
+                new NamespacedKey(plugin, "PanicNecklace"),
+                new NamespacedKey(plugin, "BandOfStarpower"),
+                new NamespacedKey(plugin, "ManaRegenerationBand"),
+                new NamespacedKey(plugin, "HoneyComb"),
                 new NamespacedKey(plugin, "Vitamins")
         );
 
@@ -76,8 +81,66 @@ public class AccessoryRecipeManager implements Listener {
         registerVitaminsRecipe();
         registerAvengerEmblemRecipe();
         registerNightVisionHelmetRecipe();
+        registerPanicNecklaceRecipe();
+        registerBandOfStarpowerRecipe();
+        registerManaRegenerationBandRecipe();
+        registerMagicCuffsRecipe();
+        registerHoneyCombRecipe();
     }
 
+    private void registerHoneyCombRecipe(){
+        ItemStack aglet=HoneyComb.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "HoneyComb");
+        ShapedRecipe recipe = new ShapedRecipe(key, aglet);
+        recipe.shape(" H ","HGH"," H ");
+        recipe.setIngredient('H', Material.HONEYCOMB);
+        recipe.setIngredient('G', Material.GHAST_TEAR);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerMagicCuffsRecipe(){
+        ItemStack aglet=MagicCuffs.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "MagicCuffs");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, aglet);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ManaRegenerationBand.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(Shackle.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerManaRegenerationBandRecipe(){
+        ItemStack aglet=ManaRegenerationBand.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ManaRegenerationBand");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, aglet);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(BandOfStarpower.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(BandOfRegeneration.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerPanicNecklaceRecipe(){
+        ItemStack aglet=PanicNecklace.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "PanicNecklace");
+        ShapedRecipe recipe = new ShapedRecipe(key, aglet);
+        recipe.shape("CCC","CSC"," R ");
+        recipe.setIngredient('C', Material.CHAIN);
+        recipe.setIngredient('S', Material.SUGAR);
+        recipe.setIngredient('R', Material.REDSTONE_BLOCK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerBandOfStarpowerRecipe(){
+        ItemStack aglet=BandOfStarpower.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "BandOfStarpower");
+        ShapedRecipe recipe = new ShapedRecipe(key, aglet);
+        recipe.shape("LFL","L L","LLL");
+        recipe.setIngredient('L', Material.LAPIS_LAZULI);
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(FallenStar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
 
     private void registerAgletRecipe(){
         ItemStack aglet=Aglet.getItem(plugin);

@@ -79,7 +79,6 @@ public class FrozenCrate extends Tool {
                 ItemStack potion = ManaPotion.getItem(plugin);
                 potion.setAmount(ThreadLocalRandom.current().nextInt(5, 18));
                 player.getWorld().dropItemNaturally(player.getLocation(),potion);
-
             }
         }
         if(Math.random()<0.05){//Misc Loot table

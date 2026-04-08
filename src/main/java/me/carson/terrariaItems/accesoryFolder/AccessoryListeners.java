@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.accesoryFolder;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
+import me.carson.terrariaItems.listenersHandler.ManaManager;
 import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import org.bukkit.*;
@@ -25,6 +26,7 @@ public class AccessoryListeners implements Listener {
     private final Plugin plugin;
     private NamespacedKey customItemKey;
     private final PlayerDataHandler playerDataInstance=PlayerDataHandler.getInstance();
+    private final ManaManager manaManagerInstance=ManaManager.getInstance();
     private final WorldDataHandler worldDataInstance=WorldDataHandler.getInstance();
     private final Set<UUID> usedDoubleJump = new HashSet<>();
     private static final Set<EntityDamageEvent.DamageCause> COUNTERSCARF_CAUSES = Set.of(
@@ -59,6 +61,28 @@ public class AccessoryListeners implements Listener {
             }
         }
         return false;
+    }
+
+    @EventHandler
+    public void onPlayerDamage(EntityDamageEvent event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        if(hasAccessory(player,"CounterScarf")){
+            if(!player.hasCooldown(Material.RED_WOOL)){
+                if (COUNTERSCARF_CAUSES.contains(event.getCause())){
+                    player.setCooldown(Material.RED_WOOL,600);
+                    event.setCancelled(true);
+                }
+            }
+        }
+        if(hasAccessory(player,"PanicNecklace")){
+            player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,160,1,false,false,false));
+        }
+        if(hasAccessory(player,"MagicCuffs")){
+            manaManagerInstance.addMana(player.getUniqueId(), event.getDamage()*2);
+        }
+        if(hasAccessory(player,"HoneyComb")){
+            player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,100,1,false,false,false));
+        }
     }
 
     @EventHandler
@@ -207,19 +231,6 @@ public class AccessoryListeners implements Listener {
                 task.cancel();
             }
         }, 0L, 1L);
-    }
-
-    @EventHandler
-    public void onScarfDamage(EntityDamageEvent event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-        if(hasAccessory(player,"CounterScarf")){
-            if(!player.hasCooldown(Material.RED_WOOL)){
-                if (COUNTERSCARF_CAUSES.contains(event.getCause())){
-                    player.setCooldown(Material.RED_WOOL,600);
-                    event.setCancelled(true);
-                }
-            }
-        }
     }
 
     @EventHandler
