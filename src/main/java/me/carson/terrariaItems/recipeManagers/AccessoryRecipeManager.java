@@ -7,7 +7,6 @@ import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -58,6 +57,7 @@ public class AccessoryRecipeManager implements Listener {
                 new NamespacedKey(plugin, "AnkhCharm"),
                 new NamespacedKey(plugin, "AnkhShield"),
                 new NamespacedKey(plugin, "PowerGlove"),
+                new NamespacedKey(plugin, "BeeCloak"),
                 new NamespacedKey(plugin, "MechanicalGlove"),
                 new NamespacedKey(plugin, "AvengerEmblem1"),
                 new NamespacedKey(plugin, "AvengerEmblem2"),
@@ -101,6 +101,17 @@ public class AccessoryRecipeManager implements Listener {
         registerAnkhShieldRecipe();
         registerObsidianHorseshoeRecipe();
         registerMechanicalGloveRecipe();
+        registerBeeCloakRecipe();
+    }
+
+    private void registerBeeCloakRecipe(){
+        ItemStack item= BeeCloak.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "BeeCloak");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(HoneyComb.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(StarCloak.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerMechanicalGloveRecipe(){

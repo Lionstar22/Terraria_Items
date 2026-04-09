@@ -9,7 +9,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.*;
-import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -75,6 +74,10 @@ public class AccessoryManager implements Listener {
         accessoryList.put("PowerGlove",new PowerGlove(plugin));
         accessoryList.put("MechanicalGlove",new MechanicalGlove(plugin));
         accessoryList.put("CrossNecklace",new CrossNecklace(plugin));
+        accessoryList.put("StarCloak",new StarCloak(plugin));
+        accessoryList.put("BeeCloak",new BeeCloak(plugin));
+        accessoryList.put("StarVeil",new StarVeil(plugin));
+
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

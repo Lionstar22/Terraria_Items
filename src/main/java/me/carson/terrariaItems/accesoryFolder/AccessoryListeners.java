@@ -4,6 +4,8 @@ import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import me.carson.terrariaItems.listenersHandler.ManaManager;
 import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
+import me.carson.terrariaItems.projectilesFolder.projectiles.StarCannonStar;
+import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.MagicDagger;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
@@ -65,13 +67,19 @@ public class AccessoryListeners implements Listener {
     }
 
     public ItemStack getMimicLoot() {
-        int x = ThreadLocalRandom.current().nextInt(1, 3);
+        int x = ThreadLocalRandom.current().nextInt(1, 5);
         switch (x) {
             case 1 -> {
                 return TitanGlove.getItem(plugin);
             }
             case 2 -> {
                 return CrossNecklace.getItem(plugin);
+            }
+            case 3 -> {
+                return MagicDagger.getItem(plugin);
+            }
+            case 4 -> {
+                return StarCloak.getItem(plugin);
             }
             default -> {
             }
@@ -106,8 +114,14 @@ public class AccessoryListeners implements Listener {
         if(hasAccessory(player,"MagicCuffs")){
             manaManagerInstance.addMana(player.getUniqueId(), event.getDamage()*2);
         }
-        if(hasAccessory(player,"HoneyComb")||hasAccessory(player,"HoneyBalloon")||hasAccessory(player,"SweetheartNecklace")){
+        if(hasAccessory(player,"HoneyComb")||hasAccessory(player,"HoneyBalloon")||hasAccessory(player,"SweetheartNecklace")||hasAccessory(player,"BeeCloak")){
             player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,100,1,false,false,false));
+        }
+        if(hasAccessory(player,"StarCloak")||hasAccessory(player,"BeeCloak")||hasAccessory(player,"StarVeil")){
+            new StarCannonStar(plugin).createFallingProjectile(player,1.5f,7,5f,50,30,event.getEntity().getLocation());
+            new StarCannonStar(plugin).createFallingProjectile(player,1.5f,7,5f,50,30,event.getEntity().getLocation());
+            new StarCannonStar(plugin).createFallingProjectile(player,1.5f,7,5f,50,30,event.getEntity().getLocation());
+            player.getWorld().playSound(event.getEntity().getLocation(), "terraria:falling_star", 0.75F, 1.0F);
         }
     }
 
@@ -180,7 +194,7 @@ public class AccessoryListeners implements Listener {
                     }
                 }
                 case SHULKER -> {
-                    if(rand<0.1){
+                    if(rand<0.2){
                         e.getDrops().add(getMimicLoot());
                     }
                 }
