@@ -43,10 +43,12 @@ public class ResetHandler implements Listener {
         player.setWalkSpeed(0.2f);
         Objects.requireNonNull(player.getAttribute(Attribute.ATTACK_SPEED)).setBaseValue(4);
 
-        for(ItemStack item:playerDataHandler.getInventory(player.getUniqueId())){
-            Accessory accessory=accessoryManager.getAccessory(item);
-            if(accessory!=null){
-                accessory.activateEffect(player);
+        if(playerDataHandler.getInventory(player.getUniqueId())!=null){
+            for(ItemStack item:playerDataHandler.getInventory(player.getUniqueId())){
+                Accessory accessory=accessoryManager.getAccessory(item);
+                if(accessory!=null){
+                    accessory.activateEffect(player);
+                }
             }
         }
         for (ItemStack armor : player.getInventory().getArmorContents()) {

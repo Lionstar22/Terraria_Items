@@ -56,10 +56,12 @@ public class AccessoryListeners implements Listener {
     }
 
     public Boolean hasAccessory(Player player,String id){
-        for(ItemStack item :playerDataInstance.getInventory(player.getUniqueId())){
-            if(item!=null&&item.hasItemMeta()){
-                if(Objects.equals(Objects.requireNonNull(item.getItemMeta()).getPersistentDataContainer().get(customItemKey, PersistentDataType.STRING), id)){
-                    return true;
+        if(playerDataInstance.getInventory(player.getUniqueId())!=null){
+            for(ItemStack item :playerDataInstance.getInventory(player.getUniqueId())){
+                if(item!=null&&item.hasItemMeta()){
+                    if(Objects.equals(Objects.requireNonNull(item.getItemMeta()).getPersistentDataContainer().get(customItemKey, PersistentDataType.STRING), id)){
+                        return true;
+                    }
                 }
             }
         }
