@@ -65,6 +65,16 @@ public class AccessoryManager implements Listener {
         accessoryList.put("ManaRegenerationBand",new ManaRegenerationBand(plugin));
         accessoryList.put("MagicCuffs",new MagicCuffs(plugin));
         accessoryList.put("HoneyComb",new HoneyComb(plugin));
+        accessoryList.put("HoneyBalloon",new HoneyBalloon(plugin));
+        accessoryList.put("SweetheartNecklace",new SweetheartNecklace(plugin));
+        accessoryList.put("ObsidianShield",new ObsidianShield(plugin));
+        accessoryList.put("AnkhCharm",new AnkhCharm(plugin));
+        accessoryList.put("AnkhShield",new AnkhShield(plugin));
+        accessoryList.put("ObsidianHorseshoe",new ObsidianHorseshoe(plugin));
+        accessoryList.put("TitanGlove",new TitanGlove(plugin));
+        accessoryList.put("PowerGlove",new PowerGlove(plugin));
+        accessoryList.put("MechanicalGlove",new MechanicalGlove(plugin));
+        accessoryList.put("CrossNecklace",new CrossNecklace(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

@@ -3,9 +3,7 @@ package me.carson.terrariaItems.recipeManagers;
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
-import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfFright;
-import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfMight;
-import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfSight;
+import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -39,19 +37,28 @@ public class AccessoryRecipeManager implements Listener {
                 new NamespacedKey(plugin, "band"),
                 new NamespacedKey(plugin, "CobaltShield"),
                 new NamespacedKey(plugin, "CounterScarf"),
-                new NamespacedKey(plugin, "Bezoar"),
-                new NamespacedKey(plugin, "Blindfold"),
-                new NamespacedKey(plugin, "FastClock"),
+                //new NamespacedKey(plugin, "Bezoar"),
+                //new NamespacedKey(plugin, "FastClock"),
                 new NamespacedKey(plugin, "NightVisionHelmet"),
                 new NamespacedKey(plugin, "PanicNecklace"),
                 new NamespacedKey(plugin, "BandOfStarpower"),
                 new NamespacedKey(plugin, "ManaRegenerationBand"),
                 new NamespacedKey(plugin, "HoneyComb"),
-                new NamespacedKey(plugin, "Vitamins")
+                new NamespacedKey(plugin, "HoneyBalloon"),
+                new NamespacedKey(plugin, "SweetheartNecklace"),
+                new NamespacedKey(plugin, "ObsidianHorseshoe"),
+                new NamespacedKey(plugin, "ObsidianShield")
         );
 
         HardmodeRecipes = List.of(
                 new NamespacedKey(plugin, "NeptuneShell"),
+                new NamespacedKey(plugin, "AnkhCharm"),
+                new NamespacedKey(plugin, "Vitamins"),
+                new NamespacedKey(plugin, "Blindfold"),
+                new NamespacedKey(plugin, "AnkhCharm"),
+                new NamespacedKey(plugin, "AnkhShield"),
+                new NamespacedKey(plugin, "PowerGlove"),
+                new NamespacedKey(plugin, "MechanicalGlove"),
                 new NamespacedKey(plugin, "AvengerEmblem1"),
                 new NamespacedKey(plugin, "AvengerEmblem2"),
                 new NamespacedKey(plugin, "AvengerEmblem3")
@@ -75,9 +82,9 @@ public class AccessoryRecipeManager implements Listener {
         registerCobaltShieldRecipe();
         registerCounterScarfRecipe();
         registerNeptuneShellRecipe();
-        registerBezoarRecipe();
+        //registerBezoarRecipe();
         registerBlindfoldRecipe();
-        registerFastClockRecipe();
+        //registerFastClockRecipe();
         registerVitaminsRecipe();
         registerAvengerEmblemRecipe();
         registerNightVisionHelmetRecipe();
@@ -86,12 +93,102 @@ public class AccessoryRecipeManager implements Listener {
         registerManaRegenerationBandRecipe();
         registerMagicCuffsRecipe();
         registerHoneyCombRecipe();
+        registerHoneyBalloonRecipe();
+        registerSweetheartNecklaceRecipe();
+        registerObsidianShieldRecipe();
+        registerAnkhCharmRecipe();
+        registerPowerGloveRecipe();
+        registerAnkhShieldRecipe();
+        registerObsidianHorseshoeRecipe();
+        registerMechanicalGloveRecipe();
+    }
+
+    private void registerMechanicalGloveRecipe(){
+        ItemStack item=MechanicalGlove.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "MechanicalGlove");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(LuckyHorseshoe.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ObsidianSkull.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerObsidianHorseshoeRecipe(){
+        ItemStack item=ObsidianHorseshoe.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ObsidianHorseshoe");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(LuckyHorseshoe.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ObsidianSkull.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerAnkhShieldRecipe(){
+        ItemStack item=AnkhShield.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "AnkhShield");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(AnkhCharm.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ObsidianShield.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerPowerGloveRecipe(){
+        ItemStack item=PowerGlove.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "PowerGlove");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(FeralClaws.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(TitanGlove.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerAnkhCharmRecipe(){
+        ItemStack item=AnkhCharm.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "AnkhCharm");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(Bezoar.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(Vitamins.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(Blindfold.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(FastClock.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerObsidianShieldRecipe(){
+        ItemStack item=ObsidianShield.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ObsidianShield");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(HoneyComb.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(PanicNecklace.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerSweetheartNecklaceRecipe(){
+        ItemStack item=SweetheartNecklace.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "SweetheartNecklace");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(HoneyComb.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(PanicNecklace.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerHoneyBalloonRecipe(){
+        ItemStack item=HoneyBalloon.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "HoneyBalloon");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(HoneyComb.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(RedBalloon.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerHoneyCombRecipe(){
-        ItemStack aglet=HoneyComb.getItem(plugin);
+        ItemStack item=HoneyComb.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "HoneyComb");
-        ShapedRecipe recipe = new ShapedRecipe(key, aglet);
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" H ","HGH"," H ");
         recipe.setIngredient('H', Material.HONEYCOMB);
         recipe.setIngredient('G', Material.GHAST_TEAR);
@@ -100,9 +197,9 @@ public class AccessoryRecipeManager implements Listener {
     }
 
     private void registerMagicCuffsRecipe(){
-        ItemStack aglet=MagicCuffs.getItem(plugin);
+        ItemStack item=MagicCuffs.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "MagicCuffs");
-        ShapelessRecipe recipe = new ShapelessRecipe(key, aglet);
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
         recipe.addIngredient(new RecipeChoice.ExactChoice(ManaRegenerationBand.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(Shackle.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
@@ -110,9 +207,9 @@ public class AccessoryRecipeManager implements Listener {
     }
 
     private void registerManaRegenerationBandRecipe(){
-        ItemStack aglet=ManaRegenerationBand.getItem(plugin);
+        ItemStack item=ManaRegenerationBand.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "ManaRegenerationBand");
-        ShapelessRecipe recipe = new ShapelessRecipe(key, aglet);
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
         recipe.addIngredient(new RecipeChoice.ExactChoice(BandOfStarpower.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(BandOfRegeneration.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
@@ -120,9 +217,9 @@ public class AccessoryRecipeManager implements Listener {
     }
 
     private void registerPanicNecklaceRecipe(){
-        ItemStack aglet=PanicNecklace.getItem(plugin);
+        ItemStack item=PanicNecklace.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "PanicNecklace");
-        ShapedRecipe recipe = new ShapedRecipe(key, aglet);
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("CCC","CSC"," R ");
         recipe.setIngredient('C', Material.CHAIN);
         recipe.setIngredient('S', Material.SUGAR);
@@ -132,9 +229,9 @@ public class AccessoryRecipeManager implements Listener {
     }
 
     private void registerBandOfStarpowerRecipe(){
-        ItemStack aglet=BandOfStarpower.getItem(plugin);
+        ItemStack item=BandOfStarpower.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "BandOfStarpower");
-        ShapedRecipe recipe = new ShapedRecipe(key, aglet);
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("LFL","L L","LLL");
         recipe.setIngredient('L', Material.LAPIS_LAZULI);
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(FallenStar.getItem(plugin)));
@@ -234,9 +331,11 @@ public class AccessoryRecipeManager implements Listener {
         ItemStack bezoar=Bezoar.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Bezoar");
         ShapedRecipe recipe = new ShapedRecipe(key, bezoar);
-        recipe.shape(" M ","MSM"," M ");
+        recipe.shape("LML","MSM","NMN");
         recipe.setIngredient('M', Material.MOSS_BLOCK);
         recipe.setIngredient('S', Material.SPIDER_EYE);
+        recipe.setIngredient('L', new RecipeChoice.ExactChoice(SoulOfLight.getItem(plugin)));
+        recipe.setIngredient('N', new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -244,10 +343,11 @@ public class AccessoryRecipeManager implements Listener {
         ItemStack blind=Blindfold.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Blindfold");
         ShapedRecipe recipe = new ShapedRecipe(key, blind);
-        recipe.shape("SSS","WEW","SSS");
-        recipe.setIngredient('S', Material.STRING);
+        recipe.shape("LLL","WEW","NNN");
         recipe.setIngredient('W', Material.WHITE_WOOL);
         recipe.setIngredient('E', Material.ECHO_SHARD);
+        recipe.setIngredient('L', new RecipeChoice.ExactChoice(SoulOfLight.getItem(plugin)));
+        recipe.setIngredient('N', new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -256,9 +356,11 @@ public class AccessoryRecipeManager implements Listener {
         ItemStack clock=FastClock.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "FastClock");
         ShapedRecipe recipe = new ShapedRecipe(key, clock);
-        recipe.shape("SSS","SCS","SSS");
+        recipe.shape("SSS","LCN","SSS");
         recipe.setIngredient('S', Material.SUGAR);
         recipe.setIngredient('C', Material.CLOCK);
+        recipe.setIngredient('L', new RecipeChoice.ExactChoice(SoulOfLight.getItem(plugin)));
+        recipe.setIngredient('N', new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -268,8 +370,8 @@ public class AccessoryRecipeManager implements Listener {
         NamespacedKey key = new NamespacedKey(plugin, "Vitamins");
         ShapelessRecipe recipe = new ShapelessRecipe(key, vitamin);
         recipe.addIngredient(Material.POTION);
-        recipe.addIngredient(Material.SHORT_GRASS);
-        recipe.addIngredient(Material.DRIED_KELP);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(SoulOfLight.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
         recipe.addIngredient(Material.SWEET_BERRIES);
         recipe.addIngredient(Material.POTATO);
         recipe.addIngredient(Material.CARROT);

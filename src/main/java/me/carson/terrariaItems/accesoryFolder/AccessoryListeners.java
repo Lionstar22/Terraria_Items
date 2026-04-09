@@ -20,6 +20,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class AccessoryListeners implements Listener {
 
@@ -63,6 +64,21 @@ public class AccessoryListeners implements Listener {
         return false;
     }
 
+    public ItemStack getMimicLoot() {
+        int x = ThreadLocalRandom.current().nextInt(1, 3);
+        switch (x) {
+            case 1 -> {
+                return TitanGlove.getItem(plugin);
+            }
+            case 2 -> {
+                return CrossNecklace.getItem(plugin);
+            }
+            default -> {
+            }
+        }
+        return null;
+    }
+
     @EventHandler
     public void onPlayerDamage(EntityDamageEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
@@ -74,75 +90,113 @@ public class AccessoryListeners implements Listener {
                 }
             }
         }
-        if(hasAccessory(player,"PanicNecklace")){
+        if(hasAccessory(player,"LuckyHorseshoe")||hasAccessory(player,"ObsidianHorseshoe")){
+            if(((event.getCause() == EntityDamageEvent.DamageCause.FALL)||(event.getCause() == EntityDamageEvent.DamageCause.FLY_INTO_WALL))){
+                event.setCancelled(true);
+            }
+        }
+        if(hasAccessory(player,"ObsidianSkull")||hasAccessory(player,"ObsidianShield")||hasAccessory(player,"AnkhShield")||hasAccessory(player,"ObsidianHorseshoe")){
+            if (OBSIDIAN_SKULL_DAMAGE.contains(event.getCause())){
+                event.setCancelled(true);
+            }
+        }
+        if(hasAccessory(player,"PanicNecklace")||hasAccessory(player,"SweetheartNecklace")){
             player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,160,1,false,false,false));
         }
         if(hasAccessory(player,"MagicCuffs")){
             manaManagerInstance.addMana(player.getUniqueId(), event.getDamage()*2);
         }
-        if(hasAccessory(player,"HoneyComb")){
+        if(hasAccessory(player,"HoneyComb")||hasAccessory(player,"HoneyBalloon")||hasAccessory(player,"SweetheartNecklace")){
             player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,100,1,false,false,false));
         }
     }
 
     @EventHandler
-    public void onEvokerDeath(EntityDeathEvent e) {
-        LivingEntity entity = e.getEntity();
-        if (entity.getType() != EntityType.EVOKER){return;}
-        if(!worldDataInstance.getHardmode()){return;}
-        if(Math.random()<0.15){
-            ItemStack custom = SorcererEmblem.getItem(plugin);
-            e.getDrops().add(custom);
+    private void onPotionEffect(EntityPotionEffectEvent event){
+        if (!(event.getEntity() instanceof Player player)) return;
+        PotionEffect newEffect = event.getNewEffect();
+        if (newEffect == null) return;
+        if (newEffect.getType() == PotionEffectType.POISON) {
+            if(hasAccessory(player,"Bezoar")||hasAccessory(player,"AnkhCharm")||hasAccessory(player,"AnkhShield")){
+                event.setCancelled(true);
+            }
+        }
+        if (newEffect.getType() == PotionEffectType.DARKNESS || newEffect.getType() == PotionEffectType.BLINDNESS) {
+            if(hasAccessory(player,"Blindfold")||hasAccessory(player,"AnkhCharm")||hasAccessory(player,"AnkhShield")){
+                event.setCancelled(true);
+            }
+        }
+        if (newEffect.getType() == PotionEffectType.SLOWNESS) {
+            if (hasAccessory(player,"FastClock")||hasAccessory(player,"AnkhCharm")||hasAccessory(player,"AnkhShield")){
+                event.setCancelled(true);
+            }
+        }
+        if (newEffect.getType() == PotionEffectType.WEAKNESS) {
+            if (hasAccessory(player,"Vitamins")||hasAccessory(player,"AnkhCharm")||hasAccessory(player,"AnkhShield")) {
+                event.setCancelled(true);
+            }
         }
     }
 
     @EventHandler
-    public void onBlazeDeath(EntityDeathEvent e) {
-        LivingEntity entity = e.getEntity();
-        if (entity.getType() != EntityType.BLAZE){return;}
-        if(!worldDataInstance.getHardmode()){return;}
-        if(Math.random()<0.05){
-            ItemStack custom = RangerEmblem.getItem(plugin);
-            e.getDrops().add(custom);
+    public void onMobDeath(EntityDeathEvent e) {
+        EntityType entityType = e.getEntity().getType();
+        double rand=Math.random();
+        if (e.getEntity().getType() != EntityType.ZOMBIE){
+            if(rand<0.02){
+                e.getDrops().add(Shackle.getItem(plugin));
+                return;
+            }
         }
-    }
+        if(worldDataInstance.getHardmode()){    //HARDMODE DROPS
+            switch (entityType){
+                case BOGGED ->{
+                    if(rand<0.1){
+                        e.getDrops().add(Bezoar.getItem(plugin));
+                    }
+                }
+                case EVOKER->{
+                    if(rand<0.15){
+                        ItemStack custom = SorcererEmblem.getItem(plugin);
+                        e.getDrops().add(custom);
+                    }
+                }
+                case BLAZE -> {
+                    if(rand<0.05){
+                        ItemStack custom = RangerEmblem.getItem(plugin);
+                        e.getDrops().add(custom);
+                    }
+                }
+                case WITHER_SKELETON -> {
+                    if(rand<0.05){
+                        ItemStack custom = WarriorEmblem.getItem(plugin);
+                        e.getDrops().add(custom);
+                    }
+                }
+                case STRAY -> {
+                    if(rand<0.1){
+                        ItemStack custom = FastClock.getItem(plugin);
+                        e.getDrops().add(custom);
+                    }
+                }
+                case SHULKER -> {
+                    if(rand<0.1){
+                        e.getDrops().add(getMimicLoot());
+                    }
+                }
+                default -> {
+                }
+            }
 
-    @EventHandler
-    public void onWitherSkeletonDeath(EntityDeathEvent e) {
-        LivingEntity entity = e.getEntity();
-        if (entity.getType() != EntityType.WITHER_SKELETON){return;}
-        if(!worldDataInstance.getHardmode()){return;}
-        if(Math.random()<0.05){
-            ItemStack custom = WarriorEmblem.getItem(plugin);
-            e.getDrops().add(custom);
         }
+
     }
 
     @EventHandler
     public void onKnockback(EntityKnockbackEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
-        if(hasAccessory(player,"CobaltShield")){
+        if(hasAccessory(player,"CobaltShield")||hasAccessory(player,"ObsidianShield")||hasAccessory(player,"AnkhShield")){
             event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void onFallDamage(EntityDamageEvent event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-        if(((event.getCause() == EntityDamageEvent.DamageCause.FALL)||(event.getCause() == EntityDamageEvent.DamageCause.FLY_INTO_WALL))){
-            if(hasAccessory(player,"LuckyHorseshoe")){
-                event.setCancelled(true);
-            }
-        }
-    }
-
-    @EventHandler
-    public void onFireDamage(EntityDamageEvent event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-        if(hasAccessory(player,"ObsidianSkull")){
-            if (OBSIDIAN_SKULL_DAMAGE.contains(event.getCause())){
-                event.setCancelled(true);
-            }
         }
     }
 
@@ -231,69 +285,6 @@ public class AccessoryListeners implements Listener {
                 task.cancel();
             }
         }, 0L, 1L);
-    }
-
-    @EventHandler
-    private void onPoison(EntityPotionEffectEvent event){
-        if (!(event.getEntity() instanceof Player player)) return;
-        PotionEffect newEffect = event.getNewEffect();
-        if (newEffect == null) return;
-        if (newEffect.getType() == PotionEffectType.POISON) {
-            if(hasAccessory(player,"Bezoar")){
-                event.setCancelled(true);
-            }
-        }
-    }
-
-    @EventHandler
-    private void onBlind(EntityPotionEffectEvent event){
-        if (!(event.getEntity() instanceof Player player)) return;
-
-        PotionEffect newEffect = event.getNewEffect();
-        if (newEffect == null) return;
-
-        if (newEffect.getType() == PotionEffectType.DARKNESS || newEffect.getType() == PotionEffectType.BLINDNESS) {
-            if(hasAccessory(player,"Blindfold")){
-                event.setCancelled(true);
-            }
-        }
-    }
-
-    @EventHandler
-    private void onSlow(EntityPotionEffectEvent event){
-        if (!(event.getEntity() instanceof Player player)) return;
-
-        PotionEffect newEffect = event.getNewEffect();
-        if (newEffect == null) return;
-
-        if (newEffect.getType() == PotionEffectType.SLOWNESS) {
-            if (hasAccessory(player,"FastClock")){
-                event.setCancelled(true);
-            }
-        }
-    }
-
-    @EventHandler
-    private void onWeakness(EntityPotionEffectEvent event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-
-        PotionEffect newEffect = event.getNewEffect();
-        if (newEffect == null) return;
-
-        if (newEffect.getType() == PotionEffectType.WEAKNESS) {
-            if (hasAccessory(player,"Vitamins")) {
-                event.setCancelled(true);
-            }
-        }
-    }
-
-    @EventHandler
-    public void onMobDeath(EntityDeathEvent e) {
-        LivingEntity entity = e.getEntity();
-        if (entity.getType() != EntityType.ZOMBIE){return;}
-        if(Math.random()<0.02){
-            e.getDrops().add(Shackle.getItem(plugin));
-        }
     }
 
     @EventHandler
