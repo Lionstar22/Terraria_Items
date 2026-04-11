@@ -2,7 +2,7 @@ package me.carson.terrariaItems.listenersHandler;
 
 import me.carson.terrariaItems.accesoryFolder.Accessory;
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
-import me.carson.terrariaItems.armourFolder.ArmorManager;
+import me.carson.terrariaItems.armorFolder.ArmorManager;
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
@@ -14,7 +14,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 

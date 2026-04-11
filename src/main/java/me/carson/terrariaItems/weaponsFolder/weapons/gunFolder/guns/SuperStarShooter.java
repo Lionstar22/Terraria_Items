@@ -15,7 +15,7 @@ import java.util.List;
 public class SuperStarShooter extends Gun {
 
     public SuperStarShooter(Plugin plugin) {
-        super(plugin,"Super Star Shooter","#FFC896", Material.YELLOW_DYE,"super_star_shooter","SuperStarShooter",5,3.5f,20,0,200, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots fallen stars",ChatColor.GRAY+"Pierces infinitely",ChatColor.GRAY+"20 Damage")));
+        super(plugin,"super_star_shooter.name","#FFC896", Material.YELLOW_DYE,"super_star_shooter","SuperStarShooter",5,3.5f,20,0,200,"super_star_shooter.lore");
     }
 
     @Override

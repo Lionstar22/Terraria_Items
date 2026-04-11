@@ -16,7 +16,7 @@ import java.util.List;
 public class AvengerEmblem extends Accessory{
 
     public AvengerEmblem(Plugin plugin){
-        super(plugin,"Avenger Emblem","#FF96FF", Material.GOLD_INGOT,"avenger_emblem","AvengerEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"15% increased damage",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"avenger_emblem.name","#FF96FF", Material.GOLD_INGOT,"avenger_emblem","AvengerEmblem","avenger_emblem.lore");
     }
 
     @Override

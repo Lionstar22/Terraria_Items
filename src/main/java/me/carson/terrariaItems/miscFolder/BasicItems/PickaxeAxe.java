@@ -18,7 +18,7 @@ import java.util.List;
 public class PickaxeAxe extends Basic{
 
     public PickaxeAxe(Plugin plugin) {
-        super(plugin,"Pickaxe Axe","#FF9696", Material.NETHERITE_PICKAXE,"pickaxe_axe","PickaxeAxe", new ArrayList<>(List.of(ChatColor.GRAY+"Not to be confused with a hamdrill",ChatColor.GRAY+"+2 Range")));
+        super(plugin,"pickaxe_axe.name","#FF9696", Material.NETHERITE_PICKAXE,"pickaxe_axe","PickaxeAxe","pickaxe_axe.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

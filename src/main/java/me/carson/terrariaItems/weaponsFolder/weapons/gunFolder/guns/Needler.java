@@ -17,12 +17,8 @@ import java.util.List;
 
 public class Needler extends Gun {
 
-    ProjectileManager projectileManagerInstance= ProjectileManager.getInstance();
-    MaterialManager materialManagerInstance = MaterialManager.getInstance();
-    NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
-
     public Needler(Plugin plugin) {
-        super(plugin,"Needler","#FF9696", Material.STICK,"needler","Needler",10,2.5f,6,0,75, new ArrayList<>(List.of(ChatColor.GRAY+"Converts musket balls into poison needles",ChatColor.GRAY+"6 Damage")));
+        super(plugin,"needler.name","#FF9696", Material.STICK,"needler","Needler",10,2.5f,6,0,75,"needler.lore");
     }
 
     @Override

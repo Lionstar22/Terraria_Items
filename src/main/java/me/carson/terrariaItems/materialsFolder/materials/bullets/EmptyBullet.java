@@ -12,7 +12,7 @@ import java.util.List;
 public class EmptyBullet extends Material {
 
     public EmptyBullet(Plugin plugin) {
-        super(plugin,"Empty Bullet","#FFFFFF", org.bukkit.Material.GOLD_NUGGET,"empty_bullet","EmptyBullet", new ArrayList<>(List.of(ChatColor.GRAY+"Used to craft various types of ammo")));
+        super(plugin,"empty_bullet.name","#FFFFFF", org.bukkit.Material.GOLD_NUGGET,"empty_bullet","EmptyBullet", "empty_bullet.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

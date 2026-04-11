@@ -22,7 +22,7 @@ public class Minishark extends Gun {
     NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
 
     public Minishark(Plugin plugin) {
-        super(plugin,"Minishark","#96FF96",Material.PRISMARINE_SHARD,"minishark","Minishark",0,3,2,0.05f,100, new ArrayList<>(List.of(ChatColor.GRAY+"33% chance to save ammo",ChatColor.GRAY+"Half shark, half gun, completely awesome",ChatColor.GRAY+"2 Damage")));
+        super(plugin,"minishark.name","#96FF96",Material.PRISMARINE_SHARD,"minishark","Minishark",0,3,2,0.05f,100,"minishark.lore");
     }
 
     @Override

@@ -19,12 +19,7 @@ import java.util.List;
 public class ObsidianShield extends Accessory implements Listener {
 
     public ObsidianShield(Plugin plugin){
-        super(plugin,"Obsidian Shield","#FF9696", Material.NETHER_BRICK,"obsidian_shield","ObsidianShield",
-                new ArrayList<>(List.of(
-                        ChatColor.GRAY+"Grants immunity to knockback",
-                        ChatColor.GRAY+"Grants immunity to fire damage",
-                        ChatColor.GRAY+"+2 Armor",
-                        ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"obsidian_shield.name","#FF9696", Material.NETHER_BRICK,"obsidian_shield","ObsidianShield","obsidian_shield.lore");
     }
 
     @Override

@@ -13,11 +13,7 @@ import java.util.List;
 public class ObsidianHorseshoe extends Accessory{
 
     public ObsidianHorseshoe(Plugin plugin){
-        super(plugin,"Obsidian Horseshoe","#FF9696",Material.NETHER_BRICK,"obsidian_horseshoe","ObsidianHorseshoe",
-                new ArrayList<>(List.of(
-                        ChatColor.GRAY+"Negates fall damage",
-                        ChatColor.GRAY+"Grants immunity to fire blocks",
-                        ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"obsidian_horseshoe.name","#FF9696",Material.NETHER_BRICK,"obsidian_horseshoe","ObsidianHorseshoe","obsidian_horseshoe.lore");
     }
 
     @Override

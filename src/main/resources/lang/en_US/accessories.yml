@@ -1,0 +1,206 @@
+
+accessory_msg: "&7Must be in accessory inventory"
+aglet:
+  name: "Aglet"
+  lore:
+    - "&75% increased movement speed"
+ancient_chisel:
+  name: "Ancient Chisel"
+  lore:
+    - "&7Increases mining speed"
+    - "&7Ancient problems require ancient solutions"
+ancient_fossil:
+  name: "Ancient Fossil"
+  lore:
+    - "&7Increases mining speed"
+ankh_charm:
+  name: "Ankh Charm"
+  lore:
+    - "&7Grants immunity to most debuffs"
+ankh_shield:
+  name: "Ankh Shield"
+  lore:
+    - "&7Grants immunity to knockback"
+    - "&7Grants immunity to fire damage"
+    - "&7Grants immunity to most debuffs"
+    - "&7+4 Armor"
+anklet_of_the_wind:
+  name: "Anklet of the Wind"
+  lore:
+    - "&710% increased movement speed"
+avenger_emblem:
+  name: "Avenger Emblem"
+  lore:
+    - "&715% increased damage"
+band_of_regeneration:
+  name: "Band of Regeneration"
+  lore:
+    - "&7Slowly regenerates life"
+band_of_starpower:
+  name: "Band of Starpower"
+  lore:
+    - "&7Increases maximum mana by 20"
+bee_cloak:
+  name: "Bee Cloak"
+  lore:
+    - "&7Causes stars to fall"
+    - "&7Douses the user in honey when damaged"
+bezoar:
+  name: "Bezoar"
+  lore:
+    - "&7Immunity to Poison"
+blindfold:
+  name: "Blindfold"
+  lore:
+    - "&7Immunity to Darkness/Blindness"
+blizzard_in_a_bottle:
+  name: "Blizzard in a Bottle"
+  lore:
+    - "&7Allows the holder to double jump"
+cloud_in_a_bottle:
+  name: "Cloud in a Bottle"
+  lore:
+    - "&7Allows the holder to double jump"
+cobalt_shield:
+  name: "Cobalt Shield"
+  lore:
+    - "&7Grants immunity to knockback"
+    - "&7+1 Armor"
+counter_scarf:
+  name: "Counter Scarf"
+  lore:
+    - "&710% Increased Melee Damage"
+    - "&7Grants a Dodge every 30 Seconds"
+cross_necklace:
+  name: "Cross Necklace"
+  lore:
+    - "&7Increases length of invincibility after taking damage"
+fast_clock:
+  name: "Fast Clock"
+  lore:
+    - "&7Immunity to Slowness"
+feral_claws:
+  name: "Feral Claws"
+  lore:
+    - "&7+0.25 increased attack speed"
+flipper:
+  name: "Flipper"
+  lore:
+    - "&7Grants the ability to swim faster"
+honey_balloon:
+  name: "Honey Balloon"
+  lore:
+    - "&7Increases jump height"
+    - "&7Douses the user in honey when damaged"
+honey_comb:
+  name: "Honey Comb"
+  lore:
+    - "&7Douses the user in honey when damaged"
+lucky_horseshoe:
+  name: "Lucky Horseshoe"
+  lore:
+    - "&7Negates fall damage"
+    - "&7'Said to bring good fortune and keep evil spirits at bay'"
+magic_cuffs:
+  name: "Magic Cuffs"
+  lore:
+    - "&7Increases maximum mana by 20"
+    - "&7Restores mana when damaged"
+magic_quiver:
+  name: "Magic Quiver"
+  lore:
+    - "&710% increased ranged damage"
+mana_regeneration_band:
+  name: "Mana Regeneration Band"
+  lore:
+    - "&7Increases maximum mana by 20"
+    - "&7Increases Regeneration"
+mechanical_glove:
+  name: "Mechanical Glove"
+  lore:
+    - "&715% increased melee damage"
+    - "&7+1.5 increased attack knockback"
+    - "&7+0.25 increased attack speed"
+neptunes_shell:
+  name: "Neptune's Shell"
+  lore:
+    - "&7Can breathe and move easily underwater"
+night_vision_helmet:
+  name: "Night Vision Helmet"
+  lore:
+    - "&7Improves vision"
+obsidian_horseshoe:
+  name: "Obsidian Horseshoe"
+  lore:
+    - "&7Negates fall damage"
+    - "&7Grants immunity to fire blocks"
+obsidian_shield:
+  name: "Obsidian Shield"
+  lore:
+    - "&7Grants immunity to knockback"
+    - "&7Grants immunity to fire damage"
+    - "&7+2 Armor"
+obsidian_skull:
+  name: "Obsidian Skull"
+  lore:
+    - "&7Grants immunity to fire damage"
+    - "&7+1 Armor"
+panic_necklace:
+  name: "Panic Necklace"
+  lore:
+    - "&7Increases movement speed after taking damage"
+power_glove:
+  name: "Power Glove"
+  lore:
+    - "&7+1.5 increased attack knockback"
+    - "&7+0.25 increased attack speed"
+ranger_emblem:
+  name: "Ranger Emblem"
+  lore:
+    - "&720% increased ranged damage"
+shiny_red_balloon:
+  name: "Shiny Red Balloon"
+  lore:
+    - "&7Increases jump height"
+sandstorm_in_a_bottle:
+  name: "Sandstorm in a Bottle"
+  lore:
+    - "&7Allows the holder to do an improved double jump"
+shackle:
+  name: "Shackle"
+  lore:
+    - "&7+1 Armor"
+sorcerer_emblem:
+  name: "Sorcerer Emblem"
+  lore:
+    - "&720% increased magic damage"
+star_cloak:
+  name: "Star Cloak"
+  lore:
+    - "&7Causes stars to fall after taking damage"
+star_veil:
+  name: "Star Veil"
+  lore:
+    - "&7Causes stars to fall after taking damage"
+    - "&7Increases length of invincibility after taking damage"
+sweetheart_necklace:
+  name: "Sweetheart Necklace"
+  lore:
+    - "&7Increases movement speed when damaged"
+    - "&7Douses the user in honey when damaged"
+titan_glove:
+  name: "Titan Glove"
+  lore:
+    - "&7+1.5 increased attack knockback"
+tsunami_in_a_bottle:
+  name: "Tsunami In A Bottle"
+  lore:
+    - "&7Allows the holder to double jump"
+vitamins:
+  name: "Vitamins"
+  lore:
+    - "&7Immunity to Weakness"
+warrior_emblem:
+  name: "Warrior Emblem"
+  lore:
+    - "&720% increased melee damage"

@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder;
 
+import me.carson.terrariaItems.TILangManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
@@ -22,12 +23,13 @@ public abstract class Weapon {
     protected final String texture;
     protected final String id;
     protected final int cooldown;
-    protected final ArrayList<String> lore;
+    protected final String lore;
     private final NamespacedKey unplaceableKey;
     private final NamespacedKey customItemKey;
+    public final TILangManager lang =TILangManager.getInstance();
 
 
-    public Weapon(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, int cooldown, ArrayList<String> lore) {
+    public Weapon(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, int cooldown, String lore) {
         this.plugin = plugin;
         this.name = name;
         this.rarity = rarity;
@@ -44,9 +46,9 @@ public abstract class Weapon {
         ItemStack weapon = new ItemStack(baseMaterial);
         ItemMeta meta = weapon.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setDisplayName(net.md_5.bungee.api.ChatColor.of(rarity)+name);
+        meta.setDisplayName(net.md_5.bungee.api.ChatColor.of(rarity)+lang.get("weapons",name));
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setLore(lore);
+        meta.setLore(new ArrayList<>(lang.getList("weapons",lore)));
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, id);
         meta.setItemModel(new NamespacedKey("terraria", texture));

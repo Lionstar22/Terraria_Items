@@ -21,8 +21,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class OceanCrate extends Tool {
 
     public OceanCrate(Plugin plugin){
-        super(plugin,"Ocean Crate","#96FF96", Material.ANGLER_POTTERY_SHERD,"ocean_crate","OceanCrate",0,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Right click to open")));
+        super(plugin,"ocean_crate.name","#96FF96", Material.ANGLER_POTTERY_SHERD,"ocean_crate","OceanCrate",0,"ocean_crate.lore");
     }
 
     @Override

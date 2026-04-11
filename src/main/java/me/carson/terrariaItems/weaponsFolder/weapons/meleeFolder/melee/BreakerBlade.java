@@ -19,7 +19,7 @@ import java.util.List;
 public class BreakerBlade extends Sword {
 
     public BreakerBlade(Plugin plugin) {
-        super(plugin,"Breaker Blade","#FF9696", Material.NETHERITE_SWORD,"breaker_blade","BreakerBlade",0,0,14,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Deals more damage to unhurt enemies",ChatColor.GRAY+"14 Damage, +3 Range")));
+        super(plugin,"breaker_blade.name","#FF9696", Material.NETHERITE_SWORD,"breaker_blade","BreakerBlade",0,0,14,0,0,"breaker_blade.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

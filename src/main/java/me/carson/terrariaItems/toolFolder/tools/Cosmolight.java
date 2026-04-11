@@ -16,8 +16,7 @@ import java.util.List;
 public class Cosmolight extends Tool{
 
     public Cosmolight(Plugin plugin){
-        super(plugin,"Cosmolight","#FF9696",Material.CLOCK,"cosmolight","Cosmolight",20,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Advances time immediately to the next dawn, noon, dusk or midnight")));
+        super(plugin,"cosmolight.name","#FF9696",Material.CLOCK,"cosmolight","Cosmolight",20,"cosmolight.lore");
     }
 
     @Override

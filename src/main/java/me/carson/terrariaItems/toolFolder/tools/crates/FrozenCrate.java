@@ -21,8 +21,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class FrozenCrate extends Tool {
 
     public FrozenCrate(Plugin plugin){
-        super(plugin,"Frozen Crate","#96FF96", Material.ANGLER_POTTERY_SHERD,"frozen_crate","FrozenCrate",0,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Right click to open")));
+        super(plugin,"frozen_crate.name","#96FF96", Material.ANGLER_POTTERY_SHERD,"frozen_crate","FrozenCrate",0,"frozen_crate.lore");
     }
 
     @Override

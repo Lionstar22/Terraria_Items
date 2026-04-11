@@ -21,8 +21,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class SkyCrate extends Tool {
 
     public SkyCrate(Plugin plugin){
-        super(plugin,"Sky Crate","#96FF96", Material.ANGLER_POTTERY_SHERD,"sky_crate","SkyCrate",0,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Right click to open")));
+        super(plugin,"sky_crate.name","#96FF96", Material.ANGLER_POTTERY_SHERD,"sky_crate","SkyCrate",0,"sky_crate.lore");
     }
 
     @Override

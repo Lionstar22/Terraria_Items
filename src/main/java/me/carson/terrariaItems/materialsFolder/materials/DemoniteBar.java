@@ -11,7 +11,7 @@ import java.util.List;
 public class DemoniteBar extends Material {
 
     public DemoniteBar(Plugin plugin) {
-        super(plugin,"Demonite Bar","#9696FF", org.bukkit.Material.BRICK,"demonite_bar","DemoniteBar", new ArrayList<>(List.of(ChatColor.GRAY+"Pulsing with dark energy")));
+        super(plugin,"demonite_bar.name","#9696FF", org.bukkit.Material.BRICK,"demonite_bar","DemoniteBar","demonite_bar.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

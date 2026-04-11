@@ -15,7 +15,7 @@ import java.util.List;
 public class Blowpipe extends Gun {
 
     public Blowpipe(Plugin plugin) {
-        super(plugin,"Blowpipe","#FFFFFF", Material.STICK,"blowpipe","Blowpipe",20,3,1,0,100, new ArrayList<>(List.of(ChatColor.GRAY+"Uses seeds for Ammo",ChatColor.GRAY+"1 Damage")));
+        super(plugin,"blowpipe.name","#FFFFFF", Material.STICK,"blowpipe","Blowpipe",20,3,1,0,100,"blowpipe.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

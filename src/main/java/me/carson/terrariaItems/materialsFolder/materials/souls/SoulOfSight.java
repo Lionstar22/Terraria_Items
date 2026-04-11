@@ -18,7 +18,7 @@ import java.util.List;
 public class SoulOfSight extends Material{
 
     public SoulOfSight(Plugin plugin) {
-        super(plugin,"Soul of Sight","#FF96FF", org.bukkit.Material.IRON_INGOT,"soul_of_sight","SoulOfSight", new ArrayList<>(List.of(ChatColor.GRAY+"The essence of the Warden")));
+        super(plugin,"soul_of_sight.name","#FF96FF", org.bukkit.Material.IRON_INGOT,"soul_of_sight","SoulOfSight","soul_of_sight.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

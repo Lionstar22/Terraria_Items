@@ -1,0 +1,91 @@
+frozen_crate:
+  name: "Caja Congelada"
+  lore:
+    - "&7Clic derecho para abrir"
+golden_crate:
+  name: "Caja Dorada"
+  lore:
+    - "&7Clic derecho para abrir"
+iron_crate:
+  name: "Caja de Hierro"
+  lore:
+    - "&7Clic derecho para abrir"
+jungle_crate:
+  name: "Caja de Jungla"
+  lore:
+    - "&7Clic derecho para abrir"
+oasis_crate:
+  name: "Caja de Oasis"
+  lore:
+    - "&7Clic derecho para abrir"
+ocean_crate:
+  name: "Caja del Océano"
+  lore:
+    - "&7Clic derecho para abrir"
+sky_crate:
+  name: "Caja del Cielo"
+  lore:
+    - "&7Clic derecho para abrir"
+wooden_crate:
+  name: "Caja de Madera"
+  lore:
+    - "&7Clic derecho para abrir"
+greater_mana_potion:
+  name: "Poción de Maná Mayor"
+  lore:
+    - "&7Restaura 200 de maná"
+lesser_mana_potion:
+  name: "Poción de Maná Menor"
+  lore:
+    - "&7Restaura 50 de maná"
+mana_potion:
+  name: "Poción de Maná"
+  lore:
+    - "&7Restaura 100 de maná"
+super_mana_potion:
+  name: "Súper Poción de Maná"
+  lore:
+    - "&7Restaura 300 de maná"
+mechanical_egg:
+  name: "Huevo Mecánico"
+  lore:
+    - "&7Invoca al Dragón Mecánico"
+mechanical_shrieker:
+  name: "Chillador Mecánico"
+  lore:
+    - "&7Invoca al Guardián Mecánico"
+mechanical_skull:
+  name: "Cráneo Mecánico"
+  lore:
+    - "&7Invoca al Wither Mecánico"
+cosmolight:
+  name: "Cosmoluz"
+  lore:
+    - "&7Avanza el tiempo inmediatamente al"
+    - "&7siguiente amanecer, mediodía, atardecer o medianoche"
+life_crystal:
+  name: "Cristal de Vida"
+  lore:
+    - "&7Aumenta permanentemente la vida máxima"
+magic_mirror:
+  name: "Espejo Mágico"
+  lore:
+    - "&7Mira en el espejo para regresar a casa"
+mana_crystal:
+  name: "Cristal de Maná"
+  lore:
+    - "&7Aumenta permanentemente el maná máximo en 20"
+    - "&7200 de Maná Máximo"
+momentum_capacitor:
+  name: "Capacitor de Impulso"
+  lore:
+    - "&7Acelera tu velocidad horizontal"
+rod_of_discord:
+  name: "Vara de la Discordia"
+  lore:
+    - "&7Te teletransporta a la posición del cursor"
+    - "&7Usarla con frecuencia causa daño"
+torrential_tear:
+  name: "Lágrima Torrencial"
+  lore:
+    - "&7Activa o desactiva la lluvia"

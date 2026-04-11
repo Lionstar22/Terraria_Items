@@ -23,7 +23,7 @@ public class EnchantedSword extends Sword {
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public EnchantedSword(Plugin plugin) {
-        super(plugin,"Enchanted Sword","#96FF96", Material.DIAMOND_SWORD,"enchanted_sword","EnchantedSword",0,1.5f,8,0,20, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots an enchanted sword beam",ChatColor.GRAY+"8 Damage")));
+        super(plugin,"enchanted_sword.name","#96FF96", Material.DIAMOND_SWORD,"enchanted_sword","EnchantedSword",0,1.5f,8,0,20,"enchanted_sword.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

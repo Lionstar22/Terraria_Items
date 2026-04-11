@@ -18,7 +18,7 @@ import java.util.List;
 public class Blindfold extends Accessory{
 
     public Blindfold(Plugin plugin){
-        super(plugin,"Blindfold","#FF9696", Material.ECHO_SHARD,"blindfold","Blindfold",new ArrayList<>(List.of(ChatColor.GRAY+"Immunity to Darkness/Blindness",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"blindfold.name","#FF9696", Material.ECHO_SHARD,"blindfold","Blindfold","blindfold.lore");
     }
 
     @Override

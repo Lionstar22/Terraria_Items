@@ -11,16 +11,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MechanicalShrieker extends Tool {
 
-    private NamespacedKey key = new NamespacedKey(plugin, "BossWarden");
+    private final NamespacedKey key = new NamespacedKey(plugin, "BossWarden");
 
     public MechanicalShrieker(Plugin plugin){
-        super(plugin,"Mechanical Shrieker","#FFC896", Material.LIGHT_GRAY_DYE,"mechanical_shrieker","MechanicalShrieker",10,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Summons the Mechanical Warden")));
+        super(plugin,"mechanical_shrieker.name","#FFC896", Material.LIGHT_GRAY_DYE,"mechanical_shrieker","MechanicalShrieker",10,"mechanical_shrieker.lore");
     }
 
     @Override

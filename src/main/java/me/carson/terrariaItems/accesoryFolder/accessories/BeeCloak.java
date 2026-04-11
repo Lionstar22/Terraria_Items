@@ -14,7 +14,7 @@ import java.util.List;
 public class BeeCloak extends Accessory  {
 
     public BeeCloak(Plugin plugin){
-        super(plugin,"Bee Cloak","#FF9696",Material.NETHER_BRICK,"bee_cloak","BeeCloak",new ArrayList<>(List.of(ChatColor.GRAY+"Causes stars to fall",ChatColor.GRAY+"Douses the user in honey when damaged",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"bee_cloak.name","#FF9696",Material.NETHER_BRICK,"bee_cloak","BeeCloak","bee_cloak.lore");
     }
 
     @Override

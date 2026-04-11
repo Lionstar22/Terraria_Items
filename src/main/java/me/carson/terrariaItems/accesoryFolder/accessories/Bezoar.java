@@ -18,7 +18,7 @@ import java.util.List;
 public class Bezoar extends Accessory{
 
     public Bezoar(Plugin plugin){
-        super(plugin,"Bezoar","#FF9696", Material.MOSS_BLOCK,"bezoar","Bezoar",new ArrayList<>(List.of(ChatColor.GRAY+"Immunity to Poison",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"bezoar.name","#FF9696", Material.MOSS_BLOCK,"bezoar","Bezoar","bezoar.lore");
     }
 
     @Override

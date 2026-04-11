@@ -18,7 +18,7 @@ import java.util.List;
 public class AncientChisel extends Accessory {
 
     public AncientChisel(Plugin plugin){
-        super(plugin,"Ancient Chisel","#9696FF", Material.COPPER_INGOT,"ancient_chisel","AncientChisel",new ArrayList<>(List.of(ChatColor.GRAY+"Increases mining speed",ChatColor.GRAY+"Ancient problems require ancient solutions",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"ancient_chisel.name","#9696FF", Material.COPPER_INGOT,"ancient_chisel","AncientChisel","ancient_chisel.lore");
     }
 
     @Override

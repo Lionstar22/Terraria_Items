@@ -15,7 +15,7 @@ import java.util.List;
 public class ArchaeologistsHat extends Basic {
 
     public ArchaeologistsHat(Plugin plugin){
-        super(plugin,"Archaeologist's Hat","#FFFFFF", Material.LEATHER_HELMET,"archaeologists_hat","ArchaeologistsHat",new ArrayList<>(List.of(ChatColor.GRAY+"That belongs in a museum!")));
+        super(plugin,"archaeologists_hat.name","#FFFFFF", Material.LEATHER_HELMET,"archaeologists_hat","ArchaeologistsHat","archaeologists_hat.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

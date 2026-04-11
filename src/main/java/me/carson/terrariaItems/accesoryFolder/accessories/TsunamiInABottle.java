@@ -20,7 +20,7 @@ import java.util.List;
 public class TsunamiInABottle extends Accessory{
 
     public TsunamiInABottle(Plugin plugin){
-        super(plugin,"Tsunami In A Bottle","#9696FF", Material.FIREWORK_STAR,"tsunami_in_a_bottle","TsunamiInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to double jump", ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"tsunami_in_a_bottle.name","#9696FF", Material.FIREWORK_STAR,"tsunami_in_a_bottle","TsunamiInABottle","tsunami_in_a_bottle.lore");
     }
 
     @Override

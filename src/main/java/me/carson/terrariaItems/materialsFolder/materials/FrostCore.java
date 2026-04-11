@@ -11,7 +11,7 @@ import java.util.List;
 public class FrostCore extends Material {
 
     public FrostCore(Plugin plugin) {
-        super(plugin,"Frost Core","#FF96FF", org.bukkit.Material.DIAMOND,"frost_core","FrostCore", new ArrayList<>(List.of(ChatColor.GRAY+"A fragment of icy power")));
+        super(plugin,"frost_core.name","#FF96FF", org.bukkit.Material.DIAMOND,"frost_core","FrostCore","frost_core.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

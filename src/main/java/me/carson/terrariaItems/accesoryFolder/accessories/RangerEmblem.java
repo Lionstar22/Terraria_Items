@@ -23,7 +23,7 @@ import java.util.List;
 public class RangerEmblem extends Accessory{
 
     public RangerEmblem(Plugin plugin){
-        super(plugin,"Ranger Emblem","#FF9696", Material.GOLD_NUGGET,"ranger_emblem","RangerEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased ranged damage",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"ranger_emblem.name","#FF9696", Material.GOLD_NUGGET,"ranger_emblem","RangerEmblem","ranger_emblem.lore");
     }
 
     @Override

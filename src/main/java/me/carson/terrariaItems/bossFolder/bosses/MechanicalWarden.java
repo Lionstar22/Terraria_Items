@@ -37,7 +37,7 @@ public class MechanicalWarden extends Boss {
         Warden boss= (Warden) world.spawnEntity(spawnPoint, type);
         boss.getAttribute(Attribute.MAX_HEALTH).setBaseValue(health);
         boss.setHealth(health);
-        boss.setCustomName(name);
+        boss.setCustomName(lang.get("enemies","mechanical_warden.name"));
         boss.setCustomNameVisible(true);
         boss.setAnger(player,150);
         boss.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, -1, 0, false, false,false));

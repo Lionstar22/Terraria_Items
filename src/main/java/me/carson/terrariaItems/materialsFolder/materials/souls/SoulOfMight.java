@@ -18,7 +18,7 @@ import java.util.List;
 public class SoulOfMight extends Material{
 
     public SoulOfMight(Plugin plugin) {
-        super(plugin,"Soul of Might","#FF96FF", org.bukkit.Material.IRON_INGOT,"soul_of_might","SoulOfMight", new ArrayList<>(List.of(ChatColor.GRAY+"The essence of the Dragon")));
+        super(plugin,"soul_of_might.name","#FF96FF", org.bukkit.Material.IRON_INGOT,"soul_of_might","SoulOfMight","soul_of_might.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

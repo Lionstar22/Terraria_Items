@@ -14,7 +14,7 @@ import java.util.List;
 public class SweetheartNecklace extends Accessory  {
 
     public SweetheartNecklace(Plugin plugin){
-        super(plugin,"Sweetheart Necklace","#FFC896",Material.NETHER_BRICK,"sweetheart_necklace","SweetheartNecklace",new ArrayList<>(List.of(ChatColor.GRAY+"Increases movement speed when damaged",ChatColor.GRAY+"Douses the user in honey when damaged",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"sweetheart_necklace.name","#FFC896",Material.NETHER_BRICK,"sweetheart_necklace","SweetheartNecklace","sweetheart_necklace.lore");
     }
 
     @Override

@@ -23,7 +23,7 @@ public class OnyxBlaster extends Gun {
     NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
 
     public OnyxBlaster(Plugin plugin) {
-        super(plugin,"Onyx Blaster","#FF9696", Material.ARMADILLO_SCUTE,"onyx_blaster","OnyxBlaster",30,2.5f,4f,0.1f,100, new ArrayList<>(List.of(ChatColor.GRAY+"Fires a spread of bullets and an onyx crystal that explodes upon impact",ChatColor.GRAY+"4 Damage")));
+        super(plugin,"onyx_blaster.name","#FF9696", Material.ARMADILLO_SCUTE,"onyx_blaster","OnyxBlaster",30,2.5f,4f,0.1f,100,"onyx_blaster.lore");
     }
 
     @Override

@@ -15,7 +15,7 @@ import java.util.List;
 public class SkeletonArcherHat extends Basic {
 
     public SkeletonArcherHat(Plugin plugin){
-        super(plugin,"SkeletonArcherHat","#FFFFFF", Material.IRON_HELMET,"skeleton_archer_hat","SkeletonArcherHat",new ArrayList<>(List.of(ChatColor.GRAY+"How did you get this?")));
+        super(plugin,"unobtainable.name","#FFFFFF", Material.IRON_HELMET,"skeleton_archer_hat","SkeletonArcherHat","unobtainable.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

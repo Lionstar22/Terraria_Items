@@ -24,7 +24,7 @@ public class IceSickle extends Sword {
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public IceSickle(Plugin plugin) {
-        super(plugin,"Ice Sickle","#FF96FF", Material.NETHERITE_SWORD,"ice_sickle","IceSickle",0,0.75f,10.5f,0,25, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots an icy sickle",ChatColor.GRAY+"17 Damage")));
+        super(plugin,"ice_sickle.name","#FF96FF", Material.NETHERITE_SWORD,"ice_sickle","IceSickle",0,0.75f,10.5f,0,25,"ice_sickle.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

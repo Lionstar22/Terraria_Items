@@ -18,7 +18,7 @@ import java.util.Set;
 public class CounterScarf extends Accessory implements Listener {
 
     public CounterScarf(Plugin plugin){
-        super(plugin,"Counter Scarf","#FFC896", Material.RED_WOOL,"counter_scarf","CounterScarf",new ArrayList<>(List.of(ChatColor.GRAY+"10% Increased Melee Damage",ChatColor.GRAY+"Grants a Dodge every 30 Seconds",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"counter_scarf.name","#FFC896", Material.RED_WOOL,"counter_scarf","CounterScarf","counter_scarf.lore");
     }
 
     @Override

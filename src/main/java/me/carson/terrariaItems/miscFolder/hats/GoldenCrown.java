@@ -15,7 +15,7 @@ import java.util.List;
 public class GoldenCrown extends Basic {
 
     public GoldenCrown(Plugin plugin){
-        super(plugin,"Golden Crown","#FFFFFF", Material.GOLDEN_HELMET,"golden_crown","GoldenCrown",new ArrayList<>(List.of(ChatColor.GRAY+"")));
+        super(plugin,"golden_crown.name","#FFFFFF", Material.GOLDEN_HELMET,"golden_crown","GoldenCrown","golden_crown.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

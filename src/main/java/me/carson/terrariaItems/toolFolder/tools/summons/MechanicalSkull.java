@@ -19,8 +19,7 @@ public class MechanicalSkull extends Tool {
     private final NamespacedKey key = new NamespacedKey(plugin, "BossWither");
 
     public MechanicalSkull(Plugin plugin){
-        super(plugin,"Mechanical Skull","#FFC896", Material.LIGHT_GRAY_DYE,"mechanical_skull","MechanicalSkull",10,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Summons the Mechanical Wither")));
+        super(plugin,"mechanical_skull.name","#FFC896", Material.LIGHT_GRAY_DYE,"mechanical_skull","MechanicalSkull",10,"mechanical_skull.lore");
     }
 
     @Override

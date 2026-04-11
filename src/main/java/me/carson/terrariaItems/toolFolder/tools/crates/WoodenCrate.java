@@ -20,8 +20,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class WoodenCrate extends Tool {
 
     public WoodenCrate(Plugin plugin){
-        super(plugin,"Wooden Crate","#9696FF", Material.ANGLER_POTTERY_SHERD,"wooden_crate","WoodenCrate",0,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Right click to open")));
+        super(plugin,"wooden_crate.name","#9696FF", Material.ANGLER_POTTERY_SHERD,"wooden_crate","WoodenCrate",0,"wooden_crate.lore");
     }
 
     @Override

@@ -14,7 +14,7 @@ import java.util.List;
 public class SandGun extends Gun {
 
     public SandGun(Plugin plugin) {
-        super(plugin,"Sand Gun","#9696FF", Material.PAPER,"sand_gun","SandGun",5,2f,7,0,100, new ArrayList<>(List.of(ChatColor.GRAY+"This is a good idea!",ChatColor.GRAY+"7 Damage")));
+        super(plugin,"sand_gun.name","#9696FF", Material.PAPER,"sand_gun","SandGun",5,2f,7,0,100,"sand_gun.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

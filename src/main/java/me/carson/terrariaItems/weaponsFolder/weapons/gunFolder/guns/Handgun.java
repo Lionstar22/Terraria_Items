@@ -22,7 +22,7 @@ public class Handgun extends Gun {
     NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
 
     public Handgun(Plugin plugin) {
-        super(plugin,"Handgun","#96FF96",Material.WHITE_DYE,"handgun","Handgun",10,3,4,0,100, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots Bullets",ChatColor.GRAY+"4 Damage")));
+        super(plugin,"handgun.name","#96FF96",Material.WHITE_DYE,"handgun","Handgun",10,3,4,0,100,"handgun.lore");
     }
 
     @Override

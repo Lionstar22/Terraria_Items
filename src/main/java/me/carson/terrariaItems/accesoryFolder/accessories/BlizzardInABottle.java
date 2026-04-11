@@ -22,7 +22,7 @@ public class BlizzardInABottle extends Accessory{
 
 
     public BlizzardInABottle(Plugin plugin){
-        super(plugin,"Blizzard in a Bottle","#9696FF", Material.FIREWORK_STAR,"blizzard_in_a_bottle","BlizzardInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to double jump", ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"blizzard_in_a_bottle.name","#9696FF", Material.FIREWORK_STAR,"blizzard_in_a_bottle","BlizzardInABottle","blizzard_in_a_bottle.lore");
     }
 
     @Override

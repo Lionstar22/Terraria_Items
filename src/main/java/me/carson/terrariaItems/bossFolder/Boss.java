@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.bossFolder;
 
+import me.carson.terrariaItems.TILangManager;
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.boss.BossBar;
@@ -19,6 +20,7 @@ public abstract class Boss {
     protected final EntityType type;
     protected final String name;
     protected final double range;
+    public final TILangManager lang =TILangManager.getInstance();
 
     public Boss(Plugin plugin, double health, EntityType type, String name, double range){
         this.plugin=plugin;

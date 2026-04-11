@@ -1,0 +1,25 @@
+unobtainable:
+  name: "Unobtainable"
+  lore:
+    - "&7How did you get this?"
+bone_pickaxe:
+  name: "Bone Pickaxe"
+  lore:
+    - "&7I've got a bone to pick with you"
+pickaxe_axe:
+  name: "Pickaxe Axe"
+  lore:
+    - "&7Not to be confused with a hamdrill"
+    - "&7+2 Range"
+archaeologists_hat:
+  name: "Archaeologist's Hat"
+  lore:
+    - "&7That belongs in a museum!"
+golden_crown:
+  name: "Golden Crown"
+  lore:
+    - "&7Fit for a king"
+undead_miner_hat:
+  name: "Mining Helmet"
+  lore:
+    - "&7Worn by dead miners"

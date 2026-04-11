@@ -20,8 +20,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class JungleCrate extends Tool {
 
     public JungleCrate(Plugin plugin){
-        super(plugin,"Jungle Crate","#96FF96", Material.ANGLER_POTTERY_SHERD,"jungle_crate","JungleCrate",0,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Right click to open")));
+        super(plugin,"jungle_crate.name","#96FF96", Material.ANGLER_POTTERY_SHERD,"jungle_crate","JungleCrate",0,"jungle_crate.lore");
     }
 
     @Override

@@ -14,7 +14,7 @@ import java.util.List;
 public class StarVeil extends Accessory  {
 
     public StarVeil(Plugin plugin){
-        super(plugin,"Star Veil","#D2A0FF",Material.NETHER_BRICK,"star_veil","StarVeil",new ArrayList<>(List.of(ChatColor.GRAY+"Causes stars to fall after taking damage",ChatColor.GRAY+"Increases length of invincibility after taking damage",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"star_veil.name","#D2A0FF",Material.NETHER_BRICK,"star_veil","StarVeil","star_veil.lore");
     }
 
     @Override

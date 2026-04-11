@@ -1,0 +1,253 @@
+daedalus_stormbow:
+  name: "Daedalus Stormbow"
+  lore:
+    - "&7Shoots arrows from the sky"
+hallowed_repeater:
+  name: "Hallowed Repeater"
+  lore:
+    - "&7Holy crossbow whose arrows illuminate thine target"
+    - "&7Converts normal arrows to Spectral Arrows"
+hoarfrost_bow:
+  name: "Hoarfrost Bow"
+  lore:
+    - "&7Fires two arrows at once"
+    - "&7Converts wooden arrows into mist arrows"
+    - "&76 Damage"
+molten_fury:
+  name: "Molten Fury"
+  lore:
+    - "&7Lights wooden arrows ablaze"
+pulse_bow:
+  name: "Pulse Bow"
+  lore:
+    - "&7Shoots a charged arrow"
+    - "&710 Damage"
+blowpipe:
+  name: "Blowpipe"
+  lore:
+    - "&7Uses seeds for Ammo"
+    - "&71 Damage"
+boomstick:
+  name: "Boomstick"
+  lore:
+    - "&7Fires a spread of bullets"
+    - "&73 Damage"
+clockwork_assault_rifle:
+  name: "Clockwork Assault Rifle"
+  lore:
+    - "&7Three round burst"
+    - "&7Only the first shot consumes ammo"
+    - "&75 Damage"
+handgun:
+  name: "Handgun"
+  lore:
+    - "&7Shoots Bullets"
+    - "&74 Damage"
+megashark:
+  name: "Megashark"
+  lore:
+    - "&750% chance to save ammo"
+    - "&7Minishark's older brother"
+    - "&76 Damage"
+minishark:
+  name: "Minishark"
+  lore:
+    - "&733% chance to save ammo"
+    - "&7Half shark, half gun, completely awesome"
+    - "&72 Damage"
+needler:
+  name: "Needler"
+  lore:
+    - "&7Converts musket balls into poison needles"
+    - "&76 Damage"
+onyx_blaster:
+  name: "Onyx Blaster"
+  lore:
+    - "&7Fires a spread of bullets and an"
+    - "&7onyx crystal that explodes upon impact"
+    - "&74 Damage"
+phoenix_blaster:
+  name: "Phoenix Blaster"
+  lore:
+    - "&7Shoots Bullets"
+    - "&78 Damage"
+sand_gun:
+  name: "Sand Gun"
+  lore:
+    - "&7This is a good idea!"
+    - "&77 Damage"
+shotgun:
+  name: "Shotgun"
+  lore:
+    - "&7Fires a spread of bullets"
+    - "&73.5 Damage"
+sniper_rifle:
+  name: "Sniper Rifle"
+  lore:
+    - "&7Shoots a powerful, high velocity bullet"
+    - "&7Crouch to zoom"
+    - "&730 Damage"
+snowball_cannon:
+  name: "Snowball Cannon"
+  lore:
+    - "&7Launches Snowballs"
+    - "&78 Damage"
+star_cannon:
+  name: "Star Cannon"
+  lore:
+    - "&7Shoots fallen stars"
+    - "&7Pierces infinitely"
+    - "&710 Damage"
+super_star_shooter:
+  name: "Super Star Shooter"
+  lore:
+    - "&7Shoots fallen stars"
+    - "&7Pierces infinitely"
+    - "&720 Damage"
+amethyst_staff:
+  name: "Amethyst Staff"
+  lore:
+    - "&7Fires a amethyst bolt"
+    - "&7Costs 5 Mana"
+    - "&74 Damage"
+bubble_gun:
+  name: "Bubble Gun"
+  lore:
+    - "&7Rapidly shoots forceful bubbles"
+    - "&7Costs 5 Mana"
+    - "&710 Damage"
+crystal_storm:
+  name: "Crystal Storm"
+  lore:
+    - "&7Summons rapid fire crystal shards"
+    - "&7Costs 5 Mana"
+    - "&76 Damage"
+icicle_staff:
+  name: "Icicle Staff"
+  lore:
+    - "&7Casts icicles from the sky"
+    - "&7Costs 6 Mana"
+    - "&78 Damage"
+laser_rifle:
+  name: "Laser Rifle"
+  lore:
+    - "&7Fires fast-moving purple lasers"
+    - "&7Costs 8 Mana"
+    - "&78 Damage"
+magical_harp:
+  name: "Magical Harp"
+  lore:
+    - "&7Fires a music note"
+    - "&7Costs 5 Mana"
+    - "&77 Damage"
+magic_dagger:
+  name: "Magic Dagger"
+  lore:
+    - "&7A magical returning dagger"
+    - "&7Costs 6 Mana"
+    - "&79 Damage"
+meteor_staff:
+  name: "Meteor Staff"
+  lore:
+    - "&7Showers meteors"
+    - "&7Costs 9 Mana"
+    - "&710 Damage"
+ruby_staff:
+  name: "Ruby Staff"
+  lore:
+    - "&7Fires a ruby bolt"
+    - "&7Costs 7 Mana"
+    - "&76 Damage"
+thunder_zapper:
+  name: "Thunder Zapper"
+  lore:
+    - "&7Fires a lightning bolt"
+    - "&7Costs 6 Mana"
+    - "&79 Damage"
+water_bolt:
+  name: "Water Bolt"
+  lore:
+    - "&7Casts a slow moving bolt of water"
+    - "&7Costs 10 Mana"
+    - "&75 Damage"
+blade_of_grass:
+  name: "Blade of Grass"
+  lore:
+    - "&7Has a chance to poison enemies"
+    - "&76 Damage"
+breaker_blade:
+  name: "Breaker Blade"
+  lore:
+    - "&7Deals more damage to unhurt enemies"
+    - "&714 Damage, +3 Range"
+caustic_edge:
+  name: "Caustic Edge"
+  lore:
+    - "&7Fires a bouncing caustic beam"
+    - "&7Inflicts acid venom and slows down on enemy hits"
+    - "&718 Damage"
+christmas_tree_sword:
+  name: "Christmas Tree Sword"
+  lore:
+    - "&7Shoots Christmas ornaments"
+    - "&76 Damage"
+enchanted_sword:
+  name: "Enchanted Sword"
+  lore:
+    - "&7Shoots an enchanted sword beam"
+    - "&78 Damage"
+excalibur:
+  name: "Excalibur"
+  lore:
+    - "&7The holy sword of legend"
+    - "&720 Damage, +1 Range"
+falcon_blade:
+  name: "Falcon Blade"
+  lore:
+    - "&7Rapid Attacking Sword"
+    - "&76 Damage"
+ice_blade:
+  name: "Ice Blade"
+  lore:
+    - "&7Shoots an icy bolt"
+    - "&77 Damage"
+ice_sickle:
+  name: "Ice Sickle"
+  lore:
+    - "&7Shoots an icy sickle"
+    - "&717 Damage"
+lights_bane:
+  name: "Lights Bane"
+  lore:
+    - "&7Creates a dark slash near the tip of the sword"
+slap_hand:
+  name: "Slap Hand"
+  lore:
+    - "&7BEGONE"
+    - "&79 Damage"
+starfury:
+  name: "Starfury"
+  lore:
+    - "&7Causes stars to rain from the sky"
+    - "&7Forged with the fury of heaven"
+    - "&78 Damage"
+tainted_blade:
+  name: "Tainted Blade"
+  lore:
+    - "&7Inflicts poison on enemy hits"
+    - "&712 Damage"
+terra_blade:
+  name: "Terra Blade"
+  lore:
+    - "&7Forged from the finest blades of light and darkness"
+    - "&71000 Damage, +3 Range"
+vampire_knives:
+  name: "Vampire Knives"
+  lore:
+    - "&7Rapidly throw life stealing daggers"
+    - "&78 Damage"
+volcano:
+  name: "Volcano"
+  lore:
+    - "&7It's made out of fire!"
+    - "&715 Damage"

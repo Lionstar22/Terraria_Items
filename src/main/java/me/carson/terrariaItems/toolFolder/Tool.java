@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.toolFolder;
 
+import me.carson.terrariaItems.TILangManager;
 import me.carson.terrariaItems.listenersHandler.ManaManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
@@ -23,13 +24,13 @@ public abstract class Tool {
     protected final String texture;
     protected final String id;
     protected final int cooldown;
-    protected final ArrayList<String> lore;
+    protected final String lore;
     private final NamespacedKey unplaceableKey;
     private final NamespacedKey customItemKey;
     public ManaManager manaManagerInstance=ManaManager.getInstance();
+    public final TILangManager lang =TILangManager.getInstance();
 
-
-    public Tool(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, int cooldown, ArrayList<String> lore) {
+    public Tool(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, int cooldown, String lore) {
         this.plugin = plugin;
         this.name = name;
         this.rarity = rarity;
@@ -45,9 +46,9 @@ public abstract class Tool {
     public ItemStack createItem() {
         ItemStack tool = new ItemStack(baseMaterial);
         ItemMeta meta = tool.getItemMeta();
-        meta.setDisplayName(net.md_5.bungee.api.ChatColor.of(rarity)+name);
+        meta.setDisplayName(net.md_5.bungee.api.ChatColor.of(rarity)+lang.get("tools",name));
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setLore(lore);
+        meta.setLore(new ArrayList<>(lang.getList("tools",lore)));
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, id);
         meta.setItemModel(new NamespacedKey("terraria", texture));

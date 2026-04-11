@@ -15,7 +15,7 @@ import java.util.List;
 public class RaincoatZombieHat extends Basic {
 
     public RaincoatZombieHat(Plugin plugin){
-        super(plugin,"Raincoat Zombie Hat","#FFFFFF", Material.STICK,"raincoat_zombie_hat","RaincoatZombieHat",new ArrayList<>(List.of(ChatColor.GRAY+"How did you get this?")));
+        super(plugin,"unobtainable.name","#FFFFFF", Material.STICK,"raincoat_zombie_hat","RaincoatZombieHat","unobtainable.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -15,7 +15,7 @@ import java.util.List;
 public class IcyMermanHat extends Basic {
 
     public IcyMermanHat(Plugin plugin){
-        super(plugin,"IcyMermanHat","#FFFFFF", Material.IRON_HELMET,"icy_merman_hat","IcyMermanHat",new ArrayList<>(List.of(ChatColor.GRAY+"How did you get this?")));
+        super(plugin,"unobtainable.name","#FFFFFF", Material.IRON_HELMET,"icy_merman_hat","IcyMermanHat","unobtainable.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

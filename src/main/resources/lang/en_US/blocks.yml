@@ -1,0 +1,5 @@
+hellforge:
+  name: "Hellforge"
+  lore:
+    - "&7The Hellforge is a crafting station that functions as a faster Furnace"
+    - "&7with the additional ability of smelting Hellstone into Hellstone Bars."

@@ -16,7 +16,7 @@ import java.util.List;
 public class RedBalloon extends Accessory implements Listener {
 
     public RedBalloon(Plugin plugin){
-        super(plugin,"Shiny Red Balloon","#9696FF", Material.RED_WOOL,"shiny_red_balloon","RedBalloon",new ArrayList<>(List.of(ChatColor.GRAY+"Increases jump height",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"shiny_red_balloon.name","#9696FF", Material.RED_WOOL,"shiny_red_balloon","RedBalloon","shiny_red_balloon.lore");
     }
 
     @Override

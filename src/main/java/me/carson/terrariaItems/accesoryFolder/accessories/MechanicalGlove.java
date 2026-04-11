@@ -19,7 +19,7 @@ import java.util.List;
 public class MechanicalGlove extends Accessory  {
 
     public MechanicalGlove(Plugin plugin){
-        super(plugin,"Mechanical Glove","#D2A0FF",Material.NETHER_BRICK,"mechanical_glove","MechanicalGlove",new ArrayList<>(List.of(ChatColor.GRAY+"15% increased melee damage",ChatColor.GRAY+"+1.5 increased attack knockback",ChatColor.GRAY+"+0.25 increased attack speed",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"mechanical_glove.name","#D2A0FF",Material.NETHER_BRICK,"mechanical_glove","MechanicalGlove","mechanical_glove.lore");
     }
 
     @Override

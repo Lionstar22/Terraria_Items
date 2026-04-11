@@ -1,25 +1,19 @@
 package me.carson.terrariaItems.enemiesFolder;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.MagicQuiver;
-import me.carson.terrariaItems.accesoryFolder.accessories.PowerGlove;
-import me.carson.terrariaItems.accesoryFolder.accessories.TitanGlove;
-import me.carson.terrariaItems.armourFolder.armors.frostArmor.FrostBoots;
 import me.carson.terrariaItems.enemiesFolder.enemies.*;
 import me.carson.terrariaItems.materialsFolder.materials.ForbiddenFragment;
 import me.carson.terrariaItems.materialsFolder.materials.FrostCore;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.block.data.type.Switch;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.potion.PotionType;
 
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;

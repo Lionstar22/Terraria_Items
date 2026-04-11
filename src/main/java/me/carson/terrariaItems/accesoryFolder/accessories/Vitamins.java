@@ -18,7 +18,7 @@ import java.util.List;
 public class Vitamins extends Accessory{
 
     public Vitamins(Plugin plugin) {
-        super(plugin, "Vitamins", "#FF9696", Material.SHORT_GRASS, "vitamins", "Vitamins", new ArrayList<>(List.of(ChatColor.GRAY + "Immunity to Weakness", ChatColor.GRAY + "Must be in accessory inventory")));
+        super(plugin, "vitamins.name", "#FF9696", Material.SHORT_GRASS, "vitamins", "Vitamins", "vitamins.lore");
     }
 
     @Override

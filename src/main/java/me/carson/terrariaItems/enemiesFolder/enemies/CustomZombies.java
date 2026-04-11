@@ -1,11 +1,11 @@
 package me.carson.terrariaItems.enemiesFolder.enemies;
 
-import me.carson.terrariaItems.armourFolder.armors.frozenZombieArmor.FrozenZombieChestplate;
-import me.carson.terrariaItems.armourFolder.armors.possessedArmor.*;
-import me.carson.terrariaItems.armourFolder.armors.raincoatZombieArmor.RaincoatZombieChestplate;
-import me.carson.terrariaItems.armourFolder.armors.werewolfArmor.WerewolfBoots;
-import me.carson.terrariaItems.armourFolder.armors.werewolfArmor.WerewolfChestplate;
-import me.carson.terrariaItems.armourFolder.armors.werewolfArmor.WerewolfLeggings;
+import me.carson.terrariaItems.armorFolder.armors.frozenZombieArmor.FrozenZombieChestplate;
+import me.carson.terrariaItems.armorFolder.armors.possessedArmor.*;
+import me.carson.terrariaItems.armorFolder.armors.raincoatZombieArmor.RaincoatZombieChestplate;
+import me.carson.terrariaItems.armorFolder.armors.werewolfArmor.WerewolfBoots;
+import me.carson.terrariaItems.armorFolder.armors.werewolfArmor.WerewolfChestplate;
+import me.carson.terrariaItems.armorFolder.armors.werewolfArmor.WerewolfLeggings;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
 import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.miscFolder.hats.*;
@@ -99,7 +99,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
     }
 
     public void spawnPossessedArmor(Zombie zombie){
-        zombie.setCustomName("Possessed Armor");
+        zombie.setCustomName(lang.get("enemies","possessed_armor.name"));
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"PossessedArmor");
         zombie.setCanPickupItems(false);
@@ -118,7 +118,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
     }
 
     public void spawnFrozenZombie(Zombie zombie){
-        zombie.setCustomName("Frozen Zombie");
+        zombie.setCustomName(lang.get("enemies","frozen_zombie.name"));
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"FrozenZombie");
         zombie.setCanPickupItems(false);
@@ -130,7 +130,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
     }
 
     public void spawnRaincoatZombie(Zombie zombie){
-        zombie.setCustomName("Raincoat Zombie");
+        zombie.setCustomName(lang.get("enemies","raincoat_zombie.name"));
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"RaincoatZombie");
         zombie.setCanPickupItems(false);
@@ -142,7 +142,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
     }
 
     public void spawnGnome(Zombie zombie){
-        zombie.setCustomName("Gnome");
+        zombie.setCustomName(lang.get("enemies","gnome.name"));
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"Gnome");
         zombie.setCanPickupItems(false);
@@ -160,7 +160,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
     }
 
     public void spawnWerewolf(Zombie zombie){
-        zombie.setCustomName("Werewolf");
+        zombie.setCustomName(lang.get("enemies","werewolf.name"));
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"Werewolf");
         zombie.setCanPickupItems(false);
@@ -181,7 +181,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
     }
 
     public void spawnDoctorBones(Zombie zombie){
-        zombie.setCustomName("Doctor Bones");
+        zombie.setCustomName(lang.get("enemies","doctor_bones.name"));
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"DoctorBones");
         zombie.setCanPickupItems(false);

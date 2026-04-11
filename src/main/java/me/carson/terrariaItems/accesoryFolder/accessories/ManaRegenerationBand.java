@@ -16,7 +16,7 @@ import java.util.List;
 public class ManaRegenerationBand extends Accessory  {
 
     public ManaRegenerationBand(Plugin plugin){
-        super(plugin,"Mana Regeneration Band","#9696FF",Material.NETHER_BRICK,"mana_regeneration_band","ManaRegenerationBand",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 20",ChatColor.GRAY+"Increases Regeneration",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"mana_regeneration_band.name","#9696FF",Material.NETHER_BRICK,"mana_regeneration_band","ManaRegenerationBand","mana_regeneration_band.lore");
     }
 
     @Override

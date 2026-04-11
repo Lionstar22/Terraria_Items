@@ -22,7 +22,7 @@ public class Boomstick extends Gun {
     NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
 
     public Boomstick(Plugin plugin) {
-        super(plugin,"Boomstick","#96FF96", Material.ARMADILLO_SCUTE,"boomstick","Boomstick",30,3,3,0.2f,100, new ArrayList<>(List.of(ChatColor.GRAY+"Fires a spread of bullets",ChatColor.GRAY+"3 Damage")));
+        super(plugin,"boomstick.name","#96FF96", Material.ARMADILLO_SCUTE,"boomstick","Boomstick",30,3,3,0.2f,100,"boomstick.lore");
     }
 
     @Override

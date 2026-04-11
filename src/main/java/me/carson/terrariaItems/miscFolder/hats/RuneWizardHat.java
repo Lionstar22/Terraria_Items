@@ -15,7 +15,7 @@ import java.util.List;
 public class RuneWizardHat extends Basic {
 
     public RuneWizardHat(Plugin plugin){
-        super(plugin,"Rune Wizard Hat","#96FF96", Material.LEATHER_HELMET,"rune_wizard_hat","RuneWizardHat",new ArrayList<>(List.of(ChatColor.GRAY+"How did you get this?")));
+        super(plugin,"unobtainable.name","#96FF96", Material.LEATHER_HELMET,"rune_wizard_hat","RuneWizardHat","unobtainable.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -24,7 +24,7 @@ public class ClockworkAssaultRifle extends Gun {
     NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
 
     public ClockworkAssaultRifle(Plugin plugin) {
-        super(plugin,"Clockwork Assault Rifle","#FF9696",Material.WHITE_DYE,"clockwork_assault_rifle","ClockworkAssaultRifle",10,3,6,0.05f,100, new ArrayList<>(List.of(ChatColor.GRAY+"Three round burst",ChatColor.GRAY+"Only the first shot consumes ammo",ChatColor.GRAY+"5 Damage")));
+        super(plugin,"clockwork_assault_rifle.name","#FF9696",Material.WHITE_DYE,"clockwork_assault_rifle","ClockworkAssaultRifle",10,3,6,0.05f,100,"clockwork_assault_rifle.lore");
     }
 
     @Override

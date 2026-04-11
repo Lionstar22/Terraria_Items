@@ -30,7 +30,7 @@ public class Shotgun extends Gun{
     NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
 
     public Shotgun(Plugin plugin) {
-        super(plugin,"Shotgun","#FF9696", Material.ARMADILLO_SCUTE,"shotgun","Shotgun",30,3,3.5f,0.1f,100, new ArrayList<>(List.of(ChatColor.GRAY+"Fires a spread of bullets",ChatColor.GRAY+"3.5 Damage")));
+        super(plugin,"shotgun.name","#FF9696", Material.ARMADILLO_SCUTE,"shotgun","Shotgun",30,3,3.5f,0.1f,100,"shotgun.lore");
     }
 
     @Override

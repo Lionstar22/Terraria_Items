@@ -13,7 +13,7 @@ import java.util.List;
 public class MagicQuiver extends Accessory {
 
     public MagicQuiver(Plugin plugin){
-        super(plugin,"Magic Quiver","#FF9696", Material.GOLD_NUGGET,"magic_quiver","MagicQuiver",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased ranged damage",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"magic_quiver.name","#FF9696", Material.GOLD_NUGGET,"magic_quiver","MagicQuiver","magic_quiver.lore");
     }
 
     @Override

@@ -1,0 +1,205 @@
+accessory_msg: "&7Debe estar en el inventario de accesorios"
+aglet:
+  name: "Aglet"
+  lore:
+    - "&75% de aumento de velocidad de movimiento"
+ancient_chisel:
+  name: "Cincel Antiguo"
+  lore:
+    - "&7Aumenta la velocidad de minería"
+    - "&7Los problemas antiguos requieren soluciones antiguas"
+ancient_fossil:
+  name: "Fósil Antiguo"
+  lore:
+    - "&7Aumenta la velocidad de minería"
+ankh_charm:
+  name: "Amuleto Ankh"
+  lore:
+    - "&7Otorga inmunidad a la mayoría de efectos negativos"
+ankh_shield:
+  name: "Escudo Ankh"
+  lore:
+    - "&7Otorga inmunidad al retroceso"
+    - "&7Otorga inmunidad al daño por fuego"
+    - "&7Otorga inmunidad a la mayoría de efectos negativos"
+    - "&7+4 Armadura"
+anklet_of_the_wind:
+  name: "Tobillera del Viento"
+  lore:
+    - "&710% de aumento de velocidad de movimiento"
+avenger_emblem:
+  name: "Emblema del Vengador"
+  lore:
+    - "&715% de aumento de daño"
+band_of_regeneration:
+  name: "Banda de Regeneración"
+  lore:
+    - "&7Regenera vida lentamente"
+band_of_starpower:
+  name: "Banda de Poder Estelar"
+  lore:
+    - "&7Aumenta el maná máximo en 20"
+bee_cloak:
+  name: "Capa de Abeja"
+  lore:
+    - "&7Hace caer estrellas"
+    - "&7Baña al usuario en miel al recibir daño"
+bezoar:
+  name: "Bezoar"
+  lore:
+    - "&7Inmunidad al Veneno"
+blindfold:
+  name: "Venda"
+  lore:
+    - "&7Inmunidad a la Oscuridad/Ceguera"
+blizzard_in_a_bottle:
+  name: "Ventisca en una Botella"
+  lore:
+    - "&7Permite al portador hacer doble salto"
+cloud_in_a_bottle:
+  name: "Nube en una Botella"
+  lore:
+    - "&7Permite al portador hacer doble salto"
+cobalt_shield:
+  name: "Escudo de Cobalto"
+  lore:
+    - "&7Otorga inmunidad al retroceso"
+    - "&7+1 Armadura"
+counter_scarf:
+  name: "Bufanda Defensiva"
+  lore:
+    - "&710% de aumento de daño cuerpo a cuerpo"
+    - "&7Otorga una esquiva cada 30 segundos"
+cross_necklace:
+  name: "Collar de Cruz"
+  lore:
+    - "&7Aumenta la duración de la invencibilidad al recibir daño"
+fast_clock:
+  name: "Reloj Rápido"
+  lore:
+    - "&7Inmunidad a la Lentitud"
+feral_claws:
+  name: "Garras Salvajes"
+  lore:
+    - "&7+0.25 de aumento de velocidad de ataque"
+flipper:
+  name: "Aleta"
+  lore:
+    - "&7Otorga la habilidad de nadar más rápido"
+honey_balloon:
+  name: "Globo de Miel"
+  lore:
+    - "&7Aumenta la altura de salto"
+    - "&7Baña al usuario en miel al recibir daño"
+honey_comb:
+  name: "Panal de Miel"
+  lore:
+    - "&7Baña al usuario en miel al recibir daño"
+lucky_horseshoe:
+  name: "Herradura de la Suerte"
+  lore:
+    - "&7Niega el daño por caída"
+    - "&7'Se dice que trae buena fortuna y ahuyenta los malos espíritus'"
+magic_cuffs:
+  name: "Esposas Mágicas"
+  lore:
+    - "&7Aumenta el maná máximo en 20"
+    - "&7Restaura maná al recibir daño"
+magic_quiver:
+  name: "Carcaj Mágico"
+  lore:
+    - "&710% de aumento de daño a distancia"
+mana_regeneration_band:
+  name: "Banda de Regeneración de Maná"
+  lore:
+    - "&7Aumenta el maná máximo en 20"
+    - "&7Aumenta la regeneración"
+mechanical_glove:
+  name: "Guante Mecánico"
+  lore:
+    - "&715% de aumento de daño cuerpo a cuerpo"
+    - "&7+1.5 de aumento de retroceso de ataque"
+    - "&7+0.25 de aumento de velocidad de ataque"
+neptunes_shell:
+  name: "Concha de Neptuno"
+  lore:
+    - "&7Puede respirar y moverse fácilmente bajo el agua"
+night_vision_helmet:
+  name: "Casco de Visión Nocturna"
+  lore:
+    - "&7Mejora la visión"
+obsidian_horseshoe:
+  name: "Herradura de Obsidiana"
+  lore:
+    - "&7Niega el daño por caída"
+    - "&7Otorga inmunidad a los bloques de fuego"
+obsidian_shield:
+  name: "Escudo de Obsidiana"
+  lore:
+    - "&7Otorga inmunidad al retroceso"
+    - "&7Otorga inmunidad al daño por fuego"
+    - "&7+2 Armadura"
+obsidian_skull:
+  name: "Calavera de Obsidiana"
+  lore:
+    - "&7Otorga inmunidad al daño por fuego"
+    - "&7+1 Armadura"
+panic_necklace:
+  name: "Collar del Pánico"
+  lore:
+    - "&7Aumenta la velocidad de movimiento al recibir daño"
+power_glove:
+  name: "Guante de Poder"
+  lore:
+    - "&7+1.5 de aumento de retroceso de ataque"
+    - "&7+0.25 de aumento de velocidad de ataque"
+ranger_emblem:
+  name: "Emblema del Explorador"
+  lore:
+    - "&720% de aumento de daño a distancia"
+shiny_red_balloon:
+  name: "Globo Rojo Brillante"
+  lore:
+    - "&7Aumenta la altura de salto"
+sandstorm_in_a_bottle:
+  name: "Tormenta de Arena en una Botella"
+  lore:
+    - "&7Permite al portador hacer un doble salto mejorado"
+shackle:
+  name: "Grillete"
+  lore:
+    - "&7+1 Armadura"
+sorcerer_emblem:
+  name: "Emblema del Hechicero"
+  lore:
+    - "&720% de aumento de daño mágico"
+star_cloak:
+  name: "Capa Estelar"
+  lore:
+    - "&7Hace caer estrellas al recibir daño"
+star_veil:
+  name: "Velo Estelar"
+  lore:
+    - "&7Hace caer estrellas al recibir daño"
+    - "&7Aumenta la duración de la invencibilidad al recibir daño"
+sweetheart_necklace:
+  name: "Collar del Amor"
+  lore:
+    - "&7Aumenta la velocidad de movimiento al recibir daño"
+    - "&7Baña al usuario en miel al recibir daño"
+titan_glove:
+  name: "Guante Titán"
+  lore:
+    - "&7+1.5 de aumento de retroceso de ataque"
+tsunami_in_a_bottle:
+  name: "Tsunami en una Botella"
+  lore:
+    - "&7Permite al portador hacer doble salto"
+vitamins:
+  name: "Vitaminas"
+  lore:
+    - "&7Inmunidad a la Debilidad"
+warrior_emblem:
+  name: "Emblema del Guerrero"
+  lore:
+    - "&720% de aumento de daño cuerpo a cuerpo"

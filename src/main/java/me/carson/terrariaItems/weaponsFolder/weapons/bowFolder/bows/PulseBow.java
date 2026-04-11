@@ -24,7 +24,7 @@ public class PulseBow extends Bow implements Listener {
     private final Map<UUID, List<MerchantRecipe>> originalRecipes = new HashMap<>();
 
     public PulseBow(Plugin plugin) {
-        super(plugin,"Pulse Bow","#FFFF0A", Material.NETHER_STAR,"pulse_bow","PulseBow",5,2.5f,10,0f, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots a charged arrow",ChatColor.GRAY+"10 Damage")));
+        super(plugin,"pulse_bow.name","#FFFF0A", Material.NETHER_STAR,"pulse_bow","PulseBow",5,2.5f,10,0f, "pulse_bow.name");
     }
 
     public static ItemStack getItem(Plugin plugin) {

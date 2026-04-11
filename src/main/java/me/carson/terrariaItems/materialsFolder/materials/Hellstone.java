@@ -11,7 +11,7 @@ import java.util.List;
 public class Hellstone extends Material {
 
     public Hellstone(Plugin plugin) {
-        super(plugin,"Hellstone","#96FF96", org.bukkit.Material.MAGMA_BLOCK,"hellstone","Hellstone", new ArrayList<>(List.of((ChatColor.GRAY+"The underworld is made of a material called hellstone."))));
+        super(plugin,"hellstone.name","#96FF96", org.bukkit.Material.MAGMA_BLOCK,"hellstone","Hellstone","hellstone.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

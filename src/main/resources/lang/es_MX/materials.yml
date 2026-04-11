@@ -1,0 +1,75 @@
+bubonic_round:
+  name: "Bala Bubónica"
+  lore:
+    - "&7Esparce la plaga al golpear"
+    - "&75 de Daño"
+empty_bullet:
+  name: "Bala Vacía"
+  lore:
+    - "&7Se usa para fabricar varios tipos de munición"
+exploding_bullet:
+  name: "Bala Explosiva"
+  lore:
+    - "&7Explota al impactar"
+    - "&73 de Daño"
+musket_ball:
+  name: "Bala de Mosquete"
+  lore:
+    - "&7Munición para armas de fuego"
+    - "&72 de Daño"
+soul_of_fright:
+  name: "Alma del Terror"
+  lore:
+    - "&7La esencia del Wither"
+soul_of_light:
+  name: "Alma de la Luz"
+  lore:
+    - "&7La esencia de las criaturas de luz"
+soul_of_might:
+  name: "Alma del Poder"
+  lore:
+    - "&7La esencia del Dragón"
+soul_of_night:
+  name: "Alma de la Noche"
+  lore:
+    - "&7La esencia de las criaturas oscuras"
+soul_of_sight:
+  name: "Alma de la Visión"
+  lore:
+    - "&7La esencia del Guardián"
+demonite_bar:
+  name: "Barra de Demonita"
+  lore:
+    - "&7Pulsando con energía oscura"
+fallen_star:
+  name: "Estrella Caída"
+  lore:
+    - "&7Cae de los cielos"
+forbidden_fragment:
+  name: "Fragmento Prohibido"
+  lore:
+    - "&7Un fragmento del poder del desierto"
+frost_core:
+  name: "Núcleo de Escarcha"
+  lore:
+    - "&7Un fragmento de poder helado"
+hallowed_bar:
+  name: "Barra Sagrada"
+  lore:
+    - "&7Una barra santa forjada con almas"
+hellstone:
+  name: "Piedra Infernal"
+  lore:
+    - "&7El inframundo está hecho de un material llamado piedra infernal"
+hellstone_bar:
+  name: "Barra de Piedra Infernal"
+  lore:
+    - "&7Caliente al tacto"
+illegal_gun_parts:
+  name: "Piezas de Arma Ilegales"
+  lore:
+    - "&7Prohibidas en la mayoría de lugares"
+ruby:
+  name: "Rubí"
+  lore:
+    - "&7Gema Rojo Brillante"

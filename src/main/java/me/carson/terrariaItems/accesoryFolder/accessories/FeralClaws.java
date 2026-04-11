@@ -26,7 +26,7 @@ import java.util.List;
 public class FeralClaws extends Accessory  {
 
     public FeralClaws(Plugin plugin){
-        super(plugin,"Feral Claws","#FFC896",Material.LIME_DYE,"feral_claws","FeralClaws",new ArrayList<>(List.of(ChatColor.GRAY+"+0.25 increased attack speed",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"feral_claws.name","#FFC896",Material.LIME_DYE,"feral_claws","FeralClaws","feral_claws.lore");
     }
 
     @Override

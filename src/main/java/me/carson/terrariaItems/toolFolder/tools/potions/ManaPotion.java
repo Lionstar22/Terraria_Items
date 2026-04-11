@@ -15,7 +15,7 @@ import java.util.UUID;
 public class ManaPotion extends Tool {
 
     public ManaPotion(Plugin plugin){
-        super(plugin,"Mana Potion","#9696FF", Material.PAPER,"mana_potion","ManaPotion",20,new ArrayList<>(List.of(ChatColor.GRAY+"Restores 100 mana")));
+        super(plugin,"mana_potion.name","#9696FF", Material.PAPER,"mana_potion","ManaPotion",20,"mana_potion.lore");
     }
 
     @Override

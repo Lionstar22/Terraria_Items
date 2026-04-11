@@ -21,7 +21,7 @@ import java.util.List;
 public class AncientFossil extends Accessory implements Listener {
 
     public AncientFossil(Plugin plugin){
-        super(plugin,"Ancient Fossil","#9696FF", Material.COPPER_INGOT,"ancient_fossil","AncientFossil",new ArrayList<>(List.of(ChatColor.GRAY+"Increases mining speed",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"ancient_fossil.name","#9696FF", Material.COPPER_INGOT,"ancient_fossil","AncientFossil","ancient_fossil.lore");
     }
 
     @Override

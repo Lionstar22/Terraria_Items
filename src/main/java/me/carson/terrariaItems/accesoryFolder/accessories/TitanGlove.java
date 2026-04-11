@@ -19,7 +19,7 @@ import java.util.List;
 public class TitanGlove extends Accessory  {
 
     public TitanGlove(Plugin plugin){
-        super(plugin,"Titan Glove","#FF9696",Material.NETHER_BRICK,"titan_glove","TitanGlove",new ArrayList<>(List.of(ChatColor.GRAY+"+1.5 increased attack knockback",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"titan_glove.name","#FF9696",Material.NETHER_BRICK,"titan_glove","TitanGlove","titan_glove.lore");
     }
 
     @Override

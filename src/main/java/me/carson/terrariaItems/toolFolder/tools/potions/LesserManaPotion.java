@@ -15,7 +15,7 @@ import java.util.UUID;
 public class LesserManaPotion extends Tool {
 
     public LesserManaPotion(Plugin plugin){
-        super(plugin,"Lesser Mana Potion","#FFFFFF", Material.PAPER,"lesser_mana_potion","LesserManaPotion",20,new ArrayList<>(List.of(ChatColor.GRAY+"Restores 50 mana")));
+        super(plugin,"lesser_mana_potion.name","#FFFFFF", Material.PAPER,"lesser_mana_potion","LesserManaPotion",20,"lesser_mana_potion.lore");
     }
 
     @Override

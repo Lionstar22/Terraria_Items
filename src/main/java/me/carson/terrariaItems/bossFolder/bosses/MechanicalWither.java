@@ -34,7 +34,7 @@ public class MechanicalWither extends Boss implements Listener {
         Wither boss= (Wither) world.spawnEntity(spawnPoint, type);
         boss.getAttribute(Attribute.MAX_HEALTH).setBaseValue(health);
         boss.setHealth(health);
-        boss.setCustomName(name);
+        boss.setCustomName(lang.get("enemies","mechanical_wither.name"));
         boss.setCustomNameVisible(true);
         boss.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) 1);
         startAttacks(boss);

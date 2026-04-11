@@ -15,7 +15,7 @@ import java.util.List;
 public class AnkletOfTheWind extends Accessory {
 
     public AnkletOfTheWind(Plugin plugin){
-        super(plugin,"Anklet Of The Wind","#FFC896", Material.COPPER_INGOT,"anklet_of_the_wind","AnkletOfTheWind",new ArrayList<>(List.of(ChatColor.GRAY+"10% increased movement speed",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"anklet_of_the_wind.name","#FFC896", Material.COPPER_INGOT,"anklet_of_the_wind","AnkletOfTheWind","anklet_of_the_wind.lore");
     }
 
     @Override

@@ -3,6 +3,7 @@ package me.carson.terrariaItems.toolFolder.tools;
 import me.carson.terrariaItems.toolFolder.Tool;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -14,7 +15,7 @@ import java.util.List;
 public class LifeCrystal extends Tool {
 
     public LifeCrystal(Plugin plugin){
-        super(plugin,"Life Crystal","#96FF96", Material.PINK_DYE,"life_crystal","LifeCrystal",10,new ArrayList<>(List.of(ChatColor.GRAY+"Permanently increases maximum life")));
+        super(plugin,"life_crystal.name","#96FF96", Material.PINK_DYE,"life_crystal","LifeCrystal",10,"life_crystal.lore");
     }
 
     @Override

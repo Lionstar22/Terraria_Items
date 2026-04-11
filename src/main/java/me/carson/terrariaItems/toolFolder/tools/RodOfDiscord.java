@@ -21,9 +21,7 @@ import java.util.List;
 public class RodOfDiscord extends Tool{
 
     public RodOfDiscord(Plugin plugin){
-        super(plugin,"Rod Of Discord","#96FF0A",Material.BREEZE_ROD,"rod_of_discord","RodOfDiscord",120,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Teleports you to the position of the mouse",
-                ChatColor.GRAY+"Using too frequently causes damage")));
+        super(plugin,"rod_of_discord.name","#96FF0A",Material.BREEZE_ROD,"rod_of_discord","RodOfDiscord",120,"rod_of_discord.lore");
     }
 
     @Override

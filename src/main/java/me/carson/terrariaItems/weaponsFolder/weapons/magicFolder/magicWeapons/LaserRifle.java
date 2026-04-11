@@ -17,7 +17,7 @@ import java.util.UUID;
 public class LaserRifle extends Magic {
 
     public LaserRifle(Plugin plugin) {
-        super(plugin,"Laser Rifle","#FF9696", Material.PRISMARINE_SHARD,"laser_rifle","LaserRifle",5,2.5f,8,0,75,8, new ArrayList<>(List.of(ChatColor.GRAY+"Fires fast-moving purple lasers",ChatColor.GRAY+"Costs 8 Mana",ChatColor.GRAY+"8 Damage")));
+        super(plugin,"laser_rifle.name","#FF9696", Material.PRISMARINE_SHARD,"laser_rifle","LaserRifle",5,2.5f,8,0,75,8,"laser_rifle.lore");
     }
 
     @Override

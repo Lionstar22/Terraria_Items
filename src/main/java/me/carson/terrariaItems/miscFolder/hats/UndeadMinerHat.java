@@ -15,7 +15,7 @@ import java.util.List;
 public class UndeadMinerHat extends Basic {
 
     public UndeadMinerHat(Plugin plugin){
-        super(plugin,"Mining Helmet","#9696FF", Material.GOLDEN_HELMET,"undead_miner_hat","UndeadMinerHat",new ArrayList<>(List.of(ChatColor.GRAY+"Worn by dead miners")));
+        super(plugin,"undead_miner_hat.name","#9696FF", Material.GOLDEN_HELMET,"undead_miner_hat","UndeadMinerHat","undead_miner_hat.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

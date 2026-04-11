@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.enemiesFolder;
 
+import me.carson.terrariaItems.TILangManager;
 import me.carson.terrariaItems.enemyProjectilesFolder.EnemyProjectile;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
@@ -13,6 +14,7 @@ import java.util.Random;
 public abstract class CustomEnemy {
 
     protected final Plugin plugin;
+    public final TILangManager lang =TILangManager.getInstance();
 
     public CustomEnemy(Plugin plugin){
         this.plugin = plugin;

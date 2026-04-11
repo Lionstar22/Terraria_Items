@@ -15,7 +15,7 @@ import java.util.List;
 public class StarCannon extends Gun {
 
     public StarCannon(Plugin plugin) {
-        super(plugin,"Star Cannon","#96FF96", Material.RED_DYE,"star_cannon","StarCannon",5,3,10,0,200, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots fallen stars",ChatColor.GRAY+"Pierces infinitely",ChatColor.GRAY+"10 Damage")));
+        super(plugin,"star_cannon.name","#96FF96", Material.RED_DYE,"star_cannon","StarCannon",5,3,10,0,200,"star_cannon.lore");
     }
 
     @Override

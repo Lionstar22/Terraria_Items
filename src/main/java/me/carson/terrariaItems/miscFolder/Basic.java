@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.miscFolder;
 
+import me.carson.terrariaItems.TILangManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.ChatColor;
@@ -20,12 +21,13 @@ public class Basic {
     protected final org.bukkit.Material baseMaterial;
     protected final String texture;
     protected final String id;
-    protected final ArrayList<String> lore;
+    protected final String lore;
     private final NamespacedKey customItemKey;
     private final NamespacedKey unplaceableKey;
+    public final TILangManager lang =TILangManager.getInstance();
 
 
-    public Basic(Plugin plugin, String name, String rarity, org.bukkit.Material baseMaterial, String texture, String id, ArrayList<String> lore){
+    public Basic(Plugin plugin, String name, String rarity, org.bukkit.Material baseMaterial, String texture, String id, String lore){
         this.plugin = plugin;
         this.name = name;
         this.rarity = rarity;
@@ -41,9 +43,9 @@ public class Basic {
         ItemStack basic = new ItemStack(baseMaterial);
         ItemMeta meta = basic.getItemMeta();
         meta.setUnbreakable(true);
-        meta.setDisplayName(net.md_5.bungee.api.ChatColor.of(rarity)+name);
+        meta.setDisplayName(net.md_5.bungee.api.ChatColor.of(rarity)+lang.get("misc",name));
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setLore(lore);
+        meta.setLore(new ArrayList<>(lang.getList("misc",lore)));
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, id);
         meta.setItemModel(new NamespacedKey("terraria",texture));

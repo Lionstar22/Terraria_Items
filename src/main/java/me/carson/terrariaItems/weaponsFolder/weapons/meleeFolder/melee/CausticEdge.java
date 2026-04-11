@@ -24,7 +24,7 @@ public class CausticEdge extends Sword {
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public CausticEdge(Plugin plugin) {
-        super(plugin,"Caustic Edge","#FF9696", Material.NETHERITE_SWORD,"caustic_edge","CausticEdge",0,0.75f,13.5f,0,50, new ArrayList<>(List.of(ChatColor.GRAY+"Fires a bouncing caustic beam",ChatColor.GRAY+"Inflicts acid venom and slows down on enemy hits",ChatColor.GRAY+"18 Damage")));
+        super(plugin,"caustic_edge.name","#FF9696", Material.NETHERITE_SWORD,"caustic_edge","CausticEdge",0,0.75f,13.5f,0,50, "caustic_edge.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

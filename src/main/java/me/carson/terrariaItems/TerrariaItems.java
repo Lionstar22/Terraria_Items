@@ -8,7 +8,7 @@ import me.carson.terrariaItems.blocksFolder.CustomBlockManager;
 import me.carson.terrariaItems.enemiesFolder.EnemyManager;
 import me.carson.terrariaItems.listenersHandler.*;
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
-import me.carson.terrariaItems.armourFolder.ArmorManager;
+import me.carson.terrariaItems.armorFolder.ArmorManager;
 import me.carson.terrariaItems.materialsFolder.MaterialManager;
 import me.carson.terrariaItems.materialsFolder.MaterialsListeners;
 import me.carson.terrariaItems.projectilesFolder.ProjectileManager;
@@ -28,6 +28,8 @@ public final class TerrariaItems extends JavaPlugin{
 
     @Override
     public void onEnable() {
+
+        TILangManager.initialize(this);
 
         if (Bukkit.getPluginManager().getPlugin("PacketEvents") != null) {
             // Use the standalone PacketEvents plugin

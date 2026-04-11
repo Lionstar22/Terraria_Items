@@ -11,7 +11,7 @@ import java.util.List;
 public class ForbiddenFragment extends Material {
 
     public ForbiddenFragment(Plugin plugin) {
-        super(plugin,"Forbidden Fragment","#FF96FF", org.bukkit.Material.DIAMOND,"forbidden_fragment","ForbiddenFragment", new ArrayList<>(List.of(ChatColor.GRAY+"A fragment of the deserts power")));
+        super(plugin,"forbidden_fragment.name","#FF96FF", org.bukkit.Material.DIAMOND,"forbidden_fragment","ForbiddenFragment","forbidden_fragment.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

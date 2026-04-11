@@ -14,7 +14,7 @@ import java.util.List;
 public class MagicCuffs extends Accessory  {
 
     public MagicCuffs(Plugin plugin){
-        super(plugin,"Magic Cuffs","#96FF96",Material.NETHER_BRICK,"magic_cuffs","MagicCuffs",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 20",ChatColor.GRAY+"Restores mana when damaged",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"magic_cuffs.name","#96FF96",Material.NETHER_BRICK,"magic_cuffs","MagicCuffs","magic_cuffs.lore");
     }
 
     @Override

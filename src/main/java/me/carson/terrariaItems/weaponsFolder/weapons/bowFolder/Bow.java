@@ -13,7 +13,7 @@ public abstract class Bow extends Weapon {
     protected final float damage;
     protected final float spread;
 
-    public Bow(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, int cooldown, float speed, float damage, float spread, ArrayList<String> lore) {
+    public Bow(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, int cooldown, float speed, float damage, float spread, String lore) {
         super(plugin, name, rarity, baseMaterial, texture, id, cooldown, lore);
         this.speed = speed;
         this.damage = damage;

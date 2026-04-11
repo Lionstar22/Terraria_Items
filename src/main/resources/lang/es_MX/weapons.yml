@@ -1,0 +1,253 @@
+daedalus_stormbow:
+  name: "Arco Tempestuoso de Dédalo"
+  lore:
+    - "&7Dispara flechas desde el cielo"
+hallowed_repeater:
+  name: "Repetidor Sagrado"
+  lore:
+    - "&7Ballesta sagrada cuyas flechas iluminan al objetivo"
+    - "&7Convierte flechas normales en Flechas Espectrales"
+hoarfrost_bow:
+  name: "Arco de Escarcha"
+  lore:
+    - "&7Dispara dos flechas a la vez"
+    - "&7Convierte flechas de madera en flechas de niebla"
+    - "&76 de Daño"
+molten_fury:
+  name: "Furia de Magma"
+  lore:
+    - "&7Enciende en llamas las flechas de madera"
+pulse_bow:
+  name: "Arco de Pulso"
+  lore:
+    - "&7Dispara una flecha cargada"
+    - "&710 de Daño"
+blowpipe:
+  name: "Cerbatana"
+  lore:
+    - "&7Usa semillas como munición"
+    - "&71 de Daño"
+boomstick:
+  name: "Palo Explosivo"
+  lore:
+    - "&7Dispara una ráfaga de balas"
+    - "&73 de Daño"
+clockwork_assault_rifle:
+  name: "Rifle de Asalto Mecánico"
+  lore:
+    - "&7Ráfaga de tres disparos"
+    - "&7Solo el primer disparo consume munición"
+    - "&75 de Daño"
+handgun:
+  name: "Pistola"
+  lore:
+    - "&7Dispara balas"
+    - "&74 de Daño"
+megashark:
+  name: "Megatibur"
+  lore:
+    - "&750% de probabilidad de ahorrar munición"
+    - "&7El hermano mayor del Minitibur"
+    - "&76 de Daño"
+minishark:
+  name: "Minitibur"
+  lore:
+    - "&733% de probabilidad de ahorrar munición"
+    - "&7Mitad tiburón, mitad pistola, completamente increíble"
+    - "&72 de Daño"
+needler:
+  name: "Agujador"
+  lore:
+    - "&7Convierte balas de mosquete en agujas venenosas"
+    - "&76 de Daño"
+onyx_blaster:
+  name: "Blaster de Ónice"
+  lore:
+    - "&7Dispara una ráfaga de balas y un"
+    - "&7cristal de ónice que explota al impactar"
+    - "&74 de Daño"
+phoenix_blaster:
+  name: "Blaster Fénix"
+  lore:
+    - "&7Dispara balas"
+    - "&78 de Daño"
+sand_gun:
+  name: "Pistola de Arena"
+  lore:
+    - "&7¡Esta es una buena idea!"
+    - "&77 de Daño"
+shotgun:
+  name: "Escopeta"
+  lore:
+    - "&7Dispara una ráfaga de balas"
+    - "&73.5 de Daño"
+sniper_rifle:
+  name: "Rifle de Francotirador"
+  lore:
+    - "&7Dispara una bala potente y de alta velocidad"
+    - "&7Agáchate para hacer zoom"
+    - "&730 de Daño"
+snowball_cannon:
+  name: "Cañón de Bolas de Nieve"
+  lore:
+    - "&7Lanza bolas de nieve"
+    - "&78 de Daño"
+star_cannon:
+  name: "Cañón Estelar"
+  lore:
+    - "&7Dispara estrellas caídas"
+    - "&7Atraviesa infinitamente"
+    - "&710 de Daño"
+super_star_shooter:
+  name: "Súper Lanzador Estelar"
+  lore:
+    - "&7Dispara estrellas caídas"
+    - "&7Atraviesa infinitamente"
+    - "&720 de Daño"
+amethyst_staff:
+  name: "Bastón de Amatista"
+  lore:
+    - "&7Dispara un rayo de amatista"
+    - "&7Cuesta 5 de Maná"
+    - "&74 de Daño"
+bubble_gun:
+  name: "Pistola de Burbujas"
+  lore:
+    - "&7Dispara burbujas poderosas rápidamente"
+    - "&7Cuesta 5 de Maná"
+    - "&710 de Daño"
+crystal_storm:
+  name: "Tormenta de Cristal"
+  lore:
+    - "&7Invoca fragmentos de cristal a fuego rápido"
+    - "&7Cuesta 5 de Maná"
+    - "&76 de Daño"
+icicle_staff:
+  name: "Bastón de Carámbanos"
+  lore:
+    - "&7Lanza carámbanos desde el cielo"
+    - "&7Cuesta 6 de Maná"
+    - "&78 de Daño"
+laser_rifle:
+  name: "Rifle Láser"
+  lore:
+    - "&7Dispara láseres morados de movimiento rápido"
+    - "&7Cuesta 8 de Maná"
+    - "&78 de Daño"
+magical_harp:
+  name: "Arpa Mágica"
+  lore:
+    - "&7Dispara una nota musical"
+    - "&7Cuesta 5 de Maná"
+    - "&77 de Daño"
+magic_dagger:
+  name: "Daga Mágica"
+  lore:
+    - "&7Una daga mágica que regresa al lanzador"
+    - "&7Cuesta 6 de Maná"
+    - "&79 de Daño"
+meteor_staff:
+  name: "Bastón de Meteoros"
+  lore:
+    - "&7Llueve meteoros"
+    - "&7Cuesta 9 de Maná"
+    - "&710 de Daño"
+ruby_staff:
+  name: "Bastón de Rubí"
+  lore:
+    - "&7Dispara un rayo de rubí"
+    - "&7Cuesta 7 de Maná"
+    - "&76 de Daño"
+thunder_zapper:
+  name: "Zapador de Truenos"
+  lore:
+    - "&7Dispara un rayo"
+    - "&7Cuesta 6 de Maná"
+    - "&79 de Daño"
+water_bolt:
+  name: "Rayo de Agua"
+  lore:
+    - "&7Lanza un rayo de agua de movimiento lento"
+    - "&7Cuesta 10 de Maná"
+    - "&75 de Daño"
+blade_of_grass:
+  name: "Hoja de Hierba"
+  lore:
+    - "&7Tiene probabilidad de envenenar enemigos"
+    - "&76 de Daño"
+breaker_blade:
+  name: "Hoja Rompedora"
+  lore:
+    - "&7Inflige más daño a enemigos sin daño previo"
+    - "&714 de Daño, +3 Alcance"
+caustic_edge:
+  name: "Filo Cáustico"
+  lore:
+    - "&7Dispara un rayo cáustico que rebota"
+    - "&7Inflige veneno ácido y ralentiza al golpear enemigos"
+    - "&718 de Daño"
+christmas_tree_sword:
+  name: "Espada Árbol de Navidad"
+  lore:
+    - "&7Dispara adornos navideños"
+    - "&76 de Daño"
+enchanted_sword:
+  name: "Espada Encantada"
+  lore:
+    - "&7Dispara un rayo de espada encantada"
+    - "&78 de Daño"
+excalibur:
+  name: "Excalibur"
+  lore:
+    - "&7La espada sagrada de la leyenda"
+    - "&720 de Daño, +1 Alcance"
+falcon_blade:
+  name: "Hoja del Halcón"
+  lore:
+    - "&7Espada de ataque rápido"
+    - "&76 de Daño"
+ice_blade:
+  name: "Hoja de Hielo"
+  lore:
+    - "&7Dispara un rayo helado"
+    - "&77 de Daño"
+ice_sickle:
+  name: "Hoz de Hielo"
+  lore:
+    - "&7Dispara una hoz helada"
+    - "&717 de Daño"
+lights_bane:
+  name: "Perdición de la Luz"
+  lore:
+    - "&7Crea un tajo oscuro cerca de la punta de la espada"
+slap_hand:
+  name: "Mano Bofetada"
+  lore:
+    - "&7¡FUERA DE AQUÍ!"
+    - "&79 de Daño"
+starfury:
+  name: "Furia Estelar"
+  lore:
+    - "&7Hace llover estrellas desde el cielo"
+    - "&7Forjada con la furia de los cielos"
+    - "&78 de Daño"
+tainted_blade:
+  name: "Hoja Corrompida"
+  lore:
+    - "&7Envenena a los enemigos al golpear"
+    - "&712 de Daño"
+terra_blade:
+  name: "Hoja Terra"
+  lore:
+    - "&7Forjada con las mejores hojas de luz y oscuridad"
+    - "&71000 de Daño, +3 Alcance"
+vampire_knives:
+  name: "Cuchillos Vampiro"
+  lore:
+    - "&7Lanza rápidamente dagas que roban vida"
+    - "&78 de Daño"
+volcano:
+  name: "Volcán"
+  lore:
+    - "&7¡Está hecho de fuego!"
+    - "&715 de Daño"

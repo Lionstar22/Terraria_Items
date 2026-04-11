@@ -20,8 +20,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class GoldenCrate extends Tool {
 
     public GoldenCrate(Plugin plugin){
-        super(plugin,"Golden Crate","#FFC896", Material.ANGLER_POTTERY_SHERD,"golden_crate","GoldenCrate",0,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Right click to open")));
+        super(plugin,"golden_crate.name","#FFC896", Material.ANGLER_POTTERY_SHERD,"golden_crate","GoldenCrate",0,"golden_crate.lore");
     }
 
     @Override

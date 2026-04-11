@@ -22,8 +22,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class OasisCrate extends Tool {
 
     public OasisCrate(Plugin plugin){
-        super(plugin,"Oasis Crate","#96FF96", Material.ANGLER_POTTERY_SHERD,"oasis_crate","OasisCrate",0,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Right click to open")));
+        super(plugin,"oasis_crate.name","#96FF96", Material.ANGLER_POTTERY_SHERD,"oasis_crate","OasisCrate",0,"oasis_crate.lore");
     }
 
     @Override

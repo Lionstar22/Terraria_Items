@@ -18,7 +18,7 @@ import java.util.List;
 public class FastClock extends Accessory{
 
     public FastClock(Plugin plugin){
-        super(plugin,"Fast Clock","#FF9696", Material.SUGAR,"fast_clock","FastClock",new ArrayList<>(List.of(ChatColor.GRAY+"Immunity to Slowness",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"fast_clock.name","#FF9696", Material.SUGAR,"fast_clock","FastClock","fast_clock.lore");
     }
 
     @Override

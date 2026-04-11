@@ -19,7 +19,7 @@ import java.util.List;
 public class TaintedBlade extends Sword {
 
     public TaintedBlade(Plugin plugin) {
-        super(plugin,"Tainted Blade","#FFC896", Material.DIAMOND_SWORD,"tainted_blade","TaintedBlade",0,0,12,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Inflicts poison on enemy hits",ChatColor.GRAY+"12 Damage")));
+        super(plugin,"tainted_blade.name","#FFC896", Material.DIAMOND_SWORD,"tainted_blade","TaintedBlade",0,0,12,0,0, "tainted_blade.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

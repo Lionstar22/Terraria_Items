@@ -23,7 +23,7 @@ public class CloudInABottle extends Accessory{
     private boolean jumped=false;
 
     public CloudInABottle(Plugin plugin){
-        super(plugin,"Cloud in a Bottle","#9696FF",Material.FIREWORK_STAR,"cloud_in_a_bottle","CloudInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to double jump", ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"cloud_in_a_bottle.name","#9696FF",Material.FIREWORK_STAR,"cloud_in_a_bottle","CloudInABottle","cloud_in_a_bottle.lore");
     }
 
     @EventHandler

@@ -17,7 +17,7 @@ import java.util.Set;
 public class SoulOfLight extends Material{
 
     public SoulOfLight(Plugin plugin) {
-        super(plugin,"Soul of Light","#FFC896", org.bukkit.Material.PINK_DYE,"soul_of_light","SoulOfLight", new ArrayList<>(List.of(ChatColor.GRAY+"The essence of light creatures")));
+        super(plugin,"soul_of_light.name","#FFC896", org.bukkit.Material.PINK_DYE,"soul_of_light","SoulOfLight","soul_of_light.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

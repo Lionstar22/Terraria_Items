@@ -21,8 +21,7 @@ public class MechanicalEgg extends Tool {
     private final NamespacedKey key = new NamespacedKey(plugin, "BossDragon");
 
     public MechanicalEgg(Plugin plugin){
-        super(plugin,"Mechanical Egg","#FFC896", Material.LIGHT_GRAY_DYE,"mechanical_egg","MechanicalEgg",10,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Summons the Mechanical Dragon")));
+        super(plugin,"mechanical_egg.name","#FFC896", Material.LIGHT_GRAY_DYE,"mechanical_egg","MechanicalEgg",10,"mechanical_egg.lore");
     }
 
     @Override

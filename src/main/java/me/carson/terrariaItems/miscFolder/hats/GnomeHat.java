@@ -15,7 +15,7 @@ import java.util.List;
 public class GnomeHat extends Basic {
 
     public GnomeHat(Plugin plugin){
-        super(plugin,"Gnome Hat","#96FF96", Material.LEATHER_HELMET,"gnome_hat","GnomeHat",new ArrayList<>(List.of(ChatColor.GRAY+"How did you get this")));
+        super(plugin,"unobtainable.name","#96FF96", Material.LEATHER_HELMET,"gnome_hat","GnomeHat","unobtainable.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -15,7 +15,7 @@ import java.util.List;
 public class HoarfrostBow extends Bow {
 
     public HoarfrostBow(Plugin plugin) {
-        super(plugin,"Hoarfrost Bow","#FF96FF", Material.BOW,"hoarfrost_bow","HoarfrostBow",10,2.5f,6,0.075f, new ArrayList<>(List.of(ChatColor.GRAY+"Fires two arrows at once",ChatColor.GRAY+"Converts wooden arrows into mist arrows")));
+        super(plugin,"hoarfrost_bow.name","#FF96FF", Material.BOW,"hoarfrost_bow","HoarfrostBow",10,2.5f,6,0.075f, "hoarfrost_bow.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

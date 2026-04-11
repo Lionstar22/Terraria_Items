@@ -14,7 +14,7 @@ import java.util.List;
 public class HoneyComb extends Accessory  {
 
     public HoneyComb(Plugin plugin){
-        super(plugin,"Honey Comb","#96FF96",Material.NETHER_BRICK,"honey_comb","HoneyComb",new ArrayList<>(List.of(ChatColor.GRAY+"Douses the user in honey when damaged",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"honey_comb.name","#96FF96",Material.NETHER_BRICK,"honey_comb","HoneyComb","honey_comb.lore");
     }
 
     @Override

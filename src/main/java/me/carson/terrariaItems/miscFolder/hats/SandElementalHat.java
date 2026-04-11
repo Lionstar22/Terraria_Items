@@ -15,7 +15,7 @@ import java.util.List;
 public class SandElementalHat extends Basic {
 
     public SandElementalHat(Plugin plugin){
-        super(plugin,"Sand Elemental Hat","#96FF96", Material.LEATHER_HELMET,"sand_elemental_hat","SandElementalHat",new ArrayList<>(List.of(ChatColor.GRAY+"How did you get this?")));
+        super(plugin,"unobtainable.name","#96FF96", Material.LEATHER_HELMET,"sand_elemental_hat","SandElementalHat","unobtainable.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

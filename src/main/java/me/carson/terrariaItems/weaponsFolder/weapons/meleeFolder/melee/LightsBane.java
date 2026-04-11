@@ -17,7 +17,7 @@ import java.util.List;
 
 public class LightsBane extends Sword {
     public LightsBane(Plugin plugin) {
-        super(plugin,"Lights Bane","#9696FF",Material.IRON_SWORD,"lights_bane","LightsBane",10,0,0,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Creates a dark slash near the tip of the sword")));
+        super(plugin,"lights_bane.name","#9696FF",Material.IRON_SWORD,"lights_bane","LightsBane",10,0,0,0,0,"lights_bane.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

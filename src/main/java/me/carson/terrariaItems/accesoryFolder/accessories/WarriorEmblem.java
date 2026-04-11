@@ -13,7 +13,7 @@ import java.util.List;
 public class WarriorEmblem extends Accessory {
 
     public WarriorEmblem(Plugin plugin){
-        super(plugin,"Warrior Emblem","#FF9696", Material.GOLD_NUGGET,"warrior_emblem","WarriorEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased melee damage",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"warrior_emblem.name","#FF9696", Material.GOLD_NUGGET,"warrior_emblem","WarriorEmblem","warrior_emblem.lore");
     }
 
     @Override

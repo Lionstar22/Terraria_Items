@@ -19,13 +19,7 @@ import java.util.List;
 public class AnkhShield extends Accessory implements Listener {
 
     public AnkhShield(Plugin plugin){
-        super(plugin,"Ankh Shield","#96FF0A", Material.NETHER_BRICK,"ankh_shield","AnkhShield",
-                new ArrayList<>(List.of(
-                        ChatColor.GRAY+"Grants immunity to knockback",
-                        ChatColor.GRAY+"Grants immunity to fire damage",
-                        ChatColor.GRAY+"Grants immunity to most debuffs",
-                        ChatColor.GRAY+"+4 Armor",
-                        ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"ankh_shield.name","#96FF0A", Material.NETHER_BRICK,"ankh_shield","AnkhShield","ankh_shield.lore");
     }
 
     @Override

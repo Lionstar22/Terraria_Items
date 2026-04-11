@@ -11,7 +11,7 @@ import java.util.List;
 public class HallowedBar extends Material {
 
     public HallowedBar(Plugin plugin) {
-        super(plugin,"Hallowed Bar","#FF9696", org.bukkit.Material.GOLD_INGOT,"hallowed_bar","HallowedBar", new ArrayList<>(List.of((ChatColor.GRAY+"A holy bar forged from souls"))));
+        super(plugin,"hallowed_bar.name","#FF9696", org.bukkit.Material.GOLD_INGOT,"hallowed_bar","HallowedBar","hallowed_bar.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

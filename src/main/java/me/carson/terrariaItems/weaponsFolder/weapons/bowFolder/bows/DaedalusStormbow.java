@@ -15,7 +15,7 @@ import java.util.List;
 public class DaedalusStormbow extends Bow {
 
     public DaedalusStormbow(Plugin plugin) {
-        super(plugin,"Daedalus Stormbow","#D2A0FF", Material.BOW,"daedalus_stormbow","DaedalusStormbow",0,0,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots arrows from the sky")));
+        super(plugin,"daedalus_stormbow.name","#D2A0FF", Material.BOW,"daedalus_stormbow","DaedalusStormbow",0,0,0,0,"daedalus_stormbow.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

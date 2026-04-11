@@ -1,0 +1,222 @@
+unobtainable:
+  name: "Inobtanible"
+  lore:
+    - "&7¿Cómo conseguiste esto?"
+cactus_boots:
+  name: "Botas de Cactus"
+  lore:
+    - "&7Bono de Conjunto: Los atacantes reciben daño de las espinas del cactus"
+    - "&7+1 Armadura"
+cactus_chestplate:
+  name: "Pechera de Cactus"
+  lore:
+    - "&7Bono de Conjunto: Los atacantes reciben daño de las espinas del cactus"
+    - "&7+2 Armadura"
+cactus_helmet:
+  name: "Casco de Cactus"
+  lore:
+    - "&7Bono de Conjunto: Los atacantes reciben daño de las espinas del cactus"
+    - "&7+1 Armadura"
+cactus_leggings:
+  name: "Grebas de Cactus"
+  lore:
+    - "&7Bono de Conjunto: Los atacantes reciben daño de las espinas del cactus"
+    - "&7+2 Armadura"
+forbidden_elytra:
+  name: "Elitros Prohibidos"
+  lore:
+    - "&7Aumenta el maná máximo en 20"
+    - "&7+4 Armadura"
+forbidden_leggings:
+  name: "Grebas Prohibidas"
+  lore:
+    - "&710% de aumento de daño mágico"
+    - "&7+6 Armadura"
+forbidden_mask:
+  name: "Máscara Prohibida"
+  lore:
+    - "&715% de aumento de daño mágico"
+    - "&7+3 Armadura"
+forbidden_robes:
+  name: "Túnica Prohibida"
+  lore:
+    - "&7Aumenta el maná máximo en 40"
+    - "&7+8 Armadura"
+forbidden_treads:
+  name: "Pisadas Prohibidas"
+  lore:
+    - "&7Aumenta el maná máximo en 40"
+    - "&710% de aumento de daño mágico"
+    - "&7+3 Armadura"
+frost_boots:
+  name: "Botas de Escarcha"
+  lore:
+    - "&710% de aumento de velocidad de movimiento"
+    - "&7+0.2 de aumento de velocidad de ataque"
+    - "&7+5 Armadura"
+frost_breastplate:
+  name: "Pechera de Escarcha"
+  lore:
+    - "&711% de aumento de probabilidad de golpe crítico"
+    - "&7+10 Armadura"
+frost_elytra:
+  name: "Elitros de Escarcha"
+  lore:
+    - "&75% de aumento de probabilidad de golpe crítico"
+    - "&7+5 Armadura"
+frost_helmet:
+  name: "Casco de Escarcha"
+  lore:
+    - "&716% de aumento de daño cuerpo a cuerpo y a distancia"
+    - "&7+5 Armadura"
+frost_leggings:
+  name: "Grebas de Escarcha"
+  lore:
+    - "&7Aumenta el daño cuerpo a cuerpo y a distancia en un 10%"
+    - "&7+8 Armadura"
+hallowed_boots:
+  name: "Botas Sagradas"
+  lore:
+    - "&75% de aumento de daño"
+    - "&720% de aumento de velocidad de movimiento"
+    - "&7Bono de Conjunto: Esquiva cada 30 segundos"
+    - "&7+15 Armadura"
+hallowed_chestplate:
+  name: "Pechera Sagrada"
+  lore:
+    - "&77% de aumento de probabilidad de golpe crítico"
+    - "&7Bono de Conjunto: Esquiva cada 30 segundos"
+    - "&7+25 Armadura"
+hallowed_elytra:
+  name: "Elitros Sagrados"
+  lore:
+    - "&75% de aumento de probabilidad de golpe crítico"
+    - "&7Bono de Conjunto: Esquiva cada 30 segundos"
+    - "&7+10 Armadura"
+hallowed_headgear:
+  name: "Tocado Sagrado"
+  lore:
+    - "&712% de aumento de daño mágico"
+    - "&7Aumenta el maná máximo en 100"
+    - "&712% de aumento de probabilidad de golpe crítico"
+    - "&7Bono de Conjunto: Esquiva cada 30 segundos"
+    - "&7+20 Armadura"
+hallowed_helmet:
+  name: "Casco Sagrado"
+  lore:
+    - "&715% de aumento de daño a distancia"
+    - "&78% de aumento de probabilidad de golpe crítico"
+    - "&7Bono de Conjunto: Esquiva cada 30 segundos"
+    - "&7+20 Armadura"
+hallowed_leggings:
+  name: "Grebas Sagradas"
+  lore:
+    - "&75% de aumento de daño"
+    - "&7Bono de Conjunto: Esquiva cada 30 segundos"
+    - "&7+20 Armadura"
+hallowed_mask:
+  name: "Máscara Sagrada"
+  lore:
+    - "&710% de aumento de daño cuerpo a cuerpo y +0.2 de velocidad de ataque"
+    - "&710% de aumento de probabilidad de golpe crítico"
+    - "&7Bono de Conjunto: Esquiva cada 30 segundos"
+    - "&7+20 Armadura"
+jungle_hat:
+  name: "Sombrero de Jungla"
+  lore:
+    - "&7Aumenta el maná máximo en 40"
+    - "&76% de aumento de probabilidad de golpe crítico"
+    - "&7+2 Armadura"
+jungle_leggings:
+  name: "Grebas de Jungla"
+  lore:
+    - "&7Aumenta el maná máximo en 20"
+    - "&76% de aumento de daño mágico"
+    - "&7+5 Armadura"
+jungle_pants:
+  name: "Pantalones de Jungla"
+  lore:
+    - "&7Aumenta el maná máximo en 20"
+    - "&76% de aumento de probabilidad de golpe crítico"
+    - "&7+2 Armadura"
+jungle_shirt:
+  name: "Camisa de Jungla"
+  lore:
+    - "&7Aumenta el maná máximo en 20"
+    - "&76% de aumento de daño mágico"
+    - "&7+6 Armadura"
+molten_boots:
+  name: "Botas de Magma"
+  lore:
+    - "&7+0.15 de aumento de velocidad de ataque"
+    - "&7Bono de Conjunto: Otorga inmunidad al fuego"
+    - "&7+3 Armadura"
+molten_chestplate:
+  name: "Pechera de Magma"
+  lore:
+    - "&710% de aumento de daño cuerpo a cuerpo"
+    - "&7Bono de Conjunto: Otorga inmunidad al fuego"
+    - "&7+8 Armadura"
+molten_helmet:
+  name: "Casco de Magma"
+  lore:
+    - "&77% de aumento de probabilidad de golpe crítico"
+    - "&7Bono de Conjunto: Otorga inmunidad al fuego"
+    - "&7+3 Armadura"
+molten_leggings:
+  name: "Grebas de Magma"
+  lore:
+    - "&77% de aumento de daño cuerpo a cuerpo"
+    - "&7Bono de Conjunto: Otorga inmunidad al fuego"
+    - "&7+6 Armadura"
+necro_breastplate:
+  name: "Pechera Necromántica"
+  lore:
+    - "&75% de aumento de daño a distancia"
+    - "&75% de aumento de probabilidad de golpe crítico"
+    - "&7+8 Armadura"
+necro_greaves:
+  name: "Grebas Necrománticas"
+  lore:
+    - "&75% de aumento de daño a distancia"
+    - "&7+3 Armadura"
+necro_helmet:
+  name: "Casco Necromántico"
+  lore:
+    - "&75% de aumento de daño a distancia"
+    - "&7+3 Armadura"
+necro_leggings:
+  name: "Musleras Necrománticas"
+  lore:
+    - "&75% de aumento de daño a distancia"
+    - "&75% de aumento de probabilidad de golpe crítico"
+    - "&7+6 Armadura"
+shadow_greaves:
+  name: "Grebas de Sombra"
+  lore:
+    - "&75% de aumento de probabilidad de golpe crítico"
+    - "&75% de aumento de velocidad de movimiento"
+    - "&7+3 Armadura"
+shadow_helmet:
+  name: "Casco de Sombra"
+  lore:
+    - "&75% de aumento de probabilidad de golpe crítico"
+    - "&75% de aumento de velocidad de movimiento"
+    - "&7+3 Armadura"
+shadow_leggings:
+  name: "Grebas de Sombra"
+  lore:
+    - "&75% de aumento de probabilidad de golpe crítico"
+    - "&75% de aumento de velocidad de movimiento"
+    - "&7+6 Armadura"
+shadow_scalemail:
+  name: "Cota de Malla de Sombra"
+  lore:
+    - "&75% de aumento de probabilidad de golpe crítico"
+    - "&75% de aumento de velocidad de movimiento"
+    - "&7+8 Armadura"
+wizard_hat:
+  name: "Sombrero de Mago"
+  lore:
+    - "&75% de aumento de daño mágico"
+    - "&7+1 Armadura"

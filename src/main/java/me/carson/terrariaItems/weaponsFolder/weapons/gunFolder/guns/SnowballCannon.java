@@ -21,7 +21,7 @@ import java.util.List;
 public class SnowballCannon extends Gun{
 
     public SnowballCannon(Plugin plugin) {
-        super(plugin,"Snowball Cannon","#9696FF", Material.BOW,"snowball_cannon","SnowballCannon",10,0,8,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Launches Snowballs",ChatColor.GRAY+"8 Damage")));
+        super(plugin,"snowball_cannon.name","#9696FF", Material.BOW,"snowball_cannon","SnowballCannon",10,0,8,0,0,"snowball_cannon.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

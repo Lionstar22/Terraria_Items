@@ -22,7 +22,7 @@ public class TerraBlade extends Sword {
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public TerraBlade(Plugin plugin) {
-        super(plugin,"Terra Blade","#FFFF0A", Material.NETHERITE_SWORD,"terra_blade","TerraBlade",0,1.5f,1000,0,75, new ArrayList<>(List.of(ChatColor.GRAY+"Forged from the finest blades of light and darkness",ChatColor.GRAY+"1000 Damage",ChatColor.GRAY+"+3 Range")));
+        super(plugin,"terra_blade.name","#FFFF0A", Material.NETHERITE_SWORD,"terra_blade","TerraBlade",0,1.5f,1000,0,75,"terra_blade.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

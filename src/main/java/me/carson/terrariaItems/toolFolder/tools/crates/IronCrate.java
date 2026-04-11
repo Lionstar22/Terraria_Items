@@ -21,8 +21,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class IronCrate extends Tool {
 
     public IronCrate(Plugin plugin){
-        super(plugin,"Iron Crate","#96FF96", Material.ANGLER_POTTERY_SHERD,"iron_crate","IronCrate",0,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Right click to open")));
+        super(plugin,"iron_crate.name","#96FF96", Material.ANGLER_POTTERY_SHERD,"iron_crate","IronCrate",0,"iron_crate.lore");
     }
 
     @Override

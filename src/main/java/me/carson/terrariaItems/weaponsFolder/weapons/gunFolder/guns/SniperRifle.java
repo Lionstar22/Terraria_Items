@@ -27,7 +27,7 @@ public class SniperRifle extends Gun{
     NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
 
     public SniperRifle(Plugin plugin) {
-        super(plugin,"Sniper Rifle","#FFFF0A", Material.BLACK_DYE,"sniper_rifle","SniperRifle",40,6,30,0,250, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots a powerful, high velocity bullet",ChatColor.GRAY+"Crouch to zoom",ChatColor.GRAY+"30 Damage")));
+        super(plugin,"sniper_rifle.name","#FFFF0A", Material.BLACK_DYE,"sniper_rifle","SniperRifle",40,6,30,0,250, "sniper_rifle.lore");
     }
 
     @Override

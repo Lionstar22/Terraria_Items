@@ -1,0 +1,223 @@
+
+unobtainable:
+  name: "Unobtainable"
+  lore:
+    - "&7How did you get this?"
+cactus_boots:
+  name: "Cactus Boots"
+  lore:
+    - "&7Set Bonus: Attackers take damage from the cactus spines"
+    - "&7+1 Armor"
+cactus_chestplate:
+  name: "Cactus Chestplate"
+  lore:
+    - "&7Set Bonus: Attackers take damage from the cactus spines"
+    - "&7+2 Armor"
+cactus_helmet:
+  name: "Cactus Helmet"
+  lore:
+    - "&7Set Bonus: Attackers take damage from the cactus spines"
+    - "&7+1 Armor"
+cactus_leggings:
+  name: "Cactus Leggings"
+  lore:
+    - "&7Set Bonus: Attackers take damage from the cactus spines"
+    - "&7+2 Armor"
+forbidden_elytra:
+  name: "Forbidden Elytra"
+  lore:
+    - "&7Increases maximum mana by 20"
+    - "&7+4 Armor"
+forbidden_leggings:
+  name: "Forbidden Leggings"
+  lore:
+    - "&710% increased magic damage"
+    - "&7+6 Armor"
+forbidden_mask:
+  name: "Forbidden Mask"
+  lore:
+    - "&715% increased magic damage"
+    - "&7+3 Armor"
+forbidden_robes:
+  name: "Forbidden Robes"
+  lore:
+    - "&7Increases maximum mana by 40"
+    - "&7+8 Armor"
+forbidden_treads:
+  name: "Forbidden Treads"
+  lore:
+    - "&7Increases maximum mana by 40"
+    - "&710% increased magic damage"
+    - "&7+3 Armor"
+frost_boots:
+  name: "Frost_Boots"
+  lore:
+    - "&710% increased movement speed"
+    - "&7+0.2 increased attack speed"
+    - "&7+5 Armor"
+frost_breastplate:
+  name: "Frost Breastplate"
+  lore:
+    - "&711% increased critical strike chance"
+    - "&7+10 Armor"
+frost_elytra:
+  name: "Frost Elytra"
+  lore:
+    - "&75% increased critical strike chance"
+    - "&7+5 Armor"
+frost_helmet:
+  name: "Frost Helmet"
+  lore:
+    - "&716% increased melee and ranged damage"
+    - "&7+5 Armor"
+frost_leggings:
+  name: "Frost Leggings"
+  lore:
+    - "&7Increases melee and ranged damage by 10%"
+    - "&7+8 Armor"
+hallowed_boots:
+  name: "Hallowed Boots"
+  lore:
+    - "&75% Damage Increase"
+    - "&720% Movement Speed Increase"
+    - "&7Set Bonus: Dodge every 30 seconds"
+    - "&7+15 Armor"
+hallowed_chestplate:
+  name: "Hallowed Chestplate"
+  lore:
+    - "&77% increased critical strike chance"
+    - "&7Set Bonus: Dodge every 30 seconds"
+    - "&7+25 Armor"
+hallowed_elytra:
+  name: "Hallowed Elytra"
+  lore:
+    - "&75% increased critical strike chance"
+    - "&7Set Bonus: Dodge every 30 seconds"
+    - "&7+10 Armor"
+hallowed_headgear:
+  name: "Hallowed Headgear"
+  lore:
+    - "&712% increased magic damage"
+    - "&7Increases maximum mana by 100"
+    - "&712% increased critical strike chance"
+    - "&7Set Bonus: Dodge every 30 seconds"
+    - "&7+20 Armor"
+hallowed_helmet:
+  name: "Hallowed Helmet"
+  lore:
+    - "&715% increased ranged damage"
+    - "&78% increased critical strike chance"
+    - "&7Set Bonus: Dodge every 30 seconds"
+    - "&7+20 Armor"
+hallowed_leggings:
+  name: "Hallowed Leggings"
+  lore:
+    - "&75% Damage Increase"
+    - "&7Set Bonus: Dodge every 30 seconds"
+    - "&7+20 Armor"
+hallowed_mask:
+  name: "Hallowed Mask"
+  lore:
+    - "&710% increased melee damage and +0.2 attack speed"
+    - "&710% increased critical strike chance"
+    - "&7Set Bonus: Dodge every 30 seconds"
+    - "&7+20 Armor"
+jungle_hat:
+  name: "Jungle Hat"
+  lore:
+    - "&7Increases maximum mana by 40"
+    - "&76% increased critical strike chance"
+    - "&7+2 Armor"
+jungle_leggings:
+  name: "Jungle Leggings"
+  lore:
+    - "&7Increases maximum mana by 20"
+    - "&76% increased magic damage"
+    - "&7+5 Armor"
+jungle_pants:
+  name: "Jungle Pants"
+  lore:
+    - "&7Increases maximum mana by 20"
+    - "&76% increased critical strike chance"
+    - "&7+2 Armor"
+jungle_shirt:
+  name: "Jungle Shirt"
+  lore:
+    - "&7Increases maximum mana by 20"
+    - "&76% increased magic damage"
+    - "&7+6 Armor"
+molten_boots:
+  name: "Molten Boots"
+  lore:
+    - "&7+.15 increased attack speed"
+    - "&7Set Bonus: Grants immunity to fire"
+    - "&7+3 Armor"
+molten_chestplate:
+  name: "Molten Chestplate"
+  lore:
+    - "&710% increased melee damage"
+    - "&7Set Bonus: Grants immunity to fire"
+    - "&7+8 Armor"
+molten_helmet:
+  name: "Molten Helmet"
+  lore:
+    - "&77% increased critical strike chance"
+    - "&7Set Bonus: Grants immunity to fire"
+    - "&7+3 Armor"
+molten_leggings:
+  name: "Molten Leggings"
+  lore:
+    - "&77% increased melee damage"
+    - "&7Set Bonus: Grants immunity to fire"
+    - "&7+6 Armor"
+necro_breastplate:
+  name: "Necro Breastplate"
+  lore:
+    - "&75% increased ranged damage"
+    - "&75% increased critical strike chance"
+    - "&7+8 Armor"
+necro_greaves:
+  name: "Necro Greaves"
+  lore:
+    - "&75% increased ranged damage"
+    - "&7+3 Armor"
+necro_helmet:
+  name: "Necro Helmet"
+  lore:
+    - "&75% increased ranged damage"
+    - "&7+3 Armor"
+necro_leggings:
+  name: "Necro Leggings"
+  lore:
+    - "&75% increased ranged damage"
+    - "&75% increased critical strike chance"
+    - "&7+6 Armor"
+shadow_greaves:
+  name: "Shadow Greaves"
+  lore:
+    - "&75% increased critical strike chance"
+    - "&75% Increased movement speed"
+    - "&7+3 Armor"
+shadow_helmet:
+  name: "Shadow Helmet"
+  lore:
+    - "&75% increased critical strike chance"
+    - "&75% Increased movement speed"
+    - "&7+3 Armor"
+shadow_leggings:
+  name: "Shadow Leggings"
+  lore:
+    - "&75% increased critical strike chance"
+    - "&75% Increased movement speed"
+    - "&7+6 Armor"
+shadow_scalemail:
+  name: "Shadow Scalemail"
+  lore:
+    - "&75% increased critical strike chance"
+    - "&75% Increased movement speed"
+    - "&7+8 Armor"
+wizard_hat:
+  name: "Wizard Hat"
+  lore:
+    - "&75% increased magic damage"
+    - "&7+1 Armor"

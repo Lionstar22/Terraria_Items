@@ -15,8 +15,7 @@ import java.util.List;
 public class MomentumCapacitor extends Tool{
 
     public MomentumCapacitor(Plugin plugin){
-        super(plugin,"Momentum Capacitor","#FF96FF",Material.BLUE_DYE,"momentum_capacitor","MomentumCapacitor",0,new ArrayList<>(List.of(
-                ChatColor.GRAY+"Accelerates your horizontal speed")));
+        super(plugin,"momentum_capacitor.name","#FF96FF",Material.BLUE_DYE,"momentum_capacitor","MomentumCapacitor",0,"momentum_capacitor.lore");
     }
 
     @Override

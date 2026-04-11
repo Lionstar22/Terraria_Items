@@ -14,7 +14,7 @@ import java.util.List;
 public class StarCloak extends Accessory  {
 
     public StarCloak(Plugin plugin){
-        super(plugin,"Star Cloak","#FF9696",Material.NETHER_BRICK,"star_cloak","StarCloak",new ArrayList<>(List.of(ChatColor.GRAY+"Causes stars to fall after taking damage",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"star_cloak.name","#FF9696",Material.NETHER_BRICK,"star_cloak","StarCloak","star_cloak.lore");
     }
 
     @Override

@@ -18,7 +18,7 @@ import java.util.List;
 public class MoltenFury extends Bow {
 
     public MoltenFury(Plugin plugin) {
-        super(plugin,"Molten Fury","#FFC896",Material.BOW,"molten_fury","MoltenFury",10,3,6,0.75f, new ArrayList<>(List.of(ChatColor.GRAY+"Lights wooden arrows ablaze")));
+        super(plugin,"molten_fury.name","#FFC896",Material.BOW,"molten_fury","MoltenFury",10,3,6,0.75f, "molten_fury.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

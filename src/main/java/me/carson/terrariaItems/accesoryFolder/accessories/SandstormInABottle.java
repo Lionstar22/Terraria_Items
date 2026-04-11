@@ -17,7 +17,7 @@ import java.util.List;
 public class SandstormInABottle extends Accessory{
 
     public SandstormInABottle(Plugin plugin){
-        super(plugin,"Sandstorm in a Bottle","#96FF96", Material.FIREWORK_STAR,"sandstorm_in_a_bottle","SandstormInABottle",new ArrayList<>(List.of(ChatColor.GRAY+"Allows the holder to do an improved double jump", ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"sandstorm_in_a_bottle.name","#96FF96", Material.FIREWORK_STAR,"sandstorm_in_a_bottle","SandstormInABottle","sandstorm_in_a_bottle.lore");
     }
 
     @Override

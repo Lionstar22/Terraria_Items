@@ -20,7 +20,7 @@ import java.util.List;
 public class HoneyBalloon extends Accessory  {
 
     public HoneyBalloon(Plugin plugin){
-        super(plugin,"Honey Balloon","#96FF96",Material.NETHER_BRICK,"honey_balloon","HoneyBalloon",new ArrayList<>(List.of(ChatColor.GRAY+"Increases jump height",ChatColor.GRAY+"Douses the user in honey when damaged",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"honey_balloon.name","#96FF96",Material.NETHER_BRICK,"honey_balloon","HoneyBalloon","honey_balloon.lore");
     }
 
     @Override

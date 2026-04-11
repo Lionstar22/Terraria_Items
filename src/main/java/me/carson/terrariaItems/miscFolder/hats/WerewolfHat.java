@@ -15,7 +15,7 @@ import java.util.List;
 public class WerewolfHat extends Basic {
 
     public WerewolfHat(Plugin plugin){
-        super(plugin,"Werewolf Hat","#9696FF", Material.GOLDEN_HELMET,"werewolf_hat","WerewolfHat",new ArrayList<>(List.of(ChatColor.GRAY+"How did you get this")));
+        super(plugin,"unobtainable.name","#9696FF", Material.GOLDEN_HELMET,"werewolf_hat","WerewolfHat","unobtainable.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

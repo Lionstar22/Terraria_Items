@@ -13,7 +13,7 @@ import java.util.List;
 public class SorcererEmblem extends Accessory{
 
     public SorcererEmblem(Plugin plugin){
-        super(plugin,"Sorcerer Emblem","#FF9696", Material.GOLD_NUGGET,"sorcerer_emblem","SorcererEmblem",new ArrayList<>(List.of(ChatColor.GRAY+"20% increased magic damage",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"sorcerer_emblem.name","#FF9696", Material.GOLD_NUGGET,"sorcerer_emblem","SorcererEmblem","sorcerer_emblem.lore");
     }
 
     @Override

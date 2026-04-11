@@ -16,7 +16,7 @@ import java.util.List;
 public class BandOfRegeneration extends Accessory implements Listener {
 
     public BandOfRegeneration(Plugin plugin){
-        super(plugin,"Band of Regeneration","#9696FF", Material.REDSTONE_BLOCK,"band_of_regeneration","BandOfRegeneration",new ArrayList<>(List.of(ChatColor.GRAY+"Slowly regenerates life",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"band_of_regeneration.name","#9696FF", Material.NETHER_BRICK,"band_of_regeneration","BandOfRegeneration","band_of_regeneration.lore");
     }
 
     @Override

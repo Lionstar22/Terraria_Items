@@ -19,7 +19,7 @@ import java.util.List;
 public class PowerGlove extends Accessory  {
 
     public PowerGlove(Plugin plugin){
-        super(plugin,"Power Glove","#FF96FF",Material.NETHER_BRICK,"power_glove","PowerGlove",new ArrayList<>(List.of(ChatColor.GRAY+"+1.5 increased attack knockback",ChatColor.GRAY+"+0.25 increased attack speed",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"power_glove.name","#FF96FF",Material.NETHER_BRICK,"power_glove","PowerGlove","power_glove.lore");
     }
 
     @Override

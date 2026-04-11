@@ -39,7 +39,7 @@ public class CustomDrowned extends CustomEnemy implements Listener {
     }
 
     public void spawnIcyMerman(Drowned drowned){
-        drowned.setCustomName("Icy Merman");
+        drowned.setCustomName(lang.get("enemies","icy_merman.name"));
         drowned.setCustomNameVisible(false);
         drowned.getAttribute(Attribute.MAX_HEALTH).setBaseValue(50);
         drowned.setHealth(50);

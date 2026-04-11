@@ -13,11 +13,7 @@ import java.util.List;
 public class LuckyHorseshoe extends Accessory{
 
     public LuckyHorseshoe(Plugin plugin){
-        super(plugin,"Lucky Horseshoe","#9696FF",Material.GOLD_BLOCK,"lucky_horseshoe","LuckyHorseshoe",
-                new ArrayList<>(List.of(
-                        ChatColor.GRAY+"Negates fall damage",
-                        ChatColor.GRAY+"'Said to bring good fortune and keep evil spirits at bay'",
-                        ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"lucky_horseshoe.name","#9696FF",Material.GOLD_BLOCK,"lucky_horseshoe","LuckyHorseshoe","lucky_horseshoe.lore");
     }
 
     @Override

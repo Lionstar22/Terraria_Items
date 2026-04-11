@@ -5,6 +5,8 @@ import com.github.retrooper.packetevents.protocol.player.Equipment;
 import com.github.retrooper.packetevents.protocol.player.EquipmentSlot;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityEquipment;
 import io.github.retrooper.packetevents.util.SpigotConversionUtil;
+import me.carson.terrariaItems.TILangManager;
+import me.carson.terrariaItems.TerrariaItems;
 import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
@@ -29,12 +31,13 @@ public abstract class Accessory {
     protected final Material baseMaterial;
     protected final String texture;
     protected final String id;
-    protected final ArrayList<String> lore;
+    protected final String lore;
     private final NamespacedKey customItemKey;
     private final NamespacedKey unplaceableKey;
     public final PlayerDataHandler playerInstance=PlayerDataHandler.getInstance();
+    public final TILangManager lang =TILangManager.getInstance();
 
-    public Accessory(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, ArrayList<String> lore){
+    public Accessory(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, String lore){
         this.plugin = plugin;
         this.name = name;
         this.rarity = rarity;
@@ -49,9 +52,11 @@ public abstract class Accessory {
     public ItemStack createItem() {
         ItemStack item = new ItemStack(baseMaterial);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(net.md_5.bungee.api.ChatColor.of(rarity)+name);
+        meta.setDisplayName(net.md_5.bungee.api.ChatColor.of(rarity)+lang.get("accessories",name));
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setLore(lore);
+        ArrayList<String> newLore=new ArrayList<>(lang.getList("accessories",lore));
+        newLore.add(lang.get("accessories","accessory_msg"));
+        meta.setLore(newLore);
         NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, id);
         meta.setItemModel(new NamespacedKey("terraria",texture));

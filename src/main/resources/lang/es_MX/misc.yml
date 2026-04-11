@@ -1,0 +1,25 @@
+unobtainable:
+  name: "Inobtanible"
+  lore:
+    - "&7¿Cómo conseguiste esto?"
+bone_pickaxe:
+  name: "Pico de Hueso"
+  lore:
+    - "&7Tengo un hueso que roer contigo"
+pickaxe_axe:
+  name: "Pico Hacha"
+  lore:
+    - "&7No confundir con un taladro de mano"
+    - "&7+2 Alcance"
+archaeologists_hat:
+  name: "Sombrero del Arqueólogo"
+  lore:
+    - "&7¡Eso pertenece a un museo!"
+golden_crown:
+  name: "Corona Dorada"
+  lore:
+    - "&7Digna de un rey"
+undead_miner_hat:
+  name: "Casco de Minero"
+  lore:
+    - "&7Usado por mineros muertos"

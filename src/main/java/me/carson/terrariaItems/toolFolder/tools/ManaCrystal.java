@@ -17,7 +17,7 @@ import java.util.UUID;
 public class ManaCrystal extends Tool {
 
     public ManaCrystal(Plugin plugin) {
-        super(plugin,"Mana Crystal","#96FF96", Material.GOLD_NUGGET,"mana_crystal","ManaCrystal",10, new ArrayList<>(List.of(ChatColor.GRAY+"Permanently increases maximum mana by 20",ChatColor.GRAY+"200 Mana Max")));
+        super(plugin,"mana_crystal.name","#96FF96", Material.GOLD_NUGGET,"mana_crystal","ManaCrystal",10,"mana_crystal.lore");
     }
 
     @Override

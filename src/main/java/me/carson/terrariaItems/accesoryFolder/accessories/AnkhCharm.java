@@ -14,7 +14,7 @@ import java.util.List;
 public class AnkhCharm extends Accessory  {
 
     public AnkhCharm(Plugin plugin){
-        super(plugin,"Ankh Charm","#D2A0FF",Material.NETHER_BRICK,"ankh_charm","AnkhCharm",new ArrayList<>(List.of(ChatColor.GRAY+"Grants immunity to most debuffs",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"ankh_charm.name","#D2A0FF",Material.NETHER_BRICK,"ankh_charm","AnkhCharm","ankh_charm.lore");
     }
 
     @Override

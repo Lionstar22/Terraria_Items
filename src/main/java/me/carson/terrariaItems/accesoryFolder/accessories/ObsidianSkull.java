@@ -20,7 +20,7 @@ import java.util.List;
 public class ObsidianSkull extends Accessory implements Listener {
 
     public ObsidianSkull(Plugin plugin){
-        super(plugin,"Obsidian Skull","#96FF96", Material.OBSIDIAN,"obsidian_skull","ObsidianSkull",new ArrayList<>(List.of(ChatColor.GRAY+"Grants immunity to fire damage",ChatColor.GRAY+"+1 Armor", ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"obsidian_skull.name","#96FF96", Material.OBSIDIAN,"obsidian_skull","ObsidianSkull","obsidian_skull.lore");
     }
 
     @Override

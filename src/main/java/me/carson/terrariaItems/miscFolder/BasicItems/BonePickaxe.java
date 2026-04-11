@@ -12,7 +12,7 @@ import java.util.List;
 public class BonePickaxe extends Basic {
 
     public BonePickaxe(Plugin plugin) {
-        super(plugin,"Bone Pickaxe","#9696FF", Material.IRON_PICKAXE,"bone_pickaxe","BonePickaxe", new ArrayList<>(List.of(ChatColor.GRAY+"I've got a bone to pick with you")));
+        super(plugin,"bone_pickaxe.name","#9696FF", Material.IRON_PICKAXE,"bone_pickaxe","BonePickaxe","bone_pickaxe.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

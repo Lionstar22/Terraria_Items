@@ -19,7 +19,7 @@ import java.util.List;
 public class SlapHand extends Sword {
 
     public SlapHand(Plugin plugin) {
-        super(plugin,"Slap Hand","#FF9696", Material.NETHERITE_SWORD,"slap_hand","SlapHand",0,0,0,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"BEGONE",ChatColor.GRAY+"9 Damage")));
+        super(plugin,"slap_hand.name","#FF9696", Material.NETHERITE_SWORD,"slap_hand","SlapHand",0,0,0,0,0,"slap_hand.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -1,0 +1,76 @@
+
+bubonic_round:
+  name: "Bubonic Round"
+  lore:
+    - "&7Spreads the plague on hit"
+    - "&75 Damage"
+empty_bullet:
+  name: "Empty Bullet"
+  lore:
+    - "&Used to craft various types of ammo"
+exploding_bullet:
+  name: "Exploding Bullet"
+  lore:
+    - "&7Explodes on impact"
+    - "&73 Damage"
+musket_ball:
+  name: "Musket Ball"
+  lore:
+    - "&7Ammo for guns"
+    - "&72 Damage"
+soul_of_fright:
+  name: "Soul of Fright"
+  lore:
+    - "&7The essence of the Wither"
+soul_of_light:
+  name: "Soul of Light"
+  lore:
+    - "&7The essence of light creatures"
+soul_of_might:
+  name: "Soul of Might"
+  lore:
+    - "&7The essence of the Dragon"
+soul_of_night:
+  name: "Soul of Night"
+  lore:
+    - "&7The essence of dark creatures"
+soul_of_sight:
+  name: "Soul of Sight"
+  lore:
+    - "&7The essence of the Warden"
+demonite_bar:
+  name: "Demonite Bar"
+  lore:
+    - "&7Pulsing with dark energy"
+fallen_star:
+  name: "Fallen Star"
+  lore:
+    - "&7Falls from the heavens"
+forbidden_fragment:
+  name: "Forbidden Fragment"
+  lore:
+    - "&7A fragment of the deserts power"
+frost_core:
+  name: "Frost Core"
+  lore:
+    - "&7A fragment of icy power"
+hallowed_bar:
+  name: "Hallowed Bar"
+  lore:
+    - "&7A holy bar forged from souls"
+hellstone:
+  name: "Hellstone"
+  lore:
+    - "&7The underworld is made of a material called hellstone"
+hellstone_bar:
+  name: "Hellstone Bar"
+  lore:
+    - "&7Hot to the touch"
+illegal_gun_parts:
+  name: "Illegal Gun Parts"
+  lore:
+    - "&7Banned in most places"
+ruby:
+  name: "Ruby"
+  lore:
+    - "&7Bright Red Gem"

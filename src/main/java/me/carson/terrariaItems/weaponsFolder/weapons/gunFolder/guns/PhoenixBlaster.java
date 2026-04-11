@@ -22,7 +22,7 @@ public class PhoenixBlaster extends Gun {
     NamespacedKey key = new NamespacedKey(plugin, "custom_item_id");
 
     public PhoenixBlaster(Plugin plugin) {
-        super(plugin,"Phoenix Blaster","#FFC896", Material.BROWN_DYE,"phoenix_blaster","PhoenixBlaster",10,3.5f,8,0,100, new ArrayList<>(List.of(ChatColor.GRAY+"Shoots Bullets",ChatColor.GRAY+"8 Damage")));
+        super(plugin,"phoenix_blaster.name","#FFC896", Material.BROWN_DYE,"phoenix_blaster","PhoenixBlaster",10,3.5f,8,0,100,"phoenix_blaster.lore");
     }
 
     @Override

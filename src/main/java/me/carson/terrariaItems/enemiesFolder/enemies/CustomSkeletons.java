@@ -1,14 +1,14 @@
 package me.carson.terrariaItems.enemiesFolder.enemies;
 
-import me.carson.terrariaItems.armourFolder.armors.iceGolemArmor.IceGolemBoots;
-import me.carson.terrariaItems.armourFolder.armors.iceGolemArmor.IceGolemChestplate;
-import me.carson.terrariaItems.armourFolder.armors.iceGolemArmor.IceGolemLeggings;
-import me.carson.terrariaItems.armourFolder.armors.runeWizardArmor.RuneWizardChestplate;
-import me.carson.terrariaItems.armourFolder.armors.runeWizardArmor.RuneWizardLeggings;
-import me.carson.terrariaItems.armourFolder.armors.timArmor.TimChestplate;
-import me.carson.terrariaItems.armourFolder.armors.timArmor.TimLeggings;
-import me.carson.terrariaItems.armourFolder.armors.timArmor.WizardHat;
-import me.carson.terrariaItems.armourFolder.armors.undeadMinerArmor.UndeadMinerChestplate;
+import me.carson.terrariaItems.armorFolder.armors.iceGolemArmor.IceGolemBoots;
+import me.carson.terrariaItems.armorFolder.armors.iceGolemArmor.IceGolemChestplate;
+import me.carson.terrariaItems.armorFolder.armors.iceGolemArmor.IceGolemLeggings;
+import me.carson.terrariaItems.armorFolder.armors.runeWizardArmor.RuneWizardChestplate;
+import me.carson.terrariaItems.armorFolder.armors.runeWizardArmor.RuneWizardLeggings;
+import me.carson.terrariaItems.armorFolder.armors.timArmor.TimChestplate;
+import me.carson.terrariaItems.armorFolder.armors.timArmor.TimLeggings;
+import me.carson.terrariaItems.armorFolder.armors.timArmor.WizardHat;
+import me.carson.terrariaItems.armorFolder.armors.undeadMinerArmor.UndeadMinerChestplate;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.DustDevil;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.IceGolemLaser;
@@ -111,7 +111,7 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
     }
 
     public void spawnSkeletonArcher(Skeleton skeleton){
-        skeleton.setCustomName("Skeleton Archer");
+        skeleton.setCustomName(lang.get("enemies","skeleton_archer.name"));
         skeleton.setCustomNameVisible(false);
         skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(40);
         skeleton.setHealth(40);
@@ -134,7 +134,7 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
     }
 
     public void spawnUndeadMiner(Skeleton skeleton){
-        skeleton.setCustomName("Undead Miner");
+        skeleton.setCustomName(lang.get("enemies","undead_miner.name"));
         skeleton.setCustomNameVisible(false);
         skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(25);
         skeleton.setHealth(25);
@@ -172,7 +172,7 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
     }
 
     public void spawnIceGolem(Skeleton skeleton){
-        skeleton.setCustomName("Ice Golem");
+        skeleton.setCustomName(lang.get("enemies","ice_golem.name"));
         skeleton.setCustomNameVisible(false);
         skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(150);
         skeleton.setHealth(150);
@@ -197,7 +197,7 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
     }
 
     public void spawnRuneWizard(Skeleton skeleton){
-        skeleton.setCustomName("Rune Wizard");
+        skeleton.setCustomName(lang.get("enemies","rune_wizard.name"));
         skeleton.setCustomNameVisible(false);
         skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(80);
         skeleton.setHealth(80);
@@ -218,7 +218,7 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
     }
 
     public void spawnSandElemental(Skeleton skeleton){
-        skeleton.setCustomName("Sand Elemental");
+        skeleton.setCustomName(lang.get("enemies","sand_elemental.name"));
         skeleton.setCustomNameVisible(false);
         skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(200);
         skeleton.setHealth(200);

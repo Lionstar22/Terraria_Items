@@ -13,8 +13,8 @@ import java.util.List;
 
 public class BandOfStarpower extends Accessory  {
 
-    public BandOfStarpower(Plugin plugin){
-        super(plugin,"Band Of Starpower","#9696FF",Material.NETHER_BRICK,"band_of_starpower","BandOfStarpower",new ArrayList<>(List.of(ChatColor.GRAY+"Increases maximum mana by 20",ChatColor.GRAY+"Must be in accessory inventory")));
+    public BandOfStarpower(Plugin plugin) {
+        super(plugin, "band_of_starpower.name", "#9696FF", Material.NETHER_BRICK, "band_of_starpower", "BandOfStarpower", "band_of_starpower.lore");
     }
 
     @Override

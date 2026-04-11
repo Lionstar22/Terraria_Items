@@ -11,7 +11,7 @@ import java.util.List;
 public class Ruby extends Material {
 
     public Ruby(Plugin plugin) {
-        super(plugin,"Ruby","#FFFFFF", org.bukkit.Material.DIAMOND,"ruby","Ruby", new ArrayList<>(List.of(ChatColor.GRAY+"Bright Red Gem")));
+        super(plugin,"ruby.name","#FFFFFF", org.bukkit.Material.DIAMOND,"ruby","Ruby","ruby.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

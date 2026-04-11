@@ -19,7 +19,7 @@ import java.util.List;
 public class Volcano extends Sword {
 
     public Volcano(Plugin plugin) {
-        super(plugin,"Volcano","#FFC896", Material.NETHERITE_SWORD,"volcano","Volcano",0,0,0,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"It's made out of fire!",ChatColor.GRAY+"15 Damage")));
+        super(plugin,"volcano.name","#FFC896", Material.NETHERITE_SWORD,"volcano","Volcano",0,0,0,0,0,"volcano.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

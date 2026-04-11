@@ -17,7 +17,7 @@ import java.util.List;
 public class Aglet extends Accessory  {
 
     public Aglet(Plugin plugin){
-        super(plugin,"Aglet","#9696FF",Material.COPPER_INGOT,"aglet","Aglet",new ArrayList<>(List.of(ChatColor.GRAY+"5% increased movement speed",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"aglet.name","#9696FF",Material.COPPER_INGOT,"aglet","Aglet","aglet.lore");
     }
 
     @Override

@@ -16,12 +16,7 @@ import java.util.UUID;
 public class RubyStaff extends Magic {
 
     public RubyStaff(Plugin plugin) {
-        super(plugin,"Ruby Staff","#9696FF", Material.DIAMOND,"ruby_staff","RubyStaff",12,1.5f,6,0,50,7, new ArrayList<>(List.of(ChatColor.GRAY+"Fires a ruby bolt",ChatColor.GRAY+"Costs 7 Mana",ChatColor.GRAY+"6 Damage")));
-    }
-
-    @Override
-    public void leftActivate(Player player) {
-
+        super(plugin,"ruby_staff.name","#9696FF", Material.DIAMOND,"ruby_staff","RubyStaff",12,1.5f,6,0,50,7,"ruby_staff.lore");
     }
 
     @Override

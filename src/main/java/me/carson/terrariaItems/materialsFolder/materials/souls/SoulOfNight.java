@@ -18,7 +18,7 @@ import java.util.Set;
 public class SoulOfNight extends Material{
 
     public SoulOfNight(Plugin plugin) {
-        super(plugin,"Soul of Night","#FFC896", org.bukkit.Material.PURPLE_DYE,"soul_of_night","SoulOfNight", new ArrayList<>(List.of(ChatColor.GRAY+"The essence of dark creatures")));
+        super(plugin,"soul_of_night.name","#FFC896", org.bukkit.Material.PURPLE_DYE,"soul_of_night","SoulOfNight", "soul_of_night.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

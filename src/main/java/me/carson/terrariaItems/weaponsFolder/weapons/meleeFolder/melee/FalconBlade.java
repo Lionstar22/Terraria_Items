@@ -18,7 +18,7 @@ import java.util.List;
 public class FalconBlade extends Sword {
 
     public FalconBlade(Plugin plugin) {
-        super(plugin,"Falcon Blade","#FF9696", Material.IRON_SWORD,"falcon_blade","FalconBlade",0,0,0,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"Rapid Attacking Sword",ChatColor.GRAY+"6 Damage")));
+        super(plugin,"falcon_blade.name","#FF9696", Material.IRON_SWORD,"falcon_blade","FalconBlade",0,0,0,0,0,"falcon_blade.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

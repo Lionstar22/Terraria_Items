@@ -7,14 +7,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 public class VampireKnives extends Sword {
 
     public VampireKnives(Plugin plugin) {
-        super(plugin,"Vampire Knives","#FFFF0A", Material.SPIDER_EYE,"vampire_knives","VampireKnives",5,2,8,0.25f,10, new ArrayList<>(List.of(ChatColor.GRAY+"Rapidly throw life stealing daggers",ChatColor.GRAY+"8 Damage")));
+        super(plugin,"vampire_knives.name","#FFFF0A", Material.SPIDER_EYE,"vampire_knives","VampireKnives",5,2,8,0.25f,10,"vampire_knives.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -16,7 +16,7 @@ import java.util.UUID;
 public class ThunderZapper extends Magic {
 
     public ThunderZapper(Plugin plugin) {
-        super(plugin,"Thunder Zapper","#9696FF", Material.RABBIT_HIDE,"thunder_zapper","ThunderZapper",5,2f,9,0,50,6, new ArrayList<>(List.of(ChatColor.GRAY+"Fires a lightning bolt",ChatColor.GRAY+"Costs 6 Mana",ChatColor.GRAY+"9 Damage")));
+        super(plugin,"thunder_zapper.name","#9696FF", Material.RABBIT_HIDE,"thunder_zapper","ThunderZapper",5,2f,9,0,50,6,"thunder_zapper.lore");
     }
 
     @Override

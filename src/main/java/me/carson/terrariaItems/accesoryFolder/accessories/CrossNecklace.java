@@ -14,7 +14,7 @@ import java.util.List;
 public class CrossNecklace extends Accessory  {
 
     public CrossNecklace(Plugin plugin){
-        super(plugin,"Cross Necklace","#FF9696",Material.NETHER_BRICK,"cross_necklace","CrossNecklace",new ArrayList<>(List.of(ChatColor.GRAY+"Increases length of invincibility after taking damage",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"cross_necklace.name","#FF9696",Material.NETHER_BRICK,"cross_necklace","CrossNecklace","cross_necklace.lore");
     }
 
     @Override

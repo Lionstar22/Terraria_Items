@@ -13,7 +13,7 @@ import java.util.List;
 public class ExplodingBullet extends Material {
 
     public ExplodingBullet(Plugin plugin) {
-        super(plugin,"Exploding Bullet","#FFC896", org.bukkit.Material.GRAY_DYE,"exploding_bullet","ExplodingBullet", new ArrayList<>(List.of(ChatColor.GRAY+"Explodes on impact",ChatColor.GRAY+"3 Damage")));
+        super(plugin,"exploding_bullet.name","#FFC896", org.bukkit.Material.GRAY_DYE,"exploding_bullet","ExplodingBullet", "exploding_bullet.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

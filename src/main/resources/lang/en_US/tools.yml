@@ -1,0 +1,92 @@
+
+frozen_crate:
+  name: "Frozen Crate"
+  lore:
+    - "&7Right click to open"
+golden_crate:
+  name: "Golden Crate"
+  lore:
+    - "&7Right click to open"
+iron_crate:
+  name: "Iron Crate"
+  lore:
+    - "&7Right click to open"
+jungle_crate:
+  name: "Jungle Crate"
+  lore:
+    - "&7Right click to open"
+oasis_crate:
+  name: "Oasis Crate"
+  lore:
+    - "&7Right click to open"
+ocean_crate:
+  name: "Ocean Crate"
+  lore:
+    - "&7Right click to open"
+sky_crate:
+  name: "Sky Crate"
+  lore:
+    - "&7Right click to open"
+wooden_crate:
+  name: "Wooden Crate"
+  lore:
+    - "&7Right click to open"
+greater_mana_potion:
+  name: "Greater Mana Potion"
+  lore:
+    - "&7Restores 200 mana"
+lesser_mana_potion:
+  name: "Lesser Mana Potion"
+  lore:
+    - "&7Restores 50 mana"
+mana_potion:
+  name: "Mana Potion"
+  lore:
+    - "&7Restores 100 mana"
+super_mana_potion:
+  name: "Super Mana Potion"
+  lore:
+    - "&7Restores 300 mana"
+mechanical_egg:
+  name: "Mechanical Egg"
+  lore:
+    - "&7Summons the Mechanical Dragon"
+mechanical_shrieker:
+  name: "Mechanical Shrieker"
+  lore:
+    - "&7Summons the Mechanical Warden"
+mechanical_skull:
+  name: "Mechanical Skull"
+  lore:
+    - "&7Summons the Mechanical Wither"
+cosmolight:
+  name: "Cosmolight"
+  lore:
+    - "&7Advances time immediately to the"
+    - "&7next dawn, noon, dusk or midnight"
+life_crystal:
+  name: "Life Crystal"
+  lore:
+    - "&7Permanently increases maximum life"
+magic_mirror:
+  name: "Magic Mirror"
+  lore:
+    - "&7Gaze in the mirror to return home"
+mana_crystal:
+  name: "Mana Crystal"
+  lore:
+    - "&7Permanently increases maximum mana by 20"
+    - "&7200 Mana Max"
+momentum_capacitor:
+  name: "Momentum Capacitor"
+  lore:
+    - "&7Accelerates your horizontal speed"
+rod_of_discord:
+  name: "Rod of Discord"
+  lore:
+    - "&7Teleports you to the position of the mouse"
+    - "&7Using too frequently causes damage"
+torrential_tear:
+  name: "Torrential Tear"
+  lore:
+    - "&7Toggles Rain"

@@ -22,7 +22,7 @@ public class Starfury extends Sword {
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public Starfury(Plugin plugin) {
-        super(plugin,"Starfury","#96FF96", Material.IRON_SWORD,"starfury","Starfury",0,2,8,5,20, new ArrayList<>(List.of(ChatColor.GRAY+"Causes stars to rain from the sky",ChatColor.GRAY+"Forged with the fury of heaven",ChatColor.GRAY+"8 Damage")));
+        super(plugin,"starfury.name","#96FF96", Material.IRON_SWORD,"starfury","Starfury",0,2,8,5,20,"starfury.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

@@ -1,0 +1,31 @@
+
+mechanical_dragon:
+  name: "Dragón Mecánico"
+mechanical_wither:
+  name: "Wither Mecánico"
+mechanical_warden:
+  name: "Guardián Mecánico"
+icy_merman:
+  name: "Tritón Helado"
+skeleton_archer:
+  name: "Arquero Esqueleto"
+undead_miner:
+  name: "Minero No Muerto"
+ice_golem:
+  name: "Gólem de Hielo"
+rune_wizard:
+  name: "Mago de Runas"
+sand_elemental:
+  name: "Elemental de Arena"
+possessed_armor:
+  name: "Armadura Poseída"
+frozen_zombie:
+  name: "Zombi Congelado"
+raincoat_zombie:
+  name: "Zombi con Impermeable"
+gnome:
+  name: "Gnomo"
+werewolf:
+  name: "Hombre Lobo"
+doctor_bones:
+  name: "Doctor Huesos"

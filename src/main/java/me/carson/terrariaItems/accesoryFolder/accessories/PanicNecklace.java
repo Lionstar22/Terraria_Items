@@ -14,7 +14,7 @@ import java.util.List;
 public class PanicNecklace extends Accessory  {
 
     public PanicNecklace(Plugin plugin){
-        super(plugin,"Panic Necklace","#9696FF",Material.NETHER_BRICK,"panic_necklace","PanicNecklace",new ArrayList<>(List.of(ChatColor.GRAY+"Increases movement speed after taking damage",ChatColor.GRAY+"Must be in accessory inventory")));
+        super(plugin,"panic_necklace.name","#9696FF",Material.NETHER_BRICK,"panic_necklace","PanicNecklace","panic_necklace.lore");
     }
 
     @Override

@@ -1,0 +1,5 @@
+hellforge:
+  name: "Forja Infernal"
+  lore:
+    - "&7La Forja Infernal es una estación de fabricación que funciona como un horno más rápido"
+    - "&7con la capacidad adicional de fundir Piedra Infernal en Barras de Piedra Infernal."

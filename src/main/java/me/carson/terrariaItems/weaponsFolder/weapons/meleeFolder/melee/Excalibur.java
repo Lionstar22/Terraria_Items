@@ -19,7 +19,7 @@ import java.util.List;
 public class Excalibur extends Sword {
 
     public Excalibur(Plugin plugin) {
-        super(plugin,"Excalibur","#FF96FF", Material.NETHERITE_SWORD,"excalibur","Excalibur",0,0,0,0,0, new ArrayList<>(List.of(ChatColor.GRAY+"The holy sword of legend",ChatColor.GRAY+"20 Damage, +1 Range")));
+        super(plugin,"excalibur.name","#FF96FF", Material.NETHERITE_SWORD,"excalibur","Excalibur",0,0,0,0,0,"excalibur.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

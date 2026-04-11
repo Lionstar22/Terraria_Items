@@ -17,7 +17,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MagicalHarp extends Magic {
 
     public MagicalHarp(Plugin plugin) {
-        super(plugin,"Magical Harp","#FF96FF", Material.AMETHYST_SHARD,"magical_harp","MagicalHarp",3,0.4f,7,0.05f,100,5, new ArrayList<>(List.of(ChatColor.GRAY+"Fires a music note",ChatColor.GRAY+"Costs 5 Mana",ChatColor.GRAY+"7 Damage")));
+        super(plugin,"magical_harp.name","#FF96FF", Material.AMETHYST_SHARD,"magical_harp","MagicalHarp",3,0.4f,7,0.05f,100,5,"magical_harp.lore");
     }
 
     @Override

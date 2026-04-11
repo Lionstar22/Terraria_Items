@@ -28,7 +28,7 @@ public class MechanicalDragon extends Boss {
         EnderDragon boss= (EnderDragon) world.spawnEntity(spawnPoint, type);
         boss.getAttribute(Attribute.MAX_HEALTH).setBaseValue(health);
         boss.setHealth(health);
-        boss.setCustomName(name);
+        boss.setCustomName(lang.get("enemies","mechanical_dragon.name"));
         boss.setCustomNameVisible(true);
         NamespacedKey key = new NamespacedKey(plugin, "BossDragon");
         boss.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) 1);

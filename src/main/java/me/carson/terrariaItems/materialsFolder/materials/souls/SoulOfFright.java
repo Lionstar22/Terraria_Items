@@ -18,7 +18,7 @@ import java.util.List;
 public class SoulOfFright extends Material {
 
     public SoulOfFright(Plugin plugin) {
-        super(plugin,"Soul of Fright","#FF96FF", org.bukkit.Material.IRON_INGOT,"soul_of_fright","SoulOfFright", new ArrayList<>(List.of(ChatColor.GRAY+"The essence of the Wither")));
+        super(plugin,"soul_of_fright.name","#FF96FF", org.bukkit.Material.IRON_INGOT,"soul_of_fright","SoulOfFright","soul_of_fright.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {
