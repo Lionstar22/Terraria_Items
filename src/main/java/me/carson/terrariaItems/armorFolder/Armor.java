@@ -88,10 +88,15 @@ public abstract class Armor {
         ItemMeta lMeta = legs.getItemMeta();
         ItemMeta bMeta = boots.getItemMeta();
         if(hMeta==null||cMeta==null||lMeta==null||bMeta==null){return false;}
-        String hKey=hMeta.getEquippable().getModel().getKey();
-        String cKey=cMeta.getEquippable().getModel().getKey();
-        String lKey=lMeta.getEquippable().getModel().getKey();
-        String bKey=bMeta.getEquippable().getModel().getKey();
+        NamespacedKey hModel= hMeta.getEquippable().getModel();
+        NamespacedKey cModel= hMeta.getEquippable().getModel();
+        NamespacedKey lModel= hMeta.getEquippable().getModel();
+        NamespacedKey bModel= hMeta.getEquippable().getModel();
+        if(hModel==null||cModel==null||lModel==null||bModel==null){return false;}
+        String hKey=hModel.getKey();
+        String cKey=cModel.getKey();
+        String lKey=lModel.getKey();
+        String bKey=bModel.getKey();
 
         return hKey.equals(cKey)&&hKey.equals(lKey)&&hKey.equals(bKey);
     }

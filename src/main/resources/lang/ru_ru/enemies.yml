@@ -1,0 +1,30 @@
+mechanical_dragon:
+  name: "Механический дракон"
+mechanical_wither:
+  name: "Механический иссушитель"
+mechanical_warden:
+  name: "Механический страж"
+icy_merman:
+  name: "Ледяной мерман"
+skeleton_archer:
+  name: "Скелет-лучник"
+undead_miner:
+  name: "Мертвец-шахтёр"
+ice_golem:
+  name: "Ледяной голем"
+rune_wizard:
+  name: "Рунный маг"
+sand_elemental:
+  name: "Песчаный элементаль"
+possessed_armor:
+  name: "Одержимые доспехи"
+frozen_zombie:
+  name: "Замороженный зомби"
+raincoat_zombie:
+  name: "Зомби в плаще"
+gnome:
+  name: "Гном"
+werewolf:
+  name: "Оборотень"
+doctor_bones:
+  name: "Доктор Кости"

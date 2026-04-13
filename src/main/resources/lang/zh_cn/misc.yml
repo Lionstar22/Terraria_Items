@@ -1,0 +1,25 @@
+unobtainable:
+  name: "无法获得"
+  lore:
+    - "&7你是怎么得到这个的？"
+bone_pickaxe:
+  name: "骨头镐"
+  lore:
+    - "&7我跟你有骨气之争"
+pickaxe_axe:
+  name: "镐斧"
+  lore:
+    - "&7不要与手钻混淆"
+    - "&7+2 范围"
+archaeologists_hat:
+  name: "考古学家的帽子"
+  lore:
+    - "&7那应该放在博物馆里！"
+golden_crown:
+  name: "黄金王冠"
+  lore:
+    - "&7适合国王佩戴"
+undead_miner_hat:
+  name: "矿工头盔"
+  lore:
+    - "&7由死去的矿工佩戴"

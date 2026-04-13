@@ -1,5 +1,8 @@
 package me.carson.terrariaItems.enemiesFolder.enemies;
 
+import me.carson.terrariaItems.armorFolder.armors.bloodZombieArmor.BloodZombieBoots;
+import me.carson.terrariaItems.armorFolder.armors.bloodZombieArmor.BloodZombieChestplate;
+import me.carson.terrariaItems.armorFolder.armors.bloodZombieArmor.BloodZombieLeggings;
 import me.carson.terrariaItems.armorFolder.armors.frozenZombieArmor.FrozenZombieChestplate;
 import me.carson.terrariaItems.armorFolder.armors.possessedArmor.*;
 import me.carson.terrariaItems.armorFolder.armors.raincoatZombieArmor.RaincoatZombieChestplate;
@@ -27,7 +30,6 @@ import java.util.Set;
 
 public class CustomZombies extends CustomEnemy implements Listener {
 
-    private final WorldDataHandler instance=WorldDataHandler.getInstance();
     private static final Set<Biome> snowyBiomes = Set.of(Biome.SNOWY_TAIGA,Biome.JAGGED_PEAKS,Biome.FROZEN_PEAKS,Biome.GROVE,Biome.SNOWY_SLOPES,Biome.FROZEN_RIVER,Biome.SNOWY_PLAINS,Biome.ICE_SPIKES,Biome.SNOWY_BEACH);
     private static final Set<Biome> gnomeBiomes= Set.of(Biome.OLD_GROWTH_BIRCH_FOREST,Biome.OLD_GROWTH_PINE_TAIGA,Biome.OLD_GROWTH_SPRUCE_TAIGA,Biome.DARK_FOREST,Biome.PALE_GARDEN);
     private static final Set<Biome> jungleBiomes= Set.of(Biome.JUNGLE,Biome.OLD_GROWTH_PINE_TAIGA,Biome.SPARSE_JUNGLE,Biome.BAMBOO_JUNGLE);
@@ -65,6 +67,10 @@ public class CustomZombies extends CustomEnemy implements Listener {
                 spawnPossessedArmor(zombie);
                 return;
             }
+            if(instance.getBloodMoon()){
+                spawnBloodZombie(zombie);
+                return;
+            }
             if(snowyBiomes.contains(location.getBlock().getBiome())){
                 spawnFrozenZombie(zombie);
                 return;
@@ -80,6 +86,10 @@ public class CustomZombies extends CustomEnemy implements Listener {
             }
             if ((rand<0.05)&&gnomeBiomes.contains(location.getBlock().getBiome())){
                 spawnGnome(zombie);
+                return;
+            }
+            if(instance.getBloodMoon()){
+                spawnBloodZombie(zombie);
                 return;
             }
             if(snowyBiomes.contains(location.getBlock().getBiome())){
@@ -195,5 +205,24 @@ public class CustomZombies extends CustomEnemy implements Listener {
         equipment.setLeggings(null);
         equipment.setBoots(null);
         equipment.setHelmetDropChance(1f);
+    }
+
+    public void spawnBloodZombie(Zombie zombie){
+        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+        zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"BloodZombie");
+        zombie.setCanPickupItems(false);
+        zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(30);
+        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(5);
+        zombie.setHealth(30);
+        EntityEquipment equipment=zombie.getEquipment();
+        equipment.setItemInMainHand(null);
+        equipment.setHelmet(BloodZombieHat.getItem(plugin));
+        equipment.setChestplate(BloodZombieChestplate.getItem(plugin));
+        equipment.setLeggings(BloodZombieLeggings.getItem(plugin));
+        equipment.setBoots(BloodZombieBoots.getItem(plugin));
+        equipment.setHelmetDropChance(0f);
+        equipment.setChestplateDropChance(0f);
+        equipment.setLeggingsDropChance(0f);
+        equipment.setBootsDropChance(0f);
     }
 }

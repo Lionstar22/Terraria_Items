@@ -21,7 +21,6 @@ import java.util.Set;
 
 public class CustomDrowned extends CustomEnemy implements Listener {
 
-    private final WorldDataHandler instance=WorldDataHandler.getInstance();
     private static final Set<Biome> icyBiomes = Set.of(Biome.COLD_OCEAN,Biome.DEEP_COLD_OCEAN,Biome.FROZEN_OCEAN,Biome.DEEP_FROZEN_OCEAN);
 
     public CustomDrowned(Plugin plugin){

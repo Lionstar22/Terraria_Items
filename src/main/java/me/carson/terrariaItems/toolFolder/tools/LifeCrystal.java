@@ -3,8 +3,11 @@ package me.carson.terrariaItems.toolFolder.tools;
 import me.carson.terrariaItems.toolFolder.Tool;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
@@ -20,10 +23,8 @@ public class LifeCrystal extends Tool {
 
     @Override
     public void rightActivate(Player player) {
-        if(!(player.getMaxHealth()>=40)){
-            double newHealth=player.getMaxHealth()+2;
-            player.setMaxHealth(newHealth);
-            player.setHealth(player.getHealth()+2);
+        if(player.getAttribute(Attribute.MAX_HEALTH).getValue()<40){
+            player.getAttribute(Attribute.MAX_HEALTH).setBaseValue(Math.min(40,player.getAttribute(Attribute.MAX_HEALTH).getValue()+2));
             player.playSound(player.getLocation(), "terraria:life_crystal_use", 0.5F, 1.0F);
             player.getInventory().removeItem(LifeCrystal.getItem(plugin));
         }

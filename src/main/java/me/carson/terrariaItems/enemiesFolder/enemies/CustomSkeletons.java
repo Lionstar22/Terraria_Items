@@ -38,7 +38,6 @@ import java.util.Set;
 
 public class CustomSkeletons extends CustomEnemy implements Listener {
 
-    private final WorldDataHandler instance=WorldDataHandler.getInstance();
     private static final Set<Biome> snowyBiomes = Set.of(Biome.SNOWY_TAIGA,Biome.JAGGED_PEAKS,Biome.FROZEN_PEAKS,Biome.GROVE,Biome.SNOWY_SLOPES,Biome.FROZEN_RIVER,Biome.SNOWY_PLAINS,Biome.ICE_SPIKES,Biome.SNOWY_BEACH);
     private static final Set<Biome> desertBiomes = Set.of(Biome.DESERT,Biome.BADLANDS,Biome.ERODED_BADLANDS);
 

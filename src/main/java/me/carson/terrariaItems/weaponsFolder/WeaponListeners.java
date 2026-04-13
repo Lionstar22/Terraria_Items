@@ -44,18 +44,26 @@ public class WeaponListeners implements Listener {
     }
 
     @EventHandler
-    public void onVolcanoHit(EntityDamageByEntityEvent event) {
+    public void onHit(EntityDamageByEntityEvent event) {
         if (!(event.getDamager() instanceof Player player)) return;
         ItemStack item=player.getInventory().getItemInMainHand();
-        if(hasItemInHand(item,"Volcano")){
-            player.getWorld().playSound(event.getEntity(), "terraria:volcano", 2.5F, 1.0F);
+        if(hasItemInHand(item,"BladeOfGrass")){
+            if(event.getEntity() instanceof LivingEntity livingEntity){
+                if(Math.random()<0.25){
+                    livingEntity.addPotionEffect(new PotionEffect(PotionEffectType.POISON,140,2,false,true,true));
+                }
+            }
         }
-    }
-
-    @EventHandler
-    public void onTaintedBladeHit(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player player)) return;
-        ItemStack item=player.getInventory().getItemInMainHand();
+        if(hasItemInHand(item,"BreakerBlade")){
+            if(event.getEntity() instanceof LivingEntity livingEntity){
+                if(livingEntity.getHealth()>(livingEntity.getMaxHealth()*.9)){
+                    event.setDamage(event.getDamage()*1.5);
+                }
+            }
+        }
+        if(hasItemInHand(item,"SlapHand")){
+            event.getEntity().getWorld().playSound(event.getEntity().getLocation(), "terraria:slap_hand", 1.5F, 1.0F);
+        }
         if(hasItemInHand(item,"TaintedBlade")){
             if(event.getEntity() instanceof LivingEntity target){
                 target.addPotionEffect(new PotionEffect(PotionEffectType.POISON,100,0,false,true,true));
@@ -66,6 +74,9 @@ public class WeaponListeners implements Listener {
                 target.addPotionEffect(new PotionEffect(PotionEffectType.POISON,100,1,false,true,true));
                 target.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS,60,0,false,true,true));
             }
+        }
+        if(hasItemInHand(item,"Volcano")){
+            player.getWorld().playSound(event.getEntity(), "terraria:volcano", 2.5F, 1.0F);
         }
     }
 
@@ -80,29 +91,6 @@ public class WeaponListeners implements Listener {
         World world= event.getEntity().getWorld();
         world.playSound(event.getHitEntity().getLocation(), "terraria:snowball_impact", 1.0F, 1.0F);
         target.damage(8);
-    }
-
-    @EventHandler
-    public void onHit(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player player)) return;
-        ItemStack item=player.getInventory().getItemInMainHand();
-        if(hasItemInHand(item,"BladeOfGrass")){
-            if(event.getEntity() instanceof LivingEntity livingEntity){
-                if(Math.random()<0.25){
-                    livingEntity.addPotionEffect(new PotionEffect(PotionEffectType.POISON,140,2,false,true,true));
-                }
-            }
-        }
-        if(hasItemInHand(item,"BreakerBlade")){
-            if(event.getEntity() instanceof LivingEntity livingEntity){
-                if(livingEntity.getHealth()>(livingEntity.getMaxHealth()*.9)){
-                    event.setDamage(event.getDamage()*2.5);
-                }
-            }
-        }
-        if(hasItemInHand(item,"SlapHand")){
-            event.getEntity().getWorld().playSound(event.getEntity().getLocation(), "terraria:slap_hand", 1.5F, 1.0F);
-        }
     }
 
     @EventHandler

@@ -1,0 +1,30 @@
+mechanical_dragon:
+  name: "机械龙"
+mechanical_wither:
+  name: "机械凋灵"
+mechanical_warden:
+  name: "机械监守者"
+icy_merman:
+  name: "冰霜人鱼"
+skeleton_archer:
+  name: "骷髅弓箭手"
+undead_miner:
+  name: "亡灵矿工"
+ice_golem:
+  name: "冰霜巨人"
+rune_wizard:
+  name: "符文法师"
+sand_elemental:
+  name: "沙之元素"
+possessed_armor:
+  name: "附身铠甲"
+frozen_zombie:
+  name: "冰冻僵尸"
+raincoat_zombie:
+  name: "雨衣僵尸"
+gnome:
+  name: "地精"
+werewolf:
+  name: "狼人"
+doctor_bones:
+  name: "骷髅医生"

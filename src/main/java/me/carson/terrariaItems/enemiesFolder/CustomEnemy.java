@@ -2,6 +2,7 @@ package me.carson.terrariaItems.enemiesFolder;
 
 import me.carson.terrariaItems.TILangManager;
 import me.carson.terrariaItems.enemyProjectilesFolder.EnemyProjectile;
+import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -15,6 +16,7 @@ public abstract class CustomEnemy {
 
     protected final Plugin plugin;
     public final TILangManager lang =TILangManager.getInstance();
+    public final WorldDataHandler instance=WorldDataHandler.getInstance();
 
     public CustomEnemy(Plugin plugin){
         this.plugin = plugin;

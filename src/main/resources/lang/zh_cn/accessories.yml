@@ -1,0 +1,205 @@
+accessory_msg: "&7必须放在饰品栏中"
+aglet:
+  name: "鞋带扣"
+  lore:
+    - "&7移动速度提升5%"
+ancient_chisel:
+  name: "远古凿子"
+  lore:
+    - "&7提升挖掘速度"
+    - "&7远古的问题需要远古的解决方案"
+ancient_fossil:
+  name: "远古化石"
+  lore:
+    - "&7提升挖掘速度"
+ankh_charm:
+  name: "生命符护符"
+  lore:
+    - "&7免疫大多数负面效果"
+ankh_shield:
+  name: "生命符盾牌"
+  lore:
+    - "&7免疫击退"
+    - "&7免疫火焰伤害"
+    - "&7免疫大多数负面效果"
+    - "&7+4 护甲"
+anklet_of_the_wind:
+  name: "风之脚链"
+  lore:
+    - "&7移动速度提升10%"
+avenger_emblem:
+  name: "复仇者徽章"
+  lore:
+    - "&7伤害提升15%"
+band_of_regeneration:
+  name: "再生戒指"
+  lore:
+    - "&7缓慢恢复生命值"
+band_of_starpower:
+  name: "星力戒指"
+  lore:
+    - "&7最大魔法值提升20"
+bee_cloak:
+  name: "蜜蜂披风"
+  lore:
+    - "&7使星星坠落"
+    - "&7受伤时将用蜂蜜浸泡使用者"
+bezoar:
+  name: "牛黄"
+  lore:
+    - "&7免疫中毒"
+blindfold:
+  name: "眼罩"
+  lore:
+    - "&7免疫黑暗/失明"
+blizzard_in_a_bottle:
+  name: "瓶中暴雪"
+  lore:
+    - "&7允许持有者二段跳"
+cloud_in_a_bottle:
+  name: "瓶中云朵"
+  lore:
+    - "&7允许持有者二段跳"
+cobalt_shield:
+  name: "钴盾"
+  lore:
+    - "&7免疫击退"
+    - "&7+1 护甲"
+counter_scarf:
+  name: "反击围巾"
+  lore:
+    - "&7近战伤害提升10%"
+    - "&7每30秒获得一次闪避机会"
+cross_necklace:
+  name: "十字项链"
+  lore:
+    - "&7延长受伤后的无敌时间"
+fast_clock:
+  name: "快速时钟"
+  lore:
+    - "&7免疫缓慢"
+feral_claws:
+  name: "野性爪"
+  lore:
+    - "&7攻击速度提升+0.25"
+flipper:
+  name: "脚蹼"
+  lore:
+    - "&7获得更快游泳的能力"
+honey_balloon:
+  name: "蜂蜜气球"
+  lore:
+    - "&7提升跳跃高度"
+    - "&7受伤时将用蜂蜜浸泡使用者"
+honey_comb:
+  name: "蜂巢"
+  lore:
+    - "&7受伤时将用蜂蜜浸泡使用者"
+lucky_horseshoe:
+  name: "幸运马蹄铁"
+  lore:
+    - "&7消除坠落伤害"
+    - "&7'据说能带来好运并驱除邪灵'"
+magic_cuffs:
+  name: "魔法手铐"
+  lore:
+    - "&7最大魔法值提升20"
+    - "&7受伤时恢复魔法值"
+magic_quiver:
+  name: "魔法箭袋"
+  lore:
+    - "&7远程伤害提升10%"
+mana_regeneration_band:
+  name: "魔法再生戒指"
+  lore:
+    - "&7最大魔法值提升20"
+    - "&7提升魔法再生"
+mechanical_glove:
+  name: "机械手套"
+  lore:
+    - "&7近战伤害提升15%"
+    - "&7攻击击退提升+1.5"
+    - "&7攻击速度提升+0.25"
+neptunes_shell:
+  name: "海神之壳"
+  lore:
+    - "&7可在水下自由呼吸和移动"
+night_vision_helmet:
+  name: "夜视头盔"
+  lore:
+    - "&7改善视野"
+obsidian_horseshoe:
+  name: "黑曜石马蹄铁"
+  lore:
+    - "&7消除坠落伤害"
+    - "&7免疫火焰方块"
+obsidian_shield:
+  name: "黑曜石盾牌"
+  lore:
+    - "&7免疫击退"
+    - "&7免疫火焰伤害"
+    - "&7+2 护甲"
+obsidian_skull:
+  name: "黑曜石骷髅"
+  lore:
+    - "&7免疫火焰伤害"
+    - "&7+1 护甲"
+panic_necklace:
+  name: "恐慌项链"
+  lore:
+    - "&7受伤后提升移动速度"
+power_glove:
+  name: "力量手套"
+  lore:
+    - "&7攻击击退提升+1.5"
+    - "&7攻击速度提升+0.25"
+ranger_emblem:
+  name: "游侠徽章"
+  lore:
+    - "&7远程伤害提升20%"
+shiny_red_balloon:
+  name: "闪亮红气球"
+  lore:
+    - "&7提升跳跃高度"
+sandstorm_in_a_bottle:
+  name: "瓶中沙暴"
+  lore:
+    - "&7允许持有者进行强化二段跳"
+shackle:
+  name: "镣铐"
+  lore:
+    - "&7+1 护甲"
+sorcerer_emblem:
+  name: "法师徽章"
+  lore:
+    - "&7魔法伤害提升20%"
+star_cloak:
+  name: "星辰披风"
+  lore:
+    - "&7受伤后使星星坠落"
+star_veil:
+  name: "星辰面纱"
+  lore:
+    - "&7受伤后使星星坠落"
+    - "&7延长受伤后的无敌时间"
+sweetheart_necklace:
+  name: "甜心项链"
+  lore:
+    - "&7受伤时提升移动速度"
+    - "&7受伤时将用蜂蜜浸泡使用者"
+titan_glove:
+  name: "泰坦手套"
+  lore:
+    - "&7攻击击退提升+1.5"
+tsunami_in_a_bottle:
+  name: "瓶中海啸"
+  lore:
+    - "&7允许持有者二段跳"
+vitamins:
+  name: "维生素"
+  lore:
+    - "&7免疫虚弱"
+warrior_emblem:
+  name: "战士徽章"
+  lore:
+    - "&7近战伤害提升20%"

@@ -1,0 +1,75 @@
+bubonic_round:
+  name: "鼠疫子弹"
+  lore:
+    - "&7命中时传播瘟疫"
+    - "&75点伤害"
+empty_bullet:
+  name: "空弹壳"
+  lore:
+    - "&7用于制作各种类型的弹药"
+exploding_bullet:
+  name: "爆炸子弹"
+  lore:
+    - "&7撞击时爆炸"
+    - "&73点伤害"
+musket_ball:
+  name: "火枪子弹"
+  lore:
+    - "&7枪支弹药"
+    - "&72点伤害"
+soul_of_fright:
+  name: "恐惧之魂"
+  lore:
+    - "&7凋灵的精华"
+soul_of_light:
+  name: "光明之魂"
+  lore:
+    - "&7光明生物的精华"
+soul_of_might:
+  name: "力量之魂"
+  lore:
+    - "&7龙的精华"
+soul_of_night:
+  name: "黑夜之魂"
+  lore:
+    - "&7黑暗生物的精华"
+soul_of_sight:
+  name: "视觉之魂"
+  lore:
+    - "&7监守者的精华"
+demonite_bar:
+  name: "魔矿锭"
+  lore:
+    - "&7充满黑暗能量"
+fallen_star:
+  name: "陨落之星"
+  lore:
+    - "&7从天而降"
+forbidden_fragment:
+  name: "禁忌碎片"
+  lore:
+    - "&7沙漠力量的碎片"
+frost_core:
+  name: "寒霜核心"
+  lore:
+    - "&7冰冷力量的碎片"
+hallowed_bar:
+  name: "神圣锭"
+  lore:
+    - "&7由灵魂铸造的神圣锭"
+hellstone:
+  name: "地狱石"
+  lore:
+    - "&7地下世界由一种叫做地狱石的材料构成"
+hellstone_bar:
+  name: "地狱石锭"
+  lore:
+    - "&7触摸时感觉很烫"
+illegal_gun_parts:
+  name: "非法枪械零件"
+  lore:
+    - "&7在大多数地方被禁止"
+ruby:
+  name: "红宝石"
+  lore:
+    - "&7鲜红色宝石"

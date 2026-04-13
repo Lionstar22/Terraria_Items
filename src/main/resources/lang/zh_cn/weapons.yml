@@ -1,0 +1,253 @@
+daedalus_stormbow:
+  name: "代达罗斯风暴弓"
+  lore:
+    - "&7从天空射出箭矢"
+hallowed_repeater:
+  name: "神圣连弩"
+  lore:
+    - "&7神圣弩，其箭矢能照亮目标"
+    - "&7将普通箭矢转化为幽灵箭"
+hoarfrost_bow:
+  name: "白霜弓"
+  lore:
+    - "&7一次射出两支箭"
+    - "&7将木箭转化为薄雾箭"
+    - "&76点伤害"
+molten_fury:
+  name: "熔岩之怒"
+  lore:
+    - "&7点燃木箭"
+pulse_bow:
+  name: "脉冲弓"
+  lore:
+    - "&7射出充能箭矢"
+    - "&710点伤害"
+blowpipe:
+  name: "吹管"
+  lore:
+    - "&7使用种子作为弹药"
+    - "&71点伤害"
+boomstick:
+  name: "轰天棒"
+  lore:
+    - "&7发射一排子弹"
+    - "&73点伤害"
+clockwork_assault_rifle:
+  name: "发条突击步枪"
+  lore:
+    - "&7三连发"
+    - "&7只有第一发消耗弹药"
+    - "&75点伤害"
+handgun:
+  name: "手枪"
+  lore:
+    - "&7发射子弹"
+    - "&74点伤害"
+megashark:
+  name: "巨鲨枪"
+  lore:
+    - "&750%概率节省弹药"
+    - "&7迷你鲨枪的哥哥"
+    - "&76点伤害"
+minishark:
+  name: "迷你鲨枪"
+  lore:
+    - "&733%概率节省弹药"
+    - "&7半鲨半枪，完全超赞"
+    - "&72点伤害"
+needler:
+  name: "针刺枪"
+  lore:
+    - "&7将火枪子弹转化为毒针"
+    - "&76点伤害"
+onyx_blaster:
+  name: "缟玛瑙爆破枪"
+  lore:
+    - "&7发射一排子弹和一颗撞击时爆炸的"
+    - "&7缟玛瑙水晶"
+    - "&74点伤害"
+phoenix_blaster:
+  name: "凤凰爆破枪"
+  lore:
+    - "&7发射子弹"
+    - "&78点伤害"
+sand_gun:
+  name: "沙枪"
+  lore:
+    - "&7这是个好主意！"
+    - "&77点伤害"
+shotgun:
+  name: "霰弹枪"
+  lore:
+    - "&7发射一排子弹"
+    - "&73.5点伤害"
+sniper_rifle:
+  name: "狙击步枪"
+  lore:
+    - "&7射出强力高速子弹"
+    - "&7蹲下以放大镜头"
+    - "&730点伤害"
+snowball_cannon:
+  name: "雪球炮"
+  lore:
+    - "&7发射雪球"
+    - "&78点伤害"
+star_cannon:
+  name: "星星炮"
+  lore:
+    - "&7射出陨落之星"
+    - "&7无限穿透"
+    - "&710点伤害"
+super_star_shooter:
+  name: "超级星星射手"
+  lore:
+    - "&7射出陨落之星"
+    - "&7无限穿透"
+    - "&720点伤害"
+amethyst_staff:
+  name: "紫水晶法杖"
+  lore:
+    - "&7发射紫水晶光束"
+    - "&7消耗5点魔法值"
+    - "&74点伤害"
+bubble_gun:
+  name: "泡泡枪"
+  lore:
+    - "&7快速射出强力泡泡"
+    - "&7消耗5点魔法值"
+    - "&710点伤害"
+crystal_storm:
+  name: "水晶风暴"
+  lore:
+    - "&7召唤快速射击的水晶碎片"
+    - "&7消耗5点魔法值"
+    - "&76点伤害"
+icicle_staff:
+  name: "冰柱法杖"
+  lore:
+    - "&7从天空投下冰柱"
+    - "&7消耗6点魔法值"
+    - "&78点伤害"
+laser_rifle:
+  name: "激光步枪"
+  lore:
+    - "&7发射快速移动的紫色激光"
+    - "&7消耗8点魔法值"
+    - "&78点伤害"
+magical_harp:
+  name: "魔法竖琴"
+  lore:
+    - "&7发射音符"
+    - "&7消耗5点魔法值"
+    - "&77点伤害"
+magic_dagger:
+  name: "魔法匕首"
+  lore:
+    - "&7会返回的魔法匕首"
+    - "&7消耗6点魔法值"
+    - "&79点伤害"
+meteor_staff:
+  name: "流星法杖"
+  lore:
+    - "&7降下流星雨"
+    - "&7消耗9点魔法值"
+    - "&710点伤害"
+ruby_staff:
+  name: "红宝石法杖"
+  lore:
+    - "&7发射红宝石光束"
+    - "&7消耗7点魔法值"
+    - "&76点伤害"
+thunder_zapper:
+  name: "雷霆电击枪"
+  lore:
+    - "&7发射闪电"
+    - "&7消耗6点魔法值"
+    - "&79点伤害"
+water_bolt:
+  name: "水之箭"
+  lore:
+    - "&7施放缓慢移动的水之箭"
+    - "&7消耗10点魔法值"
+    - "&75点伤害"
+blade_of_grass:
+  name: "草之刃"
+  lore:
+    - "&7有概率使敌人中毒"
+    - "&76点伤害"
+breaker_blade:
+  name: "破坏之刃"
+  lore:
+    - "&7对未受伤的敌人造成更多伤害"
+    - "&714点伤害，+3范围"
+caustic_edge:
+  name: "腐蚀利刃"
+  lore:
+    - "&7发射弹跳的腐蚀光束"
+    - "&7命中敌人时施加酸性毒液并减速"
+    - "&718点伤害"
+christmas_tree_sword:
+  name: "圣诞树剑"
+  lore:
+    - "&7射出圣诞装饰品"
+    - "&76点伤害"
+enchanted_sword:
+  name: "附魔之剑"
+  lore:
+    - "&7射出附魔剑气"
+    - "&78点伤害"
+excalibur:
+  name: "王者之剑"
+  lore:
+    - "&7传说中的神圣之剑"
+    - "&720点伤害，+1范围"
+falcon_blade:
+  name: "猎鹰之刃"
+  lore:
+    - "&7快速攻击剑"
+    - "&76点伤害"
+ice_blade:
+  name: "冰之刃"
+  lore:
+    - "&7射出冰霜箭"
+    - "&77点伤害"
+ice_sickle:
+  name: "冰镰"
+  lore:
+    - "&7射出冰霜镰刀"
+    - "&717点伤害"
+lights_bane:
+  name: "光之克星"
+  lore:
+    - "&7在剑尖附近制造黑暗斩击"
+slap_hand:
+  name: "掌击手"
+  lore:
+    - "&7走开"
+    - "&79点伤害"
+starfury:
+  name: "星辰之怒"
+  lore:
+    - "&7使星星从天空落下"
+    - "&7以天界之怒铸造"
+    - "&78点伤害"
+tainted_blade:
+  name: "污染之刃"
+  lore:
+    - "&7命中敌人时施加中毒"
+    - "&712点伤害"
+terra_blade:
+  name: "泰拉之刃"
+  lore:
+    - "&7由最精良的光明与黑暗之刃铸造"
+    - "&71000点伤害，+3范围"
+vampire_knives:
+  name: "吸血鬼飞刀"
+  lore:
+    - "&7快速投掷吸取生命的匕首"
+    - "&78点伤害"
+volcano:
+  name: "火山"
+  lore:
+    - "&7它是由火焰构成的！"
+    - "&715点伤害"

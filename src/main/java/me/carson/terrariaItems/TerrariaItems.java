@@ -5,6 +5,7 @@ import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder
 import me.carson.terrariaItems.accesoryFolder.AccessoryListeners;
 import me.carson.terrariaItems.blocksFolder.CustomBlockListeners;
 import me.carson.terrariaItems.blocksFolder.CustomBlockManager;
+import me.carson.terrariaItems.bloodMoonManager.BloodMoonManager;
 import me.carson.terrariaItems.enemiesFolder.EnemyManager;
 import me.carson.terrariaItems.listenersHandler.*;
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
@@ -83,6 +84,7 @@ public final class TerrariaItems extends JavaPlugin{
         new PlayerDamageHandler(this);
         new ArmorChangeDetector(this);
         new VillagerTradingListeners(this);
+        new BloodMoonManager(this);
 
         TICommand tiCommand = new TICommand(this);
         Objects.requireNonNull(getCommand("ti")).setExecutor(tiCommand);

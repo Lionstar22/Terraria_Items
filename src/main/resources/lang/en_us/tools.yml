@@ -63,7 +63,7 @@ cosmolight:
   name: "Cosmolight"
   lore:
     - "&7Advances time immediately to the"
-    - "&7next dawn, noon, dusk or midnight"
+    - "&7next day, noon, night or midnight"
 life_crystal:
   name: "Life Crystal"
   lore:

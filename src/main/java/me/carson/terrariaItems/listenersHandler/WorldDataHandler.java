@@ -52,6 +52,11 @@ public class WorldDataHandler implements Listener {
         config.set(".mechWarden",set);
     }
 
+    public Boolean getBloodMoon(){return config.getBoolean(".bloodMoon",false);}
+    public void setBloodMoon(Boolean set){
+        config.set(".bloodMoon",set);
+    }
+
     public void save() {
         try {
             config.save(file);

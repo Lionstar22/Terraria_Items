@@ -16,7 +16,7 @@ import java.util.List;
 public class Cosmolight extends Tool{
 
     public Cosmolight(Plugin plugin){
-        super(plugin,"cosmolight.name","#FF9696",Material.CLOCK,"cosmolight","Cosmolight",20,"cosmolight.lore");
+        super(plugin,"cosmolight.name","#FF9696",Material.CLOCK,"cosmolight","Cosmolight",50,"cosmolight.lore");
     }
 
     @Override
@@ -35,14 +35,14 @@ public class Cosmolight extends Tool{
 
     public void nextTime(World world){
         long time = world.getTime();
-        if ((0<=time)&&(time<6000)){
+        if ((1000<=time)&&(time<6000)){
             world.setTime(6000);
-        } else if ((6000<=time)&&(time<12000)) {
-            world.setTime(12000);
-        } else if ((12000<=time)&&(time<18000)) {
+        } else if ((6000<=time)&&(time<13000)) {
+            world.setTime(13000);
+        } else if ((13000<=time)&&(time<18000)) {
             world.setTime(18000);
-        } else if ((18000<=time)&&(time<24000)) {
-            world.setTime(24000);
+        } else {
+            world.setTime(1000);
         }
     }
 

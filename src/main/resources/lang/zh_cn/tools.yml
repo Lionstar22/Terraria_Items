@@ -1,0 +1,91 @@
+frozen_crate:
+  name: "冰冻箱子"
+  lore:
+    - "&7右键点击打开"
+golden_crate:
+  name: "黄金箱子"
+  lore:
+    - "&7右键点击打开"
+iron_crate:
+  name: "铁箱子"
+  lore:
+    - "&7右键点击打开"
+jungle_crate:
+  name: "丛林箱子"
+  lore:
+    - "&7右键点击打开"
+oasis_crate:
+  name: "绿洲箱子"
+  lore:
+    - "&7右键点击打开"
+ocean_crate:
+  name: "海洋箱子"
+  lore:
+    - "&7右键点击打开"
+sky_crate:
+  name: "天空箱子"
+  lore:
+    - "&7右键点击打开"
+wooden_crate:
+  name: "木箱子"
+  lore:
+    - "&7右键点击打开"
+greater_mana_potion:
+  name: "高级魔法药水"
+  lore:
+    - "&7恢复200点魔法值"
+lesser_mana_potion:
+  name: "初级魔法药水"
+  lore:
+    - "&7恢复50点魔法值"
+mana_potion:
+  name: "魔法药水"
+  lore:
+    - "&7恢复100点魔法值"
+super_mana_potion:
+  name: "超级魔法药水"
+  lore:
+    - "&7恢复300点魔法值"
+mechanical_egg:
+  name: "机械蛋"
+  lore:
+    - "&7召唤机械龙"
+mechanical_shrieker:
+  name: "机械尖啸者"
+  lore:
+    - "&7召唤机械监守者"
+mechanical_skull:
+  name: "机械骷髅"
+  lore:
+    - "&7召唤机械凋灵"
+cosmolight:
+  name: "宇宙之光"
+  lore:
+    - "&7立即将时间推进至"
+    - "&7下一个黎明、正午、黄昏或午夜"
+life_crystal:
+  name: "生命水晶"
+  lore:
+    - "&7永久提升最大生命值"
+magic_mirror:
+  name: "魔法镜子"
+  lore:
+    - "&7凝视镜子以回到家中"
+mana_crystal:
+  name: "魔法水晶"
+  lore:
+    - "&7永久提升最大魔法值20点"
+    - "&7最大魔法值200"
+momentum_capacitor:
+  name: "动量电容器"
+  lore:
+    - "&7加速你的水平移动速度"
+rod_of_discord:
+  name: "混沌法杖"
+  lore:
+    - "&7将你传送到鼠标所在位置"
+    - "&7频繁使用会造成伤害"
+torrential_tear:
+  name: "倾盆之泪"
+  lore:
+    - "&7切换降雨"
