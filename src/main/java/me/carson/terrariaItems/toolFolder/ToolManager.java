@@ -6,6 +6,7 @@ import me.carson.terrariaItems.toolFolder.tools.potions.GreaterManaPotion;
 import me.carson.terrariaItems.toolFolder.tools.potions.LesserManaPotion;
 import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
 import me.carson.terrariaItems.toolFolder.tools.potions.SuperManaPotion;
+import me.carson.terrariaItems.toolFolder.tools.summons.BloodyTear;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalEgg;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalShrieker;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalSkull;
@@ -52,6 +53,7 @@ public class ToolManager implements Listener {
         toolList.put("ManaPotion",new ManaPotion(plugin));
         toolList.put("GreaterManaPotion",new GreaterManaPotion(plugin));
         toolList.put("SuperManaPotion",new SuperManaPotion(plugin));
+        toolList.put("BloodyTear",new BloodyTear(plugin));
     }
 
     @EventHandler

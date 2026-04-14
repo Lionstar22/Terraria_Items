@@ -89,3 +89,10 @@ torrential_tear:
   name: "Lágrima Torrencial"
   lore:
     - "&7Activa o desactiva la lluvia"
+bloody_tear:
+  name: "Lágrima Sangrienta"
+  lore:
+    - "&7Invoca la Luna de Sangre"
+    - "&7'Qué noche tan horrible para tener una maldición.'"
+    - "&7Debe usarse de noche"
+    - "&7Consumible"

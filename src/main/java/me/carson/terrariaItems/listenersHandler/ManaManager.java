@@ -88,7 +88,7 @@ public class ManaManager {
     //if(instance.getManaDelay(id)>-1)
     public boolean isNight(World world) {
         long t = world.getTime();
-        return t >= 12000 && t < 24000;
+        return t >= 13000 && t < 24000;
     }
 
     public void startFallingStartTask(Plugin plugin){

@@ -1,11 +1,14 @@
 package me.carson.terrariaItems.toolFolder;
 
 import me.carson.terrariaItems.TILangManager;
+import me.carson.terrariaItems.bloodMoonManager.BloodMoonManager;
 import me.carson.terrariaItems.listenersHandler.ManaManager;
+import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -28,7 +31,9 @@ public abstract class Tool {
     private final NamespacedKey unplaceableKey;
     private final NamespacedKey customItemKey;
     public ManaManager manaManagerInstance=ManaManager.getInstance();
+    public WorldDataHandler worldInstance=WorldDataHandler.getInstance();
     public final TILangManager lang =TILangManager.getInstance();
+    public BloodMoonManager bloodMoonManagerInstance=BloodMoonManager.getInstance();
 
     public Tool(Plugin plugin, String name, String rarity, Material baseMaterial, String texture, String id, int cooldown, String lore) {
         this.plugin = plugin;
@@ -73,4 +78,8 @@ public abstract class Tool {
 
     public abstract void cooldownEffect(Player player);
 
+    public boolean isNight(World world) {
+        long t = world.getTime();
+        return t >= 13000 && t < 24000;
+    }
 }

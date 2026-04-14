@@ -29,3 +29,5 @@ werewolf:
   name: "Hombre Lobo"
 doctor_bones:
   name: "Doctor Huesos"
+blood_zombie:
+  name: "Zombi de sangre"

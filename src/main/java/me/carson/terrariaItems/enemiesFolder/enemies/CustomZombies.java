@@ -208,6 +208,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
     }
 
     public void spawnBloodZombie(Zombie zombie){
+        zombie.setCustomName(lang.get("enemies","blood_zombie.name"));
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"BloodZombie");
         zombie.setCanPickupItems(false);

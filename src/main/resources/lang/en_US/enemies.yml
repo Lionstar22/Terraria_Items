@@ -29,3 +29,5 @@ werewolf:
   name: "Werewolf"
 doctor_bones:
   name: "Doctor Bones"
+blood_zombie:
+  name: "Blood Zombie"

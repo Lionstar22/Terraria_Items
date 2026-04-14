@@ -251,3 +251,9 @@ volcano:
   lore:
     - "&7¡Está hecho de fuego!"
     - "&715 de Daño"
+blood_rain_bow:
+  name: "Arco de Lluvia de Sangre"
+  lore:
+    - "&7Llueve sangre desde el cielo"
+    - "&7'Reinar en Sangre'"
+    - "&76 de Daño"

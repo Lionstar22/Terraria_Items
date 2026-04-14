@@ -28,3 +28,5 @@ werewolf:
   name: "Оборотень"
 doctor_bones:
   name: "Доктор Кости"
+blood_zombie:
+  name: "Кровавый зомби"

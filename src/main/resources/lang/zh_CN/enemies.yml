@@ -28,3 +28,5 @@ werewolf:
   name: "狼人"
 doctor_bones:
   name: "骷髅医生"
+blood_zombie:
+  name: "血僵尸"

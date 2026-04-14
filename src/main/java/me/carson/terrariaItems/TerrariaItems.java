@@ -50,6 +50,7 @@ public final class TerrariaItems extends JavaPlugin{
         AccessoryManager.initialize(this);
         ArmorManager.initialize(this);
         ResetHandler.initialize(this);
+        BloodMoonManager.initialize(this);
 
         AccessoryRecipeManager accessoryRecipeManager = new AccessoryRecipeManager(this);
         accessoryRecipeManager.registerRecipes();
@@ -84,7 +85,6 @@ public final class TerrariaItems extends JavaPlugin{
         new PlayerDamageHandler(this);
         new ArmorChangeDetector(this);
         new VillagerTradingListeners(this);
-        new BloodMoonManager(this);
 
         TICommand tiCommand = new TICommand(this);
         Objects.requireNonNull(getCommand("ti")).setExecutor(tiCommand);

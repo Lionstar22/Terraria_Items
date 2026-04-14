@@ -251,3 +251,9 @@ volcano:
   lore:
     - "&7It's made out of fire!"
     - "&715 Damage"
+blood_rain_bow:
+  name: "Blood Rain Bow"
+  lore:
+    - "&7Rains blood from the sky"
+    - "&7'Reign in Blood'"
+    - "&76 Damage"

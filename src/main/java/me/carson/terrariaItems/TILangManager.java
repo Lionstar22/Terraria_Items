@@ -25,7 +25,7 @@ public class TILangManager {
 
     public TILangManager(Plugin plugin) {
         this.plugin = plugin;
-        load();
+        reload();
     }
 
     private void load() {
@@ -33,7 +33,7 @@ public class TILangManager {
         if (!configFile.exists()) {
             plugin.getDataFolder().mkdirs();
             YamlConfiguration defaultConfig = new YamlConfiguration();
-            defaultConfig.set("language", "en_us");
+            defaultConfig.set("language", "en_US");
             try {
                 defaultConfig.save(configFile);
             } catch (IOException e) {
@@ -42,7 +42,7 @@ public class TILangManager {
         }
 
         FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
-        String locale = config.getString("language", "en_us");
+        String locale = config.getString("language", "en_US");
 
         loadLangFile(locale, "accessories");
         loadLangFile(locale, "armor");
@@ -67,7 +67,7 @@ public class TILangManager {
             } else {
                 // Fallback to en_US
                 plugin.getLogger().warning("Could not find '" + resourcePath + "', falling back to en_US.");
-                resourcePath = "lang/en_us/" + fileName + ".yml";
+                resourcePath = "lang/en_US/" + fileName + ".yml";
                 langFile = new File(plugin.getDataFolder(), resourcePath);
                 if (!langFile.exists()) plugin.saveResource(resourcePath, false);
             }
@@ -84,6 +84,7 @@ public class TILangManager {
             lang.setDefaults(defConfig);
         }
 
+        langFiles.put(fileName, lang);
         langFiles.put(fileName, lang);
     }
 

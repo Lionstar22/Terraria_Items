@@ -1,14 +1,10 @@
 package me.carson.terrariaItems.accesoryFolder.accessories;
 
 import me.carson.terrariaItems.accesoryFolder.Accessory;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MagicQuiver extends Accessory {
 

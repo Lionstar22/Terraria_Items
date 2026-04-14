@@ -90,3 +90,10 @@ torrential_tear:
   name: "Torrential Tear"
   lore:
     - "&7Toggles Rain"
+bloody_tear:
+  name: "Bloody Tear"
+  lore:
+    - "&7Summons the Blood Moon"
+    - "&7'What a horrible night to have a curse.'"
+    - "&7Must be used at Night"
+    - "&7Consumable"
