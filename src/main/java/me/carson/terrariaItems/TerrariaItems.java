@@ -7,7 +7,8 @@ import me.carson.terrariaItems.blocksFolder.CustomBlockListeners;
 import me.carson.terrariaItems.blocksFolder.CustomBlockManager;
 import me.carson.terrariaItems.bloodMoonManager.BloodMoonManager;
 import me.carson.terrariaItems.enemiesFolder.EnemyManager;
-import me.carson.terrariaItems.listenersHandler.*;
+import me.carson.terrariaItems.handlers.*;
+import me.carson.terrariaItems.listeners.*;
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.armorFolder.ArmorManager;
 import me.carson.terrariaItems.materialsFolder.MaterialManager;
@@ -85,6 +86,7 @@ public final class TerrariaItems extends JavaPlugin{
         new PlayerDamageHandler(this);
         new ArmorChangeDetector(this);
         new VillagerTradingListeners(this);
+        new MobDeathListeners(this);
 
         TICommand tiCommand = new TICommand(this);
         Objects.requireNonNull(getCommand("ti")).setExecutor(tiCommand);

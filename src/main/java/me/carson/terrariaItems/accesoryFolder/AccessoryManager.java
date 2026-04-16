@@ -1,7 +1,7 @@
 package me.carson.terrariaItems.accesoryFolder;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
-import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
+import me.carson.terrariaItems.handlers.PlayerDataHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;

@@ -1,10 +1,6 @@
 package me.carson.terrariaItems.recipeManagers;
 
-import me.carson.terrariaItems.accesoryFolder.accessories.AvengerEmblem;
-import me.carson.terrariaItems.accesoryFolder.accessories.RangerEmblem;
-import me.carson.terrariaItems.accesoryFolder.accessories.SorcererEmblem;
-import me.carson.terrariaItems.accesoryFolder.accessories.WarriorEmblem;
-import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
+import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.Ruby;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;

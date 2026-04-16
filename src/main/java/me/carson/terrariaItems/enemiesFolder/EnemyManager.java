@@ -4,6 +4,8 @@ import me.carson.terrariaItems.accesoryFolder.accessories.MagicQuiver;
 import me.carson.terrariaItems.enemiesFolder.enemies.*;
 import me.carson.terrariaItems.materialsFolder.materials.ForbiddenFragment;
 import me.carson.terrariaItems.materialsFolder.materials.FrostCore;
+import me.carson.terrariaItems.toolFolder.tools.summons.BloodyTear;
+import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.BloodRainBow;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -43,43 +45,5 @@ public class EnemyManager implements Listener {
         }
         event.setCancelled(true);
     }
-
-    @EventHandler
-    public void onCustomDeath(EntityDeathEvent event) {
-        String id = event.getEntity().getPersistentDataContainer().get(key, PersistentDataType.STRING);
-        if (id == null) {
-            return;
-        }
-        switch (id) {
-            case "UndeadMiner" -> {
-                if (Math.random() < 0.72) {
-                    int tnt = ThreadLocalRandom.current().nextInt(1, 4);
-                    ItemStack item = new ItemStack(Material.TNT, tnt);
-                    event.getDrops().add(item);
-                }
-                if (Math.random() < 0.1) {
-                    ItemStack itemStack = new ItemStack(Material.COOKED_BEEF);
-                    event.getDrops().add(itemStack);
-                }
-            }
-            case "SkeletonArcher" -> {
-                if (Math.random() < 0.025) {
-                    event.getDrops().add(MagicQuiver.getItem(plugin));
-                }
-            }
-            case "SandElemental" -> {
-                event.getDrops().clear();
-                event.getDrops().add(ForbiddenFragment.getItem(plugin));
-            }
-            case "IceGolem" -> {
-                event.getDrops().clear();
-                event.getDrops().add(FrostCore.getItem(plugin));
-            }
-            default -> {
-
-            }
-        }
-    }
-
 
 }

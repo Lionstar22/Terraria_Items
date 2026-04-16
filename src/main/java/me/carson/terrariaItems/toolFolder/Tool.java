@@ -2,10 +2,8 @@ package me.carson.terrariaItems.toolFolder;
 
 import me.carson.terrariaItems.TILangManager;
 import me.carson.terrariaItems.bloodMoonManager.BloodMoonManager;
-import me.carson.terrariaItems.listenersHandler.ManaManager;
-import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.TextColor;
+import me.carson.terrariaItems.handlers.ManaManager;
+import me.carson.terrariaItems.handlers.WorldDataHandler;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;

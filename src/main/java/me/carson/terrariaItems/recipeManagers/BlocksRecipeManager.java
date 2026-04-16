@@ -1,7 +1,7 @@
 package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.blocksFolder.blocks.Hellforge;
-import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
+import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.Hellstone;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

@@ -1,10 +1,11 @@
-package me.carson.terrariaItems.listenersHandler;
+package me.carson.terrariaItems.handlers;
 
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityEquipment;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.protocol.player.Equipment;
 import com.github.retrooper.packetevents.protocol.player.EquipmentSlot;
 import io.github.retrooper.packetevents.util.SpigotConversionUtil;
+import me.carson.terrariaItems.listeners.ArmorChangeEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;

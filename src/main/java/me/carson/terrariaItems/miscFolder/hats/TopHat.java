@@ -1,0 +1,27 @@
+package me.carson.terrariaItems.miscFolder.hats;
+
+import me.carson.terrariaItems.miscFolder.Basic;
+import org.bukkit.Material;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.components.EquippableComponent;
+import org.bukkit.plugin.Plugin;
+
+public class TopHat extends Basic {
+
+    public TopHat(Plugin plugin){
+        super(plugin,"top_hat.name","#FFFFFF", Material.LEATHER_HELMET,"top_hat","TopHat","top_hat.lore");
+    }
+
+    public static ItemStack getItem(Plugin plugin) {
+        ItemStack item=new UndeadMinerHat(plugin).createItem();
+        ItemMeta meta=item.getItemMeta();
+        EquippableComponent equip= meta.getEquippable();
+        equip.setSlot(EquipmentSlot.HEAD);
+        meta.setEquippable(equip);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+}

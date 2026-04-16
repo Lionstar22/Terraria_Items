@@ -1,6 +1,6 @@
 package me.carson.terrariaItems.materialsFolder;
 
-import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
+import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.ClockworkAssaultRifle;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.LaserRifle;

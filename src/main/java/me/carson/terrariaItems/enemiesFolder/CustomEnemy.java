@@ -2,7 +2,7 @@ package me.carson.terrariaItems.enemiesFolder;
 
 import me.carson.terrariaItems.TILangManager;
 import me.carson.terrariaItems.enemyProjectilesFolder.EnemyProjectile;
-import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
+import me.carson.terrariaItems.handlers.WorldDataHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;

@@ -2,8 +2,8 @@ package me.carson.terrariaItems.enemiesFolder.enemies;
 
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.MermanBolt;
-import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.miscFolder.hats.IcyMermanHat;
+import me.carson.terrariaItems.miscFolder.hats.ZombieMermanHat;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -32,9 +32,23 @@ public class CustomDrowned extends CustomEnemy implements Listener {
         if (event.getEntityType() != EntityType.DROWNED) return;
         Drowned drowned = (Drowned) event.getEntity();
         Location loc=drowned.getLocation();
-        if(!icyBiomes.contains(loc.getBlock().getBiome())){return;}
-        if(!instance.getHardmode()){return;}
-        spawnIcyMerman(drowned);
+
+        if(instance.getHardmode()){
+            if(icyBiomes.contains(loc.getBlock().getBiome())){
+                spawnIcyMerman(drowned);
+                return;
+            }
+            if(instance.getBloodMoon()){
+                spawnZombieMerman(drowned);
+                return;
+            }
+        }else{
+            if(instance.getBloodMoon()){
+                spawnZombieMerman(drowned);
+                return;
+            }
+        }
+
     }
 
     public void spawnIcyMerman(Drowned drowned){
@@ -54,5 +68,23 @@ public class CustomDrowned extends CustomEnemy implements Listener {
         equipment.setItemInMainHand(null);
         equipment.setHelmetDropChance(0f);
         startAttacks(drowned,new MermanBolt(plugin),"terraria:frost_bolt");
+    }
+
+    public void spawnZombieMerman(Drowned drowned){
+        drowned.setCustomName(lang.get("enemies","zombie_merman.name"));
+        drowned.setCustomNameVisible(false);
+        drowned.getAttribute(Attribute.MAX_HEALTH).setBaseValue(30);
+        drowned.setHealth(30);
+        drowned.setInvisible(true);
+        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+        drowned.getPersistentDataContainer().set(key, PersistentDataType.STRING,"ZombieMerman");
+        drowned.setCanPickupItems(false);
+        EntityEquipment equipment=drowned.getEquipment();
+        equipment.setHelmet(ZombieMermanHat.getItem(plugin));
+        equipment.setChestplate(null);
+        equipment.setLeggings(null);
+        equipment.setBoots(null);
+        equipment.setItemInMainHand(null);
+        equipment.setHelmetDropChance(0f);
     }
 }

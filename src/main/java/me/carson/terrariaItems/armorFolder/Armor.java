@@ -1,7 +1,7 @@
 package me.carson.terrariaItems.armorFolder;
 
 import me.carson.terrariaItems.TILangManager;
-import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
+import me.carson.terrariaItems.handlers.PlayerDataHandler;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;

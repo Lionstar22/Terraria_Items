@@ -10,7 +10,6 @@ import me.carson.terrariaItems.armorFolder.armors.werewolfArmor.WerewolfBoots;
 import me.carson.terrariaItems.armorFolder.armors.werewolfArmor.WerewolfChestplate;
 import me.carson.terrariaItems.armorFolder.armors.werewolfArmor.WerewolfLeggings;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
-import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.miscFolder.hats.*;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;

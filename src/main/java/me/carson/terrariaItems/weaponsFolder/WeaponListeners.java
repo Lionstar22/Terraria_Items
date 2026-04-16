@@ -1,6 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder;
 
-import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
+import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.IceSickle;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;

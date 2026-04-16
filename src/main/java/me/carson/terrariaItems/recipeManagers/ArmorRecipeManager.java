@@ -10,7 +10,7 @@ import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroBreastplate;
 import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroGreaves;
 import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroHelmet;
 import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroLeggings;
-import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
+import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.miscFolder.hats.GoldenCrown;
 import me.carson.terrariaItems.armorFolder.armors.cactusArmor.CactusBoots;

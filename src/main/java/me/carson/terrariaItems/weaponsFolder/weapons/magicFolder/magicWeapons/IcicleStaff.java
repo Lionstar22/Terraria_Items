@@ -1,9 +1,7 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons;
 
-import me.carson.terrariaItems.listenersHandler.ManaManager;
 import me.carson.terrariaItems.projectilesFolder.projectiles.Icicle;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.Magic;
-import org.bukkit.ChatColor;
 import org.bukkit.FluidCollisionMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -12,8 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.util.RayTraceResult;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class IcicleStaff extends Magic {

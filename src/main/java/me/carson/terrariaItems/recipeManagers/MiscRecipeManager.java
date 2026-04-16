@@ -1,6 +1,6 @@
 package me.carson.terrariaItems.recipeManagers;
 
-import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
+import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.HallowedBar;
 import me.carson.terrariaItems.miscFolder.BasicItems.*;
 import org.bukkit.Bukkit;

@@ -1,9 +1,9 @@
 package me.carson.terrariaItems.accesoryFolder;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
-import me.carson.terrariaItems.listenersHandler.ManaManager;
-import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
-import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
+import me.carson.terrariaItems.handlers.ManaManager;
+import me.carson.terrariaItems.handlers.PlayerDataHandler;
+import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.projectilesFolder.projectiles.StarCannonStar;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.MagicDagger;
 import org.bukkit.*;
@@ -68,26 +68,6 @@ public class AccessoryListeners implements Listener {
         return false;
     }
 
-    public ItemStack getMimicLoot() {
-        int x = ThreadLocalRandom.current().nextInt(1, 5);
-        switch (x) {
-            case 1 -> {
-                return TitanGlove.getItem(plugin);
-            }
-            case 2 -> {
-                return CrossNecklace.getItem(plugin);
-            }
-            case 3 -> {
-                return MagicDagger.getItem(plugin);
-            }
-            case 4 -> {
-                return StarCloak.getItem(plugin);
-            }
-            default -> {
-            }
-        }
-        return null;
-    }
 
     @EventHandler
     public void onPlayerDamage(EntityDamageEvent event) {
@@ -155,59 +135,6 @@ public class AccessoryListeners implements Listener {
         }
     }
 
-    @EventHandler
-    public void onMobDeath(EntityDeathEvent e) {
-        EntityType entityType = e.getEntity().getType();
-        double rand=Math.random();
-        if (e.getEntity().getType() != EntityType.ZOMBIE){
-            if(rand<0.02){
-                e.getDrops().add(Shackle.getItem(plugin));
-                return;
-            }
-        }
-        if(worldDataInstance.getHardmode()){    //HARDMODE DROPS
-            switch (entityType){
-                case BOGGED ->{
-                    if(rand<0.1){
-                        e.getDrops().add(Bezoar.getItem(plugin));
-                    }
-                }
-                case EVOKER->{
-                    if(rand<0.15){
-                        ItemStack custom = SorcererEmblem.getItem(plugin);
-                        e.getDrops().add(custom);
-                    }
-                }
-                case BLAZE -> {
-                    if(rand<0.05){
-                        ItemStack custom = RangerEmblem.getItem(plugin);
-                        e.getDrops().add(custom);
-                    }
-                }
-                case WITHER_SKELETON -> {
-                    if(rand<0.05){
-                        ItemStack custom = WarriorEmblem.getItem(plugin);
-                        e.getDrops().add(custom);
-                    }
-                }
-                case STRAY -> {
-                    if(rand<0.1){
-                        ItemStack custom = FastClock.getItem(plugin);
-                        e.getDrops().add(custom);
-                    }
-                }
-                case SHULKER -> {
-                    if(rand<0.2){
-                        e.getDrops().add(getMimicLoot());
-                    }
-                }
-                default -> {
-                }
-            }
-
-        }
-
-    }
 
     @EventHandler
     public void onKnockback(EntityKnockbackEvent event) {

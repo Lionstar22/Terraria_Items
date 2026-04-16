@@ -1,16 +1,12 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons;
 
-import me.carson.terrariaItems.listenersHandler.ManaManager;
 import me.carson.terrariaItems.projectilesFolder.projectiles.Bubble;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.Magic;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class BubbleGun extends Magic {

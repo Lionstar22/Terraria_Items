@@ -1,6 +1,7 @@
-package me.carson.terrariaItems.listenersHandler;
+package me.carson.terrariaItems.listeners;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.CounterScarf;
+import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.IllegalGunParts;
 import me.carson.terrariaItems.toolFolder.tools.MomentumCapacitor;
 import me.carson.terrariaItems.toolFolder.tools.RodOfDiscord;

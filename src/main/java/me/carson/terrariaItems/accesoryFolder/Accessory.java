@@ -1,27 +1,16 @@
 package me.carson.terrariaItems.accesoryFolder;
 
-import com.github.retrooper.packetevents.PacketEvents;
-import com.github.retrooper.packetevents.protocol.player.Equipment;
-import com.github.retrooper.packetevents.protocol.player.EquipmentSlot;
-import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityEquipment;
-import io.github.retrooper.packetevents.util.SpigotConversionUtil;
 import me.carson.terrariaItems.TILangManager;
-import me.carson.terrariaItems.TerrariaItems;
-import me.carson.terrariaItems.listenersHandler.PlayerDataHandler;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.TextColor;
+import me.carson.terrariaItems.handlers.PlayerDataHandler;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public abstract class Accessory {
 

@@ -24,7 +24,7 @@ import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroHelmet;
 import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroLeggings;
 import me.carson.terrariaItems.armorFolder.armors.shadowArmor.*;
 import me.carson.terrariaItems.armorFolder.armors.timArmor.WizardHat;
-import me.carson.terrariaItems.listenersHandler.ArmorChangeEvent;
+import me.carson.terrariaItems.listeners.ArmorChangeEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.NamespacedKey;

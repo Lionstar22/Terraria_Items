@@ -1,4 +1,4 @@
-package me.carson.terrariaItems.listenersHandler;
+package me.carson.terrariaItems.handlers;
 
 import me.carson.terrariaItems.accesoryFolder.Accessory;
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;

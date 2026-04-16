@@ -14,12 +14,12 @@ import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.DustDevil;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.IceGolemLaser;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.RuneWizardBolt;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.TimBolt;
-import me.carson.terrariaItems.listenersHandler.WorldDataHandler;
 import me.carson.terrariaItems.miscFolder.BasicItems.BonePickaxe;
 import me.carson.terrariaItems.miscFolder.hats.*;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Biome;
 import org.bukkit.enchantments.Enchantment;
@@ -53,6 +53,18 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
 
         double rand=Math.random();
         int yLevel=getLevel(location.getY());
+
+        if(location.getWorld().getEnvironment()== World.Environment.NETHER){
+            if(instance.getHardmode()){
+                if(rand<0.6) {  //50%
+                    spawnSkeletonArcher(skeleton);
+
+                } else if(rand<0.06) {    //3%
+                    spawnRuneWizard(skeleton);
+                }
+            }
+            return;
+        }
 
         if(instance.getHardmode()){//Hardmode
             switch (yLevel){

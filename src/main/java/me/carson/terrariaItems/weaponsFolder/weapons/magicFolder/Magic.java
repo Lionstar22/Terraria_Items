@@ -1,12 +1,10 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.magicFolder;
 
-import me.carson.terrariaItems.listenersHandler.ManaManager;
+import me.carson.terrariaItems.handlers.ManaManager;
 import me.carson.terrariaItems.weaponsFolder.Weapon;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-
-import java.util.ArrayList;
 
 public abstract class Magic extends Weapon {
 
