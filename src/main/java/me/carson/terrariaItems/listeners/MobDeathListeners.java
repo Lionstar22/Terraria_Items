@@ -142,6 +142,14 @@ public class MobDeathListeners implements Listener {
                 if(Math.random()<0.01){
                     event.getDrops().add(BloodyTear.getItem(plugin));
                 }
+                if(Math.random()<0.013){
+                    event.getDrops().add(SharkToothNecklace.getItem(plugin));
+                }
+            }
+            case "TheGroom", "TheBride" ->{
+                if(Math.random()<0.2){
+                    event.getDrops().add(BloodyTear.getItem(plugin));
+                }
             }
             case "ZombieMerman" ->{
                 if(Math.random()<0.04){

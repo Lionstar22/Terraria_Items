@@ -62,12 +62,22 @@ public class CustomZombies extends CustomEnemy implements Listener {
                 spawnWerewolf(zombie);
                 return;
             }
+            if(instance.getBloodMoon()){ //Blood moon
+                if(Math.random()<0.01){
+                    spawnGroomZombie(zombie);
+                    return;
+                }
+                if(Math.random()<0.01){
+                    spawnBrideZombie(zombie);
+                    return;
+                }
+                if(Math.random()<0.5){
+                    spawnBloodZombie(zombie);
+                    return;
+                }
+            }
             if(rand<0.5){
                 spawnPossessedArmor(zombie);
-                return;
-            }
-            if(instance.getBloodMoon()){
-                spawnBloodZombie(zombie);
                 return;
             }
             if(snowyBiomes.contains(location.getBlock().getBiome())){
@@ -87,7 +97,15 @@ public class CustomZombies extends CustomEnemy implements Listener {
                 spawnGnome(zombie);
                 return;
             }
-            if(instance.getBloodMoon()){
+            if(instance.getBloodMoon()){ //Blood moon
+                if(Math.random()<0.01){
+                    spawnGroomZombie(zombie);
+                    return;
+                }
+                if(Math.random()<0.01){
+                    spawnBrideZombie(zombie);
+                    return;
+                }
                 spawnBloodZombie(zombie);
                 return;
             }
@@ -221,6 +239,46 @@ public class CustomZombies extends CustomEnemy implements Listener {
         equipment.setLeggings(BloodZombieLeggings.getItem(plugin));
         equipment.setBoots(BloodZombieBoots.getItem(plugin));
         equipment.setHelmetDropChance(0f);
+        equipment.setChestplateDropChance(0f);
+        equipment.setLeggingsDropChance(0f);
+        equipment.setBootsDropChance(0f);
+    }
+
+    public void spawnGroomZombie(Zombie zombie){
+        zombie.setCustomName(lang.get("enemies","the_groom.name"));
+        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+        zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"TheGroom");
+        zombie.setCanPickupItems(false);
+        zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(75);
+        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(6);
+        zombie.setHealth(75);
+        EntityEquipment equipment=zombie.getEquipment();
+        equipment.setItemInMainHand(null);
+        equipment.setHelmet(TopHat.getItem(plugin));
+        equipment.setChestplate(null);
+        equipment.setLeggings(null);
+        equipment.setBoots(null);
+        equipment.setHelmetDropChance(1f);
+        equipment.setChestplateDropChance(0f);
+        equipment.setLeggingsDropChance(0f);
+        equipment.setBootsDropChance(0f);
+    }
+
+    public void spawnBrideZombie(Zombie zombie){
+        zombie.setCustomName(lang.get("enemies","the_bride.name"));
+        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+        zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"TheBride");
+        zombie.setCanPickupItems(false);
+        zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(75);
+        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(6);
+        zombie.setHealth(75);
+        EntityEquipment equipment=zombie.getEquipment();
+        equipment.setItemInMainHand(null);
+        equipment.setHelmet(WeddingVeil.getItem(plugin));
+        equipment.setChestplate(null);
+        equipment.setLeggings(null);
+        equipment.setBoots(null);
+        equipment.setHelmetDropChance(1f);
         equipment.setChestplateDropChance(0f);
         equipment.setLeggingsDropChance(0f);
         equipment.setBootsDropChance(0f);

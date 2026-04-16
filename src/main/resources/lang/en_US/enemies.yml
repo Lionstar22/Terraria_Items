@@ -31,3 +31,7 @@ doctor_bones:
   name: "Doctor Bones"
 blood_zombie:
   name: "Blood Zombie"
+the_groom:
+  name: "The Groom"
+the_bride:
+  name: "The Bride"

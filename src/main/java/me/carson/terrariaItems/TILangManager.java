@@ -53,29 +53,33 @@ public class TILangManager {
         loadLangFile(locale, "tools");
         loadLangFile(locale, "weapons");
         loadLangFile(locale, "commands");
-        // Add more files here as needed
     }
 
     private void loadLangFile(String locale, String fileName) {
         String resourcePath = "lang/" + locale + "/" + fileName + ".yml";
         File langFile = new File(plugin.getDataFolder(), resourcePath);
 
-        if (!langFile.exists()) {
+        langFile.getParentFile().mkdirs();
+
+        if (plugin.getResource(resourcePath) != null) {
+            plugin.saveResource(resourcePath, true); // always overwrite on startup
+        } else {
+            plugin.getLogger().warning("Resource not found in jar: " + resourcePath);
+            // fallback to en_US
+            resourcePath = "lang/en_US/" + fileName + ".yml";
+            langFile = new File(plugin.getDataFolder(), resourcePath);
             langFile.getParentFile().mkdirs();
             if (plugin.getResource(resourcePath) != null) {
-                plugin.saveResource(resourcePath, false);
+                plugin.saveResource(resourcePath, true);
             } else {
-                // Fallback to en_US
-                plugin.getLogger().warning("Could not find '" + resourcePath + "', falling back to en_US.");
-                resourcePath = "lang/en_US/" + fileName + ".yml";
-                langFile = new File(plugin.getDataFolder(), resourcePath);
-                if (!langFile.exists()) plugin.saveResource(resourcePath, false);
+                plugin.getLogger().severe("Could not find fallback lang file: " + resourcePath);
+                return;
             }
         }
 
         FileConfiguration lang = YamlConfiguration.loadConfiguration(langFile);
 
-        // Merge missing keys from bundled resource
+        // Merge any missing keys from the bundled resource as a safety net
         InputStream defStream = plugin.getResource(resourcePath);
         if (defStream != null) {
             YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(
@@ -85,7 +89,7 @@ public class TILangManager {
         }
 
         langFiles.put(fileName, lang);
-        langFiles.put(fileName, lang);
+        plugin.getLogger().info("Loaded lang file: " + resourcePath);
     }
 
     public void reload() {

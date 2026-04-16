@@ -204,3 +204,12 @@ warrior_emblem:
   name: "Warrior Emblem"
   lore:
     - "&720% increased melee damage"
+shark_tooth_necklace:
+  name: "Shark Tooth Necklace"
+  lore:
+    - "&7Increases Attack Damage by 1"
+stinger_necklace:
+  name: "Stinger Necklace"
+  lore:
+    - "&7Increases Attack Damage by 1"
+    - "&7Douses the user in honey when damaged"

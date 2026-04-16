@@ -23,3 +23,11 @@ undead_miner_hat:
   name: "Mining Helmet"
   lore:
     - "&7Worn by dead miners"
+top_hat:
+  name: "Name Hat"
+  lore:
+    - "Looking Sharp"
+wedding_veil:
+  name: "Wedding Veil"
+  lore:
+    - "Wuv... twue wuv..."

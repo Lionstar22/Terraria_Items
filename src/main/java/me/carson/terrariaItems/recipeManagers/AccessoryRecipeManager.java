@@ -47,6 +47,7 @@ public class AccessoryRecipeManager implements Listener {
                 new NamespacedKey(plugin, "HoneyBalloon"),
                 new NamespacedKey(plugin, "SweetheartNecklace"),
                 new NamespacedKey(plugin, "ObsidianHorseshoe"),
+                new NamespacedKey(plugin, "StingerNecklace"),
                 new NamespacedKey(plugin, "ObsidianShield")
         );
 
@@ -105,6 +106,17 @@ public class AccessoryRecipeManager implements Listener {
         registerMechanicalGloveRecipe();
         registerBeeCloakRecipe();
         registerStarVeilRecipe();
+        registerStingerNecklaceRecipe();
+    }
+
+    private void registerStingerNecklaceRecipe(){
+        ItemStack item= StingerNecklace.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "StingerNecklace");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(SharkToothNecklace.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(HoneyComb.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerStarVeilRecipe(){

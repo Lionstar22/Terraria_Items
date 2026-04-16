@@ -77,7 +77,8 @@ public class AccessoryManager implements Listener {
         accessoryList.put("StarCloak",new StarCloak(plugin));
         accessoryList.put("BeeCloak",new BeeCloak(plugin));
         accessoryList.put("StarVeil",new StarVeil(plugin));
-
+        accessoryList.put("SharkToothNecklace",new SharkToothNecklace(plugin));
+        accessoryList.put("StingerNecklace",new StingerNecklace(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

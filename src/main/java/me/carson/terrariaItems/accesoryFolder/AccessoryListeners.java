@@ -97,7 +97,7 @@ public class AccessoryListeners implements Listener {
             manaManagerInstance.addMana(player.getUniqueId(), event.getDamage()*4);
             manaManagerInstance.updateManaBar(player);
         }
-        if(hasAccessory(player,"HoneyComb")||hasAccessory(player,"HoneyBalloon")||hasAccessory(player,"SweetheartNecklace")||hasAccessory(player,"BeeCloak")){
+        if(hasAccessory(player,"HoneyComb")||hasAccessory(player,"HoneyBalloon")||hasAccessory(player,"SweetheartNecklace")||hasAccessory(player,"BeeCloak")||hasAccessory(player,"StingerNecklace")){
             player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,100,1,false,false,false));
         }
         if(hasAccessory(player,"StarCloak")||hasAccessory(player,"BeeCloak")||hasAccessory(player,"StarVeil")){

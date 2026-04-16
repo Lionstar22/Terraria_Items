@@ -8,14 +8,14 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.components.EquippableComponent;
 import org.bukkit.plugin.Plugin;
 
-public class TopHat extends Basic {
+public class WeddingVeil extends Basic {
 
-    public TopHat(Plugin plugin){
-        super(plugin,"top_hat.name","#FFFFFF", Material.LEATHER_HELMET,"top_hat","TopHat","top_hat.lore");
+    public WeddingVeil(Plugin plugin){
+        super(plugin,"wedding_veil.name","#FFFFFF", Material.LEATHER_HELMET,"wedding_veil","WeddingVeil","wedding_veil.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item=new TopHat(plugin).createItem();
+        ItemStack item=new WeddingVeil(plugin).createItem();
         ItemMeta meta=item.getItemMeta();
         EquippableComponent equip= meta.getEquippable();
         equip.setSlot(EquipmentSlot.HEAD);

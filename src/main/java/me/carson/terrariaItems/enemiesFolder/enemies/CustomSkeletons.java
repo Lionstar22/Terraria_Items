@@ -56,10 +56,10 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
 
         if(location.getWorld().getEnvironment()== World.Environment.NETHER){
             if(instance.getHardmode()){
-                if(rand<0.6) {  //50%
+                if(rand<0.5) {  //50%
                     spawnSkeletonArcher(skeleton);
 
-                } else if(rand<0.06) {    //3%
+                } else if(rand<0.53) {    //3%
                     spawnRuneWizard(skeleton);
                 }
             }
