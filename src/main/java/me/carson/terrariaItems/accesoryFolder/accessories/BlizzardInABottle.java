@@ -9,6 +9,8 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.event.player.PlayerInputEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
@@ -31,6 +33,16 @@ public class BlizzardInABottle extends Accessory{
 
     @Override
     public void deactivateEffect(Player player) {
+    }
+
+    @Override
+    public void onPlayerHit(Player player, EntityDamageEvent event) {
+
+    }
+
+    @Override
+    public void onPlayerEffect(Player player, EntityPotionEffectEvent event) {
+
     }
 
     public static ItemStack getItem(Plugin plugin) {

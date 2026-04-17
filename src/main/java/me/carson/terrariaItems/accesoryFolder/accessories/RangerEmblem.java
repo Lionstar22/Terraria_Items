@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.projectiles.ProjectileSource;
@@ -34,6 +35,16 @@ public class RangerEmblem extends Accessory{
     @Override
     public void deactivateEffect(Player player) {
         playerInstance.subtractBonusRanged(player.getUniqueId(),0.2);
+    }
+
+    @Override
+    public void onPlayerHit(Player player, EntityDamageEvent event) {
+
+    }
+
+    @Override
+    public void onPlayerEffect(Player player, EntityPotionEffectEvent event) {
+
     }
 
     public static ItemStack getItem(Plugin plugin) {

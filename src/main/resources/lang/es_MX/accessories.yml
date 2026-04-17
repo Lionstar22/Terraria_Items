@@ -203,3 +203,12 @@ warrior_emblem:
   name: "Emblema del Guerrero"
   lore:
     - "&720% de aumento de daño cuerpo a cuerpo"
+shark_tooth_necklace:
+  name: "Collar de Diente de Tiburón"
+  lore:
+    - "&7Aumenta el daño de ataque en 1"
+stinger_necklace:
+  name: "Collar de Aguijón"
+  lore:
+    - "&7Aumenta el daño de ataque en 1"
+    - "&7Baña al usuario en miel al recibir daño"

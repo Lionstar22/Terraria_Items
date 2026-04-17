@@ -29,4 +29,8 @@ werewolf:
 doctor_bones:
   name: "骷髅医生"
 blood_zombie:
-  name: "血僵尸"
+  name: "血月僵尸"
+the_groom:
+  name: "新郎"
+the_bride:
+  name: "新娘"

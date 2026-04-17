@@ -23,3 +23,11 @@ undead_miner_hat:
   name: "Casco de Minero"
   lore:
     - "&7Usado por mineros muertos"
+top_hat:
+  name: "Sombrero de Copa"
+  lore:
+    - "Qué elegante"
+wedding_veil:
+  name: "Velo de Novia"
+  lore:
+    - "Amor... verdadero amor..."

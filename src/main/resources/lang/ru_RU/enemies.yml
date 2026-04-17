@@ -30,3 +30,7 @@ doctor_bones:
   name: "Доктор Кости"
 blood_zombie:
   name: "Кровавый зомби"
+the_groom:
+  name: "Жених"
+the_bride:
+  name: "Невеста"

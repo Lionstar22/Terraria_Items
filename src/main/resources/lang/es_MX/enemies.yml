@@ -1,4 +1,3 @@
-
 mechanical_dragon:
   name: "Dragón Mecánico"
 mechanical_wither:
@@ -30,4 +29,8 @@ werewolf:
 doctor_bones:
   name: "Doctor Huesos"
 blood_zombie:
-  name: "Zombi de sangre"
+  name: "Zombi de Sangre"
+the_groom:
+  name: "El Novio"
+the_bride:
+  name: "La Novia"

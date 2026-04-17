@@ -55,7 +55,6 @@ public class BloodMoonManager implements Listener{
 
                 // Approaching dawn (23000 ticks) — end blood moon
                 if ((time >= 23000 || time<13000) && instance.getBloodMoon()) {
-                    checked=false;
                     endBloodMoon(world);
                 }
             }
@@ -71,6 +70,7 @@ public class BloodMoonManager implements Listener{
     }
 
     public void endBloodMoon(World world){
+        checked=false;
         for(Player player:world.getPlayers()){
             player.sendMessage(ChatColor.DARK_RED+lang.get("commands","blood_moon_msg.falling"));
         }

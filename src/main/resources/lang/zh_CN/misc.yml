@@ -23,3 +23,11 @@ undead_miner_hat:
   name: "矿工头盔"
   lore:
     - "&7由死去的矿工佩戴"
+top_hat:
+  name: "大礼帽"
+  lore:
+    - "真够帅气"
+wedding_veil:
+  name: "婚纱面纱"
+  lore:
+    - "爱... 真爱..."

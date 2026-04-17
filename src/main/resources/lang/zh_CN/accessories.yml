@@ -203,3 +203,12 @@ warrior_emblem:
   name: "战士徽章"
   lore:
     - "&7近战伤害提升20%"
+shark_tooth_necklace:
+  name: "鲨鱼牙项链"
+  lore:
+    - "&7攻击伤害提升1"
+stinger_necklace:
+  name: "刺针项链"
+  lore:
+    - "&7攻击伤害提升1"
+    - "&7受伤时将用蜂蜜浸泡使用者"

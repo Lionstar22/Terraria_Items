@@ -66,6 +66,7 @@ public class TICommand implements CommandExecutor, TabCompleter {
     private final AccessoryManager accessoryManagerInstance=AccessoryManager.getInstance();
     private final PlayerDataHandler playerInstance= PlayerDataHandler.getInstance();
     private final ResetHandler resetInstance=ResetHandler.getInstance();
+    public final TILangManager lang =TILangManager.getInstance();
 
     public TICommand(TerrariaItems plugin) {
         this.plugin = plugin;

@@ -8,6 +8,8 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -34,6 +36,16 @@ public class PowerGlove extends Accessory  {
     public void deactivateEffect(Player player) {
         player.getAttribute(Attribute.ATTACK_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"power_glove_attack_speed"),0.25, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
         player.getAttribute(Attribute.ATTACK_KNOCKBACK).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"power_glove_knockback"),1.5, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+    }
+
+    @Override
+    public void onPlayerHit(Player player, EntityDamageEvent event) {
+
+    }
+
+    @Override
+    public void onPlayerEffect(Player player, EntityPotionEffectEvent event) {
+
     }
 
     public static ItemStack getItem(Plugin plugin) {

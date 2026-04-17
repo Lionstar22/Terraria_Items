@@ -7,6 +7,8 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -31,6 +33,16 @@ public class HoneyBalloon extends Accessory  {
     @Override
     public void deactivateEffect(Player player) {
         player.removePotionEffect(PotionEffectType.JUMP_BOOST);
+    }
+
+    @Override
+    public void onPlayerHit(Player player, EntityDamageEvent event) {
+        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,100,1,false,false,false));
+    }
+
+    @Override
+    public void onPlayerEffect(Player player, EntityPotionEffectEvent event) {
+
     }
 
     public static ItemStack getItem(Plugin plugin) {

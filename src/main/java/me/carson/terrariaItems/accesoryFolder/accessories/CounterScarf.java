@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
@@ -30,6 +31,22 @@ public class CounterScarf extends Accessory implements Listener {
     public void deactivateEffect(Player player) {
         playerInstance.subtractBonusMelee(player.getUniqueId(),0.1);
     }
+
+    @Override
+    public void onPlayerHit(Player player, EntityDamageEvent event) {
+        if(!player.hasCooldown(Material.RED_WOOL)){
+            if (COUNTERSCARF_CAUSES.contains(event.getCause())){
+                player.setCooldown(Material.RED_WOOL,600);
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    @Override
+    public void onPlayerEffect(Player player, EntityPotionEffectEvent event) {
+
+    }
+
 
     public static ItemStack getItem(Plugin plugin) {
         return new CounterScarf(plugin).createItem();

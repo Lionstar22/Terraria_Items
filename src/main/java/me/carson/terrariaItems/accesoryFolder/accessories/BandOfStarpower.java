@@ -4,6 +4,8 @@ import me.carson.terrariaItems.accesoryFolder.Accessory;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
@@ -25,6 +27,16 @@ public class BandOfStarpower extends Accessory  {
     @Override
     public void deactivateEffect(Player player) {
         playerInstance.subtractExtraMana(player.getUniqueId(),20);
+    }
+
+    @Override
+    public void onPlayerHit(Player player, EntityDamageEvent event) {
+
+    }
+
+    @Override
+    public void onPlayerEffect(Player player, EntityPotionEffectEvent event) {
+
     }
 
     public static ItemStack getItem(Plugin plugin) {

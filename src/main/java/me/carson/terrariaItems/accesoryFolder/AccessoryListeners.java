@@ -8,6 +8,7 @@ import me.carson.terrariaItems.projectilesFolder.projectiles.StarCannonStar;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.MagicDagger;
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.type.Switch;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -29,25 +30,10 @@ public class AccessoryListeners implements Listener {
     private final Plugin plugin;
     private NamespacedKey customItemKey;
     private final PlayerDataHandler playerDataInstance=PlayerDataHandler.getInstance();
-    private final ManaManager manaManagerInstance=ManaManager.getInstance();
-    private final WorldDataHandler worldDataInstance=WorldDataHandler.getInstance();
+    private final AccessoryManager accessoryManagerInstance= AccessoryManager.getInstance();
     private final Set<UUID> usedDoubleJump = new HashSet<>();
-    private static final Set<EntityDamageEvent.DamageCause> COUNTERSCARF_CAUSES = Set.of(
-            EntityDamageEvent.DamageCause.ENTITY_ATTACK,
-            EntityDamageEvent.DamageCause.PROJECTILE,
-            EntityDamageEvent.DamageCause.ENTITY_EXPLOSION,
-            EntityDamageEvent.DamageCause.ENTITY_SWEEP_ATTACK,
-            EntityDamageEvent.DamageCause.LIGHTNING,
-            EntityDamageEvent.DamageCause.MAGIC,
-            EntityDamageEvent.DamageCause.SONIC_BOOM,
-            EntityDamageEvent.DamageCause.DRAGON_BREATH
-    );
-    private static final Set<EntityDamageEvent.DamageCause> OBSIDIAN_SKULL_DAMAGE = Set.of(
-            EntityDamageEvent.DamageCause.FIRE,
-            EntityDamageEvent.DamageCause.CAMPFIRE,
-            EntityDamageEvent.DamageCause.HOT_FLOOR,
-            EntityDamageEvent.DamageCause.FIRE_TICK
-    );
+    public final Set<String> DOUBLE_JUMPS = Set.of("CloudInABottle","TsunamiInABottle","BlizzardInABottle","SandstormInABottle");
+    public final Set<String> SHEILDS = Set.of("CobaltShield","ObsidianShield","AnkhShield");
 
     public AccessoryListeners(Plugin plugin){
         this.plugin=plugin;
@@ -55,92 +41,39 @@ public class AccessoryListeners implements Listener {
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
-    public Boolean hasAccessory(Player player,String id){
-        if(playerDataInstance.getInventory(player.getUniqueId())!=null){
-            for(ItemStack item :playerDataInstance.getInventory(player.getUniqueId())){
-                if(item!=null&&item.hasItemMeta()){
-                    if(Objects.equals(Objects.requireNonNull(item.getItemMeta()).getPersistentDataContainer().get(customItemKey, PersistentDataType.STRING), id)){
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-
     @EventHandler
-    public void onPlayerDamage(EntityDamageEvent event) {
+    public void onPlayerDamage(EntityDamageEvent event){
         if (!(event.getEntity() instanceof Player player)) return;
-        if(hasAccessory(player,"CounterScarf")){
-            if(!player.hasCooldown(Material.RED_WOOL)){
-                if (COUNTERSCARF_CAUSES.contains(event.getCause())){
-                    player.setCooldown(Material.RED_WOOL,600);
-                    event.setCancelled(true);
-                }
+        for(ItemStack item:playerDataInstance.getInventory(player.getUniqueId())){
+            Accessory accessory=accessoryManagerInstance.getAccessory(item);
+            if(accessory!=null){
+                accessory.onPlayerHit(player,event);
             }
-        }
-        if(hasAccessory(player,"LuckyHorseshoe")||hasAccessory(player,"ObsidianHorseshoe")){
-            if(((event.getCause() == EntityDamageEvent.DamageCause.FALL)||(event.getCause() == EntityDamageEvent.DamageCause.FLY_INTO_WALL))){
-                event.setCancelled(true);
-            }
-        }
-        if(hasAccessory(player,"ObsidianSkull")||hasAccessory(player,"ObsidianShield")||hasAccessory(player,"AnkhShield")||hasAccessory(player,"ObsidianHorseshoe")){
-            if (OBSIDIAN_SKULL_DAMAGE.contains(event.getCause())){
-                event.setCancelled(true);
-            }
-        }
-        if(hasAccessory(player,"PanicNecklace")||hasAccessory(player,"SweetheartNecklace")){
-            player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,160,1,false,false,false));
-        }
-        if(hasAccessory(player,"MagicCuffs")){
-            manaManagerInstance.addMana(player.getUniqueId(), event.getDamage()*4);
-            manaManagerInstance.updateManaBar(player);
-        }
-        if(hasAccessory(player,"HoneyComb")||hasAccessory(player,"HoneyBalloon")||hasAccessory(player,"SweetheartNecklace")||hasAccessory(player,"BeeCloak")||hasAccessory(player,"StingerNecklace")){
-            player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,100,1,false,false,false));
-        }
-        if(hasAccessory(player,"StarCloak")||hasAccessory(player,"BeeCloak")||hasAccessory(player,"StarVeil")){
-            new StarCannonStar(plugin).createFallingProjectile(player,1.5f,7,5f,50,30,event.getEntity().getLocation());
-            new StarCannonStar(plugin).createFallingProjectile(player,1.5f,7,5f,50,30,event.getEntity().getLocation());
-            new StarCannonStar(plugin).createFallingProjectile(player,1.5f,7,5f,50,30,event.getEntity().getLocation());
-            player.getWorld().playSound(event.getEntity().getLocation(), "terraria:falling_star", 0.75F, 1.0F);
         }
     }
 
     @EventHandler
-    private void onPotionEffect(EntityPotionEffectEvent event){
+    public void onPotionEffect(EntityPotionEffectEvent event){
         if (!(event.getEntity() instanceof Player player)) return;
-        PotionEffect newEffect = event.getNewEffect();
-        if (newEffect == null) return;
-        if (newEffect.getType() == PotionEffectType.POISON) {
-            if(hasAccessory(player,"Bezoar")||hasAccessory(player,"AnkhCharm")||hasAccessory(player,"AnkhShield")){
-                event.setCancelled(true);
-            }
-        }
-        if (newEffect.getType() == PotionEffectType.DARKNESS || newEffect.getType() == PotionEffectType.BLINDNESS) {
-            if(hasAccessory(player,"Blindfold")||hasAccessory(player,"AnkhCharm")||hasAccessory(player,"AnkhShield")){
-                event.setCancelled(true);
-            }
-        }
-        if (newEffect.getType() == PotionEffectType.SLOWNESS) {
-            if (hasAccessory(player,"FastClock")||hasAccessory(player,"AnkhCharm")||hasAccessory(player,"AnkhShield")){
-                event.setCancelled(true);
-            }
-        }
-        if (newEffect.getType() == PotionEffectType.WEAKNESS) {
-            if (hasAccessory(player,"Vitamins")||hasAccessory(player,"AnkhCharm")||hasAccessory(player,"AnkhShield")) {
-                event.setCancelled(true);
+        for(ItemStack item:playerDataInstance.getInventory(player.getUniqueId())){
+            Accessory accessory=accessoryManagerInstance.getAccessory(item);
+            if(accessory!=null){
+                accessory.onPlayerEffect(player,event);
             }
         }
     }
-
 
     @EventHandler
     public void onKnockback(EntityKnockbackEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
-        if(hasAccessory(player,"CobaltShield")||hasAccessory(player,"ObsidianShield")||hasAccessory(player,"AnkhShield")){
-            event.setCancelled(true);
+        for(ItemStack item:playerDataInstance.getInventory(player.getUniqueId())){
+            if(item!=null && item.hasItemMeta()){
+                String accessoryId= item.getItemMeta().getPersistentDataContainer().get(customItemKey, PersistentDataType.STRING);
+                if(SHEILDS.contains(accessoryId)){
+                    event.setCancelled(true);
+                    return;
+                }
+            }
         }
     }
 
@@ -153,82 +86,64 @@ public class AccessoryListeners implements Listener {
     }
 
     @EventHandler
-    public void onCloudBottleDoubleJump(PlayerInputEvent event){
+    public void onDoubleJump(PlayerInputEvent event){
         if(!event.getInput().isJump()){return;}
         Player player = event.getPlayer();
-        if(!hasAccessory(player,"CloudInABottle")){return;}
-        if(((Entity)player).isOnGround()){
-            return;
-        }
+        if(((Entity)player).isOnGround()){return;}
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
         if(usedDoubleJump.contains(player.getUniqueId())){return;}
         usedDoubleJump.add(player.getUniqueId());
-        player.setVelocity(player.getVelocity().setY(0.5));
-        player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
-        player.getWorld().spawnParticle(org.bukkit.Particle.CLOUD, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
-    }
 
-    @EventHandler
-    public void onTsunamiDoubleJump(PlayerInputEvent event){
-        if(!event.getInput().isJump()){return;}
-        Player player = event.getPlayer();
-        if(!hasAccessory(player,"TsunamiInABottle")){return;}
-        if(((Entity)player).isOnGround()){
-            return;
-        }
-        if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
-        if(usedDoubleJump.contains(player.getUniqueId())){return;}
-        usedDoubleJump.add(player.getUniqueId());
-        player.setVelocity(player.getVelocity().setY(0.6));
-        player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
-        player.getWorld().spawnParticle(Particle.BUBBLE, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
-    }
-
-    @EventHandler
-    public void onBlizzardDoubleJump(PlayerInputEvent event){
-        if(!event.getInput().isJump()){return;}
-        Player player = event.getPlayer();
-        if(!hasAccessory(player,"BlizzardInABottle")){return;}
-        if(((Entity)player).isOnGround()){
-            return;
-        }
-        if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
-        if(usedDoubleJump.contains(player.getUniqueId())){return;}
-        usedDoubleJump.add(player.getUniqueId());
-        player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
-        final int[] timeLeft = {10};
-        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
-            player.setVelocity(player.getVelocity().setY(0.4));
-            player.getWorld().spawnParticle(org.bukkit.Particle.CLOUD, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
-            timeLeft[0]--;
-            if (timeLeft[0] <= 0) {
-                task.cancel();
+        String itemId=null;
+        for(ItemStack item:playerDataInstance.getInventory(player.getUniqueId())){
+            if(item!=null && item.hasItemMeta()){
+                String accessoryId= item.getItemMeta().getPersistentDataContainer().get(customItemKey, PersistentDataType.STRING);
+                if(DOUBLE_JUMPS.contains(accessoryId)){
+                    itemId=accessoryId;
+                    break;
+                }
             }
-        }, 0L, 1L);
-    }
-
-    @EventHandler
-    public void onSandstormDoubleJump(PlayerInputEvent event){
-        if(!event.getInput().isJump()){return;}
-        Player player = event.getPlayer();
-        if(!hasAccessory(player,"SandstormInABottle")){return;}
-        if(((Entity)player).isOnGround()){
-            return;
         }
-        if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
-        if(usedDoubleJump.contains(player.getUniqueId())){return;}
-
-        player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 0.5F, 1.0F);
-        usedDoubleJump.add(player.getUniqueId());
-        final int[] timeLeft = {15};
-        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
-            player.setVelocity(player.getVelocity().setY(0.4));
-            player.getWorld().spawnParticle(Particle.DUST_PLUME, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
-            timeLeft[0]--;
-            if (timeLeft[0] <= 0) {
-                task.cancel();
+        if(itemId==null){return;}
+        switch (itemId){
+            case "CloudInABottle" ->{
+                player.setVelocity(player.getVelocity().setY(0.5));
+                player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
+                player.getWorld().spawnParticle(org.bukkit.Particle.CLOUD, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
             }
-        }, 0L, 1L);
+            case "TsunamiInABottle"->{
+                player.setVelocity(player.getVelocity().setY(0.6));
+                player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
+                player.getWorld().spawnParticle(Particle.BUBBLE, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
+            }
+            case "BlizzardInABottle"->{
+                player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
+                final int[] timeLeft = {10};
+                Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+                    player.setVelocity(player.getVelocity().setY(0.4));
+                    player.getWorld().spawnParticle(org.bukkit.Particle.CLOUD, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
+                    timeLeft[0]--;
+                    if (timeLeft[0] <= 0) {
+                        task.cancel();
+                    }
+                }, 0L, 1L);
+            }
+            case "SandstormInABottle"->{
+                player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 0.5F, 1.0F);
+                final int[] timeLeft = {15};
+                Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+                    player.setVelocity(player.getVelocity().setY(0.4));
+                    player.getWorld().spawnParticle(Particle.DUST_PLUME, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
+                    timeLeft[0]--;
+                    if (timeLeft[0] <= 0) {
+                        task.cancel();
+                    }
+                }, 0L, 1L);
+            }
+            default -> {
+                return;
+            }
+        }
     }
 
     @EventHandler

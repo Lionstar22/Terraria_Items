@@ -7,6 +7,8 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockDropItemEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
@@ -30,6 +32,17 @@ public class AncientChisel extends Accessory {
     public void deactivateEffect(Player player) {
         player.removePotionEffect(PotionEffectType.HASTE);
     }
+
+    @Override
+    public void onPlayerHit(Player player, EntityDamageEvent event) {
+
+    }
+
+    @Override
+    public void onPlayerEffect(Player player, EntityPotionEffectEvent event) {
+
+    }
+
 
     public static ItemStack getItem(Plugin plugin) {
         return new AncientChisel(plugin).createItem();

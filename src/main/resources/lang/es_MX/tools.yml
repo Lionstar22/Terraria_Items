@@ -62,7 +62,7 @@ cosmolight:
   name: "Cosmoluz"
   lore:
     - "&7Avanza el tiempo inmediatamente al"
-    - "&7siguiente amanecer, mediodía, atardecer o medianoche"
+    - "&7siguiente día, mediodía, noche o medianoche"
 life_crystal:
   name: "Cristal de Vida"
   lore:

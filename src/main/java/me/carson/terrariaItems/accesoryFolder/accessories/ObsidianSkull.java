@@ -8,6 +8,8 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -32,6 +34,18 @@ public class ObsidianSkull extends Accessory implements Listener {
     @Override
     public void deactivateEffect(Player player) {
         player.getAttribute(Attribute.ARMOR).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"obsidian_skull_armor"),1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+    }
+
+    @Override
+    public void onPlayerHit(Player player, EntityDamageEvent event) {
+        if (OBSIDIAN_SKULL_DAMAGE.contains(event.getCause())){
+            event.setCancelled(true);
+        }
+    }
+
+    @Override
+    public void onPlayerEffect(Player player, EntityPotionEffectEvent event) {
+
     }
 
     public static ItemStack getItem(Plugin plugin) {

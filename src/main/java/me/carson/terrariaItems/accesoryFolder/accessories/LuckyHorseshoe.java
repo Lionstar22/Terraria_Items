@@ -4,6 +4,8 @@ import me.carson.terrariaItems.accesoryFolder.Accessory;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
@@ -23,6 +25,18 @@ public class LuckyHorseshoe extends Accessory{
 
     @Override
     public void deactivateEffect(Player player) {
+
+    }
+
+    @Override
+    public void onPlayerHit(Player player, EntityDamageEvent event) {
+        if(((event.getCause() == EntityDamageEvent.DamageCause.FALL)||(event.getCause() == EntityDamageEvent.DamageCause.FLY_INTO_WALL))){
+            event.setCancelled(true);
+        }
+    }
+
+    @Override
+    public void onPlayerEffect(Player player, EntityPotionEffectEvent event) {
 
     }
 
