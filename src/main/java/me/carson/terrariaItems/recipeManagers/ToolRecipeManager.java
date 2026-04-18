@@ -9,6 +9,7 @@ import me.carson.terrariaItems.toolFolder.tools.potions.GreaterManaPotion;
 import me.carson.terrariaItems.toolFolder.tools.potions.LesserManaPotion;
 import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
 import me.carson.terrariaItems.toolFolder.tools.potions.SuperManaPotion;
+import me.carson.terrariaItems.toolFolder.tools.summons.BloodyTear;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalEgg;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalShrieker;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalSkull;
@@ -47,6 +48,7 @@ public class ToolRecipeManager implements Listener {
                 new NamespacedKey(plugin, "ManaPotion1"),
                 new NamespacedKey(plugin, "ManaPotion2"),
                 new NamespacedKey(plugin, "SuperManaPotion"),
+                new NamespacedKey(plugin, "BloodyTear"),
                 new NamespacedKey(plugin, "TorrentialTear")
         );
 
@@ -79,6 +81,19 @@ public class ToolRecipeManager implements Listener {
         registerMechanicalSkullRecipe();
         registerManaPotionRecipe();
         registerSuperManaPotionRecipe();
+        registerBloodyTearRecipe();
+    }
+
+    private void registerBloodyTearRecipe(){
+        ItemStack item= BloodyTear.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "BloodyTear");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("RSR","RGR","BBB");
+        recipe.setIngredient('B', Material.BONE);
+        recipe.setIngredient('G', Material.GHAST_TEAR);
+        recipe.setIngredient('R', Material.REDSTONE);
+        recipe.setIngredient('S', Material.BEEF);
+        recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
     }
 
     private void registerMirrorRecipe(){

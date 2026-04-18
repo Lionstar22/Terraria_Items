@@ -2,6 +2,7 @@ package me.carson.terrariaItems.handlers;
 
 import me.carson.terrariaItems.toolFolder.tools.crates.*;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -21,6 +22,7 @@ public class FishingManager implements Listener {
     private static final Set<Biome> desertBiomes = Set.of(Biome.DESERT,Biome.BADLANDS,Biome.WOODED_BADLANDS,Biome.ERODED_BADLANDS);
     private static final Set<Biome> frozenBiomes = Set.of(Biome.SNOWY_TAIGA,Biome.JAGGED_PEAKS,Biome.FROZEN_PEAKS,Biome.GROVE,Biome.SNOWY_SLOPES,Biome.FROZEN_RIVER,Biome.SNOWY_PLAINS,Biome.ICE_SPIKES);
     private static final Set<Biome> oceanBiomes = Set.of(Biome.BEACH,Biome.OCEAN,Biome.DEEP_OCEAN,Biome.WARM_OCEAN,Biome.LUKEWARM_OCEAN,Biome.DEEP_LUKEWARM_OCEAN,Biome.COLD_OCEAN,Biome.DEEP_COLD_OCEAN,Biome.FROZEN_OCEAN,Biome.DEEP_FROZEN_OCEAN,Biome.MUSHROOM_FIELDS,Biome.SNOWY_BEACH,Biome.STONY_SHORE);
+    private static final Set<Material> FISHING_TREASURE = Set.of(Material.BOW, Material.ENCHANTED_BOOK, Material.FISHING_ROD, Material.NAME_TAG, Material.NAUTILUS_SHELL,Material.SADDLE);
 
     public FishingManager(Plugin plugin) {
         this.plugin = plugin;
@@ -30,9 +32,10 @@ public class FishingManager implements Listener {
     @EventHandler
     public void onFish(PlayerFishEvent event){
         if (event.getState() != PlayerFishEvent.State.CAUGHT_FISH) return;
+        if (!(event.getCaught() instanceof Item caughtItem)) return;
+        if(FISHING_TREASURE.contains(caughtItem.getType())){return;}
         Player player = event.getPlayer();
-        Item caughtItem = (Item) event.getCaught();
-        if(Math.random()<0.075){
+        if(Math.random()<=0.1){
             caughtItem.setItemStack(selectCrate(player));
         }
     }

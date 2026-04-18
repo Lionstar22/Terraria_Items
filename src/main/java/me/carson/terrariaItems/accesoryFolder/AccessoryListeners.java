@@ -33,7 +33,7 @@ public class AccessoryListeners implements Listener {
     private final AccessoryManager accessoryManagerInstance= AccessoryManager.getInstance();
     private final Set<UUID> usedDoubleJump = new HashSet<>();
     public final Set<String> DOUBLE_JUMPS = Set.of("CloudInABottle","TsunamiInABottle","BlizzardInABottle","SandstormInABottle");
-    public final Set<String> SHEILDS = Set.of("CobaltShield","ObsidianShield","AnkhShield");
+    public final Set<String> SHIELDS = Set.of("CobaltShield","ObsidianShield","AnkhShield");
 
     public AccessoryListeners(Plugin plugin){
         this.plugin=plugin;
@@ -69,7 +69,7 @@ public class AccessoryListeners implements Listener {
         for(ItemStack item:playerDataInstance.getInventory(player.getUniqueId())){
             if(item!=null && item.hasItemMeta()){
                 String accessoryId= item.getItemMeta().getPersistentDataContainer().get(customItemKey, PersistentDataType.STRING);
-                if(SHEILDS.contains(accessoryId)){
+                if(SHIELDS.contains(accessoryId)){
                     event.setCancelled(true);
                     return;
                 }

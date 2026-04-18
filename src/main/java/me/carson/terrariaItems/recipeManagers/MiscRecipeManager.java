@@ -1,8 +1,10 @@
 package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.handlers.WorldDataHandler;
+import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
 import me.carson.terrariaItems.materialsFolder.materials.HallowedBar;
 import me.carson.terrariaItems.miscFolder.BasicItems.*;
+import me.carson.terrariaItems.miscFolder.fishingRods.FisherOfSouls;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -29,6 +31,7 @@ public class MiscRecipeManager implements Listener {
         Bukkit.getPluginManager().registerEvents(this, plugin);
 
         preHardmodeRecipes = List.of(
+                new NamespacedKey(plugin, "FisherOfSouls")
         );
 
         HardmodeRecipes = List.of(
@@ -46,6 +49,18 @@ public class MiscRecipeManager implements Listener {
 
     public void registerRecipes() {
         registerPickaxeAxeRecipe();
+        registerFisherOfSoulsRecipe();
+    }
+
+    private void registerFisherOfSoulsRecipe(){
+        ItemStack item= FisherOfSouls.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "FisherOfSouls");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("  D"," DS","D S");
+        recipe.setIngredient('S', Material.STRING);
+        recipe.setIngredient('D', new RecipeChoice.ExactChoice( DemoniteBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerPickaxeAxeRecipe(){

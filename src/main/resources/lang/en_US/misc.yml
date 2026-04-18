@@ -31,3 +31,7 @@ wedding_veil:
   name: "Wedding Veil"
   lore:
     - "Wuv... twue wuv..."
+fisher_of_souls:
+  name: "Fisher of Souls"
+  lore:
+    - ""
