@@ -26,12 +26,20 @@ undead_miner_hat:
 top_hat:
   name: "Name Hat"
   lore:
-    - "Looking Sharp"
+    - "&7Looking Sharp"
 wedding_veil:
   name: "Wedding Veil"
   lore:
-    - "Wuv... twue wuv..."
+    - "&7Wuv... twue wuv..."
 fisher_of_souls:
   name: "Fisher of Souls"
   lore:
     - ""
+golden_fishing_rod:
+  name: "Golden Fishing Rod"
+  lore:
+    - "&7Fishes 2-3 items"
+mechanics_rod:
+  name: "Mechanic's Rod"
+  lore:
+    - "&7Fishes 1-2 items"

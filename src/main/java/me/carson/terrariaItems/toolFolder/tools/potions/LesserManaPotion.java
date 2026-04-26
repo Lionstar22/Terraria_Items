@@ -1,11 +1,14 @@
 package me.carson.terrariaItems.toolFolder.tools.potions;
 
+import me.carson.terrariaItems.accesoryFolder.accessories.ManaFlower;
 import me.carson.terrariaItems.toolFolder.Tool;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
@@ -35,6 +38,8 @@ public class LesserManaPotion extends Tool {
     public static ItemStack getItem(Plugin plugin) {
         ItemStack item =new LesserManaPotion(plugin).createItem();
         ItemMeta meta= item.getItemMeta();
+        NamespacedKey key = new NamespacedKey(plugin, "mana_potion");
+        meta.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) 1);
         meta.setMaxStackSize(99);
         item.setItemMeta(meta);
         return item;

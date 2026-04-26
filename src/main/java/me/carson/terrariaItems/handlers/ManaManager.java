@@ -1,13 +1,19 @@
 package me.carson.terrariaItems.handlers;
 
+import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.projectilesFolder.projectiles.FallingStar;
+import me.carson.terrariaItems.toolFolder.Tool;
+import me.carson.terrariaItems.toolFolder.ToolManager;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,20 +21,22 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public class ManaManager {
     private static ManaManager instance;
-
+    private final PlayerDataHandler playerDataHandler=PlayerDataHandler.getInstance();
     private final File file;
     private final YamlConfiguration config;
+    private final NamespacedKey manaFlowerKey;
+    private final NamespacedKey manaPotionKey;
 
     // In-memory player data
     private final Map<UUID, Double> currentMana = new HashMap<>();
     private final Map<UUID, Double> manaDelay = new HashMap<>();
 
     public ManaManager(Plugin plugin) {
-
         file = new File(plugin.getDataFolder(), "playerData.yml");
         if (!file.exists()) {
             try { file.createNewFile(); } catch (IOException e) { e.printStackTrace(); }
@@ -38,12 +46,12 @@ public class ManaManager {
 
         for (String key : config.getKeys(false)) {
             UUID uuid = UUID.fromString(key);
-
             double current = config.getDouble(key + ".current_mana", getMana(uuid));
-
             currentMana.put(uuid, current);
         }
 
+        manaFlowerKey= new NamespacedKey(plugin, "mana_flower_accessory");
+        manaPotionKey= new NamespacedKey(plugin, "mana_potion");
     }
 
     public Double getMana(UUID uuid) {
@@ -141,5 +149,45 @@ public class ManaManager {
     public void reduceManaDelay(Player player,Double amount){
         UUID id = player.getUniqueId();
         manaDelay.put(id,getManaDelay(id)-amount);
+    }
+
+    public Boolean useMana(Player player, float cost){
+        UUID id = player.getUniqueId();
+        double finalCost=cost-(cost*playerDataHandler.getManaReduction(id));
+        if(getMana(id)<finalCost){
+            if(hasManaFlower(player)){
+                useManaPotion(player);
+            }else{return false;}
+        }
+        removeMana(id, finalCost);
+        updateManaBar(player);
+        startManaRegenDelay(player,this);
+        return true;
+    }
+
+    public Boolean hasManaFlower(Player player){
+        for(ItemStack inv: playerDataHandler.getInventory(player.getUniqueId())){
+            if(inv!=null&&inv.hasItemMeta()){
+                if(inv.getItemMeta().getPersistentDataContainer().has(manaFlowerKey)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void useManaPotion(Player player){
+        ToolManager toolManager=ToolManager.getInstance();
+        for(ItemStack inv: player.getInventory()){
+            if(inv!=null&&inv.hasItemMeta()){
+                if(inv.getItemMeta().getPersistentDataContainer().has(manaPotionKey)){
+                    Tool potion= toolManager.getTool(inv);
+                    if(potion!=null){
+                        potion.rightActivate(player);
+                        return;
+                    }
+                }
+            }
+        }
     }
 }

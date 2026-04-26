@@ -29,19 +29,17 @@ import java.util.Objects;
 public final class TerrariaItems extends JavaPlugin{
 
     @Override
+    public void onLoad() {
+        PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
+        PacketEvents.getAPI().load();
+    }
+
+    @Override
     public void onEnable() {
 
         TILangManager.initialize(this);
 
-        if (Bukkit.getPluginManager().getPlugin("PacketEvents") != null) {
-            // Use the standalone PacketEvents plugin
-            PacketEvents.getAPI().init();
-        } else {
-            // Use our shaded version
-            PacketEvents.setAPI(SpigotPacketEventsBuilder.build(this));
-            PacketEvents.getAPI().load();
-            PacketEvents.getAPI().init();
-        }
+        PacketEvents.getAPI().init();
 
         WorldDataHandler.initialize(this);
         PlayerDataHandler.initialize(this);
@@ -52,6 +50,7 @@ public final class TerrariaItems extends JavaPlugin{
         ArmorManager.initialize(this);
         ResetHandler.initialize(this);
         BloodMoonManager.initialize(this);
+        ToolManager.initialize(this);
 
         AccessoryRecipeManager accessoryRecipeManager = new AccessoryRecipeManager(this);
         accessoryRecipeManager.registerRecipes();
@@ -77,7 +76,6 @@ public final class TerrariaItems extends JavaPlugin{
         new ItemPlaceListener(this);
         new MessageHandler(this);
         new VanityManager(this);
-        new ToolManager(this);
         new EnemyManager(this);
         new AccessoryListeners(this);
         new CustomBlockListeners(this);
@@ -101,9 +99,7 @@ public final class TerrariaItems extends JavaPlugin{
     public void onDisable() {
         cleanUpProjectiles();
         PlayerDataHandler.getInstance().save();
-        if (Bukkit.getPluginManager().getPlugin("PacketEvents") == null) {
-            PacketEvents.getAPI().terminate();
-        }
+        PacketEvents.getAPI().terminate();
     }
 
     public void cleanUpProjectiles(){

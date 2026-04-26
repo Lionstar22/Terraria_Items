@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons;
 
+import me.carson.terrariaItems.projectilesFolder.projectiles.AmethystBolt;
 import me.carson.terrariaItems.projectilesFolder.projectiles.Bubble;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.Magic;
 import org.bukkit.Material;
@@ -23,15 +24,13 @@ public class BubbleGun extends Magic {
     @Override
     public void rightActivate(Player player) {
         if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-        UUID id=player.getUniqueId();
-        if(manaManagerInstance.getMana(id)<cost){return;}
-        new Bubble(plugin).createProjectile(player,speed,damage,spread,duration);
-        new Bubble(plugin).createProjectile(player,speed,damage,spread,duration);
-        new Bubble(plugin).createProjectile(player,speed,damage,spread,duration);
-        player.getWorld().playSound(player.getLocation(), "terraria:bubble_gun_use", 1.0F, 1.0F);
-        manaManagerInstance.removeMana(id, cost);
-        manaManagerInstance.updateManaBar(player);
-        manaManagerInstance.startManaRegenDelay(player,manaManagerInstance);
+
+        if(manaManagerInstance.useMana(player,cost)){
+            new Bubble(plugin).createProjectile(player,speed,damage,spread,duration);
+            new Bubble(plugin).createProjectile(player,speed,damage,spread,duration);
+            new Bubble(plugin).createProjectile(player,speed,damage,spread,duration);
+            player.getWorld().playSound(player.getLocation(), "terraria:bubble_gun_use", 1.0F, 1.0F);
+        }
     }
 
     public static ItemStack getItem(Plugin plugin) {

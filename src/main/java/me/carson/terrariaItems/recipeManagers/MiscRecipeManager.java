@@ -5,6 +5,7 @@ import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
 import me.carson.terrariaItems.materialsFolder.materials.HallowedBar;
 import me.carson.terrariaItems.miscFolder.BasicItems.*;
 import me.carson.terrariaItems.miscFolder.fishingRods.FisherOfSouls;
+import me.carson.terrariaItems.miscFolder.fishingRods.GoldenFishingRod;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -35,7 +36,8 @@ public class MiscRecipeManager implements Listener {
         );
 
         HardmodeRecipes = List.of(
-                new NamespacedKey(plugin, "PickaxeAxe")
+                new NamespacedKey(plugin, "PickaxeAxe"),
+                new NamespacedKey(plugin, "GoldenFishingRod")
         );
     }
 
@@ -50,6 +52,18 @@ public class MiscRecipeManager implements Listener {
     public void registerRecipes() {
         registerPickaxeAxeRecipe();
         registerFisherOfSoulsRecipe();
+        registerGoldenFishingRodRecipe();
+    }
+
+    private void registerGoldenFishingRodRecipe(){
+        ItemStack item= GoldenFishingRod.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "GoldenFishingRod");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("  H"," HS","H S");
+        recipe.setIngredient('S', Material.STRING);
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice(HallowedBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerFisherOfSoulsRecipe(){

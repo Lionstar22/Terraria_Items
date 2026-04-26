@@ -2,42 +2,107 @@ package me.carson.terrariaItems.handlers;
 
 import me.carson.terrariaItems.toolFolder.tools.crates.*;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.block.Biome;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.util.Vector;
 
-import java.util.Set;
+import java.util.*;
 
 public class FishingManager implements Listener {
 
     private final Plugin plugin;
+    private final NamespacedKey customItemId;
 
     private static final Set<Biome> jungleBiomes = Set.of(Biome.JUNGLE,Biome.BAMBOO_JUNGLE,Biome.SPARSE_JUNGLE);
     private static final Set<Biome> desertBiomes = Set.of(Biome.DESERT,Biome.BADLANDS,Biome.WOODED_BADLANDS,Biome.ERODED_BADLANDS);
     private static final Set<Biome> frozenBiomes = Set.of(Biome.SNOWY_TAIGA,Biome.JAGGED_PEAKS,Biome.FROZEN_PEAKS,Biome.GROVE,Biome.SNOWY_SLOPES,Biome.FROZEN_RIVER,Biome.SNOWY_PLAINS,Biome.ICE_SPIKES);
     private static final Set<Biome> oceanBiomes = Set.of(Biome.BEACH,Biome.OCEAN,Biome.DEEP_OCEAN,Biome.WARM_OCEAN,Biome.LUKEWARM_OCEAN,Biome.DEEP_LUKEWARM_OCEAN,Biome.COLD_OCEAN,Biome.DEEP_COLD_OCEAN,Biome.FROZEN_OCEAN,Biome.DEEP_FROZEN_OCEAN,Biome.MUSHROOM_FIELDS,Biome.SNOWY_BEACH,Biome.STONY_SHORE);
     private static final Set<Material> FISHING_TREASURE = Set.of(Material.BOW, Material.ENCHANTED_BOOK, Material.FISHING_ROD, Material.NAME_TAG, Material.NAUTILUS_SHELL,Material.SADDLE);
+    private static final List<Material> FISHING_JUNK = List.of(Material.LILY_PAD, Material.BOWL, Material.LEATHER, Material.ROTTEN_FLESH, Material.STICK, Material.STRING, Material.WATER_BUCKET, Material.BONE);
+    private static final List<Material> TREASURE = List.of(Material.NAME_TAG, Material.NAUTILUS_SHELL,Material.SADDLE);
 
     public FishingManager(Plugin plugin) {
         this.plugin = plugin;
+        customItemId=new NamespacedKey(plugin, "custom_item_id");
         Bukkit.getPluginManager().registerEvents(this, plugin);
+    }
+
+
+    public String getCustomId(ItemStack item){
+        if(item==null|| !item.hasItemMeta()){return null;}
+        return item.getItemMeta().getPersistentDataContainer().get(customItemId, PersistentDataType.STRING);
     }
 
     @EventHandler
     public void onFish(PlayerFishEvent event){
         if (event.getState() != PlayerFishEvent.State.CAUGHT_FISH) return;
         if (!(event.getCaught() instanceof Item caughtItem)) return;
-        if(FISHING_TREASURE.contains(caughtItem.getType())){return;}
         Player player = event.getPlayer();
-        if(Math.random()<=0.1){
-            caughtItem.setItemStack(selectCrate(player));
+
+        if(!FISHING_TREASURE.contains(caughtItem.getItemStack().getType())){
+            if(Math.random()<=0.1){
+                caughtItem.setItemStack(selectCrate(player));
+            }
         }
+
+        String rodId=getCustomId(player.getInventory().getItemInMainHand());
+        if(rodId==null){return;}
+        switch (rodId){
+            case "GoldenFishingRod" ->{
+                if(Math.random()<.50){
+                    player.getWorld().dropItemNaturally(player.getLocation(), rollBonusCatch(player));
+                }else{
+                    player.getWorld().dropItemNaturally(player.getLocation(), rollBonusCatch(player));
+                    player.getWorld().dropItemNaturally(player.getLocation(), rollBonusCatch(player));
+                }
+
+            }
+            case "MechanicsRod" ->{
+                if(Math.random()<.33){
+                    player.getWorld().dropItemNaturally(player.getLocation(), rollBonusCatch(player));
+                }
+            }
+            default -> {
+                return;
+            }
+        }
+
+    }
+
+    private ItemStack rollBonusCatch(Player player) {
+        double roll = Math.random();
+        if(roll<0.08){//Treasure at 8%
+            return new ItemStack(TREASURE.get((int)(Math.random() * FISHING_JUNK.size())));
+        }else {
+            if(Math.random()<0.1) {
+                return selectCrate(player);
+            }
+            if(roll<0.15) {
+                return new ItemStack(FISHING_JUNK.get((int)(Math.random() * FISHING_JUNK.size())));
+            }else {
+                double fishChance=Math.random();
+                if(fishChance<0.02){
+                    return new ItemStack(Material.TROPICAL_FISH,1);
+                }else if(fishChance<0.15){
+                    return new ItemStack(Material.PUFFERFISH,1);
+                }
+                else if(fishChance<0.40){
+                    return new ItemStack(Material.SALMON,1);
+                }else {
+                    return new ItemStack(Material.COD,1);
+                }
+            }
+        }
+
     }
 
     public ItemStack selectCrate(Player player){

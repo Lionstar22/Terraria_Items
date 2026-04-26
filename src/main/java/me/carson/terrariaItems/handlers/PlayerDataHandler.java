@@ -15,8 +15,6 @@ import java.util.UUID;
 public class PlayerDataHandler implements Listener {
 
     private static PlayerDataHandler instance;
-    //private final AccessoryManager accessoryInstance = AccessoryManager.getInstance();
-    //private final ArmorManager armorInstance = ArmorManager.getInstance();
     private final File file;
     private final YamlConfiguration config;
     private final Plugin plugin;
@@ -55,6 +53,13 @@ public class PlayerDataHandler implements Listener {
     public void setExtraMana(UUID id, double x){config.set(id +".extra_mana",Math.max(x,0));}
     public void addExtraMana(UUID id, double add){setExtraMana(id,getExtraMana(id)+add);}
     public void subtractExtraMana(UUID id, double minus){setExtraMana(id,Math.max((getExtraMana(id)-minus),0));}
+
+    public double getManaReduction(UUID id){
+        return config.getDouble(id +".mana_reduction",0);
+    }
+    public void setManaReduction(UUID id, double x){config.set(id +".mana_reduction",Math.max(x,0));}
+    public void addManaReduction(UUID id, double add){setManaReduction(id,getManaReduction(id)+add);}
+    public void subtractManaReduction(UUID id, double minus){setManaReduction(id,Math.max((getManaReduction(id)-minus),0));}
     
     public List<ItemStack> getInventory(UUID id){
         return (List<ItemStack>) config.getList(id+".accessory_inv");

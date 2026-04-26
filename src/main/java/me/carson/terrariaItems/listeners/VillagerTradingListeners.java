@@ -3,6 +3,7 @@ package me.carson.terrariaItems.listeners;
 import me.carson.terrariaItems.accesoryFolder.accessories.CounterScarf;
 import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.IllegalGunParts;
+import me.carson.terrariaItems.miscFolder.fishingRods.MechanicsRod;
 import me.carson.terrariaItems.toolFolder.tools.MomentumCapacitor;
 import me.carson.terrariaItems.toolFolder.tools.RodOfDiscord;
 import me.carson.terrariaItems.toolFolder.tools.potions.GreaterManaPotion;
@@ -67,6 +68,10 @@ public class VillagerTradingListeners implements Listener {
                 recipes.add(addRodOfDiscord());
             }
         } else if (villager.getProfession() == Villager.Profession.TOOLSMITH) {
+            int moon=getMoonPhase(villager.getWorld());
+            if(moon==1||moon==3||moon==5||moon==7){
+                addMechanicsRod();
+            }
             if(worldInstance.getHardmode()&& worldInstance.getMechDragon()&& worldInstance.getMechWither()&& worldInstance.getMechWarden()){
                 recipes.add(addMomentumCapacitor());
             }
@@ -208,6 +213,15 @@ public class VillagerTradingListeners implements Listener {
     public MerchantRecipe addCounterScarf(){
         MerchantRecipe recipe = new MerchantRecipe(
                 CounterScarf.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.EMERALD, 20));
+        return recipe;
+    }
+
+    public MerchantRecipe addMechanicsRod(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                MechanicsRod.getItem(plugin),
                 0, 999, true, 1, 0.05f
         );
         recipe.addIngredient(new ItemStack(Material.EMERALD, 20));

@@ -213,3 +213,13 @@ stinger_necklace:
   lore:
     - "&7Increases Attack Damage by 1"
     - "&7Douses the user in honey when damaged"
+natures_gift:
+  name: "Nature's Gift"
+  lore:
+    - "&76% reduced mana cost"
+mana_flower:
+  name: "Mana Flower"
+  lore:
+    - "&78% reduced mana cost"
+    - "&7Automatically use mana potions "
+    - "&7when needed"

@@ -1,15 +1,10 @@
 package me.carson.terrariaItems.toolFolder;
 
+import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.toolFolder.tools.*;
 import me.carson.terrariaItems.toolFolder.tools.crates.*;
-import me.carson.terrariaItems.toolFolder.tools.potions.GreaterManaPotion;
-import me.carson.terrariaItems.toolFolder.tools.potions.LesserManaPotion;
-import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
-import me.carson.terrariaItems.toolFolder.tools.potions.SuperManaPotion;
-import me.carson.terrariaItems.toolFolder.tools.summons.BloodyTear;
-import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalEgg;
-import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalShrieker;
-import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalSkull;
+import me.carson.terrariaItems.toolFolder.tools.potions.*;
+import me.carson.terrariaItems.toolFolder.tools.summons.*;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -20,14 +15,18 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 
 public class ToolManager implements Listener {
     private final HashMap<String,Tool> toolList = new HashMap<>();
     private final NamespacedKey toolKey;
+    private static ToolManager instance;
+    private final Plugin plugin;
 
     public ToolManager(Plugin plugin) {
+        this.plugin=plugin;
         toolKey = new NamespacedKey(plugin, "custom_item_id");
         Bukkit.getPluginManager().registerEvents(this, plugin);
 
@@ -56,6 +55,12 @@ public class ToolManager implements Listener {
         toolList.put("BloodyTear",new BloodyTear(plugin));
     }
 
+    public Tool getTool(ItemStack item){
+        if(item==null|| !item.hasItemMeta()){return null;}
+        String toolId= item.getItemMeta().getPersistentDataContainer().get(toolKey, PersistentDataType.STRING);
+        return toolList.get(toolId);
+    }
+
     @EventHandler
     public void onRightClick(PlayerInteractEvent event) {
         if (!(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
@@ -74,5 +79,13 @@ public class ToolManager implements Listener {
         }else{
             tool.cooldownEffect(player);
         }
+    }
+
+    public static void initialize(JavaPlugin plugin) {
+        instance = new ToolManager(plugin);
+    }
+
+    public static ToolManager getInstance() {
+        return instance;
     }
 }

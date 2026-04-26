@@ -24,20 +24,15 @@ public class MeteorStaff extends Magic {
     @Override
     public void rightActivate(Player player) {
         if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-        UUID id=player.getUniqueId();
-        if(manaManagerInstance.getMana(id)<cost){return;}
-        manaManagerInstance.removeMana(id, cost);
-        manaManagerInstance.updateManaBar(player);
-        manaManagerInstance.startManaRegenDelay(player,manaManagerInstance);
 
         RayTraceResult result= player.getWorld().rayTrace(player.getEyeLocation(),player.getEyeLocation().getDirection(),150,FluidCollisionMode.NEVER,true,0.1,e -> (e!=player));
-
         if (result == null) {return;}
-
         Location hit=result.getHitPosition().toLocation(player.getWorld());
 
-        new Meteor(plugin).createFallingProjectile(player,speed,damage,spread,duration,25,hit);
-        player.getWorld().playSound(player.getLocation(), "terraria:meteor_staff_use", 0.75F, 1.0F);
+        if(manaManagerInstance.useMana(player,cost)){
+            new Meteor(plugin).createFallingProjectile(player,speed,damage,spread,duration,25,hit);
+            player.getWorld().playSound(player.getLocation(), "terraria:meteor_staff_use", 0.75F, 1.0F);
+        }
     }
 
     public static ItemStack getItem(Plugin plugin) {

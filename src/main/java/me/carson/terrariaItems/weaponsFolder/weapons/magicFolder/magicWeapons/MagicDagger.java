@@ -23,13 +23,11 @@ public class MagicDagger extends Magic {
     @Override
     public void rightActivate(Player player) {
         if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-        UUID id=player.getUniqueId();
-        if(manaManagerInstance.getMana(id)<cost){return;}
-        new MagicDaggerProjectile(plugin).createProjectile(player,speed,damage,spread,duration);
-        player.getWorld().playSound(player.getLocation(), "terraria:sword_use", 0.75F, 1.0F);
-        manaManagerInstance.removeMana(id, cost);
-        manaManagerInstance.updateManaBar(player);
-        manaManagerInstance.startManaRegenDelay(player,manaManagerInstance);
+
+        if(manaManagerInstance.useMana(player,cost)){
+            new MagicDaggerProjectile(plugin).createProjectile(player,speed,damage,spread,duration);
+            player.getWorld().playSound(player.getLocation(), "terraria:sword_use", 0.75F, 1.0F);
+        }
     }
 
     public static ItemStack getItem(Plugin plugin) {

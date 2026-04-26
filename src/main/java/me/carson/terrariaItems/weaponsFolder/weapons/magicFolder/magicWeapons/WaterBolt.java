@@ -23,13 +23,11 @@ public class WaterBolt extends Magic {
     @Override
     public void rightActivate(Player player) {
         if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-        UUID id=player.getUniqueId();
-        if(manaManagerInstance.getMana(id)<cost){return;}
-        new WaterBoltProjectile(plugin).createProjectile(player,speed,damage,spread,duration);
-        player.getWorld().playSound(player.getLocation(), "terraria:water_bolt_use", 1.0F, 1.0F);
-        manaManagerInstance.removeMana(id, cost);
-        manaManagerInstance.updateManaBar(player);
-        manaManagerInstance.startManaRegenDelay(player,manaManagerInstance);
+
+        if(manaManagerInstance.useMana(player,cost)){
+            new WaterBoltProjectile(plugin).createProjectile(player,speed,damage,spread,duration);
+            player.getWorld().playSound(player.getLocation(), "terraria:water_bolt_use", 1.0F, 1.0F);
+        }
     }
 
     public static ItemStack getItem(Plugin plugin) {

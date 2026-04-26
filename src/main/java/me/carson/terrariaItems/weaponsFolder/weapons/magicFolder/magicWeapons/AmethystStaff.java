@@ -23,13 +23,11 @@ public class AmethystStaff extends Magic {
     @Override
     public void rightActivate(Player player) {
         if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-        UUID id=player.getUniqueId();
-        if(manaManagerInstance.getMana(id)<cost){return;}
-        new AmethystBolt(plugin).createProjectile(player,speed,damage,spread,duration);
-        player.getWorld().playSound(player.getLocation(), "terraria:magic_use", 1.0F, 1.0F);
-        manaManagerInstance.removeMana(id, cost);
-        manaManagerInstance.updateManaBar(player);
-        manaManagerInstance.startManaRegenDelay(player,manaManagerInstance);
+
+        if(manaManagerInstance.useMana(player,cost)){
+            new AmethystBolt(plugin).createProjectile(player,speed,damage,spread,duration);
+            player.getWorld().playSound(player.getLocation(), "terraria:magic_use", 1.0F, 1.0F);
+        }
     }
 
     public static ItemStack getItem(Plugin plugin) {

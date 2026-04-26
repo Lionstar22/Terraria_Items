@@ -7,11 +7,13 @@ import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.projectilesFolder.projectiles.StarCannonStar;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.MagicDagger;
 import org.bukkit.*;
+import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.type.Switch;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockDropItemEvent;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInputEvent;
@@ -31,6 +33,7 @@ public class AccessoryListeners implements Listener {
     private NamespacedKey customItemKey;
     private final PlayerDataHandler playerDataInstance=PlayerDataHandler.getInstance();
     private final AccessoryManager accessoryManagerInstance= AccessoryManager.getInstance();
+    private static final Set<Biome> jungleBiomes = Set.of(Biome.JUNGLE,Biome.BAMBOO_JUNGLE,Biome.SPARSE_JUNGLE);
     private final Set<UUID> usedDoubleJump = new HashSet<>();
     public final Set<String> DOUBLE_JUMPS = Set.of("CloudInABottle","TsunamiInABottle","BlizzardInABottle","SandstormInABottle");
     public final Set<String> SHIELDS = Set.of("CobaltShield","ObsidianShield","AnkhShield");
@@ -153,6 +156,15 @@ public class AccessoryListeners implements Listener {
         if(Math.random()<0.25){
             ItemStack item = AncientFossil.getItem(plugin);
             block.getWorld().dropItem(block.getLocation().add(0,1,0), item);
+        }
+    }
+
+    @EventHandler
+    public void onGrassBreak(BlockBreakEvent event){
+        if(!(event.getBlock().getType()==Material.SHORT_GRASS||event.getBlock().getType()==Material.TALL_GRASS||event.getBlock().getType()==Material.FERN)){return;}
+        if(!jungleBiomes.contains(event.getBlock().getBiome())){return;}
+        if(Math.random()<0.01){
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation().add(0.5,0.5,0.5), NaturesGift.getItem(plugin));
         }
     }
 }
