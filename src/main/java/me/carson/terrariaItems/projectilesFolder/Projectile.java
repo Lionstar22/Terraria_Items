@@ -61,9 +61,10 @@ public abstract class Projectile implements Listener {
         NamespacedKey key = new NamespacedKey(plugin, id);
         proj.getPersistentDataContainer().set(key, PersistentDataType.INTEGER,1);
         proj.setInterpolationDuration(3);
-        proj.setTeleportDuration(1);
-        moveProj(player,speed,weaponDamage,duration,proj,dir);
 
+        proj.setTeleportDuration(1);
+        faceDirection(proj, dir);
+        moveProj(player,speed,weaponDamage,duration,proj,dir);
     }
 
     public void createFallingProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float height,Location location){
@@ -90,8 +91,9 @@ public abstract class Projectile implements Listener {
         NamespacedKey key = new NamespacedKey(plugin, id);
         proj.getPersistentDataContainer().set(key, PersistentDataType.INTEGER,1);
         proj.setInterpolationDuration(3);
-        proj.setTeleportDuration(1);
 
+        proj.setTeleportDuration(1);
+        faceDirection(proj, dir);
         moveProj(player,speed,weaponDamage,duration,proj,dir);
 
     }
@@ -154,6 +156,12 @@ public abstract class Projectile implements Listener {
                 }
             }
 
+            Vector norm = direction[0].clone().normalize();
+            float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
+            float pitch = (float) Math.toDegrees(Math.asin(-norm.getY()));
+            next.setYaw(yaw);
+            next.setPitch(pitch);
+
             proj.teleport(next);
         }, 1L, 1L);
     }
@@ -178,6 +186,18 @@ public abstract class Projectile implements Listener {
 
         proj.teleport(proj.getLocation().add(reflected.clone().multiply(0.5)));
         return reflected;
+    }
+
+    private void faceDirection(ItemDisplay proj, Vector dir) {
+        Vector norm = dir.clone().normalize();
+
+        float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
+        float pitch = (float) Math.toDegrees(Math.asin(-norm.getY()));
+
+        Location loc = proj.getLocation();
+        loc.setYaw(yaw);
+        loc.setPitch(pitch);
+        proj.teleport(loc);
     }
 
     public abstract void hitEntityEffect(LivingEntity entity,Player player);
