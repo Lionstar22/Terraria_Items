@@ -7,17 +7,17 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
-public class MechanicsRod extends Basic {
+public class SittingDucksFishingPole extends Basic {
 
-    public MechanicsRod(Plugin plugin) {
-        super(plugin,"mechanics_rod.name","#96FF96", Material.FISHING_ROD,"mechanics_rod","MechanicsRod","mechanics_rod.lore");
+    public SittingDucksFishingPole(Plugin plugin) {
+        super(plugin,"sitting_ducks_fishing_pole.name","#96FF96", Material.FISHING_ROD,"sitting_ducks_fishing_pole","SittingDucksFishingPole","sitting_ducks_fishing_pole.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item=new MechanicsRod(plugin).createItem();
+        ItemStack item=new SittingDucksFishingPole(plugin).createItem();
         ItemMeta meta=item.getItemMeta();
         meta.addEnchant(Enchantment.LURE,3,true);
-        meta.addEnchant(Enchantment.LUCK_OF_THE_SEA,2,true);
+        meta.addEnchant(Enchantment.LUCK_OF_THE_SEA,3,true);
         meta.setEnchantmentGlintOverride(false);
         item.setItemMeta(meta);
         return item;

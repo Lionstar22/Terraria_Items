@@ -223,3 +223,10 @@ mana_flower:
     - "&78% reduced mana cost"
     - "&7Automatically use mana potions "
     - "&7when needed"
+mana_cloak:
+  name: "Mana Cloak"
+  lore:
+    - "&78% reduced mana cost"
+    - "&7Automatically use mana potions "
+    - "&7when needed"
+    - "&7Causes stars to fall after taking damage"

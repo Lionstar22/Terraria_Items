@@ -4,6 +4,7 @@ import me.carson.terrariaItems.accesoryFolder.accessories.CounterScarf;
 import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.IllegalGunParts;
 import me.carson.terrariaItems.miscFolder.fishingRods.MechanicsRod;
+import me.carson.terrariaItems.miscFolder.fishingRods.SittingDucksFishingPole;
 import me.carson.terrariaItems.toolFolder.tools.MomentumCapacitor;
 import me.carson.terrariaItems.toolFolder.tools.RodOfDiscord;
 import me.carson.terrariaItems.toolFolder.tools.potions.GreaterManaPotion;
@@ -70,7 +71,7 @@ public class VillagerTradingListeners implements Listener {
         } else if (villager.getProfession() == Villager.Profession.TOOLSMITH) {
             int moon=getMoonPhase(villager.getWorld());
             if(moon==1||moon==3||moon==5||moon==7){
-                addMechanicsRod();
+                recipes.add(addMechanicsRod());
             }
             if(worldInstance.getHardmode()&& worldInstance.getMechDragon()&& worldInstance.getMechWither()&& worldInstance.getMechWarden()){
                 recipes.add(addMomentumCapacitor());
@@ -103,6 +104,7 @@ public class VillagerTradingListeners implements Listener {
         List<MerchantRecipe> recipes = new ArrayList<>(villager.getRecipes());
         originalRecipes.put(villager.getUniqueId(), new ArrayList<>(villager.getRecipes()));
         recipes.add(addPulseBow());
+        recipes.add(addSittingDucksFishingPole());
 
         if(getMoonPhase(villager.getWorld())==4){
             recipes.add(addSlapHand());
@@ -225,6 +227,15 @@ public class VillagerTradingListeners implements Listener {
                 0, 999, true, 1, 0.05f
         );
         recipe.addIngredient(new ItemStack(Material.EMERALD, 20));
+        return recipe;
+    }
+
+    public MerchantRecipe addSittingDucksFishingPole(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                SittingDucksFishingPole.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.EMERALD, 35));
         return recipe;
     }
 }

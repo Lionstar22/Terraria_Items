@@ -43,3 +43,19 @@ mechanics_rod:
   name: "Mechanic's Rod"
   lore:
     - "&7Fishes 1-2 items"
+chum_caster:
+  name: "Chum Caster"
+  lore:
+    - ""
+scarab_fishing_rod:
+  name: "Scarab Fishing Rod"
+  lore:
+    - ""
+fiberglass_fishing_pole:
+  name: "Fiberglass Fishing Pole"
+  lore:
+    - ""
+sitting_ducks_fishing_pole:
+  name: "Sitting Duck's Fishing Pole"
+  lore:
+    - "&7Fishes 1-2 items"

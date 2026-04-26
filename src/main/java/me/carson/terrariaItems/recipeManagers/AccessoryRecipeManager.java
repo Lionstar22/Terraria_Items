@@ -4,6 +4,7 @@ import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;
+import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -48,6 +49,7 @@ public class AccessoryRecipeManager implements Listener {
                 new NamespacedKey(plugin, "SweetheartNecklace"),
                 new NamespacedKey(plugin, "ObsidianHorseshoe"),
                 new NamespacedKey(plugin, "StingerNecklace"),
+                new NamespacedKey(plugin, "ManaFlower"),
                 new NamespacedKey(plugin, "ObsidianShield")
         );
 
@@ -62,6 +64,7 @@ public class AccessoryRecipeManager implements Listener {
                 new NamespacedKey(plugin, "BeeCloak"),
                 new NamespacedKey(plugin, "StarVeil"),
                 new NamespacedKey(plugin, "MechanicalGlove"),
+                new NamespacedKey(plugin, "ManaCloak"),
                 new NamespacedKey(plugin, "AvengerEmblem1"),
                 new NamespacedKey(plugin, "AvengerEmblem2"),
                 new NamespacedKey(plugin, "AvengerEmblem3")
@@ -107,6 +110,28 @@ public class AccessoryRecipeManager implements Listener {
         registerBeeCloakRecipe();
         registerStarVeilRecipe();
         registerStingerNecklaceRecipe();
+        registerManaFlowerRecipe();
+        registerManaCloakRecipe();
+    }
+
+    private void registerManaCloakRecipe(){
+        ItemStack item= ManaCloak.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ManaCloak");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ManaFlower.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(StarCloak.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerManaFlowerRecipe(){
+        ItemStack item= ManaFlower.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ManaFlower");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(NaturesGift.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ManaPotion.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerStingerNecklaceRecipe(){

@@ -66,11 +66,12 @@ public class FishingManager implements Listener {
                 }
 
             }
-            case "MechanicsRod" ->{
+            case "MechanicsRod","SittingDucksFishingPole" ->{
                 if(Math.random()<.33){
                     player.getWorld().dropItemNaturally(player.getLocation(), rollBonusCatch(player));
                 }
             }
+
             default -> {
                 return;
             }

@@ -26,8 +26,36 @@ undead_miner_hat:
 top_hat:
   name: "Цилиндр"
   lore:
-    - "Выглядишь шикарно"
+    - "&7Выглядишь шикарно"
 wedding_veil:
   name: "Свадебная фата"
   lore:
-    - "Любовь... настоящая любовь..."
+    - "&7Любовь... настоящая любовь..."
+fisher_of_souls:
+  name: "Ловец Душ"
+  lore:
+    - ""
+golden_fishing_rod:
+  name: "Золотая Удочка"
+  lore:
+    - "&7Ловит 2-3 предмета"
+mechanics_rod:
+  name: "Удочка Механика"
+  lore:
+    - "&7Ловит 1-2 предмета"
+chum_caster:
+  name: "Приманочная Удочка"
+  lore:
+    - ""
+scarab_fishing_rod:
+  name: "Удочка Скарабея"
+  lore:
+    - ""
+fiberglass_fishing_pole:
+  name: "Стеклопластиковое Удилище"
+  lore:
+    - ""
+sitting_ducks_fishing_pole:
+  name: "Удочка Сидячей Утки"
+  lore:
+    - "&7Ловит 1-2 предмета"

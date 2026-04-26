@@ -156,7 +156,9 @@ public class ManaManager {
         double finalCost=cost-(cost*playerDataHandler.getManaReduction(id));
         if(getMana(id)<finalCost){
             if(hasManaFlower(player)){
-                useManaPotion(player);
+                if(!useManaPotion(player)){
+                    return false;
+                }
             }else{return false;}
         }
         removeMana(id, finalCost);
@@ -176,7 +178,7 @@ public class ManaManager {
         return false;
     }
 
-    public void useManaPotion(Player player){
+    public Boolean useManaPotion(Player player){
         ToolManager toolManager=ToolManager.getInstance();
         for(ItemStack inv: player.getInventory()){
             if(inv!=null&&inv.hasItemMeta()){
@@ -184,10 +186,11 @@ public class ManaManager {
                     Tool potion= toolManager.getTool(inv);
                     if(potion!=null){
                         potion.rightActivate(player);
-                        return;
+                        return true;
                     }
                 }
             }
         }
+        return false;
     }
 }

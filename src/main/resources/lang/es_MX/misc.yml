@@ -26,8 +26,36 @@ undead_miner_hat:
 top_hat:
   name: "Sombrero de Copa"
   lore:
-    - "Qué elegante"
+    - "&7Qué elegante"
 wedding_veil:
   name: "Velo de Novia"
   lore:
-    - "Amor... verdadero amor..."
+    - "&7Amor... verdadero amor..."
+fisher_of_souls:
+  name: "Pescador de Almas"
+  lore:
+    - ""
+golden_fishing_rod:
+  name: "Caña de Pescar Dorada"
+  lore:
+    - "&7Pesca 2-3 objetos"
+mechanics_rod:
+  name: "Caña de la Mecánica"
+  lore:
+    - "&7Pesca 1-2 objetos"
+chum_caster:
+  name: "Lanzador de Carnada"
+  lore:
+    - ""
+scarab_fishing_rod:
+  name: "Caña de Pescar Escarabajo"
+  lore:
+    - ""
+fiberglass_fishing_pole:
+  name: "Caña de Fibra de Vidrio"
+  lore:
+    - ""
+sitting_ducks_fishing_pole:
+  name: "Caña del Pato Sentado"
+  lore:
+    - "&7Pesca 1-2 objetos"

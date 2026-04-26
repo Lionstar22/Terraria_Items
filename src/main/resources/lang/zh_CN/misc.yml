@@ -26,8 +26,36 @@ undead_miner_hat:
 top_hat:
   name: "大礼帽"
   lore:
-    - "真够帅气"
+    - "&7真够帅气"
 wedding_veil:
   name: "婚纱面纱"
   lore:
-    - "爱... 真爱..."
+    - "&7爱... 真爱..."
+fisher_of_souls:
+  name: "灵魂钓手"
+  lore:
+    - ""
+golden_fishing_rod:
+  name: "黄金钓竿"
+  lore:
+    - "&7钓取2-3件物品"
+mechanics_rod:
+  name: "机械师钓竿"
+  lore:
+    - "&7钓取1-2件物品"
+chum_caster:
+  name: "鱼饵投竿"
+  lore:
+    - ""
+scarab_fishing_rod:
+  name: "圣甲虫钓竿"
+  lore:
+    - ""
+fiberglass_fishing_pole:
+  name: "玻璃纤维钓竿"
+  lore:
+    - ""
+sitting_ducks_fishing_pole:
+  name: "坐鸭钓竿"
+  lore:
+    - "&7钓取1-2件物品"

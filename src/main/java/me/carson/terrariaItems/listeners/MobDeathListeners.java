@@ -4,6 +4,7 @@ import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.ForbiddenFragment;
 import me.carson.terrariaItems.materialsFolder.materials.FrostCore;
+import me.carson.terrariaItems.miscFolder.fishingRods.ChumCaster;
 import me.carson.terrariaItems.toolFolder.tools.summons.BloodyTear;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.BloodRainBow;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.MagicDagger;
@@ -157,6 +158,9 @@ public class MobDeathListeners implements Listener {
                 }
                 if(Math.random()<0.125){
                     event.getDrops().add(BloodRainBow.getItem(plugin));
+                }
+                if(Math.random()<0.125){
+                    event.getDrops().add(ChumCaster.getItem(plugin));
                 }
             }
             default -> {

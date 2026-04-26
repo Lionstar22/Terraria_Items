@@ -3,6 +3,7 @@ package me.carson.terrariaItems.toolFolder.tools.crates;
 import me.carson.terrariaItems.accesoryFolder.accessories.AncientChisel;
 import me.carson.terrariaItems.accesoryFolder.accessories.LuckyHorseshoe;
 import me.carson.terrariaItems.accesoryFolder.accessories.SandstormInABottle;
+import me.carson.terrariaItems.miscFolder.fishingRods.ScarabFishingRod;
 import me.carson.terrariaItems.toolFolder.Tool;
 import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.ThunderZapper;
@@ -31,11 +32,12 @@ public class OasisCrate extends Tool {
         crate.setAmount(crate.getAmount()-1);
 
         //treasure loot table
-        int treasure = ThreadLocalRandom.current().nextInt(1, 4);
+        int treasure = ThreadLocalRandom.current().nextInt(1, 5);
         switch (treasure){
             case 1 -> player.getInventory().addItem(AncientChisel.getItem(plugin));
             case 2 -> player.getInventory().addItem(SandstormInABottle.getItem(plugin));
             case 3 -> player.getInventory().addItem(ThunderZapper.getItem(plugin));
+            case 4 -> player.getInventory().addItem(ScarabFishingRod.getItem(plugin));
             default -> {
                 return;
             }

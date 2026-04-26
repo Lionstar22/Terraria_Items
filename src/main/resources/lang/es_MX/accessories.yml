@@ -212,3 +212,20 @@ stinger_necklace:
   lore:
     - "&7Aumenta el daño de ataque en 1"
     - "&7Baña al usuario en miel al recibir daño"
+natures_gift:
+  name: "Regalo de la Naturaleza"
+  lore:
+    - "&76% de reducción en el costo de maná"
+mana_flower:
+  name: "Flor de Maná"
+  lore:
+    - "&78% de reducción en el costo de maná"
+    - "&7Usa automáticamente pociones de maná "
+    - "&7cuando sea necesario"
+mana_cloak:
+  name: "Capa de Maná"
+  lore:
+    - "&78% de reducción en el costo de maná"
+    - "&7Usa automáticamente pociones de maná "
+    - "&7cuando sea necesario"
+    - "&7Hace que caigan estrellas después de recibir daño"

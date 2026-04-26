@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.toolFolder.tools.crates;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
+import me.carson.terrariaItems.miscFolder.fishingRods.FiberglassFishingPole;
 import me.carson.terrariaItems.toolFolder.Tool;
 import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Boomstick;
@@ -29,11 +30,12 @@ public class JungleCrate extends Tool {
         crate.setAmount(crate.getAmount()-1);
 
         //treasure loot table
-        int treasure = ThreadLocalRandom.current().nextInt(1, 4);
+        int treasure = ThreadLocalRandom.current().nextInt(1, 5);
         switch (treasure){
             case 1 -> player.getWorld().dropItemNaturally(player.getLocation(), AnkletOfTheWind.getItem(plugin));
             case 2 -> player.getWorld().dropItemNaturally(player.getLocation(), Boomstick.getItem(plugin));
             case 3 -> player.getWorld().dropItemNaturally(player.getLocation(), FeralClaws.getItem(plugin));
+            case 4 -> player.getWorld().dropItemNaturally(player.getLocation(), FiberglassFishingPole.getItem(plugin));
             default -> {
                 return;
             }
