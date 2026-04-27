@@ -257,3 +257,7 @@ blood_rain_bow:
     - "&7Rains blood from the sky"
     - "&7'Reign in Blood'"
     - "&76 Damage"
+throwing_knife:
+  name: "Throwing Knife"
+  lore:
+    - "&74 Damage"

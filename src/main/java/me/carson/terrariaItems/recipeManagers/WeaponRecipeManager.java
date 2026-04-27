@@ -51,6 +51,7 @@ public class WeaponRecipeManager implements Listener {
                 new NamespacedKey(plugin, "HoarfrostBow"),
                 new NamespacedKey(plugin, "SandGun"),
                 new NamespacedKey(plugin, "TaintedBlade"),
+                new NamespacedKey(plugin, "ThrowingKnife"),
                 new NamespacedKey(plugin, "IceBlade")
         );
 
@@ -114,6 +115,19 @@ public class WeaponRecipeManager implements Listener {
         registerVampireKnivesRecipe();
         registerTaintedBladeRecipe();
         registerCausticEdgeRecipe();
+        registerThrowingKnifeRecipe();
+    }
+
+    private void registerThrowingKnifeRecipe(){
+        ItemStack item= ThrowingKnife.getItem(plugin);
+        item.setAmount(49);
+        NamespacedKey key = new NamespacedKey(plugin, "ThrowingKnife");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("   "," C "," S ");
+        recipe.setIngredient('C',Material.COBBLESTONE);
+        recipe.setIngredient('S',Material.STICK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerLightsBaneRecipe(){

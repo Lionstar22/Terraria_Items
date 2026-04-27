@@ -257,3 +257,7 @@ blood_rain_bow:
     - "&7Llueve sangre desde el cielo"
     - "&7'Reinar en Sangre'"
     - "&76 de Daño"
+throwing_knife:
+  name: "Cuchillo Arrojadizo"
+  lore:
+    - "&74 de Daño"

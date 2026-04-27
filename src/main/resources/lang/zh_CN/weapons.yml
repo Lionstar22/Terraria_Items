@@ -257,3 +257,7 @@ blood_rain_bow:
     - "&7从天空降下血雨"
     - "&7'血中统治'"
     - "&76点伤害"
+throwing_knife:
+  name: "投掷匕首"
+  lore:
+    - "&74 点伤害"

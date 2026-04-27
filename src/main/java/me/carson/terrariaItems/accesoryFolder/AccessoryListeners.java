@@ -47,7 +47,9 @@ public class AccessoryListeners implements Listener {
     @EventHandler
     public void onPlayerDamage(EntityDamageEvent event){
         if (!(event.getEntity() instanceof Player player)) return;
-        for(ItemStack item:playerDataInstance.getInventory(player.getUniqueId())){
+        List<ItemStack> playerAccessories=playerDataInstance.getInventory(player.getUniqueId());
+        if(playerAccessories==null){return;}
+        for(ItemStack item:playerAccessories){
             Accessory accessory=accessoryManagerInstance.getAccessory(item);
             if(accessory!=null){
                 accessory.onPlayerHit(player,event);
@@ -58,7 +60,9 @@ public class AccessoryListeners implements Listener {
     @EventHandler
     public void onPotionEffect(EntityPotionEffectEvent event){
         if (!(event.getEntity() instanceof Player player)) return;
-        for(ItemStack item:playerDataInstance.getInventory(player.getUniqueId())){
+        List<ItemStack> playerAccessories=playerDataInstance.getInventory(player.getUniqueId());
+        if(playerAccessories==null){return;}
+        for(ItemStack item:playerAccessories){
             Accessory accessory=accessoryManagerInstance.getAccessory(item);
             if(accessory!=null){
                 accessory.onPlayerEffect(player,event);
@@ -69,7 +73,9 @@ public class AccessoryListeners implements Listener {
     @EventHandler
     public void onKnockback(EntityKnockbackEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
-        for(ItemStack item:playerDataInstance.getInventory(player.getUniqueId())){
+        List<ItemStack> playerAccessories=playerDataInstance.getInventory(player.getUniqueId());
+        if(playerAccessories==null){return;}
+        for(ItemStack item:playerAccessories){
             if(item!=null && item.hasItemMeta()){
                 String accessoryId= item.getItemMeta().getPersistentDataContainer().get(customItemKey, PersistentDataType.STRING);
                 if(SHIELDS.contains(accessoryId)){
@@ -98,7 +104,9 @@ public class AccessoryListeners implements Listener {
         usedDoubleJump.add(player.getUniqueId());
 
         String itemId=null;
-        for(ItemStack item:playerDataInstance.getInventory(player.getUniqueId())){
+        List<ItemStack> playerAccessories=playerDataInstance.getInventory(player.getUniqueId());
+        if(playerAccessories==null){return;}
+        for(ItemStack item:playerAccessories){
             if(item!=null && item.hasItemMeta()){
                 String accessoryId= item.getItemMeta().getPersistentDataContainer().get(customItemKey, PersistentDataType.STRING);
                 if(DOUBLE_JUMPS.contains(accessoryId)){

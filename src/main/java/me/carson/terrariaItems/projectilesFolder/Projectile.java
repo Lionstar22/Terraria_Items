@@ -166,6 +166,109 @@ public abstract class Projectile implements Listener {
         }, 1L, 1L);
     }
 
+    public void createGravProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float gravDuration,float gravStrength){
+        Location loc = player.getEyeLocation();
+        loc.add(loc.getDirection().normalize().multiply(0.1));
+
+        Vector dir = player.getEyeLocation().getDirection();
+        dir.add(new Vector(
+                (Math.random() - 0.5) * spread,
+                (Math.random() - 0.5) * spread,
+                (Math.random() - 0.5) * spread
+        ));
+        dir.normalize().multiply(speed);
+
+        loc.setDirection(dir);
+
+        ItemDisplay proj = (ItemDisplay) player.getWorld().spawnEntity(loc,EntityType.ITEM_DISPLAY);
+
+        ItemStack item = new ItemStack(Material.IRON_NUGGET);
+        ItemMeta meta=item.getItemMeta();
+        meta.setItemModel(new NamespacedKey("terraria", texture));
+        item.setItemMeta(meta);
+
+        proj.setItemStack(item);
+        NamespacedKey key = new NamespacedKey(plugin, id);
+        proj.getPersistentDataContainer().set(key, PersistentDataType.INTEGER,1);
+        proj.setInterpolationDuration(3);
+
+        proj.setTeleportDuration(1);
+        faceDirection(proj, dir);
+        moveGravProj(player,speed,weaponDamage,duration,proj,dir,gravDuration,gravStrength);
+    }
+
+    private void moveGravProj(Player player,float speed,float weaponDamage,float duration,ItemDisplay proj, Vector dir, float gravDuration,float gravStrength){
+        final int[] tick = {0};
+        final int[] enemiesHit = {0};
+        final int[] blocksBounced = {0};
+        final Vector[][] direction = {{dir}};
+
+        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+            if (proj.isDead()) {
+                task.cancel();
+                return;
+            }
+
+            tick[0]++;
+            if (tick[0] >= duration) {
+                proj.remove();
+                task.cancel();
+                return;
+            }
+
+            if (tick[0] >= gravDuration) {
+                direction[0][0] = new Vector(direction[0][0].getX()*0.9, direction[0][0].getY() - gravStrength, direction[0][0].getZ()*0.9);
+            }
+
+            //block handling
+            Location now = proj.getLocation();
+            Location next = now.clone().add(direction[0][0]);
+            float dist= (float) now.distance(next);
+
+            RayTraceResult result= player.getWorld().rayTrace(now,now.getDirection(),dist,FluidCollisionMode.NEVER,true,0.1,e -> (e.getType() != proj.getType())&&(e!=player));
+            if(result!=null){
+                if(result.getHitBlock()!=null){
+                    if(!result.getHitBlock().isPassable() && result.getHitBlockFace()!=null){
+                        hitBlockEffect(result.getHitBlock());
+                        if(blocksBounced[0]>=bounces){
+                            proj.remove();
+                            task.cancel();
+                            return;
+                        }else{
+                            blocksBounced[0]++;
+                            direction[0][0] =bounce(proj,result.getHitBlockFace(),speed,dir);
+                            next = now.clone().add(direction[0][0]);
+                        }
+                    }
+                }
+                if(result.getHitEntity()!=null){
+                    if(result.getHitEntity() instanceof LivingEntity target){
+                        target.setMaximumNoDamageTicks(0);
+                        DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
+                        target.damage((damage+weaponDamage),source);
+                        hitEntityEffect(target,player);
+                        target.setMaximumNoDamageTicks(20);
+                    }
+                    if(enemiesHit[0] >=peirce) {
+                        proj.remove();
+                        task.cancel();
+                        return;
+                    }else {
+                        enemiesHit[0]++;
+                    }
+                }
+            }
+
+            Vector norm = direction[0][0].clone().normalize();
+            float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
+            float pitch = (float) Math.toDegrees(Math.asin(-norm.getY()));
+            next.setYaw(yaw);
+            next.setPitch(pitch);
+
+            proj.teleport(next);
+        }, 1L, 1L);
+    }
+
     private Vector bounce(ItemDisplay proj, BlockFace face,float speed,Vector dir) {
 
         Vector normal = switch (face) {

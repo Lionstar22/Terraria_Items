@@ -73,6 +73,7 @@ public class WeaponManager implements Listener {
         weaponList.put("ClockworkAssaultRifle",new ClockworkAssaultRifle(plugin));
         weaponList.put("MagicDagger",new MagicDagger(plugin));
         weaponList.put("BloodRainBow",new BloodRainBow(plugin));
+        weaponList.put("ThrowingKnife",new ThrowingKnife(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

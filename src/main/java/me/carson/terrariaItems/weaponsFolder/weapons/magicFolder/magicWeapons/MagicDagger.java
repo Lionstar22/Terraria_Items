@@ -12,7 +12,7 @@ import java.util.UUID;
 public class MagicDagger extends Magic {
 
     public MagicDagger(Plugin plugin) {
-        super(plugin,"magic_dagger.name","#FF9696", Material.BLAZE_ROD,"magic_dagger","MagicDagger",4,1.75f,9,0.005f,25,6,"magic_dagger.lore");
+        super(plugin,"magic_dagger.name","#FF9696", Material.BLAZE_ROD,"magic_dagger","MagicDagger",4,1.5f,9,0.005f,100,6,"magic_dagger.lore");
     }
 
     @Override
@@ -25,7 +25,7 @@ public class MagicDagger extends Magic {
         if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
 
         if(manaManagerInstance.useMana(player,cost)){
-            new MagicDaggerProjectile(plugin).createProjectile(player,speed,damage,spread,duration);
+            new MagicDaggerProjectile(plugin).createGravProjectile(player,speed,damage,spread,duration,20,0.1f);
             player.getWorld().playSound(player.getLocation(), "terraria:sword_use", 0.75F, 1.0F);
         }
     }
