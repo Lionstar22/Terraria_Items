@@ -1,16 +1,13 @@
 package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
-import me.carson.terrariaItems.handlers.WorldDataHandler;
+import me.carson.terrariaItems.handlers.CustomRecipeManager;
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
@@ -18,68 +15,16 @@ import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.recipe.CraftingBookCategory;
 import org.bukkit.plugin.Plugin;
 
-import java.util.List;
-
-public class AccessoryRecipeManager implements Listener {
+public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
 
     private final Plugin plugin;
-    private final List<NamespacedKey> preHardmodeRecipes;
-    private final List<NamespacedKey> HardmodeRecipes;
-    private final WorldDataHandler worldInstance=WorldDataHandler.getInstance();
 
-    public AccessoryRecipeManager(Plugin plugin) {
+    public AccessoryRecipes(Plugin plugin) {
         this.plugin = plugin;
-        Bukkit.getPluginManager().registerEvents(this, plugin);
-
-        preHardmodeRecipes = List.of(
-                new NamespacedKey(plugin, "aglet"),
-                new NamespacedKey(plugin, "skull"),
-                new NamespacedKey(plugin, "band"),
-                new NamespacedKey(plugin, "CobaltShield"),
-                new NamespacedKey(plugin, "CounterScarf"),
-                //new NamespacedKey(plugin, "Bezoar"),
-                //new NamespacedKey(plugin, "FastClock"),
-                new NamespacedKey(plugin, "NightVisionHelmet"),
-                new NamespacedKey(plugin, "PanicNecklace"),
-                new NamespacedKey(plugin, "BandOfStarpower"),
-                new NamespacedKey(plugin, "ManaRegenerationBand"),
-                new NamespacedKey(plugin, "MagicCuffs"),
-                new NamespacedKey(plugin, "HoneyComb"),
-                new NamespacedKey(plugin, "HoneyBalloon"),
-                new NamespacedKey(plugin, "SweetheartNecklace"),
-                new NamespacedKey(plugin, "ObsidianHorseshoe"),
-                new NamespacedKey(plugin, "StingerNecklace"),
-                new NamespacedKey(plugin, "ManaFlower"),
-                new NamespacedKey(plugin, "ObsidianShield")
-        );
-
-        HardmodeRecipes = List.of(
-                new NamespacedKey(plugin, "NeptuneShell"),
-                new NamespacedKey(plugin, "AnkhCharm"),
-                new NamespacedKey(plugin, "Vitamins"),
-                new NamespacedKey(plugin, "Blindfold"),
-                new NamespacedKey(plugin, "AnkhCharm"),
-                new NamespacedKey(plugin, "AnkhShield"),
-                new NamespacedKey(plugin, "PowerGlove"),
-                new NamespacedKey(plugin, "BeeCloak"),
-                new NamespacedKey(plugin, "StarVeil"),
-                new NamespacedKey(plugin, "MechanicalGlove"),
-                new NamespacedKey(plugin, "ManaCloak"),
-                new NamespacedKey(plugin, "AvengerEmblem1"),
-                new NamespacedKey(plugin, "AvengerEmblem2"),
-                new NamespacedKey(plugin, "AvengerEmblem3")
-        );
     }
 
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event){
-        event.getPlayer().discoverRecipes(preHardmodeRecipes);
-        if(worldInstance.getHardmode()){
-            event.getPlayer().discoverRecipes(HardmodeRecipes);
-        }
-    }
-
-    public void registerRecipes() {
+    @Override
+    public void registerRecipes(CustomRecipeManager manager) {
         registerAgletRecipe();
         registerObsidianSkullRecipe();
         registerBandOfRegenerationRecipe();

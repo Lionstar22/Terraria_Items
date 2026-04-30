@@ -52,20 +52,17 @@ public final class TerrariaItems extends JavaPlugin{
         BloodMoonManager.initialize(this);
         ToolManager.initialize(this);
 
-        AccessoryRecipeManager accessoryRecipeManager = new AccessoryRecipeManager(this);
-        accessoryRecipeManager.registerRecipes();
-        ToolRecipeManager toolRecipeManager = new ToolRecipeManager(this);
-        toolRecipeManager.registerRecipes();
-        MaterialRecipeManager materialRecipeManager = new MaterialRecipeManager(this);
-        materialRecipeManager.registerRecipes();
-        WeaponRecipeManager weaponRecipeManager = new WeaponRecipeManager(this);
-        weaponRecipeManager.registerRecipes();
-        ArmorRecipeManager armorRecipeManager=new ArmorRecipeManager(this);
-        armorRecipeManager.registerRecipes();
-        BlocksRecipeManager blocksRecipeManager=new BlocksRecipeManager(this);
-        blocksRecipeManager.registerRecipes();
-        MiscRecipeManager miscRecipeManager=new MiscRecipeManager(this);
-        miscRecipeManager.registerRecipes();
+        CustomRecipeManager.initialize(this);
+        CustomRecipeManager.getInstance().registerAll(
+                new AccessoryRecipes(this),
+                new ToolRecipes(this),
+                new MaterialRecipes(this),
+                new WeaponRecipes(this),
+                new ArmorRecipes(this),
+                new BlocksRecipes(this),
+                new MiscRecipes(this)
+        );
+        CustomRecipeManager.getInstance().freeze();
 
         new WeaponManager(this);
         new ResourcePackHandler(this);

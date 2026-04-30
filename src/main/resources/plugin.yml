@@ -24,3 +24,6 @@ permissions:
   terrariaitems.sub.vanity:
     description: Terraria Items Commands
     default: true
+  terrariaitems.sub.undiscover:
+    description: Terraria Items Commands
+    default: true

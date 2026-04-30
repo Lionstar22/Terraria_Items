@@ -261,3 +261,13 @@ throwing_knife:
   name: "Throwing Knife"
   lore:
     - "&74 Damage"
+poisoned_knife:
+  name: "Poisoned Knife"
+  lore:
+    - "&7Chance to poison enemies"
+    - "&74.5 Damage"
+bone_throwing_knife:
+  name: "Bone Throwing Knife"
+  lore:
+    - "&7Pierces 6 times"
+    - "&75 Damage"

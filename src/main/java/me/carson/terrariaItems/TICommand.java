@@ -13,6 +13,7 @@ import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroGreaves;
 import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroHelmet;
 import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroLeggings;
 import me.carson.terrariaItems.armorFolder.armors.timArmor.WizardHat;
+import me.carson.terrariaItems.handlers.CustomRecipeManager;
 import me.carson.terrariaItems.handlers.ResetHandler;
 import me.carson.terrariaItems.materialsFolder.materials.ForbiddenFragment;
 import me.carson.terrariaItems.materialsFolder.materials.FrostCore;
@@ -596,6 +597,9 @@ public class TICommand implements CommandExecutor, TabCompleter {
             case "reset_bonuses"->{
                 resetInstance.resetBonuses(player);
             }
+            case "undiscover" ->{
+                CustomRecipeManager.getInstance().undiscoverAll(player);
+            }
         }
         return true;
     }
@@ -606,7 +610,7 @@ public class TICommand implements CommandExecutor, TabCompleter {
 
         if (args.length == 1) {
             // First argument: subcommands
-            List<String> subCommands = Arrays.asList("give","toggle_message","accessory","vanity","reset_bonuses");
+            List<String> subCommands = Arrays.asList("give","toggle_message","accessory","vanity","reset_bonuses","undiscover");
             StringUtil.copyPartialMatches(args[0], subCommands, completions);
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
             // Second argument: item names

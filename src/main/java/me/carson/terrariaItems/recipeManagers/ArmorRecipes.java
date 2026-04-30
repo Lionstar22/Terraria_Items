@@ -10,7 +10,7 @@ import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroBreastplate;
 import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroGreaves;
 import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroHelmet;
 import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroLeggings;
-import me.carson.terrariaItems.handlers.WorldDataHandler;
+import me.carson.terrariaItems.handlers.CustomRecipeManager;
 import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.miscFolder.hats.GoldenCrown;
 import me.carson.terrariaItems.armorFolder.armors.cactusArmor.CactusBoots;
@@ -23,9 +23,6 @@ import me.carson.terrariaItems.armorFolder.armors.shadowArmor.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
@@ -33,74 +30,16 @@ import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.recipe.CraftingBookCategory;
 import org.bukkit.plugin.Plugin;
 
-import java.util.List;
-
-public class ArmorRecipeManager implements Listener {
+public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private final Plugin plugin;
-    private final List<NamespacedKey> preHardmodeRecipes;
-    private final List<NamespacedKey> HardmodeRecipes;
-    private final WorldDataHandler worldInstance=WorldDataHandler.getInstance();
 
-    public ArmorRecipeManager(Plugin plugin) {
+    public ArmorRecipes(Plugin plugin) {
         this.plugin = plugin;
-        Bukkit.getPluginManager().registerEvents(this, plugin);
-
-        preHardmodeRecipes = List.of(
-                new NamespacedKey(plugin, "GoldenCrown"),
-                new NamespacedKey(plugin, "ShadowHelmet"),
-                new NamespacedKey(plugin, "ShadowScalemail"),
-                new NamespacedKey(plugin, "ShadowLeggings"),
-                new NamespacedKey(plugin, "ShadowGreaves"),
-                new NamespacedKey(plugin, "MoltenHelmet"),
-                new NamespacedKey(plugin, "MoltenChestplate"),
-                new NamespacedKey(plugin, "MoltenLeggings"),
-                new NamespacedKey(plugin, "MoltenBoots"),
-                new NamespacedKey(plugin, "CactusHelmet"),
-                new NamespacedKey(plugin, "CactusChestplate"),
-                new NamespacedKey(plugin, "CactusLeggings"),
-                new NamespacedKey(plugin, "CactusHelmet"),
-                new NamespacedKey(plugin, "JungleHat"),
-                new NamespacedKey(plugin, "JungleShirt"),
-                new NamespacedKey(plugin, "JungleLeggings"),
-                new NamespacedKey(plugin, "JunglePants"),
-                new NamespacedKey(plugin, "NecroHelmet"),
-                new NamespacedKey(plugin, "NecroBreastplate"),
-                new NamespacedKey(plugin, "NecroLeggings"),
-                new NamespacedKey(plugin, "NecroGreaves")
-        );
-
-        HardmodeRecipes = List.of(
-                new NamespacedKey(plugin, "HallowedMask"),
-                new NamespacedKey(plugin, "HallowedHelmet"),
-                new NamespacedKey(plugin, "HallowedHeadgear"),
-                new NamespacedKey(plugin, "HallowedChestplate"),
-                new NamespacedKey(plugin, "HallowedLeggings"),
-                new NamespacedKey(plugin, "HallowedBoots"),
-                new NamespacedKey(plugin, "HallowedElytra"),
-                new NamespacedKey(plugin, "FrostHelmet"),
-                new NamespacedKey(plugin, "FrostBreastplate"),
-                new NamespacedKey(plugin, "FrostLeggings"),
-                new NamespacedKey(plugin, "FrostBoots"),
-                new NamespacedKey(plugin, "FrostElytra"),
-                new NamespacedKey(plugin, "ForbiddenMask"),
-                new NamespacedKey(plugin, "ForbiddenRobes"),
-                new NamespacedKey(plugin, "ForbiddenLeggings"),
-                new NamespacedKey(plugin, "ForbiddenTreads"),
-                new NamespacedKey(plugin, "ForbiddenElytra"),
-                new NamespacedKey(plugin, "AvengerEmblem")
-        );
     }
 
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event){
-        event.getPlayer().discoverRecipes(preHardmodeRecipes);
-        if(worldInstance.getHardmode()){
-            event.getPlayer().discoverRecipes(HardmodeRecipes);
-        }
-    }
-
-    public void registerRecipes() {
+    @Override
+    public void registerRecipes(CustomRecipeManager manager) {
         registerShadowHelmetRecipe();
         registerShadowScalemailRecipe();
         registerShadowLeggingsRecipe();

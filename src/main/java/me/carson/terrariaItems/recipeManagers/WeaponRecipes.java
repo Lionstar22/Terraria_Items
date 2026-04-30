@@ -1,6 +1,6 @@
 package me.carson.terrariaItems.recipeManagers;
 
-import me.carson.terrariaItems.handlers.WorldDataHandler;
+import me.carson.terrariaItems.handlers.CustomRecipeManager;
 import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfFright;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfLight;
@@ -13,74 +13,20 @@ import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.recipe.CraftingBookCategory;
 import org.bukkit.plugin.Plugin;
 
-import java.util.List;
-
-public class WeaponRecipeManager implements Listener {
+public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
 
     private final Plugin plugin;
-    private final List<NamespacedKey> preHardmodeRecipes;
-    private final List<NamespacedKey> HardmodeRecipes;
-    private final WorldDataHandler worldInstance=WorldDataHandler.getInstance();
 
-    public WeaponRecipeManager(Plugin plugin) {
+    public WeaponRecipes(Plugin plugin) {
         this.plugin = plugin;
-        Bukkit.getPluginManager().registerEvents(this, plugin);
-
-        preHardmodeRecipes = List.of(
-                new NamespacedKey(plugin, "LightsBane"),
-                new NamespacedKey(plugin, "Volcano"),
-                new NamespacedKey(plugin, "MoltenFury"),
-                new NamespacedKey(plugin, "SnowballCannon"),
-                new NamespacedKey(plugin, "BladeOfGrass"),
-                new NamespacedKey(plugin, "Blowpipe"),
-                new NamespacedKey(plugin, "Handgun"),
-                new NamespacedKey(plugin, "Needler"),
-                new NamespacedKey(plugin, "PhoenixBlaster"),
-                new NamespacedKey(plugin, "WaterBolt"),
-                new NamespacedKey(plugin, "AmethystStaff"),
-                new NamespacedKey(plugin, "RubyStaff"),
-                new NamespacedKey(plugin, "IcicleStaff"),
-                new NamespacedKey(plugin, "StarCannon"),
-                new NamespacedKey(plugin, "HoarfrostBow"),
-                new NamespacedKey(plugin, "SandGun"),
-                new NamespacedKey(plugin, "TaintedBlade"),
-                new NamespacedKey(plugin, "ThrowingKnife"),
-                new NamespacedKey(plugin, "IceBlade")
-        );
-
-        HardmodeRecipes = List.of(
-                new NamespacedKey(plugin, "Excalibur"),
-                new NamespacedKey(plugin, "HallowedRepeater"),
-                new NamespacedKey(plugin, "SniperRifle"),
-                new NamespacedKey(plugin, "Megashark"),
-                new NamespacedKey(plugin, "ChristmasTreeSword"),
-                new NamespacedKey(plugin, "BubbleGun"),
-                new NamespacedKey(plugin, "MeteorStaff"),
-                new NamespacedKey(plugin, "SuperStarShooter"),
-                new NamespacedKey(plugin, "MagicalHarp"),
-                new NamespacedKey(plugin, "CrystalStorm"),
-                new NamespacedKey(plugin, "VampireKnives"),
-                new NamespacedKey(plugin, "CausticEdge"),
-                new NamespacedKey(plugin, "OnyxBlaster")
-        );
     }
 
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event){
-        event.getPlayer().discoverRecipes(preHardmodeRecipes);
-        if(worldInstance.getHardmode()){
-            event.getPlayer().discoverRecipes(HardmodeRecipes);
-        }
-    }
-
-    public void registerRecipes() {
+    @Override
+    public void registerRecipes(CustomRecipeManager manager) {
         registerLightsBaneRecipe();
         registerDaedalusStormbowRecipe();
         registerVolcanoRecipe();
@@ -116,6 +62,33 @@ public class WeaponRecipeManager implements Listener {
         registerTaintedBladeRecipe();
         registerCausticEdgeRecipe();
         registerThrowingKnifeRecipe();
+        registerBoneThrowingKnifeRecipe();
+        registerPoisonedKnifeRecipe();
+    }
+
+    private void registerBoneThrowingKnifeRecipe(){
+        ItemStack item= BoneThrowingKnife.getItem(plugin);
+        item.setAmount(49);
+        NamespacedKey key = new NamespacedKey(plugin, "BoneThrowingKnife");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("   "," B "," G ");
+        recipe.setIngredient('B',Material.BONE);
+        recipe.setIngredient('G',Material.GOLD_INGOT);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerPoisonedKnifeRecipe(){
+        ItemStack item= PoisonedKnife.getItem(plugin);
+        item.setAmount(49);
+        NamespacedKey key = new NamespacedKey(plugin, "PoisonedKnife");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" E "," C "," S ");
+        recipe.setIngredient('C',Material.COBBLESTONE);
+        recipe.setIngredient('S',Material.STICK);
+        recipe.setIngredient('E',Material.SPIDER_EYE);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerThrowingKnifeRecipe(){
