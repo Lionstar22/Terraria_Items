@@ -64,6 +64,18 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         registerThrowingKnifeRecipe();
         registerBoneThrowingKnifeRecipe();
         registerPoisonedKnifeRecipe();
+        registerShurikenRecipe();
+    }
+
+    private void registerShurikenRecipe(){
+        ItemStack item= Shuriken.getItem(plugin);
+        item.setAmount(49);
+        NamespacedKey key = new NamespacedKey(plugin, "Shuriken");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" C ","C C"," C ");
+        recipe.setIngredient('C',Material.COBBLESTONE);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerBoneThrowingKnifeRecipe(){

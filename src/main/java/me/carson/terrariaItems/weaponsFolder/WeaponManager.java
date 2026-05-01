@@ -4,6 +4,7 @@ import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.Grenade;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -74,6 +75,10 @@ public class WeaponManager implements Listener {
         weaponList.put("MagicDagger",new MagicDagger(plugin));
         weaponList.put("BloodRainBow",new BloodRainBow(plugin));
         weaponList.put("ThrowingKnife",new ThrowingKnife(plugin));
+        weaponList.put("PoisonedKnife",new PoisonedKnife(plugin));
+        weaponList.put("BoneThrowingKnife",new BoneThrowingKnife(plugin));
+        weaponList.put("Shuriken",new Shuriken(plugin));
+        weaponList.put("Grenade",new Grenade(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

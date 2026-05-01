@@ -14,6 +14,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Projectile implements Listener {
@@ -60,9 +61,9 @@ public abstract class Projectile implements Listener {
         proj.setItemStack(item);
         NamespacedKey key = new NamespacedKey(plugin, id);
         proj.getPersistentDataContainer().set(key, PersistentDataType.INTEGER,1);
-        proj.setInterpolationDuration(3);
-
-        proj.setTeleportDuration(1);
+        proj.setInterpolationDuration(0);
+        proj.setTeleportDuration(2);
+        proj.setInterpolationDelay(-1);
         faceDirection(proj, dir);
         moveProj(player,speed,weaponDamage,duration,proj,dir);
     }
@@ -90,9 +91,9 @@ public abstract class Projectile implements Listener {
         proj.setItemStack(item);
         NamespacedKey key = new NamespacedKey(plugin, id);
         proj.getPersistentDataContainer().set(key, PersistentDataType.INTEGER,1);
-        proj.setInterpolationDuration(3);
-
-        proj.setTeleportDuration(1);
+        proj.setInterpolationDuration(0);
+        proj.setTeleportDuration(2);
+        proj.setInterpolationDelay(-1);
         faceDirection(proj, dir);
         moveProj(player,speed,weaponDamage,duration,proj,dir);
 
@@ -103,6 +104,7 @@ public abstract class Projectile implements Listener {
         final int[] enemiesHit = {0};
         final int[] blocksBounced = {0};
         final Vector[] direction = {dir};
+        ArrayList<Entity> hitEntities=new ArrayList<>();
 
         Bukkit.getScheduler().runTaskTimer(plugin, task -> {
             if (proj.isDead()) {
@@ -122,7 +124,8 @@ public abstract class Projectile implements Listener {
             Location next = now.clone().add(direction[0]);
             float dist= (float) now.distance(next);
 
-            RayTraceResult result= player.getWorld().rayTrace(now,now.getDirection(),dist,FluidCollisionMode.NEVER,true,0.1,e -> (e.getType() != proj.getType())&&(e!=player));
+
+            RayTraceResult result= player.getWorld().rayTrace(now,direction[0],dist,FluidCollisionMode.NEVER,true,0.1,e -> (e.getType() != proj.getType())&&(e!=player)&&!(hitEntities.contains(e)));
             if(result!=null){
                 if(result.getHitBlock()!=null){
                     if(!result.getHitBlock().isPassable() && result.getHitBlockFace()!=null){
@@ -133,8 +136,9 @@ public abstract class Projectile implements Listener {
                             return;
                         }else{
                             blocksBounced[0]++;
-                            direction[0] =bounce(proj,result.getHitBlockFace(),speed,dir);
+                            direction[0] =bounce(direction[0],result.getHitBlockFace(),speed);
                             next = now.clone().add(direction[0]);
+                            hitEntities.clear();
                         }
                     }
                 }
@@ -145,6 +149,7 @@ public abstract class Projectile implements Listener {
                         target.damage((damage+weaponDamage),source);
                         hitEntityEffect(target,player);
                         target.setMaximumNoDamageTicks(20);
+                        hitEntities.add(target);
                     }
                     if(enemiesHit[0] >=peirce) {
                         proj.remove();
@@ -190,9 +195,9 @@ public abstract class Projectile implements Listener {
         proj.setItemStack(item);
         NamespacedKey key = new NamespacedKey(plugin, id);
         proj.getPersistentDataContainer().set(key, PersistentDataType.INTEGER,1);
-        proj.setInterpolationDuration(3);
-
-        proj.setTeleportDuration(1);
+        proj.setInterpolationDuration(0);
+        proj.setTeleportDuration(2);
+        proj.setInterpolationDelay(-1);
         faceDirection(proj, dir);
         moveGravProj(player,speed,weaponDamage,duration,proj,dir,gravDuration,gravStrength);
     }
@@ -202,6 +207,7 @@ public abstract class Projectile implements Listener {
         final int[] enemiesHit = {0};
         final int[] blocksBounced = {0};
         final Vector[][] direction = {{dir}};
+        ArrayList<Entity> hitEntities=new ArrayList<>();
 
         Bukkit.getScheduler().runTaskTimer(plugin, task -> {
             if (proj.isDead()) {
@@ -225,7 +231,7 @@ public abstract class Projectile implements Listener {
             Location next = now.clone().add(direction[0][0]);
             float dist= (float) now.distance(next);
 
-            RayTraceResult result= player.getWorld().rayTrace(now,now.getDirection(),dist,FluidCollisionMode.NEVER,true,0.1,e -> (e.getType() != proj.getType())&&(e!=player));
+            RayTraceResult result= player.getWorld().rayTrace(now,direction[0][0],dist,FluidCollisionMode.NEVER,true,0.1,e -> (e.getType() != proj.getType())&&(e!=player)&&!(hitEntities.contains(e)));
             if(result!=null){
                 if(result.getHitBlock()!=null){
                     if(!result.getHitBlock().isPassable() && result.getHitBlockFace()!=null){
@@ -236,8 +242,9 @@ public abstract class Projectile implements Listener {
                             return;
                         }else{
                             blocksBounced[0]++;
-                            direction[0][0] =bounce(proj,result.getHitBlockFace(),speed,dir);
+                            direction[0][0] =bounce(direction[0][0],result.getHitBlockFace(),speed);
                             next = now.clone().add(direction[0][0]);
+                            hitEntities.clear();
                         }
                     }
                 }
@@ -248,6 +255,7 @@ public abstract class Projectile implements Listener {
                         target.damage((damage+weaponDamage),source);
                         hitEntityEffect(target,player);
                         target.setMaximumNoDamageTicks(20);
+                        hitEntities.add(target);
                     }
                     if(enemiesHit[0] >=peirce) {
                         proj.remove();
@@ -269,26 +277,20 @@ public abstract class Projectile implements Listener {
         }, 1L, 1L);
     }
 
-    private Vector bounce(ItemDisplay proj, BlockFace face,float speed,Vector dir) {
-
+    private Vector bounce(Vector currentDir, BlockFace face, float speed) {
         Vector normal = switch (face) {
             case EAST  -> new Vector(-1, 0, 0);
-            case WEST  -> new Vector(1, 0, 0);
-            case UP    -> new Vector(0, -1, 0);
-            case DOWN  -> new Vector(0, 1, 0);
-            case NORTH -> new Vector(0, 0, 1);
-            case SOUTH -> new Vector(0, 0, -1);
+            case WEST  -> new Vector( 1, 0, 0);
+            case UP    -> new Vector( 0,-1, 0);
+            case DOWN  -> new Vector( 0, 1, 0);
+            case NORTH -> new Vector( 0, 0, 1);
+            case SOUTH -> new Vector( 0, 0,-1);
             default    -> null;
         };
+        if (normal == null) return currentDir;
 
-        if (normal == null) return null;
-
-        Vector reflected = dir.subtract(
-                normal.multiply(2 * dir.dot(normal))
-        );
-
-        proj.teleport(proj.getLocation().add(reflected.clone().multiply(0.5)));
-        return reflected;
+        double dot = currentDir.dot(normal);
+        return currentDir.clone().subtract(normal.multiply(2 * dot)).normalize().multiply(speed);
     }
 
     private void faceDirection(ItemDisplay proj, Vector dir) {

@@ -271,3 +271,13 @@ bone_throwing_knife:
   lore:
     - "&7Pierces 6 times"
     - "&75 Damage"
+shuriken:
+  name: "Shuriken"
+  lore:
+    - "&7Pierces 3 times"
+    - "&73 Damage"
+grenade:
+  name: "Grenade"
+  lore:
+    - "&7A small explosion that will not destroy tiles"
+    - "&7not destroy blocks"

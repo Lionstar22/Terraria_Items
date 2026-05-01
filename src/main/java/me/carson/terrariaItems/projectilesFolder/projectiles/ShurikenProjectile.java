@@ -7,10 +7,10 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class ThrowingKnifeProjectile extends Projectile {
+public class ShurikenProjectile extends Projectile {
 
-    public ThrowingKnifeProjectile(Plugin plugin) {
-        super(plugin, 0,  "throwing_knife_projectile", "ThrowingKnifeProjectile",1,0, DamageType.ARROW);
+    public ShurikenProjectile(Plugin plugin) {
+        super(plugin, 0,  "shuriken", "ShurikenProjectile",3,0, DamageType.ARROW);
     }
 
     @Override
