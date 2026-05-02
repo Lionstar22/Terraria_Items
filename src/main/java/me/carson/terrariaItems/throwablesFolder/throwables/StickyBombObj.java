@@ -7,15 +7,15 @@ import org.bukkit.entity.ItemDisplay;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class GrenadeObj extends Throwable {
+public class StickyBombObj extends Throwable {
 
-    public GrenadeObj(Plugin plugin) {
-        super(plugin, 0,  "grenade", "GrenadeObj",0,0,0.6f, DamageType.ARROW);
+    public StickyBombObj(Plugin plugin) {
+        super(plugin, 0,  "sticky_bomb", "StickyBombObj",99,0,0f, DamageType.ARROW);
     }
 
     @Override
     public void hitEntityEffect(ItemDisplay proj,Player player) {
-        proj.getWorld().createExplosion(proj.getLocation(), 2F, false, false);
+
     }
 
     @Override
@@ -25,7 +25,7 @@ public class GrenadeObj extends Throwable {
 
     @Override
     public void timerEndEffect(ItemDisplay proj, Player player) {
-        proj.getWorld().createExplosion(proj.getLocation(), 2F, false, false);
+        proj.getWorld().createExplosion(proj.getLocation(), 2F, false, true);
     }
 
 }

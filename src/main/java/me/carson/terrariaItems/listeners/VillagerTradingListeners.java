@@ -13,6 +13,8 @@ import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.PulseBow;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Minishark;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Shotgun;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.SlapHand;
+import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.Bomb;
+import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.Grenade;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -52,8 +54,9 @@ public class VillagerTradingListeners implements Listener {
 
         List<MerchantRecipe> recipes = new ArrayList<>(villager.getRecipes());
         originalRecipes.put(villager.getUniqueId(), new ArrayList<>(villager.getRecipes()));
+        Villager.Profession profession=villager.getProfession();
 
-        if (villager.getProfession() == Villager.Profession.WEAPONSMITH) {
+        if (profession == Villager.Profession.WEAPONSMITH) {
             recipes.add(addMinishark());
             if(isNight(villager.getWorld())){
                 recipes.add(addIllegalGunParts());
@@ -61,14 +64,14 @@ public class VillagerTradingListeners implements Listener {
             if(worldInstance.getHardmode()){
                 recipes.add(addShotgun());
             }
-        } else if (villager.getProfession() == Villager.Profession.CLERIC) {
+        } else if (profession == Villager.Profession.CLERIC) {
             recipes.add(addLesserManaPotion());
 
             if(worldInstance.getHardmode()){
                 recipes.add(addGreaterManaPotion());
                 recipes.add(addRodOfDiscord());
             }
-        } else if (villager.getProfession() == Villager.Profession.TOOLSMITH) {
+        } else if (profession == Villager.Profession.TOOLSMITH) {
             int moon=getMoonPhase(villager.getWorld());
             if(moon==1||moon==3||moon==5||moon==7){
                 recipes.add(addMechanicsRod());
@@ -76,12 +79,15 @@ public class VillagerTradingListeners implements Listener {
             if(worldInstance.getHardmode()&& worldInstance.getMechDragon()&& worldInstance.getMechWither()&& worldInstance.getMechWarden()){
                 recipes.add(addMomentumCapacitor());
             }
-        }else if (villager.getProfession() == Villager.Profession.LEATHERWORKER) {
+        }else if (profession == Villager.Profession.LEATHERWORKER) {
             recipes.add(addCounterScarf());
+        }else if (profession == Villager.Profession.ARMORER) {
+            recipes.add(addGrenade());
+            recipes.add(addBomb());
         }
 
-
         villager.setRecipes(recipes);
+
     }
 
     @EventHandler
@@ -236,6 +242,24 @@ public class VillagerTradingListeners implements Listener {
                 0, 999, true, 1, 0.05f
         );
         recipe.addIngredient(new ItemStack(Material.EMERALD, 35));
+        return recipe;
+    }
+
+    public MerchantRecipe addGrenade(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                Grenade.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.COPPER_INGOT, 2));
+        return recipe;
+    }
+
+    public MerchantRecipe addBomb(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                Bomb.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.IRON_INGOT, 2));
         return recipe;
     }
 }

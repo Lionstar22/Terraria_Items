@@ -279,5 +279,34 @@ shuriken:
 grenade:
   name: "Grenade"
   lore:
-    - "&7A small explosion that will not destroy tiles"
+    - "&7A small explosion that will"
     - "&7not destroy blocks"
+sticky_grenade:
+  name: "Sticky Grenade"
+  lore:
+    - "&7A small explosion that will"
+    - "&7not destroy blocks"
+    - "&7Tossing may be difficult."
+bouncy_grenade:
+  name: "Bouncy Grenade"
+  lore:
+    - "&7A small explosion that will"
+    - "&7not destroy blocks"
+    - "&7Very bouncy"
+bomb:
+  name: "Bomb"
+  lore:
+    - "&7A small explosion that will"
+    - "&7destroy most blocks"
+bouncy_bomb:
+  name: "Bouncy Bomb"
+  lore:
+    - "&7A small explosion that will"
+    - "&7destroy most blocks"
+    - "&7Very bouncy"
+sticky_bomb:
+  name: "Sticky Bomb"
+  lore:
+    - "&7A small explosion that will"
+    - "&7destroy most blocks"
+    - "&7Tossing may be difficult."

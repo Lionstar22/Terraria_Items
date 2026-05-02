@@ -83,7 +83,7 @@ public abstract class Throwable implements Listener {
 
             tick[0]++;
             if (tick[0] >= duration) {
-                hitEntityEffect(proj, player);
+                timerEndEffect(proj, player);
                 proj.remove();
                 task.cancel();
                 return;
@@ -92,7 +92,7 @@ public abstract class Throwable implements Listener {
             if (stuck[0]) return; // skip everything if stuck
 
             if (tick[0] >= gravDuration) {
-                direction[0][0] = new Vector(direction[0][0].getX() * 0.95, direction[0][0].getY() - gravStrength, direction[0][0].getZ() * 0.95);
+                direction[0][0] = new Vector(direction[0][0].getX() * 0.97, direction[0][0].getY() - gravStrength, direction[0][0].getZ() * 0.97);
             }
 
             Location now = proj.getLocation();
@@ -165,4 +165,6 @@ public abstract class Throwable implements Listener {
     public abstract void hitEntityEffect(ItemDisplay proj,Player player);
 
     public abstract void hitBlockEffect(Block block);
+
+    public abstract void timerEndEffect(ItemDisplay proj,Player player);
 }

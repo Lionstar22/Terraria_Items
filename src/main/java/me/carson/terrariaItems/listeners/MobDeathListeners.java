@@ -8,6 +8,7 @@ import me.carson.terrariaItems.miscFolder.fishingRods.ChumCaster;
 import me.carson.terrariaItems.toolFolder.tools.summons.BloodyTear;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.BloodRainBow;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.MagicDagger;
+import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.Bomb;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -118,7 +119,8 @@ public class MobDeathListeners implements Listener {
             case "UndeadMiner" -> {
                 if (Math.random() < 0.72) {
                     int tnt = ThreadLocalRandom.current().nextInt(1, 4);
-                    ItemStack item = new ItemStack(Material.TNT, tnt);
+                    ItemStack item = new ItemStack(Bomb.getItem(plugin));
+                    item.setAmount(tnt);
                     event.getDrops().add(item);
                 }
                 if (Math.random() < 0.1) {

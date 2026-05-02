@@ -4,7 +4,7 @@ import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.*;
-import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.Grenade;
+import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.*;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -79,6 +79,11 @@ public class WeaponManager implements Listener {
         weaponList.put("BoneThrowingKnife",new BoneThrowingKnife(plugin));
         weaponList.put("Shuriken",new Shuriken(plugin));
         weaponList.put("Grenade",new Grenade(plugin));
+        weaponList.put("StickyGrenade",new StickyGrenade(plugin));
+        weaponList.put("BouncyGrenade",new BouncyGrenade(plugin));
+        weaponList.put("Bomb",new Bomb(plugin));
+        weaponList.put("StickyBomb",new StickyBomb(plugin));
+        weaponList.put("BouncyBomb",new BouncyBomb(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -111,7 +116,12 @@ public class WeaponManager implements Listener {
 
     @EventHandler
     public void onRightClick(PlayerInteractEvent event) {
-        if (!(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
+        if (!(event.getAction() == Action.RIGHT_CLICK_AIR|| event.getAction() == Action.RIGHT_CLICK_BLOCK)){return;}
+        if(event.getClickedBlock()!=null){
+            if(event.getClickedBlock().getType().isInteractable()){
+                return;
+            }
+        }
         Player player = event.getPlayer();
         ItemStack heldItem= event.getItem();
         if(heldItem==null){return;}

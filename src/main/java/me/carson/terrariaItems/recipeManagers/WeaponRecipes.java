@@ -10,6 +10,7 @@ import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -65,6 +66,70 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         registerBoneThrowingKnifeRecipe();
         registerPoisonedKnifeRecipe();
         registerShurikenRecipe();
+        //registerGrenadeRecipe();
+        registerStickyGrenadeRecipe();
+        registerBouncyGrenadeRecipe();
+        registerBouncyBombRecipe();
+        registerStickyBombRecipe();
+    }
+
+    private void registerBouncyBombRecipe(){
+        ItemStack item= BouncyBomb.getItem(plugin);
+        item.setAmount(2);
+        NamespacedKey key = new NamespacedKey(plugin, "BouncyBomb");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("   ","BSB","   ");
+        recipe.setIngredient('S',Material.SLIME_BALL);
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(Bomb.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerStickyBombRecipe(){
+        ItemStack item= StickyBomb.getItem(plugin);
+        item.setAmount(2);
+        NamespacedKey key = new NamespacedKey(plugin, "StickyBomb");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("   ","BHB","   ");
+        recipe.setIngredient('H',Material.HONEY_BOTTLE);
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(Bomb.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerBouncyGrenadeRecipe(){
+        ItemStack item= BouncyGrenade.getItem(plugin);
+        item.setAmount(4);
+        NamespacedKey key = new NamespacedKey(plugin, "BouncyGrenade");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" G ","GSG"," G ");
+        recipe.setIngredient('S',Material.SLIME_BALL);
+        recipe.setIngredient('G',new RecipeChoice.ExactChoice(Grenade.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerStickyGrenadeRecipe(){
+        ItemStack item= StickyGrenade.getItem(plugin);
+        item.setAmount(4);
+        NamespacedKey key = new NamespacedKey(plugin, "StickyGrenade");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" G ","GHG"," G ");
+        recipe.setIngredient('H',Material.HONEY_BOTTLE);
+        recipe.setIngredient('G',new RecipeChoice.ExactChoice(Grenade.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerGrenadeRecipe(){
+        ItemStack item= Grenade.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "Grenade");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" I ","IGI"," I ");
+        recipe.setIngredient('I',Material.IRON_INGOT);
+        recipe.setIngredient('G',Material.GUNPOWDER);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerShurikenRecipe(){
