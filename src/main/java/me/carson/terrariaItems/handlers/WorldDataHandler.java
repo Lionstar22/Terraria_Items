@@ -84,5 +84,6 @@ public class WorldDataHandler implements Listener {
         for(Player player: Bukkit.getOnlinePlayers()){
             player.spigot().sendMessage(TextComponent.fromLegacy(bar));
         }
+        save();
     }
 }

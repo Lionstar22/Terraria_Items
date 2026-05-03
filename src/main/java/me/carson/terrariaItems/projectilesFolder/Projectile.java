@@ -65,7 +65,7 @@ public abstract class Projectile implements Listener {
         proj.setTeleportDuration(2);
         proj.setInterpolationDelay(-1);
         faceDirection(proj, dir);
-        moveProj(player,speed,weaponDamage,duration,proj,dir);
+        moveProj(player,weaponDamage,duration,proj,dir);
     }
 
     public void createFallingProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float height,Location location){
@@ -95,11 +95,11 @@ public abstract class Projectile implements Listener {
         proj.setTeleportDuration(2);
         proj.setInterpolationDelay(-1);
         faceDirection(proj, dir);
-        moveProj(player,speed,weaponDamage,duration,proj,dir);
+        moveProj(player,weaponDamage,duration,proj,dir);
 
     }
 
-    private void moveProj(Player player,float speed,float weaponDamage,float duration,ItemDisplay proj, Vector dir){
+    private void moveProj(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir){
         final int[] tick = {0};
         final int[] enemiesHit = {0};
         final int[] blocksBounced = {0};
@@ -136,7 +136,7 @@ public abstract class Projectile implements Listener {
                             return;
                         }else{
                             blocksBounced[0]++;
-                            direction[0] =bounce(direction[0],result.getHitBlockFace(),speed);
+                            direction[0] =bounce(direction[0],result.getHitBlockFace());
                             next = now.clone().add(direction[0]);
                             hitEntities.clear();
                         }
@@ -160,13 +160,11 @@ public abstract class Projectile implements Listener {
                     }
                 }
             }
-
             Vector norm = direction[0].clone().normalize();
             float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
             float pitch = (float) Math.toDegrees(Math.asin(-norm.getY()));
             next.setYaw(yaw);
             next.setPitch(pitch);
-
             proj.teleport(next);
         }, 1L, 1L);
     }
@@ -242,7 +240,7 @@ public abstract class Projectile implements Listener {
                             return;
                         }else{
                             blocksBounced[0]++;
-                            direction[0][0] =bounce(direction[0][0],result.getHitBlockFace(),speed);
+                            direction[0][0] =bounce(direction[0][0],result.getHitBlockFace());
                             next = now.clone().add(direction[0][0]);
                             hitEntities.clear();
                         }
@@ -266,31 +264,23 @@ public abstract class Projectile implements Listener {
                     }
                 }
             }
-
             Vector norm = direction[0][0].clone().normalize();
             float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
             float pitch = (float) Math.toDegrees(Math.asin(-norm.getY()));
             next.setYaw(yaw);
             next.setPitch(pitch);
-
             proj.teleport(next);
         }, 1L, 1L);
     }
 
-    private Vector bounce(Vector currentDir, BlockFace face, float speed) {
-        Vector normal = switch (face) {
-            case EAST  -> new Vector(-1, 0, 0);
-            case WEST  -> new Vector( 1, 0, 0);
-            case UP    -> new Vector( 0,-1, 0);
-            case DOWN  -> new Vector( 0, 1, 0);
-            case NORTH -> new Vector( 0, 0, 1);
-            case SOUTH -> new Vector( 0, 0,-1);
-            default    -> null;
-        };
-        if (normal == null) return currentDir;
-
-        double dot = currentDir.dot(normal);
-        return currentDir.clone().subtract(normal.multiply(2 * dot)).normalize().multiply(speed);
+    private Vector bounce(Vector currentDir, BlockFace face) {
+        Vector v = currentDir.clone();
+        switch (face) {
+            case EAST, WEST   -> v.setX(-v.getX());
+            case UP, DOWN     -> v.setY(-v.getY());
+            case NORTH, SOUTH -> v.setZ(-v.getZ());
+        }
+        return v;
     }
 
     private void faceDirection(ItemDisplay proj, Vector dir) {

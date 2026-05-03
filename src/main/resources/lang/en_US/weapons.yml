@@ -200,7 +200,7 @@ excalibur:
   name: "Excalibur"
   lore:
     - "&7The holy sword of legend"
-    - "&720 Damage, +1 Range"
+    - "&725 Damage, +1 Range"
 falcon_blade:
   name: "Falcon Blade"
   lore:

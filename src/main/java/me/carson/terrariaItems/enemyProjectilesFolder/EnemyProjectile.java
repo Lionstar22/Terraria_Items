@@ -63,8 +63,8 @@ public abstract class EnemyProjectile implements Listener {
         proj.getPersistentDataContainer().set(key, PersistentDataType.INTEGER,1);
         proj.setInterpolationDuration(3);
         proj.setTeleportDuration(1);
+        faceDirection(proj,dir);
         moveProj(shooter,weaponDamage,duration,proj,dir);
-
     }
 
     private void moveProj(LivingEntity shooter,float weaponDamage,float duration,ItemDisplay proj, Vector dir){
@@ -102,7 +102,7 @@ public abstract class EnemyProjectile implements Listener {
                             return;
                         }else{
                             blocksBounced[0]++;
-                            direction[0] =bounce(proj,result.getHitBlockFace(),dir);
+                            direction[0] =bounce(direction[0],result.getHitBlockFace());
                             next = now.clone().add(direction[0]);
                         }
                     }
@@ -124,30 +124,35 @@ public abstract class EnemyProjectile implements Listener {
                     }
                 }
             }
-
+            Vector norm = direction[0].clone().normalize();
+            float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
+            float pitch = (float) Math.toDegrees(Math.asin(-norm.getY()));
+            next.setYaw(yaw);
+            next.setPitch(pitch);
             proj.teleport(next);
         }, 1L, 1L);
     }
 
-    private Vector bounce(ItemDisplay proj, BlockFace face, Vector dir) {
+    private Vector bounce(Vector currentDir, BlockFace face) {
+        Vector v = currentDir.clone();
+        switch (face) {
+            case EAST, WEST   -> v.setX(-v.getX());
+            case UP, DOWN     -> v.setY(-v.getY());
+            case NORTH, SOUTH -> v.setZ(-v.getZ());
+        }
+        return v;
+    }
 
-        Vector normal = switch (face) {
-            case EAST  -> new Vector(-1, 0, 0);
-            case WEST  -> new Vector(1, 0, 0);
-            case UP    -> new Vector(0, -1, 0);
-            case DOWN  -> new Vector(0, 1, 0);
-            case NORTH -> new Vector(0, 0, 1);
-            case SOUTH -> new Vector(0, 0, -1);
-            default    -> null;
-        };
+    private void faceDirection(ItemDisplay proj, Vector dir) {
+        Vector norm = dir.clone().normalize();
 
-        if (normal == null) return null;
+        float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
+        float pitch = (float) Math.toDegrees(Math.asin(-norm.getY()));
 
-        Vector reflected = dir.subtract(
-                normal.multiply(2 * dir.dot(normal))
-        );
-        proj.teleport(proj.getLocation().add(reflected.clone().multiply(0.5)));
-        return reflected;
+        Location loc = proj.getLocation();
+        loc.setYaw(yaw);
+        loc.setPitch(pitch);
+        proj.teleport(loc);
     }
 
     public abstract void hitEntityEffect(LivingEntity entity);

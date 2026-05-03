@@ -30,7 +30,7 @@ public class Excalibur extends Sword {
         meta.setEnchantmentGlintOverride(false);
         meta.addAttributeModifier(Attribute.ATTACK_SPEED,new AttributeModifier(new NamespacedKey(plugin,"speed"),-1.5, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.MAINHAND));
         meta.addAttributeModifier(Attribute.ENTITY_INTERACTION_RANGE, new AttributeModifier(new NamespacedKey(plugin,"range"),1.0, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.MAINHAND));
-        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),19, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND));
+        meta.addAttributeModifier(Attribute.ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey(plugin,"attack"),24, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND));
         item.setItemMeta(meta);
         return item;
     }

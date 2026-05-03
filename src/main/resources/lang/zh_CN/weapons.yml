@@ -200,7 +200,7 @@ excalibur:
   name: "王者之剑"
   lore:
     - "&7传说中的神圣之剑"
-    - "&720点伤害，+1范围"
+    - "&725点伤害，+1范围"
 falcon_blade:
   name: "猎鹰之刃"
   lore:

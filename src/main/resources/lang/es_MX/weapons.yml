@@ -200,7 +200,7 @@ excalibur:
   name: "Excalibur"
   lore:
     - "&7La espada sagrada de la leyenda"
-    - "&720 de Daño, +1 Alcance"
+    - "&725 de Daño, +1 Alcance"
 falcon_blade:
   name: "Hoja del Halcón"
   lore:

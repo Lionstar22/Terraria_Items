@@ -101,6 +101,9 @@ public class MobDeathListeners implements Listener {
                         e.getDrops().add(getMimicLoot());
                     }
                 }
+                case ENDER_DRAGON -> {
+                    worldDataInstance.setHardmode(true);
+                }
                 default -> {
                 }
             }

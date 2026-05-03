@@ -29,20 +29,10 @@ public class TILangManager {
     }
 
     private void load() {
-        File configFile = new File(plugin.getDataFolder(), "config.yml");
-        if (!configFile.exists()) {
-            plugin.getDataFolder().mkdirs();
-            YamlConfiguration defaultConfig = new YamlConfiguration();
-            defaultConfig.set("language", "en_US");
-            try {
-                defaultConfig.save(configFile);
-            } catch (IOException e) {
-                plugin.getLogger().severe("Could not create default config.yml: " + e.getMessage());
-            }
-        }
+        plugin.saveDefaultConfig();
+        plugin.reloadConfig();
 
-        FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
-        String locale = config.getString("language", "en_US");
+        String locale = plugin.getConfig().getString("language", "en_US");
 
         loadLangFile(locale, "accessories");
         loadLangFile(locale, "armor");
