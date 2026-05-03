@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 public class SpikyBall extends ThrowableWeapon {
 
     public SpikyBall(Plugin plugin) {
-        super(plugin,"spiky_ball.name","#FFFFFF", Material.SLIME_BALL,"spiky_ball","SpikyBall",10,1,4,0,800,"spiky_ball.lore");
+        super(plugin,"spiky_ball.name","#FFFFFF", Material.SLIME_BALL,"spiky_ball","SpikyBall",10,1,3,0,800,"spiky_ball.lore");
     }
 
     @Override

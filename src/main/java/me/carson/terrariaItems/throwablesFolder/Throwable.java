@@ -113,7 +113,7 @@ public abstract class Throwable implements Listener {
                         hitBlockEffect(result.getHitBlock());
                         if(direction[0][0].length()<=0.12&&result.getHitBlockFace()!=BlockFace.DOWN){
                             stuck[0]=true;
-                            startCollisionChecks(proj,player,enemiesHit[0],duration);
+                            startCollisionChecks(proj,player,enemiesHit[0],duration,weaponDamage);
                         }
 
                         direction[0][0] = bounce(direction[0][0], result.getHitBlockFace());
@@ -170,7 +170,7 @@ public abstract class Throwable implements Listener {
         proj.teleport(loc);
     }
 
-    private void startCollisionChecks(ItemDisplay proj,Player player,int hit,float duration){
+    private void startCollisionChecks(ItemDisplay proj,Player player,int hit,float duration,float weaponDamage){
         final int[] enemiesHit = {hit};
         final int[] enemiesHitAgain = {0};
         final int[] tick = {0};
@@ -192,7 +192,7 @@ public abstract class Throwable implements Listener {
             for (Entity e : proj.getNearbyEntities(0.2, 0.2, 0.2)) {
                 if (e instanceof LivingEntity target && e!=player) {
                     target.setMaximumNoDamageTicks(0);
-                    target.damage(damage);
+                    target.damage(damage+weaponDamage);
                     target.setMaximumNoDamageTicks(20);
                     if (enemiesHit[0]+enemiesHitAgain[0] >= peirce) {
                         proj.remove();

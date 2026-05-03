@@ -261,3 +261,76 @@ throwing_knife:
   name: "Cuchillo Arrojadizo"
   lore:
     - "&74 de Daño"
+poisoned_knife:
+  name: "Cuchillo Envenenado"
+  lore:
+    - "&7Probabilidad de envenenar enemigos"
+    - "&74.5 de Daño"
+bone_throwing_knife:
+  name: "Cuchillo Arrojadizo de Hueso"
+  lore:
+    - "&7Atraviesa 6 veces"
+    - "&75 de Daño"
+shuriken:
+  name: "Shuriken"
+  lore:
+    - "&7Atraviesa 3 veces"
+    - "&73 de Daño"
+grenade:
+  name: "Granada"
+  lore:
+    - "&7Una pequeña explosión que"
+    - "&7no destruirá bloques"
+sticky_grenade:
+  name: "Granada Pegajosa"
+  lore:
+    - "&7Una pequeña explosión que"
+    - "&7no destruirá bloques"
+    - "&7Lanzarla puede ser difícil."
+bouncy_grenade:
+  name: "Granada Rebotadora"
+  lore:
+    - "&7Una pequeña explosión que"
+    - "&7no destruirá bloques"
+    - "&7Muy rebotadora"
+bomb:
+  name: "Bomba"
+  lore:
+    - "&7Una pequeña explosión que"
+    - "&7destruirá la mayoría de bloques"
+bouncy_bomb:
+  name: "Bomba Rebotadora"
+  lore:
+    - "&7Una pequeña explosión que"
+    - "&7destruirá la mayoría de bloques"
+    - "&7Muy rebotadora"
+sticky_bomb:
+  name: "Bomba Pegajosa"
+  lore:
+    - "&7Una pequeña explosión que"
+    - "&7destruirá la mayoría de bloques"
+    - "&7Lanzarla puede ser difícil."
+dynamite:
+  name: "Dinamita"
+  lore:
+    - "&7Una gran explosión que"
+    - "&7destruirá la mayoría de bloques"
+sticky_dynamite:
+  name: "Dinamita Pegajosa"
+  lore:
+    - "&7Una gran explosión que"
+    - "&7destruirá la mayoría de bloques"
+    - "&7Lanzarla puede ser difícil."
+bouncy_dynamite:
+  name: "Dinamita Rebotadora"
+  lore:
+    - "&7Una gran explosión que"
+    - "&7destruirá la mayoría de bloques"
+    - "&7Esto resultará ser una"
+    - "&7terrible idea"
+spiky_ball:
+  name: "Bola con Pinchos"
+  lore:
+    - "&7Los enemigos que pasen"
+    - "&7sobre ellas recibirán daño"
+    - "&73 de Daño"

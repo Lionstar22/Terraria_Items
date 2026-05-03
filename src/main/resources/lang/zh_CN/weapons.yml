@@ -261,3 +261,76 @@ throwing_knife:
   name: "投掷匕首"
   lore:
     - "&74 点伤害"
+poisoned_knife:
+  name: "毒匕首"
+  lore:
+    - "&7有概率使敌人中毒"
+    - "&74.5 点伤害"
+bone_throwing_knife:
+  name: "骨制投掷匕首"
+  lore:
+    - "&7穿透6次"
+    - "&75 点伤害"
+shuriken:
+  name: "飞镖"
+  lore:
+    - "&7穿透3次"
+    - "&73 点伤害"
+grenade:
+  name: "手榴弹"
+  lore:
+    - "&7小范围爆炸"
+    - "&7不会破坏方块"
+sticky_grenade:
+  name: "粘性手榴弹"
+  lore:
+    - "&7小范围爆炸"
+    - "&7不会破坏方块"
+    - "&7投掷可能较为困难。"
+bouncy_grenade:
+  name: "弹跳手榴弹"
+  lore:
+    - "&7小范围爆炸"
+    - "&7不会破坏方块"
+    - "&7弹跳性极强"
+bomb:
+  name: "炸弹"
+  lore:
+    - "&7小范围爆炸"
+    - "&7会破坏大多数方块"
+bouncy_bomb:
+  name: "弹跳炸弹"
+  lore:
+    - "&7小范围爆炸"
+    - "&7会破坏大多数方块"
+    - "&7弹跳性极强"
+sticky_bomb:
+  name: "粘性炸弹"
+  lore:
+    - "&7小范围爆炸"
+    - "&7会破坏大多数方块"
+    - "&7投掷可能较为困难。"
+dynamite:
+  name: "炸药"
+  lore:
+    - "&7大范围爆炸"
+    - "&7会破坏大多数方块"
+sticky_dynamite:
+  name: "粘性炸药"
+  lore:
+    - "&7大范围爆炸"
+    - "&7会破坏大多数方块"
+    - "&7投掷可能较为困难。"
+bouncy_dynamite:
+  name: "弹跳炸药"
+  lore:
+    - "&7大范围爆炸"
+    - "&7会破坏大多数方块"
+    - "&7这将会是一个"
+    - "&7极其糟糕的主意"
+spiky_ball:
+  name: "尖刺球"
+  lore:
+    - "&7经过的敌人"
+    - "&7将会受到伤害"
+    - "&73 点伤害"
