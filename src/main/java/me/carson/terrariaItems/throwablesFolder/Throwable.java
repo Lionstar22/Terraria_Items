@@ -111,8 +111,11 @@ public abstract class Throwable implements Listener {
                             return;
                         }
                         hitBlockEffect(result.getHitBlock());
-                        if(direction[0][0].length()<=0.12&&result.getHitBlockFace()!=BlockFace.DOWN){stuck[0]=true;}
-                        player.sendMessage(""+direction[0][0].length());
+                        if(direction[0][0].length()<=0.12&&result.getHitBlockFace()!=BlockFace.DOWN){
+                            stuck[0]=true;
+                            startCollisionChecks(proj,player,enemiesHit[0],duration);
+                        }
+
                         direction[0][0] = bounce(direction[0][0], result.getHitBlockFace());
                         next = now.clone().add(direction[0][0]);
                     }
@@ -167,11 +170,38 @@ public abstract class Throwable implements Listener {
         proj.teleport(loc);
     }
 
-    private void startCollisionChecks(ItemDisplay proj,Player player){
+    private void startCollisionChecks(ItemDisplay proj,Player player,int hit,float duration){
+        final int[] enemiesHit = {hit};
+        final int[] enemiesHitAgain = {0};
+        final int[] tick = {0};
+
         Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+            if (proj.isDead()) {
+                proj.remove();
+                task.cancel();
+                return;
+            }
+            tick[0]++;
+            if (tick[0] >= duration) {
+                timerEndEffect(proj, player);
+                proj.remove();
+                task.cancel();
+                return;
+            }
+
             for (Entity e : proj.getNearbyEntities(0.2, 0.2, 0.2)) {
-                if (e instanceof LivingEntity target && e != player) {
+                if (e instanceof LivingEntity target && e!=player) {
+                    target.setMaximumNoDamageTicks(0);
                     target.damage(damage);
+                    target.setMaximumNoDamageTicks(20);
+                    if (enemiesHit[0]+enemiesHitAgain[0] >= peirce) {
+                        proj.remove();
+                        task.cancel();
+                        return;
+                    } else {
+                        enemiesHitAgain[0]++;
+                    }
+
                 }
             }
         }, 1L, 1L);
