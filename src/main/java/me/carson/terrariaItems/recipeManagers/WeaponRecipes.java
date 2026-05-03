@@ -2,6 +2,7 @@ package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.handlers.CustomRecipeManager;
 import me.carson.terrariaItems.materialsFolder.materials.*;
+import me.carson.terrariaItems.materialsFolder.materials.bullets.EmptyBullet;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfFright;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfLight;
 import me.carson.terrariaItems.materialsFolder.materials.souls.SoulOfMight;
@@ -15,7 +16,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.*;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.recipe.CraftingBookCategory;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
 public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
@@ -71,6 +74,66 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         registerBouncyGrenadeRecipe();
         registerBouncyBombRecipe();
         registerStickyBombRecipe();
+        registerBouncyDynamiteRecipe();
+        registerStickyDynamiteRecipe();
+        //registerDynamiteRecipe();
+        //registerTNTRecipe();
+        registerSpikyBallRecipe();
+    }
+
+    private void registerSpikyBallRecipe(){
+        ItemStack item= SpikyBall.getItem(plugin);
+        item.setAmount(11);
+        NamespacedKey key = new NamespacedKey(plugin, "SpikyBall");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" N ","NIN"," N ");
+        recipe.setIngredient('N',Material.IRON_NUGGET);
+        recipe.setIngredient('I',Material.IRON_INGOT);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerTNTRecipe(){
+        ItemStack item= new ItemStack(Material.TNT);
+        ItemMeta meta = item.getItemMeta();
+        meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "customItem"), PersistentDataType.BYTE, (byte) 1);
+        item.setItemMeta(meta);
+        NamespacedKey key = new NamespacedKey(plugin, "TNTBlock");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("DD ","   ","   ");
+        recipe.setIngredient('D',new RecipeChoice.ExactChoice(Dynamite.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerDynamiteRecipe(){
+        ItemStack item= Dynamite.getItem(plugin);
+        item.setAmount(2);
+        NamespacedKey key = new NamespacedKey(plugin, "Dynamite");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(Material.TNT);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerStickyDynamiteRecipe(){
+        ItemStack item= StickyDynamite.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "StickyDynamite");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(Material.HONEY_BOTTLE);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(Dynamite.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerBouncyDynamiteRecipe(){
+        ItemStack item= BouncyDynamite.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "BouncyDynamite");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(Material.SLIME_BALL);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(Dynamite.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerBouncyBombRecipe(){

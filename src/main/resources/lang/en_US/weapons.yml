@@ -310,3 +310,27 @@ sticky_bomb:
     - "&7A small explosion that will"
     - "&7destroy most blocks"
     - "&7Tossing may be difficult."
+dynamite:
+  name: "Dynamite"
+  lore:
+    - "&7A large explosion that will"
+    - "&7destroy most blocks"
+sticky_dynamite:
+  name: "Sticky Dynamite"
+  lore:
+    - "&7A large explosion that will"
+    - "&7destroy most blocks"
+    - "&7Tossing may be difficult."
+bouncy_dynamite:
+  name: "Bouncy Dynamite"
+  lore:
+    - "&7A large explosion that will"
+    - "&7destroy most blocks"
+    - "&7This will prove to be a"
+    - "&7terrible idea"
+spiky_ball:
+  name: "Spiky Ball"
+  lore:
+    - "&7Enemies who pass over"
+    - "&7them will take damage"
+    - "&74 Damage"

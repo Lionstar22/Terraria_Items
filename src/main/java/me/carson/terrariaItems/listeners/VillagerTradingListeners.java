@@ -14,6 +14,7 @@ import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Minishark;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Shotgun;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.SlapHand;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.Bomb;
+import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.Dynamite;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.Grenade;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -84,6 +85,7 @@ public class VillagerTradingListeners implements Listener {
         }else if (profession == Villager.Profession.ARMORER) {
             recipes.add(addGrenade());
             recipes.add(addBomb());
+            recipes.add(addDynamite());
         }
 
         villager.setRecipes(recipes);
@@ -260,6 +262,15 @@ public class VillagerTradingListeners implements Listener {
                 0, 999, true, 1, 0.05f
         );
         recipe.addIngredient(new ItemStack(Material.IRON_INGOT, 2));
+        return recipe;
+    }
+
+    public MerchantRecipe addDynamite(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                Dynamite.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.GOLD_INGOT, 2));
         return recipe;
     }
 }

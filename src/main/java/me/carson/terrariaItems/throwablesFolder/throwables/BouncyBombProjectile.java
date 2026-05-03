@@ -7,10 +7,10 @@ import org.bukkit.entity.ItemDisplay;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class BouncyBombObj extends Throwable {
+public class BouncyBombProjectile extends Throwable {
 
-    public BouncyBombObj(Plugin plugin) {
-        super(plugin, 0,  "bouncy_bomb", "BouncyBombObj",99,0,1f, DamageType.ARROW);
+    public BouncyBombProjectile(Plugin plugin) {
+        super(plugin, 0,  "bouncy_bomb", "BouncyBombProjectile",99,0,1f,1f, DamageType.ARROW);
     }
 
     @Override

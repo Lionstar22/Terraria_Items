@@ -25,9 +25,10 @@ public abstract class Throwable implements Listener {
     protected final int peirce;
     protected final int bounces;
     protected final float bounciness;
+    protected final float drag;
     protected final DamageType damageType;
 
-    public Throwable(Plugin plugin, int damage, String texture, String id, int peirce, int bounces,float bounciness, DamageType damageType) {
+    public Throwable(Plugin plugin, int damage, String texture, String id, int peirce, int bounces,float bounciness,float drag, DamageType damageType) {
         this.plugin = plugin;
         this.texture = texture;
         this.id = id;
@@ -35,6 +36,7 @@ public abstract class Throwable implements Listener {
         this.peirce = peirce;
         this.bounces = bounces;
         this.bounciness=bounciness;
+        this.drag=drag;
         this.damageType = damageType;
     }
 
@@ -66,10 +68,10 @@ public abstract class Throwable implements Listener {
         proj.setTeleportDuration(2);
         proj.setInterpolationDelay(-1);
         faceDirection(proj, dir);
-        moveThrowableObj(player,speed,weaponDamage,duration,proj,dir,gravDuration,gravStrength);
+        moveThrowableObj(player,weaponDamage,duration,proj,dir,gravDuration,gravStrength);
     }
 
-    private void moveThrowableObj(Player player, float speed, float weaponDamage, float duration, ItemDisplay proj, Vector dir, float gravDuration, float gravStrength) {
+    private void moveThrowableObj(Player player, float weaponDamage, float duration, ItemDisplay proj, Vector dir, float gravDuration, float gravStrength) {
         final int[] tick = {0};
         final int[] enemiesHit = {0};
         final Vector[][] direction = {{dir}};
@@ -77,6 +79,7 @@ public abstract class Throwable implements Listener {
 
         Bukkit.getScheduler().runTaskTimer(plugin, task -> {
             if (proj.isDead()) {
+                proj.remove();
                 task.cancel();
                 return;
             }
@@ -92,7 +95,7 @@ public abstract class Throwable implements Listener {
             if (stuck[0]) return; // skip everything if stuck
 
             if (tick[0] >= gravDuration) {
-                direction[0][0] = new Vector(direction[0][0].getX() * 0.97, direction[0][0].getY() - gravStrength, direction[0][0].getZ() * 0.97);
+                direction[0][0] = new Vector(direction[0][0].getX() * drag, direction[0][0].getY() - gravStrength, direction[0][0].getZ() * drag);
             }
 
             Location now = proj.getLocation();
@@ -108,6 +111,8 @@ public abstract class Throwable implements Listener {
                             return;
                         }
                         hitBlockEffect(result.getHitBlock());
+                        if(direction[0][0].length()<=0.12&&result.getHitBlockFace()!=BlockFace.DOWN){stuck[0]=true;}
+                        player.sendMessage(""+direction[0][0].length());
                         direction[0][0] = bounce(direction[0][0], result.getHitBlockFace());
                         next = now.clone().add(direction[0][0]);
                     }
@@ -160,6 +165,16 @@ public abstract class Throwable implements Listener {
         loc.setYaw(yaw);
         loc.setPitch(pitch);
         proj.teleport(loc);
+    }
+
+    private void startCollisionChecks(ItemDisplay proj,Player player){
+        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+            for (Entity e : proj.getNearbyEntities(0.2, 0.2, 0.2)) {
+                if (e instanceof LivingEntity target && e != player) {
+                    target.damage(damage);
+                }
+            }
+        }, 1L, 1L);
     }
 
     public abstract void hitEntityEffect(ItemDisplay proj,Player player);

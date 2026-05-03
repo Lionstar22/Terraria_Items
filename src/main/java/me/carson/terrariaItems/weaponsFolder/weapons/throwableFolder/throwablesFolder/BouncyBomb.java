@@ -1,7 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder;
 
-import me.carson.terrariaItems.throwablesFolder.throwables.BombObj;
-import me.carson.terrariaItems.throwablesFolder.throwables.BouncyBombObj;
+import me.carson.terrariaItems.throwablesFolder.throwables.BouncyBombProjectile;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.ThrowableWeapon;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -24,7 +23,7 @@ public class BouncyBomb extends ThrowableWeapon {
     public void rightActivate(Player player) {
         player.getInventory().removeItem(getItem(plugin));
         player.getWorld().playSound(player.getLocation(),"terraria:sword_use", 0.5F, 1.0F);
-        new BouncyBombObj(plugin).createThrowableObj(player,speed,damage,spread,duration,0,0.05f);
+        new BouncyBombProjectile(plugin).createThrowableObj(player,speed,damage,spread,duration,0,0.05f);
     }
 
     public static ItemStack getItem(Plugin plugin) {

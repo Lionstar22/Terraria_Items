@@ -7,10 +7,10 @@ import org.bukkit.entity.ItemDisplay;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class BombObj extends Throwable {
+public class DynamiteProjectile extends Throwable {
 
-    public BombObj(Plugin plugin) {
-        super(plugin, 0,  "bomb", "BombObj",99,0,0.5f, DamageType.ARROW);
+    public DynamiteProjectile(Plugin plugin) {
+        super(plugin, 0,  "dynamite", "DynamiteProjectile",99,0,0.5f,0.99f, DamageType.ARROW);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class BombObj extends Throwable {
 
     @Override
     public void timerEndEffect(ItemDisplay proj, Player player) {
-        proj.getWorld().createExplosion(proj.getLocation(), 2F, false, true);
+        proj.getWorld().createExplosion(proj.getLocation(), 3F, false, true);
     }
 
 }

@@ -1,7 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder;
 
-import me.carson.terrariaItems.throwablesFolder.throwables.GrenadeObj;
-import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.BoneThrowingKnife;
+import me.carson.terrariaItems.throwablesFolder.throwables.GrenadeProjectile;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.ThrowableWeapon;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -24,7 +23,7 @@ public class Grenade extends ThrowableWeapon {
     public void rightActivate(Player player) {
         player.getInventory().removeItem(getItem(plugin));
         player.getWorld().playSound(player.getLocation(),"terraria:sword_use", 0.5F, 1.0F);
-        new GrenadeObj(plugin).createThrowableObj(player,speed,damage,spread,duration,0,0.05f);
+        new GrenadeProjectile(plugin).createThrowableObj(player,speed,damage,spread,duration,0,0.05f);
     }
 
     public static ItemStack getItem(Plugin plugin) {

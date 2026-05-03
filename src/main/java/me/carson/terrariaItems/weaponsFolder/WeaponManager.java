@@ -84,6 +84,10 @@ public class WeaponManager implements Listener {
         weaponList.put("Bomb",new Bomb(plugin));
         weaponList.put("StickyBomb",new StickyBomb(plugin));
         weaponList.put("BouncyBomb",new BouncyBomb(plugin));
+        weaponList.put("Dynamite",new Dynamite(plugin));
+        weaponList.put("StickyDynamite",new StickyDynamite(plugin));
+        weaponList.put("BouncyDynamite",new BouncyDynamite(plugin));
+        weaponList.put("SpikyBall",new SpikyBall(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
