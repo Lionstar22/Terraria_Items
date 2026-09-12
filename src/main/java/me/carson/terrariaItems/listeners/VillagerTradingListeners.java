@@ -1,6 +1,8 @@
 package me.carson.terrariaItems.listeners;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.CounterScarf;
+import me.carson.terrariaItems.accesoryFolder.accessories.ExtendoGrip;
+import me.carson.terrariaItems.accesoryFolder.accessories.Toolbelt;
 import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.IllegalGunParts;
 import me.carson.terrariaItems.miscFolder.fishingRods.MechanicsRod;
@@ -74,6 +76,7 @@ public class VillagerTradingListeners implements Listener {
                 if(moon==1||moon==3||moon==5||moon==7){
                     recipes.add(addMechanicsRod());
                 }
+                recipes.add(addToolbelt());
             }
             if (profession == Villager.Profession.LEATHERWORKER) {
                 recipes.add(addCounterScarf());
@@ -121,15 +124,20 @@ public class VillagerTradingListeners implements Listener {
     public void onWanderingTraderInventoryOpen(InventoryOpenEvent event) {
         if (!(event.getInventory().getHolder() instanceof WanderingTrader villager)) return;
         if (!(event.getPlayer() instanceof Player)) return;
-        if(!worldInstance.getHardmode()){return;}
 
         List<MerchantRecipe> recipes = new ArrayList<>(villager.getRecipes());
         originalRecipes.put(villager.getUniqueId(), new ArrayList<>(villager.getRecipes()));
-        recipes.add(addPulseBow());
-        recipes.add(addSittingDucksFishingPole());
 
-        if(getMoonPhase(villager.getWorld())==4){
-            recipes.add(addSlapHand());
+        if(worldInstance.getPreHardmodeEnabled()){
+            recipes.add(addExtendoGrip());
+        }
+        if(worldInstance.getHardmodeEnabled()&&worldInstance.getHardmode()){
+            recipes.add(addPulseBow());
+            recipes.add(addSittingDucksFishingPole());
+
+            if(getMoonPhase(villager.getWorld())==4){
+                recipes.add(addSlapHand());
+            }
         }
 
         villager.setRecipes(recipes);
@@ -294,6 +302,24 @@ public class VillagerTradingListeners implements Listener {
                 0, 999, true, 1, 0.05f
         );
         recipe.addIngredient(new ItemStack(Material.GOLD_INGOT, 2));
+        return recipe;
+    }
+
+    public MerchantRecipe addToolbelt(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                Toolbelt.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.EMERALD, 10));
+        return recipe;
+    }
+
+    public MerchantRecipe addExtendoGrip(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                ExtendoGrip.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.EMERALD, 15));
         return recipe;
     }
 }

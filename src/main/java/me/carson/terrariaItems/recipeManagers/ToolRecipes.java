@@ -62,6 +62,58 @@ public class ToolRecipes {
         registerGoldenDelightRecipe();
         registerSeafoodDinnerRecipe();
         registerAppleJuiceRecipe();
+        registerMonsterLasagnaRecipe();
+        registerFruitSaladRecipe();
+    }
+
+    private void registerFruitSaladRecipe() {
+        ItemStack item = FruitSalad.getItem(plugin);
+        NamespacedKey key1 = new NamespacedKey(plugin, "pre_FruitSalad1");
+        ShapelessRecipe recipe1 = new ShapelessRecipe(key1, item);
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.BOWL)));
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.APPLE)));
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.SWEET_BERRIES)));
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.MELON_SLICE)));
+        recipe1.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe1);
+
+        NamespacedKey key2 = new NamespacedKey(plugin, "pre_FruitSalad2");
+        ShapelessRecipe recipe2 = new ShapelessRecipe(key2, item);
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.BOWL)));
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.APPLE)));
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.SWEET_BERRIES)));
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.GLOW_BERRIES)));
+        recipe2.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe2);
+
+        NamespacedKey key3 = new NamespacedKey(plugin, "pre_FruitSalad3");
+        ShapelessRecipe recipe3 = new ShapelessRecipe(key3, item);
+        recipe3.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.BOWL)));
+        recipe3.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.APPLE)));
+        recipe3.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.GLOW_BERRIES)));
+        recipe3.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.MELON_SLICE)));
+        recipe3.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe3);
+
+        NamespacedKey key4 = new NamespacedKey(plugin, "pre_FruitSalad4");
+        ShapelessRecipe recipe4 = new ShapelessRecipe(key4, item);
+        recipe4.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.BOWL)));
+        recipe4.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.GLOW_BERRIES)));
+        recipe4.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.SWEET_BERRIES)));
+        recipe4.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.MELON_SLICE)));
+        recipe4.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe4);
+    }
+
+    private void registerMonsterLasagnaRecipe(){
+        ItemStack item= MonsterLasagna.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_MonsterLasagna");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("RRR","MMM","WWW");
+        recipe.setIngredient('R', new RecipeChoice.ExactChoice(new ItemStack(Material.ROTTEN_FLESH)));
+        recipe.setIngredient('M', new RecipeChoice.ExactChoice(new ItemStack(Material.MILK_BUCKET)));
+        recipe.setIngredient('W', new RecipeChoice.ExactChoice(new ItemStack(Material.WHEAT)));
+        recipe.setCategory(CraftingBookCategory.MISC);recipeManager.register(recipe);
     }
 
     private void registerAppleJuiceRecipe() {

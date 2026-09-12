@@ -96,6 +96,9 @@ public class AccessoryManager implements Listener {
         accessoryList.put("RougeEmblem",new RougeEmblem(plugin));
         accessoryList.put("SilencingSheath",new SilencingSheath(plugin));
         accessoryList.put("CrossedHeartNecklace",new CrossedHeartNecklace(plugin));
+        accessoryList.put("FlowerBoots",new FlowerBoots(plugin));
+        accessoryList.put("Toolbelt",new Toolbelt(plugin));
+        accessoryList.put("ExtendoGrip",new ExtendoGrip(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -171,6 +174,16 @@ public class AccessoryManager implements Listener {
         }
     }
 
+    public Boolean hasAccessory(Player player,String id){
+        List<ItemStack> list=playerDataInstance.getInventory(player.getUniqueId());
+        if(list.isEmpty()){return false;}
+        for(ItemStack item:list){
+            String accessoryId= item.getItemMeta().getPersistentDataContainer().get(accessoryKey, PersistentDataType.STRING);
+            if(accessoryId==null){continue;}
+            if(accessoryId.equals(id)){return true;}
+        }
+        return false;
+    }
 
     public static void initialize(JavaPlugin plugin) {
         instance = new AccessoryManager(plugin);
