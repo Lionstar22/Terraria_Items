@@ -422,3 +422,9 @@ emerald_staff:
     - "&7Shoots Emerald bolts"
     - "&76 Magic Damage"
     - "&78 Mana"
+diamond_staff:
+  name: "Diamond Staff"
+  lore:
+    - "&7Shoots explosive diamond bolts"
+    - "&79 Magic Damage"
+    - "&79 Mana"

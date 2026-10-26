@@ -8,6 +8,7 @@ import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.*;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -103,6 +104,7 @@ public class WeaponManager implements Listener {
         weaponList.put("DaybloomStaff",new DaybloomStaff(plugin));
         weaponList.put("SapphireStaff",new SapphireStaff(plugin));
         weaponList.put("EmeraldStaff",new EmeraldStaff(plugin));
+        weaponList.put("DiamondStaff",new DiamondStaff(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -172,13 +174,20 @@ public class WeaponManager implements Listener {
 
 
 
-    /*
+
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event){
         if(!(event.getDamager() instanceof Player player)){return;}
         player.sendMessage(""+event.getDamage());
     }
 
+    @EventHandler
+    public void onAllDamage(EntityDamageByEntityEvent event){
+        Bukkit.getLogger().info(event.getEntity()+": "+event.getDamage());
+        if(event.getEntity() instanceof LivingEntity e){
+            Bukkit.getLogger().info(""+e.getHealth());
+        }
+    }
 
     /*
     @EventHandler

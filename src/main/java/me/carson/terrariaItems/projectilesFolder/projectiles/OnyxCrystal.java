@@ -15,7 +15,7 @@ public class OnyxCrystal extends Projectile {
 
     @Override
     public void hitEntityEffect(LivingEntity entity, Player player) {
-        entity.getWorld().createExplosion(entity.getLocation(), 1.0F, false, false);
+        entity.getWorld().createExplosion(entity.getLocation().add(0,0.5,0), 1.0F, false, false);
     }
 
     @Override

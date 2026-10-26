@@ -94,6 +94,18 @@ public class WeaponRecipes {
         registerDaybloomStaffRecipe();
         registerSapphireStaffRecipe();
         registerEmeraldStaffRecipe();
+        registerDiamondStaffRecipe();
+    }
+
+    private void registerDiamondStaffRecipe(){
+        ItemStack item= DiamondStaff.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_DiamondStaff");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("  D"," I ","I  ");
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
+        recipe.setIngredient('D',new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
     }
 
     private void registerEmeraldStaffRecipe(){
