@@ -413,6 +413,12 @@ daybloom_staff:
 sapphire_staff:
   name: "Sapphire Staff"
   lore:
-    - "&7Sapphires swirl in pairs"
+    - "&7Sapphires shoot in pairs"
     - "&74 Magic Damage"
+    - "&78 Mana"
+emerald_staff:
+  name: "Emerald Staff"
+  lore:
+    - "&7Shoots Emerald bolts"
+    - "&76 Magic Damage"
     - "&78 Mana"

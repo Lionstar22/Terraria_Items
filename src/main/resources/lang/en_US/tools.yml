@@ -176,3 +176,13 @@ apple_juice:
   lore:
     - "&7Hungry for Apples?"
     - "&9Minor improvements to all stats (10:00)"
+fruit_salad:
+  name: "Fruit Salad"
+  lore:
+    - "&7Yummy yummy"
+    - "&9Minor improvements to all stats (25:00)"
+monster_lasagna:
+  name: "Monster Lasagna"
+  lore:
+    - "&7Tastes like hairs and meats with noodle"
+    - "&9Medium improvements to all stats (8:00)"

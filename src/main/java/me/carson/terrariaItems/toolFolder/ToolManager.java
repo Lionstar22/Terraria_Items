@@ -70,6 +70,8 @@ public class ToolManager implements Listener {
         toolList.put("SeafoodDinner",new SeafoodDinner(plugin));
         toolList.put("GoldenDelight",new GoldenDelight(plugin));
         toolList.put("AppleJuice",new AppleJuice(plugin));
+        toolList.put("FruitSalad",new FruitSalad(plugin));
+        toolList.put("MonsterLasagna",new MonsterLasagna(plugin));
     }
 
     public Tool getTool(ItemStack item){

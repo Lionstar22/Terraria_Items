@@ -109,10 +109,10 @@ public class ToolRecipes {
         ItemStack item= MonsterLasagna.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "pre_MonsterLasagna");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
-        recipe.shape("RRR","MMM","WWW");
+        recipe.shape("RRR","MMM","BBB");
         recipe.setIngredient('R', new RecipeChoice.ExactChoice(new ItemStack(Material.ROTTEN_FLESH)));
         recipe.setIngredient('M', new RecipeChoice.ExactChoice(new ItemStack(Material.MILK_BUCKET)));
-        recipe.setIngredient('W', new RecipeChoice.ExactChoice(new ItemStack(Material.WHEAT)));
+        recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BREAD)));
         recipe.setCategory(CraftingBookCategory.MISC);recipeManager.register(recipe);
     }
 
