@@ -99,6 +99,8 @@ public class AccessoryManager implements Listener {
         accessoryList.put("FlowerBoots",new FlowerBoots(plugin));
         accessoryList.put("Toolbelt",new Toolbelt(plugin));
         accessoryList.put("ExtendoGrip",new ExtendoGrip(plugin));
+        accessoryList.put("DivingHelmet",new DivingHelmet(plugin));
+        accessoryList.put("DivingGear",new DivingGear(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

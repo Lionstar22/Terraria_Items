@@ -311,3 +311,12 @@ crossed_heart_necklace:
     - "&7after taking damage"
     - "&7Increases length of invincibility"
     - "&7after taking damage"
+diving_helmet:
+  name: "Diving Helmet"
+  lore:
+    - "&7Extends underwater breathing"
+diving_gear:
+  name: "Diving Gear"
+  lore:
+    - "&7Extends underwater breathing"
+    - "&7Grants the ability to swim faster"

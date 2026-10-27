@@ -12,7 +12,7 @@ import java.util.UUID;
 public class RubyStaff extends Magic {
 
     public RubyStaff(Plugin plugin) {
-        super(plugin,"ruby_staff.name","#9696FF", Material.DIAMOND,"ruby_staff","RubyStaff",12,1.5f,6,0,50,7,"ruby_staff.lore");
+        super(plugin,"ruby_staff.name","#9696FF", Material.DIAMOND,"ruby_staff","RubyStaff",15,1.3f,5,0,50,9,"ruby_staff.lore");
     }
 
     @Override

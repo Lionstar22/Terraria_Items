@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 public class SapphireStaff extends Magic {
 
     public SapphireStaff(Plugin plugin) {
-        super(plugin,"sapphire_staff.name","#9696FF", Material.AMETHYST_SHARD,"sapphire_staff","SapphireStaff",15,1,4,0,50,5,"sapphire_staff.lore");
+        super(plugin,"sapphire_staff.name","#9696FF", Material.AMETHYST_SHARD,"sapphire_staff","SapphireStaff",18,1,3,0,50,8,"sapphire_staff.lore");
     }
 
     @Override

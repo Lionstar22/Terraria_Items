@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 public class DiamondStaff extends Magic {
 
     public DiamondStaff(Plugin plugin) {
-        super(plugin,"diamond_staff.name","#96FF96", Material.AMETHYST_SHARD,"diamond_staff","DiamondStaff",15,1,6,0,50,9,"diamond_staff.lore");
+        super(plugin,"diamond_staff.name","#96FF96", Material.AMETHYST_SHARD,"diamond_staff","DiamondStaff",15,1.5f,6,0,50,9,"diamond_staff.lore");
     }
 
     @Override

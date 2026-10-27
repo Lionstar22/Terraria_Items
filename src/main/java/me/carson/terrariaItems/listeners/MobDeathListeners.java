@@ -74,6 +74,22 @@ public class MobDeathListeners implements Listener {
                     return;
                 }
             }
+            switch (entityType){
+                case ZOMBIE -> {
+                    if(rand<0.02){
+                        e.getDrops().add(Shackle.getItem(plugin));
+                        return;
+                    }
+                }
+                case SQUID, GLOW_SQUID -> {
+                    if(rand<0.05){
+                        e.getDrops().add(DivingHelmet.getItem(plugin));
+                        return;
+                    }
+                }
+                default -> {
+                }
+            }
         }
 
         if(worldDataInstance.getHardmode()&&worldDataInstance.getHardmodeEnabled()){    //HARDMODE DROPS

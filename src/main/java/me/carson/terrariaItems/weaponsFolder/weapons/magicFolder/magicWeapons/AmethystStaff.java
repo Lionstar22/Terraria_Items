@@ -12,7 +12,7 @@ import java.util.UUID;
 public class AmethystStaff extends Magic {
 
     public AmethystStaff(Plugin plugin) {
-        super(plugin,"amethyst_staff.name","#FFFFFF", Material.AMETHYST_SHARD,"amethyst_staff","AmethystStaff",15,1,4,0,50,5,"amethyst_staff.lore");
+        super(plugin,"amethyst_staff.name","#FFFFFF", Material.AMETHYST_SHARD,"amethyst_staff","AmethystStaff",20,0.9f,5,0,60,7,"amethyst_staff.lore");
     }
 
     @Override

@@ -74,6 +74,17 @@ public class AccessoryRecipes {
         registerRuinMedallionRecipe();
         registerSilencingSheathRecipe();
         registerCrossedHeartNecklaceRecipe();
+        registerDivingGearRecipe();
+    }
+
+    private void registerDivingGearRecipe(){
+        ItemStack item= DivingGear.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_DivingGear");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(DivingHelmet.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(Flipper.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
     }
 
     private void registerCrossedHeartNecklaceRecipe(){

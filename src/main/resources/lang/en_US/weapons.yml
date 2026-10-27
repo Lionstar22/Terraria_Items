@@ -107,9 +107,9 @@ super_star_shooter:
 amethyst_staff:
   name: "Amethyst Staff"
   lore:
-    - "&7Fires a amethyst bolt"
-    - "&7Costs 5 Mana"
-    - "&74 Magic Damage"
+    - "&7Fires a homing amethyst bolt"
+    - "&7Costs 7 Mana"
+    - "&75 Magic Damage"
 bubble_gun:
   name: "Bubble Gun"
   lore:
@@ -156,8 +156,8 @@ ruby_staff:
   name: "Ruby Staff"
   lore:
     - "&7Rubies flash double"
-    - "&7Costs 7 Mana"
-    - "&76 Magic Damage"
+    - "&7Costs 9 Mana"
+    - "&75 Magic Damage"
 thunder_zapper:
   name: "Thunder Zapper"
   lore:
@@ -414,7 +414,7 @@ sapphire_staff:
   name: "Sapphire Staff"
   lore:
     - "&7Sapphires shoot in pairs"
-    - "&74 Magic Damage"
+    - "&73 Magic Damage"
     - "&78 Mana"
 emerald_staff:
   name: "Emerald Staff"
