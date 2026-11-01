@@ -428,3 +428,10 @@ diamond_staff:
     - "&7Shoots explosive diamond bolts"
     - "&79 Magic Damage"
     - "&79 Mana"
+brimrose_staff:
+  name: "Brimrose Staff"
+  lore:
+    - "&7Fires a spread of splitting"
+    - "&7brimstone beams"
+    - "&75 Magic Damage"
+    - "&712 Mana"

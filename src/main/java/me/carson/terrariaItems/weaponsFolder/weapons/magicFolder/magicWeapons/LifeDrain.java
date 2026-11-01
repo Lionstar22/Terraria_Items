@@ -58,7 +58,7 @@ public class LifeDrain extends Magic {
 
         Vector between = end.toVector().subtract(start.toVector());
         double distance = between.length();
-        Vector step = between.normalize().multiply(0.5); // 0.5 = gap between particles
+        Vector step = between.normalize().multiply(0.5);
 
         Location current = start.clone();
         for (double d = 0; d < distance; d += 0.5) {
