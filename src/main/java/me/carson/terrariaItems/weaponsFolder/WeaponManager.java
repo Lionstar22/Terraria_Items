@@ -106,6 +106,7 @@ public class WeaponManager implements Listener {
         weaponList.put("EmeraldStaff",new EmeraldStaff(plugin));
         weaponList.put("DiamondStaff",new DiamondStaff(plugin));
         weaponList.put("BrimroseStaff",new BrimroseStaff(plugin));
+        weaponList.put("Brimblade",new Brimblade(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

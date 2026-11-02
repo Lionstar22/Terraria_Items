@@ -101,6 +101,7 @@ public class AccessoryManager implements Listener {
         accessoryList.put("ExtendoGrip",new ExtendoGrip(plugin));
         accessoryList.put("DivingHelmet",new DivingHelmet(plugin));
         accessoryList.put("DivingGear",new DivingGear(plugin));
+        accessoryList.put("LavaCharm",new LavaCharm(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

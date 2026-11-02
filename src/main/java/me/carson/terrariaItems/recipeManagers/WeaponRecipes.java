@@ -95,6 +95,19 @@ public class WeaponRecipes {
         registerSapphireStaffRecipe();
         registerEmeraldStaffRecipe();
         registerDiamondStaffRecipe();
+        registerBrimroseStaffRecipe();
+    }
+
+    private void registerBrimroseStaffRecipe(){
+        ItemStack item= BrimroseStaff.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "hm_BrimroseStaff");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" U ","URU","BU ");
+        recipe.setIngredient('U',new RecipeChoice.ExactChoice(UnholyCore.getItem(plugin)));
+        recipe.setIngredient('R',new RecipeChoice.ExactChoice(new ItemStack(Material.POPPY)));
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.BLAZE_ROD)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
     }
 
     private void registerDiamondStaffRecipe(){

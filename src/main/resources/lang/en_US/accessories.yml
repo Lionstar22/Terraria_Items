@@ -320,3 +320,7 @@ diving_gear:
   lore:
     - "&7Extends underwater breathing"
     - "&7Grants the ability to swim faster"
+lava_charm:
+  name: "Lava Charm"
+  lore:
+    - "&7Provides 7 seconds of fire resistance"

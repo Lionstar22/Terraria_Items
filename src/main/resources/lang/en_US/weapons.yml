@@ -435,3 +435,11 @@ brimrose_staff:
     - "&7brimstone beams"
     - "&75 Magic Damage"
     - "&712 Mana"
+brimblade:
+  name: "Brimblade"
+  lore:
+    - "&7Throws a blade that splits"
+    - "&7on enemy hits"
+    - "&710 Rouge Damage"
+    - "&5Stealth strikes launch a "
+    - "&5barrage of brimstone darts"

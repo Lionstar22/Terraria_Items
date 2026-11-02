@@ -52,7 +52,7 @@ public abstract class RougeProjectiles {
         this.particle = particle;
     }
 
-    private Result createDefaultProjectile(Player player, float speed, float spread){
+    public Result createDefaultProjectile(Player player, float speed, float spread){
         Location loc = player.getEyeLocation();
         loc.add(loc.getDirection().normalize().multiply(0.1));
 

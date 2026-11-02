@@ -75,6 +75,19 @@ public class AccessoryRecipes {
         registerSilencingSheathRecipe();
         registerCrossedHeartNecklaceRecipe();
         registerDivingGearRecipe();
+        registerLavaCharmRecipe();
+    }
+
+    private void registerLavaCharmRecipe(){
+        ItemStack item=LavaCharm.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_LavaCharm");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("GGG","GLG","GOG");
+        recipe.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
+        recipe.setIngredient('L', new RecipeChoice.ExactChoice(new ItemStack(Material.LAVA_BUCKET)));
+        recipe.setIngredient('O', new RecipeChoice.ExactChoice(new ItemStack(Material.OBSIDIAN)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
     }
 
     private void registerDivingGearRecipe(){
@@ -96,7 +109,6 @@ public class AccessoryRecipes {
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         recipeManager.register(recipe);
     }
-
 
     private void registerSilencingSheathRecipe(){
         ItemStack item=SilencingSheath.getItem(plugin);

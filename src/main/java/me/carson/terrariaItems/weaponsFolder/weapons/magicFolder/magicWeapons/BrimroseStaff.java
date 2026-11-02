@@ -23,7 +23,7 @@ public class BrimroseStaff extends Magic {
     private record Node(Location loc, Vector dir) {}
 
     public BrimroseStaff(Plugin plugin) {
-        super(plugin,"brimrose_staff.name","#FF96FF", Material.AMETHYST_SHARD,"brimrose_staff","BrimroseStaff",10,0f,5,0,0,12,"brimrose_staff.lore");
+        super(plugin,"brimrose_staff.name","#FF96FF", Material.AMETHYST_SHARD,"brimrose_staff","BrimroseStaff",7,0f,5,0,0,12,"brimrose_staff.lore");
     }
 
     @Override
