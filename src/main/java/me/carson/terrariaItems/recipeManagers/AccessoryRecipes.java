@@ -76,6 +76,17 @@ public class AccessoryRecipes {
         registerCrossedHeartNecklaceRecipe();
         registerDivingGearRecipe();
         registerLavaCharmRecipe();
+        registerMoltenCharmRecipe();
+    }
+
+    private void registerMoltenCharmRecipe(){
+        ItemStack item= MoltenCharm.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_MoltenCharm");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(LavaCharm.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ObsidianSkull.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
     }
 
     private void registerLavaCharmRecipe(){

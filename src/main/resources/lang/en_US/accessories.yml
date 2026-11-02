@@ -324,3 +324,8 @@ lava_charm:
   name: "Lava Charm"
   lore:
     - "&7Provides 7 seconds of fire resistance"
+molten_charm:
+  name: "Molten Charm"
+  lore:
+    - "&7Provides 7 seconds of fire resistance"
+    - "&7Grants immunity to fire"
