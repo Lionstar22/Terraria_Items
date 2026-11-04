@@ -443,3 +443,10 @@ brimblade:
     - "&710 Rouge Damage"
     - "&5Stealth strikes launch a "
     - "&5barrage of brimstone darts"
+infernal_kris:
+  name: "Infernal Kris"
+  lore:
+    - "&7Rapidly throws burning daggers"
+    - "&76 Rouge Damage"
+    - "&5Stealth strikes exploding"
+    - "&5when hitting walls"

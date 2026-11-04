@@ -96,6 +96,18 @@ public class WeaponRecipes {
         registerEmeraldStaffRecipe();
         registerDiamondStaffRecipe();
         registerBrimroseStaffRecipe();
+        registerInfernalKrisRecipe();
+    }
+
+    private void registerInfernalKrisRecipe(){
+        ItemStack item= InfernalKris.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_InfernalKris");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("  H"," H ","C  ");
+        recipe.setIngredient('H',new RecipeChoice.ExactChoice(HellstoneBar.getItem(plugin)));
+        recipe.setIngredient('C',new RecipeChoice.ExactChoice(new ItemStack(Material.CRIMSON_PLANKS)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
     }
 
     private void registerBrimroseStaffRecipe(){
