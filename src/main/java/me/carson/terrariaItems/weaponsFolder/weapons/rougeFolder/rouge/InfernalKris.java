@@ -1,6 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge;
 
-import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.BlazingStarProjectile;
+
 import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.InfernalKrisProjectile;
 import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.Rouge;
 import org.bukkit.Material;
@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 public class InfernalKris extends Rouge {
 
     public InfernalKris(Plugin plugin) {
-        super(plugin,"infernal_kris.name","#FFC896", Material.BLAZE_ROD,"infernal_kris","InfernalKris",10,0.9f,6,0,200,"infernal_kris.lore");
+        super(plugin,"infernal_kris.name","#FFC896", Material.BLAZE_ROD,"infernal_kris","InfernalKris",10,0.9f,6,0,100,"infernal_kris.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

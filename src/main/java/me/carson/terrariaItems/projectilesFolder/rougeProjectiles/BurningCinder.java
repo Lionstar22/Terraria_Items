@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class BurningCinder extends RougeProjectiles {
 
-    private final double speed=2;
-    private final double gravStrength=0.5;
+    private final double speed=1;
+    private final double gravStrength=0.1;
     private final int duration=100;
     private final int spinSpeed=15;
 

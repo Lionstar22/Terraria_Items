@@ -97,6 +97,17 @@ public class WeaponRecipes {
         registerDiamondStaffRecipe();
         registerBrimroseStaffRecipe();
         registerInfernalKrisRecipe();
+        registerBrimbladeRecipe();
+    }
+
+    private void registerBrimbladeRecipe(){
+        ItemStack item= Brimblade.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "hm_Brimblade");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" H ","H H"," H ");
+        recipe.setIngredient('H',new RecipeChoice.ExactChoice(UnholyCore.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
     }
 
     private void registerInfernalKrisRecipe(){

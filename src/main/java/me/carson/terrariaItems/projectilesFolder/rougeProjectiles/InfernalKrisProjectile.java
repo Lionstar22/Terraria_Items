@@ -113,6 +113,7 @@ public class InfernalKrisProjectile extends RougeProjectiles {
                         target.setMaximumNoDamageTicks(temp);
                         if(isStealthStrike){
                             explodeKris(player,proj.getLocation(),currentStealth);
+                            target.setFireTicks(60);
                             proj.remove();
                             task.cancel();
                             return;
@@ -135,7 +136,6 @@ public class InfernalKrisProjectile extends RougeProjectiles {
             next.setYaw(yaw);
             next.setPitch(pitch);
             proj.teleport(next);
-            //proj.setInterpolationDelay(0);
             spinProjectile(proj, spinAngle, spinSpeed);
 
             if (particle != null&&tick[0]>2) {
@@ -149,5 +149,12 @@ public class InfernalKrisProjectile extends RougeProjectiles {
             new BurningCinder(plugin).makeCinder(player,location,currentStealth);
         }
         player.getWorld().playSound(location, "terraria:explosion", 0.5F,1.0f);
+        location.getWorld().spawnParticle(
+                Particle.FLAME,
+                location,
+                15,
+                0.5, 0.5, 0.5,
+                0.01
+        );
     }
 }

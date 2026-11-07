@@ -54,7 +54,6 @@ public class BrimbladeProjectile extends RougeProjectiles {
         final int[] tick = {0};
         final Vector[] direction = {dir};
         final float[] spinAngle = {0f};
-        ArrayList<Entity> hitEntities=new ArrayList<>();
         if(isStealthStrike){
             duration=duration*1.5f;
         }
@@ -63,7 +62,7 @@ public class BrimbladeProjectile extends RougeProjectiles {
         Bukkit.getScheduler().runTaskTimer(plugin, task -> {
             if (proj.isDead()) {
                 task.cancel();
-                hitEntities.clear();
+;
                 return;
             }
 
@@ -72,7 +71,6 @@ public class BrimbladeProjectile extends RougeProjectiles {
             if (tick[0] >= finalDuration) {
                 moveBrimbladeBackwards(player,weaponDamage, finalDuration,proj,dir,spinSpeed,currentStealth,isStealthStrike);
                 task.cancel();
-                hitEntities.clear();
                 return;
             }
 
@@ -81,7 +79,7 @@ public class BrimbladeProjectile extends RougeProjectiles {
             Location next = now.clone().add(direction[0]);
             float dist= (float) now.distance(next);
 
-            RayTraceResult result= player.getWorld().rayTrace(now,direction[0],dist, FluidCollisionMode.NEVER,true,0.1, e -> (e.getType() != proj.getType())&&(e!=player)&&!(hitEntities.contains(e)));
+            RayTraceResult result= player.getWorld().rayTrace(now,direction[0],dist, FluidCollisionMode.NEVER,true,0.1, e -> (e.getType() != proj.getType())&&(e!=player));
             if(result!=null){
                 if(result.getHitBlock()!=null){
                     if(!result.getHitBlock().isPassable() && result.getHitBlockFace()!=null){
@@ -96,9 +94,10 @@ public class BrimbladeProjectile extends RougeProjectiles {
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
                         target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,currentStealth)),source);
-                        hitEntityEffect(target,player);
                         target.setMaximumNoDamageTicks(temp);
-                        hitEntities.add(target);
+                        moveBrimbladeBackwards(player,weaponDamage, finalDuration,proj,dir,spinSpeed,currentStealth,isStealthStrike);
+                        task.cancel();
+                        return;
                     }
                 }
             }
