@@ -77,6 +77,18 @@ public class AccessoryRecipes {
         registerDivingGearRecipe();
         registerLavaCharmRecipe();
         registerMoltenCharmRecipe();
+        registerHandWarmerRecipe();
+    }
+
+    private void registerHandWarmerRecipe(){
+        ItemStack item=HandWarmer.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_HandWarmer");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" RR","RRR"," WW");
+        recipe.setIngredient('R', new RecipeChoice.ExactChoice(new ItemStack(Material.RED_WOOL)));
+        recipe.setIngredient('W', new RecipeChoice.ExactChoice(new ItemStack(Material.WHITE_WOOL)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
     }
 
     private void registerMoltenCharmRecipe(){

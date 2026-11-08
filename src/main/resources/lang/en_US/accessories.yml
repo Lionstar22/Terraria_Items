@@ -329,3 +329,7 @@ molten_charm:
   lore:
     - "&7Provides 7 seconds of fire resistance"
     - "&7Grants immunity to fire"
+hand_warmer:
+  name: "Hand Warmer"
+  lore:
+    - "&7Grants Immunity to Freeze"

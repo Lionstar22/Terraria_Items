@@ -103,6 +103,7 @@ public class AccessoryManager implements Listener {
         accessoryList.put("DivingGear",new DivingGear(plugin));
         accessoryList.put("LavaCharm",new LavaCharm(plugin));
         accessoryList.put("MoltenCharm",new MoltenCharm(plugin));
+        accessoryList.put("HandWarmer",new HandWarmer(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
