@@ -69,7 +69,7 @@ public class BrimbladeProjectile extends RougeProjectiles {
             tick[0]++;
 
             if (tick[0] >= finalDuration) {
-                moveBrimbladeBackwards(player,weaponDamage, finalDuration,proj,dir,spinSpeed,currentStealth,isStealthStrike);
+                moveBrimbladeBackwards(player,weaponDamage, finalDuration,proj,dir,spinSpeed,currentStealth);
                 task.cancel();
                 return;
             }
@@ -83,7 +83,7 @@ public class BrimbladeProjectile extends RougeProjectiles {
             if(result!=null){
                 if(result.getHitBlock()!=null){
                     if(!result.getHitBlock().isPassable() && result.getHitBlockFace()!=null){
-                        moveBrimbladeBackwards(player,weaponDamage, finalDuration,proj,dir,spinSpeed,currentStealth,isStealthStrike);
+                        moveBrimbladeBackwards(player,weaponDamage, finalDuration,proj,dir,spinSpeed,currentStealth);
                         task.cancel();
                         return;
                     }
@@ -95,7 +95,7 @@ public class BrimbladeProjectile extends RougeProjectiles {
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
                         target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,currentStealth)),source);
                         target.setMaximumNoDamageTicks(temp);
-                        moveBrimbladeBackwards(player,weaponDamage, finalDuration,proj,dir,spinSpeed,currentStealth,isStealthStrike);
+                        moveBrimbladeBackwards(player,weaponDamage, finalDuration,proj,dir,spinSpeed,currentStealth);
                         task.cancel();
                         return;
                     }
@@ -111,7 +111,7 @@ public class BrimbladeProjectile extends RougeProjectiles {
         }, 1L, 1L);
     }
 
-    private void moveBrimbladeBackwards(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir,float spinSpeed,double currentStealth,boolean isStealthStrike){
+    private void moveBrimbladeBackwards(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir,float spinSpeed,double currentStealth){
         final int[] tick = {0};
         final Vector[] direction = {dir};
         final float[] spinAngle = {0f};

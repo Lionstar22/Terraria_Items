@@ -447,6 +447,14 @@ infernal_kris:
   name: "Infernal Kris"
   lore:
     - "&7Rapidly throws burning daggers"
-    - "&76 Rouge Damage"
+    - "&75 Rouge Damage"
     - "&5Stealth strikes exploding"
     - "&5when hitting walls"
+ashen_stalactite:
+  name: "Ashen Stalactite"
+  lore:
+    - "&7Throws a small stalactite"
+    - "&76 Rouge Damage"
+    - "&5Stealth strikes cause a more"
+    - "&5damaging stalactite which crumbles"
+    - "&5into damaging dust"

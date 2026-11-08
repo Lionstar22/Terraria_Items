@@ -12,6 +12,7 @@ import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.ClockworkAss
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.LaserRifle;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.MagicDagger;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.BreakerBlade;
+import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.AshenStalactite;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.Bomb;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -68,12 +69,6 @@ public class MobDeathListeners implements Listener {
         EntityType entityType = e.getEntity().getType();
         double rand=Math.random();
         if(worldDataInstance.getPreHardmodeEnabled()){
-            if (e.getEntity().getType() == EntityType.ZOMBIE){
-                if(rand<0.02){
-                    e.getDrops().add(Shackle.getItem(plugin));
-                    return;
-                }
-            }
             switch (entityType){
                 case ZOMBIE -> {
                     if(rand<0.02){
@@ -84,6 +79,12 @@ public class MobDeathListeners implements Listener {
                 case SQUID, GLOW_SQUID -> {
                     if(rand<0.05){
                         e.getDrops().add(DivingHelmet.getItem(plugin));
+                        return;
+                    }
+                }
+                case ZOMBIFIED_PIGLIN  -> {
+                    if(rand<0.04){
+                        e.getDrops().add(AshenStalactite.getItem(plugin));
                         return;
                     }
                 }

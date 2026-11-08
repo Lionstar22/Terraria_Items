@@ -330,6 +330,7 @@ public abstract class Projectile implements Listener {
                 .filter(e -> e != player)
                 .filter(e -> e.getType() != proj.getType())
                 .filter(e -> !hitEntities.contains(e))
+                .filter(e -> !excludedMobs.contains(e.getType()))
                 .map(e -> (LivingEntity) e)
                 .min(Comparator.comparingDouble(e -> e.getLocation().distanceSquared(loc)))
                 .orElse(null);

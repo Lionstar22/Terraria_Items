@@ -24,7 +24,7 @@ public class BurningCinder extends RougeProjectiles {
     private final int spinSpeed=15;
 
     public BurningCinder(Plugin plugin) {
-        super(plugin, 6,  "burning_cinder", "BurningCinder",0,0, DamageType.TRIDENT,new Particle.DustOptions(Color.fromRGB(179, 35, 69), 1f));
+        super(plugin, 5,  "burning_cinder", "BurningCinder",0,0, DamageType.TRIDENT,new Particle.DustOptions(Color.fromRGB(179, 35, 69), 1f));
     }
 
     @Override
