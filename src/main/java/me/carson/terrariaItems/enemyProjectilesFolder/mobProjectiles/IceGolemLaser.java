@@ -4,6 +4,7 @@ import me.carson.terrariaItems.enemyProjectilesFolder.EnemyProjectile;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public class IceGolemLaser extends EnemyProjectile {
@@ -20,6 +21,11 @@ public class IceGolemLaser extends EnemyProjectile {
 
     @Override
     public void hitBlockEffect(Block block) {
+
+    }
+
+    @Override
+    public void shootProj(LivingEntity shooter, Player target) {
 
     }
 

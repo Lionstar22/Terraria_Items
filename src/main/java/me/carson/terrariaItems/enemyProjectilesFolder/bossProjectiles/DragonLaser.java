@@ -9,6 +9,7 @@ import org.bukkit.damage.DamageType;
 import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -27,6 +28,11 @@ public class DragonLaser extends EnemyProjectile {
     @Override
     public void hitBlockEffect(Block block) {
         spawnDragonFireEffect(block.getLocation().add(0.5,1f,0.5));
+    }
+
+    @Override
+    public void shootProj(LivingEntity shooter, Player target) {
+
     }
 
     public void spawnDragonFireEffect(Location loc) {

@@ -150,7 +150,7 @@ public abstract class EnemyProjectile implements Listener {
         return v;
     }
 
-    private void faceDirection(ItemDisplay proj, Vector dir) {
+    public void faceDirection(ItemDisplay proj, Vector dir) {
         Vector norm = dir.clone().normalize();
 
         float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
@@ -165,5 +165,7 @@ public abstract class EnemyProjectile implements Listener {
     public abstract void hitEntityEffect(LivingEntity entity);
 
     public abstract void hitBlockEffect(Block block);
+
+    public abstract void shootProj(LivingEntity shooter,Player target);
 
 }

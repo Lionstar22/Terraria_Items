@@ -6,6 +6,7 @@ import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public class MermanBolt extends EnemyProjectile {
@@ -23,6 +24,11 @@ public class MermanBolt extends EnemyProjectile {
     @Override
     public void hitBlockEffect(Block block) {
         block.getWorld().playSound(block.getLocation(), "terraria:impact_1", 2.0F, 1.0F);
+    }
+
+    @Override
+    public void shootProj(LivingEntity shooter, Player target) {
+
     }
 
 }

@@ -6,6 +6,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -27,6 +28,11 @@ public class WitherLaser extends EnemyProjectile {
         if(above.getType()== Material.AIR){
             above.setType(Material.SOUL_FIRE);
         }
+    }
+
+    @Override
+    public void shootProj(LivingEntity shooter, Player target) {
+
     }
 
 }

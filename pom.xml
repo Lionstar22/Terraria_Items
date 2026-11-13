@@ -41,7 +41,7 @@
                         <configuration>
                             <target>
                                 <copy file="${project.build.directory}/${project.artifactId}-${project.version}.jar"
-                                      todir="S:\Minecraft Paper Testing Server\plugins"/>
+                                      todir="D:\Minecraft Paper Testing Server\plugins"/>
                             </target>
                         </configuration>
                     </execution>
