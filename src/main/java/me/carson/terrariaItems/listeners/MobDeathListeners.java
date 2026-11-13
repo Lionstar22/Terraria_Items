@@ -214,6 +214,9 @@ public class MobDeathListeners implements Listener {
                         event.getDrops().add(ChumCaster.getItem(plugin));
                     }
                 }
+                case  "FireImp" ->{
+                    event.getDrops().clear();
+                }
             }
             if (worldDataInstance.getHardmodeEnabled()) {
                 switch (id) {

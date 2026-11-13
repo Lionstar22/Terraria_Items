@@ -21,12 +21,12 @@ public class BurningSphere extends EnemyProjectile {
     private final int duration=100;
 
     public BurningSphere(Plugin plugin) {
-        super(plugin, 8,1f, "burning_sphere", "BurningSphere",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(13, 87, 72), 1f));
+        super(plugin, 8,0.8f, "burning_sphere", "BurningSphere",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(184, 58, 24), 1f));
     }
 
     @Override
     public void hitEntityEffect(LivingEntity entity) {
-
+        entity.setFireTicks(140);
     }
 
     @Override

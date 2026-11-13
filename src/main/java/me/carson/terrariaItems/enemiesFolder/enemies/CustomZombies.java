@@ -42,6 +42,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
     public void onZombieSpawn(CreatureSpawnEvent event){
         if (event.getEntityType() != EntityType.ZOMBIE) return;
         Zombie zombie = (Zombie) event.getEntity();
+        if(zombie.getWorld().getEnvironment()== World.Environment.NETHER){return;}
         Location location = zombie.getLocation();
 
         boolean isRaining= zombie.getWorld().hasStorm();

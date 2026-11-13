@@ -32,6 +32,7 @@ public class EnemyManager implements Listener {
         Bukkit.getPluginManager().registerEvents(new CustomZombies(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new CustomSkeletons(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new CustomDrowned(plugin), plugin);
+        Bukkit.getPluginManager().registerEvents(new FireImp(plugin), plugin);
     }
 
 
