@@ -18,7 +18,7 @@ import org.bukkit.potion.PotionEffectType;
 public class MoltenSkullRose extends Accessory implements Listener {
 
     public MoltenSkullRose(Plugin plugin){
-        super(plugin,"molten_skull_rose.name","#96FF96", Material.ORANGE_DYE,"molten_skull_rose","MoltenSkullRose","molten_skull_rose.lore");
+        super(plugin,"molten_skull_rose.name","#D2A0FF", Material.ORANGE_DYE,"molten_skull_rose","MoltenSkullRose","molten_skull_rose.lore");
     }
 
     @Override

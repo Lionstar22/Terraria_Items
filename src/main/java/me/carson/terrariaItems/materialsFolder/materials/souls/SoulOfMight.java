@@ -18,7 +18,7 @@ import java.util.List;
 public class SoulOfMight extends Material{
 
     public SoulOfMight(Plugin plugin) {
-        super(plugin,"soul_of_might.name","#FF96FF", org.bukkit.Material.IRON_INGOT,"soul_of_might","SoulOfMight","soul_of_might.lore");
+        super(plugin,"soul_of_might.name","#FF96FF", org.bukkit.Material.COPPER_INGOT,"soul_of_might","SoulOfMight","soul_of_might.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

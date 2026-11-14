@@ -114,9 +114,9 @@ public class WeaponRecipes {
         ItemStack item= InfernalKris.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "pre_InfernalKris");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
-        recipe.shape("  H"," H ","C  ");
+        recipe.shape("   "," H ","B  ");
         recipe.setIngredient('H',new RecipeChoice.ExactChoice(HellstoneBar.getItem(plugin)));
-        recipe.setIngredient('C',new RecipeChoice.ExactChoice(new ItemStack(Material.CRIMSON_PLANKS)));
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.BLAZE_ROD)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         recipeManager.register(recipe);
     }
@@ -125,7 +125,7 @@ public class WeaponRecipes {
         ItemStack item= BrimroseStaff.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "hm_BrimroseStaff");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
-        recipe.shape(" U ","URU","BU ");
+        recipe.shape(" UR"," BU","B  ");
         recipe.setIngredient('U',new RecipeChoice.ExactChoice(UnholyCore.getItem(plugin)));
         recipe.setIngredient('R',new RecipeChoice.ExactChoice(new ItemStack(Material.POPPY)));
         recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.BLAZE_ROD)));

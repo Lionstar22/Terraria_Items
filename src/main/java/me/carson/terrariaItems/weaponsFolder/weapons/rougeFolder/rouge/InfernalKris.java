@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 public class InfernalKris extends Rouge {
 
     public InfernalKris(Plugin plugin) {
-        super(plugin,"infernal_kris.name","#FFC896", Material.BLAZE_ROD,"infernal_kris","InfernalKris",10,0.8f,5,0,100,"infernal_kris.lore");
+        super(plugin,"infernal_kris.name","#FFC896", Material.BLAZE_ROD,"infernal_kris","InfernalKris",10,0.8f,5,0,50,"infernal_kris.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

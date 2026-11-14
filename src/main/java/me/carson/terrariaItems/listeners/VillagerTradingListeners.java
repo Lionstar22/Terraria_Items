@@ -319,7 +319,7 @@ public class VillagerTradingListeners implements Listener {
                 ExtendoGrip.getItem(plugin),
                 0, 999, true, 1, 0.05f
         );
-        recipe.addIngredient(new ItemStack(Material.EMERALD, 15));
+        recipe.addIngredient(new ItemStack(Material.EMERALD, 25));
         return recipe;
     }
 }

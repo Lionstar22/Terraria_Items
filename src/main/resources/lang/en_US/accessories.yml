@@ -353,3 +353,11 @@ molten_skull_rose:
     - "&7Provides 7 seconds of fire resistance"
     - "&7Grants immunity to fire"
     - "&7Reduces damage from touching lava"
+extendo_grip:
+  name: "Extendo Grip"
+  lore:
+    - "&7Increases block placement range by 2"
+toolbelt:
+  name: "Toolbelt"
+  lore:
+    - "&7Increases block placement range by 1"
