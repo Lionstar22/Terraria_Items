@@ -66,6 +66,7 @@ public class MobDeathListeners implements Listener {
 
     @EventHandler
     public void onMobDeath(EntityDeathEvent e) {
+        if(e.getEntity().getPersistentDataContainer().has(key, PersistentDataType.STRING)){return;}
         EntityType entityType = e.getEntity().getType();
         double rand=Math.random();
         if(worldDataInstance.getPreHardmodeEnabled()){
@@ -215,6 +216,7 @@ public class MobDeathListeners implements Listener {
                     }
                 }
                 case  "FireImp" ->{
+                    event.getDrops().clear();
                     if (Math.random() < 0.05) {
                         event.getDrops().add(ObsidianRose.getItem(plugin));
                     }
@@ -222,6 +224,9 @@ public class MobDeathListeners implements Listener {
             }
             if (worldDataInstance.getHardmodeEnabled()) {
                 switch (id) {
+                    case "PossessedArmor" ->{
+                        event.getDrops().clear();
+                    }
                     case "SkeletonArcher" -> {
                         if (Math.random() < 0.025) {
                             event.getDrops().add(MagicQuiver.getItem(plugin));

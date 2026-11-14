@@ -109,11 +109,12 @@ public class AccessoryRecipes {
     }
 
     private void registerMagmaSkullRecipe(){
-        ItemStack item= MagmaSkull.getItem(plugin);
+        ItemStack item=MagmaSkull.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "pre_MagmaSkull");
-        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
-        recipe.addIngredient(new RecipeChoice.ExactChoice(LavaCharm.getItem(plugin)));
-        recipe.addIngredient(new RecipeChoice.ExactChoice(ObsidianSkull.getItem(plugin)));
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" O "," L ","   ");
+        recipe.setIngredient('L', new RecipeChoice.ExactChoice(LavaCharm.getItem(plugin)));
+        recipe.setIngredient('O', new RecipeChoice.ExactChoice(ObsidianSkull.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         recipeManager.register(recipe);
     }
@@ -140,11 +141,12 @@ public class AccessoryRecipes {
     }
 
     private void registerMoltenCharmRecipe(){
-        ItemStack item= MoltenCharm.getItem(plugin);
+        ItemStack item=MoltenCharm.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "pre_MoltenCharm");
-        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
-        recipe.addIngredient(new RecipeChoice.ExactChoice(LavaCharm.getItem(plugin)));
-        recipe.addIngredient(new RecipeChoice.ExactChoice(ObsidianSkull.getItem(plugin)));
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" L "," O ","   ");
+        recipe.setIngredient('L', new RecipeChoice.ExactChoice(LavaCharm.getItem(plugin)));
+        recipe.setIngredient('O', new RecipeChoice.ExactChoice(ObsidianSkull.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         recipeManager.register(recipe);
     }

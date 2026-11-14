@@ -1,22 +1,14 @@
-package me.carson.terrariaItems.enemiesFolder.enemies;
+package me.carson.terrariaItems.enemiesFolder.enemies.Casters;
 
 import me.carson.terrariaItems.armorFolder.armors.timArmor.TimChestplate;
 import me.carson.terrariaItems.armorFolder.armors.timArmor.TimLeggings;
 import me.carson.terrariaItems.armorFolder.armors.timArmor.WizardHat;
 import me.carson.terrariaItems.enemiesFolder.CustomAIs.CasterAI;
-import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.BurningSphere;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.TimBolt;
-import me.carson.terrariaItems.miscFolder.hats.FireImpHat;
-import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.PigZombie;
 import org.bukkit.entity.Skeleton;
-import org.bukkit.entity.Zombie;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
@@ -45,6 +37,6 @@ public class Tim extends CasterAI implements Listener {
         equipment.setHelmetDropChance(1f);
         equipment.setChestplateDropChance(0f);
         equipment.setLeggingsDropChance(0f);
-        startAttacks(skeleton,new TimBolt(plugin),"terraria:magic_use");
+        startCasterAI(skeleton,new TimBolt(plugin),"terraria:magic_use");
     }
 }

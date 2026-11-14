@@ -2,13 +2,10 @@ package me.carson.terrariaItems.enemiesFolder.CustomAIs;
 
 import me.carson.terrariaItems.TILangManager;
 import me.carson.terrariaItems.enemyProjectilesFolder.EnemyProjectile;
-import me.carson.terrariaItems.enemyProjectilesFolder.bossProjectiles.DragonLaser;
-import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.BurningSphere;
 import me.carson.terrariaItems.handlers.WorldDataHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.LivingEntity;
@@ -30,7 +27,9 @@ public class CasterAI {
         this.plugin = plugin;
     }
 
-    public void startAttacks(LivingEntity shooter, EnemyProjectile enemyProjectile, String sound) {
+
+
+    public void startCasterAI(LivingEntity shooter, EnemyProjectile enemyProjectile, String sound) {
         Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             if (shooter.isDead()){
                 return;
@@ -46,7 +45,7 @@ public class CasterAI {
                 Player target=getRandomPlayer(playerList);
                 if(shooter.hasLineOfSight(target)){
                     fireAttack(shooter,target,enemyProjectile);
-                    shooter.getWorld().playSound(shooter.getLocation(), sound, 3.0F, 1.0F);
+                    shooter.getWorld().playSound(shooter.getLocation(), sound, 1.0F, 1.0F);
                 }
                 for(int i=0;i<5;i++){
                     Location newLoc=teleport(target);
@@ -75,7 +74,7 @@ public class CasterAI {
                     cancel();
                 }
                 enemyProjectile.shootProj(shooter,target);
-                shooter.getWorld().playSound(shooter.getLocation(), "terraria:magic_use", 4.0F, 1.0F);
+                shooter.getWorld().playSound(shooter.getLocation(), "terraria:magic_use", 2.0F, 1.0F);
                 count++;
                 if (count >= 3) {
                     cancel();

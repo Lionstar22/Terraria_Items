@@ -3,18 +3,12 @@ package me.carson.terrariaItems.enemiesFolder.enemies;
 import me.carson.terrariaItems.armorFolder.armors.iceGolemArmor.IceGolemBoots;
 import me.carson.terrariaItems.armorFolder.armors.iceGolemArmor.IceGolemChestplate;
 import me.carson.terrariaItems.armorFolder.armors.iceGolemArmor.IceGolemLeggings;
-import me.carson.terrariaItems.armorFolder.armors.runeWizardArmor.RuneWizardChestplate;
-import me.carson.terrariaItems.armorFolder.armors.runeWizardArmor.RuneWizardLeggings;
-import me.carson.terrariaItems.armorFolder.armors.timArmor.TimChestplate;
-import me.carson.terrariaItems.armorFolder.armors.timArmor.TimLeggings;
-import me.carson.terrariaItems.armorFolder.armors.timArmor.WizardHat;
 import me.carson.terrariaItems.armorFolder.armors.undeadMinerArmor.UndeadMinerChestplate;
-import me.carson.terrariaItems.enemiesFolder.CustomAIs.CasterAI;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
+import me.carson.terrariaItems.enemiesFolder.enemies.Casters.RuneWizard;
+import me.carson.terrariaItems.enemiesFolder.enemies.Casters.Tim;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.DustDevil;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.IceGolemLaser;
-import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.RuneWizardBolt;
-import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.TimBolt;
 import me.carson.terrariaItems.miscFolder.BasicItems.BonePickaxe;
 import me.carson.terrariaItems.miscFolder.hats.*;
 import org.bukkit.Location;
@@ -46,6 +40,10 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         super(plugin);
     }
 
+    Tim tim=new Tim(plugin);
+    RuneWizard runeWizard=new RuneWizard(plugin);
+    NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+
     @EventHandler
     public void onSkeletonSpawn(CreatureSpawnEvent event){
         if (event.getEntityType() != EntityType.SKELETON) return;
@@ -59,9 +57,8 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
             if(instance.getHardmode()){
                 if(rand<0.5) {  //50%
                     spawnSkeletonArcher(skeleton);
-
                 } else if(rand<0.53) {    //3%
-                    spawnRuneWizard(skeleton);
+                    runeWizard.spawnRuneWizard(skeleton);
                 }
             }
             return;
@@ -91,9 +88,9 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
                 }
                 case 3->{
                     if(rand<0.03){  //3%
-                        spawnTim(skeleton);
+                        tim.spawnTim(skeleton);
                     }else if(rand<0.06){    //3%
-                        spawnRuneWizard(skeleton);
+                        runeWizard.spawnRuneWizard(skeleton);
                     }else if(rand<0.16){    //10%
                         spawnUndeadMiner(skeleton);
                     } else if (rand<0.66) {    //50%
@@ -112,7 +109,7 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
                 }
                 case 3->{
                     if(rand<0.03){//3%
-                        spawnTim(skeleton);
+                        tim.spawnTim(skeleton);
                     }else if(rand<0.13){//10%
                         spawnUndeadMiner(skeleton);
                     }
@@ -127,7 +124,6 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         skeleton.setCustomNameVisible(false);
         skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(40);
         skeleton.setHealth(40);
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,"SkeletonArcher");
         skeleton.setCanPickupItems(false);
         EntityEquipment equipment=skeleton.getEquipment();
@@ -150,7 +146,6 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         skeleton.setCustomNameVisible(false);
         skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(25);
         skeleton.setHealth(25);
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,"UndeadMiner");
         skeleton.setCanPickupItems(false);
         EntityEquipment equipment=skeleton.getEquipment();
@@ -162,33 +157,11 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         equipment.setItemInMainHandDropChance(0.05f);
     }
 
-    public void spawnTim(Skeleton skeleton){
-        skeleton.setCustomName("Tim");
-        skeleton.setCustomNameVisible(false);
-        skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(40);
-        skeleton.setHealth(40);
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
-        skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,"Tim");
-        skeleton.setCanPickupItems(false);
-        skeleton.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0);
-        EntityEquipment equipment=skeleton.getEquipment();
-        equipment.setHelmet(WizardHat.getItem(plugin));
-        equipment.setChestplate(TimChestplate.getItem(plugin));
-        equipment.setLeggings(TimLeggings.getItem(plugin));
-        equipment.setBoots(null);
-        equipment.setItemInMainHand(null);
-        equipment.setHelmetDropChance(1f);
-        equipment.setChestplateDropChance(0f);
-        equipment.setLeggingsDropChance(0f);
-        startAttacks(skeleton,new TimBolt(plugin),"terraria:magic_use");
-    }
-
     public void spawnIceGolem(Skeleton skeleton){
         skeleton.setCustomName(lang.get("enemies","ice_golem.name"));
         skeleton.setCustomNameVisible(false);
         skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(250);
         skeleton.setHealth(250);
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,"IceGolem");
         skeleton.setCanPickupItems(false);
         skeleton.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.17);
@@ -209,33 +182,12 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         startAttacks(skeleton,new IceGolemLaser(plugin),"terraria:laser");
     }
 
-    public void spawnRuneWizard(Skeleton skeleton){
-        skeleton.setCustomName(lang.get("enemies","rune_wizard.name"));
-        skeleton.setCustomNameVisible(false);
-        skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(80);
-        skeleton.setHealth(80);
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
-        skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,"RuneWizard");
-        skeleton.setCanPickupItems(false);
-        skeleton.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0);
-        EntityEquipment equipment=skeleton.getEquipment();
-        equipment.setHelmet(RuneWizardHat.getItem(plugin));
-        equipment.setChestplate(RuneWizardChestplate.getItem(plugin));
-        equipment.setLeggings(RuneWizardLeggings.getItem(plugin));
-        equipment.setBoots(null);
-        equipment.setItemInMainHand(null);
-        equipment.setHelmetDropChance(0f);
-        equipment.setChestplateDropChance(0f);
-        equipment.setLeggingsDropChance(0f);
-        startAttacks(skeleton,new RuneWizardBolt(plugin),"terraria:magic_use");
-    }
 
     public void spawnSandElemental(Skeleton skeleton){
         skeleton.setCustomName(lang.get("enemies","sand_elemental.name"));
         skeleton.setCustomNameVisible(false);
         skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(300);
         skeleton.setHealth(300);
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,"SandElemental");
         skeleton.setCanPickupItems(false);
         skeleton.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.15);

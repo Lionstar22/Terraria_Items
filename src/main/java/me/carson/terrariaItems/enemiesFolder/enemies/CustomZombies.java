@@ -10,6 +10,7 @@ import me.carson.terrariaItems.armorFolder.armors.werewolfArmor.WerewolfBoots;
 import me.carson.terrariaItems.armorFolder.armors.werewolfArmor.WerewolfChestplate;
 import me.carson.terrariaItems.armorFolder.armors.werewolfArmor.WerewolfLeggings;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
+import me.carson.terrariaItems.enemiesFolder.enemies.Casters.FireImp;
 import me.carson.terrariaItems.miscFolder.hats.*;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
@@ -17,6 +18,7 @@ import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.PigZombie;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -37,9 +39,22 @@ public class CustomZombies extends CustomEnemy implements Listener {
         super(plugin);
     }
 
+    FireImp fireImp=new FireImp(plugin);
+    NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
 
     @EventHandler
     public void onZombieSpawn(CreatureSpawnEvent event){
+
+        if (event.getEntityType() == EntityType.ZOMBIFIED_PIGLIN) {
+            if(instance.getPreHardmodeEnabled()&&Math.random()<0.02){
+                PigZombie pigZombie = (PigZombie) event.getEntity();
+                Location loc=pigZombie.getLocation();
+                pigZombie.remove();
+                Zombie zombie=pigZombie.getWorld().spawn(loc, Zombie.class);
+                fireImp.spawnFireImp(zombie);
+            }
+        }
+
         if (event.getEntityType() != EntityType.ZOMBIE) return;
         Zombie zombie = (Zombie) event.getEntity();
         if(zombie.getWorld().getEnvironment()== World.Environment.NETHER){return;}
@@ -128,7 +143,6 @@ public class CustomZombies extends CustomEnemy implements Listener {
 
     public void spawnPossessedArmor(Zombie zombie){
         zombie.setCustomName(lang.get("enemies","possessed_armor.name"));
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"PossessedArmor");
         zombie.setCanPickupItems(false);
         zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(12);
@@ -147,8 +161,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
 
     public void spawnFrozenZombie(Zombie zombie){
         zombie.setCustomName(lang.get("enemies","frozen_zombie.name"));
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
-        zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"FrozenZombie");
+        //zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"FrozenZombie");
         zombie.setCanPickupItems(false);
         EntityEquipment equipment=zombie.getEquipment();
         equipment.setHelmet(FrozenZombieHat.getItem(plugin));
@@ -159,8 +172,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
 
     public void spawnRaincoatZombie(Zombie zombie){
         zombie.setCustomName(lang.get("enemies","raincoat_zombie.name"));
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
-        zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"RaincoatZombie");
+        //zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"RaincoatZombie");
         zombie.setCanPickupItems(false);
         EntityEquipment equipment=zombie.getEquipment();
         equipment.setHelmet(RaincoatZombieHat.getItem(plugin));
@@ -171,7 +183,6 @@ public class CustomZombies extends CustomEnemy implements Listener {
 
     public void spawnGnome(Zombie zombie){
         zombie.setCustomName(lang.get("enemies","gnome.name"));
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"Gnome");
         zombie.setCanPickupItems(false);
         zombie.setInvisible(true);
@@ -189,7 +200,6 @@ public class CustomZombies extends CustomEnemy implements Listener {
 
     public void spawnWerewolf(Zombie zombie){
         zombie.setCustomName(lang.get("enemies","werewolf.name"));
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"Werewolf");
         zombie.setCanPickupItems(false);
         zombie.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.3);
@@ -210,7 +220,6 @@ public class CustomZombies extends CustomEnemy implements Listener {
 
     public void spawnDoctorBones(Zombie zombie){
         zombie.setCustomName(lang.get("enemies","doctor_bones.name"));
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"DoctorBones");
         zombie.setCanPickupItems(false);
         zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(35);
@@ -227,7 +236,6 @@ public class CustomZombies extends CustomEnemy implements Listener {
 
     public void spawnBloodZombie(Zombie zombie){
         zombie.setCustomName(lang.get("enemies","blood_zombie.name"));
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"BloodZombie");
         zombie.setCanPickupItems(false);
         zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(30);
@@ -247,7 +255,6 @@ public class CustomZombies extends CustomEnemy implements Listener {
 
     public void spawnGroomZombie(Zombie zombie){
         zombie.setCustomName(lang.get("enemies","the_groom.name"));
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"TheGroom");
         zombie.setCanPickupItems(false);
         zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(75);
@@ -267,7 +274,6 @@ public class CustomZombies extends CustomEnemy implements Listener {
 
     public void spawnBrideZombie(Zombie zombie){
         zombie.setCustomName(lang.get("enemies","the_bride.name"));
-        NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"TheBride");
         zombie.setCanPickupItems(false);
         zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(75);

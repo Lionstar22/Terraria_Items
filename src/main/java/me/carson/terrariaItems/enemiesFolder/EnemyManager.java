@@ -1,24 +1,15 @@
 package me.carson.terrariaItems.enemiesFolder;
 
-import me.carson.terrariaItems.accesoryFolder.accessories.MagicQuiver;
 import me.carson.terrariaItems.enemiesFolder.enemies.*;
-import me.carson.terrariaItems.materialsFolder.materials.ForbiddenFragment;
-import me.carson.terrariaItems.materialsFolder.materials.FrostCore;
-import me.carson.terrariaItems.toolFolder.tools.summons.BloodyTear;
-import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.BloodRainBow;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
 import java.util.Objects;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class EnemyManager implements Listener {
 
@@ -32,7 +23,6 @@ public class EnemyManager implements Listener {
         Bukkit.getPluginManager().registerEvents(new CustomZombies(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new CustomSkeletons(plugin), plugin);
         Bukkit.getPluginManager().registerEvents(new CustomDrowned(plugin), plugin);
-        Bukkit.getPluginManager().registerEvents(new FireImp(plugin), plugin);
     }
 
 
