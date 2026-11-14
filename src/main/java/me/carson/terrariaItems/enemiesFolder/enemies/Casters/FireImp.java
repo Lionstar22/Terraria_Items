@@ -18,8 +18,6 @@ public class FireImp extends CasterAI {
     }
 
     public void spawnFireImp(Zombie zombie) {
-        zombie.setCustomName("Fire Imp");
-        zombie.setCustomNameVisible(false);
         zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(30);
         zombie.setHealth(30);
         zombie.setCanPickupItems(false);

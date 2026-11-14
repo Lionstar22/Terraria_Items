@@ -404,3 +404,57 @@ brimstone_fury:
     - "&7Convierte flechas de madera en"
     - "&7una dispersión de 3 rayos de azufre"
     - "&78 de Daño a Distancia"
+daybloom_staff:
+  name: "Bastón de Flor del Día"
+  lore:
+    - "&7Dispara pequeños proyectiles mágicos"
+    - "&71.5 de Daño Mágico"
+    - "&75 de Maná"
+sapphire_staff:
+  name: "Bastón de Zafiro"
+  lore:
+    - "&7Los zafiros se disparan en pares"
+    - "&73 de Daño Mágico"
+    - "&78 de Maná"
+emerald_staff:
+  name: "Bastón de Esmeralda"
+  lore:
+    - "&7Dispara rayos de esmeralda"
+    - "&76 de Daño Mágico"
+    - "&78 de Maná"
+diamond_staff:
+  name: "Bastón de Diamante"
+  lore:
+    - "&7Dispara rayos de diamante explosivos"
+    - "&79 de Daño Mágico"
+    - "&79 de Maná"
+brimrose_staff:
+  name: "Bastón de Rosa de Azufre"
+  lore:
+    - "&7Dispara una dispersión de rayos"
+    - "&7de azufre que se dividen"
+    - "&75 de Daño Mágico"
+    - "&712 de Maná"
+brimblade:
+  name: "Hoja de Azufre"
+  lore:
+    - "&7Lanza una hoja que se divide"
+    - "&7al golpear enemigos"
+    - "&710 de Daño Pícaro"
+    - "&5Los golpes sigilosos lanzan una"
+    - "&5lluvia de dardos de azufre"
+infernal_kris:
+  name: "Kris Infernal"
+  lore:
+    - "&7Lanza rápidamente dagas ardientes"
+    - "&75 de Daño Pícaro"
+    - "&5Los golpes sigilosos explotan"
+    - "&5al impactar contra paredes"
+ashen_stalactite:
+  name: "Estalactita Cenicienta"
+  lore:
+    - "&7Lanza una pequeña estalactita"
+    - "&76 de Daño Pícaro"
+    - "&5Los golpes sigilosos lanzan una estalactita"
+    - "&5más dañina que se desmorona"
+    - "&5en polvo dañino"

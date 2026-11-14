@@ -308,3 +308,53 @@ crossed_heart_necklace:
     - "&7增加移动速度"
     - "&7受到伤害后"
     - "&7延长无敌时间"
+diving_helmet:
+  name: "潜水头盔"
+  lore:
+    - "&7延长水下呼吸时间"
+diving_gear:
+  name: "潜水装备"
+  lore:
+    - "&7延长水下呼吸时间"
+    - "&7允许更快地游泳"
+lava_charm:
+  name: "熔岩护身符"
+  lore:
+    - "&7提供7秒火焰抗性"
+molten_charm:
+  name: "熔融护身符"
+  lore:
+    - "&7提供7秒火焰抗性"
+    - "&7免疫火焰"
+hand_warmer:
+  name: "暖手宝"
+  lore:
+    - "&7免疫冰冻"
+obsidian_rose:
+  name: "黑曜石玫瑰"
+  lore:
+    - "&7减少接触熔岩造成的伤害"
+obsidian_skull_rose:
+  name: "黑曜石骷髅玫瑰"
+  lore:
+    - "&7免疫火焰方块"
+    - "&7减少接触熔岩造成的伤害"
+magma_skull:
+  name: "岩浆骷髅"
+  lore:
+    - "&7提供7秒火焰抗性"
+    - "&7免疫火焰"
+molten_skull_rose:
+  name: "熔融骷髅玫瑰"
+  lore:
+    - "&7提供7秒火焰抗性"
+    - "&7免疫火焰"
+    - "&7减少接触熔岩造成的伤害"
+extendo_grip:
+  name: "伸缩握把"
+  lore:
+    - "&7方块放置范围增加2"
+toolbelt:
+  name: "工具腰带"
+  lore:
+    - "&7方块放置范围增加1"

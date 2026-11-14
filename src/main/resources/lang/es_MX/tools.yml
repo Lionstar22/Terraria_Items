@@ -172,3 +172,13 @@ apple_juice:
   lore:
     - "&7¿Con ganas de manzanas?"
     - "&9Mejoras menores a todas las estadísticas (10:00)"
+fruit_salad:
+  name: "Ensalada de Frutas"
+  lore:
+    - "&7Ñam ñam"
+    - "&9Mejoras menores a todas las estadísticas (25:00)"
+monster_lasagna:
+  name: "Lasaña de Monstruo"
+  lore:
+    - "&7Sabe a pelos y carnes con fideos"
+    - "&9Mejoras moderadas a todas las estadísticas (8:00)"

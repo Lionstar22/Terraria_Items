@@ -310,3 +310,53 @@ crossed_heart_necklace:
     - "&7tras recibir daño"
     - "&7Aumenta la duración de la invencibilidad"
     - "&7tras recibir daño"
+diving_helmet:
+  name: "Casco de Buceo"
+  lore:
+    - "&7Extiende la respiración bajo el agua"
+diving_gear:
+  name: "Equipo de Buceo"
+  lore:
+    - "&7Extiende la respiración bajo el agua"
+    - "&7Otorga la capacidad de nadar más rápido"
+lava_charm:
+  name: "Amuleto de Lava"
+  lore:
+    - "&7Proporciona 7 segundos de resistencia al fuego"
+molten_charm:
+  name: "Amuleto Fundido"
+  lore:
+    - "&7Proporciona 7 segundos de resistencia al fuego"
+    - "&7Otorga inmunidad al fuego"
+hand_warmer:
+  name: "Calentador de Manos"
+  lore:
+    - "&7Otorga inmunidad a la congelación"
+obsidian_rose:
+  name: "Rosa de Obsidiana"
+  lore:
+    - "&7Reduce el daño por tocar lava"
+obsidian_skull_rose:
+  name: "Rosa Calavera de Obsidiana"
+  lore:
+    - "&7Otorga inmunidad a los bloques de fuego"
+    - "&7Reduce el daño por tocar lava"
+magma_skull:
+  name: "Calavera de Magma"
+  lore:
+    - "&7Proporciona 7 segundos de resistencia al fuego"
+    - "&7Otorga inmunidad al fuego"
+molten_skull_rose:
+  name: "Rosa Calavera Fundida"
+  lore:
+    - "&7Proporciona 7 segundos de resistencia al fuego"
+    - "&7Otorga inmunidad al fuego"
+    - "&7Reduce el daño por tocar lava"
+extendo_grip:
+  name: "Agarre Extensible"
+  lore:
+    - "&7Aumenta el alcance de colocación de bloques en 2"
+toolbelt:
+  name: "Cinturón de Herramientas"
+  lore:
+    - "&7Aumenta el alcance de colocación de bloques en 1"
