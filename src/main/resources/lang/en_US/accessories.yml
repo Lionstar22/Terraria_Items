@@ -333,3 +333,23 @@ hand_warmer:
   name: "Hand Warmer"
   lore:
     - "&7Grants Immunity to Freeze"
+obsidian_rose:
+  name: "Obsidian Rose"
+  lore:
+    - "&7Reduces damage from touching lava"
+obsidian_skull_rose:
+  name: "Obsidian Skull Rose"
+  lore:
+    - "&7Grants immunity to fire blocks"
+    - "&7Reduces damage from touching lava"
+magma_skull:
+  name: "Magma Skull"
+  lore:
+    - "&7Provides 7 seconds of fire resistance"
+    - "&7Grants immunity to fire"
+molten_skull_rose:
+  name: "Molten Skull Rose"
+  lore:
+    - "&7Provides 7 seconds of fire resistance"
+    - "&7Grants immunity to fire"
+    - "&7Reduces damage from touching lava"

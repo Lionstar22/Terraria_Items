@@ -9,6 +9,7 @@ import me.carson.terrariaItems.armorFolder.armors.timArmor.TimChestplate;
 import me.carson.terrariaItems.armorFolder.armors.timArmor.TimLeggings;
 import me.carson.terrariaItems.armorFolder.armors.timArmor.WizardHat;
 import me.carson.terrariaItems.armorFolder.armors.undeadMinerArmor.UndeadMinerChestplate;
+import me.carson.terrariaItems.enemiesFolder.CustomAIs.CasterAI;
 import me.carson.terrariaItems.enemiesFolder.CustomEnemy;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.DustDevil;
 import me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles.IceGolemLaser;

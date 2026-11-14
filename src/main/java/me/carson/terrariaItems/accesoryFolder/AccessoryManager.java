@@ -104,6 +104,10 @@ public class AccessoryManager implements Listener {
         accessoryList.put("LavaCharm",new LavaCharm(plugin));
         accessoryList.put("MoltenCharm",new MoltenCharm(plugin));
         accessoryList.put("HandWarmer",new HandWarmer(plugin));
+        accessoryList.put("ObsidianRose",new ObsidianRose(plugin));
+        accessoryList.put("ObsidianSkullRose",new ObsidianSkullRose(plugin));
+        accessoryList.put("MagmaSkull",new MagmaSkull(plugin));
+        accessoryList.put("MoltenSkullRose",new MoltenSkullRose(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

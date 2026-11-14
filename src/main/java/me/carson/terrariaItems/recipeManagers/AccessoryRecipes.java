@@ -78,6 +78,54 @@ public class AccessoryRecipes {
         registerLavaCharmRecipe();
         registerMoltenCharmRecipe();
         registerHandWarmerRecipe();
+        registerObsidianSkullRoseRecipe();
+        registerMagmaSkullRecipe();
+        registerMoltenSkullRoseRecipe();
+    }
+
+    private void registerMoltenSkullRoseRecipe(){
+        ItemStack item= MoltenSkullRose.getItem(plugin);
+
+        NamespacedKey key = new NamespacedKey(plugin, "pre_MoltenSkullRose");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ObsidianSkullRose.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(LavaCharm.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
+
+        NamespacedKey key1 = new NamespacedKey(plugin, "pre_MoltenSkullRose1");
+        ShapelessRecipe recipe1 = new ShapelessRecipe(key1, item);
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(MagmaSkull.getItem(plugin)));
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(ObsidianRose.getItem(plugin)));
+        recipe1.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe1);
+
+        NamespacedKey key2 = new NamespacedKey(plugin, "pre_MoltenSkullRose2");
+        ShapelessRecipe recipe2 = new ShapelessRecipe(key2, item);
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(MagmaSkull.getItem(plugin)));
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(ObsidianSkullRose.getItem(plugin)));
+        recipe2.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe2);
+    }
+
+    private void registerMagmaSkullRecipe(){
+        ItemStack item= MagmaSkull.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_MagmaSkull");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(LavaCharm.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ObsidianSkull.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
+    }
+
+    private void registerObsidianSkullRoseRecipe(){
+        ItemStack item= ObsidianSkullRose.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_ObsidianSkullRose");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ObsidianRose.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ObsidianSkull.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
     }
 
     private void registerHandWarmerRecipe(){

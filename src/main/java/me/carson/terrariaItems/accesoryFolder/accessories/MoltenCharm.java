@@ -32,8 +32,7 @@ public class MoltenCharm extends Accessory  {
         if (OBSIDIAN_SKULL_DAMAGE.contains(event.getCause())){
             event.setCancelled(true);
             return;
-        }
-        if(event.getCause()== EntityDamageEvent.DamageCause.LAVA){
+        }else if(event.getCause()== EntityDamageEvent.DamageCause.LAVA){
             if(!player.hasCooldown(Material.ORANGE_DYE)){
                 player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 150, 0, false, false,false));
                 player.setCooldown(Material.ORANGE_DYE,1200);

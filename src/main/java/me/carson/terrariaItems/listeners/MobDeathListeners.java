@@ -215,7 +215,9 @@ public class MobDeathListeners implements Listener {
                     }
                 }
                 case  "FireImp" ->{
-                    event.getDrops().clear();
+                    if (Math.random() < 0.05) {
+                        event.getDrops().add(ObsidianRose.getItem(plugin));
+                    }
                 }
             }
             if (worldDataInstance.getHardmodeEnabled()) {
