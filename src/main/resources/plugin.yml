@@ -28,6 +28,9 @@ permissions:
   terrariaitems.sub.undiscover:
     description: Terraria Items Commands
     default: true
+  terrariaitems.sub.discover_all:
+    description: Terraria Items Commands
+    default: op
   terrariaitems.sub.toggle_prehardmode_crafting:
     description: Terraria Items Commands
     default: op

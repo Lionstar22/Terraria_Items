@@ -901,6 +901,9 @@ public class TICommand implements CommandExecutor, TabCompleter {
                 case "undiscover" -> {
                     CustomRecipeDiscoverManager.getInstance().undiscoverAll(player);
                 }
+                case "discover_all" -> {
+                    CustomRecipeDiscoverManager.getInstance().discoverAll(player);
+                }
             }
             return true;
         }
@@ -927,6 +930,7 @@ public class TICommand implements CommandExecutor, TabCompleter {
                 subCommands.add("toggle_hardmode");
                 subCommands.add("toggle_blood_moon");
                 subCommands.add("summon_blood_moon");
+                subCommands.add("discover_all");
             }
             StringUtil.copyPartialMatches(args[0], subCommands, completions);
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {

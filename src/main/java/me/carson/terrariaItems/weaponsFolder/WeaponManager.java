@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder;
 
+import me.carson.terrariaItems.handlers.ItemRegistry;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
@@ -26,6 +27,7 @@ public class WeaponManager implements Listener {
     private final HashMap<String, Weapon> weaponList = new HashMap<>();
     private final NamespacedKey weaponKey;;
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
+    private final ItemRegistry itemRegistry=ItemRegistry.getInstance();
 
     public WeaponManager(Plugin plugin) {
         weaponKey = new NamespacedKey(plugin, "custom_item_id");
@@ -110,6 +112,7 @@ public class WeaponManager implements Listener {
         weaponList.put("InfernalKris",new InfernalKris(plugin));
         weaponList.put("AshenStalactite",new AshenStalactite(plugin));
 
+        //itemRegistry.addFromHash(weaponList);
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 

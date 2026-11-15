@@ -1,6 +1,7 @@
 package me.carson.terrariaItems;
 
 import com.github.retrooper.packetevents.PacketEvents;
+import com.google.gson.*;
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 import me.carson.terrariaItems.accesoryFolder.AccessoryListeners;
 import me.carson.terrariaItems.blocksFolder.CustomBlockListeners;
@@ -20,12 +21,18 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.ItemDisplay;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.List;
-import java.util.Objects;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.*;
 
 public final class TerrariaItems extends JavaPlugin{
+
+
 
     @Override
     public void onLoad() {
@@ -40,6 +47,7 @@ public final class TerrariaItems extends JavaPlugin{
 
         PacketEvents.getAPI().init();
 
+        ItemRegistry.initialize(this);
         WorldDataHandler.initialize(this);
         PlayerDataHandler.initialize(this);
         CustomPotionHandler.initialize(this);
@@ -116,6 +124,36 @@ public final class TerrariaItems extends JavaPlugin{
                 }
             }
         }
+    }
+
+    public static void regroupMappings(File in, File out, Collection<ItemStack> allItems) throws IOException {
+        // item_model -> base material, taken from the real stacks
+        Map<String, String> modelToMat = new HashMap<>();
+        for (ItemStack item : allItems) {
+            ItemMeta meta = item.getItemMeta();
+            if (meta != null && meta.hasItemModel()) {
+                modelToMat.put(meta.getItemModel().toString(),
+                        item.getType().getKey().toString()); // "minecraft:iron_sword"
+            }
+        }
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        JsonObject root = gson.fromJson(Files.readString(in.toPath()), JsonObject.class);
+        JsonArray paper = root.getAsJsonObject("items").getAsJsonArray("minecraft:paper");
+
+        JsonObject regrouped = new JsonObject();
+        for (JsonElement el : paper) {
+            String model = el.getAsJsonObject().get("model").getAsString();
+            String mat = modelToMat.get(model);
+            if (mat == null) {
+                Bukkit.getLogger().warning("No item found for model " + model);
+                continue;
+            }
+            if (!regrouped.has(mat)) regrouped.add(mat, new JsonArray());
+            regrouped.getAsJsonArray(mat).add(el);
+        }
+        root.add("items", regrouped);
+        Files.writeString(out.toPath(), gson.toJson(root));
     }
 
 }
